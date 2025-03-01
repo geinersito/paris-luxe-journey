@@ -1,6 +1,31 @@
 # Changelog
 
-Todas las actualizaciones notables del proyecto serán documentadas en este archivo.
+All notable changes to this project will be documented in this file.
+
+## [Unreleased]
+
+## [0.1.0] - 2025-03-01
+
+### Added
+- Initial project setup with React, TypeScript, and Vite
+- Supabase integration for backend services
+- Stripe integration for payment processing
+- Resend integration for email services
+- Google Maps integration
+- Multi-language support (FR, EN, ES, PT)
+- Booking system implementation
+- Husky and lint-staged for code quality
+- Environment configuration with .env.example
+- Basic project documentation
+
+### Changed
+- Migrated repository from old codebase to new clean repository
+- Updated TypeScript configuration for better type checking
+- Improved project structure and organization
+
+### Fixed
+- TypeScript configuration issues
+- Git hooks configuration
 
 ## [En Desarrollo] - 2025-02-26
 
