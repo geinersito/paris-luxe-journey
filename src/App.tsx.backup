@@ -1,0 +1,66 @@
+<<<<<<< HEAD
+import { RouterProvider } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { LanguageProvider } from "./contexts/LanguageContext";
+import { AuthProvider } from "./contexts/AuthContext";
+import router from "./routes";
+=======
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Home from "./pages/Home";
+import Excursions from "./pages/Excursions";
+import BookingDetails from "./pages/booking/Details";
+import BookingPayment from "./pages/booking/Payment";
+import BookingConfirmation from "./pages/booking/Confirmation";
+import { LanguageProvider } from "./contexts/LanguageContext";
+import { AuthProvider } from "./contexts/AuthContext";
+import { RequireBookingData } from "./components/RequireBookingData";
+import { Layout } from "./components/Layout";
+>>>>>>> temp-branch
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutes
+      retry: 1,
+    },
+  },
+});
+
+<<<<<<< HEAD
+=======
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Layout><Home /></Layout>,
+  },
+  {
+    path: "/excursions",
+    element: <Layout><Excursions /></Layout>,
+  },
+  {
+    path: "/booking/details",
+    element: <Layout><RequireBookingData><BookingDetails /></RequireBookingData></Layout>,
+  },
+  {
+    path: "/booking/payment",
+    element: <Layout><RequireBookingData><BookingPayment /></RequireBookingData></Layout>,
+  },
+  {
+    path: "/booking/confirmation",
+    element: <Layout><RequireBookingData><BookingConfirmation /></RequireBookingData></Layout>,
+  }
+]);
+
+>>>>>>> temp-branch
+export default function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <LanguageProvider>
+        <AuthProvider>
+          <RouterProvider router={router} />
+        </AuthProvider>
+      </LanguageProvider>
+    </QueryClientProvider>
+  );
+}

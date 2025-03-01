@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# Ejecutar lint-staged para el formateo y linting
+npm run lint-staged
+
+# Ejecutar verificación de tipos en todo el proyecto
+npm run type-check
