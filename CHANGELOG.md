@@ -4,6 +4,27 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Added
+- New pricing system with service levels and vehicle categories
+- Database migrations for pricing structure:
+  - Service levels with multilingual descriptions
+  - Vehicle categories with capacity details
+  - Fixed routes pricing
+  - Hourly rates configuration
+  - Updated bookings table structure
+- TypeScript interfaces for pricing system
+- Service level selection in booking form
+- Price calculation based on service level multipliers
+
+### Changed
+- Updated BookingForm component to support service levels
+- Modified booking validation to include service level checks
+- Enhanced price calculation logic with service multipliers
+
+### Fixed
+- Improved error handling for location and service level loading
+- Better type safety with new TypeScript interfaces
+
 ## [0.1.0] - 2025-03-01
 
 ### Added

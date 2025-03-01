@@ -26,12 +26,22 @@ interface Location {
   code: string;
 }
 
+interface ServiceLevel {
+  id: string;
+  name: string;
+  description: Record<string, string>;
+  features: Record<string, any>;
+  multiplier: number;
+}
+
 const BookingForm = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
   const navigate = useNavigate();
   const [locations, setLocations] = useState<Location[]>([]);
+  const [serviceLevels, setServiceLevels] = useState<ServiceLevel[]>([]);
   const [isLoadingLocations, setIsLoadingLocations] = useState(true);
+  const [isLoadingServiceLevels, setIsLoadingServiceLevels] = useState(true);
   
   const {
     formData,
@@ -44,6 +54,32 @@ const BookingForm = () => {
   const { assignedVehicles } = useVehicleAssignment(formData);
 
   useEffect(() => {
+    const fetchServiceLevels = async () => {
+      try {
+        setIsLoadingServiceLevels(true);
+        const { data, error } = await supabase
+          .from('service_levels')
+          .select('*')
+          .order('multiplier');
+        
+        if (error) throw error;
+        setServiceLevels(data || []);
+      } catch (error) {
+        console.error('Error fetching service levels:', error);
+        toast({
+          title: t.common.error,
+          description: t.booking.errors.serviceLevelsNotLoaded,
+          variant: "destructive",
+        });
+      } finally {
+        setIsLoadingServiceLevels(false);
+      }
+    };
+
+    fetchServiceLevels();
+  }, [toast, t]);
+
+  useEffect(() => {
     const fetchLocations = async () => {
       try {
         setIsLoadingLocations(true);
@@ -52,32 +88,16 @@ const BookingForm = () => {
           .select('*')
           .order('name');
         
-        if (error) {
-          console.error('Error fetching locations:', error);
-          toast({
-            title: t.common.error,
-            description: t.booking.errors.locationsNotLoaded,
-            variant: "destructive",
-          });
-          return;
-        }
+        if (error) throw error;
 
         if (!data || data.length === 0) {
-          console.warn('No locations available in database');
-          toast({
-            title: t.common.error,
-            description: t.booking.errors.locationsNotLoaded,
-            variant: "destructive",
-          });
-          return;
+          throw new Error('No locations available');
         }
 
-        // Filtrar y formatear las ubicaciones
         const filteredLocations = data
-          .filter(location => location.code !== '') // Solo mantener ubicaciones con código
+          .filter(location => location.code !== '')
           .map(location => ({
             ...location,
-            // Asegurarse de que el nombre incluya el código para aeropuertos
             name: location.type === 'airport' ? `${location.name} (${location.code})` : location.name,
             name_es: location.type === 'airport' ? `${location.name_es} (${location.code})` : location.name_es,
             name_en: location.type === 'airport' ? `${location.name_en} (${location.code})` : location.name_en,
@@ -115,6 +135,15 @@ const BookingForm = () => {
       toast({
         title: t.common.error,
         description: t.booking.errors.selectDateTime,
+        variant: "destructive",
+      });
+      return false;
+    }
+
+    if (!formData.serviceLevel) {
+      toast({
+        title: t.common.error,
+        description: t.booking.errors.selectServiceLevel,
         variant: "destructive",
       });
       return false;
@@ -163,7 +192,8 @@ const BookingForm = () => {
       vehicle_id: assignedVehicles[0]?.id || "",
       largeLuggageCount: Number(formData.largeLuggageCount),
       smallLuggageCount: Number(formData.smallLuggageCount),
-      passengers: Number(formData.passengers)
+      passengers: Number(formData.passengers),
+      serviceLevel: formData.serviceLevel || 'standard'
     };
 
     navigate("/booking/details", { 
@@ -174,7 +204,7 @@ const BookingForm = () => {
     });
   };
 
-  if (isLoadingLocations) {
+  if (isLoadingLocations || isLoadingServiceLevels) {
     return (
       <div className="flex items-center justify-center p-8">
         <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
@@ -183,94 +213,101 @@ const BookingForm = () => {
   }
 
   return (
-    <form
-      onSubmit={handleFormSubmit}
-      className="glass-card p-8 rounded-xl max-w-md w-full mx-auto animate-fadeIn space-y-8 bg-white/95 dark:bg-primary-dark/95 backdrop-blur-lg shadow-xl border border-metallic/20"
-    >
-      <h2 className="text-2xl md:text-3xl font-display text-primary text-center">
-        {t.booking.title}
-      </h2>
-
-      <div className="space-y-8">
-        <LocationInputs
-          pickup={formData.pickup}
-          dropoff={formData.dropoff}
-          onChange={handleChange}
-          standardLocations={locations}
-        />
-
-        <DateTimeInputs
-          date={formData.date}
-          time={formData.time}
-          returnDate={formData.returnDate}
-          returnTime={formData.returnTime}
-          onChange={handleChange}
-          isRoundTrip={formData.tripType === 'round_trip'}
-        />
-
-        <div className="space-y-3">
-          <Label>{t.booking.tripType}</Label>
+    <form onSubmit={handleFormSubmit} className="bg-white/80 backdrop-blur-sm rounded-lg p-6 shadow-lg space-y-6 w-full max-w-md">
+      <div className="space-y-4">
+        {/* Tipo de servicio */}
+        <div className="space-y-2">
+          <Label className="text-sm font-medium">{t('service_type')}</Label>
           <RadioGroup
+            defaultValue="one_way"
+            name="service_type"
+            className="grid grid-cols-2 gap-4"
             value={formData.tripType}
             onValueChange={(value) => handleChange(value, 'tripType')}
-            className="flex flex-col space-y-2"
           >
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 border rounded-lg p-3 hover:bg-gray-50 transition-colors">
               <RadioGroupItem value="one_way" id="one_way" />
-              <Label htmlFor="one_way">{t.booking.oneWay}</Label>
+              <Label htmlFor="one_way" className="cursor-pointer">{t('one_way')}</Label>
             </div>
-            <div className="flex items-center space-x-2">
+            <div className="flex items-center space-x-2 border rounded-lg p-3 hover:bg-gray-50 transition-colors">
               <RadioGroupItem value="round_trip" id="round_trip" />
-              <Label htmlFor="round_trip">{t.booking.roundTrip}</Label>
+              <Label htmlFor="round_trip" className="cursor-pointer">{t('round_trip')}</Label>
             </div>
           </RadioGroup>
         </div>
 
-        <PassengerCount
-          value={formData.passengers}
-          onChange={(value) => handleChange(value, 'passengers')}
-        />
-
-        <LuggageSelector
-          largeLuggageCount={formData.largeLuggageCount}
-          smallLuggageCount={formData.smallLuggageCount}
-          onLargeLuggageChange={(count) => handleChange(count.toString(), 'largeLuggageCount')}
-          onSmallLuggageChange={(count) => handleChange(count.toString(), 'smallLuggageCount')}
-        />
-
-        {price && assignedVehicles.length > 0 && (
-          <div className="bg-primary/10 p-4 rounded-md space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="font-semibold">{t.booking.assignedVehicles}:</span>
-              <div className="text-sm">
-                {assignedVehicles.map((vehicle, index) => (
-                  <div key={index} className="text-right">
-                    1x {vehicle.type === 'berline' ? t.booking.vehicle.berline : t.booking.vehicle.van}
-                  </div>
-                ))}
+        {/* Nivel de servicio */}
+        <div className="space-y-2">
+          <Label className="text-sm font-medium">{t('service_level')}</Label>
+          <RadioGroup
+            defaultValue="standard"
+            name="service_level"
+            className="grid grid-cols-2 gap-4"
+            value={formData.serviceLevel}
+            onValueChange={(value) => handleChange(value, 'serviceLevel')}
+          >
+            {serviceLevels.map((level) => (
+              <div key={level.id} className="flex items-center space-x-2 border rounded-lg p-3 hover:bg-gray-50 transition-colors">
+                <RadioGroupItem value={level.id} id={level.id} />
+                <Label htmlFor={level.id} className="cursor-pointer">{level.name}</Label>
               </div>
-            </div>
-            <div className="flex items-center justify-between border-t border-primary/20 pt-2">
-              <span className="font-semibold">{t.booking.price.estimated}:</span>
-              <span className="text-xl font-display text-primary">
-                €{formData.tripType === 'round_trip' ? (price * 2).toFixed(2) : price.toFixed(2)}
-              </span>
-            </div>
-            {formData.tripType === 'round_trip' && (
-              <p className="text-sm text-muted-foreground">
-                {t.booking.price.roundTripIncluded}
-              </p>
-            )}
-          </div>
-        )}
+            ))}
+          </RadioGroup>
+        </div>
 
-        <Button 
-          type="submit" 
-          className="w-full silk-button font-medium text-base py-3"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? t.common.processing : t.booking.continue}
-        </Button>
+        {/* Ubicaciones */}
+        <div className="space-y-4">
+          <LocationInputs
+            locations={locations}
+            formData={formData}
+            onChange={handleChange}
+          />
+        </div>
+
+        {/* Fecha y Hora */}
+        <div className="space-y-4">
+          <DateTimeInputs
+            formData={formData}
+            onChange={handleChange}
+          />
+        </div>
+
+        {/* Pasajeros y Equipaje */}
+        <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-2">
+            <PassengerCount
+              value={formData.passengers}
+              onChange={(value) => handleChange(value, 'passengers')}
+            />
+          </div>
+          <div className="space-y-2">
+            <LuggageSelector
+              largeLuggage={formData.largeLuggageCount}
+              smallLuggage={formData.smallLuggageCount}
+              onChange={handleChange}
+            />
+          </div>
+        </div>
+
+        {/* Precio y Botón de Reserva */}
+        <div className="pt-4 space-y-4">
+          {price > 0 && (
+            <div className="text-right text-lg font-semibold">
+              {t('estimated_price')}: €{formData.tripType === 'round_trip' ? price * 2 : price}
+            </div>
+          )}
+          <Button
+            type="submit"
+            className="w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-3 rounded-lg transition-colors"
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? (
+              <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white"></div>
+            ) : (
+              t('continue_booking')
+            )}
+          </Button>
+        </div>
       </div>
     </form>
   );
