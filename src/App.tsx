@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Home from "./pages/Home";
 import Excursions from "./pages/Excursions";
+import BookingPage from "./pages/booking";
 import BookingDetails from "./pages/booking/Details";
 import BookingPayment from "./pages/booking/Payment";
 import BookingConfirmation from "./pages/booking/Confirmation";
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "booking",
         children: [
+          {
+            index: true,
+            element: <BookingPage />,
+          },
           {
             path: "details",
             element: <RequireBookingData><BookingDetails /></RequireBookingData>,

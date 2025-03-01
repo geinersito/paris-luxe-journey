@@ -1,0 +1,41 @@
+{
+  "language": "en",
+  "common": {
+    "error": "Error",
+    "success": "Success",
+    "loading": "Loading..."
+  },
+  "booking": {
+    "title": "Book Your Transfer",
+    "serviceLevel": "Service Level",
+    "pickup": "Pickup Location",
+    "dropoff": "Dropoff Location",
+    "date": "Date",
+    "time": "Time",
+    "passengers": "Passengers",
+    "luggage": "Luggage",
+    "largeLuggage": "Large Suitcases",
+    "smallLuggage": "Small Bags",
+    "submit": "Continue to Details",
+    "errors": {
+      "selectLocations": "Please select pickup and dropoff locations",
+      "selectDateTime": "Please select date and time",
+      "selectServiceLevel": "Please select a service level",
+      "selectPassengers": "Please select number of passengers",
+      "noVehiclesAvailable": "No vehicles available for selected options",
+      "locationsNotLoaded": "Could not load locations",
+      "serviceLevelsNotLoaded": "Could not load service levels",
+      "priceCalculationFailed": "Could not calculate price"
+    }
+  },
+  "serviceLevels": {
+    "standard": {
+      "name": "Standard",
+      "description": "Premium transportation service at a more economical rate"
+    },
+    "business": {
+      "name": "Business",
+      "description": "Premium transportation service with WiFi and complimentary water"
+    }
+  }
+}

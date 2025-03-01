@@ -15,15 +15,31 @@ All notable changes to this project will be documented in this file.
 - TypeScript interfaces for pricing system
 - Service level selection in booking form
 - Price calculation based on service level multipliers
+- Service Level Pricing System implementation
+  * Standard service (0.85x multiplier)
+  * Business service (1.0x multiplier)
+  * Base price calculation with Google Maps integration
+  * Zone-based fallback system with Paris as reference
+- Advanced distance calculation system
+  * Integration with Google Maps Distance Matrix API
+  * Fallback system for non-found locations
+  * Price comparison with similar routes
+  * Minimum price guarantees per zone
 
 ### Changed
 - Updated BookingForm component to support service levels
 - Modified booking validation to include service level checks
 - Enhanced price calculation logic with service multipliers
+- Updated booking form with service level selection
+- Enhanced price calculation to consider Paris as central reference
+- Modified vehicle assignment logic for service levels
 
 ### Fixed
 - Improved error handling for location and service level loading
 - Better type safety with new TypeScript interfaces
+- Error handling for location geocoding
+- Price consistency for routes outside Paris
+- Service level validation in booking form
 
 ## [0.1.0] - 2025-03-01
 

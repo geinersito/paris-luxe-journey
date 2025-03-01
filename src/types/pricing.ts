@@ -3,7 +3,7 @@ export interface ServiceLevel {
   name: string;
   description: Record<string, string>;
   features: {
-    wifi: boolean | 'on request';
+    wifi: boolean;
     water: boolean;
     meet_greet: boolean;
     flight_tracking: boolean;
@@ -12,64 +12,48 @@ export interface ServiceLevel {
   multiplier: number;
 }
 
-export interface FixedRoute {
-  id: string;
-  route_type: string;
-  origin_type: string;
-  destination_type: string;
-  base_price_1_3: number;
-  base_price_4_7: number;
-  description: Record<string, string>;
-  estimated_duration?: number;
-}
-
-export interface HourlyRate {
-  id: string;
-  service_type: string;
-  base_rate: number;
-  min_hours: number;
-  description: Record<string, string>;
-}
-
-export interface VehicleCategory {
-  id: string;
-  name: string;
-  description: Record<string, string>;
-  capacity_passengers: number;
-  capacity_suitcases: number;
-  capacity_carry_on: number;
-  images?: Record<string, string[]>;
-}
-
 export interface BookingPriceRequest {
-  pickup: {
-    type: string;
-    code?: string;
-    zone?: string;
-  };
-  dropoff: {
-    type: string;
-    code?: string;
-    zone?: string;
-  };
-  serviceLevel: string;
+  origin: string;
+  destination: string;
   passengers: number;
-  luggage: {
+  serviceLevel: string;
+  date: string;
+  time: string;
+  luggage?: {
     large: number;
-    carryOn: number;
+    small: number;
   };
-  bookingType: 'transfer' | 'hourly';
-  hours?: number;
 }
 
 export interface PriceCalculation {
   basePrice: number;
-  serviceLevelMultiplier: number;
-  vehicleSupplement: number;
-  luggageSupplement: number;
-  totalPrice: number;
+  finalPrice: number;
+  multiplier: number;
+  currency: string;
   breakdown: {
-    description: string;
-    amount: number;
-  }[];
+    base: number;
+    serviceLevelAdjustment: number;
+    extras: number;
+  };
+}
+
+export interface Zone {
+  id: string;
+  name: string;
+  center: {
+    lat: number;
+    lng: number;
+  };
+  minPrice: number;
+  type: 'airport' | 'city' | 'landmark' | 'other';
+}
+
+export interface FixedRoute {
+  id: string;
+  origin_type: string;
+  destination_type: string;
+  base_price_1_3: number;
+  base_price_4_7: number;
+  estimated_duration: number;
+  description: Record<string, string>;
 }

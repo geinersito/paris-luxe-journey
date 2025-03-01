@@ -1,0 +1,41 @@
+{
+  "language": "es",
+  "common": {
+    "error": "Error",
+    "success": "Éxito",
+    "loading": "Cargando..."
+  },
+  "booking": {
+    "title": "Reserve su Traslado",
+    "serviceLevel": "Nivel de Servicio",
+    "pickup": "Lugar de Recogida",
+    "dropoff": "Lugar de Destino",
+    "date": "Fecha",
+    "time": "Hora",
+    "passengers": "Pasajeros",
+    "luggage": "Equipaje",
+    "largeLuggage": "Maletas Grandes",
+    "smallLuggage": "Bolsos Pequeños",
+    "submit": "Continuar a Detalles",
+    "errors": {
+      "selectLocations": "Por favor seleccione los lugares de recogida y destino",
+      "selectDateTime": "Por favor seleccione fecha y hora",
+      "selectServiceLevel": "Por favor seleccione un nivel de servicio",
+      "selectPassengers": "Por favor seleccione el número de pasajeros",
+      "noVehiclesAvailable": "No hay vehículos disponibles para las opciones seleccionadas",
+      "locationsNotLoaded": "No se pudieron cargar las ubicaciones",
+      "serviceLevelsNotLoaded": "No se pudieron cargar los niveles de servicio",
+      "priceCalculationFailed": "No se pudo calcular el precio"
+    }
+  },
+  "serviceLevels": {
+    "standard": {
+      "name": "Standard",
+      "description": "Servicio de transporte premium a una tarifa más económica"
+    },
+    "business": {
+      "name": "Business",
+      "description": "Servicio de transporte premium con WiFi y agua de cortesía"
+    }
+  }
+}

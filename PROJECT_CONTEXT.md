@@ -81,86 +81,106 @@ audit_logs (
 );
 ```
 
-## Database Structure Update
+## Service Level Pricing System
 
-```sql
--- Service Levels
-CREATE TABLE service_levels (
-    id TEXT PRIMARY KEY,
-    name TEXT NOT NULL,
-    description JSONB,  -- Multilingual descriptions
-    features JSONB,     -- List of included features
-    multiplier DECIMAL NOT NULL DEFAULT 1.0
-);
+### Service Levels
+1. **Standard Service (0.85x)**
+   - Premium transportation service
+   - 15% more economical than Business rate
+   - Same high-quality vehicles and service
 
--- Fixed Route Prices
-CREATE TABLE fixed_routes (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    route_type TEXT NOT NULL,
-    origin_type TEXT NOT NULL,      -- airport, station, city, etc.
-    destination_type TEXT NOT NULL,
-    base_price_1_3 DECIMAL NOT NULL,
-    base_price_4_7 DECIMAL NOT NULL,
-    description JSONB,
-    estimated_duration INTEGER       -- in minutes
-);
+2. **Business Service (1.0x)**
+   - Premium transportation service
+   - WiFi included
+   - Complimentary water
+   - Ideal for corporate clients
 
--- Hourly Service Rates
-CREATE TABLE hourly_rates (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    service_type TEXT NOT NULL,      -- standard, shopping, events, etc.
-    base_rate DECIMAL NOT NULL,
-    min_hours INTEGER NOT NULL DEFAULT 3,
-    description JSONB
-);
+### Common Features (All Levels)
+- Professional driver
+- Meet & Greet service
+- Premium vehicles
+- Flight tracking
+- High-quality service standards
 
--- Vehicle Categories
-CREATE TABLE vehicle_categories (
-    id TEXT PRIMARY KEY,
-    name TEXT NOT NULL,
-    capacity_passengers INTEGER NOT NULL,
-    capacity_suitcases INTEGER NOT NULL,
-    capacity_carry_on INTEGER NOT NULL,
-    description JSONB,
-    images JSONB
-);
+### Price Calculation System
+1. **Fixed Routes**
+   - Airport transfers
+   - Train station transfers
+   - Disneyland Paris
+   - Inter-airport transfers (except Beauvais)
 
--- Common Locations
-CREATE TABLE common_locations (
-    id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    name TEXT NOT NULL,
-    type TEXT NOT NULL,              -- airport, station, landmark, etc.
-    coordinates JSONB NOT NULL,
-    zone TEXT NOT NULL,              -- paris_center, ile_de_france, etc.
-    base_price DECIMAL,              -- reference price for calculations
-    description JSONB
-);
+2. **Dynamic Routes**
+   - Google Maps Distance Matrix API integration
+   - Paris-centric distance calculation
+   - Zone-based fallback system
+   - Similar route comparison
 
--- Extended Bookings Table
-ALTER TABLE bookings ADD COLUMN IF NOT EXISTS
-    service_level_id TEXT REFERENCES service_levels(id),
-    vehicle_category_id TEXT REFERENCES vehicle_categories(id),
-    passengers INTEGER NOT NULL DEFAULT 1,
-    large_suitcases INTEGER NOT NULL DEFAULT 0,
-    carry_on INTEGER NOT NULL DEFAULT 0,
-    special_requests TEXT,
-    calculated_price DECIMAL NOT NULL,
-    booking_type TEXT NOT NULL DEFAULT 'transfer', -- transfer or hourly
-    hours INTEGER,                                 -- for hourly bookings
-    pickup_details JSONB,
-    dropoff_details JSONB;
+3. **Minimum Price Guarantees**
+   - Zone-based minimum prices
+   - Distance-based adjustments
+   - Paris as central reference point
 
--- RLS Policies
-ALTER TABLE bookings ENABLE ROW LEVEL SECURITY;
+### Implementation Plan
 
-CREATE POLICY "Users can view their own bookings"
-    ON bookings FOR SELECT
-    USING (auth.uid() = user_id);
+#### Phase 1: Core System (Current)
+- [x] Database migrations
+- [x] Basic service level types
+- [x] Booking form updates
+- [ ] Price calculation engine
+- [ ] Location validation system
 
-CREATE POLICY "Staff can view all bookings"
-    ON bookings FOR SELECT
-    USING (auth.role() = 'staff');
-```
+#### Phase 2: Price Engine
+- [ ] Google Maps integration
+- [ ] Zone-based fallback system
+- [ ] Similar route comparison
+- [ ] Minimum price implementation
+
+#### Phase 3: Testing & Validation
+- [ ] Price calculation testing
+- [ ] Edge case validation
+- [ ] Performance testing
+- [ ] User acceptance testing
+
+#### Phase 4: UI/UX & Content
+- [ ] Service level selection UI
+- [ ] Price breakdown display
+- [ ] Multilingual content
+- [ ] Help documentation
+
+### Technical Notes
+
+1. **Price Calculation Priority**
+   ```
+   1. Fixed Routes
+   2. Google Maps Distance
+   3. Zone-based Fallback
+   4. Similar Route Comparison
+   ```
+
+2. **Zone Configuration**
+   ```typescript
+   interface Zone {
+     center: Point;
+     name: string;
+     minPrice: number;
+     referenceRoutes: Route[];
+   }
+   ```
+
+3. **Service Level Multipliers**
+   ```typescript
+   const multipliers = {
+     standard: 0.85,
+     business: 1.0
+   };
+   ```
+
+### Next Steps
+1. Implement price calculation engine
+2. Set up Google Maps integration
+3. Create zone configuration
+4. Add service level tests
+5. Update UI components
 
 ## Serverless Functions (Supabase Edge Functions)
 
