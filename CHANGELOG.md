@@ -4,6 +4,19 @@ All notable changes to this project will be documented in this file.
 
 ## [Unreleased]
 
+### Changed
+- Simplified vehicle fleet to two core options:
+  * Berline Mercedes (1-3 passengers)
+  * Van Mercedes (1-7 passengers)
+- Updated vehicle descriptions to focus on passenger capacity
+- Streamlined pricing structure for vehicle categories
+- Modified vehicle features to use standardized keys
+- Optimized vehicle selection interface for clarity
+
+### Removed
+- Removed luxury vehicle category (Mercedes Class S)
+- Eliminated redundant vehicle options
+
 ### Added
 - New pricing system with service levels and vehicle categories
 - Database migrations for pricing structure:

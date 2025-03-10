@@ -213,6 +213,7 @@ export interface Translation {
     largeLuggage: string;
     smallLuggage: string;
     maxWeight: string;
+    serviceLevel: string;
     services: {
       airport: string;
       city: string;
@@ -299,7 +300,9 @@ export interface Translation {
       requiredFields: string;
       invalidPassengerInfo: string;
       invalidPhone: string;
-    }
+      serviceLevelsNotLoaded: string;
+      selectServiceLevel: string;
+    };
   };
   toast: {
     languageChanged: string;

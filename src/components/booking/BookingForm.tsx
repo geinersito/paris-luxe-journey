@@ -1,6 +1,5 @@
 import React from 'react';
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useAuth } from "@/contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { LocationInputs } from "@/components/booking/LocationInputs";
@@ -12,6 +11,7 @@ import { DateTimeInputs } from "@/components/booking/DateTimeInputs";
 import { PassengerCount } from "@/components/booking/PassengerCount";
 import { LuggageSelector } from "@/components/booking/LuggageSelector";
 import { useVehicleAssignment } from "@/hooks/booking/useVehicleAssignment";
+import { useServiceLevels } from "@/hooks/useServiceLevels";
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabaseClient";
 
@@ -39,9 +39,8 @@ const BookingForm = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [locations, setLocations] = useState<Location[]>([]);
-  const [serviceLevels, setServiceLevels] = useState<ServiceLevel[]>([]);
   const [isLoadingLocations, setIsLoadingLocations] = useState(true);
-  const [isLoadingServiceLevels, setIsLoadingServiceLevels] = useState(true);
+  const { serviceLevels, isLoading: isLoadingServiceLevels } = useServiceLevels();
 
   const {
     formData,
@@ -52,32 +51,6 @@ const BookingForm = () => {
   } = useBookingForm();
 
   const { assignedVehicles } = useVehicleAssignment(formData);
-
-  useEffect(() => {
-    const fetchServiceLevels = async () => {
-      try {
-        setIsLoadingServiceLevels(true);
-        const { data, error } = await supabase
-          .from('service_levels')
-          .select('*')
-          .order('multiplier');
-        
-        if (error) throw error;
-        setServiceLevels(data || []);
-      } catch (error) {
-        console.error('Error fetching service levels:', error);
-        toast({
-          title: t.common.error,
-          description: t.booking.errors.serviceLevelsNotLoaded,
-          variant: "destructive",
-        });
-      } finally {
-        setIsLoadingServiceLevels(false);
-      }
-    };
-
-    fetchServiceLevels();
-  }, [toast, t]);
 
   useEffect(() => {
     const fetchLocations = async () => {
@@ -161,33 +134,39 @@ const BookingForm = () => {
         {/* Service Level Selection */}
         <div className="space-y-4">
           <h3 className="text-lg font-medium">{t.booking.serviceLevel}</h3>
-          <RadioGroup
-            value={formData.serviceLevel || 'standard'}
-            onValueChange={(value) => handleChange({ target: { name: 'serviceLevel', value } } as any)}
-            className="grid grid-cols-1 md:grid-cols-2 gap-4"
-          >
-            {serviceLevels.map((level) => (
-              <div key={level.id} className="relative">
-                <RadioGroupItem
-                  value={level.id}
-                  id={level.id}
-                  className="peer sr-only"
-                />
-                <Label
-                  htmlFor={level.id}
-                  className="flex flex-col p-4 border rounded-lg cursor-pointer hover:bg-gray-50 peer-checked:border-primary peer-checked:bg-primary/5"
-                >
-                  <span className="font-medium">{level.name}</span>
-                  <span className="text-sm text-gray-500">{level.description[language]}</span>
-                  {price && (
-                    <span className="mt-2 text-lg font-semibold">
-                      {(price * level.multiplier).toFixed(2)}€
-                    </span>
-                  )}
-                </Label>
-              </div>
-            ))}
-          </RadioGroup>
+          {isLoadingServiceLevels ? (
+            <div className="flex items-center justify-center p-4">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+            </div>
+          ) : (
+            <RadioGroup
+              value={formData.serviceLevel || 'standard'}
+              onValueChange={(value) => handleChange({ target: { name: 'serviceLevel', value } } as any)}
+              className="grid grid-cols-1 md:grid-cols-2 gap-4"
+            >
+              {serviceLevels.map((level) => (
+                <div key={level.id} className="relative">
+                  <RadioGroupItem
+                    value={level.id}
+                    id={level.id}
+                    className="peer sr-only"
+                  />
+                  <Label
+                    htmlFor={level.id}
+                    className="flex flex-col p-4 border rounded-lg cursor-pointer hover:bg-gray-50 peer-checked:border-primary peer-checked:bg-primary/5"
+                  >
+                    <span className="font-medium">{level.name}</span>
+                    <span className="text-sm text-gray-500">{level.description[language]}</span>
+                    {price && (
+                      <span className="mt-2 text-lg font-semibold">
+                        {(price * level.multiplier).toFixed(2)}€
+                      </span>
+                    )}
+                  </Label>
+                </div>
+              ))}
+            </RadioGroup>
+          )}
         </div>
 
         <LocationInputs 
@@ -213,11 +192,11 @@ const BookingForm = () => {
         />
 
         <Button 
-          type="submit" 
+          type="submit"
           className="w-full"
           disabled={isSubmitting}
         >
-          {t.booking.submit}
+          {isSubmitting ? t.common.processing : t.booking.continue}
         </Button>
       </div>
     </form>

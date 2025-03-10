@@ -73,6 +73,7 @@ export const en: Translation = {
       daytrip: "Day Trip",
       chauffeur: "Private Chauffeur",
     },
+    serviceLevel: "Service Level",
     payment: {
       title: "Payment Details",
       cardDetails: "Card Details"
@@ -132,7 +133,9 @@ export const en: Translation = {
       noBookingData: "No booking data found",
       requiredFields: "Please fill in all required fields",
       invalidPassengerInfo: "Invalid passenger information provided",
-      invalidPhone: "Invalid phone number"
+      invalidPhone: "Invalid phone number",
+      serviceLevelsNotLoaded: "Could not load service levels",
+      selectServiceLevel: "Please select a service level",
     },
     summary: {
       title: "Booking Summary",

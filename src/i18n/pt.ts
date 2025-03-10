@@ -216,7 +216,7 @@ export const pt: Translation = {
     subtitle: "Estamos aqui para ajudar",
     phone: "Telefone",
     email: "E-mail",
-    address: "123 Avenue des Champs-Élysées, Paris",
+    address: "75008 Paris, France",
     name: "Nome",
     message: "Mensagem",
     namePlaceholder: "Digite seu nome",

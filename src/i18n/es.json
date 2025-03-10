@@ -5,6 +5,16 @@
     "success": "Éxito",
     "loading": "Cargando..."
   },
+  "contact": {
+    "title": "Contacto",
+    "description": "Contáctenos para cualquier consulta o asistencia",
+    "subtitle": "Estamos aquí para ayudar",
+    "phone": "Teléfono",
+    "email": "Correo electrónico",
+    "address": "75008 Paris, France",
+    "name": "Nombre",
+    "message": "Mensaje"
+  },
   "booking": {
     "title": "Reserve su Traslado",
     "serviceLevel": "Nivel de Servicio",

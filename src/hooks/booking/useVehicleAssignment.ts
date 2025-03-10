@@ -38,8 +38,15 @@ export const useVehicleAssignment = (formData: BookingFormData) => {
       const totalWeightedLuggage = (largeLuggage * 1.5) + smallLuggage;
       
       // Encuentra los vehículos disponibles de cada tipo
-      const availableBerlines = vehicles.filter(v => v.type === 'berline');
-      const availableVans = vehicles.filter(v => v.type === 'van');
+      const availableBerlines = vehicles.filter(v => v.type?.toLowerCase() === 'berline');
+      const availableVans = vehicles.filter(v => v.type?.toLowerCase() === 'van');
+
+      console.log('Available vehicles breakdown:', {
+        berlines: availableBerlines.length,
+        vans: availableVans.length,
+        total: vehicles.length,
+        types: vehicles.map(v => v.type)
+      });
 
       // Capacidades por tipo de vehículo
       const BERLINE_MAX_PASSENGERS = 4;
@@ -49,29 +56,37 @@ export const useVehicleAssignment = (formData: BookingFormData) => {
 
       // Lógica de asignación basada en pasajeros y equipaje
       if (passengers > 12 || totalWeightedLuggage > 16) {
-        // Caso: Grupo muy grande o mucho equipaje - 2 vans
         selectedVehicles = availableVans.slice(0, 2);
       } else if (passengers > 7 || totalWeightedLuggage > 8) {
-        // Caso: Grupo grande o equipaje considerable - 1 van + 1 berline
         selectedVehicles = [
           ...availableVans.slice(0, 1),
           ...availableBerlines.slice(0, 1)
         ];
       } else if (passengers > 4 || totalWeightedLuggage > 3) {
-        // Caso: Grupo mediano o equipaje mediano - 1 van
         selectedVehicles = availableVans.slice(0, 1);
-      } else if (passengers > 0) { // Solo asignar berline si hay al menos 1 pasajero
-        // Caso: Grupo pequeño y poco equipaje - 1 berline
-        selectedVehicles = availableBerlines.slice(0, 1);
+      } else if (passengers > 0) {
+        if (availableBerlines.length > 0) {
+          selectedVehicles = availableBerlines.slice(0, 1);
+        } else if (availableVans.length > 0) {
+          selectedVehicles = availableVans.slice(0, 1);
+        }
       }
 
       // Verifica si la asignación cumple con los requisitos mínimos
+      // Fallback mechanism - only runs if no vehicles were selected
+      if (selectedVehicles.length === 0 && vehicles.length > 0) {
+        console.log('No vehicles selected by normal logic, using fallback');
+        console.log('Available vehicle types:', [...new Set(vehicles.map(v => v.type))]);
+        selectedVehicles = vehicles.slice(0, 1);
+      }
+
+      // Update capacity calculations to handle unknown types
       const totalPassengerCapacity = selectedVehicles.reduce((sum, vehicle) => {
-        return sum + (vehicle.type === 'berline' ? BERLINE_MAX_PASSENGERS : VAN_MAX_PASSENGERS);
+        return sum + (vehicle.type?.toLowerCase() === 'van' ? VAN_MAX_PASSENGERS : BERLINE_MAX_PASSENGERS);
       }, 0);
 
       const totalLuggageCapacity = selectedVehicles.reduce((sum, vehicle) => {
-        return sum + (vehicle.type === 'berline' ? BERLINE_MAX_LUGGAGE : VAN_MAX_LUGGAGE);
+        return sum + (vehicle.type?.toLowerCase() === 'van' ? VAN_MAX_LUGGAGE : BERLINE_MAX_LUGGAGE);
       }, 0);
 
       // Si la capacidad no es suficiente, intenta ajustar

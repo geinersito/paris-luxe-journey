@@ -199,18 +199,18 @@ const ContactSection = () => {
               </div>
               <Button 
                 type="submit" 
-                className="w-full flex items-center justify-center space-x-2 text-base bg-primary hover:bg-primary/90"
+                className="w-full flex items-center justify-center space-x-2 text-base bg-secondary hover:bg-secondary/90"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (
                   <span className="flex items-center space-x-2">
                     <span className="animate-spin">⏳</span>
-                    <span>{t.contact.sending}</span>
+                    <span>{t.common.processing}</span>
                   </span>
                 ) : (
                   <span className="flex items-center space-x-2">
                     <Send className="h-5 w-5" />
-                    <span>{t.contact.send}</span>
+                    <span>{t.contact.sendMessage}</span>
                   </span>
                 )}
               </Button>

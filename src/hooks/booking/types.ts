@@ -1,4 +1,3 @@
-
 export interface BookingFormData {
   pickup: string;
   dropoff: string;
@@ -14,6 +13,7 @@ export interface BookingFormData {
   tripType: 'one_way' | 'round_trip';
   largeLuggageCount: number;
   smallLuggageCount: number;
+  serviceLevel?: string;
   passengerInfo: {
     fullName: string;
     email: string;

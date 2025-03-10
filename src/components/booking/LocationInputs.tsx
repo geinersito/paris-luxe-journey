@@ -31,11 +31,11 @@ export const LocationInputs = ({ pickup, dropoff, onChange, standardLocations }:
   const getLocalizedName = (location: Location) => {
     switch (language) {
       case 'es':
-        return location.name_es;
+        return location.name_es || location.name;
       case 'fr':
-        return location.name_fr;
+        return location.name_fr || location.name;
       case 'pt':
-        return location.name_pt;
+        return location.name_pt || location.name;
       default:
         return location.name_en || location.name;
     }
@@ -50,10 +50,10 @@ export const LocationInputs = ({ pickup, dropoff, onChange, standardLocations }:
     return acc;
   }, []);
 
-  // Sort locations by name
+  // Sort locations by name with null safety
   const sortedLocations = uniqueLocations.sort((a, b) => {
-    const nameA = getLocalizedName(a).toLowerCase();
-    const nameB = getLocalizedName(b).toLowerCase();
+    const nameA = (getLocalizedName(a) || '').toLowerCase();
+    const nameB = (getLocalizedName(b) || '').toLowerCase();
     return nameA.localeCompare(nameB);
   });
 
@@ -85,7 +85,7 @@ export const LocationInputs = ({ pickup, dropoff, onChange, standardLocations }:
           </SelectTrigger>
           <SelectContent>
             {sortedLocations.map((location) => (
-              <SelectItem key={location.id} value={location.id}>
+              <SelectItem key={location.id} value={location.code}>
                 {getLocalizedName(location)}
               </SelectItem>
             ))}
@@ -117,7 +117,7 @@ export const LocationInputs = ({ pickup, dropoff, onChange, standardLocations }:
           </SelectTrigger>
           <SelectContent>
             {sortedLocations.map((location) => (
-              <SelectItem key={location.id} value={location.id}>
+              <SelectItem key={location.id} value={location.code}>
                 {getLocalizedName(location)}
               </SelectItem>
             ))}
