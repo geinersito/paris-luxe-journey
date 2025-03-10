@@ -9,28 +9,20 @@ export const useVehicleAssignment = (formData: BookingFormData) => {
 
   useEffect(() => {
     const calculateRequiredVehicles = () => {
-      // No calcular si no hay datos de vehículos o si está cargando
       if (!vehicles || isLoading) {
         console.log('Esperando datos de vehículos...');
         return;
       }
 
-      // No calcular si no hay pasajeros seleccionados
       if (!formData.passengers) {
         console.log('Esperando selección de pasajeros...');
         return;
       }
 
-      console.log('Calculating required vehicles with:', {
-        passengers: formData.passengers,
-        largeLuggage: formData.largeLuggageCount,
-        smallLuggage: formData.smallLuggageCount,
-        availableVehicles: vehicles
-      });
-
-      const passengers = parseInt(formData.passengers);
-      const largeLuggage = parseInt(String(formData.largeLuggageCount)) || 0;
-      const smallLuggage = parseInt(String(formData.smallLuggageCount)) || 0;
+      // Update number conversions to use Number() instead of parseInt
+      const passengers = Number(formData.passengers);
+      const largeLuggage = Number(formData.largeLuggageCount) || 0;
+      const smallLuggage = Number(formData.smallLuggageCount) || 0;
 
       let selectedVehicles: Vehicle[] = [];
 

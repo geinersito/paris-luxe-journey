@@ -15,45 +15,54 @@ export const useLocationDetails = () => {
 
   const fetchLocationDetails = useCallback(async (pickupId: string, dropoffId: string) => {
     if (!pickupId || !dropoffId) {
-      console.error('Missing pickup or dropoff IDs:', { pickupId, dropoffId });
+      console.error('Invalid location IDs:', { pickupId, dropoffId });
+      setLocationDetails({ pickup: '', dropoff: '' });
+      setIsLoading(false);
       return;
     }
 
     try {
       setIsLoading(true);
-      console.log('Fetching location details for:', { pickupId, dropoffId });
+      console.log('Fetching locations with codes:', { pickup: pickupId, dropoff: dropoffId });
+
+      const processedPickupId = typeof pickupId === 'object' ? pickupId.id : pickupId;
+      const processedDropoffId = typeof dropoffId === 'object' ? dropoffId.id : dropoffId;
 
       const [pickupLocation, dropoffLocation] = await Promise.all([
-        supabase.from('locations').select('name').eq('id', pickupId).single(),
-        supabase.from('locations').select('name').eq('id', dropoffId).single()
+        supabase.from('locations')
+          .select('name')
+          .filter('code', 'eq', processedPickupId)
+          .single(),
+        supabase.from('locations')
+          .select('name')
+          .filter('code', 'eq', processedDropoffId)
+          .single()
       ]);
 
-      if (pickupLocation.error) {
-        console.error('Error fetching pickup location:', pickupLocation.error);
-        throw new Error(pickupLocation.error.message);
+      if (pickupLocation.error || dropoffLocation.error) {
+        console.error('Query errors:', {
+          pickup: pickupLocation.error,
+          dropoff: dropoffLocation.error
+        });
+        throw new Error('Failed to fetch location details');
       }
 
-      if (dropoffLocation.error) {
-        console.error('Error fetching dropoff location:', dropoffLocation.error);
-        throw new Error(dropoffLocation.error.message);
-      }
-
-      console.log('Location details fetched:', {
-        pickup: pickupLocation.data?.name,
-        dropoff: dropoffLocation.data?.name
-      });
-
-      setLocationDetails({
+      const details = {
         pickup: pickupLocation.data?.name || '',
         dropoff: dropoffLocation.data?.name || ''
-      });
+      };
+
+      console.log('Successfully fetched location details:', details);
+      setLocationDetails(details);
+
     } catch (error) {
-      console.error('Error fetching location details:', error);
+      console.error('Location fetch error:', error);
       toast({
         title: t.common.error,
         description: t.booking.errors.locationsNotLoaded,
         variant: "destructive",
       });
+      setLocationDetails({ pickup: '', dropoff: '' });
     } finally {
       setIsLoading(false);
     }

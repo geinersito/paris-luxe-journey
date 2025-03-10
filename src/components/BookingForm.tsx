@@ -36,6 +36,8 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
   const {
     formData,
     price,
+    totalPrice,      // Added price breakdown values
+    luggageSurcharge,
     isSubmitting,
     handleChange,
     handleSubmit: submitBooking,
@@ -217,10 +219,10 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
         />
 
         <LuggageSelector
-          largeLuggageCount={formData.largeLuggageCount}
-          smallLuggageCount={formData.smallLuggageCount}
-          onLargeLuggageChange={(count) => handleChange(count.toString(), 'largeLuggageCount')}
-          onSmallLuggageChange={(count) => handleChange(count.toString(), 'smallLuggageCount')}
+          largeLuggageCount={Number(formData.largeLuggageCount) || 0}
+          smallLuggageCount={Number(formData.smallLuggageCount) || 0}
+          onLargeLuggageChange={(count) => handleChange(count, 'largeLuggageCount')}
+          onSmallLuggageChange={(count) => handleChange(count, 'smallLuggageCount')}
         />
 
         {price && assignedVehicles.length > 0 && (
@@ -237,9 +239,17 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
             </div>
             <div className="flex items-center justify-between border-t border-primary/20 pt-2">
               <span className="font-semibold">{t.booking.price.estimated}:</span>
-              <span className="text-xl font-display text-primary">
-                €{formData.tripType === 'round_trip' ? (price * 2).toFixed(2) : price.toFixed(2)}
-              </span>
+              <div className="text-right">
+                {luggageSurcharge > 0 && (
+                  <div className="text-sm text-muted-foreground mb-1">
+                    <span>Base: €{price.toFixed(2)}</span>
+                    <span className="ml-2">+ {t.booking.price.luggage}: €{luggageSurcharge.toFixed(2)}</span>
+                  </div>
+                )}
+                <span className="text-xl font-display text-primary">
+                  €{totalPrice.toFixed(2)}
+                </span>
+              </div>
             </div>
             {formData.tripType === 'round_trip' && (
               <p className="text-sm text-muted-foreground">

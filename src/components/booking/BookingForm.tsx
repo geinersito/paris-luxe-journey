@@ -186,9 +186,14 @@ const BookingForm = () => {
           onChange={(value) => handleChange({ target: { name: 'passengers', value } } as any)}
         />
 
+        // Replace the current LuggageSelector implementation with:
         <LuggageSelector 
-          formData={formData}
-          onChange={handleChange}
+          largeLuggageCount={Number(formData.largeLuggageCount)}
+          smallLuggageCount={Number(formData.smallLuggageCount)}
+          onLargeLuggageChange={(count) => 
+            handleChange({ target: { name: 'largeLuggageCount', value: count } } as any)}
+          onSmallLuggageChange={(count) => 
+            handleChange({ target: { name: 'smallLuggageCount', value: count } } as any)}
         />
 
         <Button 

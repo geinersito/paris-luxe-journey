@@ -45,15 +45,22 @@ export const useBookingForm = () => {
   const { validateForm } = useBookingValidation();
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> | string,
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement> | string | number,
     fieldName?: string
   ) => {
     let updatedFormData;
-    if (typeof e === 'string' && fieldName) {
-      updatedFormData = { ...formData, [fieldName]: e };
+    
+    if ((typeof e === 'string' || typeof e === 'number') && fieldName) {
+      const value = ['largeLuggageCount', 'smallLuggageCount'].includes(fieldName)
+        ? Number(e) || 0
+        : e;
+      updatedFormData = { ...formData, [fieldName]: value };
     } else if (typeof e === 'object') {
       const { name, value } = e.target;
-      updatedFormData = { ...formData, [name]: value };
+      const processedValue = ['largeLuggageCount', 'smallLuggageCount'].includes(name)
+        ? Number(value) || 0
+        : value;
+      updatedFormData = { ...formData, [name]: processedValue };
     } else {
       return;
     }
