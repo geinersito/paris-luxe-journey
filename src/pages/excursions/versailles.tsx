@@ -5,64 +5,45 @@ import { DestinationNavigation } from '@/components/destination/DestinationNavig
 import { DestinationContent } from '@/components/destination/DestinationContent';
 import { DestinationSidebar } from '@/components/destination/DestinationSidebar';
 import { TourCard } from '@/components/TourCard';
+import { excursions } from '@/data/excursions';
 
 export default function VersaillesPage() {
   const { t } = useLanguage();
   const [activeSection, setActiveSection] = React.useState("description");
+  const [selectedTour, setSelectedTour] = React.useState<string | null>(null);
 
-  const handleSectionChange = (sectionId: string) => {
-    setActiveSection(sectionId);
-  };
-
+  // Enhanced tours data with more details
   const tours = [
     {
       id: "versailles-tour-1",
       name: "Guided Tour of Versailles Palace",
       duration: "4 hours",
       price: 250,
-      includes: ["Entry tickets", "Guided tour", "Transportation"],
+      maxParticipants: 8,
+      startTimes: ["09:00", "13:00"],
+      includes: ["Entry tickets", "Guided tour", "Transportation", "Skip-the-line access"],
+      highlights: ["Hall of Mirrors", "Royal Apartments", "Gardens access"],
     },
-    {
-      id: "versailles-tour-2",
-      name: "Versailles Gardens and Marie Antoinette's Estate",
-      duration: "6 hours",
-      price: 350,
-      includes: ["Entry tickets", "Transportation", "Audio guide"],
-    },
-    {
-      id: "versailles-tour-3",
-      name: "Full Day Versailles Experience",
-      duration: "8 hours",
-      price: 450,
-      includes: ["Entry tickets", "Guided tour", "Lunch", "Transportation"],
-    },
-  ];
-
-  const navigationItems = [
-    { id: "description", label: t.versailles.navigation.description },
-    { id: "tours", label: t.versailles.navigation.tours },
-    { id: "map", label: t.versailles.navigation.map },
-    { id: "events", label: t.versailles.navigation.events },
-    { id: "faq", label: t.versailles.navigation.faq },
   ];
 
   const content = {
     description: (
       <div>
-        <h3 className="text-2xl font-bold mb-4">{t.versailles.title}</h3>
-        <p className="mb-4">{t.versailles.description}</p>
+        <h3 className="text-2xl font-bold mb-4">{versaillesData?.title}</h3>
+        <p className="mb-4">{versaillesData?.description}</p>
         <h4 className="text-xl font-semibold mb-2">Highlights:</h4>
         <ul className="list-disc list-inside mb-4">
-          {t.versailles.highlights.map((highlight, index) => (
+          {versaillesData?.highlights?.map((highlight, index) => (
             <li key={index}>{highlight}</li>
           ))}
         </ul>
-        <h4 className="text-xl font-semibold mb-2">Why Visit:</h4>
-        <ul className="list-disc list-inside">
-          {t.versailles.whyVisit.map((reason, index) => (
-            <li key={index}>{reason}</li>
-          ))}
-        </ul>
+        <div className="mt-6">
+          <h4 className="text-xl font-semibold mb-2">Best Time to Visit:</h4>
+          <p className="mb-4">{t.versailles.bestTimeToVisit}</p>
+          
+          <h4 className="text-xl font-semibold mb-2">What to Expect:</h4>
+          <p className="mb-4">{t.versailles.whatToExpect}</p>
+        </div>
       </div>
     ),
     tours: (

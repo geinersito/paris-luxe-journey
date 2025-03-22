@@ -10,8 +10,8 @@ export const fr: Translation = {
     excursions: "Excursions"
   },
   hero: {
-    title: "Transport de Luxe à Paris",
-    subtitle: "Découvrez l'élégance de Paris avec nos services de chauffeur premium et nos excursions exclusives."
+    title: "Paris Journey",
+    subtitle: "Service exceptionnel à prix juste"
   },
   excursions: {
     title: "Découvrez les Trésors de France",
@@ -262,6 +262,11 @@ export const fr: Translation = {
       title: "Excursions",
       description: "Explorez au-delà de Paris avec des excursions personnalisées vers des destinations françaises.",
     },
+    dropdown: {
+      transfers: "Transferts Aéroport",
+      chauffeur: "Service Horaire",
+      excursions: "Excursions"
+    }
   },
   about: {
     title: "À Propos de Paris Elite Services",

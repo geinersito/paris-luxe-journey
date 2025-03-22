@@ -37,8 +37,15 @@ const BookingDetails = () => {
 
   const bookingData = location.state?.bookingData;
   const estimatedPrice = location.state?.estimatedPrice;
-
+  const luggageSurcharge = location.state?.luggageSurcharge || 0; // Obtener el recargo por maletas
+  
+  // Add logging to track the price
   useEffect(() => {
+    console.log('[BookingDetails] Received booking data:', bookingData);
+    console.log('[BookingDetails] Received estimated price:', estimatedPrice);
+    console.log('[BookingDetails] Received luggage surcharge:', luggageSurcharge);
+
+    // Check if booking data is present
     if (!bookingData || !estimatedPrice) {
       toast({
         title: t.common.error,
@@ -75,7 +82,7 @@ const BookingDetails = () => {
 
       fetchUserProfile();
     }
-  }, [location.state, navigate, toast, t, user]);
+  }, [location, navigate, toast, t, user, bookingData, estimatedPrice, luggageSurcharge]);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -112,16 +119,16 @@ const BookingDetails = () => {
 
     return true;
   };
-
+  
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
     if (!validateForm() || isSubmitting) {
       return;
     }
-
+  
     setIsSubmitting(true);
-
+  
     try {
       const updatedBookingData = {
         ...bookingData,
@@ -133,16 +140,18 @@ const BookingDetails = () => {
           flightNumber: formData.flightNumber || ""
         }
       };
-
+  
       console.log("Navigating to payment with data:", {
         bookingData: updatedBookingData,
-        estimatedPrice
+        estimatedPrice: estimatedPrice,
+        luggageSurcharge: luggageSurcharge // Incluir el recargo por maletas
       });
-
+  
       navigate("/booking/payment", { 
         state: { 
           bookingData: updatedBookingData,
-          estimatedPrice
+          estimatedPrice: estimatedPrice, // Use the original price calculated in the booking form
+          luggageSurcharge: luggageSurcharge // Pasar el recargo por maletas a la siguiente página
         },
         replace: true
       });
@@ -167,6 +176,27 @@ const BookingDetails = () => {
           <h1 className="text-3xl font-display text-primary mb-6">
             {t.booking.passengerDetails}
           </h1>
+          
+          {/* Añadir resumen de precio */}
+          <div className="mb-6 p-4 bg-muted rounded-lg">
+            <h2 className="text-xl font-semibold mb-2">{t.booking.priceSummary || "Resumen de precio"}</h2>
+            <div className="space-y-1">
+              <div className="flex justify-between">
+                <span>Precio base:</span>
+                <span>€{(estimatedPrice - luggageSurcharge).toFixed(2)}</span>
+              </div>
+              {luggageSurcharge > 0 && (
+                <div className="flex justify-between text-muted-foreground">
+                  <span>Recargo por equipaje:</span>
+                  <span>€{luggageSurcharge.toFixed(2)}</span>
+                </div>
+              )}
+              <div className="flex justify-between font-bold pt-2 border-t border-border">
+                <span>Precio total:</span>
+                <span>€{estimatedPrice.toFixed(2)}</span>
+              </div>
+            </div>
+          </div>
           
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-4">

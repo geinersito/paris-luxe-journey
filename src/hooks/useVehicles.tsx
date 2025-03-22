@@ -37,7 +37,7 @@ export const useVehicles = () => {
             technical_specs: "Motor 2.0L Turbo, Transmisión automática 9G-TRONIC, Interior en cuero",
             passenger_capacity: 3,
             luggage_capacity: 2,
-            base_price: 80,
+            base_price: 0, // Precio cero para que se use solo el precio de Supabase
             image_url: "https://images.caradisiac.com/logos-ref/modele/modele--mercedes-classe-e-w214/S7-modele--mercedes-classe-e-w214.jpg",
             interior_image_url: "https://images.caradisiac.com/images/9/2/1/4/209214/S0-guide-d-achat-la-mercedes-classe-e-w214-s-impose-en-reference-757223.jpg",
             features: ["wifi", "water", "airConditioning", "leatherSeats", "cleaning"]
@@ -50,7 +50,7 @@ export const useVehicles = () => {
             technical_specs: "Motor 2.0L Diesel, Configuración flexible de asientos, WiFi a bordo",
             passenger_capacity: 7,
             luggage_capacity: 7,
-            base_price: 120,
+            base_price: 0, // Precio cero para que se use solo el precio de Supabase
             image_url: "https://images.caradisiac.com/images/1/9/7/7/197777/S0-mercedes-classe-v-un-restylage-dans-l-air-du-temps-642535.jpg",
             interior_image_url: "https://images.caradisiac.com/images/1/9/7/7/197777/S0-mercedes-classe-v-un-restylage-dans-l-air-du-temps-642539.jpg",
             features: ["wifi", "water", "airConditioning", "leatherSeats", "cleaning"]

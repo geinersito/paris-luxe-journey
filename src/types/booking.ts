@@ -8,6 +8,8 @@ export interface BookingFormData {
   largeLuggageCount: string;
   smallLuggageCount: string;
   calculatedPrice: number;
+  basePrice?: number; // Precio base sin recargos
+  luggageSurcharge?: number; // Recargo específico por maletas
 }
 
 export interface BookingDetails extends BookingFormData {

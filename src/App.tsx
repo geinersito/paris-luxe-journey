@@ -10,6 +10,7 @@ import { LanguageProvider } from "./contexts/LanguageContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import { RequireBookingData } from "./components/RequireBookingData";
 import { Layout } from "./components/Layout";
+import { BookingProvider } from '@/contexts/BookingContext';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -40,6 +41,8 @@ const router = createBrowserRouter([
             index: true,
             element: <BookingPage />,
           },
+          // Look for the route configuration for /booking/details
+          // It should be wrapped with RequireBookingData
           {
             path: "details",
             element: <RequireBookingData><BookingDetails /></RequireBookingData>,
@@ -63,7 +66,9 @@ export default function App() {
     <QueryClientProvider client={queryClient}>
       <LanguageProvider>
         <AuthProvider>
-          <RouterProvider router={router} />
+          <BookingProvider>
+            <RouterProvider router={router} />
+          </BookingProvider>
         </AuthProvider>
       </LanguageProvider>
     </QueryClientProvider>

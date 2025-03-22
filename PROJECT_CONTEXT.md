@@ -1002,3 +1002,17 @@ INSERT INTO common_points (
 
 ## Contact
 For technical questions or issues, contact the development team.
+
+## Database Integration
+- Backend: Supabase
+- Connection: Direct client integration with TypeScript support
+- Authentication: Anonymous key with restricted permissions
+- Data Types: Strongly typed with Database type definitions
+- Location: `/src/integrations/supabase/`
+
+### Key Features
+- Auto-refresh token management
+- Persistent sessions
+- URL session detection
+- Type-safe database operations
+

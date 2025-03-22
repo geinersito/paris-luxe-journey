@@ -10,10 +10,10 @@ import { Label } from "./ui/label";
 import { DateTimeInputs } from "./booking/DateTimeInputs";
 import { PassengerCount } from "./booking/PassengerCount";
 import { LuggageSelector } from "./booking/LuggageSelector";
-import { useVehicleAssignment } from "@/hooks/booking/useVehicleAssignment";
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { BookingFormProps } from "@/types/components";
+import { useBooking } from "@/contexts/BookingContext";
 
 interface Location {
   id: string;
@@ -36,15 +36,14 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
   const {
     formData,
     price,
-    totalPrice,      // Added price breakdown values
+    totalPrice,
     luggageSurcharge,
     isSubmitting,
     handleChange,
-    handleSubmit: submitBooking,
+    handleSubmit: submitBooking, // This is imported but not used
+    setFormData
   } = useBookingForm();
-
-  const { assignedVehicles } = useVehicleAssignment(formData);
-
+  
   useEffect(() => {
     const fetchLocations = async () => {
       try {
@@ -127,38 +126,133 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
       return false;
     }
 
-    if (!assignedVehicles.length) {
-      toast({
-        title: t.common.error,
-        description: t.booking.errors.noVehiclesAvailable,
-        variant: "destructive",
-      });
-      return false;
-    }
-
     return true;
   };
 
-  const handleFormSubmit = (e: React.FormEvent) => {
+  // Obtener updateBookingData del contexto
+  const { updateBookingData } = useBooking();
+  
+  const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('BookingForm - handleFormSubmit llamado');
     
     if (!validateForm()) {
+      console.log('BookingForm - Validación del formulario falló');
       return;
     }
-
-    const updatedFormData = {
-      ...formData,
-      tourId,
-      tourName,
-      basePrice,
-      vehicleType: assignedVehicles[0]?.type || "",
-      vehicle_id: assignedVehicles[0]?.id || "",
-      largeLuggageCount: Number(formData.largeLuggageCount),
-      smallLuggageCount: Number(formData.smallLuggageCount),
-      passengers: Number(formData.passengers)
-    };
-
-    onSubmit(updatedFormData);
+  
+    try {
+      // Actualizar formData con la información del tour
+      const updatedFormData = {
+        ...formData,
+        tourId,
+        tourName
+      };
+      
+      console.log('BookingForm - FormData actualizado:', updatedFormData);
+      
+      // Actualizar el estado local primero
+      setFormData(updatedFormData);
+      
+      // Calcular el precio final con recargos
+      const isRoundTrip = updatedFormData.tripType === 'round_trip';
+      const basePrice = isRoundTrip ? price * 2 : price;
+      const totalEstimatedPrice = basePrice + luggageSurcharge;
+      
+      // Buscar los UUIDs de las ubicaciones seleccionadas
+      const pickupLocation = locations.find(loc => loc.code === updatedFormData.pickup);
+      const dropoffLocation = locations.find(loc => loc.code === updatedFormData.dropoff);
+      
+      console.log('BookingForm - Ubicaciones encontradas:', { 
+        pickup: pickupLocation, 
+        dropoff: dropoffLocation 
+      });
+      
+      // Verificar que se encontraron las ubicaciones
+      if (!pickupLocation || !pickupLocation.id) {
+        console.error('BookingForm - No se encontró el ID de la ubicación de recogida:', updatedFormData.pickup);
+        toast({
+          title: t.common.error,
+          description: t.booking.errors.locationNotFound,
+          variant: "destructive",
+        });
+        return;
+      }
+      
+      if (!dropoffLocation || !dropoffLocation.id) {
+        console.error('BookingForm - No se encontró el ID de la ubicación de destino:', updatedFormData.dropoff);
+        toast({
+          title: t.common.error,
+          description: t.booking.errors.locationNotFound,
+          variant: "destructive",
+        });
+        return;
+      }
+      
+      // Preparar datos para navegación y contexto con UUIDs de ubicaciones
+      const bookingDataWithSurcharge = {
+        ...updatedFormData,
+        luggageSurcharge,
+        basePrice, // Añadir el precio base explícitamente
+        // Añadir los UUIDs de las ubicaciones
+        pickupLocationId: pickupLocation.id,
+        dropoffLocationId: dropoffLocation.id,
+        // También incluir los nombres completos para mostrar
+        pickupLocationName: pickupLocation.name,
+        dropoffLocationName: dropoffLocation.name
+      };
+      
+      console.log('BookingForm - Datos completos con IDs de ubicaciones:', bookingDataWithSurcharge);
+      
+      const navigationState = {
+        bookingData: bookingDataWithSurcharge,
+        estimatedPrice: totalEstimatedPrice
+      };
+      
+      console.log('BookingForm - Datos para navegación:', navigationState);
+      
+      // Actualizar el contexto de reserva ANTES de navegar
+      if (updateBookingData) {
+        console.log('BookingForm - Actualizando contexto con:', bookingDataWithSurcharge);
+        try {
+          await updateBookingData(bookingDataWithSurcharge);
+          console.log('BookingForm - Contexto actualizado correctamente');
+        } catch (updateError) {
+          console.error('BookingForm - Error al actualizar contexto:', updateError);
+          // Continuar con la navegación aunque falle la actualización del contexto
+        }
+      } else {
+        console.warn('BookingForm - updateBookingData no está disponible');
+      }
+      
+      // Al final del handleFormSubmit, justo después de actualizar el contexto
+      console.log('BookingForm - Intentando navegar a /booking/details con estado:', navigationState);
+      
+      // Usar setTimeout para garantizar que se completen las actualizaciones del estado
+      setTimeout(() => {
+        try {
+          navigate("/booking/details", {
+            state: navigationState
+          });
+          console.log('BookingForm - Navegación iniciada');
+        } catch (navError) {
+          console.error('Error al navegar:', navError);
+        }
+      }, 200); // Aumentado a 200ms para dar más tiempo
+      
+      // Llamar al onSubmit prop si existe (para compatibilidad)
+      if (typeof onSubmit === 'function') {
+        console.log('BookingForm - Llamando a onSubmit para compatibilidad');
+        onSubmit(updatedFormData);
+      }
+    } catch (error) {
+      console.error('Error in form submission:', error);
+      toast({
+        title: t.common.error,
+        description: t.booking.errors.bookingCreationError,
+        variant: "destructive",
+      });
+    }
   };
 
   if (isLoadingLocations) {
@@ -225,32 +319,22 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
           onSmallLuggageChange={(count) => handleChange(count, 'smallLuggageCount')}
         />
 
-        {price && assignedVehicles.length > 0 && (
+        {price > 0 && (
           <div className="bg-primary/10 p-4 rounded-md space-y-2">
             <div className="flex items-center justify-between">
-              <span className="font-semibold">{t.booking.assignedVehicles}:</span>
-              <div className="text-sm">
-                {assignedVehicles.map((vehicle, index) => (
-                  <div key={index} className="text-right">
-                    1x {vehicle.type === 'berline' ? t.booking.vehicle.berline : t.booking.vehicle.van}
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="flex items-center justify-between border-t border-primary/20 pt-2">
               <span className="font-semibold">{t.booking.price.estimated}:</span>
-              <div className="text-right">
-                {luggageSurcharge > 0 && (
-                  <div className="text-sm text-muted-foreground mb-1">
-                    <span>Base: €{price.toFixed(2)}</span>
-                    <span className="ml-2">+ {t.booking.price.luggage}: €{luggageSurcharge.toFixed(2)}</span>
-                  </div>
-                )}
-                <span className="text-xl font-display text-primary">
-                  €{totalPrice.toFixed(2)}
-                </span>
-              </div>
+              <span className="text-xl font-display text-primary">
+                €{totalPrice.toFixed(2)}
+              </span>
             </div>
+            
+            {luggageSurcharge > 0 && (
+              <div className="text-sm text-muted-foreground">
+                <span>Base: €{price.toFixed(2)}</span>
+                <span className="ml-2">+ Equipaje extra: €{luggageSurcharge.toFixed(2)}</span>
+              </div>
+            )}
+            
             {formData.tripType === 'round_trip' && (
               <p className="text-sm text-muted-foreground">
                 {t.booking.price.roundTripIncluded}

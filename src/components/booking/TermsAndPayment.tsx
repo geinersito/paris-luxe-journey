@@ -8,6 +8,7 @@ interface TermsAndPaymentProps {
   acceptedTerms: boolean;
   setAcceptedTerms: (accepted: boolean) => void;
   isProcessing: boolean;
+  isLocationsLoading?: boolean; // Añadir prop para indicar si las ubicaciones se están cargando
   onSubmit: (e: React.FormEvent) => void;
   onBack: () => void;
 }
@@ -16,6 +17,7 @@ const TermsAndPayment = ({
   acceptedTerms,
   setAcceptedTerms,
   isProcessing,
+  isLocationsLoading = false, // Valor por defecto para compatibilidad con código existente
   onSubmit,
   onBack
 }: TermsAndPaymentProps) => {
@@ -49,8 +51,12 @@ const TermsAndPayment = ({
         >
           Volver
         </Button>
-        <Button type="submit" disabled={!acceptedTerms || isProcessing}>
-          {isProcessing ? "Procesando..." : "Continuar"}
+        <Button type="submit" disabled={!acceptedTerms || isProcessing || isLocationsLoading}>
+          {isProcessing 
+            ? "Procesando..." 
+            : isLocationsLoading 
+              ? "Cargando ubicaciones..." 
+              : "Continuar"}
         </Button>
       </div>
     </form>

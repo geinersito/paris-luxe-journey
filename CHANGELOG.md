@@ -140,3 +140,10 @@ All notable changes to this project will be documented in this file.
 - Sistema de internacionalización base implementado
 - Componentes principales desarrollados y estilizados
 - Sistema de pagos y emails funcionando correctamente
+
+## [1.x.x] - 2024-01-xx
+### Added
+- Integrated Supabase as the backend database service
+- Added database client configuration with authentication
+- Set up secure environment for database credentials
+- Implemented database connection with TypeScript support

@@ -18,12 +18,22 @@ export default function HeroSection() {
 
   const handleBookingSubmit = async (bookingDetails: any) => {
     try {
+      // Calcular precio final en base al precio dinámico de Supabase
+      const basePrice = bookingDetails.basePrice || 0;
+      const luggageSurcharge = bookingDetails.luggageSurcharge || 0;
+      
+      console.log('HeroSection - Datos de reserva:', bookingDetails);
+      console.log('HeroSection - Precio base calculado:', basePrice);
+      
+      // Calcular el precio estimado: duplicado si es ida y vuelta + recargo por equipaje
+      const estimatedPrice = (bookingDetails.tripType === 'round_trip' ? basePrice * 2 : basePrice) + luggageSurcharge;
+      
+      console.log('HeroSection - Precio estimado final:', estimatedPrice);
+      
       navigate("/booking/details", {
         state: {
           bookingData: bookingDetails,
-          estimatedPrice: bookingDetails.tripType === 'round_trip' 
-            ? bookingDetails.basePrice * 2 
-            : bookingDetails.basePrice
+          estimatedPrice: estimatedPrice
         }
       });
     } catch (error) {
@@ -72,21 +82,22 @@ export default function HeroSection() {
           <BookingForm
             tourId="default"
             tourName="Standard Transfer"
-            basePrice={80}
+            basePrice={0} // Usar 0 para permitir que el cálculo dinámico funcione
             onSubmit={handleBookingSubmit}
           />
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none rotate-180">
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
         <svg 
-          className="relative block w-full h-[50px] text-background" 
-          viewBox="0 0 1200 120" 
+          className="relative block w-full h-[10px]" 
+          viewBox="0 0 1200 30" 
           preserveAspectRatio="none"
         >
           <path 
-            d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" 
-            className="fill-current"
+            d="M0,20 C300,0 600,30 1200,15 L1200,30 L0,30 Z" 
+            fill="white"
+            style={{opacity: '0.9'}}
           />
         </svg>
       </div>

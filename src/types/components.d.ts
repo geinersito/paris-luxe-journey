@@ -2,7 +2,7 @@
 export interface BookingFormProps {
   tourId: string;
   tourName: string;
-  basePrice: number;
+  basePrice?: number;
   onSubmit: (bookingDetails: any) => Promise<void>;
 }
 

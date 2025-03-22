@@ -10,8 +10,8 @@ export const en: Translation = {
     excursions: "Excursions"
   },
   hero: {
-    title: "Luxury Transportation in Paris",
-    subtitle: "Experience the elegance of Paris with our premium chauffeur services and exclusive tours."
+    title: "Paris Journey",
+    subtitle: "Exceptional service at fair prices"
   },
   excursions: {
     title: "Discover France's Treasures",
@@ -184,6 +184,11 @@ export const en: Translation = {
     dayTrips: {
       title: "Day Trips",
       description: "Explore beyond Paris with customized day trips to French destinations."
+    },
+    dropdown: {
+      transfers: "Airport Transfers",
+      chauffeur: "Hourly Service",
+      excursions: "Excursions"
     }
   },
   versailles: {

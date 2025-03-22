@@ -10,7 +10,7 @@ import { BookingConfirmation } from '@/components/BookingConfirmation';
 interface BookingDetails {
   tourId: string;
   tourName: string;
-  basePrice: number;
+  // Eliminamos basePrice de la interfaz ya que se calculará internamente
   // ... otros detalles de la reserva
 }
 
@@ -26,8 +26,8 @@ export default function BookingPage() {
   const [currentStep, setCurrentStep] = React.useState<'details' | 'payment' | 'confirmation'>('details');
   const [bookingDetails, setBookingDetails] = React.useState<BookingDetails>({
     tourId: 'default-tour',
-    tourName: 'Default Tour',
-    basePrice: 0
+    tourName: 'Default Tour'
+    // Eliminamos basePrice del estado inicial
   });
   const [selectedTour, setSelectedTour] = React.useState<any>(null);
   const [isProcessing, setIsProcessing] = React.useState(false);
@@ -60,7 +60,7 @@ export default function BookingPage() {
         <BookingForm
           tourId={bookingDetails.tourId}
           tourName={bookingDetails.tourName}
-          basePrice={bookingDetails.basePrice}
+          // Eliminamos la prop basePrice
           onSubmit={handleBookingSubmit}
         />
       )}

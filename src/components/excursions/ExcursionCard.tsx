@@ -1,9 +1,11 @@
-import { useTranslation } from "react-i18next";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useLanguage } from "@/contexts/LanguageContext";
+import Link from "next/link";
+import Image from "next/image";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Clock } from "lucide-react";
 
 interface ExcursionCardProps {
+  id: string;
   title: string;
   description: string;
   image: string;
@@ -18,44 +20,35 @@ export function ExcursionCard({
   image,
   duration,
   price,
-  link,
+  link
 }: ExcursionCardProps) {
-  const { t } = useTranslation();
+  const { t } = useLanguage();
 
   return (
-    <Card className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+    <Card className="overflow-hidden">
       <div className="relative h-48">
-        <img
+        <Image
           src={image}
           alt={title}
-          className="w-full h-full object-cover"
+          fill
+          className="object-cover"
         />
       </div>
-      <CardHeader>
-        <CardTitle className="text-xl">{title}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <p className="text-muted-foreground mb-4 line-clamp-2">
-          {description}
-        </p>
-        <div className="flex items-center gap-4 mb-4">
-          <div className="flex items-center gap-2 text-sm text-muted-foreground">
-            <Clock className="w-4 h-4" />
-            <span>{t('excursions.card.duration')}: {duration}</span>
-          </div>
-          <div className="text-sm">
-            <span className="text-muted-foreground">{t('excursions.card.from')} </span>
-            <span className="font-semibold">€{price}</span>
-          </div>
+      <CardContent className="p-4">
+        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <p className="text-muted-foreground text-sm mb-4">{description}</p>
+        <div className="flex justify-between items-center">
+          <span className="text-sm">{duration}</span>
+          <span className="font-semibold">{`€${price}`}</span>
         </div>
-        <Button
-          asChild
-          variant="secondary"
-          className="w-full"
-        >
-          <a href={link}>{t('excursions.card.moreInfo')}</a>
-        </Button>
       </CardContent>
+      <CardFooter className="p-4 pt-0">
+        <Link href={link} className="w-full">
+          <Button className="w-full">
+            {t.excursions.viewDetails}
+          </Button>
+        </Link>
+      </CardFooter>
     </Card>
   );
 }

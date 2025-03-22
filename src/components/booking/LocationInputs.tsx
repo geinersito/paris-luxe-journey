@@ -18,13 +18,46 @@ interface Location {
 }
 
 interface LocationInputsProps {
-  pickup: string;
-  dropoff: string;
-  onChange: (value: string, name: string) => void;
-  standardLocations: Location[];
+  // Propiedades para el nuevo formato
+  formData?: {
+    pickup: string;
+    dropoff: string;
+    [key: string]: any;
+  };
+  locations?: Location[];
+  isLoading?: boolean;
+  
+  // Propiedades para el formato antiguo
+  pickup?: string;
+  dropoff?: string;
+  standardLocations?: Location[];
+  
+  // Propiedad común (pero con posibles tipos diferentes)
+  onChange: ((e: { target: { name: string; value: string } }) => void) | ((value: string, name: string) => void);
 }
 
-export const LocationInputs = ({ pickup, dropoff, onChange, standardLocations }: LocationInputsProps) => {
+export const LocationInputs = (props: LocationInputsProps) => {
+  // Determinar si estamos usando el formato nuevo o el antiguo
+  const isNewFormat = !!props.formData;
+  
+  // Variables para ambos formatos
+  let pickup: string = '';
+  let dropoff: string = '';
+  let locationsData: Location[] = [];
+  let isLocationLoading: boolean = false;
+  
+  // Inicializar según el formato
+  if (isNewFormat && props.formData) {
+    pickup = props.formData.pickup || '';
+    dropoff = props.formData.dropoff || '';
+    locationsData = props.locations || [];
+    isLocationLoading = props.isLoading || false;
+  } else {
+    pickup = props.pickup || '';
+    dropoff = props.dropoff || '';
+    locationsData = props.standardLocations || [];
+    isLocationLoading = false; // No disponible en formato antiguo
+  }
   const { t, language } = useLanguage();
   const { toast } = useToast();
 
@@ -42,13 +75,13 @@ export const LocationInputs = ({ pickup, dropoff, onChange, standardLocations }:
   };
 
   // Remove duplicates based on location id
-  const uniqueLocations = standardLocations.reduce((acc: Location[], current) => {
+  const uniqueLocations = locationsData?.reduce((acc: Location[], current) => {
     const exists = acc.find((location) => location.id === current.id);
     if (!exists) {
       acc.push(current);
     }
     return acc;
-  }, []);
+  }, []) || [];
 
   // Sort locations by name with null safety
   const sortedLocations = uniqueLocations.sort((a, b) => {
@@ -58,7 +91,7 @@ export const LocationInputs = ({ pickup, dropoff, onChange, standardLocations }:
   });
 
   useEffect(() => {
-    if (!standardLocations || standardLocations.length === 0) {
+    if (!isLocationLoading && (!locationsData || locationsData.length === 0)) {
       console.warn('No locations available');
       toast({
         title: t.common.error,
@@ -66,7 +99,7 @@ export const LocationInputs = ({ pickup, dropoff, onChange, standardLocations }:
         variant: "destructive",
       });
     }
-  }, [standardLocations, toast, t]);
+  }, [locationsData, isLocationLoading, toast, t]);
 
   return (
     <div className="relative space-y-6">
@@ -77,7 +110,13 @@ export const LocationInputs = ({ pickup, dropoff, onChange, standardLocations }:
         </Label>
         <Select 
           value={pickup} 
-          onValueChange={(value) => onChange(value, 'pickup')}
+          onValueChange={(value) => {
+            if (isNewFormat) {
+              (props.onChange as (e: { target: { name: string; value: string } }) => void)({ target: { name: 'pickup', value } });
+            } else {
+              (props.onChange as (value: string, name: string) => void)(value, 'pickup');
+            }
+          }}
           required
         >
           <SelectTrigger className="w-full bg-white dark:bg-primary-dark">
@@ -109,7 +148,13 @@ export const LocationInputs = ({ pickup, dropoff, onChange, standardLocations }:
         </Label>
         <Select 
           value={dropoff} 
-          onValueChange={(value) => onChange(value, 'dropoff')}
+          onValueChange={(value) => {
+            if (isNewFormat) {
+              (props.onChange as (e: { target: { name: string; value: string } }) => void)({ target: { name: 'dropoff', value } });
+            } else {
+              (props.onChange as (value: string, name: string) => void)(value, 'dropoff');
+            }
+          }}
           required
         >
           <SelectTrigger className="w-full bg-white dark:bg-primary-dark">

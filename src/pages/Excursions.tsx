@@ -168,106 +168,101 @@ const sampleTours = [
   {
     id: 3,
     title: "Loire Valley Castles",
-    description: "Discover the magnificent Loire Valley châteaux on this exclusive day trip. Visit Chambord, Chenonceau, and enjoy premium wine tasting at a family-owned vineyard. Travel in ultimate comfort with our luxury vehicle.",
-    image: "https://images.unsplash.com/photo-1591891293284-b4c5f8c95c4f?q=80&w=1000",
-    rating: 5.0,
-    reviews: 32,
-    price: 1290,
-    featured: false,
-    duration: "12 hours",
+    description: "Discover the magnificent Renaissance châteaux of the Loire Valley with private access. Visit Château de Chambord, explore Château de Chenonceau, and enjoy wine tasting at a local vineyard.",
+    image: "/images/loire-valley.jpg",
+    rating: 4.9,
+    reviews: 42,
+    price: 490,
+    featured: true,
+    duration: "10-12h",
     type: [experienceTypes.CULTURAL, experienceTypes.HISTORICAL, experienceTypes.LUXURY],
     location: "Loire Valley",
-    maxGroupSize: 4,
-    languages: ["en", "fr", "es", "pt"],
+    maxGroupSize: 6,
+    languages: ["en", "fr", "es"],
     availability: {
-      nextAvailable: "2025-03-05",
+      nextAvailable: "2025-03-15",
       spotsLeft: 4
     },
     highlights: [
-      "Private château tours",
-      "Premium wine tasting",
-      "Gourmet lunch included",
-      "Luxury transport"
+      "Visit to Château de Chambord",
+      "Château de Chenonceau exploration",
+      "Wine tasting at a local vineyard",
+      "Gourmet lunch at a historic location"
     ]
   },
   {
-    id: 4,
-    title: "Paris Night Tour",
-    description: "Experience the City of Light at its most magical moment. This enchanting evening tour includes iconic monuments illuminated at night, a gourmet dinner with Seine view, and a champagne toast at the Eiffel Tower.",
-    image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2073",
+    id: 8,
+    title: "Champagne Region",
+    description: "Experience the finest champagne houses with exclusive tastings and cellar tours. Visit prestigious champagne houses, enjoy private cellar tours, and participate in multiple champagne tastings.",
+    image: "/images/champagne.jpg",
     rating: 4.8,
-    reviews: 56,
-    price: 490,
-    featured: true,
-    duration: "4 hours",
-    type: [experienceTypes.CULTURAL, experienceTypes.LUXURY],
-    location: "Paris",
-    maxGroupSize: 6,
+    reviews: 37,
+    price: 420,
+    featured: false,
+    duration: "8h",
+    type: [experienceTypes.GASTRONOMY, experienceTypes.LUXURY],
+    location: "Champagne",
+    maxGroupSize: 8,
     languages: ["en", "fr"],
     availability: {
-      nextAvailable: "2025-02-29",
+      nextAvailable: "2025-03-12",
       spotsLeft: 6
     },
     highlights: [
-      "Illuminated monuments tour",
-      "Seine-view dinner",
-      "Champagne at Eiffel Tower",
-      "Professional photography"
-    ],
-    promotion: {
-      type: "Last Minute",
-      discount: 10,
-      endsIn: "1d"
-    }
-  },
-  {
-    id: 5,
-    title: "Champagne Region Tour",
-    description: "Discover the prestigious Champagne houses of Reims and Épernay. Enjoy exclusive tastings, meet with cellar masters, and learn the secrets of champagne production. Includes visits to both large houses and small family producers.",
-    image: "https://images.unsplash.com/photo-1590166774851-bc49b23a18fe?q=80&w=1000",
-    rating: 5.0,
-    reviews: 41,
-    price: 990,
-    featured: true,
-    duration: "10 hours",
-    type: [experienceTypes.GASTRONOMY, experienceTypes.LUXURY],
-    location: "Champagne",
-    maxGroupSize: 6,
-    languages: ["en", "fr"],
-    availability: {
-      nextAvailable: "2025-03-02",
-      spotsLeft: 2
-    },
-    highlights: [
-      "Premium champagne tastings",
-      "Cellar master meetings",
-      "Gourmet lunch",
-      "Luxury transport"
+      "Visit to prestigious champagne houses",
+      "Private cellar tours",
+      "Multiple champagne tastings",
+      "Gourmet lunch in Épernay"
     ]
   },
   {
-    id: 6,
-    title: "Private Louvre Tour",
-    description: "Skip the lines and discover the world's greatest art museum with your expert art historian guide. This VIP tour includes the museum's highlights and hidden gems, with fascinating stories behind each masterpiece.",
-    image: "https://images.unsplash.com/photo-1650670194104-5bd40b5fd0ce?q=80&w=1000",
-    rating: 4.9,
-    reviews: 63,
-    price: 490,
+    id: 9,
+    title: "Palace of Versailles",
+    description: "Experience the grandeur of French royalty with exclusive access to the Palace of Versailles. Enjoy private early morning access to the Hall of Mirrors and guided tours of the Royal Apartments.",
+    image: "/images/versailles.jpg",
+    rating: 5.0,
+    reviews: 56,
+    price: 590,
     featured: true,
-    duration: "3 hours",
-    type: [experienceTypes.CULTURAL, experienceTypes.HISTORICAL],
-    location: "Paris",
+    duration: "8h",
+    type: [experienceTypes.HISTORICAL, experienceTypes.LUXURY, experienceTypes.CULTURAL],
+    location: "Versailles",
     maxGroupSize: 4,
-    languages: ["en", "fr", "es"],
+    languages: ["en", "fr", "es", "pt"],
     availability: {
-      nextAvailable: "2025-02-28",
-      spotsLeft: 1
+      nextAvailable: "2025-03-18",
+      spotsLeft: 2
     },
     highlights: [
-      "Skip-the-line access",
-      "Art historian guide",
-      "Personalized route",
-      "Museum highlights"
+      "Private early morning access to Hall of Mirrors",
+      "Royal Apartments guided tour",
+      "Marie Antoinette's Estate visit",
+      "Private gardens tour with fountain show"
+    ]
+  },
+  {
+    id: 10,
+    title: "Giverny & Honfleur Private Tour",
+    description: "Discover Monet's inspiration and the charm of Normandy's coast. Visit Monet's house and gardens privately, participate in an exclusive painting workshop, and explore Honfleur harbor.",
+    image: "/images/giverny.jpg",
+    rating: 4.7,
+    reviews: 29,
+    price: 680,
+    featured: false,
+    duration: "10h",
+    type: [experienceTypes.CULTURAL, experienceTypes.HISTORICAL],
+    location: "Normandy",
+    maxGroupSize: 6,
+    languages: ["en", "fr"],
+    availability: {
+      nextAvailable: "2025-03-20",
+      spotsLeft: 5
+    },
+    highlights: [
+      "Private visit to Monet's house and gardens",
+      "Exclusive painting workshop",
+      "Honfleur harbor exploration",
+      "Seafood lunch at La Ferme Saint Siméon"
     ]
   }
 ];
