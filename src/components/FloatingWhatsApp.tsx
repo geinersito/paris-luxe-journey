@@ -1,14 +1,28 @@
 import React from 'react';
 
+declare global {
+  interface Window {
+    gtag?: (...args: unknown[]) => void;
+  }
+}
+
 const FloatingWhatsApp: React.FC = () => {
   const phone = '33668251102';
   const message = encodeURIComponent('Hello! I need a transfer from Paris Elite Services');
-  
+
+  const handleClick = () => {
+    window.gtag?.('event', 'whatsapp_click', {
+      event_category: 'Contact',
+      event_label: 'Floating Button'
+    });
+  };
+
   return (
     <a
       href={`https://wa.me/${phone}?text=${message}`}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={handleClick}
       className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 focus:ring-4 focus:ring-green-400"
       aria-label="Contact WhatsApp"
     >

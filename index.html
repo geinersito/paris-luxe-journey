@@ -35,6 +35,19 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="Paris Elite Services" />
     
+    <!-- Google Analytics 4 (with GDPR consent mode) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        ad_storage: 'denied'
+      });
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
     <!-- Schema.org markup for Google -->
     <script type="application/ld+json">
       {
