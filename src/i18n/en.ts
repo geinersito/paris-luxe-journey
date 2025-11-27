@@ -10,8 +10,8 @@ export const en: Translation = {
     excursions: "Excursions"
   },
   hero: {
-    title: "Paris Journey",
-    subtitle: "Exceptional service at fair prices"
+    title: "Paris Elite Services",
+    subtitle: "Premium VTC transfers from €70 – CDG, Orly, Paris"
   },
   excursions: {
     title: "Discover France's Treasures",
