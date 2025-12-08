@@ -53,10 +53,10 @@ export default function FleetSection() {
   }
 
   return (
-    <section id="fleet" className="py-20 bg-pearl dark:bg-gray-800">
+    <section id="fleet" className="py-28 bg-pearl dark:bg-gray-800">
       <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <motion.div 
-          className="text-center mb-16"
+        <motion.div
+          className="text-center mb-20"
           initial="initial"
           whileInView="animate"
           variants={fadeIn}
@@ -122,7 +122,7 @@ export default function FleetSection() {
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-semibold text-primary dark:text-primary-foreground mb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-primary dark:text-primary-foreground mb-4">
                     {vehicle.name}
                   </h3>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">

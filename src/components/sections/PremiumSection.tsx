@@ -48,15 +48,15 @@ const PremiumSection = () => {
   ];
 
   return (
-    <section id="services" className="py-24 bg-gradient-to-b from-background via-background/50 to-background">
+    <section id="services" className="py-28 bg-gradient-to-b from-background via-background/50 to-background">
       <div className="container mx-auto px-4">
-        <motion.div 
-          className="text-center mb-16"
+        <motion.div
+          className="text-center mb-20"
           initial={fadeIn.initial}
           animate={fadeIn.animate}
           transition={fadeIn.transition}
         >
-          <p className="text-lg font-display italic text-secondary mb-3">
+          <p className="text-xl md:text-2xl font-display italic text-secondary mb-4">
             Experience luxury transportation
           </p>
           <h2 className="text-4xl font-display font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">

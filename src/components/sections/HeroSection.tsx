@@ -67,7 +67,7 @@ export default function HeroSection() {
           }`}
         >
           {/* Overlay oscuro detrás del texto para mejor legibilidad */}
-          <div className="bg-black/50 backdrop-blur-sm px-8 py-10 rounded-lg max-w-2xl mx-auto lg:mx-0">
+          <div className="bg-black/60 backdrop-blur-md px-8 py-10 rounded-lg max-w-2xl mx-auto lg:mx-0 shadow-2xl">
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 leading-tight text-white drop-shadow-2xl">
               {t.hero.title}
             </h1>

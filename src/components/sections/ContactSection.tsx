@@ -73,9 +73,9 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-pearl dark:bg-gray-900 animate-fadeIn">
+    <section id="contact" className="py-28 bg-pearl dark:bg-gray-900 animate-fadeIn">
       <div className="container max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-display font-bold text-primary dark:text-primary-foreground text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-display font-bold text-primary dark:text-primary-foreground text-center mb-16">
           {t.contact.title}
         </h2>
         

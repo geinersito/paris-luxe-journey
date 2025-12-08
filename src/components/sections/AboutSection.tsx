@@ -31,7 +31,7 @@ const AboutSection = () => {
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
-          className="max-w-4xl mx-auto text-center mb-16"
+          className="max-w-4xl mx-auto text-center mb-20 pt-8"
           initial={fadeIn.initial}
           animate={fadeIn.animate}
           transition={fadeIn.transition}
