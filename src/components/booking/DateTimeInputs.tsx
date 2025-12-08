@@ -74,7 +74,7 @@ export const DateTimeInputs = ({
               <Button
                 variant="outline"
                 className={cn(
-                  "w-full justify-start text-left font-normal h-9 text-sm",
+                  "w-full justify-start text-left font-normal h-11 px-4 py-3 text-sm",
                   !date && "text-muted-foreground"
                 )}
               >
@@ -109,7 +109,7 @@ export const DateTimeInputs = ({
               <Button
                 variant="outline"
                 className={cn(
-                  "w-full justify-start text-left font-normal h-9 text-sm",
+                  "w-full justify-start text-left font-normal h-11 px-4 py-3 text-sm",
                   !time && "text-muted-foreground"
                 )}
               >
@@ -147,7 +147,7 @@ export const DateTimeInputs = ({
                 <Button
                   variant="outline"
                   className={cn(
-                    "w-full justify-start text-left font-normal h-9 text-sm",
+                    "w-full justify-start text-left font-normal h-11 px-4 py-3 text-sm",
                     !returnDate && "text-muted-foreground"
                   )}
                 >
@@ -179,7 +179,7 @@ export const DateTimeInputs = ({
                 <Button
                   variant="outline"
                   className={cn(
-                    "w-full justify-start text-left font-normal h-9 text-sm",
+                    "w-full justify-start text-left font-normal h-11 px-4 py-3 text-sm",
                     !returnTime && "text-muted-foreground"
                   )}
                 >

@@ -76,8 +76,8 @@ const PremiumSection = () => {
               <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
               
               <div className="relative z-10 bg-card/50 backdrop-blur-sm p-8 rounded-xl border border-border shadow-lg hover:shadow-xl transition-all duration-300">
-                <div className="flex items-center justify-center w-16 h-16 mx-auto mb-6 bg-gradient-to-r from-primary/10 to-primary/5 rounded-full">
-                  <service.icon className="w-8 h-8 text-primary" />
+                <div className="flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <service.icon className="w-12 h-12 text-primary stroke-[1.5]" strokeWidth={1.5} />
                 </div>
 
                 <h3 className="text-xl font-display text-primary text-center mb-4">

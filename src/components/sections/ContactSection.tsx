@@ -81,10 +81,11 @@ const ContactSection = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="space-y-8">
-            <div className="aspect-w-16 aspect-h-9">
+            <div className="aspect-w-16 aspect-h-9 relative rounded-xl overflow-hidden ring-1 ring-primary/10 shadow-xl hover:shadow-2xl transition-shadow duration-300">
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent pointer-events-none z-10" />
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.2600967568854!2d2.298543776526961!3d48.87245010712435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fc49f8c3429%3A0x2c2c85f1c7e83a79!2s151%20Av.%20des%20Champs-%C3%89lys%C3%A9es%2C%2075008%20Paris%2C%20France!5e0!3m2!1sen!2sfr!4v1682841234567!5m2!1sen!2sfr"
-                className="w-full h-full rounded-lg shadow-md"
+                className="w-full h-full grayscale-[20%] contrast-[1.1]"
                 style={{ border: 0 }}
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
@@ -197,9 +198,9 @@ const ContactSection = () => {
                   className="w-full bg-gray-50 dark:bg-gray-900"
                 />
               </div>
-              <Button 
-                type="submit" 
-                className="w-full flex items-center justify-center space-x-2 text-base bg-secondary hover:bg-secondary/90"
+              <Button
+                type="submit"
+                className="w-full flex items-center justify-center space-x-2 text-base silk-button shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? (

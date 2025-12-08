@@ -104,20 +104,28 @@ export default function FleetSection() {
                     </AnimatePresence>
                   </div>
                   <div className="absolute bottom-4 right-4 flex gap-2">
-                    <Button
-                      size="sm"
-                      variant={selectedImageType === "exterior" ? "default" : "secondary"}
+                    <button
                       onClick={() => setSelectedImageType("exterior")}
+                      className={cn(
+                        "px-3 py-1.5 text-xs font-medium rounded-md backdrop-blur-md transition-all duration-200",
+                        selectedImageType === "exterior"
+                          ? "bg-white/90 text-primary shadow-md"
+                          : "bg-white/40 text-white hover:bg-white/60"
+                      )}
                     >
                       {t.fleet.exterior}
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant={selectedImageType === "interior" ? "default" : "secondary"}
+                    </button>
+                    <button
                       onClick={() => setSelectedImageType("interior")}
+                      className={cn(
+                        "px-3 py-1.5 text-xs font-medium rounded-md backdrop-blur-md transition-all duration-200",
+                        selectedImageType === "interior"
+                          ? "bg-white/90 text-primary shadow-md"
+                          : "bg-white/40 text-white hover:bg-white/60"
+                      )}
                     >
                       {t.fleet.interior}
-                    </Button>
+                    </button>
                   </div>
                 </div>
 
