@@ -38,15 +38,9 @@ const BookingPayment = () => {
     return hasPickupId && hasDropoffId && (!locationDetails || !isLoading);
   }, [bookingData, locationDetails, isLoading]);
 
-  // Enhanced logging for price tracking
   useEffect(() => {
     if (estimatedPrice) {
       const normalizedPrice = Math.round(Number(estimatedPrice));
-      console.log('[BookingPayment] Price received from location state:', estimatedPrice);
-      console.log('[BookingPayment] Normalized price for payment:', normalizedPrice);
-      console.log('[BookingPayment] Price type:', typeof estimatedPrice);
-    } else {
-      console.warn('[BookingPayment] No price received in location state');
     }
   }, [estimatedPrice, location.state]);
 
@@ -62,42 +56,15 @@ const BookingPayment = () => {
       if (isNaN(normalizedPrice) || normalizedPrice <= 0) {
         throw new Error('El precio debe ser un número válido mayor que cero');
       }
-      
-      console.log('[BookingPayment] Precio normalizado en EUROS:', normalizedPrice, '€');
-      
-      console.log('[BookingPayment] Inicializando proceso de pago:', {
-        hasBookingData: !!bookingData,
-        originalPrice: estimatedPrice,
-        normalizedPrice: normalizedPrice
-      });
 
       const pickupDateTime = new Date(`${bookingData.date}T${bookingData.time}`);
-      
+
       // Intentar obtener los IDs de ubicación de todas las fuentes posibles
       const pickupId = bookingData?.pickupLocationId || locationDetails?.pickupId || '';
       const dropoffId = bookingData?.dropoffLocationId || locationDetails?.dropoffId || '';
-      
-      console.log('[BookingPayment] IDs de ubicación obtenidos:', {
-        fromBookingData: {
-          pickup: bookingData?.pickupLocationId,
-          dropoff: bookingData?.dropoffLocationId
-        },
-        fromLocationDetails: {
-          pickup: locationDetails?.pickupId,
-          dropoff: locationDetails?.dropoffId
-        },
-        resolved: {
-          pickup: pickupId,
-          dropoff: dropoffId
-        }
-      });
-      
+
       // Validar que tengamos los IDs (UUIDs) de las ubicaciones
       if (!pickupId || !dropoffId) {
-        console.error('[BookingPayment] Faltan los UUIDs de las ubicaciones:', {
-          bookingData,
-          locationDetails
-        });
         throw new Error('No se pudieron obtener los identificadores de las ubicaciones. Por favor, inténtalo de nuevo.');
       }
 
@@ -125,49 +92,29 @@ const BookingPayment = () => {
         throw new Error('Faltan datos del cliente necesarios para el pago');
       }
       
-      console.log('[BookingPayment] Usando UUIDs para ubicaciones:', {
-        pickup_code: bookingData.pickup,
-        pickup_uuid: locationDetails.pickupId,
-        dropoff_code: bookingData.dropoff,
-        dropoff_uuid: locationDetails.dropoffId
-      });
-
-      console.log('[BookingPayment] Creando reserva con datos:', newBookingData);
-      console.log('[BookingPayment] Precio para PaymentIntent:', normalizedPrice);
-
       const { data, error } = await supabase.functions.invoke('create-booking-payment', {
         body: { bookingData: newBookingData }
       });
 
       if (error) {
-        console.error('[BookingPayment] Error al crear la reserva:', error);
         throw error;
       }
 
       if (!data?.client_secret || !data?.booking_id) {
-        console.error('[BookingPayment] Datos incompletos del servidor:', data);
         throw new Error('No se recibieron los datos necesarios del servidor');
       }
-
-      console.log('[BookingPayment] Reserva creada exitosamente:', {
-        bookingId: data.booking_id,
-        hasClientSecret: !!data.client_secret,
-        amount: data.amount // Log the amount returned from server
-      });
 
       setBookingId(data.booking_id);
       setClientSecret(data.client_secret);
 
       return data;
     } catch (error) {
-      console.error('[BookingPayment] Error en inicialización del pago:', error);
       throw error;
     }
   }, [bookingData, estimatedPrice]);
 
   useEffect(() => {
     if (!bookingData || !estimatedPrice) {
-      console.error('[BookingPayment] No hay datos de reserva o precio:', { bookingData, estimatedPrice });
       toast({
         title: t.common.error,
         description: t.booking.errors.noBookingData,
@@ -177,11 +124,6 @@ const BookingPayment = () => {
       return;
     }
 
-    console.log('[BookingPayment] Cargando detalles de ubicación:', {
-      pickup: bookingData.pickup,
-      dropoff: bookingData.dropoff
-    });
-    
     fetchLocationDetails(bookingData.pickup, bookingData.dropoff);
   }, [bookingData, estimatedPrice, navigate, toast, t, fetchLocationDetails]);
 
@@ -199,26 +141,19 @@ const BookingPayment = () => {
     
     // Verificación adicional para evitar procesar el pago sin los UUIDs
     if (!canProceedToPayment) {
-      console.error('[BookingPayment] Faltan los UUIDs de las ubicaciones:', { 
-        bookingData, 
-        locationDetails 
-      });
-      
       toast({
         title: t.common.error,
         description: "Datos de ubicación incompletos. Por favor, inténtalo nuevamente.",
         variant: "destructive",
       });
-      
+
       return;
     }
 
     try {
       setIsProcessing(true);
-      console.log('[BookingPayment] Iniciando proceso de pago');
       await initializePayment();
     } catch (error) {
-      console.error('[BookingPayment] Error al inicializar pago:', error);
       setIsProcessing(false);
       toast({
         title: t.common.error,
@@ -230,9 +165,6 @@ const BookingPayment = () => {
 
   const handlePaymentSuccess = async () => {
     try {
-      console.log('[BookingPayment] Pago exitoso, actualizando estado de la reserva');
-      console.log('[BookingPayment] Final price used for payment:', estimatedPrice);
-      
       const { data: updatedBookingData, error } = await supabase
         .from('bookings')
         .select(`
@@ -245,21 +177,10 @@ const BookingPayment = () => {
         .maybeSingle();
 
       if (error) {
-        console.error(`[Payment] Error al obtener datos:` , error);
         throw error;
       }
 
-      if (updatedBookingData) {
-        console.log('[Payment] Datos encontrados:', {
-          id: updatedBookingData.id,
-          status: updatedBookingData.status,
-          payment: updatedBookingData.payment_id,
-          price: updatedBookingData.total_price // Log the price from the database
-        });
-      }
-      
       // Enviar emails de confirmación
-      console.log('[BookingPayment] Enviando emails de confirmación');
       
       const { error: emailError } = await supabase.functions.invoke('send-booking-emails', {
         body: {
@@ -277,7 +198,6 @@ const BookingPayment = () => {
       });
 
       if (emailError) {
-        console.error('[BookingPayment] Error al enviar emails:', emailError);
         toast({
           title: "Advertencia",
           description: "La reserva se ha confirmado pero hubo un problema al enviar los emails de confirmación.",
@@ -290,9 +210,9 @@ const BookingPayment = () => {
         });
       }
 
-      navigate("/booking/confirmation", { 
+      navigate("/booking/confirmation", {
         replace: true,
-        state: { 
+        state: {
           bookingData: {
             ...bookingData,
             status: 'confirmed',
@@ -303,7 +223,6 @@ const BookingPayment = () => {
         }
       });
     } catch (error) {
-      console.error('[BookingPayment] Error al finalizar el pago:', error);
       toast({
         title: "Error",
         description: "Hubo un error al finalizar la reserva.",
@@ -313,7 +232,6 @@ const BookingPayment = () => {
   };
 
   const handlePaymentError = (error: Error) => {
-    console.error('[BookingPayment] Error en el pago:', error);
     toast({
       title: "Error en el pago",
       description: error.message,

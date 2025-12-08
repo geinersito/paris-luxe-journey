@@ -63,12 +63,8 @@ export const BookingProvider = ({ children }: { children: React.ReactNode }) => 
   
   // Añadir una función de ayuda para gestionar errores de forma consistente
   const logError = useCallback((message: string, error: any) => {
-    console.error(`[BookingContext] ${message}:`, error);
     // Aquí podrías agregar analíticas de errores o logging remoto si lo necesitas
   }, []);
-  
-  // Añadir logs para depuración
-  console.log('BookingContext - Estado actual:', bookingData);
 
   // Load saved data from localStorage on initial render
   useEffect(() => {
@@ -81,18 +77,10 @@ export const BookingProvider = ({ children }: { children: React.ReactNode }) => 
         const loadedBookingData = parsedData.bookingData || null;
         const loadedPrice = parsedData.estimatedPrice || 0;
         const loadedTimestamp = parsedData.priceTimestamp || null;
-        
-        console.log('[BookingContext] Datos cargados desde localStorage:', {
-          bookingData: loadedBookingData,
-          estimatedPrice: loadedPrice,
-          priceTimestamp: loadedTimestamp ? new Date(loadedTimestamp).toLocaleString() : null
-        });
-        
+
         setBookingData(loadedBookingData);
         setEstimatedPrice(loadedPrice);
         setPriceTimestamp(loadedTimestamp);
-      } else {
-        console.log('[BookingContext] No se encontraron datos guardados en localStorage');
       }
       
       if (savedCache) {
@@ -144,21 +132,18 @@ export const BookingProvider = ({ children }: { children: React.ReactNode }) => 
   const calculatePrice = useCallback(async (origin: string, destination: string, passengers: number): Promise<number> => {
     // Validar que passengers sea un número válido
     if (isNaN(Number(passengers)) || Number(passengers) <= 0) {
-      console.error('[BookingContext] Invalid passenger count:', passengers);
       return 0;
     }
-    
+
     const cacheKey = `${origin}-${destination}-${passengers}`;
     const now = Date.now();
-    
+
     // Check if we have a valid cached price
     if (priceCache[cacheKey] && (now - priceCache[cacheKey].timestamp < CACHE_EXPIRY)) {
-      console.log(`[BookingContext] Using cached price from ${new Date(priceCache[cacheKey].timestamp).toLocaleTimeString()}:`, priceCache[cacheKey].price);
       return priceCache[cacheKey].price;
     }
-    
+
     // Otherwise calculate new price
-    console.log(`[BookingContext] Calculating new price at ${new Date().toLocaleTimeString()} for:`, { origin, destination, passengers });
     const price = await apiCalculatePrice(origin, destination, passengers);
     
     // Update cache with new price
@@ -172,63 +157,51 @@ export const BookingProvider = ({ children }: { children: React.ReactNode }) => 
 
   // In the updateBookingData function, around line 217
   const updateBookingData = async (data: Partial<BookingData>) => {
-    console.log('BookingContext - updateBookingData llamado con:', data);
     const updatedData = { ...bookingData, ...data };
     setBookingData(updatedData as BookingData);
-    console.log('BookingContext - Estado actualizado');
-    
+
     if (updatedData.pickup && updatedData.dropoff && updatedData.passengers) {
       try {
         // Validar que passengers sea un número válido
         const passengersNum = Number(updatedData.passengers);
         if (isNaN(passengersNum) || passengersNum <= 0) {
-          console.error('[BookingContext] Invalid passenger count:', updatedData.passengers);
           return;
         }
-        
+
         // Si ya tenemos un precio base en los datos, usarlo directamente
         let basePrice = 0;
         if (typeof updatedData.basePrice === 'number' && updatedData.basePrice > 0) {
           basePrice = updatedData.basePrice;
-          console.log('[BookingContext] Usando precio base proporcionado:', basePrice);
         } else {
           // Si no tenemos precio base, calcularlo
           basePrice = await calculatePrice(
-            updatedData.pickup, 
-            updatedData.dropoff, 
+            updatedData.pickup,
+            updatedData.dropoff,
             passengersNum
           );
-          console.log('[BookingContext] Precio base calculado:', basePrice);
         }
-        
+
         // Calcular el recargo por maletas si no está incluido en los datos
         let luggageSurcharge = 0;
         if (typeof updatedData.luggageSurcharge === 'number') {
           // Si recibimos el recargo ya calculado, lo usamos directamente
           luggageSurcharge = updatedData.luggageSurcharge;
-          console.log('[BookingContext] Usando recargo por maletas proporcionado:', luggageSurcharge);
         } else if (updatedData.largeLuggageCount) {
           // Si no recibimos el recargo, lo calculamos según la lógica de negocio
           const largeLuggage = Number(updatedData.largeLuggageCount) || 0;
           // El precio base incluye 1 maleta grande
           const extraLargeLuggage = Math.max(0, largeLuggage - 1);
           luggageSurcharge = extraLargeLuggage * 10; // 10€ por maleta grande adicional
-          console.log('[BookingContext] Recargo por maletas calculado:', luggageSurcharge);
-          
+
           // Actualizar los datos con el recargo calculado
           updatedData.luggageSurcharge = luggageSurcharge;
           setBookingData(updatedData as BookingData);
         }
-        
+
         // Calcular el precio total incluyendo el recargo por maletas
         const totalPrice = basePrice + luggageSurcharge;
-        
+
         const timestamp = Date.now();
-        console.log(`[BookingContext] Updated price at ${new Date(timestamp).toLocaleTimeString()}:`, {
-          basePrice,
-          luggageSurcharge,
-          totalPrice
-        });
         
         setEstimatedPrice(totalPrice);
         setPriceTimestamp(timestamp);
@@ -245,47 +218,22 @@ export const BookingProvider = ({ children }: { children: React.ReactNode }) => 
     }
     
     setIsValidating(true);
-    
+
     try {
-      console.log('[BookingContext] Validating price with backend...');
       // Get fresh price from API to validate
       const validPrice = await apiCalculatePrice(
         bookingData.pickup,
         bookingData.dropoff,
         Number(bookingData.passengers)
       );
-      
+
       // Check if current price matches backend price
       const isValid = Math.abs(validPrice - estimatedPrice) < 0.01;
-      
+
       if (!isValid) {
-        console.warn(
-          `[BookingContext] Price validation failed! Current: ${estimatedPrice}, Backend: ${validPrice}`
-        );
-        
-        // Track price discrepancy for analytics
-        const discrepancyAmount = validPrice - estimatedPrice;
-        const discrepancyPercentage = (discrepancyAmount / estimatedPrice) * 100;
-        
-        // Removed analytics tracking as it's not defined
-        console.log('[BookingContext] Price discrepancy detected:', {
-          originalPrice: estimatedPrice,
-          validatedPrice: validPrice,
-          discrepancyAmount,
-          discrepancyPercentage,
-          bookingDetails: {
-            origin: bookingData.pickup,
-            destination: bookingData.dropoff,
-            passengers: Number(bookingData.passengers),
-            timestamp: Date.now()
-          }
-        });
-        
         // Update to correct price
         setEstimatedPrice(validPrice);
         setPriceTimestamp(Date.now());
-      } else {
-        console.log('[BookingContext] Price validated successfully:', validPrice);
       }
       
       return isValid;
@@ -314,7 +262,6 @@ export const BookingProvider = ({ children }: { children: React.ReactNode }) => 
   }, [bookingData, estimatedPrice, apiCalculatePrice, toast, t, logError]);
 
   const resetBooking = useCallback(() => {
-    console.log('[BookingContext] Resetting booking data');
     setBookingData(null);
     setEstimatedPrice(0);
     setPriceTimestamp(null);

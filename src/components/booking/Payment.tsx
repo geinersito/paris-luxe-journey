@@ -34,22 +34,11 @@ export const Payment = ({
   const { t } = useLanguage();
   const [normalizedPrice, setNormalizedPrice] = useState(0);
 
-  // Enhanced logging to track price consistency
   useEffect(() => {
     // Ensure price is a number and round it to avoid decimal issues
     const roundedPrice = Math.round(Number(estimatedPrice));
     setNormalizedPrice(roundedPrice);
-    
-    console.log('Payment component received original price:', estimatedPrice);
-    console.log('Payment component using rounded price:', roundedPrice);
-    console.log('Payment component received booking data:', bookingData);
-    
-    // Log specific booking data that affects price
-    console.log('Trip type:', bookingData?.tripType);
-    console.log('Passengers:', bookingData?.passengers);
-    console.log('Large luggage:', bookingData?.largeLuggageCount);
-    console.log('Small luggage:', bookingData?.smallLuggageCount);
-    
+
     // Call the onInitializePayment callback with the normalized price
     // This ensures the parent component has the correct price
     if (onInitializePayment) {
@@ -76,10 +65,6 @@ export const Payment = ({
     setIsProcessing(true);
 
     try {
-      // Use the normalized price for consistency
-      console.log('Price at payment submission (original):', estimatedPrice);
-      console.log('Price at payment submission (normalized):', normalizedPrice);
-      
       const { error } = await stripe.confirmPayment({
         elements,
         confirmParams: {
@@ -95,7 +80,6 @@ export const Payment = ({
         });
       }
     } catch (error) {
-      console.error('Payment error:', error);
       toast({
         title: t.common.error,
         description: t.booking.errors.generalPaymentError,

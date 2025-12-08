@@ -54,7 +54,6 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
           .order('name');
         
         if (error) {
-          console.error('Error fetching locations:', error);
           toast({
             title: t.common.error,
             description: t.booking.errors.locationsNotLoaded,
@@ -64,7 +63,6 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
         }
 
         if (!data || data.length === 0) {
-          console.warn('No locations available in database');
           toast({
             title: t.common.error,
             description: t.booking.errors.locationsNotLoaded,
@@ -75,7 +73,6 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
 
         setLocations(data);
       } catch (error) {
-        console.error('Error in fetchLocations:', error);
         toast({
           title: t.common.error,
           description: t.booking.errors.locationsNotLoaded,
@@ -134,13 +131,11 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
   
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('BookingForm - handleFormSubmit llamado');
-    
+
     if (!validateForm()) {
-      console.log('BookingForm - Validación del formulario falló');
       return;
     }
-  
+
     try {
       // Actualizar formData con la información del tour
       const updatedFormData = {
@@ -148,8 +143,6 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
         tourId,
         tourName
       };
-      
-      console.log('BookingForm - FormData actualizado:', updatedFormData);
       
       // Actualizar el estado local primero
       setFormData(updatedFormData);
@@ -162,15 +155,9 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
       // Buscar los UUIDs de las ubicaciones seleccionadas
       const pickupLocation = locations.find(loc => loc.code === updatedFormData.pickup);
       const dropoffLocation = locations.find(loc => loc.code === updatedFormData.dropoff);
-      
-      console.log('BookingForm - Ubicaciones encontradas:', { 
-        pickup: pickupLocation, 
-        dropoff: dropoffLocation 
-      });
-      
+
       // Verificar que se encontraron las ubicaciones
       if (!pickupLocation || !pickupLocation.id) {
-        console.error('BookingForm - No se encontró el ID de la ubicación de recogida:', updatedFormData.pickup);
         toast({
           title: t.common.error,
           description: t.booking.errors.locationNotFound,
@@ -178,9 +165,8 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
         });
         return;
       }
-      
+
       if (!dropoffLocation || !dropoffLocation.id) {
-        console.error('BookingForm - No se encontró el ID de la ubicación de destino:', updatedFormData.dropoff);
         toast({
           title: t.common.error,
           description: t.booking.errors.locationNotFound,
@@ -201,52 +187,37 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
         pickupLocationName: pickupLocation.name,
         dropoffLocationName: dropoffLocation.name
       };
-      
-      console.log('BookingForm - Datos completos con IDs de ubicaciones:', bookingDataWithSurcharge);
-      
+
       const navigationState = {
         bookingData: bookingDataWithSurcharge,
         estimatedPrice: totalEstimatedPrice
       };
-      
-      console.log('BookingForm - Datos para navegación:', navigationState);
-      
+
       // Actualizar el contexto de reserva ANTES de navegar
       if (updateBookingData) {
-        console.log('BookingForm - Actualizando contexto con:', bookingDataWithSurcharge);
         try {
           await updateBookingData(bookingDataWithSurcharge);
-          console.log('BookingForm - Contexto actualizado correctamente');
         } catch (updateError) {
-          console.error('BookingForm - Error al actualizar contexto:', updateError);
           // Continuar con la navegación aunque falle la actualización del contexto
         }
-      } else {
-        console.warn('BookingForm - updateBookingData no está disponible');
       }
-      
-      // Al final del handleFormSubmit, justo después de actualizar el contexto
-      console.log('BookingForm - Intentando navegar a /booking/details con estado:', navigationState);
-      
+
       // Usar setTimeout para garantizar que se completen las actualizaciones del estado
       setTimeout(() => {
         try {
           navigate("/booking/details", {
             state: navigationState
           });
-          console.log('BookingForm - Navegación iniciada');
         } catch (navError) {
-          console.error('Error al navegar:', navError);
+          // Error silencioso
         }
       }, 200); // Aumentado a 200ms para dar más tiempo
-      
+
       // Llamar al onSubmit prop si existe (para compatibilidad)
       if (typeof onSubmit === 'function') {
-        console.log('BookingForm - Llamando a onSubmit para compatibilidad');
         onSubmit(updatedFormData);
       }
     } catch (error) {
-      console.error('Error in form submission:', error);
       toast({
         title: t.common.error,
         description: t.booking.errors.bookingCreationError,
