@@ -61,17 +61,42 @@ export default function HeroSection() {
       />
       
       <div className="container relative z-20 flex flex-col lg:flex-row items-center justify-between gap-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div 
+        <div
           className={`text-white max-w-xl text-center lg:text-left w-full lg:w-1/2 transition-opacity duration-1000 ${
             isImageLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
           }`}
         >
-          <h1 className="text-3xl md:text-4xl lg:text-5xl font-display mb-4 leading-tight text-[#9b87f5]">
-            {t.hero.title}
-          </h1>
-          <p className="text-base md:text-lg opacity-90 leading-relaxed">
-            {t.hero.subtitle}
-          </p>
+          {/* Overlay oscuro detrás del texto para mejor legibilidad */}
+          <div className="bg-black/50 backdrop-blur-sm px-8 py-10 rounded-lg max-w-2xl mx-auto lg:mx-0">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-display mb-4 leading-tight text-white drop-shadow-2xl">
+              {t.hero.title}
+            </h1>
+            <p className="mt-4 text-lg text-gray-100">
+              {t.hero.subtitle}
+            </p>
+
+            {/* Garantías con checkmarks */}
+            <div className="mt-3 text-sm font-medium text-gray-200 flex items-center justify-center lg:justify-start gap-4 flex-wrap">
+              <span className="flex items-center gap-1.5">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Fixed price
+              </span>
+              <span className="flex items-center gap-1.5">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                No hidden fees
+              </span>
+              <span className="flex items-center gap-1.5">
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+                Free cancellation 24h
+              </span>
+            </div>
+          </div>
         </div>
         
         <div 

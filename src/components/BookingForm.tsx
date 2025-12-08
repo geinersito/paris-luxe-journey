@@ -355,8 +355,12 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
         className="w-full silk-button font-medium text-base py-3 mt-4"
         disabled={isSubmitting}
       >
-        {isSubmitting ? t.common.processing : t.booking.continue}
+        {isSubmitting ? t.common.processing : "See Your Fixed Price"}
       </Button>
+
+      <p className="mt-2 text-xs text-center text-gray-600">
+        No payment required yet – next step shows your final price
+      </p>
     </form>
   );
 };

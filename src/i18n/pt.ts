@@ -11,7 +11,7 @@ export const pt: Translation = {
   },
   hero: {
     title: "Paris Elite Services",
-    subtitle: "Transfers VTC premium a partir de 70€ – CDG, Orly, Paris"
+    subtitle: "Transfers aeroporto Paris ⇄ CDG / Orly a partir de 70€ (1–3 passageiros, tudo incluído)"
   },
   excursions: {
     title: "Descubra os Tesouros da França",
