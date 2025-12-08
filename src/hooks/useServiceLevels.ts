@@ -24,8 +24,9 @@ export function useServiceLevels() {
         const { data, error } = await supabase
           .from('service_levels')
           .select('*')
+          .eq('id', 'standard') // Solo cargar nivel Standard
           .order('multiplier');
-        
+
         if (error) throw error;
         setServiceLevels(data || []);
       } catch (error) {
