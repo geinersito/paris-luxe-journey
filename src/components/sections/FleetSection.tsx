@@ -122,7 +122,7 @@ export default function FleetSection() {
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl font-display text-primary dark:text-primary-foreground mb-4">
+                  <h3 className="text-xl font-semibold text-primary dark:text-primary-foreground mb-4">
                     {vehicle.name}
                   </h3>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">

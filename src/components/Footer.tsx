@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <h3 className="text-xl font-display mb-4">
+            <h3 className="text-xl font-semibold mb-4">
               {t?.footer?.companyName || "Paris Elite Services"}
             </h3>
             <p className="text-sm opacity-80">
@@ -48,7 +48,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-display mb-4">{t?.footer?.links?.title || "Quick Links"}</h4>
+            <h4 className="text-lg font-semibold mb-4">{t?.footer?.links?.title || "Quick Links"}</h4>
             <ul className="space-y-2">
               <li>
                 <a href="#services" className="hover:text-secondary transition-colors">
@@ -74,7 +74,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-display mb-4">{t?.contact?.title || "Contact"}</h4>
+            <h4 className="text-lg font-semibold mb-4">{t?.contact?.title || "Contact"}</h4>
             <ul className="space-y-3">
               <li className="flex items-center space-x-3">
                 <Phone className="h-5 w-5 text-secondary" />
@@ -94,7 +94,7 @@ const Footer = () => {
           </div>
 
           <div>
-            <h4 className="text-lg font-display mb-4">{t?.footer?.schedule?.title || "Opening Hours"}</h4>
+            <h4 className="text-lg font-semibold mb-4">{t?.footer?.schedule?.title || "Opening Hours"}</h4>
             <ul className="space-y-2">
               <li>{t?.footer?.schedule?.description || "Monday - Sunday: 24h"}</li>
             </ul>

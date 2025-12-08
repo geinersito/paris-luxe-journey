@@ -29,7 +29,7 @@ export default function ServiceCard({
           <Icon className="h-7 w-7 text-primary" />
         </div>
         
-        <h3 className="text-xl font-display text-primary dark:text-primary-foreground mb-4 text-center group-hover:text-primary/90 transition-colors">
+        <h3 className="text-xl font-semibold text-primary dark:text-primary-foreground mb-4 text-center group-hover:text-primary/90 transition-colors">
           {title}
         </h3>
         

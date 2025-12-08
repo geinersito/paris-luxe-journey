@@ -80,7 +80,7 @@ const PremiumSection = () => {
                   <service.icon className="w-12 h-12 text-primary stroke-[1.5]" strokeWidth={1.5} />
                 </div>
 
-                <h3 className="text-xl font-display text-primary text-center mb-4">
+                <h3 className="text-xl font-semibold text-primary text-center mb-4">
                   {service.title}
                 </h3>
 

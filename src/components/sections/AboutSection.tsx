@@ -42,7 +42,7 @@ const AboutSection = () => {
           <h2 className="text-4xl md:text-5xl font-display mb-6 text-white font-bold leading-tight">
             {t.about.title}
           </h2>
-          <h3 className="text-xl md:text-2xl font-display mb-8 text-secondary/90 font-medium">
+          <h3 className="text-xl md:text-2xl font-display italic mb-8 text-secondary/90 font-medium">
             {t.about.subtitle}
           </h3>
           <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-12 max-w-3xl mx-auto">
@@ -58,7 +58,7 @@ const AboutSection = () => {
           transition={{ ...fadeIn.transition, delay: 0.2 }}
         >
           <div className="glass-card p-10 rounded-xl backdrop-blur-md bg-black/30 border border-white/10 hover:bg-black/40 transition-colors duration-300">
-            <h3 className="text-2xl md:text-3xl font-display mb-8 text-secondary font-semibold">
+            <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-secondary">
               {t.about.commitment.title}
             </h3>
             <ul className="space-y-5">
@@ -72,7 +72,7 @@ const AboutSection = () => {
           </div>
 
           <div className="glass-card p-10 rounded-xl backdrop-blur-md bg-black/30 border border-white/10 hover:bg-black/40 transition-colors duration-300">
-            <h3 className="text-2xl md:text-3xl font-display mb-8 text-secondary font-semibold">
+            <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-secondary">
               {t.about.expertise.title}
             </h3>
             <ul className="space-y-5">

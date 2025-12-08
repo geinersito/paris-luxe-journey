@@ -74,8 +74,11 @@
     @apply bg-background text-foreground antialiased min-h-screen font-sans;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2 {
     @apply font-display tracking-tight text-primary;
+  }
+  h3, h4, h5, h6 {
+    @apply font-sans font-semibold tracking-tight text-primary;
   }
   html {
     @apply scroll-smooth;
