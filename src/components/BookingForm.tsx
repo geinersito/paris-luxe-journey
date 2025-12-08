@@ -266,91 +266,97 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
   return (
     <form
       onSubmit={handleFormSubmit}
-      className="glass-card p-8 rounded-xl max-w-md w-full mx-auto animate-fadeIn space-y-8 bg-white/95 dark:bg-primary-dark/95 backdrop-blur-lg shadow-xl border border-metallic/20"
+      className="glass-card p-5 md:p-6 rounded-xl max-w-2xl w-full mx-auto animate-fadeIn bg-white/95 dark:bg-primary-dark/95 backdrop-blur-lg shadow-xl border border-metallic/20"
     >
-      <h2 className="text-2xl md:text-3xl font-display text-primary text-center">
+      <h2 className="text-xl md:text-2xl font-display text-primary text-center mb-4">
         {t.booking.title}
       </h2>
 
-      <div className="space-y-8">
-        <LocationInputs
-          pickup={formData.pickup}
-          dropoff={formData.dropoff}
-          onChange={handleChange}
-          standardLocations={locations}
-        />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Columna izquierda */}
+        <div className="space-y-4">
+          <LocationInputs
+            pickup={formData.pickup}
+            dropoff={formData.dropoff}
+            onChange={handleChange}
+            standardLocations={locations}
+          />
 
-        <DateTimeInputs
-          date={formData.date}
-          time={formData.time}
-          returnDate={formData.returnDate}
-          returnTime={formData.returnTime}
-          onChange={handleChange}
-          isRoundTrip={formData.tripType === 'round_trip'}
-        />
-
-        <div className="space-y-3">
-          <Label>{t.booking.tripType}</Label>
-          <RadioGroup
-            value={formData.tripType}
-            onValueChange={(value) => handleChange(value, 'tripType')}
-            className="flex flex-col space-y-2"
-          >
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="one_way" id="one_way" />
-              <Label htmlFor="one_way">{t.booking.oneWay}</Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="round_trip" id="round_trip" />
-              <Label htmlFor="round_trip">{t.booking.roundTrip}</Label>
-            </div>
-          </RadioGroup>
+          <DateTimeInputs
+            date={formData.date}
+            time={formData.time}
+            returnDate={formData.returnDate}
+            returnTime={formData.returnTime}
+            onChange={handleChange}
+            isRoundTrip={formData.tripType === 'round_trip'}
+          />
         </div>
 
-        <PassengerCount
-          value={formData.passengers}
-          onChange={(value) => handleChange(value, 'passengers')}
-        />
-
-        <LuggageSelector
-          largeLuggageCount={Number(formData.largeLuggageCount) || 0}
-          smallLuggageCount={Number(formData.smallLuggageCount) || 0}
-          onLargeLuggageChange={(count) => handleChange(count, 'largeLuggageCount')}
-          onSmallLuggageChange={(count) => handleChange(count, 'smallLuggageCount')}
-        />
-
-        {price > 0 && (
-          <div className="bg-primary/10 p-4 rounded-md space-y-2">
-            <div className="flex items-center justify-between">
-              <span className="font-semibold">{t.booking.price.estimated}:</span>
-              <span className="text-xl font-display text-primary">
-                €{totalPrice.toFixed(2)}
-              </span>
-            </div>
-            
-            {luggageSurcharge > 0 && (
-              <div className="text-sm text-muted-foreground">
-                <span>Base: €{price.toFixed(2)}</span>
-                <span className="ml-2">+ Equipaje extra: €{luggageSurcharge.toFixed(2)}</span>
+        {/* Columna derecha */}
+        <div className="space-y-4">
+          <div className="space-y-2">
+            <Label className="text-sm font-medium">{t.booking.tripType}</Label>
+            <RadioGroup
+              value={formData.tripType}
+              onValueChange={(value) => handleChange(value, 'tripType')}
+              className="flex gap-4"
+            >
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="one_way" id="one_way" />
+                <Label htmlFor="one_way" className="text-sm cursor-pointer">{t.booking.oneWay}</Label>
               </div>
-            )}
-            
-            {formData.tripType === 'round_trip' && (
-              <p className="text-sm text-muted-foreground">
-                {t.booking.price.roundTripIncluded}
-              </p>
-            )}
+              <div className="flex items-center space-x-2">
+                <RadioGroupItem value="round_trip" id="round_trip" />
+                <Label htmlFor="round_trip" className="text-sm cursor-pointer">{t.booking.roundTrip}</Label>
+              </div>
+            </RadioGroup>
           </div>
-        )}
 
-        <Button 
-          type="submit" 
-          className="w-full silk-button font-medium text-base py-3"
-          disabled={isSubmitting}
-        >
-          {isSubmitting ? t.common.processing : t.booking.continue}
-        </Button>
+          <PassengerCount
+            value={formData.passengers}
+            onChange={(value) => handleChange(value, 'passengers')}
+          />
+
+          <LuggageSelector
+            largeLuggageCount={Number(formData.largeLuggageCount) || 0}
+            smallLuggageCount={Number(formData.smallLuggageCount) || 0}
+            onLargeLuggageChange={(count) => handleChange(count, 'largeLuggageCount')}
+            onSmallLuggageChange={(count) => handleChange(count, 'smallLuggageCount')}
+          />
+        </div>
       </div>
+
+      {price > 0 && (
+        <div className="bg-primary/10 p-3 rounded-md mt-4">
+          <div className="flex items-center justify-between">
+            <span className="font-semibold text-sm">{t.booking.price.estimated}:</span>
+            <span className="text-lg font-display text-primary">
+              €{totalPrice.toFixed(2)}
+            </span>
+          </div>
+
+          {luggageSurcharge > 0 && (
+            <div className="text-xs text-muted-foreground mt-1">
+              <span>Base: €{price.toFixed(2)}</span>
+              <span className="ml-2">+ Equipaje extra: €{luggageSurcharge.toFixed(2)}</span>
+            </div>
+          )}
+
+          {formData.tripType === 'round_trip' && (
+            <p className="text-xs text-muted-foreground mt-1">
+              {t.booking.price.roundTripIncluded}
+            </p>
+          )}
+        </div>
+      )}
+
+      <Button
+        type="submit"
+        className="w-full silk-button font-medium text-base py-3 mt-4"
+        disabled={isSubmitting}
+      >
+        {isSubmitting ? t.common.processing : t.booking.continue}
+      </Button>
     </form>
   );
 };

@@ -35,70 +35,74 @@ export const LuggageSelector = ({
   };
 
   return (
-    <div className="space-y-4">
-      <Label className="text-lg font-semibold">{t.booking.vehicle.luggage}</Label>
-      
-      <div className="space-y-4">
-        <div className="flex items-center justify-between p-4 bg-accent/50 rounded-lg">
-          <div className="flex items-center gap-3">
-            <Luggage className="h-5 w-5" />
+    <div className="space-y-2">
+      <Label className="text-sm font-medium">{t.booking.vehicle.luggage}</Label>
+
+      <div className="space-y-2">
+        <div className="flex items-center justify-between p-3 bg-accent/50 rounded-lg">
+          <div className="flex items-center gap-2">
+            <Luggage className="h-4 w-4" />
             <div>
-              <p className="font-medium">{t.booking.largeLuggage}</p>
-              <p className="text-sm text-muted-foreground">23kg {t.booking.maxWeight}</p>
+              <p className="text-sm font-medium">{t.booking.largeLuggage}</p>
+              <p className="text-xs text-muted-foreground">23kg {t.booking.maxWeight}</p>
             </div>
           </div>
-          
-          <div className="flex items-center gap-3">
+
+          <div className="flex items-center gap-2">
             <Button
               type="button"
               variant="outline"
               size="icon"
+              className="h-7 w-7"
               onClick={() => handleCountChange('large', 'decrement')}
               disabled={largeLuggageCount === 0}
             >
-              <Minus className="h-4 w-4" />
+              <Minus className="h-3 w-3" />
             </Button>
-            <span className="w-8 text-center">{largeLuggageCount}</span>
+            <span className="w-6 text-center text-sm font-medium">{largeLuggageCount}</span>
             <Button
               type="button"
               variant="outline"
               size="icon"
+              className="h-7 w-7"
               onClick={() => handleCountChange('large', 'increment')}
               disabled={largeLuggageCount === 16}
             >
-              <Plus className="h-4 w-4" />
+              <Plus className="h-3 w-3" />
             </Button>
           </div>
         </div>
 
-        <div className="flex items-center justify-between p-4 bg-accent/50 rounded-lg">
-          <div className="flex items-center gap-3">
-            <Luggage className="h-4 w-4" />
+        <div className="flex items-center justify-between p-3 bg-accent/50 rounded-lg">
+          <div className="flex items-center gap-2">
+            <Luggage className="h-3 w-3" />
             <div>
-              <p className="font-medium">{t.booking.smallLuggage}</p>
-              <p className="text-sm text-muted-foreground">10kg {t.booking.maxWeight}</p>
+              <p className="text-sm font-medium">{t.booking.smallLuggage}</p>
+              <p className="text-xs text-muted-foreground">10kg {t.booking.maxWeight}</p>
             </div>
           </div>
-          
-          <div className="flex items-center gap-3">
+
+          <div className="flex items-center gap-2">
             <Button
               type="button"
               variant="outline"
               size="icon"
+              className="h-7 w-7"
               onClick={() => handleCountChange('small', 'decrement')}
               disabled={smallLuggageCount === 0}
             >
-              <Minus className="h-4 w-4" />
+              <Minus className="h-3 w-3" />
             </Button>
-            <span className="w-8 text-center">{smallLuggageCount}</span>
+            <span className="w-6 text-center text-sm font-medium">{smallLuggageCount}</span>
             <Button
               type="button"
               variant="outline"
               size="icon"
+              className="h-7 w-7"
               onClick={() => handleCountChange('small', 'increment')}
               disabled={smallLuggageCount === 16}
             >
-              <Plus className="h-4 w-4" />
+              <Plus className="h-3 w-3" />
             </Button>
           </div>
         </div>

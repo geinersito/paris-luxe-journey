@@ -62,20 +62,20 @@ export const DateTimeInputs = ({
   };
 
   return (
-    <div className="space-y-4">
-      <div className="grid grid-cols-2 gap-4">
-        <div className="space-y-2">
-          <Label>{t.booking.date}</Label>
+    <div className="space-y-3">
+      <div className="grid grid-cols-2 gap-2">
+        <div className="space-y-1.5">
+          <Label className="text-sm">{t.booking.date}</Label>
           <Popover>
             <PopoverTrigger asChild>
               <Button
                 variant="outline"
                 className={cn(
-                  "w-full justify-start text-left font-normal",
+                  "w-full justify-start text-left font-normal h-9 text-sm",
                   !date && "text-muted-foreground"
                 )}
               >
-                <CalendarIcon className="mr-2 h-4 w-4" />
+                <CalendarIcon className="mr-1.5 h-3.5 w-3.5" />
                 {date ? (
                   format(new Date(date), "PPP", { locale: getLocale() })
                 ) : (
@@ -96,18 +96,18 @@ export const DateTimeInputs = ({
           </Popover>
         </div>
 
-        <div className="space-y-2">
-          <Label>{t.booking.time}</Label>
+        <div className="space-y-1.5">
+          <Label className="text-sm">{t.booking.time}</Label>
           <Popover>
             <PopoverTrigger asChild>
               <Button
                 variant="outline"
                 className={cn(
-                  "w-full justify-start text-left font-normal",
+                  "w-full justify-start text-left font-normal h-9 text-sm",
                   !time && "text-muted-foreground"
                 )}
               >
-                <Clock className="mr-2 h-4 w-4" />
+                <Clock className="mr-1.5 h-3.5 w-3.5" />
                 {time || t.booking.time}
               </Button>
             </PopoverTrigger>
@@ -118,7 +118,7 @@ export const DateTimeInputs = ({
                     key={timeOption}
                     variant="ghost"
                     className={cn(
-                      "justify-start font-normal",
+                      "justify-start font-normal text-sm",
                       time === timeOption && "bg-accent"
                     )}
                     onClick={() => onChange(timeOption, 'time')}
@@ -133,19 +133,19 @@ export const DateTimeInputs = ({
       </div>
 
       {isRoundTrip && (
-        <div className="grid grid-cols-2 gap-4 pt-4 border-t border-border">
-          <div className="space-y-2">
-            <Label>{t.booking.returnDate}</Label>
+        <div className="grid grid-cols-2 gap-2 pt-3 border-t border-border">
+          <div className="space-y-1.5">
+            <Label className="text-sm">{t.booking.returnDate}</Label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
                   variant="outline"
                   className={cn(
-                    "w-full justify-start text-left font-normal",
+                    "w-full justify-start text-left font-normal h-9 text-sm",
                     !returnDate && "text-muted-foreground"
                   )}
                 >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  <CalendarIcon className="mr-1.5 h-3.5 w-3.5" />
                   {returnDate ? (
                     format(new Date(returnDate), "PPP", { locale: getLocale() })
                   ) : (
@@ -166,18 +166,18 @@ export const DateTimeInputs = ({
             </Popover>
           </div>
 
-          <div className="space-y-2">
-            <Label>{t.booking.returnTime}</Label>
+          <div className="space-y-1.5">
+            <Label className="text-sm">{t.booking.returnTime}</Label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
                   variant="outline"
                   className={cn(
-                    "w-full justify-start text-left font-normal",
+                    "w-full justify-start text-left font-normal h-9 text-sm",
                     !returnTime && "text-muted-foreground"
                   )}
                 >
-                  <Clock className="mr-2 h-4 w-4" />
+                  <Clock className="mr-1.5 h-3.5 w-3.5" />
                   {returnTime || t.booking.returnTime}
                 </Button>
               </PopoverTrigger>
@@ -188,7 +188,7 @@ export const DateTimeInputs = ({
                       key={timeOption}
                       variant="ghost"
                       className={cn(
-                        "justify-start font-normal",
+                        "justify-start font-normal text-sm",
                         returnTime === timeOption && "bg-accent"
                       )}
                       onClick={() => onChange(timeOption, 'returnTime')}

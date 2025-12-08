@@ -102,14 +102,14 @@ export const LocationInputs = (props: LocationInputsProps) => {
   }, [locationsData, isLocationLoading, toast, t]);
 
   return (
-    <div className="relative space-y-6">
-      <div className="space-y-2">
-        <Label htmlFor="pickup" className="flex items-center gap-2 text-primary font-medium">
-          <MapPin className="h-4 w-4" />
+    <div className="relative space-y-4">
+      <div className="space-y-1.5">
+        <Label htmlFor="pickup" className="flex items-center gap-1.5 text-primary font-medium text-sm">
+          <MapPin className="h-3.5 w-3.5" />
           {t.booking.pickup}
         </Label>
-        <Select 
-          value={pickup} 
+        <Select
+          value={pickup}
           onValueChange={(value) => {
             if (isNewFormat) {
               (props.onChange as (e: { target: { name: string; value: string } }) => void)({ target: { name: 'pickup', value } });
@@ -119,7 +119,7 @@ export const LocationInputs = (props: LocationInputsProps) => {
           }}
           required
         >
-          <SelectTrigger className="w-full bg-white dark:bg-primary-dark">
+          <SelectTrigger className="w-full bg-white dark:bg-primary-dark h-9 text-sm">
             <SelectValue placeholder={t.booking.pickupPlaceholder} />
           </SelectTrigger>
           <SelectContent>
@@ -132,22 +132,22 @@ export const LocationInputs = (props: LocationInputsProps) => {
         </Select>
       </div>
 
-      <div className="absolute left-7 top-[50%] -translate-y-1/2 pointer-events-none z-0">
+      <div className="absolute left-6 top-[50%] -translate-y-1/2 pointer-events-none z-0">
         <div className="relative">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-background border border-primary/20 flex items-center justify-center shadow-sm">
-            <ArrowDown className="h-4 w-4 text-primary animate-pulse" />
+          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-background border border-primary/20 flex items-center justify-center shadow-sm">
+            <ArrowDown className="h-3 w-3 text-primary animate-pulse" />
           </div>
-          <div className="absolute left-1/2 h-12 -translate-x-1/2 w-[1px] bg-primary/20" />
+          <div className="absolute left-1/2 h-8 -translate-x-1/2 w-[1px] bg-primary/20" />
         </div>
       </div>
 
-      <div className="space-y-2 relative z-20">
-        <Label htmlFor="dropoff" className="flex items-center gap-2 text-primary font-medium bg-white/95 rounded-md">
-          <MapPin className="h-4 w-4" />
+      <div className="space-y-1.5 relative z-20">
+        <Label htmlFor="dropoff" className="flex items-center gap-1.5 text-primary font-medium bg-white/95 rounded-md text-sm">
+          <MapPin className="h-3.5 w-3.5" />
           {t.booking.dropoff}
         </Label>
-        <Select 
-          value={dropoff} 
+        <Select
+          value={dropoff}
           onValueChange={(value) => {
             if (isNewFormat) {
               (props.onChange as (e: { target: { name: string; value: string } }) => void)({ target: { name: 'dropoff', value } });
@@ -157,7 +157,7 @@ export const LocationInputs = (props: LocationInputsProps) => {
           }}
           required
         >
-          <SelectTrigger className="w-full bg-white dark:bg-primary-dark">
+          <SelectTrigger className="w-full bg-white dark:bg-primary-dark h-9 text-sm">
             <SelectValue placeholder={t.booking.dropoffPlaceholder} />
           </SelectTrigger>
           <SelectContent>
