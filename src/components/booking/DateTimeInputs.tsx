@@ -64,8 +64,11 @@ export const DateTimeInputs = ({
   return (
     <div className="space-y-3">
       <div className="grid grid-cols-2 gap-2">
-        <div className="space-y-1.5">
-          <Label className="text-sm">{t.booking.date}</Label>
+        <div className="space-y-1.5 group">
+          <Label className="text-sm flex items-center gap-1.5">
+            <CalendarIcon className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
+            {t.booking.date}
+          </Label>
           <Popover>
             <PopoverTrigger asChild>
               <Button
@@ -96,8 +99,11 @@ export const DateTimeInputs = ({
           </Popover>
         </div>
 
-        <div className="space-y-1.5">
-          <Label className="text-sm">{t.booking.time}</Label>
+        <div className="space-y-1.5 group">
+          <Label className="text-sm flex items-center gap-1.5">
+            <Clock className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
+            {t.booking.time}
+          </Label>
           <Popover>
             <PopoverTrigger asChild>
               <Button

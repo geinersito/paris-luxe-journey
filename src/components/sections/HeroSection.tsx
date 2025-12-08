@@ -54,10 +54,10 @@ export default function HeroSection() {
         }}
       />
       
-      <div 
-        className={`absolute inset-0 bg-black/50 z-10 transition-opacity duration-1000 ${
+      <div
+        className={`absolute inset-0 bg-gradient-to-br from-primary/70 via-black/60 to-primary-dark/80 z-10 transition-opacity duration-1000 ${
           isImageLoaded ? 'opacity-100' : 'opacity-0'
-        }`} 
+        }`}
       />
       
       <div className="container relative z-20 flex flex-col lg:flex-row items-center justify-between gap-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">

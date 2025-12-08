@@ -114,9 +114,9 @@ export const LocationInputs = (props: LocationInputsProps) => {
 
   return (
     <div className="relative space-y-3">
-      <div className="space-y-1.5">
+      <div className="space-y-1.5 group">
         <Label htmlFor="pickup" className="flex items-center gap-1.5 text-primary font-medium text-sm">
-          <MapPin className="h-3.5 w-3.5" />
+          <MapPin className="h-4 w-4 transition-transform duration-200 group-hover:scale-110 group-hover:-translate-y-0.5" />
           {t.booking.pickup}
         </Label>
         <Select
@@ -158,9 +158,9 @@ export const LocationInputs = (props: LocationInputsProps) => {
         <ArrowDownUp className="h-3.5 w-3.5 text-primary" />
       </button>
 
-      <div className="space-y-1.5 relative z-20">
+      <div className="space-y-1.5 relative z-20 group">
         <Label htmlFor="dropoff" className="flex items-center gap-1.5 text-primary font-medium bg-white/95 dark:bg-primary-dark/95 rounded-md text-sm">
-          <MapPin className="h-3.5 w-3.5" />
+          <MapPin className="h-4 w-4 transition-transform duration-200 group-hover:scale-110 group-hover:-translate-y-0.5" />
           {t.booking.dropoff}
         </Label>
         <Select
