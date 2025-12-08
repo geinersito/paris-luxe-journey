@@ -266,15 +266,15 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
   return (
     <form
       onSubmit={handleFormSubmit}
-      className="glass-card p-5 md:p-6 rounded-xl max-w-2xl w-full mx-auto animate-fadeIn bg-white/95 dark:bg-primary-dark/95 backdrop-blur-lg shadow-xl border border-metallic/20"
+      className="glass-card px-6 py-8 md:px-10 md:py-10 rounded-3xl max-w-2xl w-full mx-auto animate-fadeIn bg-white/95 dark:bg-primary-dark/95 backdrop-blur-lg shadow-xl border border-metallic/20"
     >
-      <h2 className="text-xl md:text-2xl font-display text-primary text-center mb-4">
+      <h2 className="text-xl md:text-2xl font-display text-primary text-center mb-6">
         {t.booking.title}
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Columna izquierda */}
-        <div className="space-y-4">
+        <div className="space-y-6">
           <LocationInputs
             pickup={formData.pickup}
             dropoff={formData.dropoff}
@@ -293,7 +293,7 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
         </div>
 
         {/* Columna derecha */}
-        <div className="space-y-4">
+        <div className="space-y-6">
           <div className="space-y-2">
             <Label className="text-sm font-medium">{t.booking.tripType}</Label>
             <RadioGroup
@@ -327,7 +327,7 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
       </div>
 
       {price > 0 && (
-        <div className="bg-primary/10 p-3 rounded-md mt-4">
+        <div className="bg-primary/10 p-3 rounded-md mt-6">
           <div className="flex items-center justify-between">
             <span className="font-semibold text-sm">{t.booking.price.estimated}:</span>
             <span className="text-lg font-display text-primary">
@@ -352,13 +352,13 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
 
       <Button
         type="submit"
-        className="w-full silk-button font-medium text-base py-3 mt-4"
+        className="w-full silk-button font-medium text-base py-3 mt-6"
         disabled={isSubmitting}
       >
         {isSubmitting ? t.common.processing : "See Your Fixed Price"}
       </Button>
 
-      <p className="mt-2 text-xs text-center text-gray-600">
+      <p className="mt-6 px-4 text-xs text-center text-slate-500">
         No payment required yet – next step shows your final price
       </p>
     </form>
