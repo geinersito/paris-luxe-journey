@@ -21,7 +21,7 @@ const ExcursionsHero = () => {
       
       <div className="container relative z-20 mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
         <div className="text-center max-w-3xl mx-auto">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display mb-6 text-white animate-fadeIn">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 text-white animate-fadeIn">
             {t.excursions.title}
           </h1>
           <p className="text-lg md:text-xl text-white/90 mb-8 animate-fadeIn delay-100 leading-relaxed">

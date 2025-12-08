@@ -113,6 +113,7 @@ export default {
       colors,
       fontFamily: {
         display: ["Playfair Display", "serif"],
+        accent: ["Cormorant Garamond", "serif"],
         sans: ["Inter", "sans-serif"],
       },
       keyframes: animations.keyframes,

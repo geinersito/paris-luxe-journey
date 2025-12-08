@@ -1,10 +1,15 @@
-@import '@fontsource/playfair-display/400.css';
-@import '@fontsource/playfair-display/400-italic.css';
+/* Display Font - Playfair Display */
 @import '@fontsource/playfair-display/700.css';
-@import '@fontsource/playfair-display/700-italic.css';
+@import '@fontsource/playfair-display/400-italic.css';
+
+/* Accent Script - Cormorant Garamond */
+@import '@fontsource/cormorant-garamond/500-italic.css';
+
+/* Body Font - Inter */
 @import '@fontsource/inter/400.css';
 @import '@fontsource/inter/500.css';
 @import '@fontsource/inter/600.css';
+@import '@fontsource/inter/700.css';
 
 @tailwind base;
 @tailwind components;
@@ -75,7 +80,7 @@
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";
   }
   h1, h2 {
-    @apply font-display tracking-tight text-primary;
+    @apply font-display font-bold tracking-tight text-primary;
   }
   h3, h4, h5, h6 {
     @apply font-sans font-semibold tracking-tight text-primary;
@@ -104,12 +109,17 @@
   }
 
   /* Typography utilities */
+  /* Typography Utilities */
   .heading-primary {
-    @apply font-display text-primary dark:text-primary-foreground;
+    @apply font-display font-bold text-primary dark:text-primary-foreground;
   }
 
   .heading-accent {
-    @apply font-display italic text-secondary;
+    @apply font-display italic font-normal text-secondary;
+  }
+
+  .heading-script {
+    @apply font-accent italic font-medium text-secondary;
   }
 
   .body-text {

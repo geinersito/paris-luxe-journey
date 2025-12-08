@@ -36,16 +36,16 @@ const AboutSection = () => {
           animate={fadeIn.animate}
           transition={fadeIn.transition}
         >
-          <span className="text-secondary font-display text-sm uppercase tracking-wider mb-4 block font-semibold">
+          <span className="text-secondary font-accent italic text-lg mb-4 block font-medium">
             {t.about.years}
           </span>
           <h2 className="text-4xl md:text-5xl font-display mb-6 text-white font-bold leading-tight">
             {t.about.title}
           </h2>
-          <h3 className="text-xl md:text-2xl font-display italic mb-8 text-secondary/90 font-medium">
+          <h3 className="text-xl md:text-2xl font-display italic mb-8 text-secondary/90 font-normal">
             {t.about.subtitle}
           </h3>
-          <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-12 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/80 leading-relaxed mb-12 max-w-3xl mx-auto font-sans">
             {t.about.description}
           </p>
         </motion.div>

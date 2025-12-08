@@ -56,10 +56,13 @@ const PremiumSection = () => {
           animate={fadeIn.animate}
           transition={fadeIn.transition}
         >
-          <h2 className="text-4xl font-display mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+          <p className="text-lg font-display italic text-secondary mb-3">
+            Experience luxury transportation
+          </p>
+          <h2 className="text-4xl font-display font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
             {t.services.title}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-sans">
             {t.services.subtitle}
           </p>
         </motion.div>

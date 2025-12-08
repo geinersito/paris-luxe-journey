@@ -34,9 +34,9 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
           <div className="flex-shrink-0">
-            <a 
-              href="/" 
-              className="text-xl sm:text-2xl font-display text-primary hover:text-primary/90 transition-colors"
+            <a
+              href="/"
+              className="text-xl sm:text-2xl font-sans font-semibold text-primary hover:text-primary/90 transition-colors"
             >
               Paris Elite Services
             </a>

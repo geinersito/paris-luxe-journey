@@ -61,10 +61,10 @@ export default function FleetSection() {
           whileInView="animate"
           variants={fadeIn}
         >
-          <h2 className="text-3xl md:text-4xl font-display text-primary dark:text-primary-foreground mb-6">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary dark:text-primary-foreground mb-6">
             {t.fleet.title}
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-muted-foreground max-w-2xl mx-auto font-sans">
             {t.fleet.subtitle}
           </p>
         </motion.div>
