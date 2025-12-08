@@ -1,5 +1,7 @@
 @import '@fontsource/playfair-display/400.css';
+@import '@fontsource/playfair-display/400-italic.css';
 @import '@fontsource/playfair-display/700.css';
+@import '@fontsource/playfair-display/700-italic.css';
 @import '@fontsource/inter/400.css';
 @import '@fontsource/inter/500.css';
 @import '@fontsource/inter/600.css';
@@ -96,6 +98,19 @@
 
   .glass-card {
     @apply bg-pearl/90 dark:bg-primary-dark/50 backdrop-blur-md border border-metallic/20 dark:border-metallic/10 rounded-lg shadow-lg;
+  }
+
+  /* Typography utilities */
+  .heading-primary {
+    @apply font-display text-primary dark:text-primary-foreground;
+  }
+
+  .heading-accent {
+    @apply font-display italic text-secondary;
+  }
+
+  .body-text {
+    @apply font-sans text-foreground;
   }
 }
 
