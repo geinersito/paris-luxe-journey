@@ -1,5 +1,5 @@
 
-import { MapPin, ArrowDown } from "lucide-react";
+import { MapPin, ArrowDownUp } from "lucide-react";
 import { Label } from "../ui/label";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
@@ -101,8 +101,19 @@ export const LocationInputs = (props: LocationInputsProps) => {
     }
   }, [locationsData, isLocationLoading, toast, t]);
 
+  const handleSwap = () => {
+    const tempPickup = pickup;
+    if (isNewFormat) {
+      (props.onChange as (e: { target: { name: string; value: string } }) => void)({ target: { name: 'pickup', value: dropoff } });
+      (props.onChange as (e: { target: { name: string; value: string } }) => void)({ target: { name: 'dropoff', value: tempPickup } });
+    } else {
+      (props.onChange as (value: string, name: string) => void)(dropoff, 'pickup');
+      (props.onChange as (value: string, name: string) => void)(tempPickup, 'dropoff');
+    }
+  };
+
   return (
-    <div className="relative space-y-4">
+    <div className="relative space-y-3">
       <div className="space-y-1.5">
         <Label htmlFor="pickup" className="flex items-center gap-1.5 text-primary font-medium text-sm">
           <MapPin className="h-3.5 w-3.5" />
@@ -132,17 +143,23 @@ export const LocationInputs = (props: LocationInputsProps) => {
         </Select>
       </div>
 
-      <div className="absolute left-6 top-[50%] -translate-y-1/2 pointer-events-none z-0">
-        <div className="relative">
-          <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-background border border-primary/20 flex items-center justify-center shadow-sm">
-            <ArrowDown className="h-3 w-3 text-primary animate-pulse" />
-          </div>
-          <div className="absolute left-1/2 h-8 -translate-x-1/2 w-[1px] bg-primary/20" />
-        </div>
-      </div>
+      {/* Swap Button - Centered between fields, inside card */}
+      <button
+        type="button"
+        onClick={handleSwap}
+        className="absolute right-3 top-1/2 -translate-y-1/2
+                   w-8 h-8 bg-white dark:bg-primary-dark rounded-full shadow-md
+                   border border-primary/20 hover:border-primary/40
+                   flex items-center justify-center
+                   transition-all hover:shadow-lg z-10
+                   hover:scale-110"
+        aria-label={t.booking.swapLocations || "Swap locations"}
+      >
+        <ArrowDownUp className="h-3.5 w-3.5 text-primary" />
+      </button>
 
       <div className="space-y-1.5 relative z-20">
-        <Label htmlFor="dropoff" className="flex items-center gap-1.5 text-primary font-medium bg-white/95 rounded-md text-sm">
+        <Label htmlFor="dropoff" className="flex items-center gap-1.5 text-primary font-medium bg-white/95 dark:bg-primary-dark/95 rounded-md text-sm">
           <MapPin className="h-3.5 w-3.5" />
           {t.booking.dropoff}
         </Label>

@@ -87,7 +87,7 @@ export const en: Translation = {
     vehicle: {
       title: "Select your Vehicle",
       capacity: "passengers",
-      luggage: "luggage",
+      luggage: "Luggage",
       berline: "E-Class",
       van: "V-Class"
     },
@@ -301,7 +301,7 @@ export const en: Translation = {
     interior: "Interior",
     features: "Included features",
     passengers: "passengers",
-    luggage: "suitcases",
+    luggage: "Luggage",
     noVehicles: "No vehicles available at this time",
     vehicleFeatures: {
       wifi: "Free WiFi",

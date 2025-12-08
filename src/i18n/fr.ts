@@ -167,7 +167,7 @@ export const fr: Translation = {
     vehicle: {
       title: "Sélectionnez votre Véhicule",
       capacity: "passagers",
-      luggage: "bagages",
+      luggage: "Bagages",
       berline: "Classe E",
       van: "Classe V"
     },
@@ -333,7 +333,7 @@ export const fr: Translation = {
     interior: "Intérieur",
     features: "Caractéristiques incluses",
     passengers: "passagers",
-    luggage: "bagages",
+    luggage: "Bagages",
     noVehicles: "Aucun véhicule disponible pour le moment",
     vehicleFeatures: {
       wifi: "Wifi gratuit",

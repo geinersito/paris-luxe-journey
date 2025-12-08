@@ -24,7 +24,7 @@ export const PassengerCount = ({ value, onChange }: PassengerCountProps) => {
 
   return (
     <div className="space-y-2 relative z-20">
-      <div className="flex items-center justify-between">
+      <div className="flex items-center gap-2">
         <Label htmlFor="passengers" className="text-sm font-medium">{t.booking.passengers}</Label>
         <TooltipProvider>
           <Tooltip>
