@@ -6,6 +6,7 @@ import BookingPage from "./pages/booking";
 import BookingDetails from "./pages/booking/Details";
 import BookingPayment from "./pages/booking/Payment";
 import BookingConfirmation from "./pages/booking/Confirmation";
+import DesignPreview from "./pages/DesignPreview";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import { RequireBookingData } from "./components/RequireBookingData";
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
       {
         path: "excursions",
         element: <Excursions />,
+      },
+      {
+        path: "design-preview",
+        element: <DesignPreview />,
       },
       {
         path: "booking",
