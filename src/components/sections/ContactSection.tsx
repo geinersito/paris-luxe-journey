@@ -81,26 +81,39 @@ const ContactSection = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="space-y-8">
-            <a
-              href="https://www.google.com/maps/place/151+Av.+des+Champs-%C3%89lys%C3%A9es,+75008+Paris,+France/@48.8724501,2.2985438,17z"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block aspect-w-16 aspect-h-9 relative rounded-xl overflow-hidden ring-1 ring-primary/10 shadow-xl hover:shadow-2xl transition-all duration-300 group"
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-secondary/5 z-10" />
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.2600967568854!2d2.298543776526961!3d48.87245010712435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fc49f8c3429%3A0x2c2c85f1c7e83a79!2s151%20Av.%20des%20Champs-%C3%89lys%C3%A9es%2C%2075008%20Paris%2C%20France!5e0!3m2!1sen!2sfr!4v1682841234567!5m2!1sen!2sfr&style=feature:all|element:geometry|color:0x0B2545&style=feature:all|element:labels.text.fill|color:0xC8A951&style=feature:all|element:labels.text.stroke|color:0x0B2545&style=feature:water|element:geometry|color:0x081B34"
-                className="w-full h-full grayscale-[30%] contrast-[1.15] brightness-[0.9] group-hover:brightness-100 transition-all duration-300"
-                style={{ border: 0, pointerEvents: 'none' }}
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
-              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 bg-black/20 backdrop-blur-[2px]">
-                <span className="px-4 py-2 bg-white/95 text-primary rounded-lg shadow-lg font-medium text-sm">
-                  Open in Google Maps
-                </span>
-              </div>
-            </a>
+            {/* Map container with premium frame */}
+            <div className="relative p-1 bg-gradient-to-br from-primary via-primary-dark to-secondary rounded-2xl shadow-2xl">
+              <a
+                href="https://www.google.com/maps/place/151+Av.+des+Champs-%C3%89lys%C3%A9es,+75008+Paris,+France/@48.8724501,2.2985438,17z"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block aspect-w-16 aspect-h-9 relative rounded-xl overflow-hidden bg-white dark:bg-gray-900 transition-all duration-300 group"
+              >
+                {/* Subtle overlay for brand integration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 z-10 pointer-events-none" />
+
+                {/* Map iframe */}
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.2600967568854!2d2.298543776526961!3d48.87245010712435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fc49f8c3429%3A0x2c2c85f1c7e83a79!2s151%20Av.%20des%20Champs-%C3%89lys%C3%A9es%2C%2075008%20Paris%2C%20France!5e0!3m2!1sen!2sfr!4v1682841234567!5m2!1sen!2sfr&style=feature:all|element:geometry|color:0x0B2545&style=feature:all|element:labels.text.fill|color:0xC8A951&style=feature:all|element:labels.text.stroke|color:0x0B2545&style=feature:water|element:geometry|color:0x081B34"
+                  className="w-full h-full grayscale-[25%] contrast-[1.1] brightness-[0.95] group-hover:brightness-100 group-hover:grayscale-0 transition-all duration-500"
+                  style={{ border: 0, pointerEvents: 'none' }}
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                ></iframe>
+
+                {/* Hover overlay with CTA */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 bg-gradient-to-t from-black/40 via-black/20 to-transparent">
+                  <div className="text-center space-y-2">
+                    <span className="block px-6 py-3 bg-white/95 text-primary rounded-lg shadow-xl font-semibold text-sm backdrop-blur-sm">
+                      Open in Google Maps
+                    </span>
+                    <span className="block text-white text-xs font-medium">
+                      151 Avenue des Champs-Élysées, Paris
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </div>
             
             <div className="grid grid-cols-1 gap-6">
               <div className="flex items-center space-x-4 p-4 bg-white/5 rounded-lg backdrop-blur-sm">
