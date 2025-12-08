@@ -73,6 +73,7 @@ export const es: Translation = {
       daytrip: "Excursión",
       chauffeur: "Chófer Privado",
     },
+    serviceLevel: "Nivel de Servicio",
     submit: "Reservar Ahora",
     extras: {
       title: "Servicios Adicionales",
@@ -132,7 +133,9 @@ export const es: Translation = {
       noBookingData: "No se encontraron datos de la reserva",
       requiredFields: "Por favor completa todos los campos requeridos",
       invalidPassengerInfo: "Información del pasajero no válida",
-      invalidPhone: "Número de teléfono inválido"
+      invalidPhone: "Número de teléfono inválido",
+      serviceLevelsNotLoaded: "No se pudieron cargar los niveles de servicio",
+      selectServiceLevel: "Por favor selecciona un nivel de servicio",
     },
     summary: {
       title: "Resumen de la Reserva",

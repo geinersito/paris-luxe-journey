@@ -154,6 +154,7 @@ export const fr: Translation = {
       daytrip: "Excursion",
       chauffeur: "Chauffeur Privé",
     },
+    serviceLevel: "Niveau de Service",
     payment: {
       title: "Détails du Paiement",
       cardDetails: "Détails de la Carte"
@@ -213,7 +214,9 @@ export const fr: Translation = {
       noBookingData: "Aucune donnée de réservation trouvée",
       requiredFields: "Veuillez remplir tous les champs obligatoires",
       invalidPassengerInfo: "Informations passager non valides",
-      invalidPhone: "Numéro de téléphone invalide"
+      invalidPhone: "Numéro de téléphone invalide",
+      serviceLevelsNotLoaded: "Impossible de charger les niveaux de service",
+      selectServiceLevel: "Veuillez sélectionner un niveau de service",
     },
     summary: {
       title: "Résumé de la Réservation",
