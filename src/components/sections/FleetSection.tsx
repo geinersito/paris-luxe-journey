@@ -88,14 +88,17 @@ export default function FleetSection() {
                 }}
                 className="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
               >
-                <div className="relative aspect-video">
+                <div
+                  className="relative aspect-video group cursor-pointer"
+                  onClick={() => setSelectedImageType(selectedImageType === "exterior" ? "interior" : "exterior")}
+                >
                   <div className="absolute inset-0 flex">
                     <AnimatePresence mode="wait">
                       <motion.img
                         key={`${vehicle.id}-${selectedImageType}`}
                         src={selectedImageType === "exterior" ? vehicle.image_url : vehicle.interior_image_url}
                         alt={`${vehicle.name} - ${selectedImageType}`}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -103,29 +106,18 @@ export default function FleetSection() {
                       />
                     </AnimatePresence>
                   </div>
-                  <div className="absolute bottom-4 right-4 flex gap-2">
-                    <button
-                      onClick={() => setSelectedImageType("exterior")}
-                      className={cn(
-                        "px-3 py-1.5 text-xs font-medium rounded-md backdrop-blur-md transition-all duration-200",
-                        selectedImageType === "exterior"
-                          ? "bg-white/90 text-primary shadow-md"
-                          : "bg-white/40 text-white hover:bg-white/60"
-                      )}
-                    >
-                      {t.fleet.exterior}
-                    </button>
-                    <button
-                      onClick={() => setSelectedImageType("interior")}
-                      className={cn(
-                        "px-3 py-1.5 text-xs font-medium rounded-md backdrop-blur-md transition-all duration-200",
-                        selectedImageType === "interior"
-                          ? "bg-white/90 text-primary shadow-md"
-                          : "bg-white/40 text-white hover:bg-white/60"
-                      )}
-                    >
-                      {t.fleet.interior}
-                    </button>
+
+                  {/* Hover overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+                  {/* Current view label - only visible on hover */}
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="px-3 py-1.5 text-xs font-medium rounded-md backdrop-blur-md bg-white/90 text-primary shadow-md">
+                      {selectedImageType === "exterior" ? t.fleet.exterior : t.fleet.interior}
+                    </span>
+                    <span className="px-3 py-1.5 text-xs font-medium rounded-md backdrop-blur-md bg-white/40 text-white">
+                      Click to switch
+                    </span>
                   </div>
                 </div>
 

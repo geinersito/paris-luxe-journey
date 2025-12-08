@@ -41,9 +41,9 @@ export const LuggageSelector = ({
         {t.booking.vehicle.luggage}
       </Label>
 
-      <div className="space-y-2">
-        <div className="flex items-center justify-between p-3 bg-accent/30 rounded-lg">
-          <div className="flex items-center gap-2">
+      <div className="space-y-3">
+        <div className="flex items-center justify-between p-4 bg-accent/30 rounded-lg">
+          <div className="flex items-center gap-3">
             <Luggage className="h-4 w-4 text-primary" />
             <div>
               <p className="text-sm font-medium">{t.booking.largeLuggage}</p>
@@ -51,7 +51,7 @@ export const LuggageSelector = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <button
               type="button"
               onClick={() => handleCountChange('large', 'decrement')}
@@ -80,8 +80,8 @@ export const LuggageSelector = ({
           </div>
         </div>
 
-        <div className="flex items-center justify-between p-3 bg-accent/30 rounded-lg">
-          <div className="flex items-center gap-2">
+        <div className="flex items-center justify-between p-4 bg-accent/30 rounded-lg">
+          <div className="flex items-center gap-3">
             <Luggage className="h-3 w-3 text-primary" />
             <div>
               <p className="text-sm font-medium">{t.booking.smallLuggage}</p>
@@ -89,7 +89,7 @@ export const LuggageSelector = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-4">
             <button
               type="button"
               onClick={() => handleCountChange('small', 'decrement')}
