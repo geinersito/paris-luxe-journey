@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { supabase } from "@/lib/supabaseClient";
+import { calculatePrice as calculatePriceFromConfig, generateRouteKey, PRICING } from '@/config/pricing';
 
 interface UseBookingPriceReturn {
   price: number;           // Precio final total (base + recargos)
@@ -57,66 +58,93 @@ export const useBookingPrice = (): UseBookingPriceReturn => {
     }
 
     try {
-        console.log('Calculating price for:', { 
-          origin, 
-          destination, 
-          passengers, 
-          largeLuggage, 
-          smallLuggage 
+        console.log('Calculating price for:', {
+          origin,
+          destination,
+          passengers,
+          largeLuggage,
+          smallLuggage
         });
-        
-        const { data, error: dbError } = await supabase
-          .from('price_matrix')
-          .select('base_price')
-          .eq('origin_code', origin.toUpperCase())
-          .eq('destination_code', destination.toUpperCase())
-          .single();
-    
-        if (dbError || !data) {
-          console.error('Error fetching price data:', dbError);
+
+        // Generar route key desde pricing.ts
+        const routeKey = generateRouteKey(origin, destination);
+
+        if (!routeKey) {
+          // Si no hay ruta fija, intentar buscar en la base de datos (fallback)
+          console.warn('No fixed route found in pricing.ts, trying database...');
+          const { data, error: dbError } = await supabase
+            .from('fixed_routes')
+            .select('base_price_1_3, base_price_4_7, route_type')
+            .or(`route_type.eq.${origin.toLowerCase()}_${destination.toLowerCase()},route_type.eq.${destination.toLowerCase()}_${origin.toLowerCase()}`)
+            .single();
+
+          if (dbError || !data) {
+            console.error('Error fetching price data:', dbError);
+            return;
+          }
+
+          const pureDatabaseBasePrice = passengers <= 3 ? data.base_price_1_3 : data.base_price_4_7;
+          console.log('Pure base price from DB without any surcharges:', pureDatabaseBasePrice);
+
+          let passengersSurcharge = 0;
+          if (passengers >= 4 && passengers <= 7) {
+            passengersSurcharge = 10;
+            console.log('Adding 10€ fixed surcharge for 4-7 passengers group');
+          }
+
+          let luggageSurcharge = 0;
+          if (largeLuggage > 1) {
+            const extraLargeLuggage = largeLuggage - 1;
+            luggageSurcharge = extraLargeLuggage * PRICING.surcharges.extraBag;
+            console.log(`Adding ${luggageSurcharge}€ for ${extraLargeLuggage} extra large luggage(s)`);
+          }
+
+          const totalPriceBeforeRounding = pureDatabaseBasePrice + passengersSurcharge + luggageSurcharge;
+          const finalPrice = roundDownToMultipleOf5(totalPriceBeforeRounding);
+
+          setBasePrice(pureDatabaseBasePrice);
+          setPassengerSurcharge(passengersSurcharge);
+          setLuggageSurcharge(luggageSurcharge);
+          setPrice(finalPrice);
+
+          if (typeof origin === 'string' && typeof destination === 'string') {
+            setPreviousCalculatedParams({
+              origin,
+              destination,
+              passengers,
+              largeLuggage,
+              smallLuggage
+            });
+          }
+
           return;
         }
-    
-        console.log('Price data from DB:', data);
-    
-        // 1. Precio base tomado de Supabase - NUNCA SE MODIFICA
-        const pureDatabaseBasePrice = data.base_price;
-        console.log('Pure base price from DB without any surcharges:', pureDatabaseBasePrice);
-        
-        // 2. Surcharge para grupos de 4-7 pasajeros (fijo de 10€)
+
+        // Usar pricing.ts para calcular el precio
+        const extraLargeLuggage = Math.max(0, largeLuggage - 1);
+        const pureDatabaseBasePrice = calculatePriceFromConfig(routeKey, passengers, { extraBags: 0 });
+        const luggageSurcharge = extraLargeLuggage * PRICING.surcharges.extraBag;
+
+        // Surcharge para grupos de 4-7 pasajeros (fijo de 10€)
         let passengersSurcharge = 0;
         if (passengers >= 4 && passengers <= 7) {
-          passengersSurcharge = 10; 
+          passengersSurcharge = 10;
           console.log('Adding 10€ fixed surcharge for 4-7 passengers group');
         }
-        
-        // 3. Lógica para el equipaje - SIEMPRE SE CALCULA DESDE CERO
-        // IMPORTANTE: El equipaje incluido es FIJO (1 maleta grande) y NO DEPENDE del número de pasajeros
-        let luggageSurcharge = 0;
-        
-        // Siempre incluimos solo 1 maleta grande en el precio base, independientemente del número de pasajeros
-        if (largeLuggage > 1) {
-          // Calculamos cuántas maletas grandes adicionales hay (más allá de la primera)
-          const extraLargeLuggage = largeLuggage - 1;
-          luggageSurcharge = extraLargeLuggage * 10; // 10€ por cada maleta grande adicional
-          console.log(`Adding ${luggageSurcharge}€ for ${extraLargeLuggage} extra large luggage(s)`);
-        } else {
-          console.log('No extra large luggage, no surcharge applied');
-        }
-        
-        // Para el cálculo del precio final, sumamos todo
+
         const totalPriceBeforeRounding = pureDatabaseBasePrice + passengersSurcharge + luggageSurcharge;
         console.log('Total price breakdown:', {
+          routeKey,
           basePrice: pureDatabaseBasePrice,
           passengersSurcharge,
           luggageSurcharge,
           totalBeforeRounding: totalPriceBeforeRounding
         });
-    
+
         const finalPrice = roundDownToMultipleOf5(totalPriceBeforeRounding);
         console.log('Final price after rounding:', finalPrice);
-        
-        // IMPORTANTE: Guardamos el precio base puro de la DB, sin modificaciones
+
+        // IMPORTANTE: Guardamos el precio base puro, sin modificaciones
         // Este valor NUNCA debe cambiar cuando se añaden maletas
         setBasePrice(pureDatabaseBasePrice);
         setPassengerSurcharge(passengersSurcharge);
