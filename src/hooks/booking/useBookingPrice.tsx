@@ -125,18 +125,12 @@ export const useBookingPrice = (): UseBookingPriceReturn => {
         const pureDatabaseBasePrice = calculatePriceFromConfig(routeKey, passengers, { extraBags: 0 });
         const luggageSurcharge = extraLargeLuggage * PRICING.surcharges.extraBag;
 
-        // Surcharge para grupos de 4-7 pasajeros (fijo de 10€)
-        let passengersSurcharge = 0;
-        if (passengers >= 4 && passengers <= 7) {
-          passengersSurcharge = 10;
-          console.log('Adding 10€ fixed surcharge for 4-7 passengers group');
-        }
-
-        const totalPriceBeforeRounding = pureDatabaseBasePrice + passengersSurcharge + luggageSurcharge;
+        // El precio base ya incluye el ajuste por número de pasajeros
+        // No necesitamos agregar recargos adicionales por pasajeros
+        const totalPriceBeforeRounding = pureDatabaseBasePrice + luggageSurcharge;
         console.log('Total price breakdown:', {
           routeKey,
           basePrice: pureDatabaseBasePrice,
-          passengersSurcharge,
           luggageSurcharge,
           totalBeforeRounding: totalPriceBeforeRounding
         });
@@ -147,7 +141,7 @@ export const useBookingPrice = (): UseBookingPriceReturn => {
         // IMPORTANTE: Guardamos el precio base puro, sin modificaciones
         // Este valor NUNCA debe cambiar cuando se añaden maletas
         setBasePrice(pureDatabaseBasePrice);
-        setPassengerSurcharge(passengersSurcharge);
+        setPassengerSurcharge(0); // No hay recargo por pasajeros, está incluido en el precio base
         setLuggageSurcharge(luggageSurcharge);
         setPrice(finalPrice);
       
