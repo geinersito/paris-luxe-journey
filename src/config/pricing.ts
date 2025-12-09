@@ -66,30 +66,30 @@ export type RouteKey = keyof typeof PRICING.standard;
 
 /**
  * Mapea códigos de ubicación a route keys
- * Ejemplos: CDG -> cdg, ORY -> orly, GARE_DU_NORD -> garedunord
+ * Ejemplos: CDG -> cdg, ORY -> orly, GDN -> garedunord, DLP -> disney
  */
 export const mapLocationToRouteKey = (location: string): string => {
   const normalized = location.toLowerCase().replace(/[^a-z]/g, '');
 
-  // Mapeo de códigos de aeropuertos
-  if (normalized.includes('cdg') || normalized.includes('charlesde')) return 'cdg';
-  if (normalized.includes('ory') || normalized.includes('orly')) return 'orly';
-  if (normalized.includes('lbg') || normalized.includes('lebourget') || normalized.includes('bourget')) return 'lebourget';
-  if (normalized.includes('bva') || normalized.includes('beauvais')) return 'beauvais';
+  // Mapeo de códigos de aeropuertos (códigos IATA de 3 letras)
+  if (normalized === 'cdg' || normalized.includes('charlesde')) return 'cdg';
+  if (normalized === 'ory' || normalized.includes('orly')) return 'orly';
+  if (normalized === 'lbg' || normalized.includes('lebourget') || normalized.includes('bourget')) return 'lebourget';
+  if (normalized === 'bva' || normalized.includes('beauvais')) return 'beauvais';
 
-  // Mapeo de estaciones de tren
-  if (normalized.includes('garedunord') || normalized.includes('nord')) return 'garedunord';
-  if (normalized.includes('garedelyon') || normalized.includes('lyon')) return 'garelyon';
-  if (normalized.includes('garedelest') || normalized.includes('est')) return 'garest';
-  if (normalized.includes('garemontparnasse') || normalized.includes('montparnasse')) return 'garemontparnasse';
-  if (normalized.includes('garesaintlazare') || normalized.includes('lazare')) return 'garelazare';
+  // Mapeo de estaciones de tren (códigos personalizados de 3 letras)
+  if (normalized === 'gdn' || normalized.includes('garedunord') || normalized.includes('nord')) return 'garedunord';
+  if (normalized === 'gdl' || normalized.includes('garedelyon') || normalized.includes('lyon')) return 'garelyon';
+  if (normalized === 'gde' || normalized.includes('garedelest') || normalized.includes('est')) return 'garest';
+  if (normalized === 'gdm' || normalized.includes('garemontparnasse') || normalized.includes('montparnasse')) return 'garemontparnasse';
+  if (normalized === 'gsl' || normalized.includes('garesaintlazare') || normalized.includes('lazare')) return 'garelazare';
 
-  // Mapeo de atracciones
-  if (normalized.includes('disney') || normalized.includes('disneyland')) return 'disney';
-  if (normalized.includes('versailles') || normalized.includes('versalles')) return 'versailles';
+  // Mapeo de atracciones (códigos personalizados de 3 letras)
+  if (normalized === 'dlp' || normalized.includes('disney') || normalized.includes('disneyland')) return 'disney';
+  if (normalized === 'vrs' || normalized.includes('versailles') || normalized.includes('versalles')) return 'versailles';
 
-  // París centro (default)
-  if (normalized.includes('paris') || normalized.includes('centro')) return 'paris';
+  // París centro (códigos posibles: PAR, PARIS, PC, etc.)
+  if (normalized === 'par' || normalized === 'pc' || normalized.includes('paris') || normalized.includes('centro') || normalized.includes('centre')) return 'paris';
 
   return normalized;
 };
