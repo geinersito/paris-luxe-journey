@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { supabase } from '@/lib/supabase';
+import { calculatePrice as calculatePriceFromConfig, generateRouteKey, PRICING } from '@/config/pricing';
 
 interface PriceParams {
   origin: string;
@@ -107,45 +108,74 @@ export const useBookingPrice = () => {
       }
       
       console.log('Calculating price for:', params);
-      
-      // Buscar precio en la base de datos para la ruta específica
-      const { data, error } = await supabase
-        .from('fixed_route_prices')
-        .select('price_1_3_pax, price_4_7_pax')
-        .eq('origin_code', params.origin)
-        .eq('destination_code', params.destination)
-        .single();
-      
-      if (error) throw error;
-      
-      console.log('Price data from DB:', data);
-      
-      if (!data) {
-        throw new Error('No price found for this route');
+
+      // Generar route key desde pricing.ts
+      const routeKey = generateRouteKey(params.origin, params.destination);
+
+      if (!routeKey) {
+        // Si no hay ruta fija, intentar buscar en la base de datos (fallback)
+        console.warn('No fixed route found in pricing.ts, trying database...');
+        const { data, error } = await supabase
+          .from('fixed_routes')
+          .select('base_price_1_3, base_price_4_7, route_type')
+          .or(`route_type.eq.${params.origin.toLowerCase()}_${params.destination.toLowerCase()},route_type.eq.${params.destination.toLowerCase()}_${params.origin.toLowerCase()}`)
+          .single();
+
+        if (error || !data) {
+          throw new Error('No price found for this route');
+        }
+
+        let calculatedBasePrice = passengers <= 3 ? data.base_price_1_3 : data.base_price_4_7;
+
+        // Aplicar multiplicador según nivel de servicio (solo Standard está activo)
+        // Standard ya tiene los precios finales en la BD (no necesita multiplicador)
+
+        priceCache.set(cacheKey, calculatedBasePrice);
+
+        const extraLargeLuggage = Math.max(0, largeLuggage - 1);
+        const calculatedLuggageSurcharge = extraLargeLuggage * PRICING.surcharges.extraBag;
+        const calculatedPassengerSurcharge = passengers >= 4 && passengers <= 7 ? 10 : 0;
+        const finalPrice = calculatedBasePrice + calculatedLuggageSurcharge;
+
+        setPriceBreakdown({
+          basePrice: calculatedBasePrice,
+          passengers,
+          passengerRange: passengers <= 3 ? '1-3' : '4-7',
+          luggageSurcharge: calculatedLuggageSurcharge,
+          passengerSurcharge: calculatedPassengerSurcharge,
+          extraLargeLuggage,
+          serviceLevel,
+          finalPrice
+        });
+
+        setBasePrice(calculatedBasePrice);
+        setLuggageSurcharge(calculatedLuggageSurcharge);
+        setPassengerSurcharge(calculatedPassengerSurcharge);
+        setPrice(finalPrice);
+
+        return finalPrice;
       }
-      
-      // Determinar precio base según rango de pasajeros
-      // IMPORTANTE: Solo cambia el precio base al cambiar de rango (1-3 o 4-7)
-      let calculatedBasePrice = passengers <= 3 ? data.price_1_3_pax : data.price_4_7_pax;
-      
-      // Aplicar multiplicador según nivel de servicio
-      if (serviceLevel === 'standard') {
-        calculatedBasePrice = Math.round((calculatedBasePrice * 0.85) / 5) * 5; // Redondear a múltiplos de 5
-      }
-      
+
+      // Usar pricing.ts para calcular el precio
+      const extraLargeLuggage = Math.max(0, largeLuggage - 1);
+      const calculatedBasePrice = calculatePriceFromConfig(routeKey, passengers, { extraBags: 0 });
+      const calculatedLuggageSurcharge = extraLargeLuggage * PRICING.surcharges.extraBag;
+      const finalPrice = calculatedBasePrice + calculatedLuggageSurcharge;
+
+      console.log('Price calculated from pricing.ts:', {
+        routeKey,
+        basePrice: calculatedBasePrice,
+        extraBags: extraLargeLuggage,
+        luggageSurcharge: calculatedLuggageSurcharge,
+        finalPrice
+      });
+
       // Guardar en caché el precio base (sin recargos por maletas)
       priceCache.set(cacheKey, calculatedBasePrice);
       
-      // Calcular recargo por maletas adicionales
-      // IMPORTANTE: El precio base ya incluye 1 maleta grande + 1 de mano
-      const extraLargeLuggage = Math.max(0, largeLuggage - 1);
-      const calculatedLuggageSurcharge = extraLargeLuggage * 10;
-      
       // Determinar recargo por pasajeros (para compatibilidad con el otro hook)
       const calculatedPassengerSurcharge = passengers >= 4 && passengers <= 7 ? 10 : 0;
-      
-      const finalPrice = calculatedBasePrice + calculatedLuggageSurcharge;
-      
+
       console.log('Price breakdown:', {
         basePrice: calculatedBasePrice,
         passengers,
@@ -154,9 +184,10 @@ export const useBookingPrice = () => {
         passengerSurcharge: calculatedPassengerSurcharge,
         extraLargeLuggage,
         serviceLevel,
-        finalPrice
+        finalPrice,
+        routeKey
       });
-      
+
       // Guardar desglose de precios
       setPriceBreakdown({
         basePrice: calculatedBasePrice,
@@ -166,15 +197,16 @@ export const useBookingPrice = () => {
         passengerSurcharge: calculatedPassengerSurcharge,
         extraLargeLuggage,
         serviceLevel,
-        finalPrice
+        finalPrice,
+        routeKey
       });
-      
+
       // Actualizar estados
       setBasePrice(calculatedBasePrice);
       setLuggageSurcharge(calculatedLuggageSurcharge);
       setPassengerSurcharge(calculatedPassengerSurcharge);
       setPrice(finalPrice);
-      
+
       return finalPrice;
     } catch (err) {
       console.error('Error calculating price:', err);

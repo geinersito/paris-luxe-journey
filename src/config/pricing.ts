@@ -64,6 +64,59 @@ export const PRICING = {
 type PassengerCategory = '1-3' | '4-7';
 export type RouteKey = keyof typeof PRICING.standard;
 
+/**
+ * Mapea códigos de ubicación a route keys
+ * Ejemplos: CDG -> cdg, ORY -> orly, GARE_DU_NORD -> garedunord
+ */
+export const mapLocationToRouteKey = (location: string): string => {
+  const normalized = location.toLowerCase().replace(/[^a-z]/g, '');
+
+  // Mapeo de códigos de aeropuertos
+  if (normalized.includes('cdg') || normalized.includes('charlesde')) return 'cdg';
+  if (normalized.includes('ory') || normalized.includes('orly')) return 'orly';
+  if (normalized.includes('lbg') || normalized.includes('lebourget') || normalized.includes('bourget')) return 'lebourget';
+  if (normalized.includes('bva') || normalized.includes('beauvais')) return 'beauvais';
+
+  // Mapeo de estaciones de tren
+  if (normalized.includes('garedunord') || normalized.includes('nord')) return 'garedunord';
+  if (normalized.includes('garedelyon') || normalized.includes('lyon')) return 'garelyon';
+  if (normalized.includes('garedelest') || normalized.includes('est')) return 'garest';
+  if (normalized.includes('garemontparnasse') || normalized.includes('montparnasse')) return 'garemontparnasse';
+  if (normalized.includes('garesaintlazare') || normalized.includes('lazare')) return 'garelazare';
+
+  // Mapeo de atracciones
+  if (normalized.includes('disney') || normalized.includes('disneyland')) return 'disney';
+  if (normalized.includes('versailles') || normalized.includes('versalles')) return 'versailles';
+
+  // París centro (default)
+  if (normalized.includes('paris') || normalized.includes('centro')) return 'paris';
+
+  return normalized;
+};
+
+/**
+ * Genera la route key completa a partir de origen y destino
+ * Ejemplos: (CDG, Paris) -> cdg-paris, (Orly, Disney) -> orly-disney
+ */
+export const generateRouteKey = (origin: string, destination: string): RouteKey | null => {
+  const originKey = mapLocationToRouteKey(origin);
+  const destKey = mapLocationToRouteKey(destination);
+
+  // Intentar combinaciones posibles
+  const possibleKeys = [
+    `${originKey}-${destKey}`,
+    `${destKey}-${originKey}`, // Rutas bidireccionales
+  ];
+
+  for (const key of possibleKeys) {
+    if (key in PRICING.standard) {
+      return key as RouteKey;
+    }
+  }
+
+  return null;
+};
+
 export const calculatePrice = (
   route: RouteKey,
   passengers: number,
@@ -74,7 +127,7 @@ export const calculatePrice = (
 
   let finalPrice = basePrice;
   if (options.extraBags) finalPrice += options.extraBags * PRICING.surcharges.extraBag;
-  
+
   return Math.round(finalPrice);
 };
 
