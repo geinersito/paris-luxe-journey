@@ -237,6 +237,11 @@ export interface Translation {
       berline: string;
       van: string;
     };
+    groupTransfer: {
+      title: string;
+      description: string;
+      cta: string;
+    };
     price: {
       total: string;
       estimated: string;

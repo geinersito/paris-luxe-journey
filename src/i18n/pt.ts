@@ -87,6 +87,11 @@ export const pt: Translation = {
       berline: "Classe E",
       van: "Classe V"
     },
+    groupTransfer: {
+      title: "Precisa de um transfer para 8+ passageiros?",
+      description: "Organizamos soluções multi-veículo ou minibus sob solicitação.",
+      cta: "Solicitar cotação para grupo"
+    },
     price: {
       total: "Preço Total",
       estimated: "Preço Estimado",

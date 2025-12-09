@@ -172,6 +172,11 @@ export const fr: Translation = {
       berline: "Classe E",
       van: "Classe V"
     },
+    groupTransfer: {
+      title: "Besoin d'un transfert pour 8+ passagers ?",
+      description: "Nous organisons des solutions multi-véhicules ou minibus sur demande.",
+      cta: "Demander un devis groupe"
+    },
     price: {
       total: "Prix Total",
       estimated: "Prix Estimé",

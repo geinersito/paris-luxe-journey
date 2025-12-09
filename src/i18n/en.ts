@@ -91,6 +91,11 @@ export const en: Translation = {
       berline: "E-Class",
       van: "V-Class"
     },
+    groupTransfer: {
+      title: "Need a transfer for 8+ passengers?",
+      description: "We organise multi-vehicle or minibus solutions on request.",
+      cta: "Request a group quote"
+    },
     price: {
       total: "Total Price",
       estimated: "Estimated Price",
