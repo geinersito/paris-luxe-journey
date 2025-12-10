@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PassengerCount - Before/After Comparison</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#10b981',
+            'primary-dark': '#059669',
+            secondary: '#1e40af',
+            'secondary-dark': '#1e3a8a',
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'serif'],
+            accent: ['Cormorant Garamond', 'serif'],
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-slate-100 p-8">
+  <div class="max-w-7xl mx-auto">
+    <h1 class="text-3xl font-display font-bold text-neutral-900 mb-2 text-center">PassengerCount Component</h1>
+    <p class="text-center text-neutral-600 mb-8">Visual Bible Refactor Comparison</p>
+    
+    <div class="grid md:grid-cols-2 gap-8">
+      
+      <!-- BEFORE -->
+      <div class="bg-white rounded-xl shadow-lg p-6">
+        <div class="bg-red-50 border-l-4 border-red-500 px-4 py-2 mb-6">
+          <h2 class="text-lg font-semibold text-red-900">❌ BEFORE</h2>
+          <p class="text-xs text-red-700 mt-1">Gradients, heavy shadows, inconsistent spacing</p>
+        </div>
+        
+        <div class="space-y-2">
+          <div class="flex items-center gap-2">
+            <label class="text-sm font-medium flex items-center gap-1.5">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+              Passengers
+            </label>
+          </div>
+
+          <div class="flex items-center justify-center gap-4 p-3 bg-accent/30 rounded-lg">
+            <button
+              type="button"
+              class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-700 to-blue-900
+                     text-white shadow-md hover:shadow-lg hover:scale-110
+                     transition-all duration-200 disabled:opacity-50
+                     flex items-center justify-center"
+            >
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+              </svg>
+            </button>
+
+            <span class="text-xl font-display font-semibold text-primary min-w-[3rem] text-center">
+              7
+            </span>
+
+            <button
+              type="button"
+              disabled
+              class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-700 to-blue-900
+                     text-white shadow-md hover:shadow-lg hover:scale-110
+                     transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed
+                     flex items-center justify-center"
+            >
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Message with OLD spacing (mt-3 = 12px) -->
+          <div class="mt-3 rounded-lg border border-dashed border-slate-300 bg-slate-50 px-4 py-3 text-sm text-slate-700">
+            <p class="font-medium mb-1">
+              Need a transfer for 8+ passengers?
+            </p>
+            <p class="text-xs mb-2">
+              We organise multi-vehicle or minibus solutions on request.
+            </p>
+            <button
+              type="button"
+              class="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary-dark underline transition-colors"
+            >
+              Request a group quote
+            </button>
+          </div>
+        </div>
+
+        <!-- Flaws list -->
+        <div class="mt-6 pt-6 border-t border-slate-200">
+          <h3 class="text-xs font-semibold text-neutral-700 mb-2">AESTHETIC FLAWS:</h3>
+          <ul class="text-xs text-neutral-600 space-y-1">
+            <li>• Gradient forbidden (bg-gradient-to-br)</li>
+            <li>• Heavy shadows (shadow-md → shadow-lg)</li>
+            <li>• Inconsistent spacing (mt-3 = 12px)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- AFTER -->
+      <div class="bg-white rounded-xl shadow-lg p-6">
+        <div class="bg-emerald-50 border-l-4 border-emerald-500 px-4 py-2 mb-6">
+          <h2 class="text-lg font-semibold text-emerald-900">✅ AFTER</h2>
+          <p class="text-xs text-emerald-700 mt-1">Solid colors, light shadows, 4-point grid spacing</p>
+        </div>
+        
+        <div class="space-y-2">
+          <div class="flex items-center gap-2">
+            <label class="text-sm font-medium flex items-center gap-1.5">
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+              </svg>
+              Passengers
+            </label>
+          </div>
+
+          <div class="flex items-center justify-center gap-4 p-3 bg-accent/30 rounded-lg">
+            <button
+              type="button"
+              class="w-9 h-9 rounded-full bg-emerald-500 hover:bg-emerald-600
+                     text-white shadow-sm hover:shadow-md hover:scale-105
+                     transition-all duration-200 disabled:opacity-50
+                     flex items-center justify-center"
+            >
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4"></path>
+              </svg>
+            </button>
+
+            <span class="text-xl font-display font-semibold text-neutral-900 min-w-[3rem] text-center">
+              7
+            </span>
+
+            <button
+              type="button"
+              disabled
+              class="w-9 h-9 rounded-full bg-emerald-500 hover:bg-emerald-600
+                     text-white shadow-sm hover:shadow-md hover:scale-105
+                     transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed
+                     flex items-center justify-center"
+            >
+              <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path>
+              </svg>
+            </button>
+          </div>
+
+          <!-- Message with NEW spacing (mt-6 = 24px) -->
+          <div class="mt-6 rounded-lg border border-dashed border-slate-200 bg-slate-50 px-4 py-3 space-y-2">
+            <p class="text-sm font-medium text-neutral-900">
+              Need a transfer for 8+ passengers?
+            </p>
+            <p class="text-xs text-neutral-600">
+              We organise multi-vehicle or minibus solutions on request.
+            </p>
+            <button
+              type="button"
+              class="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 hover:text-emerald-700 underline transition-colors"
+            >
+              Request a group quote
+            </button>
+          </div>
+        </div>
+
+        <!-- Changes list -->
+        <div class="mt-6 pt-6 border-t border-slate-200">
+          <h3 class="text-xs font-semibold text-neutral-700 mb-2">VISUAL CHANGES:</h3>
+          <ul class="text-xs text-neutral-600 space-y-1">
+            <li>• Solid emerald-500 (no gradient)</li>
+            <li>• Light shadows (shadow-sm → shadow-md)</li>
+            <li>• Fixed spacing (mt-6 = 24px grid)</li>
+            <li>• Better text hierarchy (neutral-900 → neutral-600)</li>
+            <li>• Subtle hover (scale-105 vs scale-110)</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Instructions -->
+    <div class="mt-8 bg-blue-50 border border-blue-200 rounded-lg p-6">
+      <h3 class="text-sm font-semibold text-blue-900 mb-2">📋 How to test:</h3>
+      <ol class="text-sm text-blue-800 space-y-1 list-decimal list-inside">
+        <li>Hover over the buttons to see the difference in shadow/scale effects</li>
+        <li>Notice the spacing between the counter and the message (12px vs 24px)</li>
+        <li>Compare the button colors (gradient blue vs solid emerald)</li>
+        <li>Check text hierarchy in the message box (slate-700 vs neutral-900/600)</li>
+      </ol>
+    </div>
+  </div>
+</body>
+</html>
+
