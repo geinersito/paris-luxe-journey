@@ -122,16 +122,16 @@ export default function FleetSection() {
                 </div>
 
                 <div className="p-6">
-                  <h3 className="text-xl md:text-2xl font-bold text-primary dark:text-primary-foreground mb-4">
+                  <h3 className="text-xl md:text-2xl font-bold text-secondary dark:text-primary-foreground mb-4">
                     {vehicle.name}
                   </h3>
                   <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
                     <div className="flex items-center gap-1">
-                      <Users className="h-4 w-4" />
+                      <Users className="h-4 w-4 text-primary" />
                       <span>{vehicle.passenger_capacity} {t.fleet.passengers}</span>
                     </div>
                     <div className="flex items-center gap-1">
-                      <Briefcase className="h-4 w-4" />
+                      <Briefcase className="h-4 w-4 text-primary" />
                       <span>{vehicle.luggage_capacity} {t.fleet.luggage}</span>
                     </div>
                   </div>
@@ -139,11 +139,11 @@ export default function FleetSection() {
                     {vehicle.features?.map((feature) => {
                       const Icon = FEATURE_ICONS[feature as keyof typeof FEATURE_ICONS];
                       return Icon ? (
-                        <div 
+                        <div
                           key={feature}
                           className="flex items-center gap-2 text-sm text-muted-foreground"
                         >
-                          <Icon className="h-4 w-4" />
+                          <Icon className="h-4 w-4 text-primary" />
                           <span>{t.fleet.vehicleFeatures[feature as keyof typeof FEATURE_ICONS]}</span>
                         </div>
                       ) : null;

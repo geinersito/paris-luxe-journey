@@ -65,7 +65,7 @@ export const DateTimeInputs = ({
     <div className="space-y-3">
       <div className="grid grid-cols-2 gap-2">
         <div className="space-y-1.5 group">
-          <Label className="text-sm flex items-center gap-1.5">
+          <Label className="text-sm flex items-center gap-1.5 text-primary font-medium">
             <CalendarIcon className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
             {t.booking.date}
           </Label>
@@ -100,7 +100,7 @@ export const DateTimeInputs = ({
         </div>
 
         <div className="space-y-1.5 group">
-          <Label className="text-sm flex items-center gap-1.5">
+          <Label className="text-sm flex items-center gap-1.5 text-primary font-medium">
             <Clock className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
             {t.booking.time}
           </Label>
@@ -140,8 +140,11 @@ export const DateTimeInputs = ({
 
       {isRoundTrip && (
         <div className="grid grid-cols-2 gap-2 pt-3 border-t border-border">
-          <div className="space-y-1.5">
-            <Label className="text-sm">{t.booking.returnDate}</Label>
+          <div className="space-y-1.5 group">
+            <Label className="text-sm flex items-center gap-1.5 text-primary font-medium">
+              <CalendarIcon className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
+              {t.booking.returnDate}
+            </Label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button
@@ -172,8 +175,11 @@ export const DateTimeInputs = ({
             </Popover>
           </div>
 
-          <div className="space-y-1.5">
-            <Label className="text-sm">{t.booking.returnTime}</Label>
+          <div className="space-y-1.5 group">
+            <Label className="text-sm flex items-center gap-1.5 text-primary font-medium">
+              <Clock className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
+              {t.booking.returnTime}
+            </Label>
             <Popover>
               <PopoverTrigger asChild>
                 <Button

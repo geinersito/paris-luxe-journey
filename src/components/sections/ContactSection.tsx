@@ -121,8 +121,8 @@ const ContactSection = () => {
                   <Phone className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-primary">{t.contact.phone}</h3>
-                  <a href="tel:+33668251102" className="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+                  <h3 className="font-semibold text-sm text-primary">{t.contact.phone}</h3>
+                  <a href="tel:+33668251102" className="text-lg text-secondary dark:text-gray-300 hover:text-primary transition-colors font-medium">
                     +33 668 251 102
                   </a>
                 </div>
@@ -133,8 +133,8 @@ const ContactSection = () => {
                   <Mail className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-primary">{t.contact.email}</h3>
-                  <a href="mailto:info@eliteparistransfer.com" className="text-gray-600 dark:text-gray-300 hover:text-primary transition-colors">
+                  <h3 className="font-semibold text-sm text-primary">{t.contact.email}</h3>
+                  <a href="mailto:info@eliteparistransfer.com" className="text-lg text-secondary dark:text-gray-300 hover:text-primary transition-colors font-medium">
                     info@eliteparistransfer.com
                   </a>
                 </div>
@@ -145,8 +145,8 @@ const ContactSection = () => {
                   <MapPin className="h-6 w-6 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-primary">151 Avenue des Champs-Elysées</h3>
-                  <p className="text-gray-600 dark:text-gray-300">
+                  <h3 className="font-semibold text-sm text-primary">151 Avenue des Champs-Elysées</h3>
+                  <p className="text-lg text-secondary dark:text-gray-300 font-medium">
                     75008 Paris, France
                   </p>
                 </div>

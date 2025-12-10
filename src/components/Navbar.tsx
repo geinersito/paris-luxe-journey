@@ -47,7 +47,7 @@ const Navbar = () => {
               item.hasDropdown ? (
                 <div key={item.name} className="relative group">
                   <button
-                    className="text-foreground/90 group-hover:text-primary transition-colors duration-200 font-medium flex items-center py-2"
+                    className="text-secondary group-hover:text-primary transition-colors duration-200 font-medium flex items-center py-2"
                     onMouseEnter={() => setServicesDropdownOpen(true)}
                   >
                     {item.name} <ChevronDown className="ml-1 h-4 w-4" />
@@ -73,7 +73,7 @@ const Navbar = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="text-foreground/90 hover:text-primary transition-colors duration-200 font-medium"
+                  className="text-secondary hover:text-primary transition-colors duration-200 font-medium"
                 >
                   {item.name}
                 </a>
@@ -104,7 +104,7 @@ const Navbar = () => {
               item.hasDropdown ? (
                 <div key={item.name}>
                   <button
-                    className="flex items-center justify-between w-full px-3 py-2 text-foreground hover:text-primary transition-colors duration-200 rounded-md hover:bg-accent"
+                    className="flex items-center justify-between w-full px-3 py-2 text-secondary hover:text-primary transition-colors duration-200 rounded-md hover:bg-accent"
                     onClick={toggleServicesDropdown}
                   >
                     {item.name}
@@ -116,7 +116,7 @@ const Navbar = () => {
                         <a
                           key={dropdownItem.name}
                           href={dropdownItem.href}
-                          className="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200 rounded-md hover:bg-accent"
+                          className="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200 rounded-md hover:bg-accent"
                           onClick={toggleMenu}
                         >
                           {dropdownItem.name}
@@ -129,7 +129,7 @@ const Navbar = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-foreground hover:text-primary transition-colors duration-200 rounded-md hover:bg-accent"
+                  className="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200 rounded-md hover:bg-accent"
                   onClick={toggleMenu}
                 >
                   {item.name}

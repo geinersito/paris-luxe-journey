@@ -57,8 +57,8 @@ const AboutSection = () => {
           animate={fadeIn.animate}
           transition={{ ...fadeIn.transition, delay: 0.2 }}
         >
-          <div className="glass-card p-10 rounded-xl backdrop-blur-md bg-black/30 border border-white/10 hover:bg-black/40 transition-colors duration-300">
-            <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-secondary">
+          <div className="glass-card p-10 rounded-xl backdrop-blur-md bg-black/50 border border-white/10 hover:bg-black/60 transition-colors duration-300">
+            <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-primary">
               {t.about.commitment.title}
             </h3>
             <ul className="space-y-5">
@@ -71,8 +71,8 @@ const AboutSection = () => {
             </ul>
           </div>
 
-          <div className="glass-card p-10 rounded-xl backdrop-blur-md bg-black/30 border border-white/10 hover:bg-black/40 transition-colors duration-300">
-            <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-secondary">
+          <div className="glass-card p-10 rounded-xl backdrop-blur-md bg-black/50 border border-white/10 hover:bg-black/60 transition-colors duration-300">
+            <h3 className="text-2xl md:text-3xl font-semibold mb-8 text-primary">
               {t.about.expertise.title}
             </h3>
             <ul className="space-y-5">
