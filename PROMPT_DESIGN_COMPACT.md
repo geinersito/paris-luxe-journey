@@ -32,6 +32,14 @@ Follow these universal rules:
 - **Errors/Warnings**: Muted red (`#ef4444`) or amber (`#f59e0b`)
 - **FORBIDDEN**: Gradients, neon, pure black on white (#000 on #fff), more than 4 colors total
 
+### **CTA Hierarchy (Paris Elite Services)**
+- **Primary CTAs (Dorado #C2A033)**: Booking, reservations, high-value conversions
+  - "See Your Fixed Price", "Book Now", "Confirm Payment"
+- **Secondary CTAs (Navy #1F2D42)**: Support, contact, information requests
+  - "Send Message", "Subscribe", "Learn More"
+- **Tertiary CTAs (Outline)**: Navigation, cancellation, back actions
+  - "Cancel", "Go Back", "Skip"
+
 ### **Typography**
 - **Max 2 font families** (one for UI, one for display if needed)
 - **Max 3 sizes per component**: e.g., `text-sm`, `text-base`, `text-lg`
