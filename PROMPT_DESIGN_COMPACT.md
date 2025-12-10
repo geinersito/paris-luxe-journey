@@ -81,12 +81,16 @@ When I paste code, do this:
 
 ## PARIS ELITE SERVICES SPECIFICS
 
-### **Brand Colors:**
-- Primary action: `emerald-500` (#10b981) - Trust, premium
-- Background: `slate-50` (#f8fafc) - Neutral light
-- Text primary: `neutral-900` (#111827) - High contrast
-- Text secondary: `neutral-600` (#525252) - 60% opacity
-- Error: `red-500` (#ef4444) - Muted red
+### **Brand Colors (Paleta Dorada - Confianza y Profesionalismo):**
+- Primary action: `#C2A033` (Dorado) - Confianza, profesionalismo, servicio premium
+- Primary hover: `#A3862B` (Dorado oscuro)
+- Accent (Navy): `#1F2D42` - Hero cards oscuros, secciones de contraste
+- Background: `#FDFBF7` (Blanco cálido) - Fondo principal acogedor
+- Card: `#FFFFFF` (Blanco puro) - Cards y formularios
+- Text primary: `#2B3340` - Alto contraste
+- Text secondary: `#737A85` - Texto muted
+- Border: `#E5E1D8` (Beige claro) - Bordes sutiles
+- Error: `#D42F2F` - Rojo muted
 
 ### **Typography:**
 - Display: Playfair Display (700, 400-italic) - H1/H2

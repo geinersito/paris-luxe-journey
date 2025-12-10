@@ -7,25 +7,25 @@ const colors = {
   background: "hsl(var(--background))",
   foreground: "hsl(var(--foreground))",
   primary: {
-    DEFAULT: "#10b981", // Emerald-500 - Brand primary action color
+    DEFAULT: "#C2A033", // Dorado - Brand primary action color (confianza y profesionalismo)
     foreground: "#FFFFFF",
-    accent: "#059669", // Emerald-600 for hover states
-    dark: "#047857", // Emerald-700 for dark mode
+    accent: "#A3862B", // Dorado hover (más oscuro)
+    dark: "#8B7024", // Dorado dark mode
   },
   secondary: {
-    DEFAULT: "#0B2545", // Azul marino oscuro (moved from primary)
-    foreground: "#FFFFFF",
-    dark: "#081B34",
+    DEFAULT: "#1F2D42", // Navy (accent para hero cards y secciones oscuras)
+    foreground: "#F8F6F0",
+    dark: "#232F3E",
   },
   pearl: {
-    DEFAULT: "#F5F5F7", // Blanco perla
-    dark: "#E5E5E7",
+    DEFAULT: "#FDFBF7", // Blanco cálido (background principal)
+    dark: "#F5F3EE",
     light: "#FFFFFF",
   },
   metallic: {
-    DEFAULT: "#C0C2C9", // Gris metálico
-    dark: "#A8AAB1",
-    light: "#D8DAE1",
+    DEFAULT: "#E5E1D8", // Beige claro (borders)
+    dark: "#EDEBE5",
+    light: "#F8F6F0",
   },
   destructive: {
     DEFAULT: "hsl(var(--destructive))",
@@ -36,9 +36,9 @@ const colors = {
     foreground: "hsl(var(--muted-foreground))",
   },
   accent: {
-    DEFAULT: "#F5F5F7",
-    foreground: "#0B2545",
-    dark: "#E5E5E7",
+    DEFAULT: "#F5F3EE", // Muted background (beige muy claro)
+    foreground: "#2B3340",
+    dark: "#232F3E",
   },
   popover: {
     DEFAULT: "hsl(var(--popover))",

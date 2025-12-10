@@ -56,7 +56,7 @@ export const PassengerCount = ({ value, onChange }: PassengerCountProps) => {
           type="button"
           onClick={() => handleCountChange('decrement')}
           disabled={parseInt(value) <= 1}
-          className="w-9 h-9 rounded-full bg-emerald-500 hover:bg-emerald-600
+          className="w-9 h-9 rounded-full bg-primary hover:bg-primary/90
                    text-white shadow-sm hover:shadow-md hover:scale-105
                    transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
                    flex items-center justify-center group"
@@ -64,7 +64,7 @@ export const PassengerCount = ({ value, onChange }: PassengerCountProps) => {
           <Minus className="h-4 w-4 group-hover:scale-90 transition-transform" />
         </button>
 
-        <span className="text-xl font-display font-semibold text-neutral-900 min-w-[3rem] text-center">
+        <span className="text-xl font-display font-semibold text-foreground min-w-[3rem] text-center">
           {value || '0'}
         </span>
 
@@ -72,7 +72,7 @@ export const PassengerCount = ({ value, onChange }: PassengerCountProps) => {
           type="button"
           onClick={() => handleCountChange('increment')}
           disabled={parseInt(value) >= MAX_PASSENGERS}
-          className="w-9 h-9 rounded-full bg-emerald-500 hover:bg-emerald-600
+          className="w-9 h-9 rounded-full bg-primary hover:bg-primary/90
                    text-white shadow-sm hover:shadow-md hover:scale-105
                    transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
                    flex items-center justify-center group"
@@ -83,17 +83,17 @@ export const PassengerCount = ({ value, onChange }: PassengerCountProps) => {
 
       {/* Mensaje para grupos de 8+ pasajeros */}
       {parseInt(value) >= MAX_PASSENGERS && (
-        <div className="mt-6 rounded-lg border border-dashed border-slate-200 bg-slate-50 dark:bg-slate-800 dark:border-slate-600 px-4 py-3 space-y-2">
-          <p className="text-sm font-medium text-neutral-900 dark:text-slate-100">
+        <div className="mt-6 rounded-lg border border-dashed border-border bg-accent px-4 py-3 space-y-2">
+          <p className="text-sm font-medium text-foreground">
             {t.booking.groupTransfer?.title || 'Need a transfer for 8+ passengers?'}
           </p>
-          <p className="text-xs text-neutral-600 dark:text-slate-300">
+          <p className="text-xs text-muted-foreground">
             {t.booking.groupTransfer?.description || 'We organise multi-vehicle or minibus solutions on request.'}
           </p>
           <button
             type="button"
             onClick={handleOpenGroupQuote}
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 hover:text-emerald-700 underline transition-colors"
+            className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/80 underline transition-colors"
           >
             {t.booking.groupTransfer?.cta || 'Request a group quote'}
           </button>
