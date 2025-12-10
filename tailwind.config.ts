@@ -7,15 +7,15 @@ const colors = {
   background: "hsl(var(--background))",
   foreground: "hsl(var(--foreground))",
   primary: {
-    DEFAULT: "#0B2545", // Azul marino oscuro elegante
+    DEFAULT: "#10b981", // Emerald-500 - Brand primary action color
     foreground: "#FFFFFF",
-    accent: "#C8A951", // Dorado para acentos
-    dark: "#081B34",
+    accent: "#059669", // Emerald-600 for hover states
+    dark: "#047857", // Emerald-700 for dark mode
   },
   secondary: {
-    DEFAULT: "#C8A951", // Dorado
-    foreground: "#0B2545",
-    dark: "#B39020",
+    DEFAULT: "#0B2545", // Azul marino oscuro (moved from primary)
+    foreground: "#FFFFFF",
+    dark: "#081B34",
   },
   pearl: {
     DEFAULT: "#F5F5F7", // Blanco perla

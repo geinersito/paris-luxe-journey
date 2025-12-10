@@ -22,19 +22,19 @@
   --card-foreground: 222 47% 11%;
   --popover: 0 0% 100%;
   --popover-foreground: 222 47% 11%;
-  --primary: 213 71% 16%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 43 45% 54%;
-  --secondary-foreground: 222 47% 11%;
+  --primary: 160 84% 39%; /* Emerald-500 (#10b981) in HSL */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 213 71% 16%; /* Azul marino oscuro (moved from primary) */
+  --secondary-foreground: 210 40% 98%;
   --muted: 210 40% 96%;
   --muted-foreground: 215 16% 47%;
-  --accent: 43 45% 54%;
+  --accent: 220 14% 96%; /* Neutral accent instead of gold */
   --accent-foreground: 222 47% 11%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 210 40% 98%;
   --border: 214 32% 91%;
   --input: 214 32% 91%;
-  --ring: 222 84% 5%;
+  --ring: 160 84% 39%; /* Match primary */
   --radius: 0.5rem;
 }
 
@@ -45,9 +45,9 @@
   --card-foreground: 210 40% 98%;
   --popover: 222 47% 11%;
   --popover-foreground: 210 40% 98%;
-  --primary: 213 71% 16%;
-  --primary-foreground: 210 40% 98%;
-  --secondary: 43 45% 54%;
+  --primary: 160 84% 39%; /* Emerald-500 in dark mode */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 213 71% 16%; /* Azul marino oscuro */
   --secondary-foreground: 210 40% 98%;
   --muted: 217 33% 18%;
   --muted-foreground: 215 20% 65%;
@@ -57,7 +57,7 @@
   --destructive-foreground: 210 40% 98%;
   --border: 217 33% 18%;
   --input: 217 33% 18%;
-  --ring: 213 71% 84%;
+  --ring: 160 84% 39%; /* Match primary */
 }
 
 @keyframes fadeInUp {
@@ -98,10 +98,7 @@
   }
   
   .silk-button {
-    @apply relative overflow-hidden bg-secondary text-secondary-foreground px-6 py-3 rounded-md transition-all duration-300;
-    background: linear-gradient(45deg, #C8A951 0%, #E5D5A3 50%, #C8A951 100%);
-    background-size: 200% 200%;
-    animation: silk-gradient 3s ease infinite;
+    @apply relative overflow-hidden bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-md transition-all duration-300 shadow-sm hover:shadow-md;
   }
 
   .glass-card {
