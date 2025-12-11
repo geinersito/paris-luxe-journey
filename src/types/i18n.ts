@@ -1,4 +1,4 @@
-export type Language = 'en' | 'fr' | 'es' | 'pt';
+export type Language = "en" | "fr" | "es" | "pt";
 
 export interface Translation {
   nav: {
@@ -73,11 +73,37 @@ export interface Translation {
     successDescription: string;
     error: string;
   };
+  trustBar: {
+    securePayment: string;
+    securePaymentDesc: string;
+    licensed: string;
+    licensedDesc: string;
+    available: string;
+    availableDesc: string;
+    insurance: string;
+    insuranceDesc: string;
+  };
+  routes: {
+    title: string;
+    subtitle: string;
+    cdg: string;
+    cdgDesc: string;
+    orly: string;
+    orlyDesc: string;
+    disney: string;
+    disneyDesc: string;
+    versailles: string;
+    versaillesDesc: string;
+    perTrip: string;
+    bookNow: string;
+    allInclusive: string;
+  };
   fleet: {
     title: string;
     subtitle: string;
     exterior: string;
     interior: string;
+    bookNow: string;
     features: string;
     passengers: string;
     luggage: string;
@@ -98,10 +124,13 @@ export interface Translation {
       payment: string;
       vehicles: string;
     };
-    questions: Record<string, {
-      question: string;
-      answer: string;
-    }>;
+    questions: Record<
+      string,
+      {
+        question: string;
+        answer: string;
+      }
+    >;
   };
   footer: {
     description: string;
@@ -214,6 +243,12 @@ export interface Translation {
     smallLuggage: string;
     maxWeight: string;
     serviceLevel: string;
+    luggagePolicy: {
+      title: string;
+      included: string;
+      extraLarge: string;
+      extraSmall: string;
+    };
     services: {
       airport: string;
       city: string;

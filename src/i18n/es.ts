@@ -7,45 +7,73 @@ export const es: Translation = {
     about: "Nosotros",
     contact: "Contacto",
     fleet: "Flota",
-    excursions: "Excursiones"
+    excursions: "Excursiones",
   },
   hero: {
     title: "Paris Elite Services",
-    subtitle: "Transfers aeropuerto París ⇄ CDG / Orly desde 70€ (1–3 pasajeros, todo incluido)"
+    subtitle:
+      "Transfers aeropuerto París ⇄ CDG / Orly desde 70€ (1–3 pasajeros, todo incluido)",
+  },
+  trustBar: {
+    securePayment: "Pago Seguro",
+    securePaymentDesc: "Encriptación SSL",
+    licensed: "Licenciado y Asegurado",
+    licensedDesc: "Licencia VTC oficial",
+    available: "Disponible 24/7",
+    availableDesc: "Siempre a su servicio",
+    insurance: "Seguro Completo",
+    insuranceDesc: "Cobertura total",
+  },
+  routes: {
+    title: "Rutas Populares",
+    subtitle: "Nuestros destinos más solicitados con precios fijos",
+    cdg: "Aeropuerto CDG",
+    cdgDesc: "París ⇄ Charles de Gaulle",
+    orly: "Aeropuerto Orly",
+    orlyDesc: "París ⇄ Orly",
+    disney: "Disneyland París",
+    disneyDesc: "Día mágico",
+    versailles: "Versalles",
+    versaillesDesc: "Tour del palacio real",
+    perTrip: "1-3 pasajeros",
+    bookNow: "Reservar",
+    allInclusive:
+      "✓ Todos los precios incluyen peajes, parking y tiempo de espera",
   },
   excursions: {
     title: "Descubre los Tesoros de Francia",
-    subtitle: "Explora los lugares más emblemáticos y secretos mejor guardados de Francia con nuestros tours personalizados",
+    subtitle:
+      "Explora los lugares más emblemáticos y secretos mejor guardados de Francia con nuestros tours personalizados",
     cta: "Explorar Destinos",
     search: {
       placeholder: "Buscar destinos...",
       duration: "Todas las duraciones",
-      type: "Todos los tipos"
+      type: "Todos los tipos",
     },
     card: {
       moreInfo: "Más información",
       from: "Desde",
-      duration: "Duración"
+      duration: "Duración",
     },
     filters: {
       duration: {
         halfDay: "Medio día",
         fullDay: "Día completo",
-        multiDay: "Varios días"
+        multiDay: "Varios días",
       },
       type: {
         private: "Tours privados",
         group: "Tours en grupo",
-        luxury: "Experiencias de lujo"
-      }
+        luxury: "Experiencias de lujo",
+      },
     },
     navigation: {
       description: "Descripción General",
       tours: "Nuestros Tours",
       map: "Cómo Llegar",
       events: "Eventos",
-      faq: "Preguntas Frecuentes"
-    }
+      faq: "Preguntas Frecuentes",
+    },
   },
   booking: {
     title: "Reserve su Viaje",
@@ -67,6 +95,14 @@ export const es: Translation = {
     largeLuggage: "Maleta Grande",
     smallLuggage: "Maleta Pequeña",
     maxWeight: "peso máximo",
+    luggagePolicy: {
+      title: "Política de Equipaje",
+      included:
+        "Incluido: 1 maleta grande (23kg) + 1 bolso de cabina por pasajero",
+      extraLarge:
+        "Maletas grandes extra: 15€ cada una (según capacidad del vehículo)",
+      extraSmall: "Bolsos pequeños gratis, hasta la capacidad del vehículo",
+    },
     services: {
       airport: "Traslado Aeropuerto",
       city: "Tour por la Ciudad",
@@ -85,19 +121,20 @@ export const es: Translation = {
       capacity: "pasajeros",
       luggage: "Equipaje",
       berline: "Clase E",
-      van: "Clase V"
+      van: "Clase V",
     },
     groupTransfer: {
       title: "¿Necesita un traslado para 8+ pasajeros?",
-      description: "Organizamos soluciones multi-vehículo o minibús bajo solicitud.",
-      cta: "Solicitar cotización para grupo"
+      description:
+        "Organizamos soluciones multi-vehículo o minibús bajo solicitud.",
+      cta: "Solicitar cotización para grupo",
     },
     price: {
       total: "Precio Total",
       estimated: "Precio Estimado",
       distance: "Distancia estimada",
       basePrice: "Precio base desde",
-      roundTripIncluded: "*Precio incluye ida y vuelta"
+      roundTripIncluded: "*Precio incluye ida y vuelta",
     },
     passengerDetails: "Detalles del Pasajero",
     fullName: "Nombre Completo",
@@ -109,14 +146,16 @@ export const es: Translation = {
     flightNumber: "Número de Vuelo (opcional)",
     flightNumberPlaceholder: "ej. AF1234",
     specialInstructions: "Instrucciones Especiales",
-    specialInstructionsPlaceholder: "Información adicional para el conductor...",
+    specialInstructionsPlaceholder:
+      "Información adicional para el conductor...",
     payment: {
       title: "Detalles del Pago",
-      cardDetails: "Detalles de la Tarjeta"
+      cardDetails: "Detalles de la Tarjeta",
     },
     success: {
       title: "Pago Exitoso",
-      description: "Tu reserva ha sido confirmada. ¡Gracias por elegir nuestro servicio!"
+      description:
+        "Tu reserva ha sido confirmada. ¡Gracias por elegir nuestro servicio!",
     },
     errors: {
       invalidEmail: "Email Inválido",
@@ -149,7 +188,7 @@ export const es: Translation = {
       vehicle: "Detalles del Vehículo",
       luggage: "Equipaje",
       contact: "Información de Contacto",
-      total: "Importe Total"
+      total: "Importe Total",
     },
     form: {
       from: "Desde",
@@ -160,22 +199,23 @@ export const es: Translation = {
       smallLuggage: "Equipaje Pequeño",
       name: "Nombre",
       email: "Correo Electrónico",
-      phone: "Teléfono"
-    }
+      phone: "Teléfono",
+    },
   },
   common: {
     back: "Volver",
     continue: "Continuar",
     processing: "Procesando...",
     error: "Error",
-    from: "Desde"
+    from: "Desde",
   },
   services: {
     title: "Nuestros Servicios Premium",
     subtitle: "Experimente el transporte de lujo en su máxima expresión",
     airport: {
       title: "Traslados Aeropuerto",
-      description: "Transporte sin contratiempos desde y hacia los aeroportos CDG, Orly y Beauvais.",
+      description:
+        "Transporte sin contratiempos desde y hacia los aeroportos CDG, Orly y Beauvais.",
     },
     chauffeur: {
       title: "Chófer Privado",
@@ -183,31 +223,34 @@ export const es: Translation = {
     },
     cityTours: {
       title: "Tours por la Ciudad",
-      description: "Descubra los lugares más emblemáticos de París con nuestros guías expertos.",
+      description:
+        "Descubra los lugares más emblemáticos de París con nuestros guías expertos.",
     },
     dayTrips: {
       title: "Excursiones",
-      description: "Explore más allá de París con excursiones personalizadas a destinos franceses.",
+      description:
+        "Explore más allá de París con excursiones personalizadas a destinos franceses.",
     },
     dropdown: {
       transfers: "Traslados Aeropuerto",
       chauffeur: "Servicio por Hora",
-      excursions: "Excursiones"
-    }
+      excursions: "Excursiones",
+    },
   },
   about: {
     title: "Sobre Paris Elite Services",
     subtitle: "Excelencia en Transporte Privado en París",
     years: "40 años de experiencia",
-    description: "Durante 40 años, hemos encarnado la excelencia en el transporte privado en París. Nuestra experiencia se ha forjado atendiendo a una exigente clientela internacional, desde traslados al aeropuerto hasta excursiones culturales.",
+    description:
+      "Durante 40 años, hemos encarnado la excelencia en el transporte privado en París. Nuestra experiencia se ha forjado atendiendo a una exigente clientela internacional, desde traslados al aeropuerto hasta excursiones culturales.",
     commitment: {
       title: "Nuestro Compromiso",
       items: [
         "Servicio personalizado adaptado a cada cliente",
         "Chóferes multilingües seleccionados por su profesionalismo",
         "Vehículos de alta gama renovados regularmente",
-        "Flexibilidad y capacidad de respuesta 24/7"
-      ]
+        "Flexibilidad y capacidad de respuesta 24/7",
+      ],
     },
     expertise: {
       title: "Nuestra Experiencia",
@@ -215,17 +258,20 @@ export const es: Translation = {
         "Recepción VIP en aeropuertos",
         "Organización de excursiones personalizadas",
         "Apoyo en eventos",
-        "Servicio de conserjería de transporte"
-      ]
+        "Servicio de conserjería de transporte",
+      ],
     },
     conclusion: {
-      satisfaction: "La satisfacción de nuestros clientes internacionales testimonia nuestro compromiso constante con un servicio excepcional. Cada viaje es una oportunidad para demostrar nuestro profesionalismo y atención al detalle.",
-      partnerships: "Nuestras asociaciones de larga duración con agencias de viajes internacionales y hoteles de lujo parisinos reflejan la confianza ganada a lo largo de los años."
-    }
+      satisfaction:
+        "La satisfacción de nuestros clientes internacionales testimonia nuestro compromiso constante con un servicio excepcional. Cada viaje es una oportunidad para demostrar nuestro profesionalismo y atención al detalle.",
+      partnerships:
+        "Nuestras asociaciones de larga duración con agencias de viajes internacionales y hoteles de lujo parisinos reflejan la confianza ganada a lo largo de los años.",
+    },
   },
   contact: {
     title: "Contáctenos",
-    description: "Póngase en contacto con nuestro equipo para cualquier consulta o asistencia",
+    description:
+      "Póngase en contacto con nuestro equipo para cualquier consulta o asistencia",
     subtitle: "Póngase en contacto con nosotros",
     phone: "Teléfono",
     email: "Correo Electrónico",
@@ -239,7 +285,7 @@ export const es: Translation = {
     sendMessage: "Enviar Mensaje",
     success: "¡Mensaje enviado con éxito!",
     successDescription: "¡Nos pondremos en contacto pronto!",
-    error: "Error al enviar el mensaje. Por favor, inténtelo de nuevo."
+    error: "Error al enviar el mensaje. Por favor, inténtelo de nuevo.",
   },
   premium: {
     title: "Servicios Premium",
@@ -249,8 +295,8 @@ export const es: Translation = {
         "Recibimiento VIP personalizado",
         "Chófer dedicado multilingüe",
         "Servicio de conserjería",
-        "Flexibilidad total de itinerario"
-      ]
+        "Flexibilidad total de itinerario",
+      ],
     },
     guarantees: {
       title: "Garantías Premium",
@@ -258,8 +304,8 @@ export const es: Translation = {
         "Puntualidad garantizada",
         "Vehículos de alta gama",
         "Asistencia 24/7",
-        "Meet & Greet aeropuerto"
-      ]
+        "Meet & Greet aeropuerto",
+      ],
     },
     vip: {
       title: "Opciones VIP",
@@ -267,26 +313,28 @@ export const es: Translation = {
         "Champagne a bordo",
         "Wifi y cargadores",
         "Elección de vehículo",
-        "Guía privado disponible"
-      ]
-    }
+        "Guía privado disponible",
+      ],
+    },
   },
   fleet: {
     title: "Vehículos Disponibles",
-    subtitle: "Flota premium de Mercedes-Benz con menos de 3 años de antigüedad",
+    subtitle:
+      "Flota premium de Mercedes-Benz con menos de 3 años de antigüedad",
     exterior: "Exterior",
     interior: "Interior",
     features: "Características incluidas",
     passengers: "pasajeros",
     luggage: "Equipaje",
+    bookNow: "Reservar Ahora",
     noVehicles: "No hay vehículos disponibles en este momento",
     vehicleFeatures: {
       wifi: "Wifi gratuito",
       water: "Agua embotellada",
       airConditioning: "Climatización individual",
       leatherSeats: "Asientos de cuero",
-      cleaning: "Limpieza garantizada"
-    }
+      cleaning: "Limpieza garantizada",
+    },
   },
   versailles: {
     title: "Palacio de Versalles",
@@ -296,26 +344,27 @@ export const es: Translation = {
     highlights: [
       "Galería de los Espejos",
       "Jardines Reales",
-      "Apartamentos Reales"
+      "Apartamentos Reales",
     ],
     whyVisit: [
       "Patrimonio Mundial de la UNESCO",
       "El palacio más grande de Europa",
-      "Historia de la monarquía francesa"
+      "Historia de la monarquía francesa",
     ],
     navigation: {
       description: "Descripción General",
       tours: "Nuestros Tours",
       map: "Cómo Llegar",
       events: "Eventos",
-      faq: "Preguntas Frecuentes"
-    }
+      faq: "Preguntas Frecuentes",
+    },
   },
   toast: {
-    languageChanged: "Idioma cambiado correctamente"
+    languageChanged: "Idioma cambiado correctamente",
   },
   footer: {
-    description: "Servicio de transporte de lujo y tours exclusivos en París y sus alrededores.",
+    description:
+      "Servicio de transporte de lujo y tours exclusivos en París y sus alrededores.",
     links: {
       title: "Enlaces Rápidos",
       services: "Servicios",
@@ -323,16 +372,16 @@ export const es: Translation = {
       about: "Sobre Nosotros",
       contact: "Contacto",
       privacy: "Política de Privacidad",
-      terms: "Términos de Servicio"
+      terms: "Términos de Servicio",
     },
     schedule: {
       title: "Horario de Atención",
-      description: "Servicio disponible las 24 horas, los 7 días de la semana"
+      description: "Servicio disponible las 24 horas, los 7 días de la semana",
     },
     payment: {
-      title: "Métodos de pago aceptados"
+      title: "Métodos de pago aceptados",
     },
-    copyright: " 2025 Paris Elite Services. Todos los derechos reservados."
+    copyright: " 2025 Paris Elite Services. Todos los derechos reservados.",
   },
   faq: {
     title: "Preguntas Frecuentes",
@@ -340,61 +389,74 @@ export const es: Translation = {
       bookings: "Reservas",
       services: "Servicios",
       payment: "Pago",
-      vehicles: "Vehículos"
+      vehicles: "Vehículos",
     },
     questions: {
       howToBook: {
         question: "¿Cómo funciona el servicio de reserva?",
-        answer: "Nuestro sistema de reservas es simple y directo. Seleccione su tipo de vehículo, fecha y hora, y complete los detalles de recogida y destino. Recibirá una confirmación inmediata por correo electrónico."
+        answer:
+          "Nuestro sistema de reservas es simple y directo. Seleccione su tipo de vehículo, fecha y hora, y complete los detalles de recogida y destino. Recibirá una confirmación inmediata por correo electrónico.",
       },
       cancellation: {
         question: "¿Cuál es la política de cancelación?",
-        answer: "Puede cancelar su reserva hasta 24 horas antes del servicio sin cargo. Las cancelaciones posteriores pueden estar sujetas a un cargo del 50% del servicio."
+        answer:
+          "Puede cancelar su reserva hasta 24 horas antes del servicio sin cargo. Las cancelaciones posteriores pueden estar sujetas a un cargo del 50% del servicio.",
       },
       advanceBooking: {
         question: "¿Con cuánta antelación debo reservar?",
-        answer: "Recomendamos hacer las reservas con al menos 48 horas de antelación para garantizar la disponibilidad. Sin embargo, también podemos acomodar reservas de última hora sujetas a disponibilidad."
+        answer:
+          "Recomendamos hacer las reservas con al menos 48 horas de antelación para garantizar la disponibilidad. Sin embargo, también podemos acomodar reservas de última hora sujetas a disponibilidad.",
       },
       modifyBooking: {
         question: "¿Puedo modificar mi reserva?",
-        answer: "Sí, puede modificar su reserva hasta 24 horas antes del servicio sin cargo adicional. Los cambios están sujetos a disponibilidad."
+        answer:
+          "Sí, puede modificar su reserva hasta 24 horas antes del servicio sin cargo adicional. Los cambios están sujetos a disponibilidad.",
       },
       flightDelay: {
         question: "¿Qué sucede si mi vuelo se retrasa?",
-        answer: "Monitoreamos todos los vuelos. No se preocupe, ajustaremos la hora de recogida sin cargo adicional. Nuestro equipo estará pendiente de cualquier cambio en su hora de llegada."
+        answer:
+          "Monitoreamos todos los vuelos. No se preocupe, ajustaremos la hora de recogida sin cargo adicional. Nuestro equipo estará pendiente de cualquier cambio en su hora de llegada.",
       },
       airportTransfer: {
         question: "¿Cuál es el proceso para los traslados al aeropuerto?",
-        answer: "Para traslados al aeropuerto, recomendamos programar la recogida 3 horas antes de los vuelos internacionales y 2 horas para vuelos nacionales. Nuestro equipo monitorea el tráfico en tiempo real para garantizar su llegada a tiempo."
+        answer:
+          "Para traslados al aeropuerto, recomendamos programar la recogida 3 horas antes de los vuelos internacionales y 2 horas para vuelos nacionales. Nuestro equipo monitorea el tráfico en tiempo real para garantizar su llegada a tiempo.",
       },
       tourGuide: {
         question: "¿Ofrecen servicios de guía turístico?",
-        answer: "Sí, contamos con guías profesionales multilingües para tours personalizados de París y sus alrededores. Pueden adaptar el tour según sus intereses específicos."
+        answer:
+          "Sí, contamos con guías profesionales multilingües para tours personalizados de París y sus alrededores. Pueden adaptar el tour según sus intereses específicos.",
       },
       privateDriver: {
         question: "¿Qué incluye el servicio de chófer privado?",
-        answer: "El servicio incluye un chófer profesional multilingüe, vehículo de lujo, agua embotellada, wifi a bordo y asistencia 24/7. También podemos agregar servicios adicionales según sus necesidades."
+        answer:
+          "El servicio incluye un chófer profesional multilingüe, vehículo de lujo, agua embotellada, wifi a bordo y asistencia 24/7. También podemos agregar servicios adicionales según sus necesidades.",
       },
       outsideParis: {
         question: "¿Realizan excursiones fuera de París?",
-        answer: "Sí, ofrecemos excursiones a destinos populares como los Castillos del Loira, Versalles, Giverny, Champagne y otros puntos de interés. Todos los tours son personalizables según sus preferencias."
+        answer:
+          "Sí, ofrecemos excursiones a destinos populares como los Castillos del Loira, Versalles, Giverny, Champagne y otros puntos de interés. Todos los tours son personalizables según sus preferencias.",
       },
       pricesIncluded: {
         question: "¿Los precios incluyen todos los cargos?",
-        answer: "Sí, nuestros precios incluyen IVA, seguro y todos los cargos asociados. No hay costos ocultos. El precio que ve es el precio final que pagará."
+        answer:
+          "Sí, nuestros precios incluyen IVA, seguro y todos los cargos asociados. No hay costos ocultos. El precio que ve es el precio final que pagará.",
       },
       paymentMethods: {
         question: "¿Qué métodos de pago aceptan?",
-        answer: "Aceptamos todas las tarjetas de crédito y débito principales (Visa, MasterCard, American Express), transferencias bancarias y pagos en efectivo. Para reservas corporativas, ofrecemos facturación mensual."
+        answer:
+          "Aceptamos todas las tarjetas de crédito y débito principales (Visa, MasterCard, American Express), transferencias bancarias y pagos en efectivo. Para reservas corporativas, ofrecemos facturación mensual.",
       },
       deposit: {
         question: "¿Se requiere un depósito para reservar?",
-        answer: "Para la mayoría de los servicios, se requiere un depósito del 30% para confirmar la reserva. El saldo restante se puede pagar antes o después del servicio, según su preferencia."
+        answer:
+          "Para la mayoría de los servicios, se requiere un depósito del 30% para confirmar la reserva. El saldo restante se puede pagar antes o después del servicio, según su preferencia.",
       },
       vehicleTypes: {
         question: "¿Qué tipos de vehículos ofrecen?",
-        answer: "Nuestra flota premium incluye sedanes de lujo (Mercedes Clase E, BMW Serie 7), vans ejecutivas (Mercedes Clase V) y SUVs de alta gama. Todos nuestros vehículos tienen menos de 2 años de antigüedad."
-      }
-    }
-  }
+        answer:
+          "Nuestra flota premium incluye sedanes de lujo (Mercedes Clase E, BMW Serie 7), vans ejecutivas (Mercedes Clase V) y SUVs de alta gama. Todos nuestros vehículos tienen menos de 2 años de antigüedad.",
+      },
+    },
+  },
 };

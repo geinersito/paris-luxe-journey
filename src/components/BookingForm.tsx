@@ -26,13 +26,18 @@ interface Location {
   code: string;
 }
 
-const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps) => {
+const BookingForm = ({
+  tourId,
+  tourName,
+  basePrice,
+  onSubmit,
+}: BookingFormProps) => {
   const { t } = useLanguage();
   const { toast } = useToast();
   const navigate = useNavigate();
   const [locations, setLocations] = useState<Location[]>([]);
   const [isLoadingLocations, setIsLoadingLocations] = useState(true);
-  
+
   const {
     formData,
     price,
@@ -41,18 +46,18 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
     isSubmitting,
     handleChange,
     handleSubmit: submitBooking, // This is imported but not used
-    setFormData
+    setFormData,
   } = useBookingForm();
-  
+
   useEffect(() => {
     const fetchLocations = async () => {
       try {
         setIsLoadingLocations(true);
         const { data, error } = await supabase
-          .from('locations')
-          .select('*')
-          .order('name');
-        
+          .from("locations")
+          .select("*")
+          .order("name");
+
         if (error) {
           toast({
             title: t.common.error,
@@ -105,7 +110,10 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
       return false;
     }
 
-    if (formData.tripType === 'round_trip' && (!formData.returnDate || !formData.returnTime)) {
+    if (
+      formData.tripType === "round_trip" &&
+      (!formData.returnDate || !formData.returnTime)
+    ) {
       toast({
         title: t.common.error,
         description: t.booking.errors.selectReturnDateTime,
@@ -128,7 +136,7 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
 
   // Obtener updateBookingData del contexto
   const { updateBookingData } = useBooking();
-  
+
   const handleFormSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -141,20 +149,24 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
       const updatedFormData = {
         ...formData,
         tourId,
-        tourName
+        tourName,
       };
-      
+
       // Actualizar el estado local primero
       setFormData(updatedFormData);
-      
+
       // Calcular el precio final con recargos
-      const isRoundTrip = updatedFormData.tripType === 'round_trip';
+      const isRoundTrip = updatedFormData.tripType === "round_trip";
       const basePrice = isRoundTrip ? price * 2 : price;
       const totalEstimatedPrice = basePrice + luggageSurcharge;
-      
+
       // Buscar los UUIDs de las ubicaciones seleccionadas
-      const pickupLocation = locations.find(loc => loc.code === updatedFormData.pickup);
-      const dropoffLocation = locations.find(loc => loc.code === updatedFormData.dropoff);
+      const pickupLocation = locations.find(
+        (loc) => loc.code === updatedFormData.pickup,
+      );
+      const dropoffLocation = locations.find(
+        (loc) => loc.code === updatedFormData.dropoff,
+      );
 
       // Verificar que se encontraron las ubicaciones
       if (!pickupLocation || !pickupLocation.id) {
@@ -174,7 +186,7 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
         });
         return;
       }
-      
+
       // Preparar datos para navegación y contexto con UUIDs de ubicaciones
       const bookingDataWithSurcharge = {
         ...updatedFormData,
@@ -185,12 +197,12 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
         dropoffLocationId: dropoffLocation.id,
         // También incluir los nombres completos para mostrar
         pickupLocationName: pickupLocation.name,
-        dropoffLocationName: dropoffLocation.name
+        dropoffLocationName: dropoffLocation.name,
       };
 
       const navigationState = {
         bookingData: bookingDataWithSurcharge,
-        estimatedPrice: totalEstimatedPrice
+        estimatedPrice: totalEstimatedPrice,
       };
 
       // Actualizar el contexto de reserva ANTES de navegar
@@ -206,7 +218,7 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
       setTimeout(() => {
         try {
           navigate("/booking/details", {
-            state: navigationState
+            state: navigationState,
           });
         } catch (navError) {
           // Error silencioso
@@ -214,7 +226,7 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
       }, 200); // Aumentado a 200ms para dar más tiempo
 
       // Llamar al onSubmit prop si existe (para compatibilidad)
-      if (typeof onSubmit === 'function') {
+      if (typeof onSubmit === "function") {
         onSubmit(updatedFormData);
       }
     } catch (error) {
@@ -259,7 +271,7 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
             returnDate={formData.returnDate}
             returnTime={formData.returnTime}
             onChange={handleChange}
-            isRoundTrip={formData.tripType === 'round_trip'}
+            isRoundTrip={formData.tripType === "round_trip"}
           />
         </div>
 
@@ -269,30 +281,39 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
             <Label className="text-sm font-medium">{t.booking.tripType}</Label>
             <RadioGroup
               value={formData.tripType}
-              onValueChange={(value) => handleChange(value, 'tripType')}
+              onValueChange={(value) => handleChange(value, "tripType")}
               className="flex gap-4"
             >
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="one_way" id="one_way" />
-                <Label htmlFor="one_way" className="text-sm cursor-pointer">{t.booking.oneWay}</Label>
+                <Label htmlFor="one_way" className="text-sm cursor-pointer">
+                  {t.booking.oneWay}
+                </Label>
               </div>
               <div className="flex items-center space-x-2">
                 <RadioGroupItem value="round_trip" id="round_trip" />
-                <Label htmlFor="round_trip" className="text-sm cursor-pointer">{t.booking.roundTrip}</Label>
+                <Label htmlFor="round_trip" className="text-sm cursor-pointer">
+                  {t.booking.roundTrip}
+                </Label>
               </div>
             </RadioGroup>
           </div>
 
           <PassengerCount
             value={formData.passengers}
-            onChange={(value) => handleChange(value, 'passengers')}
+            onChange={(value) => handleChange(value, "passengers")}
           />
 
           <LuggageSelector
             largeLuggageCount={Number(formData.largeLuggageCount) || 0}
             smallLuggageCount={Number(formData.smallLuggageCount) || 0}
-            onLargeLuggageChange={(count) => handleChange(count, 'largeLuggageCount')}
-            onSmallLuggageChange={(count) => handleChange(count, 'smallLuggageCount')}
+            passengers={Number(formData.passengers) || 1}
+            onLargeLuggageChange={(count) =>
+              handleChange(count, "largeLuggageCount")
+            }
+            onSmallLuggageChange={(count) =>
+              handleChange(count, "smallLuggageCount")
+            }
           />
         </div>
       </div>
@@ -300,7 +321,9 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
       {price > 0 && (
         <div className="bg-primary/10 p-3 rounded-md mt-6">
           <div className="flex items-center justify-between">
-            <span className="font-semibold text-sm">{t.booking.price.estimated}:</span>
+            <span className="font-semibold text-sm">
+              {t.booking.price.estimated}:
+            </span>
             <span className="text-lg font-display text-primary">
               €{totalPrice.toFixed(2)}
             </span>
@@ -309,11 +332,13 @@ const BookingForm = ({ tourId, tourName, basePrice, onSubmit }: BookingFormProps
           {luggageSurcharge > 0 && (
             <div className="text-xs text-muted-foreground mt-1">
               <span>Base: €{price.toFixed(2)}</span>
-              <span className="ml-2">+ Equipaje extra: €{luggageSurcharge.toFixed(2)}</span>
+              <span className="ml-2">
+                + Equipaje extra: €{luggageSurcharge.toFixed(2)}
+              </span>
             </div>
           )}
 
-          {formData.tripType === 'round_trip' && (
+          {formData.tripType === "round_trip" && (
             <p className="text-xs text-muted-foreground mt-1">
               {t.booking.price.roundTripIncluded}
             </p>
