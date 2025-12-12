@@ -37,14 +37,14 @@ export const useLocationDetails = () => {
       let pickupString = '';
       let dropoffString = '';
 
-      if (pickupCode && typeof pickupCode === 'object' && 'id' in pickupCode) {
-        pickupString = pickupCode.id || '';
+      if (pickupCode && typeof pickupCode === 'object' && !Array.isArray(pickupCode) && 'id' in pickupCode) {
+        pickupString = (pickupCode as { id: string }).id || '';
       } else if (typeof pickupCode === 'string') {
         pickupString = pickupCode;
       }
 
-      if (dropoffCode && typeof dropoffCode === 'object' && 'id' in dropoffCode) {
-        dropoffString = dropoffCode.id || '';
+      if (dropoffCode && typeof dropoffCode === 'object' && !Array.isArray(dropoffCode) && 'id' in dropoffCode) {
+        dropoffString = (dropoffCode as { id: string }).id || '';
       } else if (typeof dropoffCode === 'string') {
         dropoffString = dropoffCode;
       }

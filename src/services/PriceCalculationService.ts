@@ -50,11 +50,20 @@ export class PriceCalculationService {
       if (error) throw error;
 
       data?.forEach(vehicle => {
+        // Ensure features is an object, not an array
+        const vehicleFeatures = Array.isArray(vehicle.features) ? {} : (vehicle.features || {});
+
         this.serviceLevels.set(vehicle.id, {
           id: vehicle.id,
           name: vehicle.name,
           description: { en: vehicle.description || '' },
-          features: vehicle.features || {},
+          features: {
+            wifi: (vehicleFeatures as any)?.wifi || false,
+            water: (vehicleFeatures as any)?.water || false,
+            meet_greet: (vehicleFeatures as any)?.meet_greet || false,
+            flight_tracking: (vehicleFeatures as any)?.flight_tracking || false,
+            ...vehicleFeatures
+          },
           multiplier: 1.0 // Default multiplier
         });
       });
