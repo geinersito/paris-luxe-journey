@@ -52,23 +52,32 @@ export default function FleetSection() {
 
   if (isLoading) {
     return (
-      <section className="py-20 bg-pearl dark:bg-gray-800">
+      <section className="section-padding bg-gradient-to-b from-champagne via-cream to-white">
         <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <Skeleton className="h-10 w-64 mx-auto mb-4" />
-            <Skeleton className="h-6 w-96 mx-auto" />
+            <Skeleton className="h-8 w-48 mx-auto mb-4" />
+            <Skeleton className="h-12 w-96 mx-auto mb-6" />
+            <Skeleton className="h-6 w-[500px] mx-auto" />
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
             {Array.from({ length: 3 }).map((_, i) => (
               <div
                 key={i}
-                className="rounded-lg overflow-hidden bg-white dark:bg-gray-700"
+                className="glass-card-premium rounded-2xl overflow-hidden"
               >
-                <Skeleton className="aspect-video w-full" />
-                <div className="p-6">
-                  <Skeleton className="h-6 w-3/4 mb-4" />
-                  <Skeleton className="h-4 w-full mb-2" />
-                  <Skeleton className="h-4 w-2/3" />
+                <Skeleton className="aspect-[4/3] w-full" />
+                <div className="p-8">
+                  <Skeleton className="h-8 w-3/4 mb-6" />
+                  <div className="flex gap-3 mb-6">
+                    <Skeleton className="h-10 w-24" />
+                    <Skeleton className="h-10 w-24" />
+                  </div>
+                  <div className="space-y-3 mb-8">
+                    <Skeleton className="h-8 w-full" />
+                    <Skeleton className="h-8 w-full" />
+                    <Skeleton className="h-8 w-full" />
+                  </div>
+                  <Skeleton className="h-12 w-full" />
                 </div>
               </div>
             ))}
@@ -79,43 +88,41 @@ export default function FleetSection() {
   }
 
   return (
-    <section id="fleet" className="py-28 bg-pearl dark:bg-gray-800">
+    <section id="fleet" className="section-padding bg-gradient-to-b from-champagne via-cream to-white">
       <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
-          className="text-center mb-20"
-          initial="initial"
-          whileInView="animate"
-          variants={fadeIn}
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary dark:text-primary-foreground mb-6">
+          <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+            Premium Fleet
+          </p>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-secondary mb-6">
             {t.fleet.title}
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto font-sans">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
             {t.fleet.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
           <AnimatePresence mode="sync">
             {vehicles?.map((vehicle, index) => (
               <motion.div
                 key={vehicle.id}
-                initial="initial"
-                animate="animate"
-                exit="exit"
-                variants={{
-                  initial: { opacity: 0, y: 20 },
-                  animate: {
-                    opacity: 1,
-                    y: 0,
-                    transition: { delay: index * 0.2 },
-                  },
-                  exit: { opacity: 0, y: -20 },
-                }}
-                className="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                whileHover={{ y: -8 }}
+                className="glass-card-premium rounded-2xl overflow-hidden group hover:shadow-2xl transition-all duration-500"
               >
+                {/* Image Container */}
                 <div
-                  className="relative aspect-video group cursor-pointer"
+                  className="relative aspect-[4/3] cursor-pointer overflow-hidden"
                   onClick={() =>
                     setSelectedImageType(
                       selectedImageType === "exterior"
@@ -134,60 +141,68 @@ export default function FleetSection() {
                             : vehicle.interior_image_url
                         }
                         alt={`${vehicle.name} - ${selectedImageType}`}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.3 }}
+                        transition={{ duration: 0.4 }}
                       />
                     </AnimatePresence>
                   </div>
 
-                  {/* Hover overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  {/* Gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                  {/* Current view label - only visible on hover */}
-                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="px-3 py-1.5 text-xs font-medium rounded-md backdrop-blur-md bg-white/90 text-primary shadow-md">
+                  {/* View labels */}
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-2 group-hover:translate-y-0">
+                    <span className="px-4 py-2 text-xs font-semibold rounded-xl backdrop-blur-md bg-white/95 text-primary shadow-lg">
                       {selectedImageType === "exterior"
                         ? t.fleet.exterior
                         : t.fleet.interior}
                     </span>
-                    <span className="px-3 py-1.5 text-xs font-medium rounded-md backdrop-blur-md bg-white/40 text-white">
+                    <span className="px-4 py-2 text-xs font-medium rounded-xl backdrop-blur-md bg-white/20 text-white border border-white/30">
                       Click to switch
                     </span>
                   </div>
                 </div>
 
-                <div className="p-6">
-                  <h3 className="text-xl md:text-2xl font-bold text-secondary dark:text-primary-foreground mb-4">
+                {/* Content */}
+                <div className="p-8">
+                  {/* Title */}
+                  <h3 className="text-2xl font-display font-bold text-secondary mb-6">
                     {vehicle.name}
                   </h3>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                    <div className="flex items-center gap-1">
-                      <Users className="h-4 w-4 text-primary" />
-                      <span>
+
+                  {/* Capacity badges */}
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="flex items-center gap-2 px-4 py-2 bg-gradient-gold-subtle rounded-xl">
+                      <Users className="h-5 w-5 text-primary" />
+                      <span className="text-sm font-semibold text-gray-700">
                         {vehicle.passenger_capacity} {t.fleet.passengers}
                       </span>
                     </div>
-                    <div className="flex items-center gap-1">
-                      <Briefcase className="h-4 w-4 text-primary" />
-                      <span>
+                    <div className="flex items-center gap-2 px-4 py-2 bg-gradient-gold-subtle rounded-xl">
+                      <Briefcase className="h-5 w-5 text-primary" />
+                      <span className="text-sm font-semibold text-gray-700">
                         {vehicle.luggage_capacity} {t.fleet.luggage}
                       </span>
                     </div>
                   </div>
-                  <div className="grid grid-cols-2 gap-2 mb-4">
+
+                  {/* Features */}
+                  <div className="space-y-3 mb-8">
                     {vehicle.features?.map((feature) => {
                       const Icon =
                         FEATURE_ICONS[feature as keyof typeof FEATURE_ICONS];
                       return Icon ? (
                         <div
                           key={feature}
-                          className="flex items-center gap-2 text-sm text-muted-foreground"
+                          className="flex items-center gap-3 text-sm text-gray-600"
                         >
-                          <Icon className="h-4 w-4 text-primary" />
-                          <span>
+                          <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <Icon className="h-4 w-4 text-primary" />
+                          </div>
+                          <span className="font-medium">
                             {
                               t.fleet.vehicleFeatures[
                                 feature as keyof typeof FEATURE_ICONS
@@ -199,9 +214,9 @@ export default function FleetSection() {
                     })}
                   </div>
 
-                  {/* CTA primario dorado para conversión directa */}
+                  {/* CTA Button */}
                   <Button
-                    className="w-full silk-button mt-2"
+                    className="w-full silk-button"
                     onClick={handleBookNow}
                   >
                     {t.fleet.bookNow}
