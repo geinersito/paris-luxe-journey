@@ -8,7 +8,7 @@ interface ServiceLevel {
   name: string;
   description: Record<string, string>;
   features: Record<string, any>;
-  multiplier: number;
+  multiplier?: number; // Optional: may not exist in database yet
 }
 
 export function useServiceLevels() {
@@ -21,14 +21,25 @@ export function useServiceLevels() {
     const fetchServiceLevels = async () => {
       try {
         setIsLoading(true);
+        // TODO: Create service_levels table in Supabase
+        // For now, use vehicles table as fallback
         const { data, error } = await supabase
-          .from('service_levels')
+          .from('vehicles')
           .select('*')
-          .eq('id', 'standard') // Solo cargar nivel Standard
-          .order('multiplier');
+          .order('base_price');
 
         if (error) throw error;
-        setServiceLevels(data || []);
+
+        // Map vehicles to service levels format
+        const mappedData = (data || []).map(vehicle => ({
+          id: vehicle.id,
+          name: vehicle.name,
+          description: { en: vehicle.description || '' },
+          features: vehicle.features || {},
+          multiplier: 1.0 // Default multiplier
+        }));
+
+        setServiceLevels(mappedData);
       } catch (error) {
         console.error('Error fetching service levels:', error);
         toast({

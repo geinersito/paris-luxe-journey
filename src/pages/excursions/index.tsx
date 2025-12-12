@@ -81,6 +81,7 @@ export default function ExcursionsPage() {
             {excursions.map((excursion) => (
               <ExcursionCard
                 key={excursion.id}
+                id={excursion.id}
                 title={excursion.title}
                 description={excursion.description}
                 image={excursion.image}

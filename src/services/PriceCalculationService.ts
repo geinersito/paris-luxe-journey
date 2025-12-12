@@ -21,6 +21,11 @@ export class PriceCalculationService {
   }
 
   private async loadFixedRoutes(): Promise<void> {
+    // TODO: Create fixed_routes table in Supabase
+    // For now, skip loading from database
+    console.warn('Fixed routes table not available. Using pricing.ts constants only.');
+
+    /* COMMENTED OUT: Requires fixed_routes table
     const { data, error } = await supabase
       .from('fixed_routes')
       .select('*');
@@ -31,18 +36,31 @@ export class PriceCalculationService {
       const key = this.generateRouteKey(route.origin_type, route.destination_type);
       this.fixedRoutes.set(key, route);
     });
+    */
   }
 
   private async loadServiceLevels(): Promise<void> {
-    const { data, error } = await supabase
-      .from('service_levels')
-      .select('*');
+    // TODO: Create service_levels table in Supabase
+    // For now, use vehicles table as fallback
+    try {
+      const { data, error } = await supabase
+        .from('vehicles')
+        .select('*');
 
-    if (error) throw error;
+      if (error) throw error;
 
-    data?.forEach(level => {
-      this.serviceLevels.set(level.id, level);
-    });
+      data?.forEach(vehicle => {
+        this.serviceLevels.set(vehicle.id, {
+          id: vehicle.id,
+          name: vehicle.name,
+          description: { en: vehicle.description || '' },
+          features: vehicle.features || {},
+          multiplier: 1.0 // Default multiplier
+        });
+      });
+    } catch (error) {
+      console.error('Error loading service levels from vehicles:', error);
+    }
   }
 
   private generateRouteKey(origin: string, destination: string): string {

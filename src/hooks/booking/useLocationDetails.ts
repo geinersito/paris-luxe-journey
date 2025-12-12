@@ -37,13 +37,13 @@ export const useLocationDetails = () => {
       let pickupString = '';
       let dropoffString = '';
 
-      if (typeof pickupCode === 'object' && pickupCode !== null) {
+      if (pickupCode && typeof pickupCode === 'object' && 'id' in pickupCode) {
         pickupString = pickupCode.id || '';
       } else if (typeof pickupCode === 'string') {
         pickupString = pickupCode;
       }
 
-      if (typeof dropoffCode === 'object' && dropoffCode !== null) {
+      if (dropoffCode && typeof dropoffCode === 'object' && 'id' in dropoffCode) {
         dropoffString = dropoffCode.id || '';
       } else if (typeof dropoffCode === 'string') {
         dropoffString = dropoffCode;

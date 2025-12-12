@@ -9,7 +9,7 @@ export interface ServiceLevel {
     flight_tracking: boolean;
     [key: string]: any;
   };
-  multiplier: number;
+  multiplier?: number; // Optional: may not exist in database yet
 }
 
 export interface BookingPriceRequest {

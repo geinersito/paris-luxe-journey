@@ -12,6 +12,23 @@ export default function VersaillesPage() {
   const [activeSection, setActiveSection] = React.useState("description");
   const [selectedTour, setSelectedTour] = React.useState<string | null>(null);
 
+  // Get versailles data from translations
+  const versaillesData = t.versailles;
+
+  // Navigation items
+  const navigationItems = [
+    { id: 'description', label: t.versailles.navigation.description },
+    { id: 'tours', label: t.versailles.navigation.tours },
+    { id: 'map', label: t.versailles.navigation.map },
+    { id: 'events', label: t.versailles.navigation.events },
+    { id: 'faq', label: t.versailles.navigation.faq },
+  ];
+
+  // Handle section change
+  const handleSectionChange = (sectionId: string) => {
+    setActiveSection(sectionId);
+  };
+
   // Enhanced tours data with more details
   const tours = [
     {
@@ -29,20 +46,21 @@ export default function VersaillesPage() {
   const content = {
     description: (
       <div>
-        <h3 className="text-2xl font-bold mb-4">{versaillesData?.title}</h3>
-        <p className="mb-4">{versaillesData?.description}</p>
+        <h3 className="text-2xl font-bold mb-4">{versaillesData.title}</h3>
+        <p className="mb-4">{versaillesData.description}</p>
         <h4 className="text-xl font-semibold mb-2">Highlights:</h4>
         <ul className="list-disc list-inside mb-4">
-          {versaillesData?.highlights?.map((highlight, index) => (
+          {versaillesData.highlights.map((highlight, index) => (
             <li key={index}>{highlight}</li>
           ))}
         </ul>
         <div className="mt-6">
-          <h4 className="text-xl font-semibold mb-2">Best Time to Visit:</h4>
-          <p className="mb-4">{t.versailles.bestTimeToVisit}</p>
-          
-          <h4 className="text-xl font-semibold mb-2">What to Expect:</h4>
-          <p className="mb-4">{t.versailles.whatToExpect}</p>
+          <h4 className="text-xl font-semibold mb-2">Why Visit:</h4>
+          <ul className="list-disc list-inside mb-4">
+            {versaillesData.whyVisit.map((reason, index) => (
+              <li key={index}>{reason}</li>
+            ))}
+          </ul>
         </div>
       </div>
     ),

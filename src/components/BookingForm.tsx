@@ -191,6 +191,7 @@ const BookingForm = ({
       // Preparar datos para navegación y contexto con UUIDs de ubicaciones
       const bookingDataWithSurcharge = {
         ...updatedFormData,
+        passengers: Number(updatedFormData.passengers), // Convert string to number
         luggageSurcharge,
         basePrice, // Añadir el precio base explícitamente
         // Añadir los UUIDs de las ubicaciones

@@ -19,7 +19,7 @@ interface UseBookingPriceReturn {
     passengers?: number,
     largeLuggage?: number,
     smallLuggage?: number,
-  ) => Promise<void>;
+  ) => Promise<number>; // Changed from Promise<void> to Promise<number>
   handleDistanceCalculated: (distance: number) => void;
 }
 
@@ -86,8 +86,18 @@ export const useBookingPrice = (): UseBookingPriceReturn => {
       const routeKey = generateRouteKey(origin, destination);
 
       if (!routeKey) {
-        // Si no hay ruta fija, intentar buscar en la base de datos (fallback)
-        console.warn("No fixed route found in pricing.ts, trying database...");
+        // TODO: Create fixed_routes table in Supabase
+        // For now, return a default price when route not found in pricing.ts
+        console.warn("No fixed route found in pricing.ts. Database fallback disabled until fixed_routes table is created.");
+
+        // Use a default base price as fallback
+        const pureDatabaseBasePrice = passengers <= 3 ? 80 : 100;
+        console.log(
+          "Using default base price (no fixed_routes table):",
+          pureDatabaseBasePrice,
+        );
+
+        /* COMMENTED OUT: Requires fixed_routes table
         const { data, error: dbError } = await supabase
           .from("fixed_routes")
           .select("base_price_1_3, base_price_4_7, route_type")
@@ -107,6 +117,7 @@ export const useBookingPrice = (): UseBookingPriceReturn => {
           "Pure base price from DB without any surcharges:",
           pureDatabaseBasePrice,
         );
+        */
 
         let passengersSurcharge = 0;
         if (passengers >= 4 && passengers <= 7) {
@@ -185,8 +196,11 @@ export const useBookingPrice = (): UseBookingPriceReturn => {
           smallLuggage,
         });
       }
+
+      return finalPrice; // Return the calculated price
     } catch (err) {
       console.error("Error in price calculation:", err);
+      return 0; // Return 0 on error
     }
   };
 
