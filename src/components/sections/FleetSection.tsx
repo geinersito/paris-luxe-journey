@@ -24,6 +24,9 @@ const FEATURE_ICONS = {
   cleaning: SprayCan,
 } as const;
 
+const FALLBACK_EXTERIOR = "https://images.unsplash.com/photo-1563720360172-67b8f3dce741?auto=format&fit=crop&q=80";
+const FALLBACK_INTERIOR = "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80";
+
 export default function FleetSection() {
   const { t } = useLanguage();
   const navigate = useNavigate();
@@ -31,6 +34,11 @@ export default function FleetSection() {
   const [selectedImageType, setSelectedImageType] = React.useState<
     "exterior" | "interior"
   >("exterior");
+  const [imageErrors, setImageErrors] = React.useState<Record<string, boolean>>({});
+
+  const handleImageError = (vehicleId: string) => {
+    setImageErrors(prev => ({ ...prev, [vehicleId]: true }));
+  };
 
   const handleBookNow = () => {
     // Scroll suave al formulario de booking en la página principal
@@ -136,9 +144,11 @@ export default function FleetSection() {
                       <motion.img
                         key={`${vehicle.id}-${selectedImageType}`}
                         src={
-                          selectedImageType === "exterior"
-                            ? vehicle.image_url
-                            : vehicle.interior_image_url
+                          imageErrors[vehicle.id]
+                            ? (selectedImageType === "exterior" ? FALLBACK_EXTERIOR : FALLBACK_INTERIOR)
+                            : (selectedImageType === "exterior"
+                              ? vehicle.image_url
+                              : vehicle.interior_image_url)
                         }
                         alt={`${vehicle.name} - ${selectedImageType}`}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -146,6 +156,7 @@ export default function FleetSection() {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.4 }}
+                        onError={() => handleImageError(vehicle.id)}
                       />
                     </AnimatePresence>
                   </div>

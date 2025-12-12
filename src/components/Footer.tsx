@@ -68,7 +68,7 @@ const Footer = () => {
               </li>
               <li>
                 <Link to="/guides/avoid-fake-taxis" className="text-gray-300 hover:text-primary transition-colors text-sm">
-                  Travel Guides
+                  {t?.footer?.links?.travelGuides || "Travel Guides"}
                 </Link>
               </li>
             </ul>

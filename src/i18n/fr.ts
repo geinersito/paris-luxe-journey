@@ -507,6 +507,7 @@ export const fr: Translation = {
       fleet: "Flotte",
       about: "À Propos",
       contact: "Contact",
+      travelGuides: "Guides de Voyage",
       privacy: "Politique de Confidentialité",
       terms: "Conditions d'Utilisation",
     },

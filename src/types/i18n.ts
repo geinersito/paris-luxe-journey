@@ -160,6 +160,7 @@ export interface Translation {
       fleet: string;
       about: string;
       contact: string;
+      travelGuides: string;
       privacy: string;
       terms: string;
     };

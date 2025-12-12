@@ -508,6 +508,7 @@ export const pt: Translation = {
       fleet: "Frota",
       about: "Sobre Nós",
       contact: "Contato",
+      travelGuides: "Guias de Viagem",
       privacy: "Política de Privacidade",
       terms: "Termos de Serviço",
     },

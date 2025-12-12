@@ -434,6 +434,7 @@ export const es: Translation = {
       fleet: "Flota",
       about: "Sobre Nosotros",
       contact: "Contacto",
+      travelGuides: "Guías de Viaje",
       privacy: "Política de Privacidad",
       terms: "Términos de Servicio",
     },
