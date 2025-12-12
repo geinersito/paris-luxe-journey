@@ -1,5 +1,6 @@
 import React from "react";
 import BookingForm from "../BookingForm";
+import { CompactBookingForm } from "../booking/CompactBookingForm";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
 import { TrustBadge } from "@/components/ui/trust-badge";
@@ -115,7 +116,7 @@ export default function HeroSection() {
         <div className="flex flex-col items-center text-center">
           {/* Main Content - Centered */}
           <div
-            className={`max-w-4xl transition-all duration-1000 ${
+            className={`max-w-5xl w-full transition-all duration-1000 ${
               isImageLoaded
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
@@ -127,70 +128,28 @@ export default function HeroSection() {
             </p>
 
             {/* Título principal con mejor jerarquía */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight text-white drop-shadow-2xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 leading-tight text-white drop-shadow-2xl">
               {t.hero.title}
             </h1>
 
             {/* Subtítulo */}
-            <p className="mt-6 text-xl md:text-2xl text-gray-100 font-sans max-w-3xl mx-auto leading-relaxed">
+            <p className="mt-4 text-lg md:text-xl text-gray-100 font-sans max-w-3xl mx-auto leading-relaxed mb-8">
               {t.hero.subtitle}
             </p>
 
-            {/* CTA Prominente */}
-            <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <button
-                onClick={() => setShowBookingModal(true)}
-                className="silk-button text-lg font-semibold group"
-              >
-                Book Your Transfer Now
-                <svg
-                  className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 7l5 5m0 0l-5 5m5-5H6"
-                  />
-                </svg>
-              </button>
-              <button
-                onClick={() => document.getElementById('fleet')?.scrollIntoView({ behavior: 'smooth' })}
-                className="button-outline-gold text-lg font-semibold"
-              >
-                View Our Fleet
-              </button>
+            {/* Compact Booking Form */}
+            <div className="mt-8 mb-6">
+              <CompactBookingForm onOpenFullForm={() => setShowBookingModal(true)} />
             </div>
 
-            {/* Trust Badges - Más compactos */}
-            <div className="mt-12 flex items-center justify-center gap-6 flex-wrap">
-              <TrustBadge
-                icon={
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                }
-                text="Fixed Price"
-              />
-              <TrustBadge
-                icon={
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                }
-                text="No Hidden Fees"
-              />
-              <TrustBadge
-                icon={
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
-                }
-                text="Free Cancellation"
-              />
+            {/* Secondary CTA */}
+            <div className="mt-6">
+              <button
+                onClick={() => document.getElementById('fleet')?.scrollIntoView({ behavior: 'smooth' })}
+                className="text-white/90 hover:text-white font-semibold text-sm transition-colors underline underline-offset-4"
+              >
+                View Our Premium Fleet →
+              </button>
             </div>
           </div>
         </div>
@@ -212,8 +171,8 @@ export default function HeroSection() {
                 tourId="default"
                 tourName="Standard Transfer"
                 basePrice={0}
-                onSubmit={(data) => {
-                  handleBookingSubmit(data);
+                onSubmit={async (data) => {
+                  await handleBookingSubmit(data);
                   setShowBookingModal(false);
                 }}
               />

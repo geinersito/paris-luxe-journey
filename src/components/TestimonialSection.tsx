@@ -58,39 +58,69 @@ const TestimonialSection = () => {
   };
 
   return (
-    <section className="py-20 bg-pearl dark:bg-primary-dark transition-colors duration-300">
+    <section className="section-padding bg-gradient-to-b from-champagne via-cream to-white dark:from-secondary dark:via-secondary-dark dark:to-primary-dark transition-colors duration-300">
       <div className="container max-w-7xl mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-12"
+          className="text-center mb-16"
         >
-          <h2 className="text-3xl md:text-4xl font-display text-primary dark:text-primary-foreground mb-4">
-            Témoignages Clients
+          <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+            Témoignages
+          </p>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-primary dark:text-primary-foreground mb-6">
+            Ce Que Disent Nos Clients
           </h2>
-          <p className="text-center text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-            Découvrez ce que nos clients disent de leur expérience avec Paris Elite Services
+          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            Découvrez pourquoi nos clients nous font confiance pour leurs transferts de luxe à Paris
           </p>
         </motion.div>
 
-        <motion.div 
+        {/* Staggered Grid Layout */}
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12"
         >
-          {testimonials.map((testimonial, index) => (
+          {testimonials.slice(0, 3).map((testimonial, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
-              className="h-full"
+              className={`h-full ${index === 1 ? 'lg:mt-12' : ''}`}
             >
               <TestimonialCard {...testimonial} />
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Stats Bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+        >
+          <div className="text-center">
+            <div className="text-4xl font-display font-bold text-primary mb-2">500+</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">Clients Satisfaits</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-display font-bold text-primary mb-2">4.9</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">Note Moyenne</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-display font-bold text-primary mb-2">100%</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">Ponctualité</div>
+          </div>
+          <div className="text-center">
+            <div className="text-4xl font-display font-bold text-primary mb-2">24/7</div>
+            <div className="text-sm text-gray-600 dark:text-gray-400">Support Client</div>
+          </div>
         </motion.div>
       </div>
     </section>
