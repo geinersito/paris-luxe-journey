@@ -67,28 +67,28 @@ const ExcursionsGrid = () => {
                 onValueChange={(value) => setSelectedDuration(value === "all" ? null : value as DurationType)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder={t.excursions.filters.duration} />
+                  <SelectValue placeholder={t.excursions.filters.allDurations} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">{t.excursions.filters.allDurations}</SelectItem>
-                  <SelectItem value="half-day">{t.excursions.filters.halfDay}</SelectItem>
-                  <SelectItem value="full-day">{t.excursions.filters.fullDay}</SelectItem>
+                  <SelectItem value="half-day">{t.excursions.filters.duration.halfDay}</SelectItem>
+                  <SelectItem value="full-day">{t.excursions.filters.duration.fullDay}</SelectItem>
                   <SelectItem value="flexible">{t.excursions.filters.flexible}</SelectItem>
                 </SelectContent>
               </Select>
 
-              <Select 
-                value={selectedType || "all"} 
+              <Select
+                value={selectedType || "all"}
                 onValueChange={(value) => setSelectedType(value === "all" ? null : value as ExcursionType)}
               >
                 <SelectTrigger>
-                  <SelectValue placeholder={t.excursions.filters.type} />
+                  <SelectValue placeholder={t.excursions.filters.allTypes} />
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="all">{t.excursions.filters.allTypes}</SelectItem>
                   <SelectItem value="standard">{t.excursions.filters.standard}</SelectItem>
-                  <SelectItem value="luxury">{t.excursions.filters.luxury}</SelectItem>
-                  <SelectItem value="private">{t.excursions.filters.private}</SelectItem>
+                  <SelectItem value="luxury">{t.excursions.filters.type.luxury}</SelectItem>
+                  <SelectItem value="private">{t.excursions.filters.type.private}</SelectItem>
                 </SelectContent>
               </Select>
 

@@ -262,6 +262,7 @@ export interface Translation {
     dropoff: string;
     pickupPlaceholder: string;
     dropoffPlaceholder: string;
+    swapLocations?: string;
     date: string;
     time: string;
     returnDate: string;
@@ -368,6 +369,7 @@ export interface Translation {
       invalidName: string;
       nameDescription: string;
       locationsNotLoaded: string;
+      locationNotFound?: string;
       selectLocations: string;
       selectDateTime: string;
       selectReturnDateTime: string;

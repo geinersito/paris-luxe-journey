@@ -40,7 +40,7 @@ export function ExcursionFilters({
       <div className="flex-1">
         <Input
           type="text"
-          placeholder={t.excursions.filters.searchPlaceholder}
+          placeholder={t.excursions.searchPlaceholder}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           className="w-full"
@@ -57,8 +57,8 @@ export function ExcursionFilters({
           </SelectTrigger>
           <SelectContent>
             <SelectItem value="">{t.excursions.filters.allDurations}</SelectItem>
-            <SelectItem value="half-day">{t.excursions.filters.halfDay}</SelectItem>
-            <SelectItem value="full-day">{t.excursions.filters.fullDay}</SelectItem>
+            <SelectItem value="half-day">{t.excursions.filters.duration.halfDay}</SelectItem>
+            <SelectItem value="full-day">{t.excursions.filters.duration.fullDay}</SelectItem>
             <SelectItem value="flexible">{t.excursions.filters.flexible}</SelectItem>
           </SelectContent>
         </Select>
@@ -75,8 +75,8 @@ export function ExcursionFilters({
           <SelectContent>
             <SelectItem value="">{t.excursions.filters.allTypes}</SelectItem>
             <SelectItem value="standard">{t.excursions.filters.standard}</SelectItem>
-            <SelectItem value="luxury">{t.excursions.filters.luxury}</SelectItem>
-            <SelectItem value="private">{t.excursions.filters.private}</SelectItem>
+            <SelectItem value="luxury">{t.excursions.filters.type.luxury}</SelectItem>
+            <SelectItem value="private">{t.excursions.filters.type.private}</SelectItem>
           </SelectContent>
         </Select>
       </div>
