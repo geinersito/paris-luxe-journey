@@ -53,26 +53,30 @@ export default function OrlyAirport() {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left: Content */}
             <div className="text-white">
-              <div className="inline-flex items-center gap-2 bg-secondary/20 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-                <Plane className="w-5 h-5 text-secondary" />
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/20">
+                <Plane className="w-5 h-5 text-primary-200" />
                 <span className="text-sm font-medium">Orly Airport</span>
               </div>
-              
+
+              <p className="font-accent italic text-xl md:text-2xl text-primary-200 mb-4">
+                Premium Airport Transfer
+              </p>
+
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight">
                 Orly Airport Transfer
-                <span className="block text-secondary mt-2">Fixed Price from €60</span>
+                <span className="block text-primary-200 mt-2 text-3xl md:text-4xl">Fixed Price from €60</span>
               </h1>
-              
-              <p className="text-xl text-gray-100 mb-8 leading-relaxed">
-                Professional chauffeur service from Orly Airport to Paris city center. 
+
+              <p className="text-xl text-white/90 mb-8 leading-relaxed">
+                Professional chauffeur service from Orly Airport to Paris city center.
                 No hidden fees, flight tracking included.
               </p>
 
               {/* Trust Badges */}
               <div className="grid grid-cols-2 gap-4 mb-8">
-                <div className="flex items-center gap-3 bg-black/30 backdrop-blur-sm p-4 rounded-lg">
-                  <CheckCircle className="w-6 h-6 text-secondary flex-shrink-0" />
-                  <span className="text-sm">Flight Tracking</span>
+                <div className="flex items-center gap-3 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
+                  <CheckCircle className="w-6 h-6 text-primary-200 flex-shrink-0" />
+                  <span className="text-sm font-medium">Flight Tracking</span>
                 </div>
                 <div className="flex items-center gap-3 bg-black/30 backdrop-blur-sm p-4 rounded-lg">
                   <CheckCircle className="w-6 h-6 text-secondary flex-shrink-0" />

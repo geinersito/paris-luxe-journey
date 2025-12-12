@@ -297,65 +297,66 @@ const Excursions = () => {
   );
 
   const TourCard = ({ tour, t }) => (
-    <div className={`bg-white rounded-lg shadow-sm overflow-hidden ${tour.featured ? 'border-2 border-[#1a5fb4]' : ''}`}>
+    <div className={`glass-card-premium overflow-hidden hover:shadow-2xl transition-all duration-500 ${tour.featured ? 'ring-2 ring-primary' : ''}`}>
       <div className="flex flex-col md:flex-row">
-        <div className="md:w-72 h-48 md:h-auto relative">
-          <img 
+        <div className="md:w-72 h-48 md:h-auto relative aspect-[4/3] md:aspect-auto">
+          <img
             src={tour.image}
             alt={tour.title}
             className="w-full h-full object-cover"
           />
           {tour.featured && (
-            <div className="absolute top-4 left-4 bg-[#1a5fb4] text-white px-3 py-1 text-sm rounded">
+            <div className="absolute top-4 left-4 bg-gradient-gold text-white px-4 py-1.5 rounded-full text-xs font-semibold shadow-lg flex items-center gap-1.5">
+              <Star className="w-3.5 h-3.5 fill-current" />
               {t.filters.featured}
             </div>
           )}
           {tour.promotion && (
-            <div className="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 text-sm rounded">
+            <div className="absolute top-4 right-4 bg-destructive text-white px-4 py-1.5 rounded-full text-xs font-semibold shadow-lg">
               {tour.promotion.discount}% OFF
             </div>
           )}
           <div className="absolute bottom-4 left-4 flex gap-2">
-            <div className="bg-black/70 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
+            <div className="bg-black/70 text-white px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm">
               {tour.duration}
             </div>
-            <div className="bg-black/70 text-white px-3 py-1 rounded-full text-sm backdrop-blur-sm">
+            <div className="bg-black/70 text-white px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm">
               {tour.maxGroupSize} max
             </div>
           </div>
         </div>
-        
-        <div className="p-6 flex-1">
-          <div className="flex items-center justify-between mb-2">
-            <div className="flex items-center text-yellow-500">
+
+        <div className="p-8 flex-1">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center text-primary">
               <Star className="h-4 w-4 fill-current" />
-              <span className="ml-1">{tour.rating}</span>
-              <span className="text-gray-500 ml-1">({tour.reviews} {t.filters.reviews})</span>
+              <span className="ml-1 font-semibold">{tour.rating}</span>
+              <span className="text-gray-500 ml-1 text-sm">({tour.reviews} {t.filters.reviews})</span>
             </div>
             <div className="flex gap-2">
               {tour.languages.map(lang => (
-                <span key={lang} className="text-xs px-2 py-1 bg-gray-100 rounded">
+                <span key={lang} className="text-xs px-2.5 py-1 bg-primary/10 text-primary rounded-md font-medium">
                   {lang.toUpperCase()}
                 </span>
               ))}
             </div>
           </div>
 
-          <h3 className="text-xl font-semibold mb-2">{tour.title}</h3>
-          <p className="text-gray-600 mb-4 line-clamp-3">{tour.description}</p>
+          <h3 className="text-2xl font-display font-bold text-secondary mb-3">{tour.title}</h3>
+          <p className="text-gray-600 mb-4 line-clamp-3 leading-relaxed">{tour.description}</p>
 
-          <div className="flex flex-wrap gap-2 mb-4">
+          <div className="flex flex-wrap gap-2 mb-6">
             {tour.highlights.map((highlight, index) => (
-              <span key={index} className="text-xs px-2 py-1 bg-gray-100 rounded">
+              <span key={index} className="text-xs px-3 py-1.5 bg-gradient-gold-subtle text-gray-700 rounded-lg font-medium">
                 {highlight}
               </span>
             ))}
           </div>
 
-          <div className="flex items-center justify-between mt-4">
+          <div className="flex items-center justify-between mt-6 pt-6 border-t border-primary/10">
             <div>
               {tour.availability.spotsLeft <= 3 && (
-                <p className="text-red-500 text-sm mb-1">
+                <p className="text-destructive text-sm mb-1 font-semibold">
                   Only {tour.availability.spotsLeft} spots left!
                 </p>
               )}
@@ -364,22 +365,24 @@ const Excursions = () => {
               </p>
             </div>
             <div className="text-right">
-              <span className="text-2xl font-bold text-[#1a5fb4]">
-                {tour.price}€
-              </span>
+              <div className="bg-gradient-gold-subtle px-4 py-2 rounded-xl inline-block">
+                <span className="text-3xl font-display font-bold text-primary">
+                  {tour.price}€
+                </span>
+              </div>
               {tour.promotion && (
-                <span className="text-sm text-red-500 block">
+                <span className="text-sm text-destructive block mt-1 font-medium">
                   Ends in {tour.promotion.endsIn}
                 </span>
               )}
             </div>
           </div>
 
-          <div className="flex gap-3 mt-4">
-            <Button variant="outline" className="text-[#1a5fb4] border-[#1a5fb4]">
+          <div className="flex gap-3 mt-6">
+            <Button variant="outline" className="button-outline-gold flex-1">
               {t.filters.viewDetails}
             </Button>
-            <Button className="bg-[#1a5fb4]">
+            <Button className="silk-button flex-1">
               {t.filters.bookNow}
             </Button>
           </div>
@@ -389,26 +392,29 @@ const Excursions = () => {
   );
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section Simple */}
-      <section className="relative h-[400px] flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-b from-cream via-white to-champagne">
+      {/* Hero Section Premium */}
+      <section className="relative h-[500px] flex items-center justify-center">
         <div className="absolute inset-0">
-          <img 
+          <img
             src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2073"
             alt="Paris Elite Services"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
         </div>
-        
+
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4">
-          <h1 className="text-4xl md:text-5xl text-white font-display text-center mb-8">
+          <p className="font-accent italic text-xl md:text-2xl text-primary-200 mb-4 text-center">
+            Luxury Experiences
+          </p>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-display font-bold text-center mb-12 leading-tight drop-shadow-2xl">
             {t.title}
           </h1>
-          
-          <div className="flex flex-col md:flex-row gap-4 max-w-3xl mx-auto">
+
+          <div className="flex flex-col md:flex-row gap-4 max-w-4xl mx-auto glass-card-premium p-6">
             <Select value={filters.type}>
-              <SelectTrigger className="bg-white/90 border-0">
+              <SelectTrigger className="bg-white/95 border-primary/20 rounded-xl h-12">
                 <SelectValue placeholder={t.filters.allTypes} />
               </SelectTrigger>
               <SelectContent>
@@ -421,7 +427,7 @@ const Excursions = () => {
             </Select>
 
             <Select value={filters.location}>
-              <SelectTrigger className="bg-white/90 border-0">
+              <SelectTrigger className="bg-white/95 border-primary/20 rounded-xl h-12">
                 <SelectValue placeholder={t.filters.allLocations} />
               </SelectTrigger>
               <SelectContent>
@@ -432,7 +438,7 @@ const Excursions = () => {
             </Select>
 
             <Select value={filters.duration}>
-              <SelectTrigger className="bg-white/90 border-0">
+              <SelectTrigger className="bg-white/95 border-primary/20 rounded-xl h-12">
                 <SelectValue placeholder={t.filters.anyDuration} />
               </SelectTrigger>
               <SelectContent>
@@ -442,7 +448,7 @@ const Excursions = () => {
               </SelectContent>
             </Select>
 
-            <Button className="bg-[#1a5fb4] hover:bg-[#1552a0] text-white">
+            <Button className="silk-button h-12 px-8">
               {t.filters.search}
             </Button>
           </div>

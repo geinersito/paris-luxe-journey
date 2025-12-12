@@ -221,7 +221,7 @@ export default function CDGAirport() {
           <div className="text-center mt-8">
             <Button
               size="lg"
-              className="text-lg px-8"
+              className="silk-button text-lg px-10 py-6"
               onClick={() => {
                 const bookingSection = document.querySelector('section');
                 bookingSection?.scrollIntoView({ behavior: 'smooth' });
@@ -379,19 +379,18 @@ export default function CDGAirport() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-primary text-white">
+      <section className="section-padding bg-gradient-to-br from-primary to-primary/90 text-white">
         <div className="container px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-display font-bold mb-6">
             Ready for Your CDG Transfer?
           </h2>
-          <p className="text-xl mb-8 text-gray-100">
+          <p className="text-xl mb-8 text-white/90 leading-relaxed">
             Book now and enjoy a stress-free arrival in Paris
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               size="lg"
-              variant="secondary"
-              className="text-lg px-8"
+              className="bg-secondary hover:bg-secondary/90 text-white text-lg px-10 py-6 rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
               onClick={() => {
                 const bookingSection = document.querySelector('section');
                 bookingSection?.scrollIntoView({ behavior: 'smooth' });
@@ -401,8 +400,7 @@ export default function CDGAirport() {
             </Button>
             <Button
               size="lg"
-              variant="outline"
-              className="text-lg px-8 bg-white text-primary hover:bg-gray-100"
+              className="bg-white/10 hover:bg-white/20 text-white border-2 border-white/30 hover:border-white/50 text-lg px-10 py-6 rounded-xl font-semibold backdrop-blur-sm transition-all duration-300"
               onClick={() => window.open('https://wa.me/33123456789', '_blank')}
             >
               WhatsApp Us
