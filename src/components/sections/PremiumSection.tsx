@@ -43,69 +43,87 @@ const PremiumSection = () => {
   ];
 
   return (
-    <section id="services" className="py-28 bg-gradient-to-b from-background via-background/50 to-background">
-      <div className="container mx-auto px-4">
+    <section id="services" className="section-padding bg-gradient-to-b from-cream via-white to-champagne">
+      <div className="container mx-auto px-4 max-w-7xl">
         <motion.div
-          className="text-center mb-20"
+          className="text-center mb-16"
           initial={fadeIn.initial}
-          animate={fadeIn.animate}
+          whileInView={fadeIn.animate}
+          viewport={{ once: true }}
           transition={fadeIn.transition}
         >
-          <p className="text-xl md:text-2xl font-display italic text-secondary mb-4">
+          <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
             {t.services.decorativeSubtitle}
           </p>
-          <h2 className="text-4xl font-display font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary/70">
+          <h2 className="text-4xl md:text-5xl font-display font-bold mb-6 text-secondary">
             {t.services.title}
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto font-sans">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto font-sans leading-relaxed">
             {t.services.subtitle}
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-3 gap-8 lg:gap-10">
           {services.map((service, index) => (
             <motion.div
               key={service.title}
-              initial={fadeIn.initial}
-              animate={fadeIn.animate}
-              transition={{ ...fadeIn.transition, delay: index * 0.2 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.15 }}
+              whileHover={{ y: -8 }}
               className="relative group"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-primary/5 to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl" />
-
-              <div className="relative z-10 bg-card/50 backdrop-blur-sm p-8 rounded-xl border border-border shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col h-full">
-                {/* Badge "Most Popular" */}
-                {service.badge && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-gradient-to-r from-primary to-primary/80 text-white px-4 py-1 rounded-full text-xs font-semibold shadow-md">
-                    🏆 {service.badge}
+              {/* Badge "Most Popular" */}
+              {service.badge && (
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+                  <div className="bg-gradient-gold text-white px-5 py-1.5 rounded-full text-xs font-semibold shadow-lg flex items-center gap-1.5">
+                    <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 20 20">
+                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                    </svg>
+                    {service.badge}
                   </div>
-                )}
+                </div>
+              )}
 
-                <div className="flex items-center justify-center mx-auto mb-6 w-16 h-16 bg-primary/10 rounded-full group-hover:scale-110 transition-transform duration-300">
-                  <service.icon className="w-8 h-8 text-primary stroke-[1.5]" strokeWidth={1.5} />
+              {/* Glass Card */}
+              <div className="glass-card-premium p-8 rounded-2xl h-full flex flex-col relative overflow-hidden group-hover:shadow-2xl transition-all duration-500">
+                {/* Decorative gradient overlay */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {/* Icon with animation */}
+                <div className="relative z-10 flex items-center justify-center mx-auto mb-6 w-20 h-20 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-md">
+                  <service.icon className="w-10 h-10 text-primary stroke-[1.5]" strokeWidth={1.5} />
                 </div>
 
-                <h3 className="text-xl font-semibold text-secondary text-center mb-4">
+                {/* Title */}
+                <h3 className="relative z-10 text-2xl font-display font-bold text-secondary text-center mb-4">
                   {service.title}
                 </h3>
 
-                <p className="text-muted-foreground text-center mb-4">
+                {/* Description */}
+                <p className="relative z-10 text-gray-600 text-center mb-6 leading-relaxed">
                   {service.description}
                 </p>
 
-                {/* Precio */}
-                <div className="text-center mb-6">
-                  <p className="text-2xl font-bold text-primary">
-                    {service.priceFrom}
-                  </p>
+                {/* Price Badge */}
+                <div className="relative z-10 text-center mb-6">
+                  <div className="inline-block bg-gradient-gold-subtle px-6 py-3 rounded-xl">
+                    <p className="text-sm text-gray-600 font-medium mb-1">From</p>
+                    <p className="text-3xl font-display font-bold text-primary">
+                      {service.priceFrom}
+                    </p>
+                  </div>
                 </div>
 
                 {/* Features */}
-                <ul className="space-y-3 mb-6 flex-grow">
+                <ul className="relative z-10 space-y-3 mb-8 flex-grow">
                   {service.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-start space-x-3">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary/50 flex-shrink-0 mt-2" />
-                      <span className="text-muted-foreground text-sm">{feature}</span>
+                      <svg className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                      </svg>
+                      <span className="text-gray-700 text-sm leading-relaxed">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -113,7 +131,7 @@ const PremiumSection = () => {
                 {/* CTA Button */}
                 <Button
                   onClick={service.cta}
-                  className="w-full silk-button"
+                  className="relative z-10 w-full silk-button"
                 >
                   {t.services.cta}
                 </Button>
@@ -123,11 +141,17 @@ const PremiumSection = () => {
         </div>
 
         {/* Group Disclaimer */}
-        <div className="text-center mt-8">
-          <p className="text-sm text-muted-foreground">
+        <motion.div
+          className="text-center mt-12"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.6 }}
+        >
+          <p className="text-sm text-gray-500 font-medium">
             {t.services.groupDisclaimer}
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

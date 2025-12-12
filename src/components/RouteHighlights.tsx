@@ -19,32 +19,28 @@ export default function RouteHighlights() {
       title: t.routes?.cdg || "CDG Airport",
       description: t.routes?.cdgDesc || "Paris ⇄ Charles de Gaulle",
       priceFrom: "70",
-      gradient: "from-blue-500/10 to-blue-600/10",
-      iconColor: "text-blue-600",
+      bgGradient: "from-primary/5 to-primary/10",
     },
     {
       icon: Plane,
       title: t.routes?.orly || "Orly Airport",
       description: t.routes?.orlyDesc || "Paris ⇄ Orly",
       priceFrom: "60",
-      gradient: "from-indigo-500/10 to-indigo-600/10",
-      iconColor: "text-indigo-600",
+      bgGradient: "from-primary/5 to-primary/10",
     },
     {
       icon: Castle,
       title: t.routes?.disney || "Disneyland Paris",
       description: t.routes?.disneyDesc || "Magical day trip",
       priceFrom: "95",
-      gradient: "from-pink-500/10 to-pink-600/10",
-      iconColor: "text-pink-600",
+      bgGradient: "from-primary/5 to-primary/10",
     },
     {
       icon: Crown,
       title: t.routes?.versailles || "Versailles",
       description: t.routes?.versaillesDesc || "Royal palace tour",
       priceFrom: "95",
-      gradient: "from-amber-500/10 to-amber-600/10",
-      iconColor: "text-amber-600",
+      bgGradient: "from-primary/5 to-primary/10",
     },
   ];
 
@@ -66,67 +62,77 @@ export default function RouteHighlights() {
   };
 
   return (
-    <section className="py-20 bg-background">
+    <section className="section-padding bg-gradient-to-b from-white via-champagne/30 to-white">
       <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
-          className="text-center mb-12"
+          className="text-center mb-16"
           initial="initial"
           whileInView="animate"
           viewport={{ once: true }}
           variants={fadeIn}
         >
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
+          <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+            Most Requested
+          </p>
+          <h2 className="text-4xl md:text-5xl font-display font-bold text-secondary mb-6">
             {t.routes?.title || "Popular Routes"}
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
             {t.routes?.subtitle ||
               "Our most requested destinations with fixed prices"}
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
           {popularRoutes.map((route, index) => {
             const Icon = route.icon;
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
+                whileHover={{ y: -8 }}
+                className="h-full"
               >
-                <Card className="group hover:shadow-xl transition-all duration-300 overflow-hidden h-full flex flex-col">
-                  <div
-                    className={`bg-gradient-to-br ${route.gradient} p-6 flex items-center justify-center`}
-                  >
-                    <div className="w-16 h-16 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+                <div className="glass-card-premium overflow-hidden h-full flex flex-col group hover:shadow-2xl transition-all duration-500 rounded-2xl">
+                  {/* Icon Header with gradient */}
+                  <div className={`bg-gradient-to-br ${route.bgGradient} p-8 flex items-center justify-center relative overflow-hidden`}>
+                    <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <div className="relative w-20 h-20 rounded-2xl bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                       <Icon
-                        className={`w-8 h-8 ${route.iconColor}`}
+                        className="w-10 h-10 text-primary"
                         strokeWidth={1.5}
                       />
                     </div>
                   </div>
 
+                  {/* Content */}
                   <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="text-xl font-bold text-secondary dark:text-primary-foreground mb-2">
+                    <h3 className="text-xl font-display font-bold text-secondary mb-2">
                       {route.title}
                     </h3>
-                    <p className="text-sm text-muted-foreground mb-4 flex-1">
+                    <p className="text-sm text-gray-600 mb-6 flex-1 leading-relaxed">
                       {route.description}
                     </p>
 
-                    <div className="mb-4">
-                      <p className="text-xs text-muted-foreground uppercase tracking-wide mb-1">
-                        {t.common?.from || "From"}
-                      </p>
-                      <p className="text-2xl font-bold text-primary">
-                        €{route.priceFrom}
-                      </p>
-                      <p className="text-xs text-muted-foreground">
-                        {t.routes?.perTrip || "1-3 passengers"}
-                      </p>
+                    {/* Price Badge */}
+                    <div className="mb-6">
+                      <div className="inline-block bg-gradient-gold-subtle px-4 py-3 rounded-xl">
+                        <p className="text-xs text-gray-600 font-medium mb-1 uppercase tracking-wide">
+                          {t.common?.from || "From"}
+                        </p>
+                        <p className="text-3xl font-display font-bold text-primary">
+                          €{route.priceFrom}
+                        </p>
+                        <p className="text-xs text-gray-500 mt-1">
+                          {t.routes?.perTrip || "1-3 passengers"}
+                        </p>
+                      </div>
                     </div>
 
+                    {/* CTA Button */}
                     <Button
                       className="w-full silk-button"
                       onClick={() => handleRouteClick(route)}
@@ -134,23 +140,28 @@ export default function RouteHighlights() {
                       {t.routes?.bookNow || "Book Now"}
                     </Button>
                   </div>
-                </Card>
+                </div>
               </motion.div>
             );
           })}
         </div>
 
         <motion.div
-          className="text-center mt-8"
+          className="text-center mt-12"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ delay: 0.5 }}
         >
-          <p className="text-sm text-muted-foreground">
-            {t.routes?.allInclusive ||
-              "✓ All prices include tolls, parking & waiting time"}
-          </p>
+          <div className="inline-flex items-center gap-2 bg-white/80 backdrop-blur-sm px-6 py-3 rounded-full shadow-md">
+            <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+            </svg>
+            <p className="text-sm text-gray-700 font-medium">
+              {t.routes?.allInclusive ||
+                "All prices include tolls, parking & waiting time"}
+            </p>
+          </div>
         </motion.div>
       </div>
     </section>
