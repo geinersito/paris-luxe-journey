@@ -153,52 +153,52 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Booking Modal */}
-        {showBookingModal && (
+      {/* Booking Modal - FUERA del contenedor para z-index correcto */}
+      {showBookingModal && (
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          onClick={() => setShowBookingModal(false)}
+        >
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
-            onClick={() => setShowBookingModal(false)}
+            className="relative w-full max-w-3xl max-h-[95vh] flex flex-col"
+            onClick={(e) => e.stopPropagation()}
           >
-            <div
-              className="relative w-full max-w-3xl max-h-[95vh] flex flex-col"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Header fijo con botón de cerrar */}
-              <div className="glass-card-premium rounded-t-2xl px-6 py-4 flex items-center justify-between border-b border-primary/10 flex-shrink-0">
-                <h2 className="text-2xl font-display font-bold text-secondary">
-                  {t.booking.title || "Book Your Transfer"}
-                </h2>
-                <button
-                  onClick={() => setShowBookingModal(false)}
-                  className="text-gray-500 hover:text-gray-700 transition-colors p-2 hover:bg-gray-100 rounded-full"
-                  aria-label="Close"
-                >
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
+            {/* Header fijo con botón de cerrar */}
+            <div className="glass-card-premium rounded-t-2xl px-6 py-4 flex items-center justify-between border-b border-primary/10 flex-shrink-0">
+              <h2 className="text-2xl font-display font-bold text-secondary">
+                {t.booking.title || "Book Your Transfer"}
+              </h2>
+              <button
+                onClick={() => setShowBookingModal(false)}
+                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"
+                aria-label="Close"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
 
-              {/* Contenido scrollable */}
-              <div className="glass-card-premium rounded-b-2xl overflow-y-auto flex-1">
-                <div className="p-6 md:p-8">
-                  <BookingForm
-                    tourId="default"
-                    tourName="Standard Transfer"
-                    basePrice={0}
-                    compact={true}
-                    onSubmit={async (data) => {
-                      await handleBookingSubmit(data);
-                      setShowBookingModal(false);
-                    }}
-                  />
-                </div>
+            {/* Contenido scrollable */}
+            <div className="glass-card-premium rounded-b-2xl overflow-y-auto flex-1">
+              <div className="p-6 md:p-8">
+                <BookingForm
+                  tourId="default"
+                  tourName="Standard Transfer"
+                  basePrice={0}
+                  compact={true}
+                  onSubmit={async (data) => {
+                    await handleBookingSubmit(data);
+                    setShowBookingModal(false);
+                  }}
+                />
               </div>
             </div>
           </div>
-        )}
-      </div>
+        </div>
+      )}
 
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
         <svg
