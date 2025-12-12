@@ -7,21 +7,21 @@ const colors = {
   background: "hsl(var(--background))",
   foreground: "hsl(var(--foreground))",
   primary: {
-    DEFAULT: "#C2A033", // Dorado - Brand primary action color (confianza y profesionalismo)
+    DEFAULT: "#B8956A", // Oro champagne suave - elegante y refinado
     foreground: "#FFFFFF",
-    accent: "#A3862B", // Dorado hover (más oscuro)
-    dark: "#8B7024", // Dorado dark mode
-    light: "#D4B85E", // Dorado claro para gradientes
-    50: "#FBF8F0",
-    100: "#F5EDDB",
-    200: "#EBD9B3",
-    300: "#DFC188",
-    400: "#D4B85E",
-    500: "#C2A033", // DEFAULT
-    600: "#A3862B",
-    700: "#8B7024",
-    800: "#6B5519",
-    900: "#4A3A11",
+    accent: "#9A7B52", // Hover más oscuro pero suave
+    dark: "#7D6344", // Dark mode
+    light: "#D4C4A8", // Claro para gradientes suaves
+    50: "#FAF8F4",
+    100: "#F3EFE7",
+    200: "#E8DFD0",
+    300: "#D4C4A8",
+    400: "#C6AD8A",
+    500: "#B8956A", // DEFAULT - champagne gold
+    600: "#9A7B52",
+    700: "#7D6344",
+    800: "#5F4A33",
+    900: "#3D2F20",
   },
   secondary: {
     DEFAULT: "#1F2D42", // Navy (accent para hero cards y secciones oscuras)
@@ -139,10 +139,11 @@ export default {
         sans: ["Montserrat", "sans-serif"], // Cuerpo de texto premium
       },
       backgroundImage: {
-        'gradient-gold': 'linear-gradient(135deg, #D4B85E 0%, #C2A033 50%, #A3862B 100%)',
-        'gradient-gold-radial': 'radial-gradient(circle, #D4B85E 0%, #C2A033 50%, #8B7024 100%)',
+        'gradient-gold': 'linear-gradient(135deg, #D4C4A8 0%, #B8956A 50%, #9A7B52 100%)',
+        'gradient-gold-radial': 'radial-gradient(circle, #D4C4A8 0%, #B8956A 50%, #7D6344 100%)',
         'gradient-champagne': 'linear-gradient(180deg, #FEFCF8 0%, #F7F3E9 100%)',
         'gradient-dark': 'linear-gradient(135deg, #1F2D42 0%, #232F3E 100%)',
+        'gradient-gold-subtle': 'linear-gradient(135deg, #F3EFE7 0%, #E8DFD0 50%, #D4C4A8 100%)',
       },
       keyframes: animations.keyframes,
       animation: animations.animation,

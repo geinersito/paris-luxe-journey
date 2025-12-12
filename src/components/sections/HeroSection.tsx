@@ -109,8 +109,8 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Improved gradient overlay */}
-      <div className="overlay-dark z-10" />
+      {/* Improved gradient overlay with better contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10" />
 
       <div className="container relative z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="flex flex-col items-center text-center">
@@ -123,17 +123,17 @@ export default function HeroSection() {
             }`}
           >
             {/* Subtitle elegante */}
-            <p className="font-accent italic text-xl md:text-2xl text-primary-100 mb-4">
+            <p className="font-accent italic text-xl md:text-2xl text-primary-200 mb-4 tracking-wide">
               Paris Elite Services
             </p>
 
             {/* Título principal con mejor jerarquía */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-4 leading-tight text-white drop-shadow-2xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight text-white drop-shadow-2xl">
               {t.hero.title}
             </h1>
 
             {/* Subtítulo */}
-            <p className="mt-4 text-lg md:text-xl text-gray-100 font-sans max-w-3xl mx-auto leading-relaxed mb-8">
+            <p className="mt-4 text-lg md:text-xl text-white/90 font-sans max-w-3xl mx-auto leading-relaxed mb-10">
               {t.hero.subtitle}
             </p>
 
