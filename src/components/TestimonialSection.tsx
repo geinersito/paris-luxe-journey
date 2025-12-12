@@ -1,6 +1,7 @@
 import TestimonialCard from "./TestimonialCard";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
+import { AnimatedCounter } from "./ui/AnimatedCounter";
 
 const TestimonialSection = () => {
   const { t } = useLanguage();
@@ -97,7 +98,7 @@ const TestimonialSection = () => {
           ))}
         </motion.div>
 
-        {/* Stats Bar */}
+        {/* Stats Bar with Animated Counters */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -106,20 +107,35 @@ const TestimonialSection = () => {
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
         >
           <div className="text-center">
-            <div className="text-4xl font-display font-bold text-primary mb-2">500+</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Clients Satisfaits</div>
+            <AnimatedCounter
+              end={500}
+              suffix="+"
+              className="text-4xl md:text-5xl font-display font-bold text-primary mb-2"
+              duration={2500}
+            />
+            <div className="text-sm font-medium text-gray-600 dark:text-gray-400">Clients Satisfaits</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-display font-bold text-primary mb-2">4.9</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Note Moyenne</div>
+            <AnimatedCounter
+              end={4.9}
+              decimals={1}
+              className="text-4xl md:text-5xl font-display font-bold text-primary mb-2"
+              duration={2500}
+            />
+            <div className="text-sm font-medium text-gray-600 dark:text-gray-400">Note Moyenne</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-display font-bold text-primary mb-2">100%</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Ponctualité</div>
+            <AnimatedCounter
+              end={100}
+              suffix="%"
+              className="text-4xl md:text-5xl font-display font-bold text-primary mb-2"
+              duration={2500}
+            />
+            <div className="text-sm font-medium text-gray-600 dark:text-gray-400">Ponctualité</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl font-display font-bold text-primary mb-2">24/7</div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Support Client</div>
+            <div className="text-4xl md:text-5xl font-display font-bold text-primary mb-2">24/7</div>
+            <div className="text-sm font-medium text-gray-600 dark:text-gray-400">Support Client</div>
           </div>
         </motion.div>
       </div>

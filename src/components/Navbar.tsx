@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -7,10 +7,27 @@ import { LanguageSelector } from "./LanguageSelector";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   const { t } = useLanguage();
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleServicesDropdown = () => setServicesDropdownOpen(!servicesDropdownOpen);
+
+  // Scroll detection for sticky header effect
+  useEffect(() => {
+    const handleScroll = () => {
+      const offset = window.scrollY;
+      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const progress = (offset / windowHeight) * 100;
+
+      setScrolled(offset > 50);
+      setScrollProgress(progress);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const navItems = [
     { name: t.nav.home, href: "/" },
@@ -40,13 +57,29 @@ const Navbar = () => {
   ];
 
   return (
-    <nav className="fixed w-full bg-background/95 dark:bg-background/90 backdrop-blur-md z-50 shadow-sm border-b border-border">
+    <nav
+      className={`fixed w-full z-50 transition-all duration-500 ${
+        scrolled
+          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-lg border-b border-primary/10'
+          : 'bg-white/95 dark:bg-background/90 backdrop-blur-md shadow-sm border-b border-border'
+      }`}
+    >
+      {/* Scroll Progress Bar */}
+      <div
+        className="absolute top-0 left-0 h-1 bg-gradient-gold transition-all duration-300 ease-out"
+        style={{ width: `${scrollProgress}%` }}
+      />
+
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
           <div className="flex-shrink-0">
             <a
               href="/"
-              className="text-xl sm:text-2xl font-sans font-semibold text-primary hover:text-primary/90 transition-colors"
+              className={`text-xl sm:text-2xl font-display font-bold transition-all duration-300 ${
+                scrolled
+                  ? 'text-primary'
+                  : 'text-secondary'
+              }`}
             >
               Paris Elite Services
             </a>
