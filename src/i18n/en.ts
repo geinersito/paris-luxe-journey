@@ -140,6 +140,8 @@ export const en: Translation = {
       cardDetails: "Card Details",
     },
     submit: "Book Now",
+    submitButton: "See Your Fixed Price",
+    noPaymentRequired: "No payment required - next step shows your final price",
     extras: {
       title: "Additional Services",
       tourGuide: "Tour Guide",

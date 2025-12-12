@@ -130,7 +130,7 @@ export const LocationInputs = (props: LocationInputsProps) => {
           }}
           required
         >
-          <SelectTrigger className="w-full bg-white dark:bg-primary-dark h-9 text-sm">
+          <SelectTrigger className="w-full bg-input border-border/50 hover:border-primary/50 focus:border-primary h-11 text-sm transition-colors">
             <SelectValue placeholder={t.booking.pickupPlaceholder} />
           </SelectTrigger>
           <SelectContent>
@@ -159,7 +159,7 @@ export const LocationInputs = (props: LocationInputsProps) => {
       </button>
 
       <div className="space-y-1.5 relative z-20 group">
-        <Label htmlFor="dropoff" className="flex items-center gap-1.5 text-primary font-medium bg-white/95 dark:bg-primary-dark/95 rounded-md text-sm">
+        <Label htmlFor="dropoff" className="flex items-center gap-1.5 text-primary font-medium text-sm">
           <MapPin className="h-4 w-4 transition-transform duration-200 group-hover:scale-110 group-hover:-translate-y-0.5" />
           {t.booking.dropoff}
         </Label>
@@ -174,7 +174,7 @@ export const LocationInputs = (props: LocationInputsProps) => {
           }}
           required
         >
-          <SelectTrigger className="w-full bg-white dark:bg-primary-dark h-9 text-sm">
+          <SelectTrigger className="w-full bg-input border-border/50 hover:border-primary/50 focus:border-primary h-11 text-sm transition-colors">
             <SelectValue placeholder={t.booking.dropoffPlaceholder} />
           </SelectTrigger>
           <SelectContent>

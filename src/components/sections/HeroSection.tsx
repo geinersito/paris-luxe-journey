@@ -158,21 +158,21 @@ export default function HeroSection() {
       {/* Booking Modal - FUERA del contenedor para z-index correcto */}
       {showBookingModal && (
         <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in-0 duration-300"
           onClick={() => setShowBookingModal(false)}
         >
           <div
-            className="relative w-full max-w-3xl max-h-[95vh] flex flex-col"
+            className="relative w-full max-w-3xl max-h-[90vh] flex flex-col bg-card/98 backdrop-blur-xl rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] border border-border/10 animate-in zoom-in-95 duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header fijo con botón de cerrar */}
-            <div className="glass-card-premium rounded-t-2xl px-6 py-4 flex items-center justify-between border-b border-primary/10 flex-shrink-0">
-              <h2 className="text-2xl font-display font-bold text-secondary">
-                {t.booking.title || "Book Your Transfer"}
+            <div className="px-6 md:px-8 py-5 flex items-center justify-between border-b border-border/50 flex-shrink-0 bg-gradient-to-r from-primary/5 to-transparent rounded-t-3xl">
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-primary">
+                {t.booking.title || "Réservez Votre Transfert"}
               </h2>
               <button
                 onClick={() => setShowBookingModal(false)}
-                className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-full"
+                className="text-muted-foreground hover:text-foreground transition-all duration-200 p-2 hover:bg-muted rounded-full hover:scale-110"
                 aria-label="Close"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -181,8 +181,8 @@ export default function HeroSection() {
               </button>
             </div>
 
-            {/* Contenido scrollable */}
-            <div className="glass-card-premium rounded-b-2xl overflow-y-auto flex-1">
+            {/* Contenido scrollable con scrollbar estilizado */}
+            <div className="overflow-y-auto flex-1 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent hover:scrollbar-thumb-primary/30">
               <div className="p-6 md:p-8">
                 <BookingForm
                   tourId="default"

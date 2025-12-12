@@ -52,36 +52,39 @@ export const LuggageSelector = ({
       </Label>
 
       {/* Política de equipaje - Copy explicativo */}
-      <div className="bg-primary/5 border border-primary/20 rounded-lg p-3 space-y-1.5">
-        <div className="flex items-start gap-2">
+      <div className="bg-muted/80 border border-border rounded-xl p-4 space-y-2">
+        <div className="flex items-start gap-2.5">
           <Info className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-          <div className="space-y-1 text-xs">
-            <p className="font-semibold text-secondary dark:text-primary-foreground">
-              {t.booking.luggagePolicy?.title || "Luggage Policy"}
+          <div className="space-y-2 text-xs flex-1">
+            <p className="font-semibold text-foreground text-sm">
+              {t.booking.luggagePolicy?.title || "Politique de Bagages"}
             </p>
-            <p className="text-muted-foreground">
-              ✓{" "}
-              {t.booking.luggagePolicy?.included ||
-                "Included: 1 large + 1 small bag per passenger"}
-            </p>
-            <p className="text-muted-foreground">
-              ✓{" "}
-              {t.booking.luggagePolicy?.extraLarge ||
-                "Extra large bags: €10 each"}
-            </p>
-            <p className="text-muted-foreground">
-              ✓ {t.booking.luggagePolicy?.extraSmall || "Small bags are free"}
-            </p>
+            <div className="space-y-1.5">
+              <p className="text-muted-foreground flex items-start gap-2">
+                <span className="text-emerald-500 font-bold">✓</span>
+                <span>{t.booking.luggagePolicy?.included ||
+                  "Inclus: 1 grande + 1 petite valise par passager"}</span>
+              </p>
+              <p className="text-muted-foreground flex items-start gap-2">
+                <span className="text-emerald-500 font-bold">✓</span>
+                <span>{t.booking.luggagePolicy?.extraLarge ||
+                  "Grandes valises supplémentaires: 10€ chacune"}</span>
+              </p>
+              <p className="text-muted-foreground flex items-start gap-2">
+                <span className="text-emerald-500 font-bold">✓</span>
+                <span>{t.booking.luggagePolicy?.extraSmall || "Petites valises gratuites"}</span>
+              </p>
+            </div>
           </div>
         </div>
       </div>
 
       <div className="space-y-3">
-        <div className="flex items-center justify-between p-4 bg-accent/30 rounded-lg">
+        <div className="flex items-center justify-between p-4 bg-muted rounded-xl">
           <div className="flex items-center gap-3">
-            <Luggage className="h-4 w-4 text-primary" />
+            <Luggage className="h-5 w-5 text-primary" />
             <div>
-              <p className="text-sm font-medium">{t.booking.largeLuggage}</p>
+              <p className="text-sm font-medium text-foreground">{t.booking.largeLuggage}</p>
               <p className="text-xs text-muted-foreground">
                 23kg {t.booking.maxWeight}
               </p>
@@ -93,35 +96,35 @@ export const LuggageSelector = ({
               type="button"
               onClick={() => handleCountChange("large", "decrement")}
               disabled={largeLuggageCount === 0}
-              className="w-8 h-8 rounded-full bg-gradient-to-br from-secondary to-secondary-dark
-                       text-white shadow-md hover:shadow-lg hover:scale-110
-                       transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
+              className="w-9 h-9 rounded-full bg-primary/20 hover:bg-primary/30
+                       text-primary border border-primary/30 shadow-sm hover:shadow-md hover:scale-110
+                       transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100
                        flex items-center justify-center group"
             >
-              <Minus className="h-3.5 w-3.5 group-hover:scale-90 transition-transform" />
+              <Minus className="h-4 w-4 group-hover:scale-90 transition-transform" />
             </button>
-            <span className="text-lg font-display font-semibold text-primary min-w-[2rem] text-center">
+            <span className="text-xl font-display font-semibold text-foreground min-w-[2.5rem] text-center">
               {largeLuggageCount}
             </span>
             <button
               type="button"
               onClick={() => handleCountChange("large", "increment")}
               disabled={largeLuggageCount >= maxLarge}
-              className="w-8 h-8 rounded-full bg-gradient-to-br from-secondary to-secondary-dark
-                       text-white shadow-md hover:shadow-lg hover:scale-110
-                       transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
+              className="w-9 h-9 rounded-full bg-primary/20 hover:bg-primary/30
+                       text-primary border border-primary/30 shadow-sm hover:shadow-md hover:scale-110
+                       transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100
                        flex items-center justify-center group"
             >
-              <Plus className="h-3.5 w-3.5 group-hover:scale-90 transition-transform" />
+              <Plus className="h-4 w-4 group-hover:scale-90 transition-transform" />
             </button>
           </div>
         </div>
 
-        <div className="flex items-center justify-between p-4 bg-accent/30 rounded-lg">
+        <div className="flex items-center justify-between p-4 bg-muted rounded-xl">
           <div className="flex items-center gap-3">
-            <Luggage className="h-3 w-3 text-primary" />
+            <Luggage className="h-4 w-4 text-primary" />
             <div>
-              <p className="text-sm font-medium">{t.booking.smallLuggage}</p>
+              <p className="text-sm font-medium text-foreground">{t.booking.smallLuggage}</p>
               <p className="text-xs text-muted-foreground">
                 10kg {t.booking.maxWeight}
               </p>
@@ -133,26 +136,26 @@ export const LuggageSelector = ({
               type="button"
               onClick={() => handleCountChange("small", "decrement")}
               disabled={smallLuggageCount === 0}
-              className="w-8 h-8 rounded-full bg-gradient-to-br from-secondary to-secondary-dark
-                       text-white shadow-md hover:shadow-lg hover:scale-110
-                       transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
+              className="w-9 h-9 rounded-full bg-primary/20 hover:bg-primary/30
+                       text-primary border border-primary/30 shadow-sm hover:shadow-md hover:scale-110
+                       transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100
                        flex items-center justify-center group"
             >
-              <Minus className="h-3.5 w-3.5 group-hover:scale-90 transition-transform" />
+              <Minus className="h-4 w-4 group-hover:scale-90 transition-transform" />
             </button>
-            <span className="text-lg font-display font-semibold text-primary min-w-[2rem] text-center">
+            <span className="text-xl font-display font-semibold text-foreground min-w-[2.5rem] text-center">
               {smallLuggageCount}
             </span>
             <button
               type="button"
               onClick={() => handleCountChange("small", "increment")}
               disabled={smallLuggageCount >= maxSmall}
-              className="w-8 h-8 rounded-full bg-gradient-to-br from-secondary to-secondary-dark
-                       text-white shadow-md hover:shadow-lg hover:scale-110
-                       transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100
+              className="w-9 h-9 rounded-full bg-primary/20 hover:bg-primary/30
+                       text-primary border border-primary/30 shadow-sm hover:shadow-md hover:scale-110
+                       transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100
                        flex items-center justify-center group"
             >
-              <Plus className="h-3.5 w-3.5 group-hover:scale-90 transition-transform" />
+              <Plus className="h-4 w-4 group-hover:scale-90 transition-transform" />
             </button>
           </div>
         </div>

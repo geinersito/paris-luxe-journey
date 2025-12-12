@@ -263,7 +263,7 @@ const BookingForm = ({
         </h2>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Columna izquierda */}
         <div className="space-y-7">
           <LocationInputs
@@ -374,14 +374,14 @@ const BookingForm = ({
 
       <Button
         type="submit"
-        className="w-full silk-button font-medium text-base py-3 mt-6"
+        className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-semibold text-base py-6 mt-6 shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02] transition-all duration-300 rounded-xl"
         disabled={isSubmitting}
       >
-        {isSubmitting ? t.common.processing : "See Your Fixed Price"}
+        {isSubmitting ? t.common.processing : (t.booking.submitButton || "Voir Votre Prix Fixe")}
       </Button>
 
-      <p className="mt-6 px-4 text-xs text-center text-slate-500">
-        No payment required yet – next step shows your final price
+      <p className="mt-4 px-4 text-sm text-center text-muted-foreground">
+        {t.booking.noPaymentRequired || "Aucun paiement requis - l'étape suivante affiche votre prix final"}
       </p>
     </form>
   );

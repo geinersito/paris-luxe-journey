@@ -298,6 +298,8 @@ export interface Translation {
       cardDetails: string;
     };
     submit: string;
+    submitButton?: string;
+    noPaymentRequired?: string;
     extras: {
       title: string;
       tourGuide: string;

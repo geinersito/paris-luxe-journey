@@ -138,6 +138,8 @@ export const pt: Translation = {
     priceSummary: "Resumo do Preço",
     validatingPrice: "Validando preço...",
     submit: "Reservar Agora",
+    submitButton: "Ver Seu Preço Fixo",
+    noPaymentRequired: "Nenhum pagamento necessário - o próximo passo mostra seu preço final",
     extras: {
       title: "Serviços Adicionais",
       tourGuide: "Guia Turístico",

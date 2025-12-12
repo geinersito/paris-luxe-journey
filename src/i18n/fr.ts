@@ -237,6 +237,8 @@ export const fr: Translation = {
       cardDetails: "Détails de la Carte",
     },
     submit: "Réserver",
+    submitButton: "Voir Votre Prix Fixe",
+    noPaymentRequired: "Aucun paiement requis - l'étape suivante affiche votre prix final",
     extras: {
       title: "Services Additionnels",
       tourGuide: "Guide Touristique",
