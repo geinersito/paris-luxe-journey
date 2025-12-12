@@ -73,11 +73,13 @@ describe('Payment Component', () => {
 
   test('should render payment form correctly', () => {
     render(
-      <Payment 
+      <Payment
         clientSecret="test_secret"
         bookingId="test_booking"
         paymentIntentId="test_intent"
         onInitializePayment={jest.fn()}
+        estimatedPrice={105}
+        bookingData={{ pickup: 'Paris', dropoff: 'CDG', passengers: 2 }}
       />
     );
 
@@ -93,11 +95,13 @@ describe('Payment Component', () => {
     mockStripe.confirmPayment.mockResolvedValue({ error: null });
 
     render(
-      <Payment 
+      <Payment
         clientSecret="test_secret"
         bookingId="test_booking"
         paymentIntentId="test_intent"
         onInitializePayment={jest.fn()}
+        estimatedPrice={105}
+        bookingData={{ pickup: 'Paris', dropoff: 'CDG', passengers: 2 }}
       />
     );
 
@@ -128,11 +132,13 @@ describe('Payment Component', () => {
     mockBookingContext.validatePriceWithBackend.mockResolvedValue(false);
 
     render(
-      <Payment 
+      <Payment
         clientSecret="test_secret"
         bookingId="test_booking"
         paymentIntentId="test_intent"
         onInitializePayment={jest.fn()}
+        estimatedPrice={105}
+        bookingData={{ pickup: 'Paris', dropoff: 'CDG', passengers: 2 }}
       />
     );
 
@@ -156,16 +162,18 @@ describe('Payment Component', () => {
   test('should handle payment errors gracefully', async () => {
     // Mock de validación exitosa pero error en el pago
     mockBookingContext.validatePriceWithBackend.mockResolvedValue(true);
-    mockStripe.confirmPayment.mockResolvedValue({ 
-      error: { message: 'Card declined' } 
+    mockStripe.confirmPayment.mockResolvedValue({
+      error: { message: 'Card declined' }
     });
 
     const { getByText } = render(
-      <Payment 
+      <Payment
         clientSecret="test_secret"
         bookingId="test_booking"
         paymentIntentId="test_intent"
         onInitializePayment={jest.fn()}
+        estimatedPrice={105}
+        bookingData={{ pickup: 'Paris', dropoff: 'CDG', passengers: 2 }}
       />
     );
 
@@ -192,15 +200,17 @@ describe('Payment Component', () => {
     const validationPromise = new Promise<boolean>(resolve => {
       resolveValidation = resolve;
     });
-    
+
     mockBookingContext.validatePriceWithBackend.mockReturnValue(validationPromise);
 
     render(
-      <Payment 
+      <Payment
         clientSecret="test_secret"
         bookingId="test_booking"
         paymentIntentId="test_intent"
         onInitializePayment={jest.fn()}
+        estimatedPrice={105}
+        bookingData={{ pickup: 'Paris', dropoff: 'CDG', passengers: 2 }}
       />
     );
 
@@ -233,11 +243,13 @@ describe('Payment Component', () => {
     }));
 
     render(
-      <Payment 
+      <Payment
         clientSecret="test_secret"
         bookingId="test_booking"
         paymentIntentId="test_intent"
         onInitializePayment={jest.fn()}
+        estimatedPrice={105}
+        bookingData={{ pickup: 'Paris', dropoff: 'CDG', passengers: 2 }}
       />
     );
     

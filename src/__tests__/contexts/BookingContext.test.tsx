@@ -1,6 +1,5 @@
-import { render, screen, waitFor, act } from '@testing-library/react';
+import { render, screen, waitFor, act, renderHook } from '@testing-library/react';
 import { BookingProvider, useBooking } from '@/contexts/BookingContext';
-import { renderHook } from '@testing-library/react-hooks';
 import * as apiService from '@/services/api';
 
 // Mock de las APIs
