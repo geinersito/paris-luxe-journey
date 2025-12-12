@@ -1,5 +1,3 @@
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { AlertTriangle, CheckCircle, XCircle, Shield, Phone } from "lucide-react";
@@ -11,7 +9,6 @@ const AvoidFakeTaxis = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
       
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-primary via-primary/90 to-primary/80 text-white py-20">
@@ -260,8 +257,6 @@ const AvoidFakeTaxis = () => {
           </div>
         </div>
       </section>
-
-      <Footer />
     </div>
   );
 };

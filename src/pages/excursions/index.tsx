@@ -1,7 +1,5 @@
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
 import { ExcursionCard } from "@/components/excursions/ExcursionCard";
 import { Input } from "@/components/ui/input";
 import {
@@ -33,8 +31,6 @@ export default function ExcursionsPage() {
 
   return (
     <div className="min-h-screen bg-background">
-      <Navbar />
-      
       <main className="container mx-auto px-4 py-8">
         <div className="space-y-8">
           {/* Filtros */}
@@ -93,8 +89,6 @@ export default function ExcursionsPage() {
           </div>
         </div>
       </main>
-
-      <Footer />
     </div>
   );
 }
