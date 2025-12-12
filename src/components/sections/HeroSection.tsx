@@ -15,7 +15,18 @@ export default function HeroSection() {
   const { t } = useLanguage();
   const navigate = useNavigate();
   const [isImageLoaded, setIsImageLoaded] = React.useState(false);
+  const [showBookingModal, setShowBookingModal] = React.useState(false);
+  const [scrollY, setScrollY] = React.useState(0);
   const imageRef = React.useRef<HTMLImageElement>(null);
+
+  // Parallax effect
+  React.useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   // Use Intersection Observer for lazy loading
   React.useEffect(() => {
@@ -76,140 +87,139 @@ export default function HeroSection() {
       id="booking"
       className="min-h-screen relative flex items-center justify-center py-24 lg:py-32 overflow-hidden"
     >
-      {/* Optimized background image with responsive srcset */}
-      <img
-        ref={imageRef}
-        src={HERO_IMAGE_MEDIUM}
-        srcSet={`${HERO_IMAGE_SMALL} 640w, ${HERO_IMAGE_MEDIUM} 1280w, ${HERO_IMAGE_LARGE} 1920w`}
-        sizes="100vw"
-        alt="Paris Elite Services - Luxury Transportation"
-        loading="eager"
-        decoding="async"
-        className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${
-          isImageLoaded ? "opacity-100" : "opacity-0"
-        }`}
-        style={{
-          objectPosition: "center 15%",
-          transform: "scaleX(-1)",
-        }}
-        onLoad={() => setIsImageLoaded(true)}
-      />
-
-      <div
-        className={`absolute inset-0 bg-gradient-to-br from-primary/70 via-black/60 to-primary-dark/80 z-10 transition-opacity duration-1000 ${
-          isImageLoaded ? "opacity-100" : "opacity-0"
-        }`}
-      />
-
-      <div className="container relative z-20 flex flex-col lg:flex-row items-center justify-between gap-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div
-          className={`text-white max-w-xl text-center lg:text-left w-full lg:w-1/2 transition-opacity duration-1000 ${
-            isImageLoaded
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-4"
+      {/* Optimized background image with responsive srcset and parallax */}
+      <div className="absolute inset-0 z-0">
+        <img
+          ref={imageRef}
+          src={HERO_IMAGE_MEDIUM}
+          srcSet={`${HERO_IMAGE_SMALL} 640w, ${HERO_IMAGE_MEDIUM} 1280w, ${HERO_IMAGE_LARGE} 1920w`}
+          sizes="100vw"
+          alt="Paris Elite Services - Luxury Transportation"
+          loading="eager"
+          decoding="async"
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            isImageLoaded ? "opacity-100" : "opacity-0"
           }`}
-        >
-          {/* Overlay oscuro detrás del texto para mejor legibilidad */}
-          <div className="bg-black/60 backdrop-blur-md px-8 py-10 rounded-lg max-w-2xl mx-auto lg:mx-0 shadow-2xl">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-display font-bold mb-4 leading-tight text-white drop-shadow-2xl">
+          style={{
+            objectPosition: "center 15%",
+            transform: `scaleX(-1) translateY(${scrollY * 0.5}px)`,
+          }}
+          onLoad={() => setIsImageLoaded(true)}
+        />
+      </div>
+
+      {/* Improved gradient overlay */}
+      <div className="overlay-dark z-10" />
+
+      <div className="container relative z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div className="flex flex-col items-center text-center">
+          {/* Main Content - Centered */}
+          <div
+            className={`max-w-4xl transition-all duration-1000 ${
+              isImageLoaded
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            }`}
+          >
+            {/* Subtitle elegante */}
+            <p className="font-accent italic text-xl md:text-2xl text-primary-100 mb-4">
+              Paris Elite Services
+            </p>
+
+            {/* Título principal con mejor jerarquía */}
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-display font-bold mb-6 leading-tight text-white drop-shadow-2xl">
               {t.hero.title}
             </h1>
-            <p className="mt-4 text-lg text-gray-100 font-sans">
+
+            {/* Subtítulo */}
+            <p className="mt-6 text-xl md:text-2xl text-gray-100 font-sans max-w-3xl mx-auto leading-relaxed">
               {t.hero.subtitle}
             </p>
 
-            {/* Garantías con checkmarks - usando componente reutilizable TrustBadge */}
-            <div className="mt-3 flex items-center justify-center lg:justify-start gap-4 flex-wrap">
+            {/* CTA Prominente */}
+            <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <button
+                onClick={() => setShowBookingModal(true)}
+                className="silk-button text-lg font-semibold group"
+              >
+                Book Your Transfer Now
+                <svg
+                  className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M13 7l5 5m0 0l-5 5m5-5H6"
+                  />
+                </svg>
+              </button>
+              <button
+                onClick={() => document.getElementById('fleet')?.scrollIntoView({ behavior: 'smooth' })}
+                className="button-outline-gold text-lg font-semibold"
+              >
+                View Our Fleet
+              </button>
+            </div>
+
+            {/* Trust Badges - Más compactos */}
+            <div className="mt-12 flex items-center justify-center gap-6 flex-wrap">
               <TrustBadge
                 icon={
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 }
-                text="Fixed price"
+                text="Fixed Price"
               />
               <TrustBadge
                 icon={
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 }
-                text="No hidden fees"
+                text="No Hidden Fees"
               />
               <TrustBadge
                 icon={
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 }
-                text="1 luggage/pax included"
-              />
-              <TrustBadge
-                icon={
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M5 13l4 4L19 7"
-                    />
-                  </svg>
-                }
-                text="Free cancellation 24h"
+                text="Free Cancellation"
               />
             </div>
           </div>
         </div>
 
-        <div
-          className={`w-full lg:w-1/2 max-w-lg mx-auto transition-opacity duration-1000 ${
-            isImageLoaded
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-4"
-          }`}
-        >
-          <BookingForm
-            tourId="default"
-            tourName="Standard Transfer"
-            basePrice={0} // Usar 0 para permitir que el cálculo dinámico funcione
-            onSubmit={handleBookingSubmit}
-          />
-        </div>
+        {/* Booking Modal */}
+        {showBookingModal && (
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
+            <div className="glass-card-premium max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 relative">
+              <button
+                onClick={() => setShowBookingModal(false)}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+              <h2 className="text-2xl font-display font-bold text-primary mb-6">Book Your Transfer</h2>
+              <BookingForm
+                tourId="default"
+                tourName="Standard Transfer"
+                basePrice={0}
+                onSubmit={(data) => {
+                  handleBookingSubmit(data);
+                  setShowBookingModal(false);
+                }}
+              />
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">

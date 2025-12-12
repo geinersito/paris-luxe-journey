@@ -1,15 +1,16 @@
-/* Display Font - Playfair Display */
+/* Display Font - Playfair Display (Títulos elegantes) */
 @import '@fontsource/playfair-display/700.css';
 @import '@fontsource/playfair-display/400-italic.css';
 
-/* Accent Script - Cormorant Garamond */
+/* Accent Script - Cormorant Garamond (Subtítulos decorativos) */
 @import '@fontsource/cormorant-garamond/500-italic.css';
 
-/* Body Font - Inter */
-@import '@fontsource/inter/400.css';
-@import '@fontsource/inter/500.css';
-@import '@fontsource/inter/600.css';
-@import '@fontsource/inter/700.css';
+/* Body Font - Montserrat (Cuerpo premium) */
+@import '@fontsource/montserrat/300.css';
+@import '@fontsource/montserrat/400.css';
+@import '@fontsource/montserrat/500.css';
+@import '@fontsource/montserrat/600.css';
+@import '@fontsource/montserrat/700.css';
 
 @tailwind base;
 @tailwind components;
@@ -91,21 +92,41 @@
 }
 
 @layer components {
+  /* Card Effects */
   .hover-card-3d {
     @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
     transform-style: preserve-3d;
     perspective: 1000px;
   }
-  
-  .silk-button {
-    @apply relative overflow-hidden bg-primary hover:bg-primary/90 text-white px-6 py-3 rounded-md transition-all duration-300 shadow-sm hover:shadow-md;
-  }
 
   .glass-card {
-    @apply bg-pearl/90 dark:bg-primary-dark/50 backdrop-blur-md border border-metallic/20 dark:border-metallic/10 rounded-lg shadow-lg;
+    @apply bg-white/80 dark:bg-secondary/80 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl shadow-2xl;
   }
 
-  /* Typography utilities */
+  .glass-card-premium {
+    @apply bg-gradient-to-br from-white/90 to-champagne/80 backdrop-blur-2xl border border-primary/10 rounded-2xl shadow-2xl;
+  }
+
+  /* Button Styles */
+  .silk-button {
+    @apply relative overflow-hidden bg-gradient-gold text-white px-8 py-4 rounded-lg transition-all duration-300 shadow-lg hover:shadow-2xl hover:scale-105;
+  }
+
+  .silk-button::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent;
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+
+  .silk-button:hover::before {
+    transform: translateX(100%);
+  }
+
+  .button-outline-gold {
+    @apply border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-300 px-8 py-4 rounded-lg font-semibold;
+  }
+
   /* Typography Utilities */
   .heading-primary {
     @apply font-display font-bold text-primary dark:text-primary-foreground;
@@ -121,6 +142,29 @@
 
   .body-text {
     @apply font-sans text-foreground;
+  }
+
+  /* Section Spacing */
+  .section-padding {
+    @apply py-20 md:py-28 lg:py-32;
+  }
+
+  .section-padding-sm {
+    @apply py-12 md:py-16 lg:py-20;
+  }
+
+  /* Gradient Text */
+  .text-gradient-gold {
+    @apply bg-gradient-gold bg-clip-text text-transparent;
+  }
+
+  /* Overlay Effects */
+  .overlay-dark {
+    @apply absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60;
+  }
+
+  .overlay-gold {
+    @apply absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-primary/10;
   }
 }
 

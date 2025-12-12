@@ -11,16 +11,38 @@ const colors = {
     foreground: "#FFFFFF",
     accent: "#A3862B", // Dorado hover (más oscuro)
     dark: "#8B7024", // Dorado dark mode
+    light: "#D4B85E", // Dorado claro para gradientes
+    50: "#FBF8F0",
+    100: "#F5EDDB",
+    200: "#EBD9B3",
+    300: "#DFC188",
+    400: "#D4B85E",
+    500: "#C2A033", // DEFAULT
+    600: "#A3862B",
+    700: "#8B7024",
+    800: "#6B5519",
+    900: "#4A3A11",
   },
   secondary: {
     DEFAULT: "#1F2D42", // Navy (accent para hero cards y secciones oscuras)
     foreground: "#F8F6F0",
     dark: "#232F3E",
+    light: "#2A3F5F",
   },
   pearl: {
     DEFAULT: "#FDFBF7", // Blanco cálido (background principal)
     dark: "#F5F3EE",
     light: "#FFFFFF",
+  },
+  champagne: {
+    DEFAULT: "#F7F3E9", // Champagne - tono crema elegante
+    light: "#FAF7EF",
+    dark: "#EDE8D9",
+  },
+  cream: {
+    DEFAULT: "#FBF8F0", // Crema suave
+    light: "#FEFCF8",
+    dark: "#F5F0E3",
   },
   metallic: {
     DEFAULT: "#E5E1D8", // Beige claro (borders)
@@ -112,12 +134,25 @@ export default {
     extend: {
       colors,
       fontFamily: {
-        display: ["Playfair Display", "serif"],
-        accent: ["Cormorant Garamond", "serif"],
-        sans: ["Inter", "sans-serif"],
+        display: ["Playfair Display", "serif"], // Títulos elegantes
+        accent: ["Cormorant Garamond", "serif"], // Subtítulos decorativos
+        sans: ["Montserrat", "sans-serif"], // Cuerpo de texto premium
+      },
+      backgroundImage: {
+        'gradient-gold': 'linear-gradient(135deg, #D4B85E 0%, #C2A033 50%, #A3862B 100%)',
+        'gradient-gold-radial': 'radial-gradient(circle, #D4B85E 0%, #C2A033 50%, #8B7024 100%)',
+        'gradient-champagne': 'linear-gradient(180deg, #FEFCF8 0%, #F7F3E9 100%)',
+        'gradient-dark': 'linear-gradient(135deg, #1F2D42 0%, #232F3E 100%)',
       },
       keyframes: animations.keyframes,
       animation: animations.animation,
+      spacing: {
+        '18': '4.5rem',
+        '88': '22rem',
+        '100': '25rem',
+        '112': '28rem',
+        '128': '32rem',
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],
