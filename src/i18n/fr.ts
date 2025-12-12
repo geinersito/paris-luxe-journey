@@ -310,20 +310,45 @@ export const fr: Translation = {
   services: {
     title: "Nos Services Premium",
     subtitle: "Découvrez le transport de luxe à son meilleur",
+    decorativeSubtitle: "Découvrez le transport de luxe",
+    cta: "Réserver Maintenant",
+    groupDisclaimer: "Pour les groupes de 8+ passagers, veuillez nous contacter",
     airport: {
       title: "Transferts Aéroport",
       description:
         "Transport fluide vers et depuis les aéroports CDG, Orly et Beauvais.",
+      priceFrom: "À partir de 70€",
+      features: [
+        "Service d'Accueil",
+        "Suivi des Vols",
+        "Temps d'Attente Gratuit",
+        "1 Bagage/Pax Inclus",
+        "Chauffeurs Professionnels"
+      ]
     },
     chauffeur: {
       title: "Chauffeur Privé",
       description:
         "Véhicule de luxe avec chauffeur professionnel à votre disposition.",
+      priceFrom: "À partir de 60€/heure",
+      features: [
+        "Réservation à l'Heure Disponible",
+        "Disponibilité 24/7",
+        "Service Multilingue",
+        "Itinéraires et Arrêts Personnalisés"
+      ]
     },
     cityTours: {
       title: "Visites de la Ville",
       description:
-        "Découvrez les monuments les plus emblématiques de Paris avec nos guides experts.",
+        "Découvrez les monuments les plus emblématiques de Paris avec nos chauffeurs professionnels.",
+      priceFrom: "À partir de 95€",
+      features: [
+        "Itinéraires Personnalisés",
+        "Chauffeurs Professionnels",
+        "Véhicules Premium",
+        "Mercedes Classe E et Classe V"
+      ]
     },
     dayTrips: {
       title: "Excursions",
@@ -458,5 +483,104 @@ export const fr: Translation = {
   },
   toast: {
     languageChanged: "Langue changée avec succès",
+  },
+  avoidFakeTaxis: {
+    badge: "Guide de Sécurité",
+    hero: {
+      title: "Faux Taxis aux Aéroports de Paris : Comment Éviter les Arnaques et Réserver un Transfert Sûr",
+      subtitle: "Des milliers de touristes sont victimes d'arnaques de faux taxis à CDG et Orly chaque année. Apprenez à les repérer et choisissez un transfert agréé à prix fixe.",
+    },
+    problem: {
+      title: "Le Problème est Réel",
+      paragraph1: "Vous venez d'atterrir à Charles de Gaulle après un long vol. Vous êtes fatigué, vous avez des bagages et vous voulez juste arriver à votre hôtel. À la sortie des arrivées, quelqu'un vous aborde en proposant un 'taxi' à un prix avantageux. Ça semble pratique, non ? Faux.",
+      paragraph2: "C'est ainsi que des milliers de touristes se font arnaquer chaque année dans les aéroports parisiens. L'arnaque au faux taxi est l'un des pièges à touristes les plus courants à Paris, coûtant aux victimes des centaines d'euros et gâchant leur première impression de la ville.",
+    },
+    howScamWorks: {
+      title: "Comment Fonctionne l'Arnaque",
+      paragraph1: "Les chauffeurs de faux taxis ciblent les touristes à CDG, Orly et Beauvais. Ils portent de faux badges, utilisent des voitures non marquées et proposent des prix bas pour vous attirer.",
+      paragraph2: "Une fois dans la voiture, ils prennent des itinéraires plus longs, prétendent que le compteur est 'cassé' ou exigent 3 à 4 fois le tarif normal. Certains menacent même les passagers qui refusent de payer. Quand vous réalisez ce qui se passe, vous êtes déjà dans la voiture et loin de l'aéroport.",
+    },
+    redFlags: {
+      title: "Signaux d'Alerte à Surveiller",
+      flag1: {
+        title: "Le chauffeur vous aborde à l'intérieur du terminal",
+        description: "Les vrais taxis attendent aux stations officielles à l'extérieur. Si quelqu'un vous aborde à l'intérieur en proposant un taxi, c'est une arnaque.",
+      },
+      flag2: {
+        title: "Pas de compteur ou de licence officielle affichée",
+        description: "Tout taxi légal à Paris doit avoir un compteur visible et un numéro de licence.",
+      },
+      flag3: {
+        title: "La voiture n'a pas de panneau lumineux \"TAXI PARISIEN\"",
+        description: "Les taxis officiels ont un panneau lumineux sur le toit. Pas de panneau = pas un vrai taxi.",
+      },
+      flag4: {
+        title: "Le chauffeur insiste sur le paiement en espèces et propose un \"prix spécial\"",
+        description: "La loi française oblige les taxis à accepter les cartes. Espèces uniquement est un signal d'alerte majeur.",
+      },
+      flag5: {
+        title: "Véhicule non marqué ou avec des panneaux manuscrits",
+        description: "Les taxis officiels ont une signalétique professionnelle. Les panneaux manuscrits sont une arnaque.",
+      },
+    },
+    protection: {
+      title: "Comment Vous Protéger",
+      intro: "Si vous devez prendre un taxi à l'aéroport :",
+      tip1: "Utilisez uniquement les stations de taxis officielles (suivez les panneaux \"TAXI\")",
+      tip2: "Vérifiez que le véhicule a un panneau lumineux et un compteur",
+      tip3: "Demandez une estimation avant de monter",
+      tip4: "Insistez pour payer par carte (obligation légale en France)",
+      betterOption: "Meilleure option : Réservez un transfert privé agréé à l'avance avec un prix fixe.",
+    },
+    whyVTC: {
+      title: "Pourquoi un Transfert VTC Agréé est l'Alternative Sûre",
+      intro: "Contrairement aux taxis de rue, les services VTC (voiture de transport avec chauffeur) agréés comme Paris Elite Services offrent :",
+      benefit1: {
+        title: "Prix fixe confirmé avant votre voyage",
+        description: "Pas de surprises, pas de tours de compteur",
+      },
+      benefit2: {
+        title: "Chauffeurs professionnels vérifiés",
+        description: "Conducteurs avec vérification d'antécédents",
+      },
+      benefit3: {
+        title: "Suivi des vols",
+        description: "Le chauffeur attend même si votre vol est retardé",
+      },
+      benefit4: {
+        title: "Service d'accueil personnalisé",
+        description: "Le chauffeur attend aux arrivées avec votre nom",
+      },
+      benefit5: {
+        title: "Véhicules premium",
+        description: "Mercedes Classe E, vans spacieux pour familles",
+      },
+      benefit6: {
+        title: "Support client 24/7",
+        description: "WhatsApp, email, téléphone",
+      },
+    },
+    pricing: {
+      title: "Ce Que Vous Devriez Réellement Payer",
+      intro: "Voici ce que vous devriez vous attendre à payer pour un transfert sûr et agréé depuis les aéroports parisiens :",
+      tableHeaders: {
+        route: "Trajet",
+        passengers1to3: "1-3 Passagers",
+        passengers4to7: "4-7 Passagers",
+      },
+      routes: {
+        cdg: "Aéroport CDG → Paris",
+        orly: "Aéroport Orly → Paris",
+        beauvais: "Aéroport Beauvais → Paris",
+      },
+      warning: "⚠️ Attention : Si quelqu'un vous propose €30-40 pour CDG-Paris, c'est soit une arnaque, soit ils ajouteront des frais cachés plus tard. Le tarif officiel de taxi depuis CDG vers Paris est d'environ €50-60, et un VTC agréé avec prix fixe est €70.",
+    },
+    cta: {
+      title: "Ne Risquez Pas Votre Arrivée à Paris",
+      subtitle: "Réservez votre transfert d'aéroport sûr et agréé maintenant avec des prix fixes et un service professionnel.",
+      bookNow: "Voir les Prix et Réserver",
+      whatsapp: "Nous Contacter par WhatsApp",
+      groupsNotice: "Pour les groupes de 8+ passagers ou demandes spéciales, contactez-nous via WhatsApp : +33 6 68 25 11 02",
+    },
   },
 };

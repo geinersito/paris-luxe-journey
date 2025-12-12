@@ -213,20 +213,45 @@ export const pt: Translation = {
   services: {
     title: "Nossos Serviços Premium",
     subtitle: "Experimente o transporte de luxo em sua melhor forma",
+    decorativeSubtitle: "Experimente o transporte de luxo",
+    cta: "Reservar Agora",
+    groupDisclaimer: "Para grupos de 8+ passageiros, por favor entre em contato",
     airport: {
       title: "Transfers Aeroporto",
       description:
         "Transporte sem complicações de e para os aeroportos CDG, Orly e Beauvais.",
+      priceFrom: "A partir de €70",
+      features: [
+        "Serviço de Recepção",
+        "Rastreamento de Voos",
+        "Tempo de Espera Grátis",
+        "1 Bagagem/Pax Incluída",
+        "Motoristas Profissionais"
+      ]
     },
     chauffeur: {
       title: "Motorista Privado",
       description:
         "Veículo de luxo com motorista profissional à sua disposição.",
+      priceFrom: "A partir de €60/hora",
+      features: [
+        "Reserva por Hora Disponível",
+        "Disponibilidade 24/7",
+        "Serviço Multilíngue",
+        "Rotas e Paradas Personalizadas"
+      ]
     },
     cityTours: {
       title: "Tours pela Cidade",
       description:
-        "Descubra os pontos turísticos mais icônicos de Paris com nossos guias especialistas.",
+        "Descubra os pontos turísticos mais icônicos de Paris com nossos motoristas profissionais.",
+      priceFrom: "A partir de €95",
+      features: [
+        "Itinerários Personalizados",
+        "Motoristas Profissionais",
+        "Veículos Premium",
+        "Mercedes Classe E e Classe V"
+      ]
     },
     dayTrips: {
       title: "Passeios de Dia",
@@ -456,5 +481,104 @@ export const pt: Translation = {
       title: "Métodos de pagamento aceitos",
     },
     copyright: " 2025 Paris Elite Services. Todos os direitos reservados.",
+  },
+  avoidFakeTaxis: {
+    badge: "Guia de Segurança",
+    hero: {
+      title: "Táxis Falsos nos Aeroportos de Paris: Como Evitar Golpes e Reservar um Transfer Seguro",
+      subtitle: "Milhares de turistas são vítimas de golpes de táxis falsos em CDG e Orly todos os anos. Aprenda a identificá-los e escolha um transfer licenciado com preço fixo.",
+    },
+    problem: {
+      title: "O Problema é Real",
+      paragraph1: "Você acabou de pousar em Charles de Gaulle após um longo voo. Está cansado, tem bagagem e só quer chegar ao hotel. Na saída de desembarque, alguém se aproxima oferecendo um 'táxi' com um ótimo preço. Parece conveniente, certo? Errado.",
+      paragraph2: "É assim que milhares de turistas são enganados todos os anos nos aeroportos de Paris. O golpe do táxi falso é uma das armadilhas turísticas mais comuns em Paris, custando às vítimas centenas de euros e arruinando sua primeira impressão da cidade.",
+    },
+    howScamWorks: {
+      title: "Como Funciona o Golpe",
+      paragraph1: "Motoristas de táxis falsos visam turistas em CDG, Orly e Beauvais. Usam crachás falsos, carros sem identificação e cotam preços baixos para atraí-lo.",
+      paragraph2: "Uma vez no carro, fazem rotas mais longas, alegam que o taxímetro está 'quebrado' ou exigem 3-4 vezes a tarifa normal. Alguns até ameaçam passageiros que se recusam a pagar. Quando você percebe o que está acontecendo, já está no carro e longe do aeroporto.",
+    },
+    redFlags: {
+      title: "Sinais de Alerta a Observar",
+      flag1: {
+        title: "Motorista se aproxima de você dentro do terminal",
+        description: "Táxis reais esperam em pontos oficiais do lado de fora. Se alguém se aproxima dentro oferecendo táxi, é golpe.",
+      },
+      flag2: {
+        title: "Sem taxímetro ou licença oficial visível",
+        description: "Todo táxi legal em Paris deve ter taxímetro visível e número de licença.",
+      },
+      flag3: {
+        title: "Carro não tem placa de teto \"TAXI PARISIEN\"",
+        description: "Táxis oficiais têm placa iluminada no teto. Sem placa = não é táxi real.",
+      },
+      flag4: {
+        title: "Motorista insiste em dinheiro apenas e cota um \"preço especial\"",
+        description: "A lei francesa exige que táxis aceitem cartões. Apenas dinheiro é um grande sinal de alerta.",
+      },
+      flag5: {
+        title: "Veículo sem identificação ou com placas manuscritas",
+        description: "Táxis oficiais têm sinalização profissional. Placas manuscritas são golpe.",
+      },
+    },
+    protection: {
+      title: "Como Se Proteger",
+      intro: "Se você precisar pegar um táxi no aeroporto:",
+      tip1: "Use apenas pontos oficiais de táxi (siga as placas \"TAXI\")",
+      tip2: "Verifique se o veículo tem luz de teto e taxímetro",
+      tip3: "Peça uma estimativa antes de entrar",
+      tip4: "Insista em pagar com cartão (requisito legal na França)",
+      betterOption: "Melhor opção: Reserve um transfer privado licenciado com antecedência com preço fixo.",
+    },
+    whyVTC: {
+      title: "Por Que um Transfer VTC Licenciado é a Alternativa Segura",
+      intro: "Ao contrário dos táxis de rua, serviços VTC (aluguel privado) licenciados como Paris Elite Services oferecem:",
+      benefit1: {
+        title: "Preço fixo confirmado antes de viajar",
+        description: "Sem surpresas, sem truques de taxímetro",
+      },
+      benefit2: {
+        title: "Motoristas profissionais verificados",
+        description: "Condutores com verificação de antecedentes",
+      },
+      benefit3: {
+        title: "Rastreamento de voos",
+        description: "Motorista espera mesmo se seu voo atrasar",
+      },
+      benefit4: {
+        title: "Serviço de recepção",
+        description: "Motorista espera no desembarque com seu nome",
+      },
+      benefit5: {
+        title: "Veículos premium",
+        description: "Mercedes Classe E, vans espaçosas para famílias",
+      },
+      benefit6: {
+        title: "Suporte ao cliente 24/7",
+        description: "WhatsApp, email, telefone",
+      },
+    },
+    pricing: {
+      title: "O Que Você Deveria Realmente Pagar",
+      intro: "Aqui está o que você deve esperar pagar por um transfer seguro e licenciado dos aeroportos de Paris:",
+      tableHeaders: {
+        route: "Rota",
+        passengers1to3: "1-3 Passageiros",
+        passengers4to7: "4-7 Passageiros",
+      },
+      routes: {
+        cdg: "Aeroporto CDG → Paris",
+        orly: "Aeroporto Orly → Paris",
+        beauvais: "Aeroporto Beauvais → Paris",
+      },
+      warning: "⚠️ Aviso: Se alguém cotar €30-40 para CDG-Paris, é golpe ou adicionarão taxas ocultas depois. A tarifa oficial de táxi de CDG para Paris é cerca de €50-60, e um VTC licenciado com preço fixo é €70.",
+    },
+    cta: {
+      title: "Não Arrisque Sua Chegada a Paris",
+      subtitle: "Reserve seu transfer de aeroporto seguro e licenciado agora com preços fixos e serviço profissional.",
+      bookNow: "Ver Preços e Reservar Agora",
+      whatsapp: "Fale Conosco no WhatsApp",
+      groupsNotice: "Para grupos de 8+ passageiros ou solicitações especiais, entre em contato via WhatsApp: +33 6 68 25 11 02",
+    },
   },
 };

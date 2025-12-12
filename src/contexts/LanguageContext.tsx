@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Language, Translation } from '@/types/i18n';
 import { en } from '@/i18n/en';
 import { fr } from '@/i18n/fr';
@@ -40,6 +40,12 @@ interface LanguageProviderProps {
   children: React.ReactNode;
 }
 
+// Memoized children wrapper to prevent unnecessary re-renders
+const MemoizedChildren = memo(({ children }: { children: React.ReactNode }) => {
+  return <>{children}</>;
+});
+MemoizedChildren.displayName = 'MemoizedLanguageChildren';
+
 // Componente Provider
 export function LanguageProvider({ children }: LanguageProviderProps) {
   const { i18n } = useTranslation();
@@ -72,7 +78,7 @@ export function LanguageProvider({ children }: LanguageProviderProps) {
 
   return (
     <LanguageContext.Provider value={value}>
-      {children}
+      <MemoizedChildren>{children}</MemoizedChildren>
     </LanguageContext.Provider>
   );
 }

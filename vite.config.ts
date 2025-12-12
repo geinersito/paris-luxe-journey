@@ -67,13 +67,66 @@ export default defineConfig(({ mode }) => ({
     cssMinify: true,
     rollupOptions: {
       output: {
-        manualChunks: {
-          vendor: ['react', 'react-dom', 'react-router-dom'],
-          ui: ['@radix-ui/react-dialog', '@radix-ui/react-label', '@radix-ui/react-slot'],
-          maps: ['@react-google-maps/api', '@mapbox/mapbox-gl-geocoder', 'mapbox-gl'],
-          forms: ['react-hook-form', '@hookform/resolvers', 'zod'],
-          charts: ['recharts'],
-          supabase: ['@supabase/supabase-js']
+        manualChunks: (id) => {
+          // Core React libraries - always needed
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+            return 'vendor-react';
+          }
+
+          // Router - needed early
+          if (id.includes('node_modules/react-router-dom')) {
+            return 'vendor-router';
+          }
+
+          // Supabase - needed for data fetching
+          if (id.includes('@supabase')) {
+            return 'supabase';
+          }
+
+          // Heavy animation library - lazy load
+          if (id.includes('framer-motion')) {
+            return 'animations';
+          }
+
+          // Maps libraries - only for booking/excursions pages
+          if (id.includes('@react-google-maps') || id.includes('mapbox-gl') || id.includes('@mapbox')) {
+            return 'maps';
+          }
+
+          // Payment libraries - only for payment page
+          if (id.includes('@stripe')) {
+            return 'payment';
+          }
+
+          // Charts - only for admin/analytics
+          if (id.includes('recharts')) {
+            return 'charts';
+          }
+
+          // Form libraries
+          if (id.includes('react-hook-form') || id.includes('@hookform') || id.includes('zod')) {
+            return 'forms';
+          }
+
+          // Radix UI components
+          if (id.includes('@radix-ui')) {
+            return 'ui-radix';
+          }
+
+          // i18n libraries
+          if (id.includes('i18next') || id.includes('react-i18next')) {
+            return 'i18n';
+          }
+
+          // Date utilities
+          if (id.includes('date-fns')) {
+            return 'date-utils';
+          }
+
+          // Other vendor libraries
+          if (id.includes('node_modules')) {
+            return 'vendor-misc';
+          }
         },
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',

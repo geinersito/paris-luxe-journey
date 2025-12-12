@@ -5,18 +5,37 @@ import { useNavigate } from "react-router-dom";
 import { TrustBadge } from "@/components/ui/trust-badge";
 import type { BookingFormData } from "@/hooks/booking/types";
 
-const HERO_IMAGE_URL =
-  "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80";
+// Optimized image URLs with different sizes for responsive loading
+const HERO_IMAGE_BASE = "https://images.unsplash.com/photo-1502602898657-3e91760cbb34";
+const HERO_IMAGE_SMALL = `${HERO_IMAGE_BASE}?auto=format&fit=crop&q=80&w=640`;
+const HERO_IMAGE_MEDIUM = `${HERO_IMAGE_BASE}?auto=format&fit=crop&q=80&w=1280`;
+const HERO_IMAGE_LARGE = `${HERO_IMAGE_BASE}?auto=format&fit=crop&q=80&w=1920`;
 
 export default function HeroSection() {
   const { t } = useLanguage();
   const navigate = useNavigate();
   const [isImageLoaded, setIsImageLoaded] = React.useState(false);
+  const imageRef = React.useRef<HTMLImageElement>(null);
 
+  // Use Intersection Observer for lazy loading
   React.useEffect(() => {
-    const img = new Image();
-    img.src = HERO_IMAGE_URL;
-    img.onload = () => setIsImageLoaded(true);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsImageLoaded(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { rootMargin: '50px' }
+    );
+
+    if (imageRef.current) {
+      observer.observe(imageRef.current);
+    }
+
+    return () => observer.disconnect();
   }, []);
 
   const handleBookingSubmit = async (
@@ -57,15 +76,23 @@ export default function HeroSection() {
       id="booking"
       className="min-h-screen relative flex items-center justify-center py-24 lg:py-32 overflow-hidden"
     >
-      <div
-        className={`absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ${
+      {/* Optimized background image with responsive srcset */}
+      <img
+        ref={imageRef}
+        src={HERO_IMAGE_MEDIUM}
+        srcSet={`${HERO_IMAGE_SMALL} 640w, ${HERO_IMAGE_MEDIUM} 1280w, ${HERO_IMAGE_LARGE} 1920w`}
+        sizes="100vw"
+        alt="Paris Elite Services - Luxury Transportation"
+        loading="eager"
+        decoding="async"
+        className={`absolute inset-0 w-full h-full object-cover z-0 transition-opacity duration-1000 ${
           isImageLoaded ? "opacity-100" : "opacity-0"
         }`}
         style={{
-          backgroundImage: `url('${HERO_IMAGE_URL}')`,
-          backgroundPosition: "center 15%",
+          objectPosition: "center 15%",
           transform: "scaleX(-1)",
         }}
+        onLoad={() => setIsImageLoaded(true)}
       />
 
       <div
@@ -128,6 +155,24 @@ export default function HeroSection() {
                   </svg>
                 }
                 text="No hidden fees"
+              />
+              <TrustBadge
+                icon={
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 13l4 4L19 7"
+                    />
+                  </svg>
+                }
+                text="1 luggage/pax included"
               />
               <TrustBadge
                 icon={

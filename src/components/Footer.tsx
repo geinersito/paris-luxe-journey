@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { t } = useLanguage();
@@ -8,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           <div className="space-y-4">
             <h3 className="text-xl font-semibold mb-4">
               {t?.footer?.companyName || "Paris Elite Services"}
@@ -18,7 +19,24 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com"
+                href="https://wa.me/33668251102"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-secondary transition-colors"
+                aria-label="WhatsApp"
+              >
+                <Phone className="h-6 w-6" />
+              </a>
+              <a
+                href="mailto:info@eliteparistransfer.com"
+                className="hover:text-secondary transition-colors"
+                aria-label="Email"
+              >
+                <Mail className="h-6 w-6" />
+              </a>
+              {/* Add social media links when available:
+              <a
+                href="https://facebook.com/eliteparistransfer"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-secondary transition-colors"
@@ -27,7 +45,7 @@ const Footer = () => {
                 <Facebook className="h-6 w-6" />
               </a>
               <a
-                href="https://instagram.com"
+                href="https://instagram.com/eliteparistransfer"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-secondary transition-colors"
@@ -35,15 +53,7 @@ const Footer = () => {
               >
                 <Instagram className="h-6 w-6" />
               </a>
-              <a
-                href="https://twitter.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-secondary transition-colors"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-6 w-6" />
-              </a>
+              */}
             </div>
           </div>
 
@@ -70,6 +80,29 @@ const Footer = () => {
                   {t?.footer?.links?.contact || "Contact"}
                 </a>
               </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-lg font-semibold mb-4">Travel Guides</h4>
+            <ul className="space-y-2">
+              <li>
+                <Link to="/guides/avoid-fake-taxis" className="hover:text-secondary transition-colors">
+                  Avoid Fake Taxis
+                </Link>
+              </li>
+              {/* Coming soon - uncomment when pages are ready:
+              <li>
+                <Link to="/guides/airport-transfer" className="hover:text-secondary transition-colors">
+                  Airport Transfer Guide
+                </Link>
+              </li>
+              <li>
+                <Link to="/guides/paris-safety" className="hover:text-secondary transition-colors">
+                  Paris Travel Safety
+                </Link>
+              </li>
+              */}
             </ul>
           </div>
 

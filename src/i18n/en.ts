@@ -139,9 +139,16 @@ export const en: Translation = {
       roundTripIncluded: "*Price includes round trip",
     },
     success: {
-      title: "Payment Successful",
+      title: "Booking Confirmed!",
       description:
-        "Your booking has been confirmed. Thank you for choosing our service!",
+        "We have sent an email with your booking details",
+      addToCalendar: "Add to Calendar",
+      backToHome: "Back to Home",
+    },
+    groupNotice: {
+      title: "Groups of 8+ passengers",
+      description: "For groups of 8 or more passengers, please contact us via WhatsApp for a personalized quote.",
+      cta: "Contact via WhatsApp",
     },
     passengerDetails: "Passenger Details",
     fullName: "Full Name",
@@ -211,20 +218,45 @@ export const en: Translation = {
   services: {
     title: "Our Premium Services",
     subtitle: "Experience luxury transportation at its finest",
+    decorativeSubtitle: "Experience luxury transportation",
+    cta: "Book Now",
+    groupDisclaimer: "For groups of 8+ passengers, please contact us",
     airport: {
       title: "Airport Transfers",
       description:
         "Seamless transportation to and from CDG, Orly, and Beauvais airports.",
+      priceFrom: "From €70",
+      features: [
+        "Meet & Greet Service",
+        "Flight Tracking",
+        "Free Waiting Time",
+        "1 Luggage/Pax Included",
+        "Professional Chauffeurs"
+      ]
     },
     chauffeur: {
       title: "Private Chauffeur",
       description:
         "Luxury vehicle with professional chauffeur at your disposal.",
+      priceFrom: "From €60/hour",
+      features: [
+        "Hourly Booking Available",
+        "24/7 Availability",
+        "Multilingual Service",
+        "Custom Routes & Stops"
+      ]
     },
     cityTours: {
       title: "City Tours",
       description:
-        "Discover Paris's most iconic landmarks with our expert guides.",
+        "Discover Paris's most iconic landmarks with our professional drivers.",
+      priceFrom: "From €95",
+      features: [
+        "Customized Itineraries",
+        "Professional Drivers",
+        "Premium Vehicles",
+        "Mercedes E-Class & V-Class"
+      ]
     },
     dayTrips: {
       title: "Day Trips",
@@ -453,5 +485,104 @@ export const en: Translation = {
       title: "Accepted Payment Methods",
     },
     copyright: " 2025 Paris Elite Services. All rights reserved.",
+  },
+  avoidFakeTaxis: {
+    badge: "Safety Guide",
+    hero: {
+      title: "Fake Taxis at Paris Airports: How to Avoid Scams & Book a Safe Transfer",
+      subtitle: "Thousands of tourists fall victim to fake taxi scams at CDG and Orly every year. Learn how to spot them and choose a licensed, fixed-price transfer instead.",
+    },
+    problem: {
+      title: "The Problem is Real",
+      paragraph1: "You've just landed at Charles de Gaulle after a long flight. You're tired, you have luggage, and you just want to get to your hotel. Outside arrivals, someone approaches you offering a 'taxi' with a great price. Sounds convenient, right? Wrong.",
+      paragraph2: "This is how thousands of tourists get scammed every year in Paris airports. The fake taxi scam is one of the most common tourist traps in Paris, costing victims hundreds of euros and ruining their first impression of the city.",
+    },
+    howScamWorks: {
+      title: "How the Scam Works",
+      paragraph1: "Fake taxi drivers target tourists at CDG, Orly, and Beauvais. They wear fake badges, use unmarked cars, and quote low prices to lure you in.",
+      paragraph2: "Once you're in the car, they take longer routes, claim the meter is 'broken', or demand 3-4x the normal fare. Some even threaten passengers who refuse to pay. By the time you realize what's happening, you're already in the car and far from the airport.",
+    },
+    redFlags: {
+      title: "Red Flags to Watch For",
+      flag1: {
+        title: "Driver approaches you inside the terminal",
+        description: "Real taxis wait at official ranks outside. If someone approaches you inside offering a taxi, it's a scam.",
+      },
+      flag2: {
+        title: "No taxi meter or official license displayed",
+        description: "Every legal taxi in Paris must have a visible meter and license number.",
+      },
+      flag3: {
+        title: "Car has no \"TAXI PARISIEN\" roof sign",
+        description: "Official taxis have an illuminated roof sign. No sign = not a real taxi.",
+      },
+      flag4: {
+        title: "Driver insists on cash only and quotes a \"special price\"",
+        description: "French law requires taxis to accept cards. Cash-only is a major red flag.",
+      },
+      flag5: {
+        title: "Vehicle is unmarked or has handwritten signs",
+        description: "Official taxis have professional signage and branding. Handwritten signs are a scam.",
+      },
+    },
+    protection: {
+      title: "How to Protect Yourself",
+      intro: "If you must take a taxi at the airport:",
+      tip1: "Only use official taxi ranks (follow \"TAXI\" signs)",
+      tip2: "Check the vehicle has a roof light and meter",
+      tip3: "Ask for an estimate before getting in",
+      tip4: "Insist on paying by card (legal requirement in France)",
+      betterOption: "Better option: Book a licensed private transfer in advance with a fixed price.",
+    },
+    whyVTC: {
+      title: "Why a Licensed VTC Transfer is the Safe Alternative",
+      intro: "Unlike street taxis, licensed VTC (private hire) services like Paris Elite Services offer:",
+      benefit1: {
+        title: "Fixed price confirmed before you travel",
+        description: "No surprises, no meter tricks",
+      },
+      benefit2: {
+        title: "Professional, vetted chauffeurs",
+        description: "Background-checked drivers",
+      },
+      benefit3: {
+        title: "Flight tracking",
+        description: "Driver waits even if your flight is delayed",
+      },
+      benefit4: {
+        title: "Meet & greet service",
+        description: "Driver waits at arrivals with your name",
+      },
+      benefit5: {
+        title: "Premium vehicles",
+        description: "Mercedes E-Class, spacious vans for families",
+      },
+      benefit6: {
+        title: "24/7 customer support",
+        description: "WhatsApp, email, phone",
+      },
+    },
+    pricing: {
+      title: "What You Should Actually Pay",
+      intro: "Here's what you should expect to pay for a safe, licensed transfer from Paris airports:",
+      tableHeaders: {
+        route: "Route",
+        passengers1to3: "1-3 Passengers",
+        passengers4to7: "4-7 Passengers",
+      },
+      routes: {
+        cdg: "CDG Airport → Paris",
+        orly: "Orly Airport → Paris",
+        beauvais: "Beauvais Airport → Paris",
+      },
+      warning: "⚠️ Warning: If someone quotes you €30-40 for CDG-Paris, it's either a scam or they'll add hidden fees later. The official taxi fare from CDG to Paris is around €50-60, and a licensed VTC with fixed price is €70.",
+    },
+    cta: {
+      title: "Don't Risk Your Paris Arrival",
+      subtitle: "Book your safe, licensed airport transfer now with fixed prices and professional service.",
+      bookNow: "Check Prices & Book Now",
+      whatsapp: "WhatsApp Us",
+      groupsNotice: "For groups of 8+ passengers or special requests, contact us via WhatsApp: +33 6 68 25 11 02",
+    },
   },
 };

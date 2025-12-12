@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback } from 'react';
+import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback, memo } from 'react';
 import { useBookingPrice } from '@/hooks/booking/useBookingPrice';
 import { useToast } from '@/hooks/use-toast';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -50,6 +50,12 @@ const STORAGE_KEY = 'paris_luxe_booking_data';
 const PRICE_CACHE_KEY = 'paris_luxe_price_cache';
 
 const BookingContext = createContext<BookingContextType | undefined>(undefined);
+
+// Memoized children wrapper to prevent unnecessary re-renders
+const MemoizedChildren = memo(({ children }: { children: React.ReactNode }) => {
+  return <>{children}</>;
+});
+MemoizedChildren.displayName = 'MemoizedBookingChildren';
 
 export const BookingProvider = ({ children }: { children: React.ReactNode }) => {
   const [bookingData, setBookingData] = useState<BookingData | null>(null);
@@ -268,17 +274,19 @@ export const BookingProvider = ({ children }: { children: React.ReactNode }) => 
     localStorage.removeItem(STORAGE_KEY);
   }, []);
 
+  const contextValue = React.useMemo(() => ({
+    bookingData,
+    estimatedPrice,
+    updateBookingData,
+    calculatePrice,
+    validatePriceWithBackend,
+    priceTimestamp,
+    resetBooking
+  }), [bookingData, estimatedPrice, updateBookingData, calculatePrice, validatePriceWithBackend, priceTimestamp, resetBooking]);
+
   return (
-    <BookingContext.Provider value={{ 
-      bookingData, 
-      estimatedPrice, 
-      updateBookingData,
-      calculatePrice,
-      validatePriceWithBackend,
-      priceTimestamp,
-      resetBooking
-    }}>
-      {children}
+    <BookingContext.Provider value={contextValue}>
+      <MemoizedChildren>{children}</MemoizedChildren>
     </BookingContext.Provider>
   );
 };

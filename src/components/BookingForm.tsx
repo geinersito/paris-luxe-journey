@@ -14,6 +14,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { BookingFormProps } from "@/types/components";
 import { useBooking } from "@/contexts/BookingContext";
+import { MessageCircle } from "lucide-react";
 
 interface Location {
   id: string;
@@ -303,6 +304,24 @@ const BookingForm = ({
             value={formData.passengers}
             onChange={(value) => handleChange(value, "passengers")}
           />
+
+          {/* Aviso para grupos de 8+ pasajeros */}
+          <div className="p-3 bg-secondary/10 border border-secondary/20 rounded-lg">
+            <p className="text-sm text-muted-foreground mb-2">
+              <strong>{t.booking.groupNotice?.title || "Groups of 8+ passengers"}:</strong>{" "}
+              {t.booking.groupNotice?.description || "For groups of 8 or more passengers, please contact us via WhatsApp for a personalized quote."}
+            </p>
+            <Button
+              type="button"
+              variant="outline"
+              size="sm"
+              className="w-full"
+              onClick={() => window.open('https://wa.me/33668251102', '_blank')}
+            >
+              <MessageCircle className="w-4 h-4 mr-2" />
+              {t.booking.groupNotice?.cta || "Contact via WhatsApp"}
+            </Button>
+          </div>
 
           <LuggageSelector
             largeLuggageCount={Number(formData.largeLuggageCount) || 0}

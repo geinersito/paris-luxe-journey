@@ -14,14 +14,24 @@ const Navbar = () => {
 
   const navItems = [
     { name: t.nav.home, href: "/" },
-    { 
-      name: t.nav.services, 
+    {
+      name: t.nav.services,
       href: "#services",
       hasDropdown: true,
       dropdownItems: [
-        { name: t.services.dropdown.transfers, href: "#transfers" },
-        { name: t.services.dropdown.chauffeur, href: "#chauffeur" },
+        { name: t.services.dropdown.transfers, href: "/airports/cdg" },
+        { name: t.services.dropdown.chauffeur, href: "/booking" },
         { name: t.services.dropdown.excursions, href: "/excursions" }
+      ]
+    },
+    {
+      name: "Airports",
+      href: "#",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: "CDG Airport", href: "/airports/cdg" },
+        { name: "Orly Airport", href: "#", disabled: true },
+        { name: "Beauvais Airport", href: "#", disabled: true }
       ]
     },
     { name: t.nav.fleet, href: "#fleet" },
@@ -52,19 +62,28 @@ const Navbar = () => {
                   >
                     {item.name} <ChevronDown className="ml-1 h-4 w-4" />
                   </button>
-                  <div 
+                  <div
                     className="absolute left-0 top-full pt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
                     onMouseLeave={() => setServicesDropdownOpen(false)}
                   >
                     <div className="rounded-md shadow-lg bg-background border border-border overflow-hidden">
                       {item.dropdownItems.map((dropdownItem) => (
-                        <a
-                          key={dropdownItem.name}
-                          href={dropdownItem.href}
-                          className="block px-4 py-2.5 text-sm text-foreground hover:bg-accent hover:text-primary transition-colors duration-200"
-                        >
-                          {dropdownItem.name}
-                        </a>
+                        dropdownItem.disabled ? (
+                          <span
+                            key={dropdownItem.name}
+                            className="block px-4 py-2.5 text-sm text-muted-foreground/50 cursor-not-allowed"
+                          >
+                            {dropdownItem.name} <span className="text-xs">(Coming Soon)</span>
+                          </span>
+                        ) : (
+                          <a
+                            key={dropdownItem.name}
+                            href={dropdownItem.href}
+                            className="block px-4 py-2.5 text-sm text-foreground hover:bg-accent hover:text-primary transition-colors duration-200"
+                          >
+                            {dropdownItem.name}
+                          </a>
+                        )
                       ))}
                     </div>
                   </div>
@@ -113,14 +132,23 @@ const Navbar = () => {
                   {servicesDropdownOpen && (
                     <div className="ml-4 mt-1 space-y-1">
                       {item.dropdownItems.map((dropdownItem) => (
-                        <a
-                          key={dropdownItem.name}
-                          href={dropdownItem.href}
-                          className="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200 rounded-md hover:bg-accent"
-                          onClick={toggleMenu}
-                        >
-                          {dropdownItem.name}
-                        </a>
+                        dropdownItem.disabled ? (
+                          <span
+                            key={dropdownItem.name}
+                            className="block px-3 py-2 text-muted-foreground/50 cursor-not-allowed"
+                          >
+                            {dropdownItem.name} <span className="text-xs">(Coming Soon)</span>
+                          </span>
+                        ) : (
+                          <a
+                            key={dropdownItem.name}
+                            href={dropdownItem.href}
+                            className="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200 rounded-md hover:bg-accent"
+                            onClick={toggleMenu}
+                          >
+                            {dropdownItem.name}
+                          </a>
+                        )
                       ))}
                     </div>
                   )}

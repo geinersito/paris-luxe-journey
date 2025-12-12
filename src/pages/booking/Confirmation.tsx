@@ -5,12 +5,14 @@ import { Button } from "@/components/ui/button";
 import { useToast } from "@/components/ui/use-toast";
 import BookingProgress from "@/components/booking/BookingProgress";
 import { CheckCircle2, Calendar } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const BookingConfirmation = () => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const { toast } = useToast();
+  const { t } = useLanguage();
   const bookingData = location.state?.bookingData;
 
   useEffect(() => {
@@ -31,8 +33,8 @@ const BookingConfirmation = () => {
 
   const handleAddToCalendar = () => {
     toast({
-      title: "Evento agregado",
-      description: "La reserva ha sido agregada a tu calendario",
+      title: t.booking.success.addToCalendar,
+      description: t.booking.success.description,
     });
   };
 
@@ -47,9 +49,9 @@ const BookingConfirmation = () => {
         
         <div className="mt-8 text-center">
           <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
-          <h1 className="text-3xl font-display text-primary mb-4">¡Reserva Confirmada!</h1>
+          <h1 className="text-3xl font-display text-primary mb-4">{t.booking.success.title}</h1>
           <p className="text-muted-foreground mb-8">
-            Hemos enviado un email con los detalles de tu reserva
+            {t.booking.success.description}
           </p>
 
           <div className="max-w-lg mx-auto space-y-6">
@@ -59,14 +61,14 @@ const BookingConfirmation = () => {
               variant="outline"
             >
               <Calendar className="mr-2 h-4 w-4" />
-              Agregar al Calendario
+              {t.booking.success.addToCalendar}
             </Button>
 
             <Button
               onClick={() => navigate("/")}
               className="w-full"
             >
-              Volver al Inicio
+              {t.booking.success.backToHome}
             </Button>
           </div>
         </div>
