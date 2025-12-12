@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
+import { useNavigate } from "react-router-dom";
 import { PaymentElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import { Button } from "../ui/button";
 import { useToast } from "@/hooks/use-toast";
@@ -29,7 +29,7 @@ export const Payment = ({
   const elements = useElements();
   const [isProcessing, setIsProcessing] = useState(false);
   const [termsAccepted, setTermsAccepted] = useState(false);
-  const router = useRouter();
+  const navigate = useNavigate();
   const { toast } = useToast();
   const { t } = useLanguage();
   const [normalizedPrice, setNormalizedPrice] = useState(0);

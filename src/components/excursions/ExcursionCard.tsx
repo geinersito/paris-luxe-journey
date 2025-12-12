@@ -1,6 +1,5 @@
 import { useLanguage } from "@/contexts/LanguageContext";
-import Link from "next/link";
-import Image from "next/image";
+import { Link } from "react-router-dom";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -26,12 +25,11 @@ export function ExcursionCard({
 
   return (
     <Card className="overflow-hidden">
-      <div className="relative h-48">
-        <Image
+      <div className="relative h-48 overflow-hidden">
+        <img
           src={image}
           alt={title}
-          fill
-          className="object-cover"
+          className="w-full h-full object-cover"
         />
       </div>
       <CardContent className="p-4">
@@ -43,7 +41,7 @@ export function ExcursionCard({
         </div>
       </CardContent>
       <CardFooter className="p-4 pt-0">
-        <Link href={link} className="w-full">
+        <Link to={link} className="w-full">
           <Button className="w-full">
             {t.excursions.viewDetails}
           </Button>

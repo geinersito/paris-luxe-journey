@@ -26,6 +26,13 @@ export interface Translation {
     title: string;
     subtitle: string;
     cta: string;
+    searchPlaceholder: string;
+    viewDetails: string;
+    noResults: string;
+    clearFilters: string;
+    highlights: string;
+    fromPrice: string;
+    tourOptionsCount: string;
     search: {
       placeholder: string;
       duration: string;
@@ -47,6 +54,17 @@ export interface Translation {
         group: string;
         luxury: string;
       };
+      allDurations: string;
+      allTypes: string;
+      flexible: string;
+      standard: string;
+      clearAll: string;
+      price: string;
+      allPrices: string;
+      above: string;
+    };
+    types: {
+      [key: string]: string;
     };
     navigation: {
       description: string;

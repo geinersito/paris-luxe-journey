@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import Link from "next/link";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Clock, Euro, Search, Tag } from "lucide-react";
@@ -130,7 +130,7 @@ const ExcursionsGrid = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredExcursions.map((excursion) => (
             <Card key={excursion.id} className="group overflow-hidden hover:shadow-lg transition-shadow duration-300">
-              <Link href={excursion.link} className="block">
+              <Link to={excursion.link} className="block">
                 <div className="aspect-w-16 aspect-h-9 overflow-hidden">
                   <img
                     src={excursion.image}
@@ -201,7 +201,7 @@ const ExcursionsGrid = () => {
               </CardContent>
               <CardFooter>
                 <Button className="w-full" variant="outline" asChild>
-                  <Link href={excursion.link}>{t.excursions.viewDetails}</Link>
+                  <Link to={excursion.link}>{t.excursions.viewDetails}</Link>
                 </Button>
               </CardFooter>
             </Card>
