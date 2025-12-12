@@ -32,6 +32,7 @@ const BookingForm = ({
   tourName,
   basePrice,
   onSubmit,
+  compact = false,
 }: BookingFormProps) => {
   const { t } = useLanguage();
   const { toast } = useToast();
@@ -251,11 +252,16 @@ const BookingForm = ({
   return (
     <form
       onSubmit={handleFormSubmit}
-      className="glass-card px-6 py-8 md:px-10 md:py-10 rounded-3xl max-w-2xl w-full mx-auto animate-fadeIn bg-white/95 dark:bg-primary-dark/95 backdrop-blur-lg shadow-2xl ring-1 ring-primary/10 hover:shadow-[0_25px_50px_-12px_rgba(11,37,69,0.25)] transition-shadow duration-300 border border-metallic/20"
+      className={compact
+        ? "w-full"
+        : "glass-card px-6 py-8 md:px-10 md:py-10 rounded-3xl max-w-2xl w-full mx-auto animate-fadeIn bg-white/95 dark:bg-primary-dark/95 backdrop-blur-lg shadow-2xl ring-1 ring-primary/10 hover:shadow-[0_25px_50px_-12px_rgba(11,37,69,0.25)] transition-shadow duration-300 border border-metallic/20"
+      }
     >
-      <h2 className="text-xl md:text-2xl font-sans font-semibold text-primary text-center mb-8">
-        {t.booking.title}
-      </h2>
+      {!compact && (
+        <h2 className="text-xl md:text-2xl font-sans font-semibold text-primary text-center mb-8">
+          {t.booking.title}
+        </h2>
+      )}
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Columna izquierda */}

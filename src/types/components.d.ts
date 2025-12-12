@@ -4,6 +4,7 @@ export interface BookingFormProps {
   tourName: string;
   basePrice?: number;
   onSubmit: (bookingDetails: any) => Promise<void>;
+  compact?: boolean; // Para usar dentro de modales sin padding extra
 }
 
 export interface FormProps {

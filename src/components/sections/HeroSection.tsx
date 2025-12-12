@@ -156,26 +156,45 @@ export default function HeroSection() {
 
         {/* Booking Modal */}
         {showBookingModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm">
-            <div className="glass-card-premium max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 relative">
-              <button
-                onClick={() => setShowBookingModal(false)}
-                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 transition-colors"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                </svg>
-              </button>
-              <h2 className="text-2xl font-display font-bold text-primary mb-6">Book Your Transfer</h2>
-              <BookingForm
-                tourId="default"
-                tourName="Standard Transfer"
-                basePrice={0}
-                onSubmit={async (data) => {
-                  await handleBookingSubmit(data);
-                  setShowBookingModal(false);
-                }}
-              />
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm"
+            onClick={() => setShowBookingModal(false)}
+          >
+            <div
+              className="relative w-full max-w-3xl max-h-[95vh] flex flex-col"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Header fijo con botón de cerrar */}
+              <div className="glass-card-premium rounded-t-2xl px-6 py-4 flex items-center justify-between border-b border-primary/10 flex-shrink-0">
+                <h2 className="text-2xl font-display font-bold text-secondary">
+                  {t.booking.title || "Book Your Transfer"}
+                </h2>
+                <button
+                  onClick={() => setShowBookingModal(false)}
+                  className="text-gray-500 hover:text-gray-700 transition-colors p-2 hover:bg-gray-100 rounded-full"
+                  aria-label="Close"
+                >
+                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Contenido scrollable */}
+              <div className="glass-card-premium rounded-b-2xl overflow-y-auto flex-1">
+                <div className="p-6 md:p-8">
+                  <BookingForm
+                    tourId="default"
+                    tourName="Standard Transfer"
+                    basePrice={0}
+                    compact={true}
+                    onSubmit={async (data) => {
+                      await handleBookingSubmit(data);
+                      setShowBookingModal(false);
+                    }}
+                  />
+                </div>
+              </div>
             </div>
           </div>
         )}
