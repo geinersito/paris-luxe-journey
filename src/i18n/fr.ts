@@ -205,6 +205,8 @@ export const fr: Translation = {
       chauffeur: "Chauffeur Privé",
     },
     serviceLevel: "Niveau de Service",
+    priceSummary: "Résumé du Prix",
+    validatingPrice: "Validation du prix...",
     payment: {
       title: "Détails du Paiement",
       cardDetails: "Détails de la Carte",
@@ -240,6 +242,8 @@ export const fr: Translation = {
       title: "Paiement Réussi",
       description:
         "Votre réservation a été confirmée. Merci d'avoir choisi notre service !",
+      addToCalendar: "Ajouter au Calendrier",
+      backToHome: "Retour à l'Accueil",
     },
     passengerDetails: "Détails du Passager",
     fullName: "Nom Complet",
@@ -278,6 +282,8 @@ export const fr: Translation = {
       invalidPhone: "Numéro de téléphone invalide",
       serviceLevelsNotLoaded: "Impossible de charger les niveaux de service",
       selectServiceLevel: "Veuillez sélectionner un niveau de service",
+      priceStale: "Le prix a changé. Veuillez vérifier le nouveau prix.",
+      networkError: "Erreur réseau. Veuillez vérifier votre connexion et réessayer.",
     },
     summary: {
       title: "Résumé de la Réservation",
@@ -306,6 +312,8 @@ export const fr: Translation = {
     processing: "Traitement...",
     error: "Erreur",
     from: "De",
+    sending: "Envoi...",
+    warning: "Avertissement",
   },
   services: {
     title: "Nos Services Premium",

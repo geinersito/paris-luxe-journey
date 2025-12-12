@@ -110,6 +110,8 @@ export const es: Translation = {
       chauffeur: "Chófer Privado",
     },
     serviceLevel: "Nivel de Servicio",
+    priceSummary: "Resumen de Precio",
+    validatingPrice: "Validando precio...",
     submit: "Reservar Ahora",
     extras: {
       title: "Servicios Adicionales",
@@ -156,6 +158,8 @@ export const es: Translation = {
       title: "Pago Exitoso",
       description:
         "Tu reserva ha sido confirmada. ¡Gracias por elegir nuestro servicio!",
+      addToCalendar: "Añadir al Calendario",
+      backToHome: "Volver al Inicio",
     },
     errors: {
       invalidEmail: "Email Inválido",
@@ -180,6 +184,8 @@ export const es: Translation = {
       invalidPhone: "Número de teléfono inválido",
       serviceLevelsNotLoaded: "No se pudieron cargar los niveles de servicio",
       selectServiceLevel: "Por favor selecciona un nivel de servicio",
+      priceStale: "El precio ha cambiado. Por favor revisa el nuevo precio.",
+      networkError: "Error de red. Por favor verifica tu conexión e intenta de nuevo.",
     },
     summary: {
       title: "Resumen de la Reserva",
@@ -208,6 +214,8 @@ export const es: Translation = {
     processing: "Procesando...",
     error: "Error",
     from: "Desde",
+    sending: "Enviando...",
+    warning: "Advertencia",
   },
   services: {
     title: "Nuestros Servicios Premium",

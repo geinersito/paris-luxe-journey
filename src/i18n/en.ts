@@ -108,6 +108,8 @@ export const en: Translation = {
       chauffeur: "Private Chauffeur",
     },
     serviceLevel: "Service Level",
+    priceSummary: "Price Summary",
+    validatingPrice: "Validating price...",
     payment: {
       title: "Payment Details",
       cardDetails: "Card Details",
@@ -185,6 +187,8 @@ export const en: Translation = {
       invalidPhone: "Invalid phone number",
       serviceLevelsNotLoaded: "Could not load service levels",
       selectServiceLevel: "Please select a service level",
+      priceStale: "Price has changed. Please review the new price.",
+      networkError: "Network error. Please check your connection and try again.",
     },
     summary: {
       title: "Booking Summary",
@@ -214,6 +218,7 @@ export const en: Translation = {
     error: "Error",
     from: "From",
     sending: "Sending...",
+    warning: "Warning",
   },
   services: {
     title: "Our Premium Services",

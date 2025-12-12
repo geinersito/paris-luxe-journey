@@ -20,6 +20,7 @@ export interface Translation {
     error: string;
     from: string;
     sending: string;
+    warning: string;
   };
   excursions: {
     title: string;
@@ -134,6 +135,7 @@ export interface Translation {
   };
   footer: {
     description: string;
+    companyName?: string;
     links: {
       title: string;
       services: string;
@@ -156,21 +158,35 @@ export interface Translation {
   services: {
     title: string;
     subtitle: string;
+    decorativeSubtitle: string;
+    cta: string;
+    groupDisclaimer: string;
     airport: {
       title: string;
       description: string;
+      priceFrom: string;
+      features: string[];
     };
     chauffeur: {
       title: string;
       description: string;
+      priceFrom: string;
+      features: string[];
     };
     cityTours: {
       title: string;
       description: string;
+      priceFrom: string;
+      features: string[];
     };
     dayTrips: {
       title: string;
       description: string;
+    };
+    dropdown: {
+      transfers: string;
+      chauffeur: string;
+      excursions: string;
     };
   };
   versailles: {
@@ -243,6 +259,8 @@ export interface Translation {
     smallLuggage: string;
     maxWeight: string;
     serviceLevel: string;
+    priceSummary: string;
+    validatingPrice: string;
     luggagePolicy: {
       title: string;
       included: string;
@@ -307,6 +325,13 @@ export interface Translation {
     success: {
       title: string;
       description: string;
+      addToCalendar: string;
+      backToHome: string;
+    };
+    groupNotice: {
+      title: string;
+      description: string;
+      cta: string;
     };
     passengerDetails: string;
     fullName: string;
@@ -342,9 +367,110 @@ export interface Translation {
       invalidPhone: string;
       serviceLevelsNotLoaded: string;
       selectServiceLevel: string;
+      priceStale: string;
+      networkError: string;
     };
   };
   toast: {
     languageChanged: string;
+  };
+  avoidFakeTaxis: {
+    badge: string;
+    hero: {
+      title: string;
+      subtitle: string;
+    };
+    problem: {
+      title: string;
+      paragraph1: string;
+      paragraph2: string;
+    };
+    howScamWorks: {
+      title: string;
+      paragraph1: string;
+      paragraph2: string;
+    };
+    redFlags: {
+      title: string;
+      flag1: {
+        title: string;
+        description: string;
+      };
+      flag2: {
+        title: string;
+        description: string;
+      };
+      flag3: {
+        title: string;
+        description: string;
+      };
+      flag4: {
+        title: string;
+        description: string;
+      };
+      flag5: {
+        title: string;
+        description: string;
+      };
+    };
+    protection: {
+      title: string;
+      intro: string;
+      tip1: string;
+      tip2: string;
+      tip3: string;
+      tip4: string;
+      betterOption: string;
+    };
+    whyVTC: {
+      title: string;
+      intro: string;
+      benefit1: {
+        title: string;
+        description: string;
+      };
+      benefit2: {
+        title: string;
+        description: string;
+      };
+      benefit3: {
+        title: string;
+        description: string;
+      };
+      benefit4: {
+        title: string;
+        description: string;
+      };
+      benefit5: {
+        title: string;
+        description: string;
+      };
+      benefit6: {
+        title: string;
+        description: string;
+      };
+    };
+    pricing: {
+      title: string;
+      intro: string;
+      tableHeaders: {
+        route: string;
+        passengers1to3: string;
+        passengers4to7: string;
+      };
+      routes: {
+        cdg: string;
+        orly: string;
+        beauvais: string;
+      };
+      warning: string;
+    };
+    cta: {
+      title: string;
+      subtitle: string;
+      bookNow: string;
+      whatsapp: string;
+      groupsNotice: string;
+    };
   };
 }

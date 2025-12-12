@@ -110,6 +110,8 @@ export const pt: Translation = {
       chauffeur: "Motorista Privado",
     },
     serviceLevel: "Nível de Serviço",
+    priceSummary: "Resumo do Preço",
+    validatingPrice: "Validando preço...",
     submit: "Reservar Agora",
     extras: {
       title: "Serviços Adicionais",
@@ -144,6 +146,8 @@ export const pt: Translation = {
       title: "Pagamento bem-sucedido",
       description:
         "Sua reserva foi confirmada. Obrigado por escolher nosso serviço!",
+      addToCalendar: "Adicionar ao Calendário",
+      backToHome: "Voltar ao Início",
     },
     passengerDetails: "Detalhes do Passageiro",
     fullName: "Nome Completo",
@@ -181,6 +185,8 @@ export const pt: Translation = {
       invalidPhone: "Número de telefone inválido",
       serviceLevelsNotLoaded: "Não foi possível carregar os níveis de serviço",
       selectServiceLevel: "Por favor, selecione um nível de serviço",
+      priceStale: "O preço mudou. Por favor, revise o novo preço.",
+      networkError: "Erro de rede. Por favor, verifique sua conexão e tente novamente.",
     },
     summary: {
       title: "Resumo da Reserva",
@@ -209,6 +215,8 @@ export const pt: Translation = {
     processing: "Processando...",
     error: "Erro",
     from: "De",
+    sending: "Enviando...",
+    warning: "Aviso",
   },
   services: {
     title: "Nossos Serviços Premium",
