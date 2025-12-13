@@ -86,7 +86,7 @@ Si te lo doy, úsalo como **verdad principal** para priorizar.
 
 | Concepto | Política | Aplicación |
 |----------|----------|------------|
-| **Equipaje extra** | €10/pieza | Manual (tú decides) |
+| **Equipaje extra** | €15/pieza | Manual (tú decides) |
 | **Horario nocturno (23:00-06:00)** | +20% | **MANUAL en V1** (tú aplicas al cobrar) |
 | **Días festivos** | Sin recargo | Re-evalúa Q2 |
 | **Tiempo espera aeropuerto** | 60 min gratis → €15/15 min | Automático en V2 |
@@ -284,7 +284,7 @@ export const PRICING = {
   },
   surcharges: {
     night: 0.20,      // +20% (MANUAL en V1)
-    extraBag: 10,     // €10 por maleta extra (manual)
+    extraBag: 15,     // €15 por maleta extra (V1.1 - mejor margen)
     waitingTime: 15,  // €15 por 15min
   },
   waitTimePolicy: {
