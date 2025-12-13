@@ -1,5 +1,5 @@
-# 🎯 **PROMPT SUPERVISOR MAESTRO v2.7 – PROD**
-*CTO Coach + Pricing + Plan de Acción – Estado Real 85%*
+# 🎯 **PROMPT SUPERVISOR MAESTRO v2.8 – PROD**
+*CTO Coach + Pricing + Plan de Acción – Estado Real 90%*
 
 ---
 
@@ -193,43 +193,61 @@ Si te lo doy, úsalo como **verdad principal** para priorizar.
    - Documentación en `RESEND_SETUP.md`
    - ⚠️ Falta solo configurar API key en Supabase
 
+6. ✅ **Límite 7 pasajeros y flujo grupos 8+ verificado**
+   - Selector limitado a 7 pasajeros
+   - Mensaje + botón WhatsApp para grupos 8+
+   - Traducciones en 4 idiomas (EN/FR/ES/PT)
+   - Probado en mobile y desktop
+
+7. ✅ **FloatingWhatsApp implementado**
+   - Componente creado y funcionando
+   - Visible en todas las páginas
+   - Click-to-chat con mensaje pre-relleno
+   - Posición bottom-right, mobile-first
+
+8. ✅ **Páginas de soporte creadas**
+   - FAQPage (/faq) - Preguntas frecuentes
+   - PrivacyPage (/privacy) - GDPR compliant
+   - TermsPage (/terms) - Términos y condiciones
+   - OrlyAirport (/airports/orly) - Landing SEO
+   - Footer actualizado con links a todas las páginas
+
+9. ✅ **Step indicators en funnel de booking**
+   - BookingProgress en Details (1/3)
+   - BookingProgress en Payment (2/3)
+   - BookingProgress en Confirmation (3/3)
+   - Mejora UX y reduce abandono en checkout
+
 ### **🔴 PENDIENTE URGENTE**
 
-6. 🔴 **Probar límite 7 pasajeros y mensaje 8+ en entornos reales**
-   - Verificar en los 4 idiomas (EN/FR/ES/PT)
-   - Confirmar que el botón de WhatsApp abre correctamente con mensaje pre-relleno
-   - Probar en mobile y desktop
+10. 🔴 **Configurar API key de Resend en Supabase Edge Functions**
+    - Variable: `RESEND_API_KEY`
+    - Comprobar que el email de confirmación sale bien en producción
+    - Estimado: 5 minutos
 
 ### **⏳ PENDIENTE (antes del deploy)**
 
-7. ⏳ **Validar rutas restantes con precios correctos**
-   - París → Gare du Nord (1 pax) = €40
-   - Orly → Versailles (2 pax) = €85
-   - Beauvais → París (1-3 pax) = €130
+11. ⏳ **Validar rutas clave en producción**
+    - CDG → París (1-3 pax) = €70
+    - Disneyland → París (4-7 pax) = €120
+    - Beauvais → París (1-3 pax) = €130
+    - Verificar recargo equipaje: +€15 por maleta extra
+    - Estimado: 15 minutos
 
-8. ⏳ **Crear botón flotante de WhatsApp (mobile-first)**
-   - Posición: bottom-right
-   - Acción: click-to-chat `+33 6 68 25 11 02`
-   - Visible solo en páginas clave del funnel de reserva
-   - Estimado: 1-2 horas
-
-9. ⏳ **Configurar API key de Resend en Supabase Edge Functions**
-   - Variable: `RESEND_API_KEY`
-   - Comprobar que el email de confirmación sale bien en producción
-   - Estimado: 5 minutos
-
-10. ⏳ **Integrar GA4 + banner GDPR de cookies**
+12. ⏳ **Integrar GA4 + banner GDPR de cookies**
     - Medir: visitas, origen tráfico, funnel de reserva
     - Respeto RGPD básico
     - Estimado: 2-3 horas
 
-11. ⏳ **Deploy a producción (Vercel)**
+13. ⏳ **Deploy a producción (Vercel)**
     - `git push origin main`
     - Verificar que el motor de reservas en producción usa:
-      - Precios correctos
+      - Precios correctos (17 rutas)
       - Límite 7 pasajeros
       - Mensajes correctos para grupos 8+
-    - Estimado: 5 minutos + 10 minutos de verificación
+      - FloatingWhatsApp visible
+      - Step indicators en funnel
+    - Estimado: 5 minutos + 15 minutos de verificación
 
 
 ---
@@ -338,4 +356,4 @@ export const calculatePrice = (
 
 ---
 
-**Última actualización:** 2025-03-08 | **Versión:** v2.6
+**Última actualización:** 2025-12-13 | **Versión:** v2.8
