@@ -1,7 +1,7 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
-import { HelpCircle } from "lucide-react";
+import { HelpCircle, ChevronDown } from "lucide-react";
 
 const FAQ = () => {
   const { t } = useLanguage();
@@ -111,28 +111,39 @@ const FAQ = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: catIndex * 0.1 }}
             >
-              {/* Category Header */}
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-1 h-8 bg-gradient-gold rounded-full" />
-                <h3 className="text-2xl font-display font-bold text-secondary">
-                  {t?.faq?.categories?.[categoryMapping[category as keyof typeof categoryMapping]] || category}
-                </h3>
+              {/* Category Header - Enhanced */}
+              <div className="flex items-center gap-4 mb-6 group">
+                <div className="w-1.5 h-10 bg-gradient-gold rounded-full group-hover:h-12 transition-all duration-300" />
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-primary/10 to-primary/5 flex items-center justify-center">
+                    <HelpCircle className="w-5 h-5 text-primary" />
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-display font-bold text-secondary group-hover:text-primary transition-colors duration-300">
+                    {t?.faq?.categories?.[categoryMapping[category as keyof typeof categoryMapping]] || category}
+                  </h3>
+                </div>
               </div>
 
-              {/* Accordion */}
+              {/* Accordion - Enhanced with animated chevron icons */}
               <Accordion type="single" collapsible className="space-y-4">
                 {questions.map((faq, index) => (
                   <AccordionItem
                     key={index}
                     value={`${category}-${index}`}
-                    className="glass-card-premium px-6 py-2 rounded-xl border-none shadow-sm hover:shadow-md transition-all duration-300"
+                    className="group/accordion glass-card-premium px-6 py-2 rounded-xl border-2 border-primary/10 shadow-md hover:shadow-lg hover:border-primary/20 transition-all duration-300 overflow-hidden data-[state=open]:border-primary/30 data-[state=open]:shadow-luxury"
                   >
-                    <AccordionTrigger className="text-left hover:no-underline py-5 text-base font-semibold text-secondary group">
-                      <span className="flex items-start gap-3 pr-4">
-                        <span className="flex-1">{faq.question}</span>
+                    <AccordionTrigger className="text-left hover:no-underline py-5 text-base md:text-lg font-bold text-secondary hover:text-primary transition-colors duration-300 group">
+                      <span className="flex items-center justify-between gap-4 pr-2 flex-1">
+                        <span className="flex items-start gap-3 flex-1">
+                          <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-primary/20 transition-colors duration-300">
+                            <div className="w-2 h-2 rounded-full bg-primary" />
+                          </div>
+                          <span className="flex-1">{faq.question}</span>
+                        </span>
+                        <ChevronDown className="h-5 w-5 text-primary shrink-0 transition-transform duration-300 group-data-[state=open]:rotate-180" />
                       </span>
                     </AccordionTrigger>
-                    <AccordionContent className="text-gray-600 pb-5 pt-2 leading-relaxed">
+                    <AccordionContent className="text-gray-700 dark:text-gray-300 pb-5 pt-2 pl-9 leading-relaxed text-base">
                       {faq.answer}
                     </AccordionContent>
                   </AccordionItem>

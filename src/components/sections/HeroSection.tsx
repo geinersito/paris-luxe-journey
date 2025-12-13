@@ -98,23 +98,28 @@ export default function HeroSection() {
           alt="Paris Elite Services - Luxury Transportation"
           loading="eager"
           decoding="async"
+          fetchPriority="high"
           className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
             isImageLoaded ? "opacity-100" : "opacity-0"
           }`}
           style={{
             objectPosition: "center 15%",
             transform: `scaleX(-1) translateY(${scrollY * 0.5}px)`,
+            willChange: 'transform',
           }}
           onLoad={() => setIsImageLoaded(true)}
         />
       </div>
 
-      {/* Improved gradient overlay with better contrast */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70 z-10" />
+      {/* Premium Cinematic Overlay with Multi-Stop Gradient */}
+      <div className="absolute inset-0 overlay-cinematic z-10" />
+
+      {/* Subtle Gold Accent Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 z-10" />
 
       <div className="container relative z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="flex flex-col items-center text-center">
-          {/* Main Content - Centered */}
+          {/* Main Content - Centered with Staggered Animations */}
           <div
             className={`max-w-5xl w-full transition-all duration-1000 ${
               isImageLoaded
@@ -122,31 +127,55 @@ export default function HeroSection() {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            {/* Subtitle elegante */}
-            <p className="font-accent italic text-xl md:text-2xl text-primary-200 mb-4 tracking-wide">
+            {/* Subtitle elegante con animación */}
+            <p
+              className="font-accent italic text-xl md:text-2xl text-primary-200 mb-4 tracking-wide animate-fadeInDown"
+              style={{ animationDelay: '0.2s', animationFillMode: 'both' }}
+            >
               Paris Elite Services
             </p>
 
-            {/* Título principal con mejor jerarquía */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight text-white drop-shadow-2xl">
+            {/* Título principal con text-shadow dorado premium */}
+            <h1
+              className="text-4xl md:text-5xl lg:text-7xl font-display font-bold mb-6 leading-tight text-white text-shadow-gold animate-fadeInUp"
+              style={{
+                animationDelay: '0.4s',
+                animationFillMode: 'both',
+                textShadow: '0 2px 20px hsl(45 93% 47% / 0.4), 0 4px 40px hsl(45 93% 47% / 0.2)'
+              }}
+            >
               {t.hero.title}
             </h1>
 
-            {/* Subtítulo */}
-            <p className="mt-4 text-lg md:text-xl text-white/90 font-sans max-w-3xl mx-auto leading-relaxed mb-10">
+            {/* Subtítulo con mejor contraste */}
+            <p
+              className="mt-4 text-lg md:text-xl text-white/95 font-sans max-w-3xl mx-auto leading-relaxed mb-10 animate-fadeInUp"
+              style={{
+                animationDelay: '0.6s',
+                animationFillMode: 'both',
+                textShadow: '0 2px 10px rgba(0,0,0,0.5)'
+              }}
+            >
               {t.hero.subtitle}
             </p>
 
-            {/* Compact Booking Form */}
-            <div className="mt-8 mb-6">
+            {/* Compact Booking Form con animación */}
+            <div
+              className="mt-8 mb-6 animate-scaleIn"
+              style={{ animationDelay: '0.8s', animationFillMode: 'both' }}
+            >
               <CompactBookingForm onOpenFullForm={() => setShowBookingModal(true)} />
             </div>
 
-            {/* Secondary CTA */}
-            <div className="mt-6">
+            {/* Secondary CTA mejorado */}
+            <div
+              className="mt-6 animate-fadeInUp"
+              style={{ animationDelay: '1s', animationFillMode: 'both' }}
+            >
               <button
                 onClick={() => document.getElementById('fleet')?.scrollIntoView({ behavior: 'smooth' })}
-                className="text-white/90 hover:text-white font-semibold text-sm transition-colors underline underline-offset-4"
+                className="group text-white/90 hover:text-white font-semibold text-sm transition-all duration-300 underline underline-offset-4 hover:underline-offset-8 focus-luxury"
+                aria-label="Explore our fleet"
               >
                 View Our Premium Fleet →
               </button>

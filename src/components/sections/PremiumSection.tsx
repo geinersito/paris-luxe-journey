@@ -71,7 +71,7 @@ const PremiumSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.15 }}
-              whileHover={{ y: -8 }}
+              whileHover={{ y: -12, scale: 1.02 }}
               className="relative group"
             >
               {/* Badge "Most Popular" */}
@@ -86,31 +86,34 @@ const PremiumSection = () => {
                 </div>
               )}
 
-              {/* Glass Card */}
-              <div className="glass-card-premium p-8 rounded-2xl h-full flex flex-col relative overflow-hidden group-hover:shadow-2xl transition-all duration-500">
+              {/* Glass Card - Enhanced with stronger shadows */}
+              <div className="glass-card-premium p-8 rounded-2xl h-full flex flex-col relative overflow-hidden shadow-luxury group-hover:shadow-luxury-hover border-2 border-primary/20 group-hover:border-primary/40 transition-all duration-500">
                 {/* Decorative gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
-                {/* Icon with animation */}
-                <div className="relative z-10 flex items-center justify-center mx-auto mb-6 w-20 h-20 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-md">
-                  <service.icon className="w-10 h-10 text-primary stroke-[1.5]" strokeWidth={1.5} />
+                {/* Gold glow effect on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{ boxShadow: 'inset 0 0 60px hsl(45 93% 47% / 0.1)' }} />
+
+                {/* Icon with enhanced animation */}
+                <div className="relative z-10 flex items-center justify-center mx-auto mb-6 w-20 h-20 bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-md group-hover:shadow-gold-glow">
+                  <service.icon className="w-10 h-10 text-primary stroke-[1.5] group-hover:scale-110 transition-transform duration-500" strokeWidth={1.5} />
                 </div>
 
                 {/* Title */}
-                <h3 className="relative z-10 text-2xl font-display font-bold text-secondary text-center mb-4">
+                <h3 className="relative z-10 text-2xl font-display font-bold text-secondary text-center mb-4 group-hover:text-primary transition-colors duration-300">
                   {service.title}
                 </h3>
 
                 {/* Description */}
-                <p className="relative z-10 text-gray-600 text-center mb-6 leading-relaxed">
+                <p className="relative z-10 text-gray-700 text-center mb-6 leading-relaxed">
                   {service.description}
                 </p>
 
-                {/* Price Badge */}
+                {/* Price Badge - Enhanced */}
                 <div className="relative z-10 text-center mb-6">
-                  <div className="inline-block bg-gradient-gold-subtle px-6 py-3 rounded-xl">
-                    <p className="text-sm text-gray-600 font-medium mb-1">From</p>
-                    <p className="text-3xl font-display font-bold text-primary">
+                  <div className="inline-block bg-gradient-gold-subtle px-6 py-3 rounded-xl shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
+                    <p className="text-xs text-gray-600 font-bold mb-1 uppercase tracking-wider">From</p>
+                    <p className="text-3xl font-display font-bold text-primary group-hover:text-primary-dark transition-colors duration-300">
                       {service.priceFrom}
                     </p>
                   </div>

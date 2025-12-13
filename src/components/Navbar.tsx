@@ -9,12 +9,14 @@ const Navbar = () => {
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [visible, setVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
   const { t } = useLanguage();
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleServicesDropdown = () => setServicesDropdownOpen(!servicesDropdownOpen);
 
-  // Scroll detection for sticky header effect
+  // Enhanced scroll detection with auto-hide
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -23,11 +25,21 @@ const Navbar = () => {
 
       setScrolled(offset > 50);
       setScrollProgress(progress);
+
+      // Auto-hide navbar on scroll down, show on scroll up
+      if (offset > lastScrollY && offset > 100) {
+        // Scrolling down
+        setVisible(false);
+      } else {
+        // Scrolling up
+        setVisible(true);
+      }
+      setLastScrollY(offset);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [lastScrollY]);
 
   const navItems = [
     { name: t.nav.home, href: "/" },
@@ -59,6 +71,8 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-500 ${
+        visible ? 'translate-y-0' : '-translate-y-full'
+      } ${
         scrolled
           ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-lg border-b border-primary/10'
           : 'bg-white/95 dark:bg-background/90 backdrop-blur-md shadow-sm border-b border-border'

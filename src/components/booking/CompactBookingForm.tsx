@@ -19,19 +19,19 @@ export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) 
   };
 
   return (
-    <div className="glass-card-premium p-8 max-w-6xl mx-auto shadow-2xl">
-      <div className="flex flex-col lg:flex-row gap-6 items-end">
+    <div className="glass-card-premium p-6 md:p-8 max-w-5xl mx-auto shadow-luxury hover:shadow-luxury-hover transition-all duration-500">
+      <div className="flex flex-col lg:flex-row gap-4 items-end">
         {/* Pickup Location */}
         <div className="flex-1 w-full">
-          <label className="block text-sm font-semibold text-secondary mb-3 flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-primary" />
+          <label className="block text-xs font-bold text-secondary mb-2 flex items-center gap-1.5 uppercase tracking-wide">
+            <MapPin className="w-3.5 h-3.5 text-primary" />
             {t.booking.pickup}
           </label>
           <div className="relative">
             <select
               value={pickup}
               onChange={(e) => setPickup(e.target.value)}
-              className="w-full px-5 py-4 rounded-xl border border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all bg-white/95 backdrop-blur-sm font-sans text-base shadow-sm hover:shadow-md appearance-none cursor-pointer"
+              className="w-full px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
             >
               <option value="">Select pickup location</option>
               <option value="cdg">Paris CDG Airport</option>
@@ -50,15 +50,15 @@ export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) 
 
         {/* Dropoff Location */}
         <div className="flex-1 w-full">
-          <label className="block text-sm font-semibold text-secondary mb-3 flex items-center gap-2">
-            <MapPin className="w-4 h-4 text-primary" />
+          <label className="block text-xs font-bold text-secondary mb-2 flex items-center gap-1.5 uppercase tracking-wide">
+            <MapPin className="w-3.5 h-3.5 text-primary" />
             {t.booking.dropoff}
           </label>
           <div className="relative">
             <select
               value={dropoff}
               onChange={(e) => setDropoff(e.target.value)}
-              className="w-full px-5 py-4 rounded-xl border border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all bg-white/95 backdrop-blur-sm font-sans text-base shadow-sm hover:shadow-md appearance-none cursor-pointer"
+              className="w-full px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
             >
               <option value="">Select dropoff location</option>
               <option value="cdg">Paris CDG Airport</option>
@@ -76,16 +76,16 @@ export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) 
         </div>
 
         {/* Passengers */}
-        <div className="w-full lg:w-48">
-          <label className="block text-sm font-semibold text-secondary mb-3 flex items-center gap-2">
-            <Users className="w-4 h-4 text-primary" />
+        <div className="w-full lg:w-40">
+          <label className="block text-xs font-bold text-secondary mb-2 flex items-center gap-1.5 uppercase tracking-wide">
+            <Users className="w-3.5 h-3.5 text-primary" />
             {t.booking.passengers}
           </label>
           <div className="relative">
             <select
               value={passengers}
               onChange={(e) => setPassengers(e.target.value)}
-              className="w-full px-5 py-4 rounded-xl border border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/10 transition-all bg-white/95 backdrop-blur-sm font-sans text-base shadow-sm hover:shadow-md appearance-none cursor-pointer"
+              className="w-full px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
             >
               {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
                 <option key={num} value={num}>
@@ -101,15 +101,15 @@ export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) 
           </div>
         </div>
 
-        {/* CTA Button */}
-        <div className="w-full lg:w-auto">
+        {/* CTA Button - Premium Gold Gradient */}
+        <div className="w-full lg:w-auto lg:pt-[1.625rem]">
           <Button
             onClick={handleQuickBook}
-            className="silk-button w-full lg:w-auto px-10 py-[1.125rem] text-base font-semibold whitespace-nowrap group"
+            className="silk-button w-full lg:w-auto px-8 py-3 text-sm font-bold whitespace-nowrap group shadow-gold-glow hover:shadow-gold-glow-strong"
           >
             Get Instant Quote
             <svg
-              className="inline-block ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform"
+              className="inline-block ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -117,7 +117,7 @@ export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) 
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                strokeWidth={2}
+                strokeWidth={2.5}
                 d="M13 7l5 5m0 0l-5 5m5-5H6"
               />
             </svg>
@@ -125,25 +125,25 @@ export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) 
         </div>
       </div>
 
-      {/* Quick Info */}
-      <div className="mt-6 pt-6 border-t border-primary/10 flex flex-wrap gap-6 text-sm text-secondary/70 justify-center lg:justify-start">
-        <span className="flex items-center gap-2 font-medium">
-          <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+      {/* Quick Info - Trust Badges */}
+      <div className="mt-5 pt-5 border-t border-primary/10 flex flex-wrap gap-4 text-xs justify-center lg:justify-start">
+        <span className="group flex items-center gap-2 font-semibold text-secondary/80 hover:text-secondary transition-colors duration-300">
+          <svg className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
           </svg>
-          Fixed Price
+          <span className="tracking-wide">Fixed Price</span>
         </span>
-        <span className="flex items-center gap-2 font-medium">
-          <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+        <span className="group flex items-center gap-2 font-semibold text-secondary/80 hover:text-secondary transition-colors duration-300">
+          <svg className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
           </svg>
-          Free Cancellation
+          <span className="tracking-wide">Free Cancellation</span>
         </span>
-        <span className="flex items-center gap-2 font-medium">
-          <svg className="w-5 h-5 text-primary" fill="currentColor" viewBox="0 0 20 20">
+        <span className="group flex items-center gap-2 font-semibold text-secondary/80 hover:text-secondary transition-colors duration-300">
+          <svg className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
             <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
           </svg>
-          24/7 Support
+          <span className="tracking-wide">24/7 Support</span>
         </span>
       </div>
     </div>

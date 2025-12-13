@@ -93,16 +93,17 @@ export default function RouteHighlights() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                whileHover={{ y: -8 }}
+                whileHover={{ y: -12, scale: 1.03 }}
                 className="h-full"
               >
-                <div className="glass-card-premium overflow-hidden h-full flex flex-col group hover:shadow-2xl transition-all duration-500 rounded-2xl">
-                  {/* Icon Header with gradient */}
-                  <div className={`bg-gradient-to-br ${route.bgGradient} p-8 flex items-center justify-center relative overflow-hidden`}>
+                <div className="glass-card-premium overflow-hidden h-full flex flex-col group shadow-luxury hover:shadow-luxury-hover border-2 border-primary/10 hover:border-primary/20 transition-all duration-500 rounded-2xl">
+                  {/* Icon Header with gradient - Enhanced */}
+                  <div className={`bg-gradient-to-br ${route.bgGradient} p-8 flex items-center justify-center relative overflow-hidden group-hover:from-primary/15 group-hover:to-primary/25 transition-all duration-500`}>
                     <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <div className="relative w-20 h-20 rounded-2xl bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ boxShadow: 'inset 0 0 40px hsl(45 93% 47% / 0.1)' }} />
+                    <div className="relative w-20 h-20 rounded-2xl bg-white/90 backdrop-blur-sm flex items-center justify-center shadow-lg group-hover:shadow-gold-glow group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
                       <Icon
-                        className="w-10 h-10 text-primary"
+                        className="w-10 h-10 text-primary group-hover:scale-110 transition-transform duration-500"
                         strokeWidth={1.5}
                       />
                     </div>
@@ -110,23 +111,23 @@ export default function RouteHighlights() {
 
                   {/* Content */}
                   <div className="p-6 flex-1 flex flex-col">
-                    <h3 className="text-xl font-display font-bold text-secondary mb-2">
+                    <h3 className="text-xl font-display font-bold text-secondary mb-2 group-hover:text-primary transition-colors duration-300">
                       {route.title}
                     </h3>
-                    <p className="text-sm text-gray-600 mb-6 flex-1 leading-relaxed">
+                    <p className="text-sm text-gray-700 mb-6 flex-1 leading-relaxed">
                       {route.description}
                     </p>
 
-                    {/* Price Badge */}
+                    {/* Price Badge - Enhanced */}
                     <div className="mb-6">
-                      <div className="inline-block bg-gradient-gold-subtle px-4 py-3 rounded-xl">
-                        <p className="text-xs text-gray-600 font-medium mb-1 uppercase tracking-wide">
+                      <div className="inline-block bg-gradient-gold-subtle px-4 py-3 rounded-xl shadow-md group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
+                        <p className="text-xs text-gray-600 font-bold mb-1 uppercase tracking-wider">
                           {t.common?.from || "From"}
                         </p>
-                        <p className="text-3xl font-display font-bold text-primary">
+                        <p className="text-3xl font-display font-bold text-primary group-hover:text-primary-dark transition-colors duration-300">
                           €{route.priceFrom}
                         </p>
-                        <p className="text-xs text-gray-500 mt-1">
+                        <p className="text-xs text-gray-600 mt-1 font-medium">
                           {t.routes?.perTrip || "1-3 passengers"}
                         </p>
                       </div>

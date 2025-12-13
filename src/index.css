@@ -17,6 +17,7 @@
 @tailwind utilities;
 
 :root {
+  /* Base Colors */
   --background: 40 30% 98%; /* #FDFBF7 - Blanco cálido */
   --foreground: 220 20% 20%; /* #2B3340 - Texto oscuro */
   --card: 0 0% 100%; /* #FFFFFF - Blanco puro */
@@ -37,9 +38,48 @@
   --input: 40 15% 92%; /* #EDEBE5 - Input background */
   --ring: 30 28% 57%; /* #B8956A - Focus ring champagne */
   --radius: 0.5rem;
+
+  /* Premium Design Tokens */
+  --gold: 45 93% 47%; /* #F4C430 - Oro vibrante */
+  --gold-light: 45 100% 65%; /* Oro claro */
+  --gold-dark: 45 80% 35%; /* Oro oscuro */
+  --navy-deep: 220 45% 15%; /* Navy profundo */
+  --navy-light: 220 35% 25%; /* Navy claro */
+
+  /* Glow Effects */
+  --gold-glow: 0 0 30px hsl(45 93% 47% / 0.3);
+  --gold-glow-strong: 0 0 40px hsl(45 93% 47% / 0.5);
+  --shadow-luxury: 0 10px 40px -10px hsl(220 40% 20% / 0.2);
+  --shadow-luxury-hover: 0 20px 60px -15px hsl(220 40% 20% / 0.3);
+
+  /* Transitions */
+  --transition-luxury: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --transition-bounce: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Spacing Scale */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 1rem;
+  --space-lg: 1.5rem;
+  --space-xl: 2rem;
+  --space-2xl: 3rem;
+  --space-3xl: 4rem;
+
+  /* Typography Scale */
+  --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+  --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
+  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+  --text-lg: clamp(1.125rem, 1rem + 0.625vw, 1.5rem);
+  --text-xl: clamp(1.25rem, 1.1rem + 0.75vw, 1.875rem);
+  --text-2xl: clamp(1.5rem, 1.3rem + 1vw, 2.25rem);
+  --text-3xl: clamp(1.875rem, 1.5rem + 1.875vw, 3rem);
+  --text-4xl: clamp(2.25rem, 1.8rem + 2.25vw, 3.75rem);
+  --text-5xl: clamp(3rem, 2.4rem + 3vw, 4.5rem);
 }
 
 .dark {
+  /* Base Colors */
   --background: 220 25% 18%; /* #232F3E - Navy oscuro */
   --foreground: 45 30% 96%; /* #F8F6F0 - Texto claro */
   --card: 220 25% 18%;
@@ -59,8 +99,22 @@
   --border: 220 20% 30%; /* Bordes oscuros */
   --input: 220 20% 25%; /* Input oscuro */
   --ring: 43 56% 49%; /* Focus ring dorado */
+
+  /* Premium Design Tokens - Dark Mode */
+  --gold: 45 93% 55%; /* Oro más brillante en dark */
+  --gold-light: 45 100% 70%;
+  --gold-dark: 45 80% 40%;
+  --navy-deep: 220 50% 10%;
+  --navy-light: 220 40% 20%;
+
+  /* Glow Effects - Dark Mode */
+  --gold-glow: 0 0 40px hsl(45 93% 55% / 0.4);
+  --gold-glow-strong: 0 0 60px hsl(45 93% 55% / 0.6);
+  --shadow-luxury: 0 10px 40px -10px hsl(0 0% 0% / 0.5);
+  --shadow-luxury-hover: 0 20px 60px -15px hsl(0 0% 0% / 0.7);
 }
 
+/* Premium Animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -69,6 +123,77 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+@keyframes goldGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px hsl(45 93% 47% / 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px hsl(45 93% 47% / 0.6);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
   }
 }
 
@@ -97,26 +222,82 @@
 }
 
 @layer components {
-  /* Card Effects */
+  /* Card Effects - Enhanced */
   .hover-card-3d {
-    @apply transition-all duration-300 hover:scale-105 hover:shadow-xl;
+    @apply transition-all duration-300 hover:scale-105 hover:shadow-xl hover:-translate-y-1;
     transform-style: preserve-3d;
     perspective: 1000px;
   }
 
   .glass-card {
-    @apply bg-white/80 dark:bg-secondary/80 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl shadow-2xl;
+    @apply bg-white/80 dark:bg-secondary/80 backdrop-blur-xl border border-white/20 dark:border-white/10 rounded-2xl shadow-2xl transition-all duration-300;
+  }
+
+  .glass-card:hover {
+    @apply shadow-luxury-hover -translate-y-1;
   }
 
   .glass-card-premium {
-    @apply bg-gradient-to-br from-white/90 to-champagne/80 backdrop-blur-2xl border border-primary/10 rounded-2xl shadow-2xl;
+    @apply bg-gradient-to-br from-white/90 to-champagne/80 backdrop-blur-2xl border border-primary/10 rounded-2xl shadow-2xl transition-all duration-300;
   }
 
-  /* Button Styles */
+  .glass-card-premium:hover {
+    @apply shadow-luxury-hover -translate-y-1 border-primary/20;
+  }
+
+  .card-luxury {
+    @apply relative overflow-hidden rounded-2xl bg-white dark:bg-secondary border border-border transition-all duration-500;
+    box-shadow: var(--shadow-luxury);
+  }
+
+  .card-luxury:hover {
+    box-shadow: var(--shadow-luxury-hover);
+    transform: translateY(-4px);
+  }
+
+  .card-luxury::before {
+    content: '';
+    @apply absolute inset-0 opacity-0 transition-opacity duration-500;
+    background: linear-gradient(135deg, hsl(var(--gold)) 0%, transparent 50%);
+    opacity: 0;
+  }
+
+  .card-luxury:hover::before {
+    opacity: 0.05;
+  }
+
+  /* Skeleton Loading */
+  .skeleton {
+    @apply animate-pulse bg-muted rounded;
+  }
+
+  .skeleton-shimmer {
+    @apply relative overflow-hidden bg-muted rounded;
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 0%,
+      hsl(var(--muted-foreground) / 0.1) 50%,
+      hsl(var(--muted)) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  /* Button Styles - Enhanced with stronger gold and better contrast */
   .silk-button {
-    @apply relative overflow-hidden bg-gradient-gold text-white px-8 py-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02];
-    font-weight: 600;
+    @apply relative overflow-hidden text-white px-8 py-4 rounded-xl transition-all duration-300 hover:scale-[1.05];
+    background: linear-gradient(135deg, #D4AF37 0%, #C2A033 50%, #B8956A 100%);
+    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.2);
+    font-weight: 800;
+    font-size: 1.125rem;
     letter-spacing: 0.025em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .silk-button:hover {
+    background: linear-gradient(135deg, #F4C430 0%, #D4AF37 50%, #C2A033 100%);
+    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.7), 0 0 60px rgba(212, 175, 55, 0.3);
+    transform: scale(1.05) translateY(-2px);
   }
 
   .silk-button::before {
@@ -167,6 +348,21 @@
     @apply font-sans text-foreground;
   }
 
+  .text-shadow-gold {
+    text-shadow: 0 2px 10px hsl(var(--gold) / 0.3);
+  }
+
+  .text-shadow-luxury {
+    text-shadow: 0 4px 20px hsl(var(--secondary) / 0.2);
+  }
+
+  .text-glow-gold {
+    text-shadow:
+      0 0 10px hsl(var(--gold) / 0.5),
+      0 0 20px hsl(var(--gold) / 0.3),
+      0 0 30px hsl(var(--gold) / 0.2);
+  }
+
   /* Section Spacing */
   .section-padding {
     @apply py-20 md:py-28 lg:py-32;
@@ -189,6 +385,122 @@
   .overlay-gold {
     @apply absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-primary/10;
   }
+
+  .overlay-cinematic {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      180deg,
+      hsl(var(--navy-deep) / 0.8) 0%,
+      hsl(var(--navy-deep) / 0.6) 30%,
+      hsl(var(--navy-deep) / 0.4) 50%,
+      hsl(var(--navy-deep) / 0.6) 70%,
+      hsl(var(--navy-deep) / 0.9) 100%
+    );
+    backdrop-filter: blur(2px);
+  }
+
+  .overlay-gradient-multi {
+    @apply absolute inset-0;
+    background: linear-gradient(
+      135deg,
+      hsl(var(--navy-deep) / 0.9) 0%,
+      hsl(var(--navy-deep) / 0.7) 25%,
+      hsl(var(--gold) / 0.1) 50%,
+      hsl(var(--navy-deep) / 0.7) 75%,
+      hsl(var(--navy-deep) / 0.9) 100%
+    );
+  }
+
+  /* Focus States - Accessibility */
+  .focus-luxury {
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:ring-offset-background transition-all;
+  }
+
+  .focus-visible-luxury {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background;
+  }
+
+  /* Performance Optimizations */
+  .will-change-transform {
+    will-change: transform;
+  }
+
+  .will-change-opacity {
+    will-change: opacity;
+  }
+
+  .gpu-accelerated {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+  }
+
+  /* Reduce Motion for Accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Scroll Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes shimmer {
@@ -201,9 +513,37 @@
   50% { transform: translateY(-10px); }
 }
 
+/* Animation Classes */
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-fadeInDown {
+  animation: fadeInDown 0.6s ease-out forwards;
+}
+
+.animate-fadeInLeft {
+  animation: fadeInLeft 0.6s ease-out forwards;
+}
+
+.animate-fadeInRight {
+  animation: fadeInRight 0.6s ease-out forwards;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.6s ease-out forwards;
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
+
+/* Delay utilities for staggered animations */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+.delay-400 { animation-delay: 400ms; }
+.delay-500 { animation-delay: 500ms; }
 
 @keyframes shine {
   to {

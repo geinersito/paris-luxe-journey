@@ -7,13 +7,13 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(({ mode }) => ({
   server: {
-    host: true, 
-    port: 8080,
+    host: true,
+    port: 8082,
     hmr: {
       protocol: 'ws',
       host: 'localhost',
-      port: 8080,
-      clientPort: 8080,
+      port: 8082,
+      clientPort: 8082,
       timeout: 5000
     },
     watch: {
