@@ -184,7 +184,7 @@ Estos NO se aplican automáticamente en V1, pero están documentados:
 
 | Concepto | Política | Aplicación |
 |----------|----------|------------|
-| **Equipaje extra** | €10/pieza | Manual (tú decides) |
+| **Equipaje extra** | €15/pieza | Manual (tú decides) |
 | **Horario nocturno (23:00-06:00)** | +20% | Manual |
 | **Tiempo espera aeropuerto** | 60 min gratis → €15/15 min | Manual |
 | **Tiempo espera ciudad** | 15 min gratis → €15/15 min | Manual |
