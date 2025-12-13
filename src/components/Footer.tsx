@@ -110,6 +110,12 @@ const Footer = () => {
                   Excursions
                 </Link>
               </li>
+              <li>
+                <Link to="/faq" className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors duration-300" />
+                  {t?.footer?.links?.faq || "FAQ"}
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -159,13 +165,13 @@ const Footer = () => {
               {t?.footer?.copyright || `${currentYear} Paris Elite Services. All rights reserved.`}
             </p>
             <div className="flex items-center gap-6 text-sm text-gray-400">
-              <a href="#" className="hover:text-primary transition-colors duration-300 hover:underline underline-offset-4">
+              <Link to="/privacy" className="hover:text-primary transition-colors duration-300 hover:underline underline-offset-4">
                 {t?.footer?.links?.privacy || "Privacy Policy"}
-              </a>
+              </Link>
               <span className="text-gray-600">•</span>
-              <a href="#" className="hover:text-primary transition-colors duration-300 hover:underline underline-offset-4">
+              <Link to="/terms" className="hover:text-primary transition-colors duration-300 hover:underline underline-offset-4">
                 {t?.footer?.links?.terms || "Terms of Service"}
-              </a>
+              </Link>
             </div>
           </div>
 

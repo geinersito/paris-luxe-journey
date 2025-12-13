@@ -16,7 +16,11 @@ const BookingPayment = lazy(() => import("./pages/booking/Payment"));
 const BookingConfirmation = lazy(() => import("./pages/booking/Confirmation"));
 const DesignPreview = lazy(() => import("./pages/DesignPreview"));
 const CDGAirport = lazy(() => import("./pages/airports/CDG"));
+const OrlyAirport = lazy(() => import("./pages/airports/Orly"));
 const AvoidFakeTaxis = lazy(() => import("./pages/guides/AvoidFakeTaxis"));
+const FAQPage = lazy(() => import("./pages/FAQPage"));
+const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
+const TermsPage = lazy(() => import("./pages/TermsPage"));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -77,10 +81,42 @@ const router = createBrowserRouter([
         ),
       },
       {
+        path: "airports/orly",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <OrlyAirport />
+          </Suspense>
+        ),
+      },
+      {
         path: "guides/avoid-fake-taxis",
         element: (
           <Suspense fallback={<PageLoader />}>
             <AvoidFakeTaxis />
+          </Suspense>
+        ),
+      },
+      {
+        path: "faq",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <FAQPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "privacy",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <PrivacyPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "terms",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <TermsPage />
           </Suspense>
         ),
       },
