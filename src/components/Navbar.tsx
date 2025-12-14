@@ -25,8 +25,9 @@ const Navbar = () => {
 
     // If it's a hash link
     if (href.startsWith('#')) {
-      // If we're not on the home page, navigate to home first
+      // If we're not on the home page, navigate to home with hash
       if (location.pathname !== '/') {
+        // Navigate to home with the hash - the useEffect will handle scrolling
         navigate('/' + href);
       } else {
         // We're on home, just scroll to the section
@@ -68,6 +69,23 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
+
+  // Handle hash navigation after page load
+  useEffect(() => {
+    // Check if there's a hash in the URL
+    const hash = window.location.hash;
+    if (hash) {
+      // Wait a bit for the page to render
+      const timeoutId = setTimeout(() => {
+        const element = document.querySelector(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
+
+      return () => clearTimeout(timeoutId);
+    }
+  }, [location]);
 
   const navItems = [
     { name: t.nav.home, href: "/" },
