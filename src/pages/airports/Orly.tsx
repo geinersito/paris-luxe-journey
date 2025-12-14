@@ -1,16 +1,16 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Plane, Clock, Shield, MapPin, CheckCircle, Star } from "lucide-react";
+import { Plane, Clock, Shield, MapPin, CheckCircle, Star, Luggage, User, CreditCard, Bell } from "lucide-react";
 import BookingForm from "@/components/BookingForm";
 import FleetSection from "@/components/sections/FleetSection";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import type { BookingFormData } from "@/hooks/booking/types";
 
 const ORLY_IMAGE = "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80";
 
 export default function OrlyAirport() {
-  const { t } = useLanguage();
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const handleBookingSubmit = async (
@@ -106,6 +106,52 @@ export default function OrlyAirport() {
         </div>
       </section>
 
+      {/* Airport Description */}
+      <section className="py-16 bg-gradient-to-br from-primary/5 to-white">
+        <div className="container px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-lg border border-primary/10">
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-primary mb-6">
+              About Paris Orly Airport (ORY)
+            </h2>
+            <div className="prose prose-lg max-w-none text-muted-foreground">
+              <p className="mb-4 leading-relaxed">
+                <strong className="text-secondary">Paris Orly Airport (ORY)</strong> is the second-largest airport serving Paris,
+                located just 13 kilometers south of the city center. Orly is particularly popular for domestic flights within France,
+                European destinations, and flights to North Africa and the French overseas territories.
+              </p>
+              <p className="mb-4 leading-relaxed">
+                The airport operates from <strong className="text-secondary">four terminals</strong> (Orly 1, 2, 3, and 4),
+                with terminals 1-3 primarily serving domestic flights and Orly 4 handling international traffic.
+                With over 33 million passengers annually, Orly offers a more compact and easier-to-navigate alternative to CDG.
+              </p>
+              <p className="leading-relaxed">
+                Being closer to Paris than CDG, Orly is the ideal choice for quick access to the city center, southern Paris neighborhoods,
+                and destinations like Disneyland Paris. Our private transfer service ensures a comfortable 30-45 minute journey to central Paris
+                with fixed pricing and no surprises.
+              </p>
+            </div>
+            <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-primary/10">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">13 km</div>
+                <div className="text-sm text-muted-foreground">From Paris Center</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">33M+</div>
+                <div className="text-sm text-muted-foreground">Passengers/Year</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">4</div>
+                <div className="text-sm text-muted-foreground">Terminals</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl font-bold text-primary">30-45min</div>
+                <div className="text-sm text-muted-foreground">To Paris Center</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us for Orly */}
       <section className="py-20 bg-background">
         <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
@@ -196,12 +242,12 @@ export default function OrlyAirport() {
                 <tr className="hover:bg-accent/50 transition-colors">
                   <td className="px-6 py-4 font-medium">Orly → Disneyland Paris</td>
                   <td className="px-6 py-4 text-muted-foreground">Sedan (1-3 pax)</td>
-                  <td className="px-6 py-4 text-right font-bold text-secondary">€85</td>
+                  <td className="px-6 py-4 text-right font-bold text-secondary">€90</td>
                 </tr>
                 <tr className="hover:bg-accent/50 transition-colors">
                   <td className="px-6 py-4 font-medium">Orly → Disneyland Paris</td>
                   <td className="px-6 py-4 text-muted-foreground">Van (4-7 pax)</td>
-                  <td className="px-6 py-4 text-right font-bold text-secondary">€110</td>
+                  <td className="px-6 py-4 text-right font-bold text-secondary">€117</td>
                 </tr>
               </tbody>
             </table>
@@ -212,6 +258,94 @@ export default function OrlyAirport() {
               <strong className="text-foreground">Note:</strong> Prices include 1 large suitcase + 1 small bag per passenger.
               Extra large suitcases: €15 per piece. For groups of 8+ passengers, contact us via WhatsApp.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* What's Included Section */}
+      <section className="py-16 bg-gradient-to-br from-primary/5 via-white to-primary/10">
+        <div className="container px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
+              What's Included in Every Transfer
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+              All-inclusive pricing with no hidden fees. Everything you need for a stress-free journey.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {/* Meet & Greet */}
+            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-primary/10">
+              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <User className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-lg font-semibold text-secondary mb-2">Meet & Greet</h3>
+              <p className="text-sm text-muted-foreground">
+                Your driver will wait at arrivals with a name sign, ready to assist with your luggage.
+              </p>
+            </div>
+
+            {/* Flight Tracking */}
+            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-primary/10">
+              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <Bell className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-lg font-semibold text-secondary mb-2">Flight Tracking</h3>
+              <p className="text-sm text-muted-foreground">
+                We monitor your flight in real-time and adjust pickup time if there are delays.
+              </p>
+            </div>
+
+            {/* Luggage Included */}
+            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-primary/10">
+              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <Luggage className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-lg font-semibold text-secondary mb-2">1 Luggage/Pax</h3>
+              <p className="text-sm text-muted-foreground">
+                One large suitcase per passenger included. Extra luggage available for small fee.
+              </p>
+            </div>
+
+            {/* All Taxes & Fees */}
+            <div className="bg-white p-6 rounded-xl shadow-md hover:shadow-xl transition-shadow duration-300 border border-primary/10">
+              <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mb-4">
+                <CreditCard className="w-6 h-6 text-primary" />
+              </div>
+              <h3 className="text-lg font-semibold text-secondary mb-2">All Taxes Included</h3>
+              <p className="text-sm text-muted-foreground">
+                Fixed price with all taxes, tolls, and fees included. No surprises at the end.
+              </p>
+            </div>
+          </div>
+
+          {/* Additional Benefits */}
+          <div className="mt-12 bg-white/80 backdrop-blur-sm p-8 rounded-xl border-2 border-primary/20">
+            <h3 className="text-xl font-semibold text-secondary mb-6 text-center">Additional Benefits</h3>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-secondary">Free Cancellation</p>
+                  <p className="text-sm text-muted-foreground">Up to 24 hours before pickup</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-secondary">60 Minutes Wait Time</p>
+                  <p className="text-sm text-muted-foreground">Free waiting at airport arrivals</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <CheckCircle className="w-5 h-5 text-green-600 mt-0.5 flex-shrink-0" />
+                <div>
+                  <p className="font-medium text-secondary">24/7 Customer Support</p>
+                  <p className="text-sm text-muted-foreground">WhatsApp & phone assistance</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -246,6 +380,57 @@ export default function OrlyAirport() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section className="py-20 bg-background">
+        <div className="container px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
+              Orly Airport Transfer FAQ
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Common questions about our Orly airport service
+            </p>
+          </div>
+
+          <div className="space-y-4">
+            {[
+              {
+                q: "Where will my driver meet me at Orly?",
+                a: "Your chauffeur will wait at the arrivals hall exit with a name sign. We serve both Orly 1-2-3 and Orly 4 terminals."
+              },
+              {
+                q: "What if my flight is delayed?",
+                a: "We track all flights in real-time. Your driver will adjust the pickup time automatically at no extra charge."
+              },
+              {
+                q: "How long does it take from Orly to Paris center?",
+                a: "Typically 30-45 minutes depending on traffic and your exact destination in Paris. Orly is closer to the city than CDG."
+              },
+              {
+                q: "Which Orly terminals do you serve?",
+                a: "We serve all Orly terminals: Orly 1, 2, 3 (domestic flights) and Orly 4 (international flights). Just provide your terminal number when booking."
+              },
+              {
+                q: "Is the price really fixed?",
+                a: "Absolutely. The price you see at booking is the final price. No hidden fees, no meter, no surprises."
+              },
+              {
+                q: "Can I book a transfer to Disneyland from Orly?",
+                a: "Yes! We offer direct transfers from Orly to Disneyland Paris. The journey takes approximately 45-60 minutes."
+              }
+            ].map((faq, index) => (
+              <details key={index} className="bg-card border border-border rounded-lg p-6 group">
+                <summary className="font-semibold text-lg cursor-pointer list-none flex items-center justify-between">
+                  <span>{faq.q}</span>
+                  <span className="text-secondary group-open:rotate-180 transition-transform">▼</span>
+                </summary>
+                <p className="mt-4 text-muted-foreground leading-relaxed">{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-primary to-primary-dark text-white">
         <div className="container px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center">
@@ -261,7 +446,7 @@ export default function OrlyAirport() {
               className="bg-secondary hover:bg-secondary/90 text-primary font-semibold"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
-              Book Now
+              Get Your Fixed Price Now
             </Button>
             <Button
               size="lg"
