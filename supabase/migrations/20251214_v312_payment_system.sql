@@ -58,48 +58,25 @@ CREATE TABLE IF NOT EXISTS bookings_v312 (
   -- Stripe Customer
   stripe_customer_id VARCHAR(255) NOT NULL,
   
-  -- Estados
-  status VARCHAR(50) NOT NULL DEFAULT 'pending' CHECK (
+  -- Estados (V3.1.2 Canonical States)
+  status VARCHAR(50) NOT NULL DEFAULT 'pending_payment' CHECK (
     status IN (
-      'pending',
-      'payment_processing',
+      'pending_payment',
       'confirmed',
-      'driver_assigned',
-      'driver_departed',
+      'partner_assigned',
+      'hold_pending',
+      'hold_confirmed',
       'in_progress',
       'completed',
       'cancelled',
-      'payment_failed',
-      'unconfirmed_no_contact'
+      'failed'
     )
   ),
-  
-  payment_status VARCHAR(50),
-  
-  -- Sub-estados para Flexible
-  flexible_sub_status VARCHAR(50) CHECK (
-    flexible_sub_status IN (
-      'awaiting_hold',
-      'hold_pending',
-      'hold_requires_action',
-      'hold_confirmed',
-      'hold_failed'
-    )
-  ),
-  
-  -- Hold status
-  hold_status VARCHAR(50) CHECK (
-    hold_status IN (
-      'pending',
-      'requires_action',
-      'confirmed',
-      'captured',
-      'cancelled'
-    )
-  ),
-  
+
+  -- Hold metadata
   hold_auth_deadline TIMESTAMPTZ,
   hold_captured_at TIMESTAMPTZ,
+  hold_cancelled_at TIMESTAMPTZ,
   
   -- Índices
   CONSTRAINT bookings_v312_email_check CHECK (customer_email ~* '^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$')
@@ -145,16 +122,19 @@ CREATE INDEX IF NOT EXISTS idx_stripe_webhook_events_processed_at ON stripe_webh
 CREATE TABLE IF NOT EXISTS booking_state_logs (
   id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   booking_id UUID NOT NULL REFERENCES bookings_v312(id) ON DELETE CASCADE,
-  
+
   -- Estado anterior y nuevo
-  from_status VARCHAR(50),
-  to_status VARCHAR(50) NOT NULL,
-  
+  from_state VARCHAR(50),
+  to_state VARCHAR(50) NOT NULL,
+
+  -- Evento que causó la transición
+  event VARCHAR(100),
+
   -- Metadata
   changed_by VARCHAR(255), -- 'system', 'admin', 'webhook', etc.
   reason TEXT,
   metadata JSONB,
-  
+
   -- Timestamp
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
@@ -187,6 +167,55 @@ VALUES ('00000000-0000-0000-0000-000000000000'::UUID, 3.5, 0.25, 'system')
 ON CONFLICT (id) DO NOTHING;
 
 -- ============================================================================
+-- 5. TABLA: notifications (Historial de notificaciones)
+-- ============================================================================
+
+CREATE TABLE IF NOT EXISTS notifications (
+  id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  booking_id UUID NOT NULL REFERENCES bookings_v312(id) ON DELETE CASCADE,
+
+  -- Tipo de notificación
+  type VARCHAR(50) NOT NULL CHECK (
+    type IN (
+      'booking_confirmed',
+      'payment_received',
+      'hold_created',
+      'hold_requires_action',
+      'hold_confirmed',
+      'driver_assigned',
+      'service_started',
+      'service_completed',
+      'booking_cancelled'
+    )
+  ),
+
+  -- Canal
+  channel VARCHAR(20) NOT NULL CHECK (channel IN ('email', 'sms', 'whatsapp')),
+
+  -- Destinatario
+  recipient VARCHAR(255) NOT NULL,
+
+  -- Estado
+  status VARCHAR(20) NOT NULL DEFAULT 'pending' CHECK (
+    status IN ('pending', 'sent', 'failed')
+  ),
+
+  -- Metadata
+  provider VARCHAR(50), -- 'sendgrid', 'twilio', etc.
+  provider_message_id VARCHAR(255),
+  error_message TEXT,
+
+  -- Timestamps
+  created_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+  sent_at TIMESTAMPTZ,
+  failed_at TIMESTAMPTZ
+);
+
+CREATE INDEX IF NOT EXISTS idx_notifications_booking_id ON notifications(booking_id);
+CREATE INDEX IF NOT EXISTS idx_notifications_status ON notifications(status);
+CREATE INDEX IF NOT EXISTS idx_notifications_created_at ON notifications(created_at);
+
+-- ============================================================================
 -- TRIGGERS
 -- ============================================================================
 
@@ -212,4 +241,28 @@ COMMENT ON TABLE bookings_v312 IS 'Bookings con sistema de pagos V3.1.2 (Prepaid
 COMMENT ON TABLE stripe_webhook_events IS 'Registro de eventos de Stripe para idempotencia';
 COMMENT ON TABLE booking_state_logs IS 'Historial de cambios de estado de bookings';
 COMMENT ON TABLE stripe_fee_config IS 'Configuración de fees de Stripe (singleton)';
+COMMENT ON TABLE notifications IS 'Historial de notificaciones enviadas a clientes';
+
+-- ============================================================================
+-- NOTAS DE MIGRACIÓN
+-- ============================================================================
+
+/**
+ * ESTADOS CANÓNICOS V3.1.2:
+ *
+ * - pending_payment: Esperando pago/setup
+ * - confirmed: Pago confirmado, booking activo
+ * - partner_assigned: Conductor asignado
+ * - hold_pending: Hold creado, esperando autenticación
+ * - hold_confirmed: Hold autenticado exitosamente
+ * - in_progress: Servicio en curso
+ * - completed: Servicio completado
+ * - cancelled: Booking cancelado
+ * - failed: Pago/setup fallido
+ *
+ * IMPORTANTE: Estos estados deben coincidir exactamente con:
+ * - src/services/state-machine/BookingStateMachine.ts
+ * - supabase/functions/stripe-webhooks-v312-integrated/index.ts
+ * - Frontend components
+ */
 
