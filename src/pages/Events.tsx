@@ -77,7 +77,7 @@ export default function Events() {
                 {t('events.thisWeek') || 'This Week in Paris'}
               </h2>
             </div>
-            <EventsFeed range="week" variant="full" />
+            <EventsFeed range="week" variant="full" showHeader={false} />
           </div>
         </section>
 
@@ -92,7 +92,7 @@ export default function Events() {
                 {t('events.thisMonth') || 'This Month in Paris'}
               </h2>
             </div>
-            <EventsFeed range="month" variant="full" />
+            <EventsFeed range="month" variant="full" showHeader={false} />
           </div>
         </section>
 

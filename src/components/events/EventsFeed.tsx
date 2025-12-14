@@ -1,16 +1,11 @@
 import { useTranslation } from 'react-i18next'
-import type { Event, EventRange, EventVariant, Language } from '@/types/events'
+import type { Event, EventsFeedProps, Language } from '@/types/events'
 import eventsFeedData from '@/data/events/events-feed.json'
 import { Calendar, MapPin, ExternalLink, Star } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 
-interface EventsFeedProps {
-  range: EventRange
-  variant?: EventVariant
-}
-
-export function EventsFeed({ range, variant = 'full' }: EventsFeedProps) {
+export function EventsFeed({ range, variant = 'full', showHeader = true }: EventsFeedProps) {
   const { t, i18n } = useTranslation()
   const language = i18n.language as Language
 
@@ -51,16 +46,18 @@ export function EventsFeed({ range, variant = 'full' }: EventsFeedProps) {
   return (
     <div className="space-y-12">
       {/* Header - Premium Style */}
-      <div className="text-center">
-        <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-2">
-          {range === 'week' ? t('events.thisWeek') : t('events.thisMonth')}
-        </h2>
-        {daysSinceUpdate > 14 && (
-          <p className="text-sm text-gray-600 mt-2">
-            {t('events.updatedOn')} {generatedAt.toLocaleDateString()}
-          </p>
-        )}
-      </div>
+      {showHeader && (
+        <div className="text-center">
+          <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-2">
+            {range === 'week' ? t('events.thisWeek') : t('events.thisMonth')}
+          </h2>
+          {daysSinceUpdate > 14 && (
+            <p className="text-sm text-gray-600 mt-2">
+              {t('events.updatedOn')} {generatedAt.toLocaleDateString()}
+            </p>
+          )}
+        </div>
+      )}
 
       {/* Events Grid */}
       <div className={`grid gap-8 ${variant === 'full' ? 'md:grid-cols-2 lg:grid-cols-3' : 'md:grid-cols-2'}`}>
