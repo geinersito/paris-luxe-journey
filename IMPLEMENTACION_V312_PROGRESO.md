@@ -226,6 +226,46 @@ Hold Amount:          €30.00
 
 ---
 
+## ✅ FASE 4: Integración Completa (P1) - COMPLETADA
+
+### Archivos creados:
+
+#### ✅ Ticket 11: Webhook Integrado
+**Archivos creados:**
+- ✅ `supabase/functions/stripe-webhooks-v312-integrated/index.ts` (332 líneas)
+
+**Características:**
+- ✅ Integración con State Machine
+- ✅ Integración con Notification Service
+- ✅ Logging de transiciones
+- ✅ Idempotencia por event_id
+- ✅ Manejo de 7 eventos de Stripe
+
+#### ✅ Ticket 12: Booking Orchestrator
+**Archivos creados:**
+- ✅ `src/services/booking/BookingOrchestrator.ts` (175 líneas)
+- ✅ `src/services/booking/__tests__/BookingOrchestrator.test.ts` (150 líneas)
+
+**Características:**
+- ✅ Orquestación de State Machine + Notifications
+- ✅ Procesamiento de eventos individuales
+- ✅ Procesamiento de secuencias de eventos
+- ✅ Validaciones de negocio integradas
+- ✅ Tests completos (prepaid/flexible flows)
+
+#### ✅ Ticket 13: Booking Repository
+**Archivos creados:**
+- ✅ `src/services/booking/BookingRepository.ts` (175 líneas)
+
+**Características:**
+- ✅ Capa de acceso a datos
+- ✅ CRUD de bookings
+- ✅ Logging de transiciones
+- ✅ Queries especializadas (by status, needing hold)
+- ✅ Mapeo de datos DB ↔ Context
+
+---
+
 ## ⚠️ NOTAS IMPORTANTES
 
 1. **Código legacy:** `src/config/pricing.ts` queda deprecado pero NO se elimina hasta completar migración
@@ -255,8 +295,13 @@ src/
 │   │   ├── BookingStateMachine.ts # ✅ Máquina de estados
 │   │   └── __tests__/
 │   │       └── BookingStateMachine.test.ts # ✅ Tests
-│   └── notifications/
-│       └── NotificationService.ts # ✅ Sistema de notificaciones
+│   ├── notifications/
+│   │   └── NotificationService.ts # ✅ Sistema de notificaciones
+│   └── booking/
+│       ├── BookingOrchestrator.ts # ✅ Orquestador principal
+│       ├── BookingRepository.ts # ✅ Capa de datos
+│       └── __tests__/
+│           └── BookingOrchestrator.test.ts # ✅ Tests
 └── api/
     └── pricing/
         └── calculate.ts        # ✅ Endpoint público
@@ -273,6 +318,9 @@ supabase/functions/
 ├── partner-sla-job-v312/
 │   └── index.ts                # ✅ Job de SLAs (cada 30 min)
 ├── stripe-webhooks-v312/
+│   └── index.ts                # ✅ Webhooks básicos
+├── stripe-webhooks-v312-integrated/
+│   └── index.ts                # ✅ Webhooks integrados (State + Notifications)
 │   └── index.ts                # ✅ Job programado
 └── stripe-webhooks-v312/
     └── index.ts                # ✅ Webhook handler
