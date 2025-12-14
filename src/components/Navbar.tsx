@@ -3,6 +3,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSelector } from "./LanguageSelector";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,9 +13,36 @@ const Navbar = () => {
   const [visible, setVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const { t } = useLanguage();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleServicesDropdown = () => setServicesDropdownOpen(!servicesDropdownOpen);
+
+  // Handle navigation with hash links
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+
+    // If it's a hash link
+    if (href.startsWith('#')) {
+      // If we're not on the home page, navigate to home first
+      if (location.pathname !== '/') {
+        navigate('/' + href);
+      } else {
+        // We're on home, just scroll to the section
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    } else {
+      // Regular navigation
+      navigate(href);
+    }
+
+    // Close mobile menu
+    setIsOpen(false);
+  };
 
   // Enhanced scroll detection with auto-hide
   useEffect(() => {
@@ -49,8 +77,7 @@ const Navbar = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: t.services.dropdown.transfers, href: "/airports/cdg" },
-        { name: t.services.dropdown.chauffeur, href: "/booking" },
-        { name: t.services.dropdown.excursions, href: "/excursions" }
+        { name: t.services.dropdown.chauffeur, href: "/booking" }
       ]
     },
     {
@@ -59,10 +86,12 @@ const Navbar = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: "CDG Airport", href: "/airports/cdg" },
-        { name: "Orly Airport", href: "#", disabled: true },
-        { name: "Beauvais Airport", href: "#", disabled: true }
+        { name: "Orly Airport", href: "/airports/orly" },
+        { name: "Beauvais Airport", href: "/airports/beauvais" }
       ]
     },
+    { name: t.nav.excursions, href: "/excursions" },
+    { name: t.nav.blog || "Blog", href: "/blog" },
     { name: t.nav.fleet, href: "#fleet" },
     { name: t.nav.about, href: "#about" },
     { name: t.nav.contact, href: "#contact" },
@@ -89,6 +118,7 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <a
               href="/"
+              onClick={(e) => handleNavClick(e, '/')}
               className={`text-xl sm:text-2xl font-display font-bold transition-all duration-300 ${
                 scrolled
                   ? 'text-primary'
@@ -126,6 +156,7 @@ const Navbar = () => {
                           <a
                             key={dropdownItem.name}
                             href={dropdownItem.href}
+                            onClick={(e) => handleNavClick(e, dropdownItem.href)}
                             className="block px-4 py-2.5 text-sm text-foreground hover:bg-accent hover:text-primary transition-colors duration-200"
                           >
                             {dropdownItem.name}
@@ -139,6 +170,7 @@ const Navbar = () => {
                 <a
                   key={item.name}
                   href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
                   className="text-secondary hover:text-primary transition-colors duration-200 font-medium"
                 >
                   {item.name}
@@ -191,7 +223,7 @@ const Navbar = () => {
                             key={dropdownItem.name}
                             href={dropdownItem.href}
                             className="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200 rounded-md hover:bg-accent"
-                            onClick={toggleMenu}
+                            onClick={(e) => handleNavClick(e, dropdownItem.href)}
                           >
                             {dropdownItem.name}
                           </a>
@@ -205,7 +237,7 @@ const Navbar = () => {
                   key={item.name}
                   href={item.href}
                   className="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200 rounded-md hover:bg-accent"
-                  onClick={toggleMenu}
+                  onClick={(e) => handleNavClick(e, item.href)}
                 >
                   {item.name}
                 </a>
