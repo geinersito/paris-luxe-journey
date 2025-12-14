@@ -27,7 +27,7 @@
       "district": "1er",
       "address": "Rue de Rivoli, 75001 Paris",
       "eventUrl": "https://www.louvre.fr",
-      "imageUrl": "/images/events/louvre-renaissance.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&h=600&fit=crop&q=80",
       "category": "exhibition",
       "isFeatured": true,
       "sourceName": "Musée du Louvre"
@@ -57,7 +57,7 @@
       "district": "9ème",
       "address": "Place de l'Opéra, 75009 Paris",
       "eventUrl": "https://www.operadeparis.fr",
-      "imageUrl": "/images/events/swan-lake.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=800&h=600&fit=crop&q=80",
       "category": "opera",
       "isFeatured": true,
       "sourceName": "Opéra de Paris"
@@ -87,7 +87,7 @@
       "district": "8ème",
       "address": "110 Rue de Lyon, 75012 Paris",
       "eventUrl": "https://www.grandpalais.fr",
-      "imageUrl": "/images/events/monet-immersive.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=800&h=600&fit=crop&q=80",
       "category": "exhibition",
       "isFeatured": false,
       "sourceName": "Grand Palais"
@@ -148,7 +148,7 @@
       "district": "1er",
       "address": "Rue de Rivoli, 75001 Paris",
       "eventUrl": "https://www.louvre.fr",
-      "imageUrl": "/images/events/louvre-renaissance.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1566127444979-b3d2b654e3a0?w=800&h=600&fit=crop&q=80",
       "category": "exhibition",
       "isFeatured": true,
       "sourceName": "Musée du Louvre"
@@ -177,7 +177,7 @@
       },
       "district": "8ème",
       "eventUrl": "https://www.fhcm.paris",
-      "imageUrl": "/images/events/fashion-week.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1558769132-cb1aea3c8565?w=800&h=600&fit=crop&q=80",
       "category": "fashion",
       "isFeatured": true,
       "sourceName": "Fédération de la Haute Couture"
@@ -207,7 +207,7 @@
       "district": "Versailles",
       "address": "Place d'Armes, 78000 Versailles",
       "eventUrl": "https://www.chateauversailles.fr",
-      "imageUrl": "/images/events/versailles-fountains.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop&q=80",
       "category": "festival",
       "isFeatured": true,
       "sourceName": "Château de Versailles"
@@ -237,7 +237,7 @@
       "district": "7ème",
       "address": "1 Rue de la Légion d'Honneur, 75007 Paris",
       "eventUrl": "https://www.musee-orsay.fr",
-      "imageUrl": "/images/events/orsay-impressionism.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1549887534-1541e9326642?w=800&h=600&fit=crop&q=80",
       "category": "exhibition",
       "isFeatured": false,
       "sourceName": "Musée d'Orsay"
@@ -267,7 +267,7 @@
       "district": "19ème",
       "address": "221 Avenue Jean Jaurès, 75019 Paris",
       "eventUrl": "https://www.philharmoniedeparis.fr",
-      "imageUrl": "/images/events/philharmonie-concert.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&h=600&fit=crop&q=80",
       "category": "concert",
       "isFeatured": false,
       "sourceName": "Philharmonie de Paris"
@@ -297,7 +297,7 @@
       "district": "4ème",
       "address": "Place Georges-Pompidou, 75004 Paris",
       "eventUrl": "https://www.centrepompidou.fr",
-      "imageUrl": "/images/events/pompidou-modern.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&h=600&fit=crop&q=80",
       "category": "exhibition",
       "isFeatured": false,
       "sourceName": "Centre Pompidou"
