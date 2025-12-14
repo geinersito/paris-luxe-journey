@@ -109,6 +109,7 @@ const Navbar = () => {
       ]
     },
     { name: t.nav.excursions, href: "/excursions" },
+    { name: t.nav.events || "Events", href: "/events" },
     { name: t.nav.blog || "Blog", href: "/blog" },
     { name: t.nav.fleet, href: "#fleet" },
     { name: t.nav.about, href: "#about" },

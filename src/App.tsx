@@ -11,6 +11,7 @@ import { BookingProvider } from "@/contexts/BookingContext";
 // Lazy load pages for better code splitting
 const Home = lazy(() => import("./pages/Home"));
 const Excursions = lazy(() => import("./pages/Excursions"));
+const Events = lazy(() => import("./pages/Events"));
 const BlogIndex = lazy(() => import("./pages/blog/BlogIndex"));
 const BlogCategory = lazy(() => import("./pages/blog/BlogCategory"));
 const BlogPost = lazy(() => import("./pages/blog/BlogPost"));
@@ -62,6 +63,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader />}>
             <Excursions />
+          </Suspense>
+        ),
+      },
+      {
+        path: "events",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <Events />
           </Suspense>
         ),
       },

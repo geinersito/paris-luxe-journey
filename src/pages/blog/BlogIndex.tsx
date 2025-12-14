@@ -6,7 +6,6 @@ import BlogCard from '@/components/blog/BlogCard'
 import CategoryFilter from '@/components/blog/CategoryFilter'
 import NewsletterCTA from '@/components/blog/NewsletterCTA'
 import BlogSidebar from '@/components/blog/BlogSidebar'
-import { EventsFeed } from '@/components/events/EventsFeed'
 import { Input } from '@/components/ui/input'
 import { Search } from 'lucide-react'
 import { BlogCategory } from '@/types/blog'
@@ -145,18 +144,6 @@ export default function BlogIndex() {
                 </div>
               </div>
             </div>
-          </div>
-        </section>
-
-        {/* Events Feed - This Month in Paris */}
-        <section className="section-padding bg-gradient-to-b from-cream via-champagne/50 to-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
-                What's Happening
-              </p>
-            </div>
-            <EventsFeed range="month" variant="full" />
           </div>
         </section>
 
