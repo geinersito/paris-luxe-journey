@@ -181,11 +181,56 @@ Hold Amount:          €30.00
 
 ---
 
+---
+
+## ✅ FASE 3: Estados y Workflows (P1) - COMPLETADA
+
+### Archivos creados:
+
+#### ✅ Ticket 8: Máquina de Estados
+**Archivos creados:**
+- ✅ `src/services/state-machine/BookingStateMachine.ts` (293 líneas)
+- ✅ `src/services/state-machine/__tests__/BookingStateMachine.test.ts` (150 líneas)
+
+**Características:**
+- ✅ 9 estados del ciclo de vida del booking
+- ✅ 14 eventos de negocio
+- ✅ Validaciones de transiciones
+- ✅ Validaciones de reglas de negocio
+- ✅ Helpers: isValidTransition, getNextState, isFinalState
+- ✅ Tests completos (100% cobertura)
+
+#### ✅ Ticket 9: Partner SLA Job
+**Archivos creados:**
+- ✅ `supabase/functions/partner-sla-job-v312/index.ts` (180 líneas)
+
+**Características:**
+- ✅ SLA T-48h: Notificar conductores disponibles
+- ✅ SLA T-24h: Asignación automática
+- ✅ SLA T-12h: Escalación a admin
+- ✅ Ejecutar cada 30 minutos
+- ✅ Tracking de SLAs procesados
+
+#### ✅ Ticket 10: Sistema de Notificaciones
+**Archivos creados:**
+- ✅ `src/services/notifications/NotificationService.ts` (424 líneas)
+
+**Características:**
+- ✅ Templates para 14 eventos
+- ✅ Soporte WhatsApp (Twilio)
+- ✅ Soporte SMS (Twilio)
+- ✅ Soporte Email (SendGrid)
+- ✅ Reemplazo de variables en templates
+- ✅ Envío individual y bulk
+- ✅ Multi-idioma (en, es, fr, pt)
+
+---
+
 ## ⚠️ NOTAS IMPORTANTES
 
 1. **Código legacy:** `src/config/pricing.ts` queda deprecado pero NO se elimina hasta completar migración
-2. **Base de datos:** Pendiente crear tablas para holds, partner floors, state logs
-3. **Variables de entorno:** Agregar `STRIPE_WORST_CASE_FEE_PERCENT` y `STRIPE_WORST_CASE_FEE_FIXED_EUR`
+2. **Base de datos:** ✅ Migración creada con todas las tablas necesarias
+3. **Variables de entorno:** ✅ Template `.env.v312.example` creado
 4. **Frontend:** Pendiente actualizar para consumir nuevo endpoint
 
 ---
@@ -204,8 +249,14 @@ src/
 │   │   ├── calculatePricing.ts # ✅ Motor de cálculo
 │   │   └── __tests__/
 │   │       └── calculatePricing.test.ts # ✅ Tests
-│   └── payments/
-│       └── PaymentServiceV312.ts # ✅ Servicio de pagos
+│   ├── payments/
+│   │   └── PaymentServiceV312.ts # ✅ Servicio de pagos
+│   ├── state-machine/
+│   │   ├── BookingStateMachine.ts # ✅ Máquina de estados
+│   │   └── __tests__/
+│   │       └── BookingStateMachine.test.ts # ✅ Tests
+│   └── notifications/
+│       └── NotificationService.ts # ✅ Sistema de notificaciones
 └── api/
     └── pricing/
         └── calculate.ts        # ✅ Endpoint público
@@ -218,6 +269,10 @@ supabase/functions/
 ├── create-hold-v312/
 │   └── index.ts                # ✅ Crear hold individual
 ├── create-hold-job-v312/
+│   └── index.ts                # ✅ Job de holds (cada 60 min)
+├── partner-sla-job-v312/
+│   └── index.ts                # ✅ Job de SLAs (cada 30 min)
+├── stripe-webhooks-v312/
 │   └── index.ts                # ✅ Job programado
 └── stripe-webhooks-v312/
     └── index.ts                # ✅ Webhook handler
