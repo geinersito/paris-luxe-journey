@@ -66,21 +66,21 @@ export function EventsFeed({ range, variant = 'full' }: EventsFeedProps) {
       {/* Events Grid */}
       <div className={`grid gap-8 ${variant === 'full' ? 'md:grid-cols-2 lg:grid-cols-3' : 'md:grid-cols-2'}`}>
         {events.map((event) => (
-          <Card key={event.id} className="group overflow-hidden glass-card-premium hover:shadow-luxury-hover transition-all duration-500 border-2 border-primary/20 hover:border-primary/40 hover:-translate-y-2">
+          <Card key={event.id} className="group overflow-hidden bg-white rounded-2xl shadow-lg border-2 border-primary/20 hover:border-primary/40 hover:shadow-xl transition-all duration-300">
             {/* Event Image */}
             {event.imageUrl && (
               <div className="relative h-56 overflow-hidden">
                 <img
                   src={event.imageUrl}
                   alt={event.title[language]}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                   onError={(e) => {
                     // Fallback to placeholder if image fails to load
                     e.currentTarget.src = '/images/placeholder-event.jpg'
                   }}
                 />
                 {/* Gradient overlay on hover */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
                 {event.isFeatured && (
                   <Badge className="absolute top-4 right-4 bg-gradient-to-r from-primary to-primary/80 text-white border-0 shadow-lg">
@@ -92,7 +92,7 @@ export function EventsFeed({ range, variant = 'full' }: EventsFeedProps) {
             )}
 
             <CardHeader>
-              <CardTitle className="text-xl font-display font-bold text-secondary group-hover:text-primary transition-colors duration-300 line-clamp-2 mb-4">
+              <CardTitle className="text-xl font-display font-bold text-secondary line-clamp-2 mb-4">
                 {event.title[language]}
               </CardTitle>
 
