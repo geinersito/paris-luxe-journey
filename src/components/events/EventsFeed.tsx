@@ -3,7 +3,6 @@ import type { Event, EventRange, EventVariant, Language } from '@/types/events'
 import eventsFeedData from '@/data/events/events-feed.json'
 import { Calendar, MapPin, ExternalLink, Star } from 'lucide-react'
 import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 
 interface EventsFeedProps {
@@ -66,7 +65,16 @@ export function EventsFeed({ range, variant = 'full' }: EventsFeedProps) {
       {/* Events Grid */}
       <div className={`grid gap-8 ${variant === 'full' ? 'md:grid-cols-2 lg:grid-cols-3' : 'md:grid-cols-2'}`}>
         {events.map((event) => (
-          <Card key={event.id} className="group overflow-hidden bg-white rounded-2xl shadow-lg border border-primary/20 hover:border-primary/30 hover:shadow-xl transition-shadow duration-200">
+          <div
+            key={event.id}
+            className="overflow-hidden bg-white rounded-2xl border border-primary/20 hover:border-primary/30 transition-colors duration-200"
+            style={{
+              boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)',
+              transform: 'translateZ(0)',
+              backfaceVisibility: 'hidden',
+              WebkitFontSmoothing: 'antialiased'
+            }}
+          >
             {/* Event Image */}
             {event.imageUrl && (
               <div className="relative h-56 overflow-hidden bg-gray-100">
@@ -75,6 +83,8 @@ export function EventsFeed({ range, variant = 'full' }: EventsFeedProps) {
                   alt={event.title[language]}
                   className="w-full h-full object-cover"
                   loading="lazy"
+                  width="600"
+                  height="400"
                   onError={(e) => {
                     // Fallback to placeholder if image fails to load
                     e.currentTarget.src = '/images/placeholder-event.jpg'
@@ -90,20 +100,20 @@ export function EventsFeed({ range, variant = 'full' }: EventsFeedProps) {
               </div>
             )}
 
-            <CardHeader>
-              <CardTitle className="text-xl font-display font-bold text-secondary line-clamp-2 mb-4">
+            <div className="p-6">
+              <h3 className="text-xl font-display font-bold text-secondary line-clamp-2 mb-4">
                 {event.title[language]}
-              </CardTitle>
+              </h3>
 
               {/* Date and Time - Premium Style */}
-              <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-gold-subtle rounded-lg w-fit">
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-gold-subtle rounded-lg w-fit mb-3">
                 <Calendar className="w-4 h-4 text-primary" />
                 <span className="text-sm text-gray-700 font-medium">{formatDate(event.startAt)}</span>
               </div>
 
               {/* Venue and District */}
               {(event.venueName || event.district) && (
-                <div className="flex items-center gap-2 mt-3 text-sm text-gray-600">
+                <div className="flex items-center gap-2 mb-4 text-sm text-gray-600">
                   <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
                   <span className="font-medium">
                     {event.venueName?.[language] || ''}
@@ -112,12 +122,12 @@ export function EventsFeed({ range, variant = 'full' }: EventsFeedProps) {
                   </span>
                 </div>
               )}
-            </CardHeader>
+            </div>
 
-            <CardContent className="space-y-4">
-              <CardDescription className="line-clamp-3 text-gray-600 leading-relaxed">
+            <div className="px-6 pb-6 space-y-4">
+              <p className="line-clamp-3 text-gray-600 leading-relaxed text-sm">
                 {event.description[language]}
-              </CardDescription>
+              </p>
 
               {/* Category Badge - Gold Style */}
               {event.category && (
@@ -150,8 +160,8 @@ export function EventsFeed({ range, variant = 'full' }: EventsFeedProps) {
               <p className="text-xs text-gray-500 text-center pt-2 border-t border-primary/10">
                 {t('events.source')}: <span className="font-medium text-gray-700">{event.sourceName}</span>
               </p>
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         ))}
       </div>
     </div>
