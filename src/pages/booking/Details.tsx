@@ -122,14 +122,36 @@ const BookingDetails = () => {
   
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm() || isSubmitting) {
       return;
     }
-  
+
     setIsSubmitting(true);
-  
+
     try {
+      // Validar que tenemos los UUIDs de las ubicaciones
+      const hasPickupId = bookingData?.pickupLocationId;
+      const hasDropoffId = bookingData?.dropoffLocationId;
+
+      if (!hasPickupId || !hasDropoffId) {
+        console.error('[BookingDetails] Missing location UUIDs:', {
+          pickupLocationId: hasPickupId,
+          dropoffLocationId: hasDropoffId,
+          bookingData
+        });
+
+        toast({
+          title: t.common.error,
+          description: "Faltan datos de ubicación. Por favor, vuelve al formulario de reserva.",
+          variant: "destructive",
+        });
+
+        // Redirigir al formulario de reserva para que seleccione las ubicaciones de nuevo
+        navigate("/booking", { replace: true });
+        return;
+      }
+
       const updatedBookingData = {
         ...bookingData,
         passengerInfo: {
@@ -140,23 +162,24 @@ const BookingDetails = () => {
           flightNumber: formData.flightNumber || ""
         }
       };
-  
-      console.log("Navigating to payment with data:", {
+
+      console.log("[BookingDetails] Navigating to payment with validated data:", {
         bookingData: updatedBookingData,
         estimatedPrice: estimatedPrice,
-        luggageSurcharge: luggageSurcharge // Incluir el recargo por maletas
+        luggageSurcharge: luggageSurcharge,
+        hasValidUUIDs: true
       });
-  
-      navigate("/booking/payment", { 
-        state: { 
+
+      navigate("/booking/payment", {
+        state: {
           bookingData: updatedBookingData,
-          estimatedPrice: estimatedPrice, // Use the original price calculated in the booking form
-          luggageSurcharge: luggageSurcharge // Pasar el recargo por maletas a la siguiente página
+          estimatedPrice: estimatedPrice,
+          luggageSurcharge: luggageSurcharge
         },
         replace: true
       });
     } catch (error) {
-      console.error('Error preparing booking data:', error);
+      console.error('[BookingDetails] Error preparing booking data:', error);
       toast({
         title: t.common.error,
         description: "Ha ocurrido un error al procesar los datos. Por favor, inténtalo de nuevo.",

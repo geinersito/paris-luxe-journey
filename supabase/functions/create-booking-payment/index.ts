@@ -10,6 +10,38 @@ const corsHeaders = {
   'Access-Control-Max-Age': '86400',
 }
 
+// Función de retry con backoff exponencial
+async function retryWithBackoff<T>(
+  fn: () => Promise<T>,
+  maxRetries: number = 3,
+  baseDelay: number = 1000,
+  operationName: string = 'operation'
+): Promise<T> {
+  let lastError: Error | null = null;
+
+  for (let attempt = 0; attempt < maxRetries; attempt++) {
+    try {
+      console.log(`[${operationName}] Intento ${attempt + 1}/${maxRetries}`);
+      return await fn();
+    } catch (error) {
+      lastError = error as Error;
+      console.error(`[${operationName}] Error en intento ${attempt + 1}:`, error);
+
+      // No reintentar en el último intento
+      if (attempt === maxRetries - 1) {
+        break;
+      }
+
+      // Calcular delay con backoff exponencial
+      const delay = baseDelay * Math.pow(2, attempt);
+      console.log(`[${operationName}] Reintentando en ${delay}ms...`);
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+  }
+
+  throw new Error(`${operationName} falló después de ${maxRetries} intentos: ${lastError?.message}`);
+}
+
 interface BookingData {
   pickup_location_id: string;
   dropoff_location_id: string;
@@ -56,21 +88,29 @@ serve(async (req) => {
       throw new Error('El precio total debe ser mayor que 0');
     }
 
-    // 3. Crear la reserva
+    // 3. Crear la reserva con retry
     console.log('[create-booking-payment] Creando reserva');
-    const { data: booking, error: bookingError } = await supabase
-      .from('bookings')
-      .insert([{
-        ...bookingData,
-        status: 'pending'
-      }])
-      .select()
-      .single();
+    const booking = await retryWithBackoff(
+      async () => {
+        const { data, error } = await supabase
+          .from('bookings')
+          .insert([{
+            ...bookingData,
+            status: 'pending'
+          }])
+          .select()
+          .single();
 
-    if (bookingError) {
-      console.error('[create-booking-payment] Error al crear reserva:', bookingError);
-      throw new Error(`Error al crear la reserva: ${bookingError.message}`);
-    }
+        if (error) {
+          throw new Error(`Error al crear la reserva: ${error.message}`);
+        }
+
+        return data;
+      },
+      3,
+      1000,
+      'crear-reserva'
+    );
 
     // 4. Buscar o crear cliente en Stripe
     console.log('[create-booking-payment] Buscando cliente en Stripe');
@@ -98,43 +138,58 @@ serve(async (req) => {
       });
     }
 
-    // 5. Crear Payment Intent
+    // 5. Crear Payment Intent con retry
     console.log('[create-booking-payment] Creando Payment Intent');
     const amountInCents = Math.round(Number(bookingData.total_price) * 100);
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: amountInCents,
-      currency: 'eur',
-      customer: customer.id,
-      metadata: {
-        booking_id: booking.id,
-        customer_email: bookingData.customer_email,
-        customer_name: bookingData.customer_name
+    const paymentIntent = await retryWithBackoff(
+      async () => {
+        return await stripe.paymentIntents.create({
+          amount: amountInCents,
+          currency: 'eur',
+          customer: customer.id,
+          metadata: {
+            booking_id: booking.id,
+            customer_email: bookingData.customer_email,
+            customer_name: bookingData.customer_name
+          },
+          automatic_payment_methods: {
+            enabled: true,
+          }
+        });
       },
-      automatic_payment_methods: {
-        enabled: true,
-      }
-    });
+      3,
+      1000,
+      'crear-payment-intent'
+    );
 
-    // 6. Crear registro de pago
+    // 6. Crear registro de pago con retry
     console.log('[create-booking-payment] Creando registro de pago');
-    const { data: payment, error: paymentError } = await supabase
-      .from('payments')
-      .insert([{
-        booking_id: booking.id,
-        amount: bookingData.total_price,
-        customer_email: bookingData.customer_email,
-        customer_name: bookingData.customer_name,
-        stripe_customer_id: customer.id,
-        stripe_payment_intent_id: paymentIntent.id,
-        status: 'pending'
-      }])
-      .select()
-      .single();
+    const payment = await retryWithBackoff(
+      async () => {
+        const { data, error } = await supabase
+          .from('payments')
+          .insert([{
+            booking_id: booking.id,
+            amount: bookingData.total_price,
+            customer_email: bookingData.customer_email,
+            customer_name: bookingData.customer_name,
+            stripe_customer_id: customer.id,
+            stripe_payment_intent_id: paymentIntent.id,
+            status: 'pending'
+          }])
+          .select()
+          .single();
 
-    if (paymentError) {
-      console.error('[create-booking-payment] Error al crear pago:', paymentError);
-      throw new Error(`Error al crear el registro de pago: ${paymentError.message}`);
-    }
+        if (error) {
+          throw new Error(`Error al crear el registro de pago: ${error.message}`);
+        }
+
+        return data;
+      },
+      3,
+      1000,
+      'crear-registro-pago'
+    );
 
     // 7. Actualizar la reserva con el ID del pago
     const { error: updateError } = await supabase

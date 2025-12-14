@@ -23,8 +23,22 @@ const BookingPayment = () => {
   const [bookingId, setBookingId] = useState<string | null>(null);
   const [paymentId, setPaymentId] = useState<string | null>(null);
 
-  const bookingData = location.state?.bookingData;
-  const estimatedPrice = location.state?.estimatedPrice;
+  // Intentar recuperar de location.state primero, luego de sessionStorage
+  const [bookingData, setBookingData] = useState(() => {
+    if (location.state?.bookingData) {
+      return location.state.bookingData;
+    }
+    const saved = sessionStorage.getItem('payment_bookingData');
+    return saved ? JSON.parse(saved) : null;
+  });
+
+  const [estimatedPrice, setEstimatedPrice] = useState(() => {
+    if (location.state?.estimatedPrice) {
+      return location.state.estimatedPrice;
+    }
+    const saved = sessionStorage.getItem('payment_estimatedPrice');
+    return saved ? parseFloat(saved) : null;
+  });
 
   const { locationDetails, fetchLocationDetails, isLoading } =
     useLocationDetails();
@@ -136,14 +150,30 @@ const BookingPayment = () => {
 
   useEffect(() => {
     if (!bookingData || !estimatedPrice) {
+      // Intentar recuperar de sessionStorage una última vez
+      const savedBookingData = sessionStorage.getItem('payment_bookingData');
+      const savedPrice = sessionStorage.getItem('payment_estimatedPrice');
+
+      if (savedBookingData && savedPrice) {
+        console.log('[Payment] Recuperando datos de sessionStorage');
+        setBookingData(JSON.parse(savedBookingData));
+        setEstimatedPrice(parseFloat(savedPrice));
+        return;
+      }
+
+      // Si no hay datos en ningún lado, redirigir
       toast({
-        title: t.common.error,
-        description: t.booking.errors.noBookingData,
+        title: "Sesión expirada",
+        description: "Por favor, completa el formulario de reserva nuevamente.",
         variant: "destructive",
       });
       navigate("/booking");
       return;
     }
+
+    // Guardar en sessionStorage para recuperación en caso de reload
+    sessionStorage.setItem('payment_bookingData', JSON.stringify(bookingData));
+    sessionStorage.setItem('payment_estimatedPrice', estimatedPrice.toString());
 
     fetchLocationDetails(bookingData.pickup, bookingData.dropoff);
   }, [bookingData, estimatedPrice, navigate, toast, t, fetchLocationDetails]);
@@ -241,6 +271,11 @@ const BookingPayment = () => {
             "Tu reserva ha sido procesada exitosamente. Hemos enviado un email de confirmación.",
         });
       }
+
+      // Limpiar sessionStorage después de pago exitoso
+      sessionStorage.removeItem('payment_bookingData');
+      sessionStorage.removeItem('payment_estimatedPrice');
+      console.log('[Payment] SessionStorage limpiado después de pago exitoso');
 
       navigate("/booking/confirmation", {
         replace: true,

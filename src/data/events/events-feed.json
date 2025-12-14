@@ -1,0 +1,307 @@
+{
+  "generatedAt": "2025-01-13T10:00:00Z",
+  "timezone": "Europe/Paris",
+  "thisWeek": [
+    {
+      "id": "louvre-renaissance-exhibition",
+      "startAt": "2025-01-13T10:00:00Z",
+      "endAt": "2025-01-19T18:00:00Z",
+      "title": {
+        "en": "Renaissance Masterpieces at the Louvre",
+        "es": "Obras Maestras del Renacimiento en el Louvre",
+        "fr": "Chefs-d'œuvre de la Renaissance au Louvre",
+        "pt": "Obras-Primas do Renascimento no Louvre"
+      },
+      "description": {
+        "en": "Explore an exceptional collection of Renaissance paintings and sculptures from Italian masters. Daily guided tours available.",
+        "es": "Explora una colección excepcional de pinturas y esculturas renacentistas de maestros italianos. Tours guiados diarios disponibles.",
+        "fr": "Découvrez une collection exceptionnelle de peintures et sculptures de la Renaissance par des maîtres italiens. Visites guidées quotidiennes.",
+        "pt": "Explore uma coleção excepcional de pinturas e esculturas renascentistas de mestres italianos. Tours guiados diários disponíveis."
+      },
+      "venueName": {
+        "en": "Louvre Museum",
+        "es": "Museo del Louvre",
+        "fr": "Musée du Louvre",
+        "pt": "Museu do Louvre"
+      },
+      "district": "1er",
+      "address": "Rue de Rivoli, 75001 Paris",
+      "eventUrl": "https://www.louvre.fr",
+      "imageUrl": "/images/events/louvre-renaissance.jpg",
+      "category": "exhibition",
+      "isFeatured": true,
+      "sourceName": "Musée du Louvre"
+    },
+    {
+      "id": "opera-garnier-swan-lake",
+      "startAt": "2025-01-15T19:30:00Z",
+      "endAt": "2025-01-15T22:00:00Z",
+      "title": {
+        "en": "Swan Lake - Paris Opera Ballet",
+        "es": "El Lago de los Cisnes - Ballet de la Ópera de París",
+        "fr": "Le Lac des Cygnes - Ballet de l'Opéra de Paris",
+        "pt": "O Lago dos Cisnes - Ballet da Ópera de Paris"
+      },
+      "description": {
+        "en": "Experience Tchaikovsky's timeless masterpiece performed by the renowned Paris Opera Ballet at the historic Palais Garnier.",
+        "es": "Experimenta la obra maestra atemporal de Tchaikovsky interpretada por el renombrado Ballet de la Ópera de París en el histórico Palais Garnier.",
+        "fr": "Découvrez le chef-d'œuvre intemporel de Tchaïkovski interprété par le célèbre Ballet de l'Opéra de Paris au Palais Garnier.",
+        "pt": "Experimente a obra-prima atemporal de Tchaikovsky apresentada pelo renomado Ballet da Ópera de Paris no histórico Palais Garnier."
+      },
+      "venueName": {
+        "en": "Palais Garnier",
+        "es": "Palais Garnier",
+        "fr": "Palais Garnier",
+        "pt": "Palais Garnier"
+      },
+      "district": "9ème",
+      "address": "Place de l'Opéra, 75009 Paris",
+      "eventUrl": "https://www.operadeparis.fr",
+      "imageUrl": "/images/events/swan-lake.jpg",
+      "category": "opera",
+      "isFeatured": true,
+      "sourceName": "Opéra de Paris"
+    },
+    {
+      "id": "grand-palais-immersive-monet",
+      "startAt": "2025-01-14T10:00:00Z",
+      "endAt": "2025-01-19T20:00:00Z",
+      "title": {
+        "en": "Monet Immersive Experience",
+        "es": "Experiencia Inmersiva de Monet",
+        "fr": "Expérience Immersive Monet",
+        "pt": "Experiência Imersiva de Monet"
+      },
+      "description": {
+        "en": "Step into Monet's world with this stunning 360° digital exhibition featuring his most iconic works brought to life.",
+        "es": "Adéntrate en el mundo de Monet con esta impresionante exposición digital de 360° que da vida a sus obras más icónicas.",
+        "fr": "Plongez dans l'univers de Monet avec cette exposition numérique 360° époustouflante mettant en vie ses œuvres les plus emblématiques.",
+        "pt": "Entre no mundo de Monet com esta impressionante exposição digital 360° que dá vida às suas obras mais icônicas."
+      },
+      "venueName": {
+        "en": "Grand Palais Immersif",
+        "es": "Grand Palais Immersif",
+        "fr": "Grand Palais Immersif",
+        "pt": "Grand Palais Immersif"
+      },
+      "district": "8ème",
+      "address": "110 Rue de Lyon, 75012 Paris",
+      "eventUrl": "https://www.grandpalais.fr",
+      "imageUrl": "/images/events/monet-immersive.jpg",
+      "category": "exhibition",
+      "isFeatured": false,
+      "sourceName": "Grand Palais"
+    },
+    {
+      "id": "jazz-club-saint-germain",
+      "startAt": "2025-01-17T21:00:00Z",
+      "endAt": "2025-01-17T23:30:00Z",
+      "title": {
+        "en": "Jazz Night at Café de Flore",
+        "es": "Noche de Jazz en Café de Flore",
+        "fr": "Soirée Jazz au Café de Flore",
+        "pt": "Noite de Jazz no Café de Flore"
+      },
+      "description": {
+        "en": "Enjoy live jazz performances in the legendary Saint-Germain-des-Prés district. Intimate setting with world-class musicians.",
+        "es": "Disfruta de actuaciones de jazz en vivo en el legendario distrito de Saint-Germain-des-Prés. Ambiente íntimo con músicos de clase mundial.",
+        "fr": "Profitez de performances de jazz live dans le légendaire quartier de Saint-Germain-des-Prés. Cadre intime avec des musiciens de renommée mondiale.",
+        "pt": "Desfrute de apresentações de jazz ao vivo no lendário distrito de Saint-Germain-des-Prés. Ambiente íntimo com músicos de classe mundial."
+      },
+      "venueName": {
+        "en": "Café de Flore",
+        "es": "Café de Flore",
+        "fr": "Café de Flore",
+        "pt": "Café de Flore"
+      },
+      "district": "6ème",
+      "address": "172 Boulevard Saint-Germain, 75006 Paris",
+      "eventUrl": "https://www.cafedeflore.fr",
+      "category": "concert",
+      "isFeatured": false,
+      "sourceName": "Café de Flore"
+    }
+  ],
+  "thisMonth": [
+    {
+      "id": "louvre-renaissance-exhibition",
+      "startAt": "2025-01-13T10:00:00Z",
+      "endAt": "2025-01-31T18:00:00Z",
+      "title": {
+        "en": "Renaissance Masterpieces at the Louvre",
+        "es": "Obras Maestras del Renacimiento en el Louvre",
+        "fr": "Chefs-d'œuvre de la Renaissance au Louvre",
+        "pt": "Obras-Primas do Renascimento no Louvre"
+      },
+      "description": {
+        "en": "Explore an exceptional collection of Renaissance paintings and sculptures from Italian masters. Daily guided tours available.",
+        "es": "Explora una colección excepcional de pinturas y esculturas renacentistas de maestros italianos. Tours guiados diarios disponibles.",
+        "fr": "Découvrez une collection exceptionnelle de peintures et sculptures de la Renaissance par des maîtres italiens. Visites guidées quotidiennes.",
+        "pt": "Explore uma coleção excepcional de pinturas e esculturas renascentistas de mestres italianos. Tours guiados diários disponíveis."
+      },
+      "venueName": {
+        "en": "Louvre Museum",
+        "es": "Museo del Louvre",
+        "fr": "Musée du Louvre",
+        "pt": "Museu do Louvre"
+      },
+      "district": "1er",
+      "address": "Rue de Rivoli, 75001 Paris",
+      "eventUrl": "https://www.louvre.fr",
+      "imageUrl": "/images/events/louvre-renaissance.jpg",
+      "category": "exhibition",
+      "isFeatured": true,
+      "sourceName": "Musée du Louvre"
+    },
+    {
+      "id": "paris-fashion-week-winter",
+      "startAt": "2025-01-21T09:00:00Z",
+      "endAt": "2025-01-26T20:00:00Z",
+      "title": {
+        "en": "Paris Fashion Week - Haute Couture",
+        "es": "Semana de la Moda de París - Alta Costura",
+        "fr": "Fashion Week de Paris - Haute Couture",
+        "pt": "Semana de Moda de Paris - Alta Costura"
+      },
+      "description": {
+        "en": "The world's most prestigious fashion event showcasing Spring/Summer collections from top designers. Public exhibitions and events throughout the city.",
+        "es": "El evento de moda más prestigioso del mundo presenta colecciones Primavera/Verano de los mejores diseñadores. Exhibiciones y eventos públicos en toda la ciudad.",
+        "fr": "L'événement de mode le plus prestigieux au monde présentant les collections Printemps/Été des plus grands créateurs. Expositions et événements publics dans toute la ville.",
+        "pt": "O evento de moda mais prestigioso do mundo apresentando coleções Primavera/Verão dos principais estilistas. Exposições e eventos públicos por toda a cidade."
+      },
+      "venueName": {
+        "en": "Various Venues",
+        "es": "Varios Lugares",
+        "fr": "Divers Lieux",
+        "pt": "Vários Locais"
+      },
+      "district": "8ème",
+      "eventUrl": "https://www.fhcm.paris",
+      "imageUrl": "/images/events/fashion-week.jpg",
+      "category": "fashion",
+      "isFeatured": true,
+      "sourceName": "Fédération de la Haute Couture"
+    },
+    {
+      "id": "versailles-night-fountain-show",
+      "startAt": "2025-01-25T20:00:00Z",
+      "endAt": "2025-01-25T22:30:00Z",
+      "title": {
+        "en": "Night Fountain Show at Versailles",
+        "es": "Espectáculo Nocturno de Fuentes en Versalles",
+        "fr": "Grandes Eaux Nocturnes de Versailles",
+        "pt": "Show Noturno de Fontes em Versalhes"
+      },
+      "description": {
+        "en": "Experience the magical gardens of Versailles illuminated at night with synchronized fountains and baroque music. A spectacular evening event.",
+        "es": "Experimenta los mágicos jardines de Versalles iluminados de noche con fuentes sincronizadas y música barroca. Un evento nocturno espectacular.",
+        "fr": "Découvrez les jardins magiques de Versailles illuminés la nuit avec des fontaines synchronisées et de la musique baroque. Une soirée spectaculaire.",
+        "pt": "Experimente os jardins mágicos de Versalhes iluminados à noite com fontes sincronizadas e música barroca. Um evento noturno espetacular."
+      },
+      "venueName": {
+        "en": "Palace of Versailles",
+        "es": "Palacio de Versalles",
+        "fr": "Château de Versailles",
+        "pt": "Palácio de Versalhes"
+      },
+      "district": "Versailles",
+      "address": "Place d'Armes, 78000 Versailles",
+      "eventUrl": "https://www.chateauversailles.fr",
+      "imageUrl": "/images/events/versailles-fountains.jpg",
+      "category": "festival",
+      "isFeatured": true,
+      "sourceName": "Château de Versailles"
+    },
+    {
+      "id": "musee-orsay-impressionism",
+      "startAt": "2025-01-15T09:30:00Z",
+      "endAt": "2025-01-31T18:00:00Z",
+      "title": {
+        "en": "Impressionism: Light and Color",
+        "es": "Impresionismo: Luz y Color",
+        "fr": "Impressionnisme : Lumière et Couleur",
+        "pt": "Impressionismo: Luz e Cor"
+      },
+      "description": {
+        "en": "A comprehensive exhibition featuring works by Monet, Renoir, Degas, and other impressionist masters. Special evening hours on Thursdays.",
+        "es": "Una exposición completa con obras de Monet, Renoir, Degas y otros maestros impresionistas. Horario nocturno especial los jueves.",
+        "fr": "Une exposition complète présentant des œuvres de Monet, Renoir, Degas et d'autres maîtres impressionnistes. Nocturnes le jeudi.",
+        "pt": "Uma exposição abrangente com obras de Monet, Renoir, Degas e outros mestres impressionistas. Horário noturno especial às quintas-feiras."
+      },
+      "venueName": {
+        "en": "Musée d'Orsay",
+        "es": "Museo de Orsay",
+        "fr": "Musée d'Orsay",
+        "pt": "Museu d'Orsay"
+      },
+      "district": "7ème",
+      "address": "1 Rue de la Légion d'Honneur, 75007 Paris",
+      "eventUrl": "https://www.musee-orsay.fr",
+      "imageUrl": "/images/events/orsay-impressionism.jpg",
+      "category": "exhibition",
+      "isFeatured": false,
+      "sourceName": "Musée d'Orsay"
+    },
+    {
+      "id": "philharmonie-classical-concert",
+      "startAt": "2025-01-22T20:00:00Z",
+      "endAt": "2025-01-22T22:30:00Z",
+      "title": {
+        "en": "Beethoven Symphony No. 9 - Philharmonie de Paris",
+        "es": "Sinfonía No. 9 de Beethoven - Filarmónica de París",
+        "fr": "Symphonie n°9 de Beethoven - Philharmonie de Paris",
+        "pt": "Sinfonia nº 9 de Beethoven - Filarmônica de Paris"
+      },
+      "description": {
+        "en": "The Paris Philharmonic Orchestra performs Beethoven's iconic Ninth Symphony. A must-see for classical music enthusiasts.",
+        "es": "La Orquesta Filarmónica de París interpreta la icónica Novena Sinfonía de Beethoven. Imperdible para los amantes de la música clásica.",
+        "fr": "L'Orchestre Philharmonique de Paris interprète l'emblématique Neuvième Symphonie de Beethoven. Incontournable pour les amateurs de musique classique.",
+        "pt": "A Orquestra Filarmônica de Paris apresenta a icônica Nona Sinfonia de Beethoven. Imperdível para os entusiastas da música clássica."
+      },
+      "venueName": {
+        "en": "Philharmonie de Paris",
+        "es": "Filarmónica de París",
+        "fr": "Philharmonie de Paris",
+        "pt": "Filarmônica de Paris"
+      },
+      "district": "19ème",
+      "address": "221 Avenue Jean Jaurès, 75019 Paris",
+      "eventUrl": "https://www.philharmoniedeparis.fr",
+      "imageUrl": "/images/events/philharmonie-concert.jpg",
+      "category": "concert",
+      "isFeatured": false,
+      "sourceName": "Philharmonie de Paris"
+    },
+    {
+      "id": "centre-pompidou-modern-art",
+      "startAt": "2025-01-10T11:00:00Z",
+      "endAt": "2025-01-31T21:00:00Z",
+      "title": {
+        "en": "Contemporary Art: New Perspectives",
+        "es": "Arte Contemporáneo: Nuevas Perspectivas",
+        "fr": "Art Contemporain : Nouvelles Perspectives",
+        "pt": "Arte Contemporânea: Novas Perspectivas"
+      },
+      "description": {
+        "en": "Discover cutting-edge contemporary art from emerging and established artists. Interactive installations and multimedia exhibits.",
+        "es": "Descubre arte contemporáneo de vanguardia de artistas emergentes y establecidos. Instalaciones interactivas y exhibiciones multimedia.",
+        "fr": "Découvrez l'art contemporain d'avant-garde d'artistes émergents et établis. Installations interactives et expositions multimédias.",
+        "pt": "Descubra arte contemporânea de ponta de artistas emergentes e estabelecidos. Instalações interativas e exposições multimídia."
+      },
+      "venueName": {
+        "en": "Centre Pompidou",
+        "es": "Centro Pompidou",
+        "fr": "Centre Pompidou",
+        "pt": "Centro Pompidou"
+      },
+      "district": "4ème",
+      "address": "Place Georges-Pompidou, 75004 Paris",
+      "eventUrl": "https://www.centrepompidou.fr",
+      "imageUrl": "/images/events/pompidou-modern.jpg",
+      "category": "exhibition",
+      "isFeatured": false,
+      "sourceName": "Centre Pompidou"
+    }
+  ]
+}
+

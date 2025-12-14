@@ -4,6 +4,7 @@ import { CompactBookingForm } from "../booking/CompactBookingForm";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
 import { TrustBadge } from "@/components/ui/trust-badge";
+import { Luggage, Shield, Clock } from "lucide-react";
 import type { BookingFormData } from "@/hooks/booking/types";
 
 // Optimized image URLs with different sizes for responsive loading
@@ -19,6 +20,11 @@ export default function HeroSection() {
   const [showBookingModal, setShowBookingModal] = React.useState(false);
   const [scrollY, setScrollY] = React.useState(0);
   const imageRef = React.useRef<HTMLImageElement>(null);
+  const [prefilledData, setPrefilledData] = React.useState<{
+    pickup: string;
+    dropoff: string;
+    passengers: string;
+  } | null>(null);
 
   // Parallax effect
   React.useEffect(() => {
@@ -164,13 +170,37 @@ export default function HeroSection() {
               className="mt-8 mb-6 animate-scaleIn"
               style={{ animationDelay: '0.8s', animationFillMode: 'both' }}
             >
-              <CompactBookingForm onOpenFullForm={() => setShowBookingModal(true)} />
+              <CompactBookingForm
+                onOpenFullForm={(data) => {
+                  setPrefilledData(data);
+                  setShowBookingModal(true);
+                }}
+              />
+            </div>
+
+            {/* Trust Badges - Equipaje incluido */}
+            <div
+              className="mt-8 flex flex-wrap justify-center gap-4 md:gap-6 animate-fadeInUp"
+              style={{ animationDelay: '1s', animationFillMode: 'both' }}
+            >
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-lg border border-white/20">
+                <Luggage className="w-5 h-5 text-primary-200" />
+                <span className="text-white/95 text-sm font-medium">1 Luggage/Pax Included</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-lg border border-white/20">
+                <Shield className="w-5 h-5 text-primary-200" />
+                <span className="text-white/95 text-sm font-medium">Licensed & Insured</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-lg border border-white/20">
+                <Clock className="w-5 h-5 text-primary-200" />
+                <span className="text-white/95 text-sm font-medium">Free Cancellation 24h</span>
+              </div>
             </div>
 
             {/* Secondary CTA mejorado */}
             <div
               className="mt-6 animate-fadeInUp"
-              style={{ animationDelay: '1s', animationFillMode: 'both' }}
+              style={{ animationDelay: '1.2s', animationFillMode: 'both' }}
             >
               <button
                 onClick={() => document.getElementById('fleet')?.scrollIntoView({ behavior: 'smooth' })}
@@ -187,21 +217,21 @@ export default function HeroSection() {
       {/* Booking Modal - FUERA del contenedor para z-index correcto */}
       {showBookingModal && (
         <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in-0 duration-300"
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in-0 duration-300"
           onClick={() => setShowBookingModal(false)}
         >
           <div
-            className="relative w-full max-w-3xl max-h-[90vh] flex flex-col bg-card/98 backdrop-blur-xl rounded-3xl shadow-[0_25px_50px_-12px_rgba(0,0,0,0.5)] border border-border/10 animate-in zoom-in-95 duration-300"
+            className="relative w-full max-w-3xl max-h-[90vh] flex flex-col bg-white rounded-3xl shadow-2xl border border-gray-200 animate-in zoom-in-95 duration-300"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header fijo con botón de cerrar */}
-            <div className="px-6 md:px-8 py-5 flex items-center justify-between border-b border-border/50 flex-shrink-0 bg-gradient-to-r from-primary/5 to-transparent rounded-t-3xl">
+            <div className="px-6 md:px-8 py-5 flex items-center justify-between border-b border-gray-200 flex-shrink-0 bg-gradient-to-r from-primary/5 to-transparent rounded-t-3xl">
               <h2 className="text-2xl md:text-3xl font-display font-bold text-primary">
                 {t.booking.title || "Réservez Votre Transfert"}
               </h2>
               <button
                 onClick={() => setShowBookingModal(false)}
-                className="text-muted-foreground hover:text-foreground transition-all duration-200 p-2 hover:bg-muted rounded-full hover:scale-110"
+                className="text-gray-500 hover:text-gray-700 transition-all duration-200 p-2 hover:bg-gray-100 rounded-full hover:scale-110"
                 aria-label="Close"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -211,13 +241,15 @@ export default function HeroSection() {
             </div>
 
             {/* Contenido scrollable con scrollbar estilizado */}
-            <div className="overflow-y-auto flex-1 scrollbar-thin scrollbar-thumb-primary/20 scrollbar-track-transparent hover:scrollbar-thumb-primary/30">
-              <div className="p-6 md:p-8">
+            <div className="overflow-y-auto flex-1 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent hover:scrollbar-thumb-gray-400">
+              <div className="p-6 md:p-8 bg-white">
                 <BookingForm
+                  key={prefilledData ? JSON.stringify(prefilledData) : 'empty'}
                   tourId="default"
                   tourName="Standard Transfer"
                   basePrice={0}
                   compact={true}
+                  initialData={prefilledData || undefined}
                   onSubmit={async (data) => {
                     await handleBookingSubmit(data);
                     setShowBookingModal(false);

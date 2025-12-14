@@ -39,7 +39,7 @@ export default function RouteHighlights() {
       icon: Crown,
       title: t.routes?.versailles || "Versailles",
       description: t.routes?.versaillesDesc || "Royal palace tour",
-      priceFrom: "95",
+      priceFrom: "75",
       bgGradient: "from-primary/5 to-primary/10",
     },
   ];

@@ -5,6 +5,11 @@ export interface BookingFormProps {
   basePrice?: number;
   onSubmit: (bookingDetails: any) => Promise<void>;
   compact?: boolean; // Para usar dentro de modales sin padding extra
+  initialData?: {
+    pickup?: string;
+    dropoff?: string;
+    passengers?: string;
+  };
 }
 
 export interface FormProps {

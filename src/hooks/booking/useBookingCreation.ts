@@ -39,17 +39,17 @@ export const useBookingCreation = () => {
         throw new Error('Faltan datos de ubicación');
       }
 
-      const { data: conflicts, error: availabilityError } = await supabase
+      // Optimización: Usar count() en lugar de select('id') para mejor performance
+      const { count, error: availabilityError } = await supabase
         .from('bookings')
-        .select('id')
+        .select('*', { count: 'exact', head: true })
         .eq('vehicle_id', bookingData.vehicle_id)
         .eq('status', 'confirmed')
-        .or(`pickup_datetime.gte.${pickupDateTime.toISOString()},pickup_datetime.lt.${endDateTime.toISOString()}`)
-        .limit(1);
+        .or(`pickup_datetime.gte.${pickupDateTime.toISOString()},pickup_datetime.lt.${endDateTime.toISOString()}`);
 
       if (availabilityError) throw availabilityError;
 
-      if (conflicts && conflicts.length > 0) {
+      if (count && count > 0) {
         throw new Error('Vehículo no disponible para el horario seleccionado');
       }
 

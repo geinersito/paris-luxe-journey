@@ -35,12 +35,24 @@ interface PriceCache {
   };
 }
 
+interface CouponData {
+  code: string;
+  discount: number; // Percentage (e.g., 10 for 10%)
+  valid: boolean;
+  email?: string;
+  expiresAt?: string;
+}
+
 interface BookingContextType {
   bookingData: BookingData | null;
   estimatedPrice: number;
+  coupon: CouponData | null;
+  finalPrice: number;
   updateBookingData: (data: Partial<BookingData>) => Promise<void>;
   calculatePrice: (origin: string, destination: string, passengers: number) => Promise<number>;
   validatePriceWithBackend: () => Promise<boolean>;
+  validateCoupon: (code: string) => Promise<boolean>;
+  removeCoupon: () => void;
   priceTimestamp: number | null;
   resetBooking: () => void;
 }
@@ -63,9 +75,15 @@ export const BookingProvider = ({ children }: { children: React.ReactNode }) => 
   const [priceCache, setPriceCache] = useState<PriceCache>({});
   const [priceTimestamp, setPriceTimestamp] = useState<number | null>(null);
   const [isValidating, setIsValidating] = useState<boolean>(false);
+  const [coupon, setCoupon] = useState<CouponData | null>(null);
   const { calculatePrice: apiCalculatePrice } = useBookingPrice();
   const { toast } = useToast();
   const { t } = useLanguage();
+
+  // Calculate final price with coupon discount
+  const finalPrice = coupon?.valid
+    ? estimatedPrice * (1 - coupon.discount / 100)
+    : estimatedPrice;
   
   // Añadir una función de ayuda para gestionar errores de forma consistente
   const logError = useCallback((message: string, error: any) => {
@@ -267,22 +285,133 @@ export const BookingProvider = ({ children }: { children: React.ReactNode }) => 
     }
   }, [bookingData, estimatedPrice, apiCalculatePrice, toast, t, logError]);
 
+  // Validate coupon code
+  const validateCoupon = useCallback(async (code: string): Promise<boolean> => {
+    if (!code || code.trim() === '') {
+      setCoupon(null);
+      return false;
+    }
+
+    try {
+      const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+      const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+      if (!supabaseUrl || !supabaseAnonKey) {
+        throw new Error('Supabase configuration missing');
+      }
+
+      // Call Supabase function to validate coupon
+      const response = await fetch(
+        `${supabaseUrl}/rest/v1/rpc/validate_coupon`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'apikey': supabaseAnonKey,
+            'Authorization': `Bearer ${supabaseAnonKey}`
+          },
+          body: JSON.stringify({
+            p_coupon_code: code.toUpperCase().trim()
+          })
+        }
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to validate coupon');
+      }
+
+      const data = await response.json();
+
+      // Check if we got a valid response
+      if (data && data.length > 0) {
+        const couponData = data[0];
+
+        if (couponData.valid) {
+          setCoupon({
+            code: code.toUpperCase().trim(),
+            discount: couponData.discount_percent || 10,
+            valid: true,
+            email: couponData.email,
+            expiresAt: couponData.expires_at
+          });
+
+          toast({
+            title: t.booking.couponApplied || 'Coupon applied!',
+            description: `${couponData.discount_percent}% discount applied to your booking.`,
+          });
+
+          return true;
+        }
+      }
+
+      // Invalid or expired coupon
+      setCoupon(null);
+      toast({
+        title: t.booking.invalidCoupon || 'Invalid coupon',
+        description: t.booking.couponExpired || 'This coupon is invalid or has expired.',
+        variant: 'destructive'
+      });
+
+      return false;
+
+    } catch (error) {
+      console.error('Error validating coupon:', error);
+      setCoupon(null);
+      toast({
+        title: t.common.error || 'Error',
+        description: t.booking.couponError || 'Failed to validate coupon. Please try again.',
+        variant: 'destructive'
+      });
+      return false;
+    }
+  }, [toast, t]);
+
+  // Remove coupon
+  const removeCoupon = useCallback(() => {
+    setCoupon(null);
+    toast({
+      title: t.booking.couponRemoved || 'Coupon removed',
+      description: t.booking.couponRemovedDesc || 'The discount has been removed from your booking.',
+    });
+  }, [toast, t]);
+
+  // Detect coupon code in URL query params
+  // Note: This runs only once on mount to check for coupon in URL
+  useEffect(() => {
+    // Check URL params for coupon code
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      const couponCode = params.get('coupon');
+
+      if (couponCode && !coupon) {
+        // Auto-validate coupon from URL
+        validateCoupon(couponCode);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []); // Only run once on mount
+
   const resetBooking = useCallback(() => {
     setBookingData(null);
     setEstimatedPrice(0);
     setPriceTimestamp(null);
+    setCoupon(null);
     localStorage.removeItem(STORAGE_KEY);
   }, []);
 
   const contextValue = React.useMemo(() => ({
     bookingData,
     estimatedPrice,
+    coupon,
+    finalPrice,
     updateBookingData,
     calculatePrice,
     validatePriceWithBackend,
+    validateCoupon,
+    removeCoupon,
     priceTimestamp,
     resetBooking
-  }), [bookingData, estimatedPrice, updateBookingData, calculatePrice, validatePriceWithBackend, priceTimestamp, resetBooking]);
+  }), [bookingData, estimatedPrice, coupon, finalPrice, updateBookingData, calculatePrice, validatePriceWithBackend, validateCoupon, removeCoupon, priceTimestamp, resetBooking]);
 
   return (
     <BookingContext.Provider value={contextValue}>

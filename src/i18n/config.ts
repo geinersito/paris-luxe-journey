@@ -7,31 +7,36 @@ import { es } from './es';
 import { fr } from './fr';
 import { pt } from './pt';
 import { versaillesTranslations } from './versailles';
+import { airportsTranslations } from './airports';
 
 // Combinar todas las traducciones
 const resources = {
   en: {
     translation: {
       ...en,
-      versailles: versaillesTranslations.en
+      versailles: versaillesTranslations.en,
+      airports: airportsTranslations.en
     }
   },
   es: {
     translation: {
       ...es,
-      versailles: versaillesTranslations.es
+      versailles: versaillesTranslations.es,
+      airports: airportsTranslations.es
     }
   },
   fr: {
     translation: {
       ...fr,
-      versailles: versaillesTranslations.fr
+      versailles: versaillesTranslations.fr,
+      airports: airportsTranslations.fr
     }
   },
   pt: {
     translation: {
       ...pt,
-      versailles: versaillesTranslations.pt
+      versailles: versaillesTranslations.pt,
+      airports: airportsTranslations.pt
     }
   }
 };

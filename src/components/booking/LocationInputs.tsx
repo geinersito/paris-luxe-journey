@@ -1,10 +1,11 @@
 
-import { MapPin, ArrowDownUp } from "lucide-react";
+import { MapPin, ArrowDownUp, Loader2 } from "lucide-react";
 import { Label } from "../ui/label";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 import { useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { Skeleton } from "../ui/skeleton";
 
 interface Location {
   id: string;
@@ -26,12 +27,13 @@ interface LocationInputsProps {
   };
   locations?: Location[];
   isLoading?: boolean;
-  
+
   // Propiedades para el formato antiguo
   pickup?: string;
   dropoff?: string;
   standardLocations?: Location[];
-  
+  isLoadingLocations?: boolean; // Añadido para formato antiguo
+
   // Propiedad común (pero con posibles tipos diferentes)
   onChange: ((e: { target: { name: string; value: string } }) => void) | ((value: string, name: string) => void);
 }
@@ -39,13 +41,13 @@ interface LocationInputsProps {
 export const LocationInputs = (props: LocationInputsProps) => {
   // Determinar si estamos usando el formato nuevo o el antiguo
   const isNewFormat = !!props.formData;
-  
+
   // Variables para ambos formatos
   let pickup: string = '';
   let dropoff: string = '';
   let locationsData: Location[] = [];
   let isLocationLoading: boolean = false;
-  
+
   // Inicializar según el formato
   if (isNewFormat && props.formData) {
     pickup = props.formData.pickup || '';
@@ -56,7 +58,7 @@ export const LocationInputs = (props: LocationInputsProps) => {
     pickup = props.pickup || '';
     dropoff = props.dropoff || '';
     locationsData = props.standardLocations || [];
-    isLocationLoading = false; // No disponible en formato antiguo
+    isLocationLoading = props.isLoadingLocations || false;
   }
   const { t, language } = useLanguage();
   const { toast } = useToast();
@@ -103,14 +105,37 @@ export const LocationInputs = (props: LocationInputsProps) => {
 
   const handleSwap = () => {
     const tempPickup = pickup;
-    if (isNewFormat) {
-      (props.onChange as (e: { target: { name: string; value: string } }) => void)({ target: { name: 'pickup', value: dropoff } });
-      (props.onChange as (e: { target: { name: string; value: string } }) => void)({ target: { name: 'dropoff', value: tempPickup } });
-    } else {
-      (props.onChange as (value: string, name: string) => void)(dropoff, 'pickup');
-      (props.onChange as (value: string, name: string) => void)(tempPickup, 'dropoff');
-    }
+    // Ambos formatos usan el mismo formato de evento
+    (props.onChange as (e: { target: { name: string; value: string } }) => void)({ target: { name: 'pickup', value: dropoff } });
+    (props.onChange as (e: { target: { name: string; value: string } }) => void)({ target: { name: 'dropoff', value: tempPickup } });
   };
+
+  // Mostrar skeleton mientras carga
+  if (isLocationLoading) {
+    return (
+      <div className="relative space-y-3">
+        <div className="space-y-1.5">
+          <div className="flex items-center gap-1.5">
+            <Skeleton className="h-4 w-4 rounded" />
+            <Skeleton className="h-4 w-24" />
+          </div>
+          <Skeleton className="h-11 w-full rounded-md" />
+        </div>
+
+        <div className="flex justify-center">
+          <Skeleton className="h-8 w-8 rounded-full" />
+        </div>
+
+        <div className="space-y-1.5">
+          <div className="flex items-center gap-1.5">
+            <Skeleton className="h-4 w-4 rounded" />
+            <Skeleton className="h-4 w-24" />
+          </div>
+          <Skeleton className="h-11 w-full rounded-md" />
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative space-y-3">
@@ -122,16 +147,21 @@ export const LocationInputs = (props: LocationInputsProps) => {
         <Select
           value={pickup}
           onValueChange={(value) => {
-            if (isNewFormat) {
-              (props.onChange as (e: { target: { name: string; value: string } }) => void)({ target: { name: 'pickup', value } });
-            } else {
-              (props.onChange as (value: string, name: string) => void)(value, 'pickup');
-            }
+            // Ambos formatos usan el mismo formato de evento
+            (props.onChange as (e: { target: { name: string; value: string } }) => void)({ target: { name: 'pickup', value } });
           }}
           required
+          disabled={isLocationLoading}
         >
           <SelectTrigger className="w-full bg-input border-border/50 hover:border-primary/50 focus:border-primary h-11 text-sm transition-colors">
-            <SelectValue placeholder={t.booking.pickupPlaceholder} />
+            {isLocationLoading ? (
+              <span className="flex items-center gap-2 text-muted-foreground">
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Cargando ubicaciones...
+              </span>
+            ) : (
+              <SelectValue placeholder={t.booking.pickupPlaceholder} />
+            )}
           </SelectTrigger>
           <SelectContent>
             {sortedLocations.map((location) => (
@@ -166,16 +196,21 @@ export const LocationInputs = (props: LocationInputsProps) => {
         <Select
           value={dropoff}
           onValueChange={(value) => {
-            if (isNewFormat) {
-              (props.onChange as (e: { target: { name: string; value: string } }) => void)({ target: { name: 'dropoff', value } });
-            } else {
-              (props.onChange as (value: string, name: string) => void)(value, 'dropoff');
-            }
+            // Ambos formatos usan el mismo formato de evento
+            (props.onChange as (e: { target: { name: string; value: string } }) => void)({ target: { name: 'dropoff', value } });
           }}
           required
+          disabled={isLocationLoading}
         >
           <SelectTrigger className="w-full bg-input border-border/50 hover:border-primary/50 focus:border-primary h-11 text-sm transition-colors">
-            <SelectValue placeholder={t.booking.dropoffPlaceholder} />
+            {isLocationLoading ? (
+              <span className="flex items-center gap-2 text-muted-foreground">
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Cargando ubicaciones...
+              </span>
+            ) : (
+              <SelectValue placeholder={t.booking.dropoffPlaceholder} />
+            )}
           </SelectTrigger>
           <SelectContent>
             {sortedLocations.map((location) => (

@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import FloatingWhatsApp from './FloatingWhatsApp';
 import CookieConsent from './CookieConsent';
+import ExitIntentPopup from './ExitIntentPopup';
 
 export function Layout() {
   return (
@@ -15,6 +16,7 @@ export function Layout() {
       <Footer />
       <FloatingWhatsApp />
       <CookieConsent />
+      <ExitIntentPopup />
     </div>
   );
 }

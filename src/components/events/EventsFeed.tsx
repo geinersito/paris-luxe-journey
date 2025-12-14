@@ -1,0 +1,161 @@
+import { useTranslation } from 'react-i18next'
+import type { Event, EventRange, EventVariant, Language } from '@/types/events'
+import eventsFeedData from '@/data/events/events-feed.json'
+import { Calendar, MapPin, ExternalLink, Star } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+
+interface EventsFeedProps {
+  range: EventRange
+  variant?: EventVariant
+}
+
+export function EventsFeed({ range, variant = 'full' }: EventsFeedProps) {
+  const { t, i18n } = useTranslation()
+  const language = i18n.language as Language
+
+  const events: Event[] = range === 'week' ? eventsFeedData.thisWeek : eventsFeedData.thisMonth
+  const generatedAt = new Date(eventsFeedData.generatedAt)
+  const now = new Date()
+  const daysSinceUpdate = Math.floor((now.getTime() - generatedAt.getTime()) / (1000 * 60 * 60 * 24))
+
+  // Format date according to language
+  const formatDate = (dateString: string) => {
+    const date = new Date(dateString)
+    const options: Intl.DateTimeFormatOptions = {
+      weekday: 'short',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    }
+    
+    const localeMap = {
+      en: 'en-US',
+      es: 'es-ES',
+      fr: 'fr-FR',
+      pt: 'pt-PT'
+    }
+    
+    return date.toLocaleDateString(localeMap[language], options)
+  }
+
+  if (!events || events.length === 0) {
+    return (
+      <div className="text-center py-12">
+        <p className="text-muted-foreground">{t('events.noEvents')}</p>
+      </div>
+    )
+  }
+
+  return (
+    <div className="space-y-12">
+      {/* Header - Premium Style */}
+      <div className="text-center">
+        <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-2">
+          {range === 'week' ? t('events.thisWeek') : t('events.thisMonth')}
+        </h2>
+        {daysSinceUpdate > 14 && (
+          <p className="text-sm text-gray-600 mt-2">
+            {t('events.updatedOn')} {generatedAt.toLocaleDateString()}
+          </p>
+        )}
+      </div>
+
+      {/* Events Grid */}
+      <div className={`grid gap-8 ${variant === 'full' ? 'md:grid-cols-2 lg:grid-cols-3' : 'md:grid-cols-2'}`}>
+        {events.map((event) => (
+          <Card key={event.id} className="group overflow-hidden glass-card-premium hover:shadow-luxury-hover transition-all duration-500 border-2 border-primary/20 hover:border-primary/40 hover:-translate-y-2">
+            {/* Event Image */}
+            {event.imageUrl && (
+              <div className="relative h-56 overflow-hidden">
+                <img
+                  src={event.imageUrl}
+                  alt={event.title[language]}
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  onError={(e) => {
+                    // Fallback to placeholder if image fails to load
+                    e.currentTarget.src = '/images/placeholder-event.jpg'
+                  }}
+                />
+                {/* Gradient overlay on hover */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+                {event.isFeatured && (
+                  <Badge className="absolute top-4 right-4 bg-gradient-to-r from-primary to-primary/80 text-white border-0 shadow-lg">
+                    <Star className="w-3 h-3 mr-1 fill-current" />
+                    {t('events.featured')}
+                  </Badge>
+                )}
+              </div>
+            )}
+
+            <CardHeader>
+              <CardTitle className="text-xl font-display font-bold text-secondary group-hover:text-primary transition-colors duration-300 line-clamp-2 mb-4">
+                {event.title[language]}
+              </CardTitle>
+
+              {/* Date and Time - Premium Style */}
+              <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-gold-subtle rounded-lg w-fit">
+                <Calendar className="w-4 h-4 text-primary" />
+                <span className="text-sm text-gray-700 font-medium">{formatDate(event.startAt)}</span>
+              </div>
+
+              {/* Venue and District */}
+              {(event.venueName || event.district) && (
+                <div className="flex items-center gap-2 mt-3 text-sm text-gray-600">
+                  <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
+                  <span className="font-medium">
+                    {event.venueName?.[language] || ''}
+                    {event.venueName && event.district && ' • '}
+                    {event.district || ''}
+                  </span>
+                </div>
+              )}
+            </CardHeader>
+
+            <CardContent className="space-y-4">
+              <CardDescription className="line-clamp-3 text-gray-600 leading-relaxed">
+                {event.description[language]}
+              </CardDescription>
+
+              {/* Category Badge - Gold Style */}
+              {event.category && (
+                <Badge className="bg-gradient-to-r from-primary/10 to-primary/5 text-primary border border-primary/20 capitalize font-medium">
+                  {event.category}
+                </Badge>
+              )}
+
+              {/* Action Buttons - Premium Style */}
+              <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                <Button asChild className="flex-1 silk-button">
+                  <a href="/booking">
+                    {t('events.bookRide')}
+                  </a>
+                </Button>
+                <Button asChild variant="outline" className="flex-1 button-outline-gold">
+                  <a
+                    href={event.eventUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2"
+                  >
+                    {t('events.officialDetails')}
+                    <ExternalLink className="w-4 h-4" />
+                  </a>
+                </Button>
+              </div>
+
+              {/* Source */}
+              <p className="text-xs text-gray-500 text-center pt-2 border-t border-primary/10">
+                {t('events.source')}: <span className="font-medium text-gray-700">{event.sourceName}</span>
+              </p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  )
+}
+

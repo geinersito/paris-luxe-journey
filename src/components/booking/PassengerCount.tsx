@@ -1,9 +1,10 @@
 
 import { Label } from "../ui/label";
 import { Button } from "../ui/button";
-import { Minus, Plus, Users, Info } from "lucide-react";
+import { Minus, Plus, Users, Info, Car, Bus } from "lucide-react";
 import { TooltipProvider, Tooltip, TooltipTrigger, TooltipContent } from "../ui/tooltip";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { useState, useEffect } from "react";
 
 interface PassengerCountProps {
   value: string;
@@ -14,15 +15,30 @@ const MAX_PASSENGERS = 7; // Límite para reservas online
 
 export const PassengerCount = ({ value, onChange }: PassengerCountProps) => {
   const { t } = useLanguage();
+  const [isAnimating, setIsAnimating] = useState(false);
+  const currentCount = parseInt(value) || 0;
+
+  // Determinar el tipo de vehículo sugerido
+  const suggestedVehicle = currentCount <= 3 ? 'berline' : 'van';
 
   const handleCountChange = (operation: 'increment' | 'decrement') => {
-    const currentCount = parseInt(value) || 0;
     const newCount = operation === 'increment' ? currentCount + 1 : currentCount - 1;
 
     if (newCount >= 1 && newCount <= MAX_PASSENGERS) {
       onChange(newCount.toString());
+      // Trigger animation
+      setIsAnimating(true);
+      setTimeout(() => setIsAnimating(false), 300);
     }
   };
+
+  // Efecto para mostrar el cambio de vehículo
+  useEffect(() => {
+    if (currentCount > 0) {
+      setIsAnimating(true);
+      setTimeout(() => setIsAnimating(false), 300);
+    }
+  }, [suggestedVehicle]);
 
   const handleOpenGroupQuote = () => {
     const msg = encodeURIComponent(
@@ -55,7 +71,7 @@ export const PassengerCount = ({ value, onChange }: PassengerCountProps) => {
         <button
           type="button"
           onClick={() => handleCountChange('decrement')}
-          disabled={parseInt(value) <= 1}
+          disabled={currentCount <= 1}
           className="w-10 h-10 rounded-full bg-primary/20 hover:bg-primary/30
                    text-primary border border-primary/30 shadow-sm hover:shadow-md hover:scale-105
                    transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100
@@ -64,14 +80,33 @@ export const PassengerCount = ({ value, onChange }: PassengerCountProps) => {
           <Minus className="h-4 w-4 group-hover:scale-90 transition-transform" />
         </button>
 
-        <span className="text-2xl font-display font-semibold text-foreground min-w-[3.5rem] text-center">
-          {value || '0'}
-        </span>
+        <div className="flex flex-col items-center gap-1">
+          <span className={`text-2xl font-display font-semibold text-foreground min-w-[3.5rem] text-center transition-all duration-300 ${isAnimating ? 'scale-110' : 'scale-100'}`}>
+            {value || '0'}
+          </span>
+
+          {/* Indicador visual del vehículo sugerido */}
+          {currentCount > 0 && (
+            <div className={`flex items-center gap-1.5 text-xs font-medium transition-all duration-300 ${isAnimating ? 'scale-110 opacity-100' : 'scale-100 opacity-70'}`}>
+              {suggestedVehicle === 'berline' ? (
+                <>
+                  <Car className="h-3.5 w-3.5 text-primary" />
+                  <span className="text-primary">{t.booking.vehicle.berline}</span>
+                </>
+              ) : (
+                <>
+                  <Bus className="h-3.5 w-3.5 text-primary" />
+                  <span className="text-primary">{t.booking.vehicle.van}</span>
+                </>
+              )}
+            </div>
+          )}
+        </div>
 
         <button
           type="button"
           onClick={() => handleCountChange('increment')}
-          disabled={parseInt(value) >= MAX_PASSENGERS}
+          disabled={currentCount >= MAX_PASSENGERS}
           className="w-10 h-10 rounded-full bg-primary/20 hover:bg-primary/30
                    text-primary border border-primary/30 shadow-sm hover:shadow-md hover:scale-105
                    transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100

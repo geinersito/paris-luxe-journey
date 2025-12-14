@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Users } from "lucide-react";
 
 interface CompactBookingFormProps {
-  onOpenFullForm: () => void;
+  onOpenFullForm: (data: { pickup: string; dropoff: string; passengers: string }) => void;
 }
 
 export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) {
@@ -14,8 +14,8 @@ export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) 
   const [passengers, setPassengers] = useState("2");
 
   const handleQuickBook = () => {
-    // Si los campos están completos, abrir el formulario completo con los datos prellenados
-    onOpenFullForm();
+    // Pasar los datos al formulario completo
+    onOpenFullForm({ pickup, dropoff, passengers });
   };
 
   return (

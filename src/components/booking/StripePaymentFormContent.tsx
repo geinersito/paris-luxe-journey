@@ -19,7 +19,63 @@ interface PaymentFormContentProps {
 
 type PaymentStatus = 'initial' | 'processing' | 'success' | 'error';
 
+type ErrorCategory = 'network' | 'card_declined' | 'validation' | 'server' | 'unknown';
+
+interface PaymentError {
+  message: string;
+  category: ErrorCategory;
+  retryable: boolean;
+}
+
 const PAYMENT_TIMEOUT = 60000; // 1 minuto
+
+// Categorizar errores de Stripe
+const categorizeStripeError = (error: StripeError | Error): PaymentError => {
+  const message = error.message || 'Error desconocido';
+
+  // Errores de red
+  if (message.includes('network') || message.includes('connection') || message.includes('timeout')) {
+    return {
+      message: 'Error de conexión. Por favor, verifica tu internet e intenta nuevamente.',
+      category: 'network',
+      retryable: true
+    };
+  }
+
+  // Errores de tarjeta
+  if (message.includes('card') || message.includes('declined') || message.includes('insufficient')) {
+    return {
+      message: 'Tu tarjeta fue rechazada. Por favor, verifica los datos o usa otra tarjeta.',
+      category: 'card_declined',
+      retryable: true
+    };
+  }
+
+  // Errores de validación
+  if (message.includes('invalid') || message.includes('incomplete')) {
+    return {
+      message: 'Datos de pago incompletos o inválidos. Por favor, revisa la información.',
+      category: 'validation',
+      retryable: true
+    };
+  }
+
+  // Errores del servidor
+  if (message.includes('server') || message.includes('500') || message.includes('503')) {
+    return {
+      message: 'Error del servidor. Por favor, intenta nuevamente en unos momentos.',
+      category: 'server',
+      retryable: true
+    };
+  }
+
+  // Error desconocido
+  return {
+    message: message,
+    category: 'unknown',
+    retryable: true
+  };
+};
 
 const StripePaymentFormContent = memo(({ 
   clientSecret, 
@@ -32,9 +88,10 @@ const StripePaymentFormContent = memo(({
 }: PaymentFormContentProps) => {
   const stripe = useStripe();
   const elements = useElements();
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<PaymentError | null>(null);
   const [paymentStatus, setPaymentStatus] = useState<PaymentStatus>('initial');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [retryCount, setRetryCount] = useState(0);
   const mounted = useRef(true);
   const timeoutRef = useRef<NodeJS.Timeout>();
   const statusRef = useRef<PaymentStatus>(paymentStatus);
@@ -69,7 +126,8 @@ const StripePaymentFormContent = memo(({
         }
       } catch (err) {
         console.error('[StripePaymentFormContent] Error al verificar estado inicial:', err);
-        setError('Error al verificar el estado del pago');
+        const categorizedError = categorizeStripeError(err instanceof Error ? err : new Error('Error desconocido'));
+        setError(categorizedError);
         onError(err instanceof Error ? err : new Error('Error desconocido'));
       }
     };
@@ -96,7 +154,11 @@ const StripePaymentFormContent = memo(({
       if (mounted.current && statusRef.current === 'processing') {
         console.log('[StripePaymentFormContent] Timeout de pago alcanzado');
         setPaymentStatus('initial');
-        setError('El proceso de pago ha excedido el tiempo límite. Por favor, intenta nuevamente.');
+        setError({
+          message: 'El proceso de pago ha excedido el tiempo límite. Por favor, intenta nuevamente.',
+          category: 'network',
+          retryable: true
+        });
         toast({
           title: "Tiempo excedido",
           description: "El proceso tomó demasiado tiempo. Por favor, intenta nuevamente.",
@@ -151,12 +213,14 @@ const StripePaymentFormContent = memo(({
 
       // 3. Manejar resultado
       if (confirmError) {
-        throw new Error(confirmError.message);
+        const categorizedError = categorizeStripeError(confirmError);
+        throw categorizedError;
       }
 
       // 4. Verificar estado final
       if (paymentIntent?.status === 'succeeded') {
         setPaymentStatus('success');
+        setRetryCount(0); // Reset retry count on success
         onSuccess();
       } else if (paymentIntent?.status === 'processing') {
         setPaymentStatus('processing');
@@ -166,18 +230,36 @@ const StripePaymentFormContent = memo(({
         });
       } else if (paymentIntent?.status === 'requires_payment_method') {
         setPaymentStatus('initial');
-        setError('El método de pago fue rechazado. Por favor, intenta con otro.');
+        setError({
+          message: 'El método de pago fue rechazado. Por favor, intenta con otro.',
+          category: 'card_declined',
+          retryable: true
+        });
       } else {
         setPaymentStatus('initial');
-        setError('Error inesperado. Por favor, intenta nuevamente.');
+        setError({
+          message: 'Error inesperado. Por favor, intenta nuevamente.',
+          category: 'unknown',
+          retryable: true
+        });
       }
     } catch (err) {
       console.error('[StripePaymentFormContent] Error en confirmación:', err);
-      const errorMessage = err instanceof Error ? err.message : 'Error al procesar el pago';
-      setError(errorMessage);
+
+      // Categorizar el error
+      let categorizedError: PaymentError;
+      if ('message' in err && 'category' in err && 'retryable' in err) {
+        categorizedError = err as PaymentError;
+      } else {
+        categorizedError = categorizeStripeError(err instanceof Error ? err : new Error('Error al procesar el pago'));
+      }
+
+      setError(categorizedError);
       setPaymentStatus('initial');
       setIsSubmitting(false);
-      onError(new Error(errorMessage));
+      setRetryCount(prev => prev + 1);
+
+      onError(new Error(categorizedError.message));
     }
   };
 
@@ -229,25 +311,60 @@ const StripePaymentFormContent = memo(({
       />
 
       {error && (
-        <Alert variant="destructive">
-          <AlertDescription>{error}</AlertDescription>
+        <Alert variant="destructive" className="space-y-3">
+          <AlertDescription>
+            <div className="space-y-2">
+              <p className="font-semibold">
+                {error.category === 'network' && '🌐 Error de conexión'}
+                {error.category === 'card_declined' && '💳 Tarjeta rechazada'}
+                {error.category === 'validation' && '⚠️ Datos inválidos'}
+                {error.category === 'server' && '🔧 Error del servidor'}
+                {error.category === 'unknown' && '❌ Error'}
+              </p>
+              <p>{error.message}</p>
+              {retryCount > 0 && (
+                <p className="text-sm text-muted-foreground">
+                  Intentos: {retryCount}
+                </p>
+              )}
+            </div>
+          </AlertDescription>
         </Alert>
       )}
 
-      <Button 
-        type="submit" 
-        disabled={!stripe || isProcessing}
-        className="w-full"
-      >
-        {isProcessing ? (
-          <span className="flex items-center justify-center gap-2">
-            <Loader2 className="h-4 w-4 animate-spin" />
-            Procesando pago...
-          </span>
-        ) : (
-          "Pagar"
+      <div className="flex gap-3">
+        {error && error.retryable && (
+          <Button
+            type="button"
+            variant="outline"
+            onClick={() => {
+              setError(null);
+              setPaymentStatus('initial');
+            }}
+            disabled={isProcessing}
+            className="flex-1"
+          >
+            Corregir datos
+          </Button>
         )}
-      </Button>
+
+        <Button
+          type="submit"
+          disabled={!stripe || isProcessing}
+          className={error && error.retryable ? "flex-1" : "w-full"}
+        >
+          {isProcessing ? (
+            <span className="flex items-center justify-center gap-2">
+              <Loader2 className="h-4 w-4 animate-spin" />
+              Procesando pago...
+            </span>
+          ) : error && error.retryable ? (
+            "Reintentar pago"
+          ) : (
+            "Pagar"
+          )}
+        </Button>
+      </div>
     </form>
   );
 });

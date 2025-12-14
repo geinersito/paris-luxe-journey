@@ -50,9 +50,10 @@ export const useVehicles = () => {
     queryKey: ["vehicles"],
     queryFn: async () => {
       try {
+        // Optimización: Seleccionar solo las columnas necesarias
         const { data, error } = await supabase
           .from("vehicles")
-          .select("*")
+          .select("id, type, name, capacity, base_price, features, image_url")
           .order("base_price", { ascending: true });
 
         // If there's an error or no data, return fallback
@@ -74,6 +75,7 @@ export const useVehicles = () => {
     },
     // Always return fallback on error instead of throwing
     retry: false,
-    staleTime: 5 * 60 * 1000, // 5 minutes
+    staleTime: 10 * 60 * 1000, // Aumentado a 10 minutos (los vehículos no cambian frecuentemente)
+    cacheTime: 30 * 60 * 1000, // Cache por 30 minutos
   });
 };
