@@ -283,21 +283,11 @@
     animation: shimmer 2s infinite;
   }
 
-  /* Button Styles - Enhanced with stronger gold and better contrast */
+  /* Button Styles - Premium champagne gold gradient */
   .silk-button {
-    @apply relative overflow-hidden text-white px-8 py-4 rounded-xl transition-all duration-300 hover:scale-[1.05];
-    background: linear-gradient(135deg, #D4AF37 0%, #C2A033 50%, #B8956A 100%);
-    box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5), 0 0 40px rgba(212, 175, 55, 0.2);
-    font-weight: 800;
-    font-size: 1.125rem;
+    @apply relative overflow-hidden bg-gradient-gold text-white px-8 py-4 rounded-xl transition-all duration-300 shadow-md hover:shadow-xl hover:scale-[1.02];
+    font-weight: 600;
     letter-spacing: 0.025em;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  }
-
-  .silk-button:hover {
-    background: linear-gradient(135deg, #F4C430 0%, #D4AF37 50%, #C2A033 100%);
-    box-shadow: 0 10px 40px rgba(212, 175, 55, 0.7), 0 0 60px rgba(212, 175, 55, 0.3);
-    transform: scale(1.05) translateY(-2px);
   }
 
   .silk-button::before {
@@ -328,7 +318,7 @@
   }
 
   .button-outline-gold {
-    @apply border-2 border-primary/40 text-primary hover:bg-primary/5 hover:border-primary transition-all duration-300 px-8 py-4 rounded-xl font-semibold;
+    @apply border-2 border-primary/40 hover:bg-primary/5 hover:border-primary transition-all duration-300 px-8 py-4 rounded-xl font-semibold;
   }
 
   /* Typography Utilities */

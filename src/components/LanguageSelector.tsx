@@ -25,23 +25,17 @@ export function LanguageSelector() {
     setLanguage(value);
   };
 
-  const currentLanguage = useMemo(() => 
-    languages.find(lang => lang.code === i18n.language),
-    [i18n.language]
+  const currentLanguage = useMemo(
+    () => languages.find((lang) => lang.code === i18n.language),
+    [i18n.language],
   );
 
   if (!currentLanguage) return null;
 
   return (
-    <Select
-      value={i18n.language}
-      onValueChange={handleLanguageChange}
-    >
+    <Select value={i18n.language} onValueChange={handleLanguageChange}>
       <SelectTrigger className="w-[140px]">
-        <SelectValue>
-          {currentLanguage.flag}{" "}
-          {currentLanguage.name}
-        </SelectValue>
+        <SelectValue>{currentLanguage.name}</SelectValue>
       </SelectTrigger>
       <SelectContent>
         {languages.map((language) => (
@@ -50,10 +44,7 @@ export function LanguageSelector() {
             value={language.code}
             className="cursor-pointer"
           >
-            <span className="flex items-center gap-2">
-              <span>{language.flag}</span>
-              <span>{language.name}</span>
-            </span>
+            {language.name}
           </SelectItem>
         ))}
       </SelectContent>
