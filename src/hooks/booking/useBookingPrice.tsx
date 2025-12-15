@@ -6,6 +6,9 @@ import {
   PRICING,
 } from "@/config/pricing";
 import { calculateLuggageFee } from "@/utils/luggage";
+import { generateRouteKeyV312, isRouteSupported } from "@/utils/routeMapping";
+import { calculatePricing } from "@/services/pricing/calculatePricing";
+import type { VehicleType } from "@/config/pricing-v312";
 
 interface UseBookingPriceReturn {
   price: number; // Precio final total (base + recargos)
@@ -82,13 +85,71 @@ export const useBookingPrice = (): UseBookingPriceReturn => {
         smallLuggage,
       });
 
+      // 🆕 PASO 1: Intentar usar V3.1.2 primero (sistema nuevo)
+      if (isRouteSupported(origin, destination)) {
+        const routeKeyV312 = generateRouteKeyV312(origin, destination);
+
+        if (routeKeyV312) {
+          console.log(
+            "✅ Using V3.1.2 pricing system for route:",
+            routeKeyV312,
+          );
+
+          // Determinar tipo de vehículo basado en pasajeros
+          const vehicleType: VehicleType = passengers <= 3 ? "sedan" : "van";
+
+          try {
+            const pricingResult = calculatePricing(routeKeyV312, vehicleType);
+
+            // Convertir de céntimos a euros
+            const prepaidPrice = pricingResult.prepaid_price / 100;
+
+            console.log("V3.1.2 pricing result:", {
+              routeKey: routeKeyV312,
+              vehicleType,
+              prepaidPrice,
+              flexiblePrice: pricingResult.flexible_price / 100,
+            });
+
+            // Actualizar estados con precios de V3.1.2
+            setBasePrice(prepaidPrice);
+            setPassengerSurcharge(0); // V3.1.2 ya incluye todo en el precio
+            setLuggageSurcharge(0); // V3.1.2 ya incluye equipaje estándar
+            setPrice(prepaidPrice);
+
+            if (typeof origin === "string" && typeof destination === "string") {
+              setPreviousCalculatedParams({
+                origin,
+                destination,
+                passengers,
+                largeLuggage,
+                smallLuggage,
+              });
+            }
+
+            return prepaidPrice;
+          } catch (v312Error) {
+            console.warn(
+              "V3.1.2 calculation failed, falling back to legacy system:",
+              v312Error,
+            );
+            // Continuar con el sistema antiguo
+          }
+        }
+      }
+
+      // PASO 2: Fallback al sistema antiguo (pricing.ts)
+      console.log("Using legacy pricing system");
+
       // Generar route key desde pricing.ts
       const routeKey = generateRouteKey(origin, destination);
 
       if (!routeKey) {
         // TODO: Create fixed_routes table in Supabase
         // For now, return a default price when route not found in pricing.ts
-        console.warn("No fixed route found in pricing.ts. Database fallback disabled until fixed_routes table is created.");
+        console.warn(
+          "No fixed route found in pricing.ts. Database fallback disabled until fixed_routes table is created.",
+        );
 
         // Use a default base price as fallback
         const pureDatabaseBasePrice = passengers <= 3 ? 80 : 100;
