@@ -21,19 +21,14 @@ export type PaymentMode = "prepaid" | "flexible";
  */
 export type BookingStatus =
   | "pending" // Creado, esperando pago
-  | "pending_payment" // Esperando pago/setup (alias de pending)
   | "payment_processing" // Procesando pago
   | "confirmed" // Pago confirmado
   | "driver_assigned" // Conductor asignado
-  | "partner_assigned" // Conductor asignado (alias de driver_assigned)
   | "driver_departed" // Conductor en camino
-  | "hold_pending" // Hold creado, esperando confirmación (flexible)
-  | "hold_confirmed" // Hold confirmado (flexible)
   | "in_progress" // Servicio en curso
   | "completed" // Servicio completado
   | "cancelled" // Cancelado por cliente
   | "payment_failed" // Pago fallido
-  | "failed" // Pago/setup fallido (alias de payment_failed)
   | "unconfirmed_no_contact"; // No contactado (flexible)
 
 /**
