@@ -11,18 +11,20 @@ export interface LocalizedString {
   pt: string
 }
 
+export interface BlogAuthor {
+  name: string
+  role: LocalizedString
+  bio: LocalizedString
+  avatar: string
+}
+
 export interface BlogPostMeta {
   id: string
   slug: string
   title: LocalizedString
   description: LocalizedString
   category: BlogCategory
-  author: {
-    name: string
-    role: LocalizedString
-    bio: LocalizedString
-    avatar: string
-  }
+  author: BlogAuthor
   publishedAt: string
   updatedAt?: string
   readingTime: number
@@ -37,6 +39,33 @@ export interface BlogPostMeta {
     metaDescription: LocalizedString
     keywords: string[]
   }
+}
+
+/**
+ * Legacy BlogPost interface with full content (for backward compatibility)
+ * New posts should use BlogPostMeta + separate content files
+ */
+export interface BlogPost {
+  id: string
+  slug: string
+  title: string
+  excerpt: string
+  content: string
+  category: string
+  tags: string[]
+  author: BlogAuthor
+  publishedAt: string
+  readingTime: number
+  featured: boolean
+  language: string
+  coverImage: string
+  seo: {
+    metaTitle: string
+    metaDescription: string
+    keywords: string[]
+    ogImage: string
+  }
+  relatedPosts: string[]
 }
 
 export interface CategoryMeta {
