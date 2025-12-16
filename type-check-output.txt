@@ -1,0 +1,79 @@
+
+> vite_react_shadcn_ts@0.0.0 type-check
+> tsc --noEmit --project tsconfig.app.json
+
+src/App.tsx(24,31): error TS2322: Type 'Promise<typeof import("C:/Users/paris/Desktop/paris-luxe-journey-NUEVO/src/pages/airports/CDG")>' is not assignable to type 'Promise<{ default: ComponentType<any>; }>'.
+  Property 'default' is missing in type 'typeof import("C:/Users/paris/Desktop/paris-luxe-journey-NUEVO/src/pages/airports/CDG")' but required in type '{ default: ComponentType<any>; }'.
+src/components/blog/FinalCTA.tsx(66,22): error TS2322: Type '{ onClose: () => void; }' is not assignable to type 'IntrinsicAttributes & BookingFormProps'.
+  Property 'onClose' does not exist on type 'IntrinsicAttributes & BookingFormProps'.
+src/components/blog/InlineBookingCTA.tsx(36,22): error TS2322: Type '{ onClose: () => void; }' is not assignable to type 'IntrinsicAttributes & BookingFormProps'.
+  Property 'onClose' does not exist on type 'IntrinsicAttributes & BookingFormProps'.
+src/components/events/EventsFeed.tsx(16,9): error TS2322: Type '({ id: string; startAt: string; endAt: string; title: { en: string; es: string; fr: string; pt: string; }; description: { en: string; es: string; fr: string; pt: string; }; venueName: { en: string; es: string; fr: string; pt: string; }; ... 6 more ...; sourceName: string; } | { ...; })[] | ({ ...; } | { ...; })[]' is not assignable to type 'Event[]'.
+  Type '({ id: string; startAt: string; endAt: string; title: { en: string; es: string; fr: string; pt: string; }; description: { en: string; es: string; fr: string; pt: string; }; venueName: { en: string; es: string; fr: string; pt: string; }; ... 6 more ...; sourceName: string; } | { ...; })[]' is not assignable to type 'Event[]'.
+    Type '{ id: string; startAt: string; endAt: string; title: { en: string; es: string; fr: string; pt: string; }; description: { en: string; es: string; fr: string; pt: string; }; venueName: { en: string; es: string; fr: string; pt: string; }; ... 6 more ...; sourceName: string; } | { ...; }' is not assignable to type 'Event'.
+      Type '{ id: string; startAt: string; endAt: string; title: { en: string; es: string; fr: string; pt: string; }; description: { en: string; es: string; fr: string; pt: string; }; venueName: { en: string; es: string; fr: string; pt: string; }; ... 6 more ...; sourceName: string; }' is not assignable to type 'Event'.
+        Types of property 'category' are incompatible.
+          Type 'string' is not assignable to type 'EventCategory'.
+src/components/Footer.tsx(116,38): error TS2339: Property 'faq' does not exist on type '{ title: string; services: string; fleet: string; about: string; contact: string; travelGuides: string; privacy: string; terms: string; }'.
+src/components/Navbar.tsx(112,19): error TS2339: Property 'events' does not exist on type '{ home: string; services: string; about: string; contact: string; fleet: string; excursions: string; }'.
+src/components/Navbar.tsx(113,19): error TS2339: Property 'blog' does not exist on type '{ home: string; services: string; about: string; contact: string; fleet: string; excursions: string; }'.
+src/components/Navbar.tsx(167,38): error TS2339: Property 'disabled' does not exist on type '{ name: string; href: string; }'.
+src/components/Navbar.tsx(233,38): error TS2339: Property 'disabled' does not exist on type '{ name: string; href: string; }'.
+src/components/sections/FleetSection.tsx(121,24): error TS2339: Property 'map' does not exist on type 'unknown'.
+src/contexts/BookingContext.tsx(339,30): error TS2339: Property 'couponApplied' does not exist on type '{ title: string; pickup: string; dropoff: string; pickupPlaceholder: string; dropoffPlaceholder: string; swapLocations?: string; date: string; time: string; returnDate: string; returnTime: string; ... 38 more ...; errors: { ...; }; }'.
+src/contexts/BookingContext.tsx(350,26): error TS2339: Property 'invalidCoupon' does not exist on type '{ title: string; pickup: string; dropoff: string; pickupPlaceholder: string; dropoffPlaceholder: string; swapLocations?: string; date: string; time: string; returnDate: string; returnTime: string; ... 38 more ...; errors: { ...; }; }'.
+src/contexts/BookingContext.tsx(351,32): error TS2339: Property 'couponExpired' does not exist on type '{ title: string; pickup: string; dropoff: string; pickupPlaceholder: string; dropoffPlaceholder: string; swapLocations?: string; date: string; time: string; returnDate: string; returnTime: string; ... 38 more ...; errors: { ...; }; }'.
+src/contexts/BookingContext.tsx(362,32): error TS2339: Property 'couponError' does not exist on type '{ title: string; pickup: string; dropoff: string; pickupPlaceholder: string; dropoffPlaceholder: string; swapLocations?: string; date: string; time: string; returnDate: string; returnTime: string; ... 38 more ...; errors: { ...; }; }'.
+src/contexts/BookingContext.tsx(373,24): error TS2339: Property 'couponRemoved' does not exist on type '{ title: string; pickup: string; dropoff: string; pickupPlaceholder: string; dropoffPlaceholder: string; swapLocations?: string; date: string; time: string; returnDate: string; returnTime: string; ... 38 more ...; errors: { ...; }; }'.
+src/contexts/BookingContext.tsx(374,30): error TS2339: Property 'couponRemovedDesc' does not exist on type '{ title: string; pickup: string; dropoff: string; pickupPlaceholder: string; dropoffPlaceholder: string; swapLocations?: string; date: string; time: string; returnDate: string; returnTime: string; ... 38 more ...; errors: { ...; }; }'.
+src/data/blog/authors.ts(1,10): error TS2305: Module '"@/types/blog"' has no exported member 'BlogAuthor'.
+src/data/blog/posts.ts(1,10): error TS2305: Module '"@/types/blog"' has no exported member 'BlogPost'.
+src/hooks/booking/useVehicleAssignment.ts(33,42): error TS2339: Property 'filter' does not exist on type 'unknown'.
+src/hooks/booking/useVehicleAssignment.ts(34,38): error TS2339: Property 'filter' does not exist on type 'unknown'.
+src/hooks/booking/useVehicleAssignment.ts(39,25): error TS2339: Property 'length' does not exist on type 'unknown'.
+src/hooks/booking/useVehicleAssignment.ts(40,25): error TS2339: Property 'map' does not exist on type 'unknown'.
+src/hooks/booking/useVehicleAssignment.ts(69,53): error TS2339: Property 'length' does not exist on type 'unknown'.
+src/hooks/booking/useVehicleAssignment.ts(71,70): error TS2339: Property 'map' does not exist on type 'unknown'.
+src/hooks/booking/useVehicleAssignment.ts(72,37): error TS2339: Property 'slice' does not exist on type 'unknown'.
+src/hooks/useVehicles.tsx(84,5): error TS2769: No overload matches this call.
+  Overload 1 of 3, '(options: DefinedInitialDataOptions<unknown, Error, unknown, string[]>, queryClient?: QueryClient): DefinedUseQueryResult<unknown, Error>', gave the following error.
+    Object literal may only specify known properties, and 'cacheTime' does not exist in type 'DefinedInitialDataOptions<unknown, Error, unknown, string[]>'.
+  Overload 2 of 3, '(options: UndefinedInitialDataOptions<Vehicle[] | SelectQueryError<"column 'capacity' does not exist on 'vehicles'.">[], Error, Vehicle[] | SelectQueryError<"column 'capacity' does not exist on 'vehicles'.">[], string[]>, queryClient?: QueryClient): UseQueryResult<...>', gave the following error.
+    Object literal may only specify known properties, and 'cacheTime' does not exist in type 'UndefinedInitialDataOptions<Vehicle[] | SelectQueryError<"column 'capacity' does not exist on 'vehicles'.">[], Error, Vehicle[] | SelectQueryError<"column 'capacity' does not exist on 'vehicles'.">[], string[]>'.
+  Overload 3 of 3, '(options: UseQueryOptions<Vehicle[] | SelectQueryError<"column 'capacity' does not exist on 'vehicles'.">[], Error, Vehicle[] | SelectQueryError<"column 'capacity' does not exist on 'vehicles'.">[], string[]>, queryClient?: QueryClient): UseQueryResult<...>', gave the following error.
+    Object literal may only specify known properties, and 'cacheTime' does not exist in type 'UseQueryOptions<Vehicle[] | SelectQueryError<"column 'capacity' does not exist on 'vehicles'.">[], Error, Vehicle[] | SelectQueryError<"column 'capacity' does not exist on 'vehicles'.">[], string[]>'.
+src/i18n/en.ts(11,5): error TS2353: Object literal may only specify known properties, and 'events' does not exist in type '{ home: string; services: string; about: string; contact: string; fleet: string; excursions: string; }'.
+src/i18n/en.ts(190,7): error TS2353: Object literal may only specify known properties, and 'confirmationNumber' does not exist in type '{ title: string; description: string; addToCalendar: string; backToHome: string; }'.
+src/i18n/es.ts(11,5): error TS2353: Object literal may only specify known properties, and 'events' does not exist in type '{ home: string; services: string; about: string; contact: string; fleet: string; excursions: string; }'.
+src/i18n/es.ts(204,7): error TS2353: Object literal may only specify known properties, and 'confirmationNumber' does not exist in type '{ title: string; description: string; addToCalendar: string; backToHome: string; }'.
+src/i18n/fr.ts(11,5): error TS2353: Object literal may only specify known properties, and 'events' does not exist in type '{ home: string; services: string; about: string; contact: string; fleet: string; excursions: string; }'.
+src/i18n/fr.ts(288,7): error TS2353: Object literal may only specify known properties, and 'confirmationNumber' does not exist in type '{ title: string; description: string; addToCalendar: string; backToHome: string; }'.
+src/i18n/pt.ts(11,5): error TS2353: Object literal may only specify known properties, and 'events' does not exist in type '{ home: string; services: string; about: string; contact: string; fleet: string; excursions: string; }'.
+src/i18n/pt.ts(192,7): error TS2353: Object literal may only specify known properties, and 'confirmationNumber' does not exist in type '{ title: string; description: string; addToCalendar: string; backToHome: string; }'.
+src/lib/seo/json-ld.ts(80,35): error TS2339: Property 'join' does not exist on type 'never'.
+src/pages/blog/BlogCategory.tsx(51,34): error TS2339: Property 'title' does not exist on type '{ metaTitle: LocalizedString; metaDescription: LocalizedString; }'.
+src/pages/blog/BlogCategory.tsx(52,60): error TS2339: Property 'description' does not exist on type '{ metaTitle: LocalizedString; metaDescription: LocalizedString; }'.
+src/pages/blog/BlogCategory.tsx(53,57): error TS2339: Property 'keywords' does not exist on type '{ metaTitle: LocalizedString; metaDescription: LocalizedString; }'.
+src/pages/blog/BlogCategory.tsx(56,61): error TS2339: Property 'title' does not exist on type '{ metaTitle: LocalizedString; metaDescription: LocalizedString; }'.
+src/pages/blog/BlogCategory.tsx(57,67): error TS2339: Property 'description' does not exist on type '{ metaTitle: LocalizedString; metaDescription: LocalizedString; }'.
+src/pages/FAQPage.tsx(18,23): error TS2339: Property 'subtitle' does not exist on type '{ title: string; categories: { bookings: string; services: string; payment: string; vehicles: string; }; questions: Record<string, { question: string; answer: string; }>; }'.
+src/services/booking/BookingOrchestrator.ts(15,8): error TS2459: Module '"../state-machine/BookingStateMachine"' declares 'BookingStatus' locally, but it is not exported.
+src/services/booking/BookingRepository.ts(10,15): error TS2459: Module '"../state-machine/BookingStateMachine"' declares 'BookingStatus' locally, but it is not exported.
+src/services/pricing/__tests__/calculatePricing.test.ts(167,28): error TS2345: Argument of type 'string' is not assignable to parameter of type 'RouteKey'.
+src/services/state-machine/__tests__/BookingStateMachine.test.ts(15,8): error TS2459: Module '"../BookingStateMachine"' declares 'BookingStatus' locally, but it is not exported.
+src/services/state-machine/__tests__/BookingStateMachine.test.ts(21,40): error TS2345: Argument of type '"pending_payment"' is not assignable to parameter of type 'BookingStatus'.
+src/services/state-machine/__tests__/BookingStateMachine.test.ts(30,40): error TS2345: Argument of type '"pending_payment"' is not assignable to parameter of type 'BookingStatus'.
+src/services/state-machine/__tests__/BookingStateMachine.test.ts(44,40): error TS2345: Argument of type '"partner_assigned"' is not assignable to parameter of type 'BookingStatus'.
+src/services/state-machine/__tests__/BookingStateMachine.test.ts(51,40): error TS2345: Argument of type '"hold_pending"' is not assignable to parameter of type 'BookingStatus'.
+src/services/state-machine/__tests__/BookingStateMachine.test.ts(58,40): error TS2345: Argument of type '"hold_confirmed"' is not assignable to parameter of type 'BookingStatus'.
+src/services/state-machine/__tests__/BookingStateMachine.test.ts(98,32): error TS2345: Argument of type '"pending_payment"' is not assignable to parameter of type 'BookingStatus'.
+src/services/state-machine/__tests__/BookingStateMachine.test.ts(99,32): error TS2345: Argument of type '"pending_payment"' is not assignable to parameter of type 'BookingStatus'.
+src/services/state-machine/__tests__/BookingStateMachine.test.ts(104,27): error TS2345: Argument of type '"pending_payment"' is not assignable to parameter of type 'BookingStatus'.
+src/services/state-machine/__tests__/BookingStateMachine.test.ts(110,37): error TS2345: Argument of type '"pending_payment"' is not assignable to parameter of type 'BookingStatus'.
+src/services/state-machine/__tests__/BookingStateMachine.test.ts(120,27): error TS2345: Argument of type '"failed"' is not assignable to parameter of type 'BookingStatus'.
+src/services/state-machine/__tests__/BookingStateMachine.test.ts(121,27): error TS2345: Argument of type '"pending_payment"' is not assignable to parameter of type 'BookingStatus'.
+src/services/state-machine/BookingStateMachine.ts(75,5): error TS2322: Type '"partner_assigned"' is not assignable to type 'BookingStatus'.
+src/services/state-machine/BookingStateMachine.ts(76,5): error TS2322: Type '"hold_pending"' is not assignable to type 'BookingStatus'.
+src/types/events.ts(18,10): error TS2304: Cannot find name 'LocalizedString'.
+src/types/events.ts(19,16): error TS2304: Cannot find name 'LocalizedString'.
+src/types/events.ts(20,15): error TS2304: Cannot find name 'LocalizedString'.
