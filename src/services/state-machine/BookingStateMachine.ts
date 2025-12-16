@@ -1,9 +1,9 @@
 /**
  * BOOKING STATE MACHINE V3.1.2
- * 
+ *
  * Máquina de estados para gestionar el ciclo de vida completo de un booking
  * desde la creación hasta la finalización o cancelación.
- * 
+ *
  * Estados principales:
  * - pending_payment: Esperando pago/setup del cliente
  * - confirmed: Booking confirmado, esperando asignación
@@ -16,33 +16,37 @@
  * - failed: Pago/setup fallido
  */
 
-import type { BookingStatus } from '@/types/payment-v312';
+import type { BookingStatus } from "@/types/payment-v312";
+
+// Re-export BookingStatus for external use
+export type { BookingStatus } from "@/types/payment-v312";
 
 // Eventos que pueden disparar transiciones
 export type BookingEvent =
-  | 'PAYMENT_SUCCEEDED'
-  | 'PAYMENT_FAILED'
-  | 'SETUP_SUCCEEDED'
-  | 'SETUP_FAILED'
-  | 'PARTNER_ASSIGNED'
-  | 'HOLD_CREATED'
-  | 'HOLD_CONFIRMED'
-  | 'HOLD_FAILED'
-  | 'SERVICE_STARTED'
-  | 'SERVICE_COMPLETED'
-  | 'CANCEL_REQUESTED'
-  | 'HOLD_CAPTURED'
-  | 'HOLD_CANCELLED';
+  | "PAYMENT_SUCCEEDED"
+  | "PAYMENT_FAILED"
+  | "SETUP_SUCCEEDED"
+  | "SETUP_FAILED"
+  | "PARTNER_ASSIGNED"
+  | "HOLD_CREATED"
+  | "HOLD_CONFIRMED"
+  | "HOLD_FAILED"
+  | "SERVICE_STARTED"
+  | "SERVICE_COMPLETED"
+  | "CANCEL_REQUESTED"
+  | "HOLD_CAPTURED"
+  | "HOLD_CANCELLED";
 
 // Metadata adicional para transiciones
 export interface TransitionMetadata {
   event: BookingEvent;
   timestamp: string;
-  actor?: 'customer' | 'partner' | 'admin' | 'system';
+  actor?: "customer" | "partner" | "admin" | "system";
   reason?: string;
   payment_intent_id?: string;
   setup_intent_id?: string;
   partner_id?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any;
 }
 
@@ -60,47 +64,50 @@ export interface TransitionResult {
  * Definición de transiciones válidas
  * Formato: { [estado_actual]: { [evento]: estado_siguiente } }
  */
-const STATE_TRANSITIONS: Record<BookingStatus, Partial<Record<BookingEvent, BookingStatus>>> = {
+const STATE_TRANSITIONS: Record<
+  BookingStatus,
+  Partial<Record<BookingEvent, BookingStatus>>
+> = {
   // Estado inicial: esperando pago/setup
   pending_payment: {
-    PAYMENT_SUCCEEDED: 'confirmed',
-    PAYMENT_FAILED: 'failed',
-    SETUP_SUCCEEDED: 'confirmed',
-    SETUP_FAILED: 'failed',
-    CANCEL_REQUESTED: 'cancelled',
+    PAYMENT_SUCCEEDED: "confirmed",
+    PAYMENT_FAILED: "failed",
+    SETUP_SUCCEEDED: "confirmed",
+    SETUP_FAILED: "failed",
+    CANCEL_REQUESTED: "cancelled",
   },
 
   // Booking confirmado: esperando asignación de conductor
   confirmed: {
-    PARTNER_ASSIGNED: 'partner_assigned',
-    HOLD_CREATED: 'hold_pending',
-    CANCEL_REQUESTED: 'cancelled',
+    PARTNER_ASSIGNED: "partner_assigned",
+    HOLD_CREATED: "hold_pending",
+    CANCEL_REQUESTED: "cancelled",
   },
 
   // Conductor asignado: esperando hold (solo flexible)
   partner_assigned: {
-    HOLD_CREATED: 'hold_pending',
-    SERVICE_STARTED: 'in_progress',
-    CANCEL_REQUESTED: 'cancelled',
+    HOLD_CREATED: "hold_pending",
+    SERVICE_STARTED: "in_progress",
+    CANCEL_REQUESTED: "cancelled",
   },
 
   // Hold creado: esperando autenticación SCA
   hold_pending: {
-    HOLD_CONFIRMED: 'hold_confirmed',
-    HOLD_FAILED: 'failed',
-    CANCEL_REQUESTED: 'cancelled',
+    HOLD_CONFIRMED: "hold_confirmed",
+    HOLD_FAILED: "failed",
+    CANCEL_REQUESTED: "cancelled",
   },
 
   // Hold confirmado: listo para servicio
   hold_confirmed: {
-    SERVICE_STARTED: 'in_progress',
-    CANCEL_REQUESTED: 'cancelled',
+    SERVICE_STARTED: "in_progress",
+    CANCEL_REQUESTED: "cancelled",
   },
 
   // Servicio en progreso
   in_progress: {
-    SERVICE_COMPLETED: 'completed',
-    CANCEL_REQUESTED: 'cancelled', // Cancelación tardía
+    SERVICE_COMPLETED: "completed",
+    CANCEL_REQUESTED: "cancelled", // Cancelación tardía
   },
 
   // Estados finales (no permiten transiciones)
@@ -114,7 +121,7 @@ const STATE_TRANSITIONS: Record<BookingStatus, Partial<Record<BookingEvent, Book
  */
 export function isValidTransition(
   currentState: BookingStatus,
-  event: BookingEvent
+  event: BookingEvent,
 ): boolean {
   const allowedTransitions = STATE_TRANSITIONS[currentState];
   return event in allowedTransitions;
@@ -125,7 +132,7 @@ export function isValidTransition(
  */
 export function getNextState(
   currentState: BookingStatus,
-  event: BookingEvent
+  event: BookingEvent,
 ): BookingStatus | null {
   const allowedTransitions = STATE_TRANSITIONS[currentState];
   return allowedTransitions[event] || null;
@@ -137,7 +144,7 @@ export function getNextState(
 export function executeTransition(
   currentState: BookingStatus,
   event: BookingEvent,
-  metadata?: Partial<TransitionMetadata>
+  metadata?: Partial<TransitionMetadata>,
 ): TransitionResult {
   // Validar que la transición es válida
   if (!isValidTransition(currentState, event)) {
@@ -152,7 +159,7 @@ export function executeTransition(
 
   // Obtener el siguiente estado
   const nextState = getNextState(currentState, event);
-  
+
   if (!nextState) {
     return {
       success: false,
@@ -172,7 +179,7 @@ export function executeTransition(
     metadata: {
       event,
       timestamp: new Date().toISOString(),
-      actor: metadata?.actor || 'system',
+      actor: metadata?.actor || "system",
       ...metadata,
     },
   };
@@ -209,22 +216,22 @@ export function validateBusinessRules(
   currentState: BookingStatus,
   event: BookingEvent,
   context: {
-    payment_mode?: 'prepaid' | 'flexible';
+    payment_mode?: "prepaid" | "flexible";
     pickup_datetime?: string;
     hold_status?: string;
     partner_id?: string;
-  }
+  },
 ): BusinessValidation {
   // Regla 1: HOLD_CREATED solo es válido para modo flexible
-  if (event === 'HOLD_CREATED' && context.payment_mode !== 'flexible') {
+  if (event === "HOLD_CREATED" && context.payment_mode !== "flexible") {
     return {
       valid: false,
-      error: 'Hold creation is only valid for flexible payment mode',
+      error: "Hold creation is only valid for flexible payment mode",
     };
   }
 
   // Regla 2: HOLD_CREATED solo dentro de ventana de 24h
-  if (event === 'HOLD_CREATED' && context.pickup_datetime) {
+  if (event === "HOLD_CREATED" && context.pickup_datetime) {
     const pickupTime = new Date(context.pickup_datetime).getTime();
     const now = Date.now();
     const hoursUntilPickup = (pickupTime - now) / (1000 * 60 * 60);
@@ -238,22 +245,22 @@ export function validateBusinessRules(
   }
 
   // Regla 3: SERVICE_STARTED requiere partner asignado
-  if (event === 'SERVICE_STARTED' && !context.partner_id) {
+  if (event === "SERVICE_STARTED" && !context.partner_id) {
     return {
       valid: false,
-      error: 'Cannot start service without assigned partner',
+      error: "Cannot start service without assigned partner",
     };
   }
 
   // Regla 4: Para flexible, SERVICE_STARTED requiere hold confirmado
   if (
-    event === 'SERVICE_STARTED' &&
-    context.payment_mode === 'flexible' &&
-    context.hold_status !== 'confirmed'
+    event === "SERVICE_STARTED" &&
+    context.payment_mode === "flexible" &&
+    context.hold_status !== "confirmed"
   ) {
     return {
       valid: false,
-      error: 'Cannot start service without confirmed hold (flexible mode)',
+      error: "Cannot start service without confirmed hold (flexible mode)",
     };
   }
 
@@ -268,15 +275,19 @@ export function executeTransitionWithValidation(
   currentState: BookingStatus,
   event: BookingEvent,
   context: {
-    payment_mode?: 'prepaid' | 'flexible';
+    payment_mode?: "prepaid" | "flexible";
     pickup_datetime?: string;
     hold_status?: string;
     partner_id?: string;
   },
-  metadata?: Partial<TransitionMetadata>
+  metadata?: Partial<TransitionMetadata>,
 ): TransitionResult {
   // Primero validar reglas de negocio
-  const businessValidation = validateBusinessRules(currentState, event, context);
+  const businessValidation = validateBusinessRules(
+    currentState,
+    event,
+    context,
+  );
 
   if (!businessValidation.valid) {
     return {
@@ -291,4 +302,3 @@ export function executeTransitionWithValidation(
   // Si pasa validaciones, ejecutar transición normal
   return executeTransition(currentState, event, metadata);
 }
-

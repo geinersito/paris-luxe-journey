@@ -8,6 +8,8 @@ export interface Translation {
     contact: string;
     fleet: string;
     excursions: string;
+    events: string;
+    blog: string;
   };
   hero: {
     title: string;
@@ -137,6 +139,7 @@ export interface Translation {
   };
   faq: {
     title: string;
+    subtitle: string;
     categories: {
       bookings: string;
       services: string;
@@ -305,6 +308,9 @@ export interface Translation {
       tourGuide: string;
       tourGuideDesc: string;
     };
+    couponError: string;
+    couponRemoved: string;
+    couponRemovedDesc: string;
     vehicle: {
       title: string;
       capacity: string;
@@ -347,6 +353,8 @@ export interface Translation {
     success: {
       title: string;
       description: string;
+      confirmationNumber: string;
+      bookingDetails: string;
       addToCalendar: string;
       backToHome: string;
     };

@@ -81,6 +81,6 @@ export const useVehicles = () => {
     // Always return fallback on error instead of throwing
     retry: false,
     staleTime: 10 * 60 * 1000, // Aumentado a 10 minutos (los vehículos no cambian frecuentemente)
-    cacheTime: 30 * 60 * 1000, // Cache por 30 minutos
+    gcTime: 30 * 60 * 1000, // Cache por 30 minutos (renamed from cacheTime in React Query v5)
   });
 };

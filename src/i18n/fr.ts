@@ -117,6 +117,8 @@ export const fr: Translation = {
   },
   faq: {
     title: "Questions Fréquentes",
+    subtitle:
+      "Trouvez des réponses aux questions courantes sur nos services de transfert premium",
     categories: {
       bookings: "Réservations",
       services: "Services",
@@ -254,7 +256,8 @@ export const fr: Translation = {
     },
     submit: "Réserver",
     submitButton: "Voir Votre Prix Fixe",
-    noPaymentRequired: "Aucun paiement requis - l'étape suivante affiche votre prix final",
+    noPaymentRequired:
+      "Aucun paiement requis - l'étape suivante affiche votre prix final",
     extras: {
       title: "Services Additionnels",
       tourGuide: "Guide Touristique",
@@ -298,20 +301,28 @@ export const fr: Translation = {
       smallBags: "petits sacs",
       totalPaid: "Total Payé :",
       cancellationPolicy: "Politique d'Annulation",
-      freeCancellation: "Annulation gratuite jusqu'à 24 heures avant la prise en charge",
-      partialRefund: "Remboursement de 50% pour les annulations 12-24 heures avant la prise en charge",
-      noRefund: "Aucun remboursement pour les annulations moins de 12 heures avant la prise en charge",
+      freeCancellation:
+        "Annulation gratuite jusqu'à 24 heures avant la prise en charge",
+      partialRefund:
+        "Remboursement de 50% pour les annulations 12-24 heures avant la prise en charge",
+      noRefund:
+        "Aucun remboursement pour les annulations moins de 12 heures avant la prise en charge",
       whatHappensNext: "Que se passe-t-il ensuite ?",
-      step1: "Vous recevrez un email de confirmation avec tous les détails de la réservation",
-      step2: "24 heures avant la prise en charge, nous vous enverrons les coordonnées et la photo de votre chauffeur",
-      step3: "Votre chauffeur suivra votre vol et ajustera l'heure de prise en charge si nécessaire",
-      step4: "Votre chauffeur vous attendra dans le hall des arrivées avec une pancarte à votre nom",
+      step1:
+        "Vous recevrez un email de confirmation avec tous les détails de la réservation",
+      step2:
+        "24 heures avant la prise en charge, nous vous enverrons les coordonnées et la photo de votre chauffeur",
+      step3:
+        "Votre chauffeur suivra votre vol et ajustera l'heure de prise en charge si nécessaire",
+      step4:
+        "Votre chauffeur vous attendra dans le hall des arrivées avec une pancarte à votre nom",
       addToCalendar: "Ajouter au Calendrier",
       backToHome: "Retour à l'Accueil",
     },
     groupNotice: {
       title: "Groupes de 8+ passagers",
-      description: "Pour les groupes de 8 passagers ou plus, veuillez nous contacter via WhatsApp pour un devis personnalisé.",
+      description:
+        "Pour les groupes de 8 passagers ou plus, veuillez nous contacter via WhatsApp pour un devis personnalisé.",
       cta: "Contacter via WhatsApp",
     },
     passengerDetails: "Détails du Passager",
@@ -352,7 +363,8 @@ export const fr: Translation = {
       serviceLevelsNotLoaded: "Impossible de charger les niveaux de service",
       selectServiceLevel: "Veuillez sélectionner un niveau de service",
       priceStale: "Le prix a changé. Veuillez vérifier le nouveau prix.",
-      networkError: "Erreur réseau. Veuillez vérifier votre connexion et réessayer.",
+      networkError:
+        "Erreur réseau. Veuillez vérifier votre connexion et réessayer.",
     },
     summary: {
       title: "Résumé de la Réservation",
@@ -403,7 +415,8 @@ export const fr: Translation = {
     subtitle: "Découvrez le transport de luxe à son meilleur",
     decorativeSubtitle: "Découvrez le transport de luxe",
     cta: "Réserver Maintenant",
-    groupDisclaimer: "Pour les groupes de 8+ passagers, veuillez nous contacter",
+    groupDisclaimer:
+      "Pour les groupes de 8+ passagers, veuillez nous contacter",
     airport: {
       title: "Transferts Aéroport",
       description:
@@ -414,8 +427,8 @@ export const fr: Translation = {
         "Suivi des Vols",
         "Temps d'Attente Gratuit",
         "1 Bagage/Pax Inclus",
-        "Chauffeurs Professionnels"
-      ]
+        "Chauffeurs Professionnels",
+      ],
     },
     chauffeur: {
       title: "Chauffeur Privé",
@@ -426,8 +439,8 @@ export const fr: Translation = {
         "Réservation à l'Heure Disponible",
         "Disponibilité 24/7",
         "Service Multilingue",
-        "Itinéraires et Arrêts Personnalisés"
-      ]
+        "Itinéraires et Arrêts Personnalisés",
+      ],
     },
     cityTours: {
       title: "Visites de la Ville",
@@ -438,8 +451,8 @@ export const fr: Translation = {
         "Itinéraires Personnalisés",
         "Chauffeurs Professionnels",
         "Véhicules Premium",
-        "Mercedes Classe E et Classe V"
-      ]
+        "Mercedes Classe E et Classe V",
+      ],
     },
     dayTrips: {
       title: "Excursions",
@@ -579,54 +592,68 @@ export const fr: Translation = {
   avoidFakeTaxis: {
     badge: "Guide de Sécurité",
     hero: {
-      title: "Faux Taxis aux Aéroports de Paris : Comment Éviter les Arnaques et Réserver un Transfert Sûr",
-      subtitle: "Des milliers de touristes sont victimes d'arnaques de faux taxis à CDG et Orly chaque année. Apprenez à les repérer et choisissez un transfert agréé à prix fixe.",
+      title:
+        "Faux Taxis aux Aéroports de Paris : Comment Éviter les Arnaques et Réserver un Transfert Sûr",
+      subtitle:
+        "Des milliers de touristes sont victimes d'arnaques de faux taxis à CDG et Orly chaque année. Apprenez à les repérer et choisissez un transfert agréé à prix fixe.",
     },
     problem: {
       title: "Le Problème est Réel",
-      paragraph1: "Vous venez d'atterrir à Charles de Gaulle après un long vol. Vous êtes fatigué, vous avez des bagages et vous voulez juste arriver à votre hôtel. À la sortie des arrivées, quelqu'un vous aborde en proposant un 'taxi' à un prix avantageux. Ça semble pratique, non ? Faux.",
-      paragraph2: "C'est ainsi que des milliers de touristes se font arnaquer chaque année dans les aéroports parisiens. L'arnaque au faux taxi est l'un des pièges à touristes les plus courants à Paris, coûtant aux victimes des centaines d'euros et gâchant leur première impression de la ville.",
+      paragraph1:
+        "Vous venez d'atterrir à Charles de Gaulle après un long vol. Vous êtes fatigué, vous avez des bagages et vous voulez juste arriver à votre hôtel. À la sortie des arrivées, quelqu'un vous aborde en proposant un 'taxi' à un prix avantageux. Ça semble pratique, non ? Faux.",
+      paragraph2:
+        "C'est ainsi que des milliers de touristes se font arnaquer chaque année dans les aéroports parisiens. L'arnaque au faux taxi est l'un des pièges à touristes les plus courants à Paris, coûtant aux victimes des centaines d'euros et gâchant leur première impression de la ville.",
     },
     howScamWorks: {
       title: "Comment Fonctionne l'Arnaque",
-      paragraph1: "Les chauffeurs de faux taxis ciblent les touristes à CDG, Orly et Beauvais. Ils portent de faux badges, utilisent des voitures non marquées et proposent des prix bas pour vous attirer.",
-      paragraph2: "Une fois dans la voiture, ils prennent des itinéraires plus longs, prétendent que le compteur est 'cassé' ou exigent 3 à 4 fois le tarif normal. Certains menacent même les passagers qui refusent de payer. Quand vous réalisez ce qui se passe, vous êtes déjà dans la voiture et loin de l'aéroport.",
+      paragraph1:
+        "Les chauffeurs de faux taxis ciblent les touristes à CDG, Orly et Beauvais. Ils portent de faux badges, utilisent des voitures non marquées et proposent des prix bas pour vous attirer.",
+      paragraph2:
+        "Une fois dans la voiture, ils prennent des itinéraires plus longs, prétendent que le compteur est 'cassé' ou exigent 3 à 4 fois le tarif normal. Certains menacent même les passagers qui refusent de payer. Quand vous réalisez ce qui se passe, vous êtes déjà dans la voiture et loin de l'aéroport.",
     },
     redFlags: {
       title: "Signaux d'Alerte à Surveiller",
       flag1: {
         title: "Le chauffeur vous aborde à l'intérieur du terminal",
-        description: "Les vrais taxis attendent aux stations officielles à l'extérieur. Si quelqu'un vous aborde à l'intérieur en proposant un taxi, c'est une arnaque.",
+        description:
+          "Les vrais taxis attendent aux stations officielles à l'extérieur. Si quelqu'un vous aborde à l'intérieur en proposant un taxi, c'est une arnaque.",
       },
       flag2: {
         title: "Pas de compteur ou de licence officielle affichée",
-        description: "Tout taxi légal à Paris doit avoir un compteur visible et un numéro de licence.",
+        description:
+          "Tout taxi légal à Paris doit avoir un compteur visible et un numéro de licence.",
       },
       flag3: {
-        title: "La voiture n'a pas de panneau lumineux \"TAXI PARISIEN\"",
-        description: "Les taxis officiels ont un panneau lumineux sur le toit. Pas de panneau = pas un vrai taxi.",
+        title: 'La voiture n\'a pas de panneau lumineux "TAXI PARISIEN"',
+        description:
+          "Les taxis officiels ont un panneau lumineux sur le toit. Pas de panneau = pas un vrai taxi.",
       },
       flag4: {
-        title: "Le chauffeur insiste sur le paiement en espèces et propose un \"prix spécial\"",
-        description: "La loi française oblige les taxis à accepter les cartes. Espèces uniquement est un signal d'alerte majeur.",
+        title:
+          'Le chauffeur insiste sur le paiement en espèces et propose un "prix spécial"',
+        description:
+          "La loi française oblige les taxis à accepter les cartes. Espèces uniquement est un signal d'alerte majeur.",
       },
       flag5: {
         title: "Véhicule non marqué ou avec des panneaux manuscrits",
-        description: "Les taxis officiels ont une signalétique professionnelle. Les panneaux manuscrits sont une arnaque.",
+        description:
+          "Les taxis officiels ont une signalétique professionnelle. Les panneaux manuscrits sont une arnaque.",
       },
     },
     protection: {
       title: "Comment Vous Protéger",
       intro: "Si vous devez prendre un taxi à l'aéroport :",
-      tip1: "Utilisez uniquement les stations de taxis officielles (suivez les panneaux \"TAXI\")",
+      tip1: 'Utilisez uniquement les stations de taxis officielles (suivez les panneaux "TAXI")',
       tip2: "Vérifiez que le véhicule a un panneau lumineux et un compteur",
       tip3: "Demandez une estimation avant de monter",
       tip4: "Insistez pour payer par carte (obligation légale en France)",
-      betterOption: "Meilleure option : Réservez un transfert privé agréé à l'avance avec un prix fixe.",
+      betterOption:
+        "Meilleure option : Réservez un transfert privé agréé à l'avance avec un prix fixe.",
     },
     whyVTC: {
       title: "Pourquoi un Transfert VTC Agréé est l'Alternative Sûre",
-      intro: "Contrairement aux taxis de rue, les services VTC (voiture de transport avec chauffeur) agréés comme Paris Elite Services offrent :",
+      intro:
+        "Contrairement aux taxis de rue, les services VTC (voiture de transport avec chauffeur) agréés comme Paris Elite Services offrent :",
       benefit1: {
         title: "Prix fixe confirmé avant votre voyage",
         description: "Pas de surprises, pas de tours de compteur",
@@ -654,7 +681,8 @@ export const fr: Translation = {
     },
     pricing: {
       title: "Ce Que Vous Devriez Réellement Payer",
-      intro: "Voici ce que vous devriez vous attendre à payer pour un transfert sûr et agréé depuis les aéroports parisiens :",
+      intro:
+        "Voici ce que vous devriez vous attendre à payer pour un transfert sûr et agréé depuis les aéroports parisiens :",
       tableHeaders: {
         route: "Trajet",
         passengers1to3: "1-3 Passagers",
@@ -665,27 +693,34 @@ export const fr: Translation = {
         orly: "Aéroport Orly → Paris",
         beauvais: "Aéroport Beauvais → Paris",
       },
-      warning: "⚠️ Attention : Si quelqu'un vous propose €30-40 pour CDG-Paris, c'est soit une arnaque, soit ils ajouteront des frais cachés plus tard. Le tarif officiel de taxi depuis CDG vers Paris est d'environ €50-60, et un VTC agréé avec prix fixe est €70.",
+      warning:
+        "⚠️ Attention : Si quelqu'un vous propose €30-40 pour CDG-Paris, c'est soit une arnaque, soit ils ajouteront des frais cachés plus tard. Le tarif officiel de taxi depuis CDG vers Paris est d'environ €50-60, et un VTC agréé avec prix fixe est €70.",
     },
     cta: {
       title: "Ne Risquez Pas Votre Arrivée à Paris",
-      subtitle: "Réservez votre transfert d'aéroport sûr et agréé maintenant avec des prix fixes et un service professionnel.",
+      subtitle:
+        "Réservez votre transfert d'aéroport sûr et agréé maintenant avec des prix fixes et un service professionnel.",
       bookNow: "Voir les Prix et Réserver",
       whatsapp: "Nous Contacter par WhatsApp",
-      groupsNotice: "Pour les groupes de 8+ passagers ou demandes spéciales, contactez-nous via WhatsApp : +33 6 68 25 11 02",
+      groupsNotice:
+        "Pour les groupes de 8+ passagers ou demandes spéciales, contactez-nous via WhatsApp : +33 6 68 25 11 02",
     },
   },
   blog: {
     title: "Blog de Voyage",
-    subtitle: "Conseils d'experts, guides et informations pour votre voyage à Paris",
+    subtitle:
+      "Conseils d'experts, guides et informations pour votre voyage à Paris",
     heroTitle: "Blog de Voyage",
-    heroSubtitle: "Conseils d'experts, guides et informations pour votre voyage à Paris",
+    heroSubtitle:
+      "Conseils d'experts, guides et informations pour votre voyage à Paris",
     searchPlaceholder: "Rechercher des articles...",
     featured: "Articles en Vedette",
     allArticles: "Tous les Articles",
     categoryArticles: "Articles",
-    noArticles: "Aucun article trouvé. Essayez une autre recherche ou catégorie.",
-    noArticlesFound: "Aucun article trouvé. Essayez un autre terme de recherche.",
+    noArticles:
+      "Aucun article trouvé. Essayez une autre recherche ou catégorie.",
+    noArticlesFound:
+      "Aucun article trouvé. Essayez un autre terme de recherche.",
     relatedArticles: "Articles Connexes",
     needTransfer: "Besoin d'un transfert ?",
     calculatePrice: "Obtenez un devis instantané pour votre transfert",
@@ -710,16 +745,20 @@ export const fr: Translation = {
     },
     newsletter: {
       title: "Recevez des Conseils de Voyage et des Offres Exclusives",
-      description: "Abonnez-vous à notre newsletter et recevez un code de réduction de 10% pour votre première réservation, ainsi que des conseils d'initiés pour voyager à Paris.",
+      description:
+        "Abonnez-vous à notre newsletter et recevez un code de réduction de 10% pour votre première réservation, ainsi que des conseils d'initiés pour voyager à Paris.",
       subscribe: "S'abonner",
-      privacy: "Nous respectons votre vie privée. Désabonnez-vous à tout moment.",
+      privacy:
+        "Nous respectons votre vie privée. Désabonnez-vous à tout moment.",
     },
   },
   events: {
     pageTitle: "Événements à Paris | Paris Luxe Journey",
-    pageDescription: "Découvrez les meilleurs événements, concerts, expositions et activités à Paris cette semaine et ce mois. Réservez votre transfert de luxe pour tout événement.",
+    pageDescription:
+      "Découvrez les meilleurs événements, concerts, expositions et activités à Paris cette semaine et ce mois. Réservez votre transfert de luxe pour tout événement.",
     heroTitle: "Événements à Paris",
-    heroSubtitle: "Découvrez les meilleurs concerts, expositions, spectacles et événements culturels à Paris. Réservez votre transfert de luxe pour arriver avec style.",
+    heroSubtitle:
+      "Découvrez les meilleurs concerts, expositions, spectacles et événements culturels à Paris. Réservez votre transfert de luxe pour arriver avec style.",
     liveUpdates: "Mises à Jour en Direct",
     comingSoon: "Bientôt",
     planAhead: "Planifiez à l'Avance",
@@ -728,7 +767,8 @@ export const fr: Translation = {
     bookTransfer: "Réserver un Transfert",
     readGuides: "Lire les Guides",
     ctaTitle: "Besoin d'un Transfert pour Votre Événement ?",
-    ctaDescription: "Réservez un transfert de luxe pour tout événement à Paris. Chauffeur professionnel, véhicules premium, prix fixes.",
+    ctaDescription:
+      "Réservez un transfert de luxe pour tout événement à Paris. Chauffeur professionnel, véhicules premium, prix fixes.",
     bookNow: "Réserver Maintenant",
     noEvents: "Aucun événement disponible pour le moment.",
     updatedOn: "Mis à jour le",
