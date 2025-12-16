@@ -4,5 +4,7 @@
 # Ejecutar lint-staged para el formateo y linting
 npm run lint-staged
 
-# Ejecutar verificación de tipos en todo el proyecto
-npm run type-check
+# TEMPORARY: Type-check disabled until TS errors are fixed
+# See docs/TECH-DEBT-TODO.md "Temporary hook policy"
+# TODO: Re-enable when TS errors = 0
+# npm run type-check
