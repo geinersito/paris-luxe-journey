@@ -49,10 +49,10 @@ export interface PricingResult {
  */
 export const STRIPE_FEE_CONFIG = {
   WORST_CASE_PERCENT: parseFloat(
-    process.env.STRIPE_WORST_CASE_FEE_PERCENT || "3.5",
+    (typeof process !== "undefined" && process.env?.STRIPE_WORST_CASE_FEE_PERCENT) || "3.5",
   ),
   WORST_CASE_FIXED_EUR: parseFloat(
-    process.env.STRIPE_WORST_CASE_FEE_FIXED_EUR || "0.25",
+    (typeof process !== "undefined" && process.env?.STRIPE_WORST_CASE_FEE_FIXED_EUR) || "0.25",
   ),
 };
 
