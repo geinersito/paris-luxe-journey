@@ -58,7 +58,9 @@ export const useVehicles = () => {
         // Optimización: Seleccionar solo las columnas necesarias
         const { data, error } = await supabase
           .from("vehicles")
-          .select("id, type, name, capacity, base_price, features, image_url")
+          .select(
+            "id, type, name, passenger_capacity, luggage_capacity, base_price, features, image_url, interior_image_url, description, technical_specs",
+          )
           .order("base_price", { ascending: true });
 
         // If there's an error or no data, return fallback
@@ -72,22 +74,22 @@ export const useVehicles = () => {
           return FALLBACK_VEHICLES;
         }
 
-        // Map Supabase data to Vehicle interface
-        return (data as Record<string, unknown>[]).map((item) => ({
-          id: String(item.id),
-          name: String(item.name || ""),
-          type: String(item.type || ""),
-          description: "",
-          technical_specs: "",
-          passenger_capacity: Number(item.capacity) || 0,
-          luggage_capacity: 0,
-          base_price: Number(item.base_price) || 0,
-          image_url: String(item.image_url || ""),
-          interior_image_url: "",
-          features: Array.isArray(item.features)
-            ? (item.features as string[])
-            : [],
-        }));
+        // Map Supabase data to Vehicle interface - data is already typed correctly
+        return data.map(
+          (item): Vehicle => ({
+            id: item.id,
+            name: item.name,
+            type: item.type,
+            description: item.description ?? "",
+            technical_specs: item.technical_specs ?? "",
+            passenger_capacity: item.passenger_capacity,
+            luggage_capacity: item.luggage_capacity,
+            base_price: item.base_price,
+            image_url: item.image_url ?? "",
+            interior_image_url: item.interior_image_url ?? "",
+            features: item.features ?? [],
+          }),
+        );
       } catch (err) {
         console.error("Error fetching vehicles, using fallback:", err);
         return FALLBACK_VEHICLES;
