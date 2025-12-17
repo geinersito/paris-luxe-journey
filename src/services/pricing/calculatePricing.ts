@@ -117,19 +117,9 @@ export const calculatePricing = (
     prepaidPrice = flexiblePrice - prepaidDiscount;
   }
 
-  // VALIDACIÓN DE MARGEN
-  // prepaid_price - SF_WORST_CASE(prepaid_price) - PF >= 2€ (200 céntimos)
+  // REV B: Cálculo de margen (informativo, no bloqueante)
   const stripeFee = computeWorstCaseFee(prepaidPrice);
   const marginAfterFees = prepaidPrice - stripeFee - partnerFloor;
-  const MIN_MARGIN = 200; // €2.00
-
-  if (marginAfterFees < MIN_MARGIN) {
-    throw new Error(
-      `Insufficient margin for ${routeKey} ${vehicleType}: ` +
-        `margin=${marginAfterFees}¢ (min=${MIN_MARGIN}¢). ` +
-        `prepaid=${prepaidPrice}¢, fee=${stripeFee}¢, pf=${partnerFloor}¢`,
-    );
-  }
 
   // Construir resultado
   const result: PricingResult = {
