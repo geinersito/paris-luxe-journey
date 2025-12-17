@@ -5,6 +5,19 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSelector } from "./LanguageSelector";
 import { useNavigate, useLocation } from "react-router-dom";
 
+interface DropdownItem {
+  name: string;
+  href: string;
+  disabled?: boolean;
+}
+
+interface NavItem {
+  name: string;
+  href: string;
+  hasDropdown?: boolean;
+  dropdownItems?: DropdownItem[];
+}
+
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
@@ -17,23 +30,27 @@ const Navbar = () => {
   const location = useLocation();
 
   const toggleMenu = () => setIsOpen(!isOpen);
-  const toggleServicesDropdown = () => setServicesDropdownOpen(!servicesDropdownOpen);
+  const toggleServicesDropdown = () =>
+    setServicesDropdownOpen(!servicesDropdownOpen);
 
   // Handle navigation with hash links
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+  const handleNavClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    href: string,
+  ) => {
     e.preventDefault();
 
     // If it's a hash link
-    if (href.startsWith('#')) {
+    if (href.startsWith("#")) {
       // If we're not on the home page, navigate to home with hash
-      if (location.pathname !== '/') {
+      if (location.pathname !== "/") {
         // Navigate to home with the hash - the useEffect will handle scrolling
-        navigate('/' + href);
+        navigate("/" + href);
       } else {
         // We're on home, just scroll to the section
         const element = document.querySelector(href);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       }
     } else {
@@ -49,7 +66,9 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
-      const windowHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const windowHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
       const progress = (offset / windowHeight) * 100;
 
       setScrolled(offset > 50);
@@ -66,8 +85,8 @@ const Navbar = () => {
       setLastScrollY(offset);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
   // Handle hash navigation after page load
@@ -79,7 +98,7 @@ const Navbar = () => {
       const timeoutId = setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
-          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          element.scrollIntoView({ behavior: "smooth", block: "start" });
         }
       }, 300);
 
@@ -87,7 +106,7 @@ const Navbar = () => {
     }
   }, [location]);
 
-  const navItems = [
+  const navItems: NavItem[] = [
     { name: t.nav.home, href: "/" },
     {
       name: t.nav.services,
@@ -95,8 +114,8 @@ const Navbar = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: t.services.dropdown.transfers, href: "/airports/cdg" },
-        { name: t.services.dropdown.chauffeur, href: "/booking" }
-      ]
+        { name: t.services.dropdown.chauffeur, href: "/booking" },
+      ],
     },
     {
       name: "Airports",
@@ -105,8 +124,8 @@ const Navbar = () => {
       dropdownItems: [
         { name: "CDG Airport", href: "/airports/cdg" },
         { name: "Orly Airport", href: "/airports/orly" },
-        { name: "Beauvais Airport", href: "/airports/beauvais" }
-      ]
+        { name: "Beauvais Airport", href: "/airports/beauvais" },
+      ],
     },
     { name: t.nav.excursions, href: "/excursions" },
     { name: t.nav.events || "Events", href: "/events" },
@@ -119,11 +138,11 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-500 ${
-        visible ? 'translate-y-0' : '-translate-y-full'
+        visible ? "translate-y-0" : "-translate-y-full"
       } ${
         scrolled
-          ? 'bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-lg border-b border-primary/10'
-          : 'bg-white/95 dark:bg-background/90 backdrop-blur-md shadow-sm border-b border-border'
+          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-lg border-b border-primary/10"
+          : "bg-white/95 dark:bg-background/90 backdrop-blur-md shadow-sm border-b border-border"
       }`}
     >
       {/* Scroll Progress Bar */}
@@ -137,11 +156,9 @@ const Navbar = () => {
           <div className="flex-shrink-0">
             <a
               href="/"
-              onClick={(e) => handleNavClick(e, '/')}
+              onClick={(e) => handleNavClick(e, "/")}
               className={`text-xl sm:text-2xl font-display font-bold transition-all duration-300 ${
-                scrolled
-                  ? 'text-primary'
-                  : 'text-secondary'
+                scrolled ? "text-primary" : "text-secondary"
               }`}
             >
               Paris Elite Services
@@ -149,7 +166,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:flex md:items-center md:space-x-6 lg:space-x-8">
-            {navItems.map((item) => (
+            {navItems.map((item) =>
               item.hasDropdown ? (
                 <div key={item.name} className="relative group">
                   <button
@@ -163,25 +180,28 @@ const Navbar = () => {
                     onMouseLeave={() => setServicesDropdownOpen(false)}
                   >
                     <div className="rounded-md shadow-lg bg-background border border-border overflow-hidden">
-                      {item.dropdownItems.map((dropdownItem) => (
+                      {item.dropdownItems.map((dropdownItem) =>
                         dropdownItem.disabled ? (
                           <span
                             key={dropdownItem.name}
                             className="block px-4 py-2.5 text-sm text-muted-foreground/50 cursor-not-allowed"
                           >
-                            {dropdownItem.name} <span className="text-xs">(Coming Soon)</span>
+                            {dropdownItem.name}{" "}
+                            <span className="text-xs">(Coming Soon)</span>
                           </span>
                         ) : (
                           <a
                             key={dropdownItem.name}
                             href={dropdownItem.href}
-                            onClick={(e) => handleNavClick(e, dropdownItem.href)}
+                            onClick={(e) =>
+                              handleNavClick(e, dropdownItem.href)
+                            }
                             className="block px-4 py-2.5 text-sm text-foreground hover:bg-accent hover:text-primary transition-colors duration-200"
                           >
                             {dropdownItem.name}
                           </a>
-                        )
-                      ))}
+                        ),
+                      )}
                     </div>
                   </div>
                 </div>
@@ -194,8 +214,8 @@ const Navbar = () => {
                 >
                   {item.name}
                 </a>
-              )
-            ))}
+              ),
+            )}
             <div className="ml-4">
               <LanguageSelector />
             </div>
@@ -208,7 +228,11 @@ const Navbar = () => {
               className="text-foreground hover:text-primary transition-colors duration-200"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>
@@ -217,7 +241,7 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden bg-background border-t border-border animate-slideDown">
           <div className="px-4 pt-2 pb-3 space-y-2">
-            {navItems.map((item) => (
+            {navItems.map((item) =>
               item.hasDropdown ? (
                 <div key={item.name}>
                   <button
@@ -225,29 +249,34 @@ const Navbar = () => {
                     onClick={toggleServicesDropdown}
                   >
                     {item.name}
-                    <ChevronDown className={`h-4 w-4 transform ${servicesDropdownOpen ? 'rotate-180' : ''} transition-transform`} />
+                    <ChevronDown
+                      className={`h-4 w-4 transform ${servicesDropdownOpen ? "rotate-180" : ""} transition-transform`}
+                    />
                   </button>
                   {servicesDropdownOpen && (
                     <div className="ml-4 mt-1 space-y-1">
-                      {item.dropdownItems.map((dropdownItem) => (
+                      {item.dropdownItems.map((dropdownItem) =>
                         dropdownItem.disabled ? (
                           <span
                             key={dropdownItem.name}
                             className="block px-3 py-2 text-muted-foreground/50 cursor-not-allowed"
                           >
-                            {dropdownItem.name} <span className="text-xs">(Coming Soon)</span>
+                            {dropdownItem.name}{" "}
+                            <span className="text-xs">(Coming Soon)</span>
                           </span>
                         ) : (
                           <a
                             key={dropdownItem.name}
                             href={dropdownItem.href}
                             className="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200 rounded-md hover:bg-accent"
-                            onClick={(e) => handleNavClick(e, dropdownItem.href)}
+                            onClick={(e) =>
+                              handleNavClick(e, dropdownItem.href)
+                            }
                           >
                             {dropdownItem.name}
                           </a>
-                        )
-                      ))}
+                        ),
+                      )}
                     </div>
                   )}
                 </div>
@@ -260,8 +289,8 @@ const Navbar = () => {
                 >
                   {item.name}
                 </a>
-              )
-            ))}
+              ),
+            )}
             <div className="px-3 py-2 md:hidden">
               <LanguageSelector />
             </div>
