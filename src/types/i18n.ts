@@ -8,10 +8,26 @@ export interface Translation {
     contact: string;
     fleet: string;
     excursions: string;
+    events: string;
+    blog: string;
   };
   hero: {
     title: string;
     subtitle: string;
+  };
+  exitPopup: {
+    title: string;
+    subtitle: string;
+    emailPlaceholder: string;
+    button: string;
+    benefit1: string;
+    benefit2: string;
+    benefit3: string;
+    validity: string;
+    success: string;
+    error: string;
+    invalidEmail: string;
+    sending: string;
   };
   common: {
     back: string;
@@ -137,6 +153,7 @@ export interface Translation {
   };
   faq: {
     title: string;
+    subtitle: string;
     categories: {
       bookings: string;
       services: string;
@@ -163,6 +180,7 @@ export interface Translation {
       travelGuides: string;
       privacy: string;
       terms: string;
+      faq: string;
     };
     schedule: {
       title: string;
@@ -347,6 +365,27 @@ export interface Translation {
     success: {
       title: string;
       description: string;
+      confirmationNumber: string;
+      bookingDetails: string;
+      route: string;
+      pickupDateTime: string;
+      passengers: string;
+      passenger: string;
+      luggage: string;
+      largeSuitcase: string;
+      largeSuitcases: string;
+      smallBag: string;
+      smallBags: string;
+      totalPaid: string;
+      cancellationPolicy: string;
+      freeCancellation: string;
+      partialRefund: string;
+      noRefund: string;
+      whatHappensNext: string;
+      step1: string;
+      step2: string;
+      step3: string;
+      step4: string;
       addToCalendar: string;
       backToHome: string;
     };
@@ -366,6 +405,20 @@ export interface Translation {
     flightNumberPlaceholder: string;
     specialInstructions: string;
     specialInstructionsPlaceholder: string;
+    coupon: {
+      label: string;
+      placeholder: string;
+      apply: string;
+      remove: string;
+      applied: string;
+      discount: string;
+    };
+    couponApplied: string;
+    invalidCoupon: string;
+    couponExpired: string;
+    couponError: string;
+    couponRemoved: string;
+    couponRemovedDesc: string;
     errors: {
       invalidEmail: string;
       emailDescription: string;
@@ -495,5 +548,67 @@ export interface Translation {
       whatsapp: string;
       groupsNotice: string;
     };
+  };
+  blog: {
+    title: string;
+    subtitle: string;
+    heroTitle: string;
+    heroSubtitle: string;
+    searchPlaceholder: string;
+    featured: string;
+    allArticles: string;
+    categoryArticles: string;
+    noArticles: string;
+    noArticlesFound: string;
+    relatedArticles: string;
+    needTransfer: string;
+    calculatePrice: string;
+    getQuote: string;
+    bookNow: string;
+    readyToBook: string;
+    professionalService: string;
+    freeCancellation: string;
+    flightMonitoring: string;
+    premiumVehicles: string;
+    sidebar: {
+      quickQuote: string;
+      quickQuoteDesc: string;
+      calculatePrice: string;
+      whatsapp: string;
+      popularRoutes: string;
+      fixedPrices: string;
+      available247: string;
+      flightTracking: string;
+      freeCancellation: string;
+      premiumVehicles: string;
+    };
+    newsletter: {
+      title: string;
+      description: string;
+      subscribe: string;
+      privacy: string;
+    };
+  };
+  events: {
+    pageTitle: string;
+    pageDescription: string;
+    heroTitle: string;
+    heroSubtitle: string;
+    liveUpdates: string;
+    comingSoon: string;
+    planAhead: string;
+    thisWeek: string;
+    thisMonth: string;
+    bookTransfer: string;
+    readGuides: string;
+    ctaTitle: string;
+    ctaDescription: string;
+    bookNow: string;
+    noEvents: string;
+    updatedOn: string;
+    featured: string;
+    bookRide: string;
+    officialDetails: string;
+    source: string;
   };
 }
