@@ -185,8 +185,7 @@ export const en: Translation = {
     },
     success: {
       title: "Booking Confirmed!",
-      description:
-        "We have sent an email with your booking details",
+      description: "We have sent an email with your booking details",
       confirmationNumber: "Confirmation number:",
       bookingDetails: "Booking Details",
       route: "Route",
@@ -205,15 +204,18 @@ export const en: Translation = {
       noRefund: "No refund for cancellations less than 12 hours before pickup",
       whatHappensNext: "What happens next?",
       step1: "You'll receive a confirmation email with all booking details",
-      step2: "24 hours before pickup, we'll send you your driver's contact details and photo",
-      step3: "Your driver will track your flight and adjust pickup time if needed",
+      step2:
+        "24 hours before pickup, we'll send you your driver's contact details and photo",
+      step3:
+        "Your driver will track your flight and adjust pickup time if needed",
       step4: "Your driver will wait at the arrivals hall with a name sign",
       addToCalendar: "Add to Calendar",
       backToHome: "Back to Home",
     },
     groupNotice: {
       title: "Groups of 8+ passengers",
-      description: "For groups of 8 or more passengers, please contact us via WhatsApp for a personalized quote.",
+      description:
+        "For groups of 8 or more passengers, please contact us via WhatsApp for a personalized quote.",
       cta: "Contact via WhatsApp",
     },
     passengerDetails: "Passenger Details",
@@ -252,7 +254,8 @@ export const en: Translation = {
       serviceLevelsNotLoaded: "Could not load service levels",
       selectServiceLevel: "Please select a service level",
       priceStale: "Price has changed. Please review the new price.",
-      networkError: "Network error. Please check your connection and try again.",
+      networkError:
+        "Network error. Please check your connection and try again.",
     },
     summary: {
       title: "Booking Summary",
@@ -314,8 +317,8 @@ export const en: Translation = {
         "Flight Tracking",
         "Free Waiting Time",
         "1 Luggage/Pax Included",
-        "Professional Chauffeurs"
-      ]
+        "Professional Chauffeurs",
+      ],
     },
     chauffeur: {
       title: "Private Chauffeur",
@@ -326,8 +329,8 @@ export const en: Translation = {
         "Hourly Booking Available",
         "24/7 Availability",
         "Multilingual Service",
-        "Custom Routes & Stops"
-      ]
+        "Custom Routes & Stops",
+      ],
     },
     cityTours: {
       title: "City Tours",
@@ -338,8 +341,8 @@ export const en: Translation = {
         "Customized Itineraries",
         "Professional Drivers",
         "Premium Vehicles",
-        "Mercedes E-Class & V-Class"
-      ]
+        "Mercedes E-Class & V-Class",
+      ],
     },
     dayTrips: {
       title: "Day Trips",
@@ -474,6 +477,7 @@ export const en: Translation = {
   },
   faq: {
     title: "Frequently Asked Questions",
+    subtitle: "Find answers to common questions about our services",
     categories: {
       bookings: "Bookings",
       services: "Services",
@@ -560,6 +564,7 @@ export const en: Translation = {
       travelGuides: "Travel Guides",
       privacy: "Privacy Policy",
       terms: "Terms of Service",
+      faq: "FAQ",
     },
     schedule: {
       title: "Opening Hours",
@@ -573,54 +578,67 @@ export const en: Translation = {
   avoidFakeTaxis: {
     badge: "Safety Guide",
     hero: {
-      title: "Fake Taxis at Paris Airports: How to Avoid Scams & Book a Safe Transfer",
-      subtitle: "Thousands of tourists fall victim to fake taxi scams at CDG and Orly every year. Learn how to spot them and choose a licensed, fixed-price transfer instead.",
+      title:
+        "Fake Taxis at Paris Airports: How to Avoid Scams & Book a Safe Transfer",
+      subtitle:
+        "Thousands of tourists fall victim to fake taxi scams at CDG and Orly every year. Learn how to spot them and choose a licensed, fixed-price transfer instead.",
     },
     problem: {
       title: "The Problem is Real",
-      paragraph1: "You've just landed at Charles de Gaulle after a long flight. You're tired, you have luggage, and you just want to get to your hotel. Outside arrivals, someone approaches you offering a 'taxi' with a great price. Sounds convenient, right? Wrong.",
-      paragraph2: "This is how thousands of tourists get scammed every year in Paris airports. The fake taxi scam is one of the most common tourist traps in Paris, costing victims hundreds of euros and ruining their first impression of the city.",
+      paragraph1:
+        "You've just landed at Charles de Gaulle after a long flight. You're tired, you have luggage, and you just want to get to your hotel. Outside arrivals, someone approaches you offering a 'taxi' with a great price. Sounds convenient, right? Wrong.",
+      paragraph2:
+        "This is how thousands of tourists get scammed every year in Paris airports. The fake taxi scam is one of the most common tourist traps in Paris, costing victims hundreds of euros and ruining their first impression of the city.",
     },
     howScamWorks: {
       title: "How the Scam Works",
-      paragraph1: "Fake taxi drivers target tourists at CDG, Orly, and Beauvais. They wear fake badges, use unmarked cars, and quote low prices to lure you in.",
-      paragraph2: "Once you're in the car, they take longer routes, claim the meter is 'broken', or demand 3-4x the normal fare. Some even threaten passengers who refuse to pay. By the time you realize what's happening, you're already in the car and far from the airport.",
+      paragraph1:
+        "Fake taxi drivers target tourists at CDG, Orly, and Beauvais. They wear fake badges, use unmarked cars, and quote low prices to lure you in.",
+      paragraph2:
+        "Once you're in the car, they take longer routes, claim the meter is 'broken', or demand 3-4x the normal fare. Some even threaten passengers who refuse to pay. By the time you realize what's happening, you're already in the car and far from the airport.",
     },
     redFlags: {
       title: "Red Flags to Watch For",
       flag1: {
         title: "Driver approaches you inside the terminal",
-        description: "Real taxis wait at official ranks outside. If someone approaches you inside offering a taxi, it's a scam.",
+        description:
+          "Real taxis wait at official ranks outside. If someone approaches you inside offering a taxi, it's a scam.",
       },
       flag2: {
         title: "No taxi meter or official license displayed",
-        description: "Every legal taxi in Paris must have a visible meter and license number.",
+        description:
+          "Every legal taxi in Paris must have a visible meter and license number.",
       },
       flag3: {
-        title: "Car has no \"TAXI PARISIEN\" roof sign",
-        description: "Official taxis have an illuminated roof sign. No sign = not a real taxi.",
+        title: 'Car has no "TAXI PARISIEN" roof sign',
+        description:
+          "Official taxis have an illuminated roof sign. No sign = not a real taxi.",
       },
       flag4: {
-        title: "Driver insists on cash only and quotes a \"special price\"",
-        description: "French law requires taxis to accept cards. Cash-only is a major red flag.",
+        title: 'Driver insists on cash only and quotes a "special price"',
+        description:
+          "French law requires taxis to accept cards. Cash-only is a major red flag.",
       },
       flag5: {
         title: "Vehicle is unmarked or has handwritten signs",
-        description: "Official taxis have professional signage and branding. Handwritten signs are a scam.",
+        description:
+          "Official taxis have professional signage and branding. Handwritten signs are a scam.",
       },
     },
     protection: {
       title: "How to Protect Yourself",
       intro: "If you must take a taxi at the airport:",
-      tip1: "Only use official taxi ranks (follow \"TAXI\" signs)",
+      tip1: 'Only use official taxi ranks (follow "TAXI" signs)',
       tip2: "Check the vehicle has a roof light and meter",
       tip3: "Ask for an estimate before getting in",
       tip4: "Insist on paying by card (legal requirement in France)",
-      betterOption: "Better option: Book a licensed private transfer in advance with a fixed price.",
+      betterOption:
+        "Better option: Book a licensed private transfer in advance with a fixed price.",
     },
     whyVTC: {
       title: "Why a Licensed VTC Transfer is the Safe Alternative",
-      intro: "Unlike street taxis, licensed VTC (private hire) services like Paris Elite Services offer:",
+      intro:
+        "Unlike street taxis, licensed VTC (private hire) services like Paris Elite Services offer:",
       benefit1: {
         title: "Fixed price confirmed before you travel",
         description: "No surprises, no meter tricks",
@@ -648,7 +666,8 @@ export const en: Translation = {
     },
     pricing: {
       title: "What You Should Actually Pay",
-      intro: "Here's what you should expect to pay for a safe, licensed transfer from Paris airports:",
+      intro:
+        "Here's what you should expect to pay for a safe, licensed transfer from Paris airports:",
       tableHeaders: {
         route: "Route",
         passengers1to3: "1-3 Passengers",
@@ -659,14 +678,17 @@ export const en: Translation = {
         orly: "Orly Airport → Paris",
         beauvais: "Beauvais Airport → Paris",
       },
-      warning: "⚠️ Warning: If someone quotes you €30-40 for CDG-Paris, it's either a scam or they'll add hidden fees later. The official taxi fare from CDG to Paris is around €50-60, and a licensed VTC with fixed price is €70.",
+      warning:
+        "⚠️ Warning: If someone quotes you €30-40 for CDG-Paris, it's either a scam or they'll add hidden fees later. The official taxi fare from CDG to Paris is around €50-60, and a licensed VTC with fixed price is €70.",
     },
     cta: {
       title: "Don't Risk Your Paris Arrival",
-      subtitle: "Book your safe, licensed airport transfer now with fixed prices and professional service.",
+      subtitle:
+        "Book your safe, licensed airport transfer now with fixed prices and professional service.",
       bookNow: "Check Prices & Book Now",
       whatsapp: "WhatsApp Us",
-      groupsNotice: "For groups of 8+ passengers or special requests, contact us via WhatsApp: +33 6 68 25 11 02",
+      groupsNotice:
+        "For groups of 8+ passengers or special requests, contact us via WhatsApp: +33 6 68 25 11 02",
     },
   },
   blog: {
@@ -704,16 +726,19 @@ export const en: Translation = {
     },
     newsletter: {
       title: "Get Travel Tips & Exclusive Offers",
-      description: "Subscribe to our newsletter and receive a 10% discount code for your first booking, plus insider tips for traveling in Paris.",
+      description:
+        "Subscribe to our newsletter and receive a 10% discount code for your first booking, plus insider tips for traveling in Paris.",
       subscribe: "Subscribe",
       privacy: "We respect your privacy. Unsubscribe at any time.",
     },
   },
   events: {
     pageTitle: "Events in Paris | Paris Luxe Journey",
-    pageDescription: "Discover the best events, concerts, exhibitions and activities happening in Paris this week and month. Book your luxury transfer to any event.",
+    pageDescription:
+      "Discover the best events, concerts, exhibitions and activities happening in Paris this week and month. Book your luxury transfer to any event.",
     heroTitle: "Events in Paris",
-    heroSubtitle: "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style.",
+    heroSubtitle:
+      "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style.",
     liveUpdates: "Live Updates",
     comingSoon: "Coming Soon",
     planAhead: "Plan Ahead",
@@ -722,7 +747,8 @@ export const en: Translation = {
     bookTransfer: "Book Event Transfer",
     readGuides: "Read Travel Guides",
     ctaTitle: "Need a Ride to Your Event?",
-    ctaDescription: "Book a luxury transfer to any event in Paris. Professional chauffeur, premium vehicles, fixed prices.",
+    ctaDescription:
+      "Book a luxury transfer to any event in Paris. Professional chauffeur, premium vehicles, fixed prices.",
     bookNow: "Book Now",
     noEvents: "No events available at the moment.",
     updatedOn: "Updated on",

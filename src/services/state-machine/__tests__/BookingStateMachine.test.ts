@@ -77,11 +77,9 @@ describe('BookingStateMachine', () => {
 
     it('should allow cancellation from most states', () => {
       const states: BookingStatus[] = [
-        'pending_payment',
+        'pending',
         'confirmed',
-        'partner_assigned',
-        'hold_pending',
-        'hold_confirmed',
+        'driver_assigned',
         'in_progress',
       ];
 

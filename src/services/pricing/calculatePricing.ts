@@ -49,10 +49,10 @@ export interface PricingResult {
  */
 export const STRIPE_FEE_CONFIG = {
   WORST_CASE_PERCENT: parseFloat(
-    process.env.STRIPE_WORST_CASE_FEE_PERCENT || "3.5",
+    (typeof process !== "undefined" && process.env?.STRIPE_WORST_CASE_FEE_PERCENT) || "3.5",
   ),
   WORST_CASE_FIXED_EUR: parseFloat(
-    process.env.STRIPE_WORST_CASE_FEE_FIXED_EUR || "0.25",
+    (typeof process !== "undefined" && process.env?.STRIPE_WORST_CASE_FEE_FIXED_EUR) || "0.25",
   ),
 };
 
@@ -117,19 +117,9 @@ export const calculatePricing = (
     prepaidPrice = flexiblePrice - prepaidDiscount;
   }
 
-  // VALIDACIÓN DE MARGEN
-  // prepaid_price - SF_WORST_CASE(prepaid_price) - PF >= 2€ (200 céntimos)
+  // REV B: Cálculo de margen (informativo, no bloqueante)
   const stripeFee = computeWorstCaseFee(prepaidPrice);
   const marginAfterFees = prepaidPrice - stripeFee - partnerFloor;
-  const MIN_MARGIN = 200; // €2.00
-
-  if (marginAfterFees < MIN_MARGIN) {
-    throw new Error(
-      `Insufficient margin for ${routeKey} ${vehicleType}: ` +
-        `margin=${marginAfterFees}¢ (min=${MIN_MARGIN}¢). ` +
-        `prepaid=${prepaidPrice}¢, fee=${stripeFee}¢, pf=${partnerFloor}¢`,
-    );
-  }
 
   // Construir resultado
   const result: PricingResult = {

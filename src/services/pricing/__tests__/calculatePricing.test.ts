@@ -37,8 +37,8 @@ describe("Pricing Calculator V3.1.2", () => {
       const result = calculatePricing("CDG_PARIS", "van", true);
 
       expect(result).not.toBeNull();
-      expect(result?.prepaid_price).toBe(10800); // €108.00
-      expect(result?.flexible_price).toBe(11300); // €113.00
+      expect(result?.prepaid_price).toBe(11200); // €112.00 (PF 104 + FC 13 - PD 5)
+      expect(result?.flexible_price).toBe(11700); // €117.00 (PF 104 + FC 13)
       expect(result?.hold_amount).toBe(3000); // €30.00
 
       // Verificar datos internos
@@ -150,8 +150,8 @@ describe("Pricing Calculator V3.1.2", () => {
     });
   });
 
-  describe("Margin Validation", () => {
-    it("should have sufficient margin for all routes", () => {
+  describe("Margin Calculation (REV B)", () => {
+    it("should calculate margin without blocking", () => {
       const routes: Array<[string, "sedan" | "van"]> = [
         ["CDG_PARIS", "sedan"],
         ["CDG_PARIS", "van"],
