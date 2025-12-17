@@ -48,13 +48,12 @@ export default function BlogCategory() {
   return (
     <>
       <Helmet>
-        <title>{categoryMeta.seo.title[currentLang]}</title>
-        <meta name="description" content={categoryMeta.seo.description[currentLang]} />
-        <meta name="keywords" content={categoryMeta.seo.keywords[currentLang].join(', ')} />
-        
+        <title>{categoryMeta.seo.metaTitle[currentLang]}</title>
+        <meta name="description" content={categoryMeta.seo.metaDescription[currentLang]} />
+
         {/* Open Graph */}
-        <meta property="og:title" content={categoryMeta.seo.title[currentLang]} />
-        <meta property="og:description" content={categoryMeta.seo.description[currentLang]} />
+        <meta property="og:title" content={categoryMeta.seo.metaTitle[currentLang]} />
+        <meta property="og:description" content={categoryMeta.seo.metaDescription[currentLang]} />
         <meta property="og:type" content="website" />
 
         {/* Canonical URL */}

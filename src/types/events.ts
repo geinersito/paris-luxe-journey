@@ -1,6 +1,9 @@
 // Events Feed types
 
-export type { LocalizedString, Language } from './blog'
+import type { LocalizedString, Language } from './blog'
+
+// Re-export for convenience
+export type { LocalizedString, Language }
 
 export type EventCategory =
   | 'exhibition' 

@@ -68,19 +68,8 @@ export function generateArticleJsonLd(
 ): JsonLdArticle {
   const category = getCategoryBySlug(post.category)
 
-  // Handle keywords - can be either LocalizedString or string[]
-  let keywords: string = ''
-  if (post.seo.keywords) {
-    if (Array.isArray(post.seo.keywords)) {
-      // If it's a simple array
-      keywords = post.seo.keywords.join(', ')
-    } else if (typeof post.seo.keywords === 'object' && post.seo.keywords[lang]) {
-      // If it's a LocalizedString object
-      keywords = Array.isArray(post.seo.keywords[lang])
-        ? post.seo.keywords[lang].join(', ')
-        : post.seo.keywords[lang]
-    }
-  }
+  // Handle keywords - BlogPostMeta.seo.keywords is always string[]
+  const keywords: string = post.seo.keywords ? post.seo.keywords.join(', ') : ''
 
   return {
     '@context': 'https://schema.org',
