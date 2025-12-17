@@ -51,14 +51,16 @@ const FALLBACK_VEHICLES: Vehicle[] = [
 ];
 
 export const useVehicles = () => {
-  return useQuery({
+  return useQuery<Vehicle[], Error>({
     queryKey: ["vehicles"],
-    queryFn: async () => {
+    queryFn: async (): Promise<Vehicle[]> => {
       try {
         // Optimización: Seleccionar solo las columnas necesarias
         const { data, error } = await supabase
           .from("vehicles")
-          .select("id, type, name, capacity, base_price, features, image_url")
+          .select(
+            "id, type, name, passenger_capacity, luggage_capacity, base_price, features, image_url, interior_image_url, description, technical_specs",
+          )
           .order("base_price", { ascending: true });
 
         // If there's an error or no data, return fallback
@@ -72,7 +74,22 @@ export const useVehicles = () => {
           return FALLBACK_VEHICLES;
         }
 
-        return data;
+        // Map Supabase data to Vehicle interface
+        return data.map(
+          (item): Vehicle => ({
+            id: item.id,
+            name: item.name,
+            type: item.type,
+            description: item.description ?? "",
+            technical_specs: item.technical_specs ?? "",
+            passenger_capacity: item.passenger_capacity,
+            luggage_capacity: item.luggage_capacity,
+            base_price: item.base_price,
+            image_url: item.image_url ?? "",
+            interior_image_url: item.interior_image_url ?? "",
+            features: item.features ?? [],
+          }),
+        );
       } catch (err) {
         console.error("Error fetching vehicles, using fallback:", err);
         return FALLBACK_VEHICLES;
@@ -81,6 +98,6 @@ export const useVehicles = () => {
     // Always return fallback on error instead of throwing
     retry: false,
     staleTime: 10 * 60 * 1000, // Aumentado a 10 minutos (los vehículos no cambian frecuentemente)
-    cacheTime: 30 * 60 * 1000, // Cache por 30 minutos
+    gcTime: 30 * 60 * 1000, // Cache por 30 minutos (renamed from cacheTime in @tanstack/react-query v5)
   });
 };
