@@ -32,9 +32,9 @@ SUPABASE_URL=https://xxxxx.supabase.co
 SUPABASE_SERVICE_ROLE_KEY=eyJxxxxx
 VITE_SUPABASE_ANON_KEY=eyJxxxxx
 
-# Pricing
-STRIPE_WORST_CASE_FEE_PERCENT=3.5
-STRIPE_WORST_CASE_FEE_FIXED_EUR=0.25
+# Pricing (OBSOLETO - REV B: valores hardcoded en calculatePricing.ts)
+# STRIPE_WORST_CASE_FEE_PERCENT=3.5
+# STRIPE_WORST_CASE_FEE_FIXED_EUR=0.25
 
 # Notificaciones (opcional para staging)
 TWILIO_ACCOUNT_SID=ACxxxxx

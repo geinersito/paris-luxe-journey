@@ -107,8 +107,8 @@ cp .env.v312.example .env.local
 # Stripe
 STRIPE_SECRET_KEY=sk_live_...
 STRIPE_WEBHOOK_SECRET_V312=whsec_...
-STRIPE_WORST_CASE_FEE_PERCENT=3.5
-STRIPE_WORST_CASE_FEE_FIXED_EUR=0.25
+# OBSOLETO (REV B): STRIPE_WORST_CASE_FEE_PERCENT=3.5
+# OBSOLETO (REV B): STRIPE_WORST_CASE_FEE_FIXED_EUR=0.25
 
 # Supabase
 SUPABASE_URL=https://your-project.supabase.co
@@ -119,14 +119,16 @@ PRICING_VERSION=v3.1.2
 ENABLE_V312_SYSTEM=true
 ```
 
+⚠️ **Nota REV B:** Los valores de Stripe fee están hardcoded en `calculatePricing.ts` (3.5% + €0.25).
+
 ### 3.3 Configurar en Supabase
 
 1. Ir a **Supabase Dashboard > Settings > Edge Functions**
 2. Agregar variables de entorno:
    - `STRIPE_SECRET_KEY`
    - `STRIPE_WEBHOOK_SECRET_V312`
-   - `STRIPE_WORST_CASE_FEE_PERCENT`
-   - `STRIPE_WORST_CASE_FEE_FIXED_EUR`
+   - ~~`STRIPE_WORST_CASE_FEE_PERCENT`~~ (OBSOLETO - REV B)
+   - ~~`STRIPE_WORST_CASE_FEE_FIXED_EUR`~~ (OBSOLETO - REV B)
 
 ---
 

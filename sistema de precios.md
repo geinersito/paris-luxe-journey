@@ -109,9 +109,15 @@ Prioridades: P0 (Hold), P1 (Pricing), P2 (Panel)
 
 **Tarea 1.2: Variables de Entorno SF_WORST_CASE**
 
-- [ ] `STRIPE_WORST_CASE_FEE_PERCENT=3.5`
-- [ ] `STRIPE_WORST_CASE_FEE_FIXED=0.25`
-- [ ] Endpoint admin `POST /admin/sf-config` (requiere auth, audit log, valida rangos: percent 0-10, fixed 0-2 EUR)
+⚠️ **OBSOLETO (REV B):** Estos valores ahora están hardcoded en `calculatePricing.ts`:
+```typescript
+WORST_CASE_PERCENT: 3.5,
+WORST_CASE_FIXED_EUR: 0.25,
+```
+
+- [ ] ~~`STRIPE_WORST_CASE_FEE_PERCENT=3.5`~~ (OBSOLETO)
+- [ ] ~~`STRIPE_WORST_CASE_FEE_FIXED=0.25`~~ (OBSOLETO)
+- [ ] ~~Endpoint admin `POST /admin/sf-config`~~ (NO NECESARIO)
 
 ---
 
