@@ -51,9 +51,9 @@ const FALLBACK_VEHICLES: Vehicle[] = [
 ];
 
 export const useVehicles = () => {
-  return useQuery({
+  return useQuery<Vehicle[]>({
     queryKey: ["vehicles"],
-    queryFn: async () => {
+    queryFn: async (): Promise<Vehicle[]> => {
       try {
         // Optimización: Seleccionar solo las columnas necesarias
         const { data, error } = await supabase
@@ -72,7 +72,22 @@ export const useVehicles = () => {
           return FALLBACK_VEHICLES;
         }
 
-        return data;
+        // Map Supabase data to Vehicle interface
+        return (data as Record<string, unknown>[]).map((item) => ({
+          id: String(item.id),
+          name: String(item.name || ""),
+          type: String(item.type || ""),
+          description: "",
+          technical_specs: "",
+          passenger_capacity: Number(item.capacity) || 0,
+          luggage_capacity: 0,
+          base_price: Number(item.base_price) || 0,
+          image_url: String(item.image_url || ""),
+          interior_image_url: "",
+          features: Array.isArray(item.features)
+            ? (item.features as string[])
+            : [],
+        }));
       } catch (err) {
         console.error("Error fetching vehicles, using fallback:", err);
         return FALLBACK_VEHICLES;
@@ -81,6 +96,6 @@ export const useVehicles = () => {
     // Always return fallback on error instead of throwing
     retry: false,
     staleTime: 10 * 60 * 1000, // Aumentado a 10 minutos (los vehículos no cambian frecuentemente)
-    cacheTime: 30 * 60 * 1000, // Cache por 30 minutos
+    gcTime: 30 * 60 * 1000, // Cache por 30 minutos (renamed from cacheTime in @tanstack/react-query v5)
   });
 };
