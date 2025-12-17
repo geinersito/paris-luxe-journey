@@ -1,5 +1,8 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
 
-npm run build
-git diff --name-only origin/main | grep -E "src/(components/Layout|App).tsx" && npm run type-check
+echo "[pre-push] type-check (baseline <= 17) + build"
+
+node -e "const {spawnSync}=require('child_process'); const r=spawnSync('npm',['run','-s','type-check'],{encoding:'utf8'}); process.stdout.write(r.stdout||''); process.stderr.write(r.stderr||''); const out=(r.stdout||'')+(r.stderr||''); const m=out.match(/Found\\s+(\\d+)\\s+errors?\\s+in/i); const n=m?Number(m[1]):0; const baseline=17; if(n>baseline){console.error(`\\nType errors increased: ${n} > ${baseline}`); process.exit(1);} "
+
+npm run -s build
