@@ -155,7 +155,8 @@ export const es: Translation = {
     validatingPrice: "Validando precio...",
     submit: "Reservar Ahora",
     submitButton: "Ver Tu Precio Fijo",
-    noPaymentRequired: "No se requiere pago - el siguiente paso muestra tu precio final",
+    noPaymentRequired:
+      "No se requiere pago - el siguiente paso muestra tu precio final",
     extras: {
       title: "Servicios Adicionales",
       tourGuide: "Guía Turístico",
@@ -199,8 +200,7 @@ export const es: Translation = {
     },
     success: {
       title: "¡Reserva Confirmada!",
-      description:
-        "Te hemos enviado un email con los detalles de tu reserva",
+      description: "Te hemos enviado un email con los detalles de tu reserva",
       confirmationNumber: "Número de confirmación:",
       bookingDetails: "Detalles de la Reserva",
       route: "Ruta",
@@ -214,20 +214,28 @@ export const es: Translation = {
       smallBags: "bolsos pequeños",
       totalPaid: "Total Pagado:",
       cancellationPolicy: "Política de Cancelación",
-      freeCancellation: "Cancelación gratuita hasta 24 horas antes de la recogida",
-      partialRefund: "Reembolso del 50% para cancelaciones 12-24 horas antes de la recogida",
-      noRefund: "Sin reembolso para cancelaciones con menos de 12 horas antes de la recogida",
+      freeCancellation:
+        "Cancelación gratuita hasta 24 horas antes de la recogida",
+      partialRefund:
+        "Reembolso del 50% para cancelaciones 12-24 horas antes de la recogida",
+      noRefund:
+        "Sin reembolso para cancelaciones con menos de 12 horas antes de la recogida",
       whatHappensNext: "¿Qué sucede ahora?",
-      step1: "Recibirás un email de confirmación con todos los detalles de la reserva",
-      step2: "24 horas antes de la recogida, te enviaremos los datos de contacto y foto de tu conductor",
-      step3: "Tu conductor rastreará tu vuelo y ajustará la hora de recogida si es necesario",
-      step4: "Tu conductor te esperará en la sala de llegadas con un cartel con tu nombre",
+      step1:
+        "Recibirás un email de confirmación con todos los detalles de la reserva",
+      step2:
+        "24 horas antes de la recogida, te enviaremos los datos de contacto y foto de tu conductor",
+      step3:
+        "Tu conductor rastreará tu vuelo y ajustará la hora de recogida si es necesario",
+      step4:
+        "Tu conductor te esperará en la sala de llegadas con un cartel con tu nombre",
       addToCalendar: "Añadir al Calendario",
       backToHome: "Volver al Inicio",
     },
     groupNotice: {
       title: "Grupos de 8+ pasajeros",
-      description: "Para grupos de 8 o más pasajeros, por favor contáctenos vía WhatsApp para un presupuesto personalizado.",
+      description:
+        "Para grupos de 8 o más pasajeros, por favor contáctenos vía WhatsApp para un presupuesto personalizado.",
       cta: "Contactar vía WhatsApp",
     },
     errors: {
@@ -254,7 +262,8 @@ export const es: Translation = {
       serviceLevelsNotLoaded: "No se pudieron cargar los niveles de servicio",
       selectServiceLevel: "Por favor selecciona un nivel de servicio",
       priceStale: "El precio ha cambiado. Por favor revisa el nuevo precio.",
-      networkError: "Error de red. Por favor verifica tu conexión e intenta de nuevo.",
+      networkError:
+        "Error de red. Por favor verifica tu conexión e intenta de nuevo.",
     },
     summary: {
       title: "Resumen de la Reserva",
@@ -316,8 +325,8 @@ export const es: Translation = {
         "Seguimiento de Vuelos",
         "Tiempo de Espera Gratis",
         "1 Maleta/Pax Incluida",
-        "Chóferes Profesionales"
-      ]
+        "Chóferes Profesionales",
+      ],
     },
     chauffeur: {
       title: "Chófer Privado",
@@ -327,8 +336,8 @@ export const es: Translation = {
         "Reserva por Horas Disponible",
         "Disponibilidad 24/7",
         "Servicio Multilingüe",
-        "Rutas y Paradas Personalizadas"
-      ]
+        "Rutas y Paradas Personalizadas",
+      ],
     },
     cityTours: {
       title: "Tours por la Ciudad",
@@ -339,8 +348,8 @@ export const es: Translation = {
         "Itinerarios Personalizados",
         "Chóferes Profesionales",
         "Vehículos Premium",
-        "Mercedes Clase E y Clase V"
-      ]
+        "Mercedes Clase E y Clase V",
+      ],
     },
     dayTrips: {
       title: "Excursiones",
@@ -490,6 +499,7 @@ export const es: Translation = {
       travelGuides: "Guías de Viaje",
       privacy: "Política de Privacidad",
       terms: "Términos de Servicio",
+      faq: "Preguntas Frecuentes",
     },
     schedule: {
       title: "Horario de Atención",
@@ -502,6 +512,8 @@ export const es: Translation = {
   },
   faq: {
     title: "Preguntas Frecuentes",
+    subtitle:
+      "Encuentra respuestas a preguntas comunes sobre nuestros servicios",
     categories: {
       bookings: "Reservas",
       services: "Servicios",
@@ -579,54 +591,68 @@ export const es: Translation = {
   avoidFakeTaxis: {
     badge: "Guía de Seguridad",
     hero: {
-      title: "Taxis Falsos en Aeropuertos de París: Cómo Evitar Estafas y Reservar un Traslado Seguro",
-      subtitle: "Miles de turistas son víctimas de estafas de taxis falsos en CDG y Orly cada año. Aprende a identificarlos y elige un traslado con licencia y precio fijo.",
+      title:
+        "Taxis Falsos en Aeropuertos de París: Cómo Evitar Estafas y Reservar un Traslado Seguro",
+      subtitle:
+        "Miles de turistas son víctimas de estafas de taxis falsos en CDG y Orly cada año. Aprende a identificarlos y elige un traslado con licencia y precio fijo.",
     },
     problem: {
       title: "El Problema es Real",
-      paragraph1: "Acabas de aterrizar en Charles de Gaulle después de un largo vuelo. Estás cansado, tienes equipaje y solo quieres llegar a tu hotel. Fuera de llegadas, alguien se acerca ofreciéndote un 'taxi' con un precio excelente. Suena conveniente, ¿verdad? Incorrecto.",
-      paragraph2: "Así es como miles de turistas son estafados cada año en los aeropuertos de París. La estafa del taxi falso es una de las trampas turísticas más comunes en París, costando a las víctimas cientos de euros y arruinando su primera impresión de la ciudad.",
+      paragraph1:
+        "Acabas de aterrizar en Charles de Gaulle después de un largo vuelo. Estás cansado, tienes equipaje y solo quieres llegar a tu hotel. Fuera de llegadas, alguien se acerca ofreciéndote un 'taxi' con un precio excelente. Suena conveniente, ¿verdad? Incorrecto.",
+      paragraph2:
+        "Así es como miles de turistas son estafados cada año en los aeropuertos de París. La estafa del taxi falso es una de las trampas turísticas más comunes en París, costando a las víctimas cientos de euros y arruinando su primera impresión de la ciudad.",
     },
     howScamWorks: {
       title: "Cómo Funciona la Estafa",
-      paragraph1: "Los conductores de taxis falsos se dirigen a turistas en CDG, Orly y Beauvais. Usan insignias falsas, coches sin identificación y cotizan precios bajos para atraerte.",
-      paragraph2: "Una vez que estás en el coche, toman rutas más largas, afirman que el taxímetro está 'roto' o exigen 3-4 veces la tarifa normal. Algunos incluso amenazan a los pasajeros que se niegan a pagar. Cuando te das cuenta de lo que está pasando, ya estás en el coche y lejos del aeropuerto.",
+      paragraph1:
+        "Los conductores de taxis falsos se dirigen a turistas en CDG, Orly y Beauvais. Usan insignias falsas, coches sin identificación y cotizan precios bajos para atraerte.",
+      paragraph2:
+        "Una vez que estás en el coche, toman rutas más largas, afirman que el taxímetro está 'roto' o exigen 3-4 veces la tarifa normal. Algunos incluso amenazan a los pasajeros que se niegan a pagar. Cuando te das cuenta de lo que está pasando, ya estás en el coche y lejos del aeropuerto.",
     },
     redFlags: {
       title: "Señales de Alerta a Vigilar",
       flag1: {
         title: "El conductor se acerca a ti dentro de la terminal",
-        description: "Los taxis reales esperan en paradas oficiales afuera. Si alguien se acerca a ti dentro ofreciendo un taxi, es una estafa.",
+        description:
+          "Los taxis reales esperan en paradas oficiales afuera. Si alguien se acerca a ti dentro ofreciendo un taxi, es una estafa.",
       },
       flag2: {
         title: "Sin taxímetro o licencia oficial visible",
-        description: "Todo taxi legal en París debe tener un taxímetro visible y número de licencia.",
+        description:
+          "Todo taxi legal en París debe tener un taxímetro visible y número de licencia.",
       },
       flag3: {
-        title: "El coche no tiene letrero de techo \"TAXI PARISIEN\"",
-        description: "Los taxis oficiales tienen un letrero de techo iluminado. Sin letrero = no es un taxi real.",
+        title: 'El coche no tiene letrero de techo "TAXI PARISIEN"',
+        description:
+          "Los taxis oficiales tienen un letrero de techo iluminado. Sin letrero = no es un taxi real.",
       },
       flag4: {
-        title: "El conductor insiste en efectivo solo y cotiza un \"precio especial\"",
-        description: "La ley francesa requiere que los taxis acepten tarjetas. Solo efectivo es una gran señal de alerta.",
+        title:
+          'El conductor insiste en efectivo solo y cotiza un "precio especial"',
+        description:
+          "La ley francesa requiere que los taxis acepten tarjetas. Solo efectivo es una gran señal de alerta.",
       },
       flag5: {
         title: "Vehículo sin identificación o con letreros escritos a mano",
-        description: "Los taxis oficiales tienen señalización profesional y marca. Los letreros escritos a mano son una estafa.",
+        description:
+          "Los taxis oficiales tienen señalización profesional y marca. Los letreros escritos a mano son una estafa.",
       },
     },
     protection: {
       title: "Cómo Protegerte",
       intro: "Si debes tomar un taxi en el aeropuerto:",
-      tip1: "Solo usa paradas oficiales de taxis (sigue las señales \"TAXI\")",
+      tip1: 'Solo usa paradas oficiales de taxis (sigue las señales "TAXI")',
       tip2: "Verifica que el vehículo tenga luz de techo y taxímetro",
       tip3: "Pide un presupuesto antes de subir",
       tip4: "Insiste en pagar con tarjeta (requisito legal en Francia)",
-      betterOption: "Mejor opción: Reserva un traslado privado con licencia por adelantado con precio fijo.",
+      betterOption:
+        "Mejor opción: Reserva un traslado privado con licencia por adelantado con precio fijo.",
     },
     whyVTC: {
       title: "Por Qué un Traslado VTC con Licencia es la Alternativa Segura",
-      intro: "A diferencia de los taxis de la calle, los servicios VTC (alquiler privado) con licencia como Paris Elite Services ofrecen:",
+      intro:
+        "A diferencia de los taxis de la calle, los servicios VTC (alquiler privado) con licencia como Paris Elite Services ofrecen:",
       benefit1: {
         title: "Precio fijo confirmado antes de viajar",
         description: "Sin sorpresas, sin trucos de taxímetro",
@@ -654,7 +680,8 @@ export const es: Translation = {
     },
     pricing: {
       title: "Lo Que Deberías Pagar Realmente",
-      intro: "Esto es lo que deberías esperar pagar por un traslado seguro y con licencia desde los aeropuertos de París:",
+      intro:
+        "Esto es lo que deberías esperar pagar por un traslado seguro y con licencia desde los aeropuertos de París:",
       tableHeaders: {
         route: "Ruta",
         passengers1to3: "1-3 Pasajeros",
@@ -665,27 +692,33 @@ export const es: Translation = {
         orly: "Aeropuerto Orly → París",
         beauvais: "Aeropuerto Beauvais → París",
       },
-      warning: "⚠️ Advertencia: Si alguien te cotiza €30-40 para CDG-París, es una estafa o añadirán cargos ocultos después. La tarifa oficial de taxi desde CDG a París es alrededor de €50-60, y un VTC con licencia con precio fijo es €70.",
+      warning:
+        "⚠️ Advertencia: Si alguien te cotiza €30-40 para CDG-París, es una estafa o añadirán cargos ocultos después. La tarifa oficial de taxi desde CDG a París es alrededor de €50-60, y un VTC con licencia con precio fijo es €70.",
     },
     cta: {
       title: "No Arriesgues Tu Llegada a París",
-      subtitle: "Reserva tu traslado de aeropuerto seguro y con licencia ahora con precios fijos y servicio profesional.",
+      subtitle:
+        "Reserva tu traslado de aeropuerto seguro y con licencia ahora con precios fijos y servicio profesional.",
       bookNow: "Ver Precios y Reservar Ahora",
       whatsapp: "Escríbenos por WhatsApp",
-      groupsNotice: "Para grupos de 8+ pasajeros o solicitudes especiales, contáctanos vía WhatsApp: +33 6 68 25 11 02",
+      groupsNotice:
+        "Para grupos de 8+ pasajeros o solicitudes especiales, contáctanos vía WhatsApp: +33 6 68 25 11 02",
     },
   },
   blog: {
     title: "Blog de Viajes",
     subtitle: "Consejos expertos, guías e información para tu viaje a París",
     heroTitle: "Blog de Viajes",
-    heroSubtitle: "Consejos expertos, guías e información para tu viaje a París",
+    heroSubtitle:
+      "Consejos expertos, guías e información para tu viaje a París",
     searchPlaceholder: "Buscar artículos...",
     featured: "Artículos Destacados",
     allArticles: "Todos los Artículos",
     categoryArticles: "Artículos",
-    noArticles: "No se encontraron artículos. Prueba con otra búsqueda o categoría.",
-    noArticlesFound: "No se encontraron artículos. Prueba con otro término de búsqueda.",
+    noArticles:
+      "No se encontraron artículos. Prueba con otra búsqueda o categoría.",
+    noArticlesFound:
+      "No se encontraron artículos. Prueba con otro término de búsqueda.",
     relatedArticles: "Artículos Relacionados",
     needTransfer: "¿Necesitas un transfer?",
     calculatePrice: "Obtén un presupuesto instantáneo para tu transfer",
@@ -710,16 +743,20 @@ export const es: Translation = {
     },
     newsletter: {
       title: "Recibe Consejos de Viaje y Ofertas Exclusivas",
-      description: "Suscríbete a nuestro boletín y recibe un código de descuento del 10% para tu primera reserva, además de consejos internos para viajar en París.",
+      description:
+        "Suscríbete a nuestro boletín y recibe un código de descuento del 10% para tu primera reserva, además de consejos internos para viajar en París.",
       subscribe: "Suscribirse",
-      privacy: "Respetamos tu privacidad. Cancela tu suscripción en cualquier momento.",
+      privacy:
+        "Respetamos tu privacidad. Cancela tu suscripción en cualquier momento.",
     },
   },
   events: {
     pageTitle: "Eventos en París | Paris Luxe Journey",
-    pageDescription: "Descubre los mejores eventos, conciertos, exposiciones y actividades en París esta semana y este mes. Reserva tu transfer de lujo a cualquier evento.",
+    pageDescription:
+      "Descubre los mejores eventos, conciertos, exposiciones y actividades en París esta semana y este mes. Reserva tu transfer de lujo a cualquier evento.",
     heroTitle: "Eventos en París",
-    heroSubtitle: "Descubre los mejores conciertos, exposiciones, espectáculos y eventos culturales en París. Reserva tu transfer de lujo para llegar con estilo.",
+    heroSubtitle:
+      "Descubre los mejores conciertos, exposiciones, espectáculos y eventos culturales en París. Reserva tu transfer de lujo para llegar con estilo.",
     liveUpdates: "Actualizaciones en Vivo",
     comingSoon: "Próximamente",
     planAhead: "Planifica con Anticipación",
@@ -728,7 +765,8 @@ export const es: Translation = {
     bookTransfer: "Reservar Transfer a Evento",
     readGuides: "Leer Guías de Viaje",
     ctaTitle: "¿Necesitas un Transfer a tu Evento?",
-    ctaDescription: "Reserva un transfer de lujo a cualquier evento en París. Chofer profesional, vehículos premium, precios fijos.",
+    ctaDescription:
+      "Reserva un transfer de lujo a cualquier evento en París. Chofer profesional, vehículos premium, precios fijos.",
     bookNow: "Reservar Ahora",
     noEvents: "No hay eventos disponibles en este momento.",
     updatedOn: "Actualizado el",
