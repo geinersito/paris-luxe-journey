@@ -20,7 +20,7 @@ vi.mock('../../notifications/NotificationService', () => ({
 describe('BookingOrchestrator', () => {
   const mockBooking: BookingContext = {
     id: 'booking_123',
-    status: 'pending_payment',
+    status: 'pending',
     payment_mode: 'prepaid',
     pickup_datetime: new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString(),
     customer_name: 'John Doe',
