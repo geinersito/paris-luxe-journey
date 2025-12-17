@@ -1,6 +1,11 @@
-# ✅ PRECIOS ACTUALIZADOS - PRODUCCIÓN V1.0
+# ⚠️ LEGACY DOCUMENT - PRECIOS V1.0
 
-## 📋 **RESUMEN DE CAMBIOS**
+> **NOTA:** Este documento describe el sistema de precios antiguo (V1.0).
+> **Para V3.1.2 (prepaid/flexible)**, ver `PROMPT_CTO.md` sección "Arquitectura de Pagos".
+
+---
+
+## 📋 **RESUMEN DE CAMBIOS (V1.0 - LEGACY)**
 
 Se han actualizado **17 rutas** con los precios reales del **PROMPT SUPERVISOR MAESTRO v2.6**.
 
