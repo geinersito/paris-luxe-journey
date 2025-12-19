@@ -1,19 +1,19 @@
-import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { Button } from '@/components/ui/button'
-import { Check } from 'lucide-react'
-import BookingForm from '@/components/BookingForm'
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
+import { Check } from "lucide-react";
+import BookingForm from "@/components/BookingForm";
 
 export default function FinalCTA() {
-  const { t } = useTranslation()
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const { t } = useTranslation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const benefits = [
-    t('blog.professionalService') || 'Professional chauffeur service',
-    t('blog.freeCancellation') || 'Free cancellation up to 24h',
-    t('blog.flightMonitoring') || 'Flight monitoring included',
-    t('blog.premiumVehicles') || 'Premium vehicles (Mercedes, BMW)',
-  ]
+    t("blog.professionalService") || "Professional chauffeur service",
+    t("blog.freeCancellation") || "Free cancellation up to 24h",
+    t("blog.flightMonitoring") || "Flight monitoring included",
+    t("blog.premiumVehicles") || "Premium vehicles (Mercedes, BMW)",
+  ];
 
   return (
     <>
@@ -22,11 +22,12 @@ export default function FinalCTA() {
           {/* Text Content */}
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              {t('blog.readyToBook') || 'Ready to Book Your Transfer?'}
+              {t("blog.readyToBook") || "Ready to Book Your Transfer?"}
             </h2>
             <p className="text-muted-foreground mb-6">
-              Experience hassle-free airport transfers with our professional chauffeur service. 
-              Fixed prices, no hidden fees, and premium vehicles.
+              Experience hassle-free airport transfers with our professional
+              chauffeur service. Fixed prices, no hidden fees, and premium
+              vehicles.
             </p>
 
             {/* Benefits List */}
@@ -46,7 +47,7 @@ export default function FinalCTA() {
               onClick={() => setIsModalOpen(true)}
               className="w-full md:w-auto"
             >
-              {t('blog.bookNow') || 'Book Now'}
+              {t("blog.bookNow") || "Book Now"}
             </Button>
           </div>
 
@@ -63,9 +64,13 @@ export default function FinalCTA() {
 
       {/* Booking Modal */}
       {isModalOpen && (
-        <BookingForm onClose={() => setIsModalOpen(false)} />
+        <BookingForm
+          tourId="blog-cta"
+          tourName="Airport Transfer"
+          onSubmit={async () => {}}
+          onClose={() => setIsModalOpen(false)}
+        />
       )}
     </>
-  )
+  );
 }
-

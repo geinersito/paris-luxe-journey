@@ -1,8 +1,8 @@
-
 export interface BookingFormProps {
   tourId: string;
   tourName: string;
   basePrice?: number;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onSubmit: (bookingDetails: any) => Promise<void>;
   compact?: boolean; // Para usar dentro de modales sin padding extra
   initialData?: {
@@ -10,10 +10,13 @@ export interface BookingFormProps {
     dropoff?: string;
     passengers?: string;
   };
+  onClose?: () => void;
 }
 
 export interface FormProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   bookingData: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onSubmit: (paymentDetails: any) => Promise<void>;
   isProcessing: boolean;
   error: string;
@@ -21,7 +24,9 @@ export interface FormProps {
 
 export interface BookingConfirmationProps {
   bookingId: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   bookingData: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   tourData: any;
 }
 

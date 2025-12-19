@@ -1,5 +1,10 @@
 import { useTranslation } from "react-i18next";
-import type { Event, EventsFeedProps, Language } from "@/types/events";
+import type {
+  Event,
+  EventsFeedProps,
+  Language,
+  EventCategory,
+} from "@/types/events";
 import eventsFeedData from "@/data/events/events-feed.json";
 import { Calendar, MapPin, ExternalLink, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -13,8 +18,12 @@ export function EventsFeed({
   const { t, i18n } = useTranslation();
   const language = i18n.language as Language;
 
-  const events: Event[] =
-    range === "week" ? eventsFeedData.thisWeek : eventsFeedData.thisMonth;
+  const events: Event[] = (
+    range === "week" ? eventsFeedData.thisWeek : eventsFeedData.thisMonth
+  ).map((event) => ({
+    ...event,
+    category: event.category as EventCategory,
+  }));
   const generatedAt = new Date(eventsFeedData.generatedAt);
   const now = new Date();
   const daysSinceUpdate = Math.floor(

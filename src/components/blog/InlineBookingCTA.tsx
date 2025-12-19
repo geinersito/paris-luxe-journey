@@ -1,12 +1,12 @@
-import { useState } from 'react'
-import { useTranslation } from 'react-i18next'
-import { Button } from '@/components/ui/button'
-import { Car } from 'lucide-react'
-import BookingForm from '@/components/BookingForm'
+import { useState } from "react";
+import { useTranslation } from "react-i18next";
+import { Button } from "@/components/ui/button";
+import { Car } from "lucide-react";
+import BookingForm from "@/components/BookingForm";
 
 export default function InlineBookingCTA() {
-  const { t } = useTranslation()
-  const [isModalOpen, setIsModalOpen] = useState(false)
+  const { t } = useTranslation();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
     <>
@@ -19,23 +19,31 @@ export default function InlineBookingCTA() {
           </div>
           <div className="flex-1">
             <h3 className="text-lg font-semibold text-foreground mb-1">
-              {t('blog.needTransfer') || 'Need a transfer?'}
+              {t("blog.needTransfer") || "Need a transfer?"}
             </h3>
             <p className="text-sm text-muted-foreground">
-              {t('blog.calculatePrice') || 'Get an instant quote for your airport transfer'}
+              {t("blog.calculatePrice") ||
+                "Get an instant quote for your airport transfer"}
             </p>
           </div>
-          <Button onClick={() => setIsModalOpen(true)} className="whitespace-nowrap">
-            {t('blog.getQuote') || 'Get Quote'}
+          <Button
+            onClick={() => setIsModalOpen(true)}
+            className="whitespace-nowrap"
+          >
+            {t("blog.getQuote") || "Get Quote"}
           </Button>
         </div>
       </div>
 
       {/* Booking Modal */}
       {isModalOpen && (
-        <BookingForm onClose={() => setIsModalOpen(false)} />
+        <BookingForm
+          tourId="blog-inline-cta"
+          tourName="Airport Transfer"
+          onSubmit={async () => {}}
+          onClose={() => setIsModalOpen(false)}
+        />
       )}
     </>
-  )
+  );
 }
-
