@@ -51,14 +51,16 @@ const FALLBACK_VEHICLES: Vehicle[] = [
 ];
 
 export const useVehicles = () => {
-  return useQuery({
+  return useQuery<Vehicle[]>({
     queryKey: ["vehicles"],
     queryFn: async () => {
       try {
         // Optimización: Seleccionar solo las columnas necesarias
         const { data, error } = await supabase
           .from("vehicles")
-          .select("id, type, name, capacity, base_price, features, image_url")
+          .select(
+            "id, type, name, description, technical_specs, passenger_capacity, luggage_capacity, base_price, features, image_url, interior_image_url",
+          )
           .order("base_price", { ascending: true });
 
         // If there's an error or no data, return fallback
@@ -72,7 +74,21 @@ export const useVehicles = () => {
           return FALLBACK_VEHICLES;
         }
 
-        return data;
+        // Map database fields to Vehicle interface
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        return data.map((v: any) => ({
+          id: v.id,
+          name: v.name || "",
+          type: v.type || "",
+          description: v.description || "",
+          technical_specs: v.technical_specs || "",
+          passenger_capacity: v.passenger_capacity || 0,
+          luggage_capacity: v.luggage_capacity || 0,
+          base_price: v.base_price || 0,
+          image_url: v.image_url || "",
+          interior_image_url: v.interior_image_url || "",
+          features: v.features || [],
+        }));
       } catch (err) {
         console.error("Error fetching vehicles, using fallback:", err);
         return FALLBACK_VEHICLES;
@@ -81,6 +97,6 @@ export const useVehicles = () => {
     // Always return fallback on error instead of throwing
     retry: false,
     staleTime: 10 * 60 * 1000, // Aumentado a 10 minutos (los vehículos no cambian frecuentemente)
-    cacheTime: 30 * 60 * 1000, // Cache por 30 minutos
+    gcTime: 30 * 60 * 1000, // Cache por 30 minutos (renamed from cacheTime in v5)
   });
 };

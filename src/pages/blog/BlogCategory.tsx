@@ -1,49 +1,50 @@
-import { useState } from 'react'
-import { useParams, useNavigate } from 'react-router-dom'
-import { Helmet } from 'react-helmet-async'
-import { useTranslation } from 'react-i18next'
-import { getCategoryBySlug, isValidCategory } from '@/data/blog/categories'
-import { getPostsByCategory } from '@/data/blog/posts.meta'
-import BlogCard from '@/components/blog/BlogCard'
-import Breadcrumb from '@/components/blog/Breadcrumb'
-import NewsletterCTA from '@/components/blog/NewsletterCTA'
-import { Input } from '@/components/ui/input'
-import { Search } from 'lucide-react'
-import * as Icons from 'lucide-react'
+import { useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
+import { getCategoryBySlug, isValidCategory } from "@/data/blog/categories";
+import { getPostsByCategory } from "@/data/blog/posts.meta";
+import BlogCard from "@/components/blog/BlogCard";
+import Breadcrumb from "@/components/blog/Breadcrumb";
+import NewsletterCTA from "@/components/blog/NewsletterCTA";
+import { Input } from "@/components/ui/input";
+import { Search } from "lucide-react";
+import * as Icons from "lucide-react";
 
 export default function BlogCategory() {
-  const { category } = useParams<{ category: string }>()
-  const navigate = useNavigate()
-  const { i18n, t } = useTranslation()
-  const currentLang = i18n.language as 'en' | 'es' | 'fr' | 'pt'
-  const [searchQuery, setSearchQuery] = useState('')
+  const { category } = useParams<{ category: string }>();
+  const navigate = useNavigate();
+  const { i18n, t } = useTranslation();
+  const currentLang = i18n.language as "en" | "es" | "fr" | "pt";
+  const [searchQuery, setSearchQuery] = useState("");
 
   // Validate category
   if (!category || !isValidCategory(category)) {
-    navigate('/blog/404', { replace: true })
-    return null
+    navigate("/blog/404", { replace: true });
+    return null;
   }
 
-  const categoryMeta = getCategoryBySlug(category)!
-  const allPosts = getPostsByCategory(category)
+  const categoryMeta = getCategoryBySlug(category)!;
+  const allPosts = getPostsByCategory(category);
 
   // Filter posts by search query
   const filteredPosts = allPosts.filter((post) => {
-    if (searchQuery === '') return true
-    const query = searchQuery.toLowerCase()
+    if (searchQuery === "") return true;
+    const query = searchQuery.toLowerCase();
     return (
       post.title[currentLang].toLowerCase().includes(query) ||
       post.description[currentLang].toLowerCase().includes(query) ||
       post.tags.some((tag) => tag.toLowerCase().includes(query))
-    )
-  })
+    );
+  });
 
-  const IconComponent = Icons[categoryMeta.icon as keyof typeof Icons] as any
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const IconComponent = Icons[categoryMeta.icon as keyof typeof Icons] as any;
 
   const breadcrumbItems = [
-    { label: t('blog.title') || 'Blog', href: '/blog' },
+    { label: t("blog.title") || "Blog", href: "/blog" },
     { label: categoryMeta.name[currentLang] },
-  ]
+  ];
 
   return (
     <>
@@ -57,7 +58,10 @@ export default function BlogCategory() {
         <meta property="og:type" content="website" />
 
         {/* Canonical URL */}
-        <link rel="canonical" href={`https://parisluxejourney.com/blog/${category}`} />
+        <link
+          rel="canonical"
+          href={`https://parisluxejourney.com/blog/${category}`}
+        />
       </Helmet>
 
       <div className="min-h-screen bg-background">
@@ -90,7 +94,10 @@ export default function BlogCategory() {
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <Input
                   type="text"
-                  placeholder={t('blog.searchInCategory') || `Search in ${categoryMeta.name[currentLang]}...`}
+                  placeholder={
+                    t("blog.searchInCategory") ||
+                    `Search in ${categoryMeta.name[currentLang]}...`
+                  }
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   className="pl-10"
@@ -99,7 +106,10 @@ export default function BlogCategory() {
 
               {/* Post Count */}
               <p className="text-sm text-muted-foreground mt-4">
-                {filteredPosts.length} {filteredPosts.length === 1 ? t('blog.article') || 'article' : t('blog.articles') || 'articles'}
+                {filteredPosts.length}{" "}
+                {filteredPosts.length === 1
+                  ? t("blog.article") || "article"
+                  : t("blog.articles") || "articles"}
               </p>
             </div>
           </div>
@@ -111,7 +121,8 @@ export default function BlogCategory() {
             {filteredPosts.length === 0 ? (
               <div className="text-center py-16">
                 <p className="text-muted-foreground text-lg">
-                  {t('blog.noArticlesFound') || 'No articles found. Try a different search term.'}
+                  {t("blog.noArticlesFound") ||
+                    "No articles found. Try a different search term."}
                 </p>
               </div>
             ) : (
@@ -132,6 +143,5 @@ export default function BlogCategory() {
         </section>
       </div>
     </>
-  )
+  );
 }
-

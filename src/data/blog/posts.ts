@@ -1,12 +1,14 @@
-import { BlogPost } from '@/types/blog'
-import { getAuthor } from './authors'
+import { getAuthor } from "./authors";
 
-export const blogPosts: BlogPost[] = [
+// TODO: Migrate legacy blog posts to new BlogPost format with LocalizedString
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const blogPosts: any[] = [
   {
-    id: '1',
-    slug: 'cdg-airport-to-paris-transfer-guide',
-    title: 'Complete Guide: CDG Airport to Paris Transfer Options',
-    excerpt: 'Everything you need to know about getting from Charles de Gaulle Airport to Paris city center. Compare prices, comfort, and convenience.',
+    id: "1",
+    slug: "cdg-airport-to-paris-transfer-guide",
+    title: "Complete Guide: CDG Airport to Paris Transfer Options",
+    excerpt:
+      "Everything you need to know about getting from Charles de Gaulle Airport to Paris city center. Compare prices, comfort, and convenience.",
     content: `# Complete Guide: CDG Airport to Paris Transfer Options
 
 ## Introduction
@@ -98,27 +100,38 @@ For most travelers, especially those arriving after a long flight, a **private c
 While public transport might save money, the convenience and peace of mind of a private transfer is worth the investment, especially after a long international flight.
 
 Ready to book your transfer? [Contact us on WhatsApp](https://wa.me/33123456789) for instant confirmation.`,
-    category: 'airport-transfers',
-    tags: ['CDG Airport', 'Paris Transfer', 'Airport Guide', 'Travel Tips'],
-    author: getAuthor('pierre-dubois'),
-    publishedAt: '2024-01-15',
+    category: "airport-transfers",
+    tags: ["CDG Airport", "Paris Transfer", "Airport Guide", "Travel Tips"],
+    author: getAuthor("pierre-dubois"),
+    publishedAt: "2024-01-15",
     readingTime: 6,
     featured: true,
-    language: 'en',
-    coverImage: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&h=600&fit=crop',
+    language: "en",
+    coverImage:
+      "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&h=600&fit=crop",
     seo: {
-      metaTitle: 'CDG Airport to Paris Transfer Guide 2024 | Best Options Compared',
-      metaDescription: 'Complete guide to CDG airport transfers. Compare private chauffeur, taxi, RER train & bus options. Prices, pros & cons, and expert recommendations.',
-      keywords: ['CDG airport transfer', 'Paris airport shuttle', 'Charles de Gaulle to Paris', 'airport taxi Paris', 'private chauffeur CDG'],
-      ogImage: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&h=630&fit=crop'
+      metaTitle:
+        "CDG Airport to Paris Transfer Guide 2024 | Best Options Compared",
+      metaDescription:
+        "Complete guide to CDG airport transfers. Compare private chauffeur, taxi, RER train & bus options. Prices, pros & cons, and expert recommendations.",
+      keywords: [
+        "CDG airport transfer",
+        "Paris airport shuttle",
+        "Charles de Gaulle to Paris",
+        "airport taxi Paris",
+        "private chauffeur CDG",
+      ],
+      ogImage:
+        "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&h=630&fit=crop",
     },
-    relatedPosts: ['2', '3']
+    relatedPosts: ["2", "3"],
   },
   {
-    id: '2',
-    slug: 'versailles-day-trip-guide',
-    title: 'Versailles Day Trip: Complete Guide with Private Chauffeur',
-    excerpt: 'Discover how to make the most of your Versailles visit with a private chauffeur. Skip the crowds, avoid tourist traps, and see it all in comfort.',
+    id: "2",
+    slug: "versailles-day-trip-guide",
+    title: "Versailles Day Trip: Complete Guide with Private Chauffeur",
+    excerpt:
+      "Discover how to make the most of your Versailles visit with a private chauffeur. Skip the crowds, avoid tourist traps, and see it all in comfort.",
     content: `# Versailles Day Trip: Complete Guide with Private Chauffeur
 
 ## Why Visit Versailles?
@@ -201,27 +214,38 @@ The Palace of Versailles is one of the most magnificent royal residences in the 
 ## Book Your Versailles Trip
 
 Ready to experience Versailles in luxury and comfort? [Contact us on WhatsApp](https://wa.me/33123456789) for availability and booking.`,
-    category: 'day-trips',
-    tags: ['Versailles', 'Day Trips', 'Private Chauffeur', 'Palace'],
-    author: getAuthor('marie-laurent'),
-    publishedAt: '2024-01-10',
+    category: "day-trips",
+    tags: ["Versailles", "Day Trips", "Private Chauffeur", "Palace"],
+    author: getAuthor("marie-laurent"),
+    publishedAt: "2024-01-10",
     readingTime: 7,
     featured: true,
-    language: 'en',
-    coverImage: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&h=600&fit=crop',
+    language: "en",
+    coverImage:
+      "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&h=600&fit=crop",
     seo: {
-      metaTitle: 'Versailles Day Trip Guide 2024 | Private Chauffeur from Paris',
-      metaDescription: 'Complete guide to visiting Versailles with a private chauffeur. Itineraries, tips, pricing, and what to see. Skip the crowds and travel in comfort.',
-      keywords: ['Versailles day trip', 'private chauffeur Versailles', 'Paris to Versailles', 'Versailles tour', 'Palace of Versailles'],
-      ogImage: 'https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&h=630&fit=crop'
+      metaTitle:
+        "Versailles Day Trip Guide 2024 | Private Chauffeur from Paris",
+      metaDescription:
+        "Complete guide to visiting Versailles with a private chauffeur. Itineraries, tips, pricing, and what to see. Skip the crowds and travel in comfort.",
+      keywords: [
+        "Versailles day trip",
+        "private chauffeur Versailles",
+        "Paris to Versailles",
+        "Versailles tour",
+        "Palace of Versailles",
+      ],
+      ogImage:
+        "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=1200&h=630&fit=crop",
     },
-    relatedPosts: ['1', '3']
+    relatedPosts: ["1", "3"],
   },
   {
-    id: '3',
-    slug: 'avoid-paris-taxi-scams',
-    title: 'How to Avoid Taxi Scams at Paris Airports',
-    excerpt: 'Protect yourself from common taxi scams at CDG, Orly, and Beauvais airports. Learn the red flags and how to ensure a safe, fair-priced journey.',
+    id: "3",
+    slug: "avoid-paris-taxi-scams",
+    title: "How to Avoid Taxi Scams at Paris Airports",
+    excerpt:
+      "Protect yourself from common taxi scams at CDG, Orly, and Beauvais airports. Learn the red flags and how to ensure a safe, fair-priced journey.",
     content: `# How to Avoid Taxi Scams at Paris Airports
 
 ## Common Taxi Scams in Paris
@@ -327,54 +351,72 @@ For peace of mind and guaranteed fair pricing, book a private transfer in advanc
 **Beauvais to Paris:** €140-160
 
 [Book your safe, reliable transfer on WhatsApp](https://wa.me/33123456789)`,
-    category: 'travel-tips',
-    tags: ['Safety', 'Taxi Scams', 'Airport Transfer', 'Travel Tips'],
-    author: getAuthor('pierre-dubois'),
-    publishedAt: '2024-01-05',
+    category: "travel-tips",
+    tags: ["Safety", "Taxi Scams", "Airport Transfer", "Travel Tips"],
+    author: getAuthor("pierre-dubois"),
+    publishedAt: "2024-01-05",
     readingTime: 5,
     featured: true,
-    language: 'en',
-    coverImage: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1200&h=600&fit=crop',
+    language: "en",
+    coverImage:
+      "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1200&h=600&fit=crop",
     seo: {
-      metaTitle: 'Avoid Paris Taxi Scams: Airport Transfer Safety Guide 2024',
-      metaDescription: 'Learn how to avoid common taxi scams at Paris airports. Red flags, official rates, and safer alternatives for CDG, Orly & Beauvais transfers.',
-      keywords: ['Paris taxi scams', 'CDG taxi scam', 'airport transfer safety', 'Paris airport taxi', 'avoid scams Paris'],
-      ogImage: 'https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1200&h=630&fit=crop'
+      metaTitle: "Avoid Paris Taxi Scams: Airport Transfer Safety Guide 2024",
+      metaDescription:
+        "Learn how to avoid common taxi scams at Paris airports. Red flags, official rates, and safer alternatives for CDG, Orly & Beauvais transfers.",
+      keywords: [
+        "Paris taxi scams",
+        "CDG taxi scam",
+        "airport transfer safety",
+        "Paris airport taxi",
+        "avoid scams Paris",
+      ],
+      ogImage:
+        "https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1200&h=630&fit=crop",
     },
-    relatedPosts: ['1', '2']
-  }
-]
+    relatedPosts: ["1", "2"],
+  },
+];
 
 // Helper functions
-export const getAllPosts = (): BlogPost[] => {
-  return blogPosts.sort((a, b) => 
-    new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
-  )
-}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getAllPosts = (): any[] => {
+  return blogPosts.sort(
+    (a, b) =>
+      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
+  );
+};
 
-export const getFeaturedPosts = (): BlogPost[] => {
-  return blogPosts.filter(post => post.featured)
-}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getFeaturedPosts = (): any[] => {
+  return blogPosts.filter((post) => post.featured);
+};
 
-export const getPostBySlug = (slug: string): BlogPost | undefined => {
-  return blogPosts.find(post => post.slug === slug)
-}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getPostBySlug = (slug: string): any | undefined => {
+  return blogPosts.find((post) => post.slug === slug);
+};
 
-export const getPostsByCategory = (category: string): BlogPost[] => {
-  return blogPosts.filter(post => post.category === category)
-}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getPostsByCategory = (category: string): any[] => {
+  return blogPosts.filter((post) => post.category === category);
+};
 
-export const getPostsByTag = (tag: string): BlogPost[] => {
-  return blogPosts.filter(post => post.tags.includes(tag))
-}
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getPostsByTag = (tag: string): any[] => {
+  return blogPosts.filter((post) => post.tags.includes(tag));
+};
 
-export const getRelatedPosts = (postId: string, limit: number = 3): BlogPost[] => {
-  const post = blogPosts.find(p => p.id === postId)
-  if (!post) return []
-  
+export const getRelatedPosts = (
+  postId: string,
+  limit: number = 3,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+): any[] => {
+  const post = blogPosts.find((p) => p.id === postId);
+  if (!post) return [];
+
   // Get posts from same category, excluding current post
   return blogPosts
-    .filter(p => p.id !== postId && p.category === post.category)
-    .slice(0, limit)
-}
-
+    .filter((p) => p.id !== postId && p.category === post.category)
+    .slice(0, limit);
+};
