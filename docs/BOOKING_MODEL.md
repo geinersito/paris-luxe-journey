@@ -20,8 +20,8 @@
 | Column | Type | Constraint | Purpose |
 |--------|------|------------|---------|
 | `id` | UUID | PK, default uuid_generate_v4() | Booking identifier |
-| `tour_id` | UUID | FK → tours(id), nullable | Reference to tour (if tour booking) |
-| `user_id` | UUID | FK → auth.users(id) | Owner (authenticated user) |
+| `tour_id` | UUID | FK -> tours(id), nullable | Reference to tour (if tour booking) |
+| `user_id` | UUID | FK -> auth.users(id) | Owner (authenticated user) |
 | `booking_date` | DATE | NOT NULL | Date of service |
 | `tour_type` | tour_type | NOT NULL, default 'standard' | Tour tier (legacy, might be unused for transfers) |
 | `participants` | INTEGER | NOT NULL | Number of participants (legacy tours) |
@@ -36,8 +36,8 @@
 | `special_requests` | TEXT | nullable | Customer notes |
 | `booking_type` | TEXT | NOT NULL, default 'transfer' | Type: 'transfer', 'hourly', 'tour' |
 | `hours` | INTEGER | nullable | Duration (for hourly bookings) |
-| `service_level_id` | TEXT | FK → service_levels(id), nullable | Service tier |
-| `vehicle_category_id` | TEXT | FK → vehicle_categories(id), nullable | Vehicle type |
+| `service_level_id` | TEXT | FK -> service_levels(id), nullable | Service tier |
+| `vehicle_category_id` | TEXT | FK -> vehicle_categories(id), nullable | Vehicle type |
 | `pickup_details` | JSONB | nullable | Pickup location + metadata |
 | `dropoff_details` | JSONB | nullable | Dropoff location + metadata |
 | `created_at` | TIMESTAMPTZ | NOT NULL, default NOW() UTC | Creation timestamp |
@@ -93,8 +93,8 @@ CREATE TYPE booking_status AS ENUM (
 **State transitions** (expected flow):
 
 ```
-pending → pending_payment → confirmed
-  ↓              ↓
+pending -> pending_payment -> confirmed
+  v              v
 cancelled    cancelled
 ```
 
@@ -102,9 +102,9 @@ cancelled    cancelled
 
 | Transition | Trigger | Location |
 |------------|---------|----------|
-| pending → pending_payment | User submits payment form (Stripe PaymentIntent created) | ⚠ TODO: cite frontend/edge function |
-| pending_payment → confirmed | Stripe webhook: `payment_intent.succeeded` | ⚠ TODO: cite webhook handler |
-| * → cancelled | User/admin action | ⚠ TODO: cite cancellation endpoint |
+| pending -> pending_payment | User submits payment form (Stripe PaymentIntent created) | [WARN] TODO: cite frontend/edge function |
+| pending_payment -> confirmed | Stripe webhook: `payment_intent.succeeded` | [WARN] TODO: cite webhook handler |
+| * -> cancelled | User/admin action | [WARN] TODO: cite cancellation endpoint |
 
 **HIGH RISK**: No webhook handler implementation found yet in codebase (see BOOKING_STATUS.md).
 
@@ -129,15 +129,15 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
 **Rule**: All timestamps stored in **UTC** (`TIMESTAMPTZ`), displayed in **Europe/Paris**.
 
 **Enforcement**:
-- ✅ DB: `created_at` / `updated_at` use `TIMEZONE('utc'::text, NOW())`
-- ⚠ Frontend: NO enforcement yet (no `timeZone: 'Europe/Paris'` in `toLocaleString()` calls) — HIGH RISK
-- ⚠ User input: `booking_date` is stored as DATE (no TZ); must validate against Europe/Paris calendar
+- [OK] DB: `created_at` / `updated_at` use `TIMEZONE('utc'::text, NOW())`
+- [WARN] Frontend: NO enforcement yet (no `timeZone: 'Europe/Paris'` in `toLocaleString()` calls) — HIGH RISK
+- [WARN] User input: `booking_date` is stored as DATE (no TZ); must validate against Europe/Paris calendar
 
 **Action required**: Audit all date/time display code for `toLocaleString()` without `timeZone` parameter (see BOOKING_STATUS.md blockers).
 
 ### 3.2 Anti-Double-Booking (HIGH RISK)
 
-**Current guarantee**: ❌ **NONE (app-level only, NO DB constraint)**
+**Current guarantee**: [ERROR] **NONE (app-level only, NO DB constraint)**
 
 **Evidence**:
 - No unique constraint on `(booking_date, vehicle_id)` or similar
@@ -155,19 +155,19 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
    - Check availability before insert + hope no race condition
    - Use Supabase RLS + row-level locking (complex)
 
-**Status**: 🔴 **BLOCKER for production** (must be addressed before live traffic).
+**Status**: [RED] **BLOCKER for production** (must be addressed before live traffic).
 
 ### 3.3 Webhook Idempotency (HARD)
 
-**Rule**: Stripe webhooks can retry → each event ID must be processed **once only**.
+**Rule**: Stripe webhooks can retry -> each event ID must be processed **once only**.
 
-**Current implementation**: ❌ **NOT IMPLEMENTED**
+**Current implementation**: [ERROR] **NOT IMPLEMENTED**
 
 **Evidence**: No webhook handler found in codebase, no `stripe_events` table for deduplication.
 
 **Required**:
 - Persist `event.id` (Stripe event ID) in DB table (e.g., `processed_stripe_events`)
-- On webhook receipt: check if `event.id` exists → if yes, return 200 OK (idempotent); if no, process + insert
+- On webhook receipt: check if `event.id` exists -> if yes, return 200 OK (idempotent); if no, process + insert
 
 **Reference**: Stripe docs on [webhook idempotency](https://stripe.com/docs/webhooks/best-practices#event-ids).
 
@@ -175,10 +175,10 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
 
 **Rule**: **NO secrets in `VITE_*` env vars** (exposed to client bundle).
 
-**Current violations** (🔴 CRITICAL):
+**Current violations** ([RED] CRITICAL):
 
-- `.env.example:7`: `VITE_STRIPE_SECRET_KEY` — ❌ MUST be server-side only
-- `.env.example:10`: `VITE_RESEND_API_KEY` — ❌ MUST be server-side only
+- `.env.example:7`: `VITE_STRIPE_SECRET_KEY` — [ERROR] MUST be server-side only
+- `.env.example:10`: `VITE_RESEND_API_KEY` — [ERROR] MUST be server-side only
 - `src/lib/email.ts:19`: uses `import.meta.env.VITE_RESEND_API_KEY` in client code
 
 **Impact**: Full Stripe account compromise + email spoofing/abuse.
@@ -188,15 +188,15 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
 - Remove `VITE_` prefix
 - Use `STRIPE_SECRET_KEY` + `RESEND_API_KEY` in Edge Function env only
 
-**Status**: 🔴 **BLOCKER for production** (see PRODUCT_SCOPE.md Section 6.1).
+**Status**: [RED] **BLOCKER for production** (see PRODUCT_SCOPE.md Section 6.1).
 
 ### 3.5 Shared Supabase Constraint
 
 **Rule**: This project shares Supabase with ERP system.
 
 **Constraints**:
-- ❌ **NEVER** touch `dispatch_*` schema (ERP-owned)
-- ✅ Only modify `booking_*` tables, `tours`, `service_levels`, `vehicle_categories`, `vehicles`
+- [ERROR] **NEVER** touch `dispatch_*` schema (ERP-owned)
+- [OK] Only modify `booking_*` tables, `tours`, `service_levels`, `vehicle_categories`, `vehicles`
 - All DB changes MUST be DB-only PRs with migration files
 
 ---
@@ -231,12 +231,12 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
 
 | Area | Status | Action Required |
 |------|--------|-----------------|
-| Webhook handler | ❌ Not implemented | Create Edge Function for Stripe webhooks with idempotency |
-| Anti-double-booking | ❌ No DB guarantee | Design + implement resource locking (vehicle_assignments table) |
-| Timezone enforcement (frontend) | ⚠ Partial | Audit all `toLocaleString()` calls, add `timeZone: 'Europe/Paris'` |
-| Secrets in VITE_* | 🔴 CRITICAL | Move to Edge Functions (P0 blocker) |
-| Payment retry logic | ❌ Not defined | Define behavior for `payment_intent.payment_failed` |
-| Cancellation flow | ❌ Not implemented | Define refund policy + state transitions |
+| Webhook handler | [ERROR] Not implemented | Create Edge Function for Stripe webhooks with idempotency |
+| Anti-double-booking | [ERROR] No DB guarantee | Design + implement resource locking (vehicle_assignments table) |
+| Timezone enforcement (frontend) | [WARN] Partial | Audit all `toLocaleString()` calls, add `timeZone: 'Europe/Paris'` |
+| Secrets in VITE_* | [RED] CRITICAL | Move to Edge Functions (P0 blocker) |
+| Payment retry logic | [ERROR] Not defined | Define behavior for `payment_intent.payment_failed` |
+| Cancellation flow | [ERROR] Not implemented | Define refund policy + state transitions |
 
 ---
 

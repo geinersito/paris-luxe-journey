@@ -7,62 +7,62 @@
 
 ---
 
-## 1. DONE ✅
+## 1. DONE [OK]
 
 ### 1.1 Database Foundation
 
-- ✅ **Bookings table schema** (`supabase/migrations/20250217_booking_system.sql`, `20250301_bookings_update.sql`)
+- [OK] **Bookings table schema** (`supabase/migrations/20250217_booking_system.sql`, `20250301_bookings_update.sql`)
   - Supports transfers, hourly, and tours
-  - `booking_status` enum: pending → pending_payment → confirmed / cancelled
+  - `booking_status` enum: pending -> pending_payment -> confirmed / cancelled
   - RLS policies: users own bookings, staff manage all
   - Indexes on user_id, status, date, tour_id
   
-- ✅ **Tours table schema** (legacy or active)
+- [OK] **Tours table schema** (legacy or active)
   - Pre-defined tour catalog with pricing, duration, capacity
   - RLS: public read, admin write
 
-- ✅ **Timezone-safe timestamps** (DB-level)
+- [OK] **Timezone-safe timestamps** (DB-level)
   - All `created_at` / `updated_at` use `TIMESTAMPTZ` with UTC storage
   - Trigger `update_updated_at_column()` maintains consistency
 
 ### 1.2 CI/CD Infrastructure
 
-- ✅ **GitHub Actions CI** (PR #13 merged)
+- [OK] **GitHub Actions CI** (PR #13 merged)
   - Workflow: `npx tsc --noEmit` + `npm run build` + `npm run lint:changed`
   - Changed-files-only lint gate (avoids blocking on 95 legacy lint errors)
   - Node 20 LTS, `npm ci`, fetch-depth: 0 for diffstat
 
 ### 1.3 Governance Docs (SSOT)
 
-- ✅ **SUPERVISOR.md v0.2** (PR #16 merged)
-  - Micro-PR rules: ≤4 files, <200 lines, single concern
+- [OK] **SUPERVISOR.md v0.2** (PR #16 merged)
+  - Micro-PR rules: <=4 files, <200 lines, single concern
   - Hard-lane rules: secrets, timezone, idempotency, anti-double-booking
-  - Fast-lane policy: trivial non-runtime changes (+1 file, ≤10 lines)
+  - Fast-lane policy: trivial non-runtime changes (+1 file, <=10 lines)
   - Foundation exception: architectural constraints (strict TS + pre-commit)
   
-- ✅ **PRODUCT_SCOPE.md** (PR #17 CI pending)
+- [OK] **PRODUCT_SCOPE.md** (PR #17 CI pending)
   - In-scope: booking funnel, content pages, 4 languages (EN/ES/FR/PT)
   - Out-of-scope: admin UI, driver dispatch, cancellations backend
   - Routes SSOT (20+ routes documented)
   - **HIGH RISK**: Security violations documented (secrets in VITE_*)
 
-- 🚧 **BOOKING_MODEL.md** (PR-DOCS02, this PR)
+- [WIP] **BOOKING_MODEL.md** (PR-DOCS02, this PR)
   - Data model, state machines, invariants, RLS policies
   
-- 🚧 **BOOKING_STATUS.md** (PR-DOCS02, this document)
+- [WIP] **BOOKING_STATUS.md** (PR-DOCS02, this document)
 
-- 🚧 **BOOKING_RUNBOOK.md** (PR-DOCS02, this PR)
+- [WIP] **BOOKING_RUNBOOK.md** (PR-DOCS02, this PR)
 
 ### 1.4 i18n Foundation
 
-- 🚧 **FND-I18N01** (PR #15 CI pending)
+- [WIP] **FND-I18N01** (PR #15 CI pending)
   - Added 10 hero keys to `src/types/i18n.ts` (Translation interface)
   - Translations in EN/ES/FR/PT (`src/i18n/*.ts`)
   - Enables UI-HOME02A/B (Hero widget i18n) PRs
 
 ---
 
-## 2. IN PROGRESS 🚧
+## 2. IN PROGRESS [WIP]
 
 ### 2.1 SSOT Documentation (PR-DOCS02, this PR)
 
@@ -87,7 +87,7 @@
 
 ---
 
-## 3. BLOCKED 🔴
+## 3. BLOCKED [RED]
 
 ### 3.1 Production Deployment (P0 BLOCKER)
 
@@ -110,7 +110,7 @@
 4. Same for Stripe: payment intent creation must be server-side (Edge Function)
 5. Update `.env.example` to remove `VITE_STRIPE_SECRET_KEY` and `VITE_RESEND_API_KEY`
 
-**Next PR**: `SEC-RESEND01` (security-only, ≤4 files) — move Resend to Edge Function.
+**Next PR**: `SEC-RESEND01` (security-only, <=4 files) — move Resend to Edge Function.
 
 ### 3.2 Booking Guarantees (P0 BLOCKER)
 
@@ -121,7 +121,7 @@
 - No `vehicle_assignments` table
 - Race condition possible: 2 concurrent bookings can reserve same vehicle
 
-**Risk**: Production overbooking → customer service failure.
+**Risk**: Production overbooking -> customer service failure.
 
 **Fix required** (DB-only PR, P0):
 1. Design resource model: `vehicle_assignments` table with availability slots
@@ -141,7 +141,7 @@
 **Fix required** (functions-only PR):
 1. Create Edge Function: `supabase/functions/stripe-webhook`
 2. Verify signature (`stripe.webhooks.constructEvent`)
-3. Handle `payment_intent.succeeded` → update booking status + send confirmation email
+3. Handle `payment_intent.succeeded` -> update booking status + send confirmation email
 4. Implement idempotency: store `event.id` in `processed_stripe_events` table
 5. Register webhook URL in Stripe dashboard
 
@@ -154,21 +154,21 @@
 ### 4.1 **SEC-RESEND01** — Move Resend to Edge Function (P0)
 
 **Type**: Security + functions-only  
-**Files**: ≤4 (Edge Function + client proxy + .env.example + email.ts removal)  
+**Files**: <=4 (Edge Function + client proxy + .env.example + email.ts removal)  
 **Blocks**: Production deploy  
 **Risk**: CRITICAL
 
 ### 4.2 **DB-AVAILABILITY01** — Anti-double-booking DB guarantee (P0)
 
 **Type**: DB-only (migration + RLS)  
-**Files**: ≤2 (migration + optional RLS policy)  
+**Files**: <=2 (migration + optional RLS policy)  
 **Blocks**: Production deploy  
 **Risk**: HIGH (customer service failure)
 
 ### 4.3 **FN-WEBHOOK01** — Stripe webhook with idempotency (P0)
 
 **Type**: Functions-only + DB-only (Edge Function + `processed_stripe_events` table)  
-**Files**: ≤4 (Edge Function + migration + types)  
+**Files**: <=4 (Edge Function + migration + types)  
 **Blocks**: Live payments  
 **Risk**: HIGH (booking confirmations never sent)
 
@@ -192,12 +192,12 @@
 
 | Risk | Severity | Mitigation | Status |
 |------|----------|------------|--------|
-| Secrets in VITE_* | 🔴 CRITICAL | Move to Edge Functions | BLOCKED (awaiting SEC-RESEND01) |
-| Double-booking possible | 🔴 CRITICAL | DB-level unique constraint | BLOCKED (awaiting DB-AVAILABILITY01) |
-| Webhook idempotency missing | 🔴 HIGH | Store event IDs, check before processing | BLOCKED (awaiting FN-WEBHOOK01) |
-| Timezone not enforced (frontend) | 🟡 MEDIUM | Audit `toLocaleString()` calls, add `timeZone: 'Europe/Paris'` | TODO (no PR yet) |
-| Payment retry logic undefined | 🟡 MEDIUM | Define behavior for `payment_intent.payment_failed` | TODO (design needed) |
-| 95 legacy lint errors | 🟢 LOW | Changed-files-only gate implemented | ✅ MITIGATED (PR #13) |
+| Secrets in VITE_* | [RED] CRITICAL | Move to Edge Functions | BLOCKED (awaiting SEC-RESEND01) |
+| Double-booking possible | [RED] CRITICAL | DB-level unique constraint | BLOCKED (awaiting DB-AVAILABILITY01) |
+| Webhook idempotency missing | [RED] HIGH | Store event IDs, check before processing | BLOCKED (awaiting FN-WEBHOOK01) |
+| Timezone not enforced (frontend) | [YELLOW] MEDIUM | Audit `toLocaleString()` calls, add `timeZone: 'Europe/Paris'` | TODO (no PR yet) |
+| Payment retry logic undefined | [YELLOW] MEDIUM | Define behavior for `payment_intent.payment_failed` | TODO (design needed) |
+| 95 legacy lint errors | [GREEN] LOW | Changed-files-only gate implemented | [OK] MITIGATED (PR #13) |
 
 ---
 

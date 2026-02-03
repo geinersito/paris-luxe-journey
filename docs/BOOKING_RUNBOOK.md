@@ -72,7 +72,7 @@
    - Subject: "Booking Confirmation — Paris Elite Services"
    - Body: Booking details, pickup/dropoff, driver contact (if available)
 
-**Result**: ✅ PASS if all steps succeed.
+**Result**: [OK] PASS if all steps succeed.
 
 ---
 
@@ -102,7 +102,7 @@
    - Use valid test card (`4242 4242 4242 4242`)
    - Expected: Payment succeeds, status updates to `confirmed`
 
-**Result**: ✅ PASS if failed payment does NOT create confirmed booking + retry works.
+**Result**: [OK] PASS if failed payment does NOT create confirmed booking + retry works.
 
 ---
 
@@ -117,7 +117,7 @@
 1. Complete a successful booking (Happy Path, Section 1.1).
 
 2. **Simulate webhook retry** (Stripe CLI or dashboard):
-   - In Stripe dashboard: Events → find the `payment_intent.succeeded` event for your test payment
+   - In Stripe dashboard: Events -> find the `payment_intent.succeeded` event for your test payment
    - Click "Resend event" (simulates webhook retry)
 
 3. **Check DB** (`processed_stripe_events` table):
@@ -132,7 +132,7 @@
 6. **Check webhook handler logs** (Supabase Edge Function logs):
    - Expected: Second webhook call logs "Event already processed" and returns 200 OK (idempotent)
 
-**Result**: ✅ PASS if webhook retry does NOT cause duplicate side effects.
+**Result**: [OK] PASS if webhook retry does NOT cause duplicate side effects.
 
 ---
 
@@ -150,7 +150,7 @@
    - Date: Tomorrow
    - Time: 10:00 AM
    - Passengers: 2
-   - Complete payment → booking confirmed
+   - Complete payment -> booking confirmed
 
 2. **Check assigned vehicle** (if vehicle assignment visible):
    - Note: Vehicle ID (e.g., "Mercedes E-Class #123")
@@ -164,7 +164,7 @@
 
 4. **Verify rejection**:
    - **Expected (DB-level guarantee)**: Booking insert fails with error (e.g., "No vehicles available for selected time")
-   - **Current behavior (NO guarantee)**: 🔴 Booking succeeds → DOUBLE-BOOKED (HIGH RISK)
+   - **Current behavior (NO guarantee)**: [RED] Booking succeeds -> DOUBLE-BOOKED (HIGH RISK)
 
 5. **Check DB**:
    - Table: `bookings`
@@ -172,10 +172,10 @@
    - Desired: Second booking rejected OR assigned to different vehicle
 
 **Result**: 
-- ✅ PASS if second booking is rejected OR assigned to different vehicle
-- ❌ FAIL if second booking is accepted with same vehicle (indicates double-booking risk)
+- [OK] PASS if second booking is rejected OR assigned to different vehicle
+- [ERROR] FAIL if second booking is accepted with same vehicle (indicates double-booking risk)
 
-**Status**: 🔴 **CURRENTLY FAILS** (no DB guarantee implemented yet — see BOOKING_STATUS.md Section 3.2).
+**Status**: [RED] **CURRENTLY FAILS** (no DB guarantee implemented yet — see BOOKING_STATUS.md Section 3.2).
 
 ---
 
@@ -194,7 +194,7 @@
    - **Verify**: Time shown is **10:00 AM Europe/Paris** (NOT adjusted to your browser's timezone)
 
 3. **Change browser timezone** (dev tools):
-   - Chrome DevTools → Sensors → Location → Set timezone to "New York" (UTC-5)
+   - Chrome DevTools -> Sensors -> Location -> Set timezone to "New York" (UTC-5)
    - Refresh `/booking/confirmation`
 
 4. **Re-check display**:
@@ -206,13 +206,13 @@
      grep -r "toLocaleString" src/
      ```
    - Expected: All calls include `{ timeZone: 'Europe/Paris' }` parameter
-   - 🔴 **Current status**: NO enforcement (see BOOKING_MODEL.md Section 3.1)
+   - [RED] **Current status**: NO enforcement (see BOOKING_MODEL.md Section 3.1)
 
 **Result**: 
-- ✅ PASS if all times display in Europe/Paris timezone regardless of user's browser
-- ❌ FAIL if times shift based on browser timezone
+- [OK] PASS if all times display in Europe/Paris timezone regardless of user's browser
+- [ERROR] FAIL if times shift based on browser timezone
 
-**Status**: ⚠ **PARTIAL** (DB storage is UTC ✅, frontend display not enforced ❌).
+**Status**: [WARN] **PARTIAL** (DB storage is UTC [OK], frontend display not enforced [ERROR]).
 
 ---
 
@@ -228,22 +228,22 @@
    - Table: `bookings`
    - Verify: `status = 'confirmed'`, `payment_intent_id` populated
 
-2. **Check webhook logs** (Supabase Edge Functions → `stripe-webhook`):
+2. **Check webhook logs** (Supabase Edge Functions -> `stripe-webhook`):
    - Filter: `payment_intent_id = {booking_payment_intent_id}`
    - Expected: Webhook received `payment_intent.succeeded` event
-   - Check: Did email sending succeed or fail?
+   - Check: Did email sending succeed or fail<=
 
-3. **Check Resend logs** (Resend dashboard → Logs):
+3. **Check Resend logs** (Resend dashboard -> Logs):
    - Filter: `to = {user_email}`
    - Expected: Email sent successfully
    - If failed: Check error message (e.g., "Invalid API key", "Rate limit exceeded")
 
 **Common causes**:
 
-- ❌ Webhook not triggered (Stripe webhook URL not registered)
-- ❌ Webhook handler crashed (check Edge Function logs for errors)
-- ❌ Resend API key invalid or missing (check env vars)
-- ❌ Email template broken (HTML rendering error)
+- [ERROR] Webhook not triggered (Stripe webhook URL not registered)
+- [ERROR] Webhook handler crashed (check Edge Function logs for errors)
+- [ERROR] Resend API key invalid or missing (check env vars)
+- [ERROR] Email template broken (HTML rendering error)
 
 **Resolution**:
 
@@ -259,11 +259,11 @@
 
 **Diagnosis**:
 
-1. **Check Stripe event** (Stripe dashboard → Events):
+1. **Check Stripe event** (Stripe dashboard -> Events):
    - Find: `payment_intent.succeeded` for the payment
    - Note: Event ID (e.g., `evt_abc123`)
 
-2. **Check webhook delivery** (Stripe dashboard → Webhooks → endpoint):
+2. **Check webhook delivery** (Stripe dashboard -> Webhooks -> endpoint):
    - Filter: Event ID
    - Expected: Webhook delivered successfully (200 OK)
    - If failed: Check HTTP status code + error message
@@ -279,9 +279,9 @@
 
 **Common causes**:
 
-- ❌ Webhook endpoint not reachable (firewall, DNS issue)
-- ❌ Webhook signature verification failed (secret mismatch)
-- ❌ Handler logic incomplete (event received but status not updated)
+- [ERROR] Webhook endpoint not reachable (firewall, DNS issue)
+- [ERROR] Webhook signature verification failed (secret mismatch)
+- [ERROR] Handler logic incomplete (event received but status not updated)
 
 **Resolution**:
 
@@ -326,7 +326,7 @@ Then manually trigger confirmation email via Resend API or Edge Function.
 
 **Root cause**:
 
-- 🔴 **Most likely**: No DB-level anti-double-booking guarantee (see BOOKING_MODEL.md Section 3.2)
+- [RED] **Most likely**: No DB-level anti-double-booking guarantee (see BOOKING_MODEL.md Section 3.2)
 - Race condition: Two bookings submitted concurrently, both passed app-level availability check
 
 **Immediate mitigation**:
@@ -340,7 +340,7 @@ Then manually trigger confirmation email via Resend API or Edge Function.
    - Notify customer of vehicle change
 
 3. **Issue refund** (if no alternative):
-   - Stripe dashboard → find `payment_intent` → Refund
+   - Stripe dashboard -> find `payment_intent` -> Refund
    - Update booking: `status = 'cancelled'`
    - Send apology email + refund confirmation
 
@@ -361,7 +361,7 @@ Then manually trigger confirmation email via Resend API or Edge Function.
    - Check: `user_id` matches `auth.uid()` (RLS policy requires match)
 
 2. **Frontend error before submission**:
-   - Open browser DevTools → Console
+   - Open browser DevTools -> Console
    - Look for: JavaScript errors, failed `fetch()` calls
 
 3. **Supabase client using wrong key**:
@@ -396,15 +396,15 @@ Check network tab for `/rest/v1/bookings` POST request — response should be 20
 2. **Check frontend code**:
    - Search: `toLocaleString()` calls in confirmation page component
    - Expected: `date.toLocaleString('en-US', { timeZone: 'Europe/Paris' })`
-   - 🔴 **If missing**: Add `timeZone` parameter
+   - [RED] **If missing**: Add `timeZone` parameter
 
 **Fix** (example):
 
 ```typescript
-// ❌ WRONG (uses browser's timezone)
+// [ERROR] WRONG (uses browser's timezone)
 const displayTime = new Date(booking.created_at).toLocaleString();
 
-// ✅ CORRECT (forces Europe/Paris)
+// [OK] CORRECT (forces Europe/Paris)
 const displayTime = new Date(booking.created_at).toLocaleString('en-US', {
   timeZone: 'Europe/Paris',
   dateStyle: 'medium',
@@ -420,7 +420,7 @@ const displayTime = new Date(booking.created_at).toLocaleString('en-US', {
 
 **Debug steps**:
 
-1. **Check webhook endpoint URL** (Stripe dashboard → Developers → Webhooks):
+1. **Check webhook endpoint URL** (Stripe dashboard -> Developers -> Webhooks):
    - Expected: `https://{project-ref}.supabase.co/functions/v1/stripe-webhook`
    - Verify: URL is accessible (not localhost, not behind firewall)
 
@@ -429,12 +429,12 @@ const displayTime = new Date(booking.created_at).toLocaleString('en-US', {
    stripe listen --forward-to http://localhost:54321/functions/v1/stripe-webhook
    ```
 
-3. **Check webhook logs** (Stripe dashboard → Webhooks → endpoint → Recent deliveries):
+3. **Check webhook logs** (Stripe dashboard -> Webhooks -> endpoint -> Recent deliveries):
    - Look for: HTTP status code (should be 200 OK)
    - If 401/403: Check authentication (webhook secret)
    - If 500: Check Edge Function logs for errors
 
-4. **Check Edge Function logs** (Supabase dashboard → Edge Functions → stripe-webhook):
+4. **Check Edge Function logs** (Supabase dashboard -> Edge Functions -> stripe-webhook):
    - Filter: Recent invocations
    - Look for: Errors, stack traces, missing env vars
 
@@ -471,12 +471,12 @@ const displayTime = new Date(booking.created_at).toLocaleString('en-US', {
 
 **Immediate actions** (within 1 minute):
 
-1. **Rotate API key** (Stripe dashboard → API keys → Roll secret key):
+1. **Rotate API key** (Stripe dashboard -> API keys -> Roll secret key):
    - Generate new secret key
    - Update `.env` (Edge Function env vars)
    - Redeploy Edge Functions
 
-2. **Check for unauthorized activity** (Stripe dashboard → Payments):
+2. **Check for unauthorized activity** (Stripe dashboard -> Payments):
    - Filter: Last 24 hours
    - Look for: Suspicious refunds, payouts, charges
 
@@ -514,7 +514,7 @@ const displayTime = new Date(booking.created_at).toLocaleString('en-US', {
 
 **Issue**: `.env.example` exposes `VITE_STRIPE_SECRET_KEY` and `VITE_RESEND_API_KEY` to client bundle.
 
-**Impact**: Anyone can view secrets in browser DevTools → Network tab → JS bundle.
+**Impact**: Anyone can view secrets in browser DevTools -> Network tab -> JS bundle.
 
 **Workaround**: DO NOT deploy to production until SEC-RESEND01 merged.
 
@@ -526,7 +526,7 @@ const displayTime = new Date(booking.created_at).toLocaleString('en-US', {
 
 **Issue**: No DB-level guarantee against overlapping bookings for same vehicle.
 
-**Impact**: Two customers can book same vehicle for same time → service failure.
+**Impact**: Two customers can book same vehicle for same time -> service failure.
 
 **Workaround**: Manual coordination (check bookings table before confirming).
 
