@@ -15,6 +15,16 @@ export const fr: Translation = {
     title: "Paris Elite Services",
     subtitle:
       "Transferts aéroport Paris ⇄ CDG / Orly dès 70€ (1–3 passagers, tout compris)",
+    selectPickup: "Sélectionnez le lieu de prise en charge",
+    selectDropoff: "Sélectionnez le lieu de destination",
+    getInstantQuote: "Obtenir un devis instantané",
+    fixedPrice: "Prix fixe",
+    freeCancellation: "Annulation gratuite",
+    support247: "Support 24/7",
+    luggageIncluded: "1 bagage/passager inclus",
+    licensedInsured: "Licence VTC & assuré",
+    freeCancellation24h: "Annulation gratuite 24h",
+    viewFleet: "Voir notre flotte premium",
   },
   trustBar: {
     securePayment: "Paiement Sécurisé",
