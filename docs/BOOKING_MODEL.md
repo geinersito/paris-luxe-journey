@@ -1,4 +1,4 @@
-# BOOKING_MODEL — Paris Elite Services Booking System
+# BOOKING_MODEL - Paris Elite Services Booking System
 
 **SSOT** for data model, state machines, invariants, and guarantees.
 
@@ -130,7 +130,7 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
 
 **Enforcement**:
 - [OK] DB: `created_at` / `updated_at` use `TIMEZONE('utc'::text, NOW())`
-- [WARN] Frontend: NO enforcement yet (no `timeZone: 'Europe/Paris'` in `toLocaleString()` calls) — HIGH RISK
+- [WARN] Frontend: NO enforcement yet (no `timeZone: 'Europe/Paris'` in `toLocaleString()` calls) - HIGH RISK
 - [WARN] User input: `booking_date` is stored as DATE (no TZ); must validate against Europe/Paris calendar
 
 **Action required**: Audit all date/time display code for `toLocaleString()` without `timeZone` parameter (see BOOKING_STATUS.md blockers).
@@ -177,8 +177,8 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
 
 **Current violations** ([RED] CRITICAL):
 
-- `.env.example:7`: `VITE_STRIPE_SECRET_KEY` — [ERROR] MUST be server-side only
-- `.env.example:10`: `VITE_RESEND_API_KEY` — [ERROR] MUST be server-side only
+- `.env.example:7`: `VITE_STRIPE_SECRET_KEY` - [ERROR] MUST be server-side only
+- `.env.example:10`: `VITE_RESEND_API_KEY` - [ERROR] MUST be server-side only
 - `src/lib/email.ts:19`: uses `import.meta.env.VITE_RESEND_API_KEY` in client code
 
 **Impact**: Full Stripe account compromise + email spoofing/abuse.
@@ -216,7 +216,7 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
 
 **Supabase key usage**:
 - Client (frontend): **anon key** only (RLS enforced)
-- Edge Functions (server): **service_role key** (bypasses RLS) — MUST be server-side only
+- Edge Functions (server): **service_role key** (bypasses RLS) - MUST be server-side only
 
 ### 4.2 `tours` table
 
@@ -242,7 +242,7 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
 
 ## 6. Related Docs
 
-- **BOOKING_STATUS.md** — current implementation status (DONE/WIP/BLOCKED)
-- **BOOKING_RUNBOOK.md** — manual tests + incident procedures
-- **PRODUCT_SCOPE.md** — features in/out of scope
-- **SUPERVISOR.md** — governance + PR rules
+- **BOOKING_STATUS.md** - current implementation status (DONE/WIP/BLOCKED)
+- **BOOKING_RUNBOOK.md** - manual tests + incident procedures
+- **PRODUCT_SCOPE.md** - features in/out of scope
+- **SUPERVISOR.md** - governance + PR rules

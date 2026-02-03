@@ -1,4 +1,4 @@
-# BOOKING_STATUS — Paris Elite Services Booking System
+# BOOKING_STATUS - Paris Elite Services Booking System
 
 **Current implementation status**: What's DONE, IN PROGRESS, BLOCKED, and NEXT.
 
@@ -110,7 +110,7 @@
 4. Same for Stripe: payment intent creation must be server-side (Edge Function)
 5. Update `.env.example` to remove `VITE_STRIPE_SECRET_KEY` and `VITE_RESEND_API_KEY`
 
-**Next PR**: `SEC-RESEND01` (security-only, <=4 files) — move Resend to Edge Function.
+**Next PR**: `SEC-RESEND01` (security-only, <=4 files) - move Resend to Edge Function.
 
 ### 3.2 Booking Guarantees (P0 BLOCKER)
 
@@ -128,7 +128,7 @@
 2. Add unique constraint or CHECK constraint preventing overlaps
 3. Update booking insert logic to validate availability atomically
 
-**Next PR**: `DB-AVAILABILITY01` (DB-only migration + RLS) — prevent double-booking.
+**Next PR**: `DB-AVAILABILITY01` (DB-only migration + RLS) - prevent double-booking.
 
 ### 3.3 Stripe Webhooks (P0 for live payments)
 
@@ -145,41 +145,41 @@
 4. Implement idempotency: store `event.id` in `processed_stripe_events` table
 5. Register webhook URL in Stripe dashboard
 
-**Next PR**: `FN-WEBHOOK01` (functions-only) — Stripe webhook idempotency.
+**Next PR**: `FN-WEBHOOK01` (functions-only) - Stripe webhook idempotency.
 
 ---
 
 ## 4. NEXT (Top 5 Micro-PRs, priority order)
 
-### 4.1 **SEC-RESEND01** — Move Resend to Edge Function (P0)
+### 4.1 **SEC-RESEND01** - Move Resend to Edge Function (P0)
 
 **Type**: Security + functions-only  
 **Files**: <=4 (Edge Function + client proxy + .env.example + email.ts removal)  
 **Blocks**: Production deploy  
 **Risk**: CRITICAL
 
-### 4.2 **DB-AVAILABILITY01** — Anti-double-booking DB guarantee (P0)
+### 4.2 **DB-AVAILABILITY01** - Anti-double-booking DB guarantee (P0)
 
 **Type**: DB-only (migration + RLS)  
 **Files**: <=2 (migration + optional RLS policy)  
 **Blocks**: Production deploy  
 **Risk**: HIGH (customer service failure)
 
-### 4.3 **FN-WEBHOOK01** — Stripe webhook with idempotency (P0)
+### 4.3 **FN-WEBHOOK01** - Stripe webhook with idempotency (P0)
 
 **Type**: Functions-only + DB-only (Edge Function + `processed_stripe_events` table)  
 **Files**: <=4 (Edge Function + migration + types)  
 **Blocks**: Live payments  
 **Risk**: HIGH (booking confirmations never sent)
 
-### 4.4 **UI-HOME02A** — CompactBookingForm i18n (P1)
+### 4.4 **UI-HOME02A** - CompactBookingForm i18n (P1)
 
 **Type**: UI-only  
 **Files**: 1 (`src/components/booking/CompactBookingForm.tsx`)  
 **Depends on**: PR #15 (FND-I18N01) merged  
 **Manual test**: Verify ES/EN/FR/PT display
 
-### 4.5 **UI-HOME02B** — HeroSection i18n (P1)
+### 4.5 **UI-HOME02B** - HeroSection i18n (P1)
 
 **Type**: UI-only  
 **Files**: 1 (`src/components/sections/HeroSection.tsx`)  
@@ -205,20 +205,20 @@
 
 **Correct micro-PR order** (respecting dependencies):
 
-1. **PR-DOCS02** (this PR) — Complete SSOT docs (no blockers)
-2. **PR #15** (FND-I18N01) — i18n foundation (no blockers, awaiting CI)
-3. **PR #16** (SUPERVISOR v0.2) — Governance update (no blockers, CI green, ready to merge)
-4. **PR #17** (PRODUCT_SCOPE) — Scope documentation (no blockers, awaiting CI)
-5. **SEC-RESEND01** — Move Resend to Edge Function (P0, blocks production)
-6. **DB-AVAILABILITY01** — Anti-double-booking (P0, blocks production)
-7. **FN-WEBHOOK01** — Stripe webhooks (P0, blocks live payments)
-8. **UI-HOME02A/B** — Hero i18n (depends on #15 merged)
+1. **PR-DOCS02** (this PR) - Complete SSOT docs (no blockers)
+2. **PR #15** (FND-I18N01) - i18n foundation (no blockers, awaiting CI)
+3. **PR #16** (SUPERVISOR v0.2) - Governance update (no blockers, CI green, ready to merge)
+4. **PR #17** (PRODUCT_SCOPE) - Scope documentation (no blockers, awaiting CI)
+5. **SEC-RESEND01** - Move Resend to Edge Function (P0, blocks production)
+6. **DB-AVAILABILITY01** - Anti-double-booking (P0, blocks production)
+7. **FN-WEBHOOK01** - Stripe webhooks (P0, blocks live payments)
+8. **UI-HOME02A/B** - Hero i18n (depends on #15 merged)
 
 ---
 
 ## 7. Related Docs
 
-- **BOOKING_MODEL.md** — data model + invariants
-- **BOOKING_RUNBOOK.md** — manual tests + incident procedures
-- **PRODUCT_SCOPE.md** — features in/out of scope + security violations
-- **SUPERVISOR.md** — governance + PR rules
+- **BOOKING_MODEL.md** - data model + invariants
+- **BOOKING_RUNBOOK.md** - manual tests + incident procedures
+- **PRODUCT_SCOPE.md** - features in/out of scope + security violations
+- **SUPERVISOR.md** - governance + PR rules

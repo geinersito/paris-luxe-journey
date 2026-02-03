@@ -1,4 +1,4 @@
-# BOOKING_RUNBOOK — Paris Elite Services Booking System
+# BOOKING_RUNBOOK - Paris Elite Services Booking System
 
 **Operational procedures**: Manual tests, debugging guides, incident checklists.
 
@@ -9,14 +9,14 @@
 
 ## 1. Manual Tests (Pre-Merge Validation)
 
-### 1.1 Happy Path — Transfer Booking + Payment + Confirmation
+### 1.1 Happy Path - Transfer Booking + Payment + Confirmation
 
 **Purpose**: Validate end-to-end booking flow (no errors, email sent, DB state correct).
 
 **Prerequisites**:
 - Local dev environment running (`npm run dev`)
 - Supabase project accessible
-- Stripe test mode keys configured (NOT `VITE_*` — see Section 5.1 for blocker)
+- Stripe test mode keys configured (NOT `VITE_*` - see Section 5.1 for blocker)
 - Resend API key configured (server-side only once SEC-RESEND01 merged)
 
 **Steps**:
@@ -35,7 +35,7 @@
 
 3. **Get quote**:
    - Click "Get Instant Quote"
-   - Expected: Route to `/booking/details` with calculated price displayed (e.g., "€70")
+   - Expected: Route to `/booking/details` with calculated price displayed (e.g., "EUR70")
 
 4. **Enter passenger details**:
    - Full name: "Test User"
@@ -51,7 +51,7 @@
    - Card number: `4242 4242 4242 4242` (Stripe test card)
    - Expiry: Any future date (e.g., 12/34)
    - CVC: Any 3 digits (e.g., 123)
-   - Click "Pay €70"
+   - Click "Pay EUR70"
 
 7. **Verify confirmation**:
    - Expected: Route to `/booking/confirmation` with success message
@@ -69,26 +69,26 @@
 9. **Check email** (once SEC-RESEND01 implemented):
    - Inbox: test@example.com
    - Expected: Confirmation email within 1 minute
-   - Subject: "Booking Confirmation — Paris Elite Services"
+   - Subject: "Booking Confirmation - Paris Elite Services"
    - Body: Booking details, pickup/dropoff, driver contact (if available)
 
 **Result**: [OK] PASS if all steps succeed.
 
 ---
 
-### 1.2 Payment Failed — Retry Logic
+### 1.2 Payment Failed - Retry Logic
 
 **Purpose**: Validate that failed payments do NOT create confirmed bookings.
 
 **Steps**:
 
-1. Follow steps 1–5 from Section 1.1 (Happy Path).
+1. Follow steps 1-5 from Section 1.1 (Happy Path).
 
 2. **Use Stripe test card for declined payment**:
-   - Card number: `4000 0000 0000 0002` (Stripe test card — always declined)
+   - Card number: `4000 0000 0000 0002` (Stripe test card - always declined)
    - Expiry: Any future date
    - CVC: Any 3 digits
-   - Click "Pay €70"
+   - Click "Pay EUR70"
 
 3. **Verify error handling**:
    - Expected: Payment form shows error message (e.g., "Your card was declined")
@@ -106,7 +106,7 @@
 
 ---
 
-### 1.3 Webhook Retry — Idempotency Check
+### 1.3 Webhook Retry - Idempotency Check
 
 **Purpose**: Validate that Stripe webhook retries do NOT cause duplicate actions (double emails, double status updates).
 
@@ -136,7 +136,7 @@
 
 ---
 
-### 1.4 Double-Booking Attempt — Availability Guarantee
+### 1.4 Double-Booking Attempt - Availability Guarantee
 
 **Purpose**: Validate that overlapping bookings are rejected (anti-double-booking guarantee).
 
@@ -175,11 +175,11 @@
 - [OK] PASS if second booking is rejected OR assigned to different vehicle
 - [ERROR] FAIL if second booking is accepted with same vehicle (indicates double-booking risk)
 
-**Status**: [RED] **CURRENTLY FAILS** (no DB guarantee implemented yet — see BOOKING_STATUS.md Section 3.2).
+**Status**: [RED] **CURRENTLY FAILS** (no DB guarantee implemented yet - see BOOKING_STATUS.md Section 3.2).
 
 ---
 
-### 1.5 Timezone Sanity — Europe/Paris Display
+### 1.5 Timezone Sanity - Europe/Paris Display
 
 **Purpose**: Validate that all date/time displays respect Europe/Paris timezone (not UTC, not user's browser timezone).
 
@@ -302,7 +302,7 @@ Then manually trigger confirmation email via Resend API or Edge Function.
 
 ---
 
-### 2.3 "Double-booking detected — two bookings for same vehicle/time"
+### 2.3 "Double-booking detected - two bookings for same vehicle/time"
 
 **Symptoms**: Two confirmed bookings assigned to same vehicle for overlapping time slots.
 
@@ -346,7 +346,7 @@ Then manually trigger confirmation email via Resend API or Edge Function.
 
 **Long-term fix**:
 
-- Implement DB-AVAILABILITY01 (resource model + unique constraint) — P0 blocker
+- Implement DB-AVAILABILITY01 (resource model + unique constraint) - P0 blocker
 
 ---
 
@@ -376,7 +376,7 @@ console.log('Auth user:', supabase.auth.getUser());
 console.log('Booking payload:', bookingData);
 ```
 
-Check network tab for `/rest/v1/bookings` POST request — response should be 201 Created.
+Check network tab for `/rest/v1/bookings` POST request - response should be 201 Created.
 
 ---
 
@@ -442,7 +442,7 @@ const displayTime = new Date(booking.created_at).toLocaleString('en-US', {
 
 ## 4. Emergency Procedures
 
-### 4.1 "Production site down — critical bug"
+### 4.1 "Production site down - critical bug"
 
 **Immediate actions** (within 5 minutes):
 
@@ -503,7 +503,7 @@ const displayTime = new Date(booking.created_at).toLocaleString('en-US', {
    - Offer: Free identity protection service (if PII leaked)
 
 4. **Report to authorities** (if GDPR applies):
-   - France: CNIL (Commission Nationale de l'Informatique et des Libertés)
+   - France: CNIL (Commission Nationale de l'Informatique et des Libertes)
    - Form: [cnil.fr](https://www.cnil.fr/)
 
 ---
@@ -518,7 +518,7 @@ const displayTime = new Date(booking.created_at).toLocaleString('en-US', {
 
 **Workaround**: DO NOT deploy to production until SEC-RESEND01 merged.
 
-**Permanent fix**: PR SEC-RESEND01 (move to Edge Functions) — see BOOKING_STATUS.md Section 3.1.
+**Permanent fix**: PR SEC-RESEND01 (move to Edge Functions) - see BOOKING_STATUS.md Section 3.1.
 
 ---
 
@@ -530,7 +530,7 @@ const displayTime = new Date(booking.created_at).toLocaleString('en-US', {
 
 **Workaround**: Manual coordination (check bookings table before confirming).
 
-**Permanent fix**: PR DB-AVAILABILITY01 (resource model) — see BOOKING_STATUS.md Section 3.2.
+**Permanent fix**: PR DB-AVAILABILITY01 (resource model) - see BOOKING_STATUS.md Section 3.2.
 
 ---
 
@@ -542,13 +542,13 @@ const displayTime = new Date(booking.created_at).toLocaleString('en-US', {
 
 **Workaround**: None (webhooks not in production yet).
 
-**Permanent fix**: PR FN-WEBHOOK01 (idempotent handler) — see BOOKING_STATUS.md Section 3.3.
+**Permanent fix**: PR FN-WEBHOOK01 (idempotent handler) - see BOOKING_STATUS.md Section 3.3.
 
 ---
 
 ## 6. Related Docs
 
-- **BOOKING_MODEL.md** — data model + invariants
-- **BOOKING_STATUS.md** — current implementation status
-- **PRODUCT_SCOPE.md** — features in/out of scope + security violations
-- **SUPERVISOR.md** — governance + PR rules
+- **BOOKING_MODEL.md** - data model + invariants
+- **BOOKING_STATUS.md** - current implementation status
+- **PRODUCT_SCOPE.md** - features in/out of scope + security violations
+- **SUPERVISOR.md** - governance + PR rules
