@@ -99,7 +99,7 @@ serve(async (req) => {
     switch (event.type) {
       case 'payment_intent.succeeded': {
         const paymentIntent = event.data.object as Stripe.PaymentIntent;
-        await handlePaymentIntentSucceeded(supabase, paymentIntent);
+        await handlePaymentIntentSucceeded(supabase, paymentIntent, event.id);
         break;
       }
 
@@ -111,7 +111,7 @@ serve(async (req) => {
 
       case 'setup_intent.succeeded': {
         const setupIntent = event.data.object as Stripe.SetupIntent;
-        await handleSetupIntentSucceeded(supabase, setupIntent);
+        await handleSetupIntentSucceeded(supabase, setupIntent, event.id);
         break;
       }
 
@@ -163,9 +163,96 @@ serve(async (req) => {
 });
 
 /**
+ * HELPER: Emit booking_confirmed event to ERP
+ * Fire-and-forget: no bloquea webhook si falla
+ */
+async function emitBookingConfirmedToERP(
+  booking: any,
+  paymentIntentId: string,
+  eventId?: string
+): Promise<void> {
+  const erpIngestUrl = Deno.env.get('ERP_INGEST_URL');
+  const ingestSecret = Deno.env.get('BOOKING_INGEST_SECRET');
+
+  if (!erpIngestUrl || !ingestSecret) {
+    console.log('[webhook] ERP emit skipped: missing env vars (ERP_INGEST_URL or BOOKING_INGEST_SECRET)');
+    return;
+  }
+
+  // Construir payload según spec CTO
+  const payload = {
+    event_type: 'booking_confirmed',
+    booking_id: booking.id,
+    idempotency_key: `booking_confirmed:${booking.id}:v1`,
+    customer: {
+      name: booking.customer_name ?? booking.full_name ?? 'Unknown',
+      email: (booking.customer_email ?? '').toLowerCase(),
+      phone: booking.customer_phone ?? '',
+      whatsapp: booking.customer_whatsapp ?? undefined,
+    },
+    service: {
+      type: booking.service_type,
+      pickup_datetime: booking.pickup_datetime,
+      origin: booking.pickup_location,
+      destination: booking.dropoff_location ?? undefined,
+      pax: booking.passengers ?? booking.pax ?? 1,
+      luggage: booking.luggage ?? undefined,
+      flight_train: booking.flight_number ?? booking.flight_train ?? undefined,
+      notes: booking.notes ?? undefined,
+    },
+    pricing: {
+      amount_cents: booking.amount_cents ?? booking.total_cents,
+      currency: 'EUR',
+      payment_status: 'paid',
+    },
+  };
+
+  // Fire-and-forget con timeout
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
+
+  try {
+    const response = await fetch(`${erpIngestUrl}/functions/v1/ingest-booking-confirmed-v1`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-ingest-secret': ingestSecret,
+      },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+
+    clearTimeout(timeoutId);
+
+    // Log seguro: solo booking_id, status, http_status (sin PII)
+    console.log('[webhook] ERP emit:', {
+      booking_id: booking.id,
+      status: booking.status,
+      http_status: response.status,
+      event_id: eventId,
+    });
+
+    if (!response.ok) {
+      const text = await response.text().catch(() => 'no body');
+      console.error('[webhook] ERP emit failed:', {
+        booking_id: booking.id,
+        http_status: response.status,
+        body: text.slice(0, 200),
+      });
+    }
+  } catch (error) {
+    clearTimeout(timeoutId);
+    console.error('[webhook] ERP emit error:', {
+      booking_id: booking.id,
+      error: error instanceof Error ? error.message : 'Unknown',
+    });
+  }
+}
+
+/**
  * HANDLER: payment_intent.succeeded (PREPAID)
  */
-async function handlePaymentIntentSucceeded(supabase: any, paymentIntent: any) {
+async function handlePaymentIntentSucceeded(supabase: any, paymentIntent: any, eventId?: string) {
   console.log('[webhook] PaymentIntent succeeded:', paymentIntent.id);
 
   const bookingId = paymentIntent.metadata?.booking_id;
@@ -190,6 +277,21 @@ async function handlePaymentIntentSucceeded(supabase: any, paymentIntent: any) {
   }
 
   console.log('[webhook] Booking confirmado:', bookingId);
+
+  // Obtener booking row completa para emit a ERP
+  const { data: booking, error: fetchError } = await supabase
+    .from('bookings')
+    .select('*')
+    .eq('id', bookingId)
+    .single();
+
+  if (fetchError || !booking) {
+    console.error('[webhook] Error obteniendo booking para ERP emit:', fetchError);
+    // No throw: el booking ya está confirmado
+  } else {
+    // Emit a ERP (fire-and-forget)
+    await emitBookingConfirmedToERP(booking, paymentIntent.id, eventId);
+  }
 }
 
 /**
@@ -227,7 +329,7 @@ async function handlePaymentIntentFailed(supabase: any, paymentIntent: any) {
 /**
  * HANDLER: setup_intent.succeeded (FLEXIBLE)
  */
-async function handleSetupIntentSucceeded(supabase: any, setupIntent: any) {
+async function handleSetupIntentSucceeded(supabase: any, setupIntent: any, eventId?: string) {
   console.log('[webhook] SetupIntent succeeded:', setupIntent.id);
 
   const bookingId = setupIntent.metadata?.booking_id;
@@ -256,6 +358,21 @@ async function handleSetupIntentSucceeded(supabase: any, setupIntent: any) {
   }
 
   console.log('[webhook] Booking flexible confirmado:', bookingId);
+
+  // Obtener booking row completa para emit a ERP
+  const { data: booking, error: fetchError } = await supabase
+    .from('bookings')
+    .select('*')
+    .eq('id', bookingId)
+    .single();
+
+  if (fetchError || !booking) {
+    console.error('[webhook] Error obteniendo booking para ERP emit:', fetchError);
+    // No throw: el booking ya está confirmado
+  } else {
+    // Emit a ERP (fire-and-forget)
+    await emitBookingConfirmedToERP(booking, setupIntent.id, eventId);
+  }
 }
 
 /**
