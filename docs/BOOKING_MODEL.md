@@ -102,9 +102,9 @@ cancelled    cancelled
 
 | Transition | Trigger | Location |
 |------------|---------|----------|
-| pending → pending_payment | User submits payment form (Stripe PaymentIntent created) | ⚠️ TODO: cite frontend/edge function |
-| pending_payment → confirmed | Stripe webhook: `payment_intent.succeeded` | ⚠️ TODO: cite webhook handler |
-| * → cancelled | User/admin action | ⚠️ TODO: cite cancellation endpoint |
+| pending → pending_payment | User submits payment form (Stripe PaymentIntent created) | ⚠ TODO: cite frontend/edge function |
+| pending_payment → confirmed | Stripe webhook: `payment_intent.succeeded` | ⚠ TODO: cite webhook handler |
+| * → cancelled | User/admin action | ⚠ TODO: cite cancellation endpoint |
 
 **HIGH RISK**: No webhook handler implementation found yet in codebase (see BOOKING_STATUS.md).
 
@@ -130,8 +130,8 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
 
 **Enforcement**:
 - ✅ DB: `created_at` / `updated_at` use `TIMEZONE('utc'::text, NOW())`
-- ⚠️ Frontend: NO enforcement yet (no `timeZone: 'Europe/Paris'` in `toLocaleString()` calls) — HIGH RISK
-- ⚠️ User input: `booking_date` is stored as DATE (no TZ); must validate against Europe/Paris calendar
+- ⚠ Frontend: NO enforcement yet (no `timeZone: 'Europe/Paris'` in `toLocaleString()` calls) — HIGH RISK
+- ⚠ User input: `booking_date` is stored as DATE (no TZ); must validate against Europe/Paris calendar
 
 **Action required**: Audit all date/time display code for `toLocaleString()` without `timeZone` parameter (see BOOKING_STATUS.md blockers).
 
@@ -233,7 +233,7 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
 |------|--------|-----------------|
 | Webhook handler | ❌ Not implemented | Create Edge Function for Stripe webhooks with idempotency |
 | Anti-double-booking | ❌ No DB guarantee | Design + implement resource locking (vehicle_assignments table) |
-| Timezone enforcement (frontend) | ⚠️ Partial | Audit all `toLocaleString()` calls, add `timeZone: 'Europe/Paris'` |
+| Timezone enforcement (frontend) | ⚠ Partial | Audit all `toLocaleString()` calls, add `timeZone: 'Europe/Paris'` |
 | Secrets in VITE_* | 🔴 CRITICAL | Move to Edge Functions (P0 blocker) |
 | Payment retry logic | ❌ Not defined | Define behavior for `payment_intent.payment_failed` |
 | Cancellation flow | ❌ Not implemented | Define refund policy + state transitions |

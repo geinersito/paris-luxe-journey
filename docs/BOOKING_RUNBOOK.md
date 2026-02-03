@@ -212,7 +212,7 @@
 - ✅ PASS if all times display in Europe/Paris timezone regardless of user's browser
 - ❌ FAIL if times shift based on browser timezone
 
-**Status**: ⚠️ **PARTIAL** (DB storage is UTC ✅, frontend display not enforced ❌).
+**Status**: ⚠ **PARTIAL** (DB storage is UTC ✅, frontend display not enforced ❌).
 
 ---
 
