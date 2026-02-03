@@ -8,6 +8,7 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
+    "lint:changed": "git diff --name-only origin/main...HEAD -- '*.ts' '*.tsx' '*.js' '*.jsx' | xargs -r npx eslint",
     "preview": "vite preview",
     "prepare": "husky install",
     "lint-staged": "lint-staged",
