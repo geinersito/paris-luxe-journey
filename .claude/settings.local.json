@@ -27,7 +27,8 @@
       "Bash(git log:*)",
       "Bash(npx:*)",
       "Bash(gh pr checkout:*)",
-      "Bash(rg:*)"
+      "Bash(rg:*)",
+      "Bash(ls:*)"
     ]
   }
 }
