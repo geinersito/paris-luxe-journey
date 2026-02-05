@@ -2,4 +2,6 @@
 . "$(dirname -- "$0")/_/husky.sh"
 
 npm run build
-git diff --name-only origin/main | grep -E "src/(components/Layout|App).tsx" && npm run type-check
+if git diff --name-only origin/main | grep -E "src/(components/Layout|App).tsx" >/dev/null 2>&1; then
+  npm run type-check
+fi
