@@ -14,12 +14,16 @@ export interface Translation {
   hero: {
     title: string;
     subtitle: string;
-    pickupPlaceholder: string;
-    dropoffPlaceholder: string;
-    cta: string;
+    selectPickup: string;
+    selectDropoff: string;
+    getInstantQuote: string;
     fixedPrice: string;
     freeCancellation: string;
     support247: string;
+    luggageIncluded: string;
+    licensedInsured: string;
+    freeCancellation24h: string;
+    viewFleet: string;
   };
   exitPopup: {
     title: string;

@@ -39,7 +39,7 @@ export function CompactBookingForm({
               onChange={(e) => setPickup(e.target.value)}
               className="w-full px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
             >
-              <option value="">{t.hero.pickupPlaceholder}</option>
+              <option value="">{t.hero.selectPickup}</option>
               <option value="cdg">Paris CDG Airport</option>
               <option value="orly">Paris Orly Airport</option>
               <option value="paris">Paris City Center</option>
@@ -76,7 +76,7 @@ export function CompactBookingForm({
               onChange={(e) => setDropoff(e.target.value)}
               className="w-full px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
             >
-              <option value="">{t.hero.dropoffPlaceholder}</option>
+              <option value="">{t.hero.selectDropoff}</option>
               <option value="cdg">Paris CDG Airport</option>
               <option value="orly">Paris Orly Airport</option>
               <option value="paris">Paris City Center</option>
@@ -143,7 +143,7 @@ export function CompactBookingForm({
             onClick={handleQuickBook}
             className="silk-button w-full lg:w-auto px-8 py-3 text-sm font-bold whitespace-nowrap group shadow-gold-glow hover:shadow-gold-glow-strong"
           >
-            {t.hero.cta}
+            {t.hero.getInstantQuote}
             <svg
               className="inline-block ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
               fill="none"
