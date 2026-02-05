@@ -21,6 +21,8 @@
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import Stripe from 'https://esm.sh/stripe@13.10.0';
+import { getEnv, getEnvBool } from '../_shared/env.ts';
+import { emitBookingConfirmedToERP as emitToERP } from '../_shared/erpIngest.ts';
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -163,89 +165,37 @@ serve(async (req) => {
 });
 
 /**
- * HELPER: Emit booking_confirmed event to ERP
+ * HELPER: Emit booking_confirmed event to ERP (RGPD-safe wrapper)
  * Fire-and-forget: no bloquea webhook si falla
  */
 async function emitBookingConfirmedToERP(
   booking: any,
-  paymentIntentId: string,
-  eventId?: string
+  _paymentIntentId: string,
+  _eventId?: string
 ): Promise<void> {
-  const erpIngestUrl = Deno.env.get('ERP_INGEST_URL');
-  const ingestSecret = Deno.env.get('BOOKING_INGEST_SECRET');
-
-  if (!erpIngestUrl || !ingestSecret) {
-    console.log('[webhook] ERP emit skipped: missing env vars (ERP_INGEST_URL or BOOKING_INGEST_SECRET)');
-    return;
-  }
-
-  // Construir payload según spec CTO
-  const payload = {
-    event_type: 'booking_confirmed',
-    booking_id: booking.id,
-    idempotency_key: `booking_confirmed:${booking.id}:v1`,
-    customer: {
-      name: booking.customer_name ?? booking.full_name ?? 'Unknown',
-      email: (booking.customer_email ?? '').toLowerCase(),
-      phone: booking.customer_phone ?? '',
-      whatsapp: booking.customer_whatsapp ?? undefined,
-    },
-    service: {
-      type: booking.service_type,
-      pickup_datetime: booking.pickup_datetime,
-      origin: booking.pickup_location,
-      destination: booking.dropoff_location ?? undefined,
-      pax: booking.passengers ?? booking.pax ?? 1,
-      luggage: booking.luggage ?? undefined,
-      flight_train: booking.flight_number ?? booking.flight_train ?? undefined,
-      notes: booking.notes ?? undefined,
-    },
-    pricing: {
-      amount_cents: booking.amount_cents ?? booking.total_cents,
-      currency: 'EUR',
-      payment_status: 'paid',
-    },
-  };
-
-  // Fire-and-forget con timeout
-  const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 5000); // 5s timeout
-
   try {
-    const response = await fetch(`${erpIngestUrl}/functions/v1/ingest-booking-confirmed-v1`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'x-ingest-secret': ingestSecret,
-      },
-      body: JSON.stringify(payload),
-      signal: controller.signal,
-    });
+    const enabled = getEnvBool('ERP_INGEST_ENABLED', true);
+    const erpIngestUrl = getEnv('ERP_INGEST_URL');
+    const ingestSecret = getEnv('BOOKING_INGEST_SECRET');
 
-    clearTimeout(timeoutId);
-
-    // Log seguro: solo booking_id, status, http_status (sin PII)
-    console.log('[webhook] ERP emit:', {
-      booking_id: booking.id,
-      status: booking.status,
-      http_status: response.status,
-      event_id: eventId,
-    });
-
-    if (!response.ok) {
-      const text = await response.text().catch(() => 'no body');
-      console.error('[webhook] ERP emit failed:', {
-        booking_id: booking.id,
-        http_status: response.status,
-        body: text.slice(0, 200),
-      });
+    if (!enabled) {
+      console.log('[webhook] ERP emit disabled via ERP_INGEST_ENABLED=false');
+      return;
     }
-  } catch (error) {
-    clearTimeout(timeoutId);
-    console.error('[webhook] ERP emit error:', {
-      booking_id: booking.id,
-      error: error instanceof Error ? error.message : 'Unknown',
+
+    if (!erpIngestUrl || !ingestSecret) {
+      console.log('[webhook] ERP emit skipped: missing env (ERP_INGEST_URL or BOOKING_INGEST_SECRET)');
+      return;
+    }
+
+    // Call production-grade RGPD-safe implementation (no PII in payload)
+    void emitToERP({
+      bookingId: booking.id,
+      erpIngestUrl,
+      ingestSecret,
     });
+  } catch (err: any) {
+    console.error('[webhook] ERP emit setup error:', { message: String(err?.message ?? err) });
   }
 }
 
