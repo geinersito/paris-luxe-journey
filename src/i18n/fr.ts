@@ -787,4 +787,11 @@ export const fr: Translation = {
     officialDetails: "Détails Officiels",
     source: "Source",
   },
+  seo: {
+    home: {
+      title: "Transfert Aéroport Paris VTC Luxe | CDG, Orly | À partir de 70€",
+      description:
+        "Service de transfert aéroport premium à Paris. Réservez votre chauffeur privé pour CDG, Orly ou transferts en ville. Prix fixes dès 70€, disponibilité 24/7, véhicules de luxe.",
+    },
+  },
 };

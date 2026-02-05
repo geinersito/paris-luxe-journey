@@ -781,4 +781,12 @@ export const pt: Translation = {
     officialDetails: "Detalhes Oficiais",
     source: "Fonte",
   },
+  seo: {
+    home: {
+      title:
+        "Transfers de Luxo Paris | Serviço VTC Aeroporto CDG, Orly | A partir de 70€",
+      description:
+        "Serviço premium de transfer aeroporto em Paris. Reserve seu motorista particular para CDG, Orly ou transfers na cidade. Preços fixos desde 70€, disponibilidade 24/7, veículos de luxo.",
+    },
+  },
 };

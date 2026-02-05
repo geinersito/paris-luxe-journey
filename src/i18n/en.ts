@@ -767,4 +767,12 @@ export const en: Translation = {
     officialDetails: "Official Details",
     source: "Source",
   },
+  seo: {
+    home: {
+      title:
+        "Paris Luxury Transfers | Airport VTC Service CDG, Orly | From €70",
+      description:
+        "Premium airport transfer service in Paris. Book your private chauffeur for CDG, Orly, or city transfers. Fixed prices from €70, 24/7 availability, luxury vehicles. Book now!",
+    },
+  },
 };

@@ -785,4 +785,12 @@ export const es: Translation = {
     officialDetails: "Detalles Oficiales",
     source: "Fuente",
   },
+  seo: {
+    home: {
+      title:
+        "Traslados de Lujo París | Servicio VTC Aeropuerto CDG, Orly | Desde 70€",
+      description:
+        "Servicio premium de traslado aeropuerto en París. Reserve su chófer privado para CDG, Orly o traslados urbanos. Precios fijos desde 70€, disponibilidad 24/7, vehículos de lujo.",
+    },
+  },
 };

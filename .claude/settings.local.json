@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git switch:*)",
+      "Bash(git pull:*)",
+      "Bash(npm run lint)",
+      "Bash(npx tsc:*)",
+      "Bash(npm run build:*)",
+      "Bash(git add:*)",
+      "Bash(git reset:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr list:*)",
+      "Bash(echo:*)",
+      "Bash(npx supabase functions deploy:*)",
+      "Bash(npx supabase login)",
+      "Bash(gh pr diff:*)",
+      "Bash(gh pr view:*)",
+      "Bash(git checkout:*)",
+      "Bash(npm run type-check:*)",
+      "Bash(gh pr merge:*)",
+      "Bash(gh pr comment:*)",
+      "Bash(git merge:*)",
+      "Bash(git rebase:*)",
+      "Bash(git log:*)",
+      "Bash(npx:*)",
+      "Bash(gh pr checkout:*)",
+      "Bash(rg:*)"
+    ]
+  }
+}

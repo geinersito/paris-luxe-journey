@@ -69,7 +69,9 @@ export function generateArticleJsonLd(
   const category = getCategoryBySlug(post.category);
 
   // Handle keywords - BlogPostMeta.seo.keywords is always string[]
-  const keywords: string = post.seo.keywords ? post.seo.keywords.join(', ') : ''
+  const keywords: string = post.seo.keywords
+    ? post.seo.keywords.join(", ")
+    : "";
 
   return {
     "@context": "https://schema.org",
@@ -138,6 +140,104 @@ export function generateWebsiteJsonLd(): JsonLdWebsite {
       },
       "query-input": "required name=search_term_string",
     },
+  };
+}
+
+interface JsonLdOrganization {
+  "@context": string;
+  "@type": string;
+  name: string;
+  url: string;
+  logo?: string;
+  sameAs?: string[];
+  description?: string;
+}
+
+interface JsonLdLocalBusiness {
+  "@context": string;
+  "@type": string;
+  name: string;
+  url: string;
+  telephone?: string;
+  address?: {
+    "@type": string;
+    streetAddress?: string;
+    addressLocality?: string;
+    addressRegion?: string;
+    postalCode?: string;
+    addressCountry?: string;
+  };
+  geo?: {
+    "@type": string;
+    latitude?: string;
+    longitude?: string;
+  };
+  priceRange?: string;
+  description?: string;
+}
+
+/**
+ * Generate JSON-LD Organization structured data
+ */
+export function generateOrganizationJsonLd(params: {
+  name: string;
+  url: string;
+  logoUrl?: string;
+  sameAs?: string[];
+  description?: string;
+}): JsonLdOrganization {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: params.name,
+    url: params.url,
+    ...(params.logoUrl && { logo: params.logoUrl }),
+    ...(params.sameAs && { sameAs: params.sameAs }),
+    ...(params.description && { description: params.description }),
+  };
+}
+
+/**
+ * Generate JSON-LD LocalBusiness structured data
+ */
+export function generateLocalBusinessJsonLd(params: {
+  name: string;
+  url: string;
+  telephone?: string;
+  address?: {
+    streetAddress?: string;
+    addressLocality?: string;
+    addressRegion?: string;
+    postalCode?: string;
+    addressCountry?: string;
+  };
+  geo?: {
+    latitude?: string;
+    longitude?: string;
+  };
+  priceRange?: string;
+  description?: string;
+}): JsonLdLocalBusiness {
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    name: params.name,
+    url: params.url,
+    ...(params.telephone && { telephone: params.telephone }),
+    ...(params.address && {
+      address: {
+        "@type": "PostalAddress",
+        ...params.address,
+      },
+    }),
+    ...(params.geo && {
+      geo: {
+        "@type": "GeoCoordinates",
+        ...params.geo,
+      },
+    }),
+    ...(params.priceRange && { priceRange: params.priceRange }),
+    ...(params.description && { description: params.description }),
   };
 }
 
