@@ -621,4 +621,10 @@ export interface Translation {
     officialDetails: string;
     source: string;
   };
+  seo: {
+    home: {
+      title: string;
+      description: string;
+    };
+  };
 }
