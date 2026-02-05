@@ -4,10 +4,16 @@ import { Button } from "@/components/ui/button";
 import { Calendar, MapPin, Users } from "lucide-react";
 
 interface CompactBookingFormProps {
-  onOpenFullForm: (data: { pickup: string; dropoff: string; passengers: string }) => void;
+  onOpenFullForm: (data: {
+    pickup: string;
+    dropoff: string;
+    passengers: string;
+  }) => void;
 }
 
-export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) {
+export function CompactBookingForm({
+  onOpenFullForm,
+}: CompactBookingFormProps) {
   const { t } = useLanguage();
   const [pickup, setPickup] = useState("");
   const [dropoff, setDropoff] = useState("");
@@ -33,7 +39,7 @@ export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) 
               onChange={(e) => setPickup(e.target.value)}
               className="w-full px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
             >
-              <option value="">Select pickup location</option>
+              <option value="">{t.hero.pickupPlaceholder}</option>
               <option value="cdg">Paris CDG Airport</option>
               <option value="orly">Paris Orly Airport</option>
               <option value="paris">Paris City Center</option>
@@ -41,8 +47,18 @@ export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) 
               <option value="versailles">Versailles</option>
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-              <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <svg
+                className="w-5 h-5 text-primary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </div>
           </div>
@@ -60,7 +76,7 @@ export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) 
               onChange={(e) => setDropoff(e.target.value)}
               className="w-full px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
             >
-              <option value="">Select dropoff location</option>
+              <option value="">{t.hero.dropoffPlaceholder}</option>
               <option value="cdg">Paris CDG Airport</option>
               <option value="orly">Paris Orly Airport</option>
               <option value="paris">Paris City Center</option>
@@ -68,8 +84,18 @@ export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) 
               <option value="versailles">Versailles</option>
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-              <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <svg
+                className="w-5 h-5 text-primary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </div>
           </div>
@@ -89,13 +115,23 @@ export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) 
             >
               {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
                 <option key={num} value={num}>
-                  {num} {num === 1 ? 'pax' : 'pax'}
+                  {num} {num === 1 ? "pax" : "pax"}
                 </option>
               ))}
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-              <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+              <svg
+                className="w-5 h-5 text-primary"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 9l-7 7-7-7"
+                />
               </svg>
             </div>
           </div>
@@ -107,7 +143,7 @@ export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) 
             onClick={handleQuickBook}
             className="silk-button w-full lg:w-auto px-8 py-3 text-sm font-bold whitespace-nowrap group shadow-gold-glow hover:shadow-gold-glow-strong"
           >
-            Get Instant Quote
+            {t.hero.cta}
             <svg
               className="inline-block ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
               fill="none"
@@ -128,25 +164,48 @@ export function CompactBookingForm({ onOpenFullForm }: CompactBookingFormProps) 
       {/* Quick Info - Trust Badges */}
       <div className="mt-5 pt-5 border-t border-primary/10 flex flex-wrap gap-4 text-xs justify-center lg:justify-start">
         <span className="group flex items-center gap-2 font-semibold text-secondary/80 hover:text-secondary transition-colors duration-300">
-          <svg className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+          <svg
+            className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-300"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fillRule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clipRule="evenodd"
+            />
           </svg>
-          <span className="tracking-wide">Fixed Price</span>
+          <span className="tracking-wide">{t.hero.fixedPrice}</span>
         </span>
         <span className="group flex items-center gap-2 font-semibold text-secondary/80 hover:text-secondary transition-colors duration-300">
-          <svg className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+          <svg
+            className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-300"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fillRule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clipRule="evenodd"
+            />
           </svg>
-          <span className="tracking-wide">Free Cancellation</span>
+          <span className="tracking-wide">{t.hero.freeCancellation}</span>
         </span>
         <span className="group flex items-center gap-2 font-semibold text-secondary/80 hover:text-secondary transition-colors duration-300">
-          <svg className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-300" fill="currentColor" viewBox="0 0 20 20">
-            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+          <svg
+            className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-300"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+          >
+            <path
+              fillRule="evenodd"
+              d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+              clipRule="evenodd"
+            />
           </svg>
-          <span className="tracking-wide">24/7 Support</span>
+          <span className="tracking-wide">{t.hero.support247}</span>
         </span>
       </div>
     </div>
   );
 }
-

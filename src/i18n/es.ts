@@ -15,6 +15,12 @@ export const es: Translation = {
     title: "Paris Elite Services",
     subtitle:
       "Transfers aeropuerto París ⇄ CDG / Orly desde 70€ (1–3 pasajeros, todo incluido)",
+    pickupPlaceholder: "Seleccione lugar de recogida",
+    dropoffPlaceholder: "Seleccione lugar de entrega",
+    cta: "Obtener Cotización Instantánea",
+    fixedPrice: "Precio Fijo",
+    freeCancellation: "Cancelación Gratuita",
+    support247: "Soporte 24/7",
   },
   trustBar: {
     securePayment: "Pago Seguro",
