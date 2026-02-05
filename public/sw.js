@@ -1,6 +1,6 @@
 
 // Basic service worker for PWA support
-const CACHE_NAME = 'paris-elite-v1';
+const CACHE_NAME = 'paris-luxe-v2';
 
 // Archivos para pre-cachear
 const urlsToCache = [

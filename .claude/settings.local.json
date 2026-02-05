@@ -25,7 +25,9 @@
       "Bash(git merge:*)",
       "Bash(git rebase:*)",
       "Bash(git log:*)",
-      "Bash(npx:*)"
+      "Bash(npx:*)",
+      "Bash(gh pr checkout:*)",
+      "Bash(rg:*)"
     ]
   }
 }

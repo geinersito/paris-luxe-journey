@@ -35,8 +35,8 @@ export default defineConfig(({ mode }) => ({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'robots.txt', 'apple-touch-icon.png'],
       manifest: {
-        name: 'Paris Elite Services',
-        short_name: 'PES',
+        name: 'Paris Luxe Journey',
+        short_name: 'PLJ',
         description: 'Service de transport premium à Paris',
         theme_color: '#0B2545',
         background_color: '#ffffff',
