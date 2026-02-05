@@ -24,6 +24,19 @@ Antes de cualquier cambio, estos archivos deben existir y NO estar vacíos:
 - `docs/BOOKING_STATUS.md`
 - `docs/BOOKING_RUNBOOK.md`
 
+## 2.1) Cross-repo coordination (Booking + ERP)
+
+This repo (`paris-luxe-journey`) is the **Booking app**. There is a sibling repo: **`paris-dispatcher`** (ERP).
+
+Integration:
+- Booking emits `booking_confirmed` to ERP after Stripe payment success (Stripe webhook SSOT on Booking side).
+- Caller doc (Booking side): `docs/integrations/erp.md` (when available)
+- Cross-repo governance: `docs/GOVERNANCE_CROSSREPO.md`
+
+When to use CTO Master vs CTO Booking:
+- Use **CTO Booking** for: booking UI/UX, Stripe checkout, webhook handlers, booking DB (`booking_*` tables), SEO/blog/events.
+- Use **CTO Master** for: Booking→ERP contract changes (payload, idempotency, secrets, versioning) and shared Supabase settings.
+
 ## 3) Reglas duras (Booking)
 
 ### 3.1 Secrets Hygiene (HARD)
