@@ -15,17 +15,19 @@ import {
   generateOrganizationJsonLd,
   generateLocalBusinessJsonLd,
 } from "@/lib/seo/json-ld";
-
-const SITE_URL = "https://parisluxejourney.com";
+import { getSiteOrigin } from "@/lib/seo/site";
 
 export default function Home() {
   const { t, language } = useLanguage();
 
+  // Use runtime domain (supports eliteparistransfer.com, parisluxejourney.com, etc.)
+  const siteOrigin = getSiteOrigin();
+
   // Generate JSON-LD structured data
   const organizationJsonLd = generateOrganizationJsonLd({
     name: "Paris Luxe Journey",
-    url: SITE_URL,
-    logoUrl: `${SITE_URL}/logo.png`,
+    url: siteOrigin,
+    logoUrl: `${siteOrigin}/logo.png`,
     description: t.seo.home.description,
     sameAs: [
       "https://www.facebook.com/parisluxejourney",
@@ -35,7 +37,7 @@ export default function Home() {
 
   const localBusinessJsonLd = generateLocalBusinessJsonLd({
     name: "Paris Luxe Journey",
-    url: SITE_URL,
+    url: siteOrigin,
     telephone: "+33668251102",
     description: t.seo.home.description,
     priceRange: "€€€",
@@ -46,7 +48,7 @@ export default function Home() {
     },
   });
 
-  const canonicalUrl = `${SITE_URL}/${language}`;
+  const canonicalUrl = `${siteOrigin}/${language}`;
 
   return (
     <>
@@ -64,14 +66,14 @@ export default function Home() {
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:title" content={t.seo.home.title} />
         <meta property="og:description" content={t.seo.home.description} />
-        <meta property="og:image" content={`${SITE_URL}/og-image.jpg`} />
+        <meta property="og:image" content={`${siteOrigin}/og-image.jpg`} />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content={canonicalUrl} />
         <meta name="twitter:title" content={t.seo.home.title} />
         <meta name="twitter:description" content={t.seo.home.description} />
-        <meta name="twitter:image" content={`${SITE_URL}/og-image.jpg`} />
+        <meta name="twitter:image" content={`${siteOrigin}/og-image.jpg`} />
 
         {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
