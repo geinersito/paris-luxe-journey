@@ -12,21 +12,36 @@ export async function emitBookingConfirmedToERP(args: {
   bookingId: string;
   erpIngestUrl: string;
   ingestSecret: string;
+  paymentIntentId?: string;
 }): Promise<void> {
-  const { bookingId, erpIngestUrl, ingestSecret } = args;
+  const { bookingId, erpIngestUrl, ingestSecret, paymentIntentId } = args;
 
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), ERP_INGEST_TIMEOUT_MS);
 
   try {
-    const payload = {
-      event: 'booking_confirmed',
+    const payload: Record<string, unknown> = {
+      event_type: 'booking_confirmed',
       version: 'v1',
       booking_id: bookingId,
       idempotency_key: `booking_confirmed:${bookingId}:v1`,
     };
+    if (paymentIntentId) {
+      payload.payment_intent_id = paymentIntentId;
+    }
 
-    const res = await fetch(`${erpIngestUrl}/functions/v1/ingest-booking-confirmed-v1`, {
+    // Normalizar ERP_INGEST_URL para soportar origin base o ruta completa
+    const base = erpIngestUrl.replace(/\/+$/, '');
+    let endpoint = base;
+    if (/\/functions\/v1\/ingest-booking-confirmed-v1$/.test(base)) {
+      endpoint = base;
+    } else if (/\/functions\/v1\/?$/.test(base)) {
+      endpoint = `${base}/ingest-booking-confirmed-v1`;
+    } else {
+      endpoint = `${base}/functions/v1/ingest-booking-confirmed-v1`;
+    }
+
+    const res = await fetch(endpoint, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
