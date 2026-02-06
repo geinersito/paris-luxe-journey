@@ -193,6 +193,7 @@ async function emitBookingConfirmedToERP(
       bookingId: booking.id,
       erpIngestUrl,
       ingestSecret,
+    paymentIntentId: _paymentIntentId,
     });
   } catch (err: any) {
     console.error('[webhook] ERP emit setup error:', { message: String(err?.message ?? err) });
@@ -212,14 +213,15 @@ async function handlePaymentIntentSucceeded(supabase: any, paymentIntent: any, e
   }
 
   // Actualizar booking a confirmed
-  const { error } = await supabase
-    .from('bookings')
-    .update({
-      status: 'confirmed',
-      payment_status: 'succeeded',
-      updated_at: new Date().toISOString(),
-    })
-    .eq('id', bookingId);
+  const update: Record<string, unknown> = {
+    status: 'confirmed',
+    payment_status: 'succeeded',
+    updated_at: new Date().toISOString(),
+  };
+  if (paymentIntent.id) {
+    update.payment_intent_id = paymentIntent.id;
+  }
+  const { error } = await supabase.from('bookings').update(update).eq('id', bookingId);
 
   if (error) {
     console.error('[webhook] Error actualizando booking:', error);
@@ -239,8 +241,7 @@ async function handlePaymentIntentSucceeded(supabase: any, paymentIntent: any, e
     console.error('[webhook] Error obteniendo booking para ERP emit:', fetchError);
     // No throw: el booking ya está confirmado
   } else {
-    // Emit a ERP (fire-and-forget)
-    await emitBookingConfirmedToERP(booking, paymentIntent.id, eventId);
+    emitBookingConfirmedToERP(booking, paymentIntent.id, eventId);
   }
 }
 
@@ -468,4 +469,3 @@ async function handlePaymentIntentCanceled(supabase: any, paymentIntent: any) {
 
   console.log('[webhook] Booking cancelado:', bookingId);
 }
-
