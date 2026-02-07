@@ -31,6 +31,9 @@ const Navbar = () => {
   const toggleServicesDropdown = () =>
     setServicesDropdownOpen(!servicesDropdownOpen);
 
+  // Scroll to top smoothly
+  const scrollTopSmooth = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
   // Scroll to element with fixed navbar offset
   const scrollToElementWithOffset = (element: Element) => {
     const navbar = document.querySelector("nav");
@@ -50,6 +53,22 @@ const Navbar = () => {
     href: string,
   ) => {
     e.preventDefault();
+
+    // Handle Home navigation with scroll-to-top
+    if (href === "/") {
+      if (location.pathname === "/") {
+        // Already on home, just scroll to top
+        scrollTopSmooth();
+      } else {
+        // Navigate to home, then scroll to top after render
+        navigate("/");
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => scrollTopSmooth()),
+        );
+      }
+      setIsOpen(false);
+      return;
+    }
 
     // If it's a hash link
     if (href.startsWith("#")) {
