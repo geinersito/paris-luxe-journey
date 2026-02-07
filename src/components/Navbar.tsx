@@ -23,8 +23,6 @@ const Navbar = () => {
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const [visible, setVisible] = useState(true);
-  const [lastScrollY, setLastScrollY] = useState(0);
   const { t } = useLanguage();
   const navigate = useNavigate();
   const location = useLocation();
@@ -32,6 +30,19 @@ const Navbar = () => {
   const toggleMenu = () => setIsOpen(!isOpen);
   const toggleServicesDropdown = () =>
     setServicesDropdownOpen(!servicesDropdownOpen);
+
+  // Scroll to element with fixed navbar offset
+  const scrollToElementWithOffset = (element: Element) => {
+    const navbar = document.querySelector("nav");
+    const headerOffset = navbar?.getBoundingClientRect().height ?? 80;
+    const elementPosition = element.getBoundingClientRect().top;
+    const offsetPosition = elementPosition + window.scrollY - headerOffset - 8;
+
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth",
+    });
+  };
 
   // Handle navigation with hash links
   const handleNavClick = (
@@ -47,10 +58,10 @@ const Navbar = () => {
         // Navigate to home with the hash - the useEffect will handle scrolling
         navigate("/" + href);
       } else {
-        // We're on home, just scroll to the section
+        // We're on home, just scroll to the section with offset
         const element = document.querySelector(href);
         if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
+          scrollToElementWithOffset(element);
         }
       }
     } else {
@@ -62,7 +73,7 @@ const Navbar = () => {
     setIsOpen(false);
   };
 
-  // Enhanced scroll detection with auto-hide
+  // Scroll detection for navbar styling and progress bar
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -73,23 +84,13 @@ const Navbar = () => {
 
       setScrolled(offset > 50);
       setScrollProgress(progress);
-
-      // Auto-hide navbar on scroll down, show on scroll up
-      if (offset > lastScrollY && offset > 100) {
-        // Scrolling down
-        setVisible(false);
-      } else {
-        // Scrolling up
-        setVisible(true);
-      }
-      setLastScrollY(offset);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [lastScrollY]);
+  }, []);
 
-  // Handle hash navigation after page load
+  // Handle hash navigation after page load (cross-page navigation)
   useEffect(() => {
     // Check if there's a hash in the URL
     const hash = window.location.hash;
@@ -98,7 +99,7 @@ const Navbar = () => {
       const timeoutId = setTimeout(() => {
         const element = document.querySelector(hash);
         if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
+          scrollToElementWithOffset(element);
         }
       }, 300);
 
@@ -137,9 +138,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full z-50 transition-all duration-500 ${
-        visible ? "translate-y-0" : "-translate-y-full"
-      } ${
+      className={`fixed w-full z-50 transition-all duration-500 translate-y-0 ${
         scrolled
           ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-lg border-b border-primary/10"
           : "bg-white/95 dark:bg-background/90 backdrop-blur-md shadow-sm border-b border-border"
