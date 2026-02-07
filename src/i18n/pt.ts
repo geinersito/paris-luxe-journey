@@ -369,8 +369,8 @@ export const pt: Translation = {
         "Explore além de Paris com passeios personalizados para destinos franceses.",
     },
     dropdown: {
-      transfers: "Transfers Aeroporto",
-      chauffeur: "Serviço por Hora",
+      transfers: "Serviço de Transfer de Aeroporto",
+      chauffeur: "Motorista por Hora",
       excursions: "Excursões",
     },
   },

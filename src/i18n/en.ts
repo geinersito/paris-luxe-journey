@@ -360,8 +360,8 @@ export const en: Translation = {
         "Explore beyond Paris with customized day trips to French destinations.",
     },
     dropdown: {
-      transfers: "Airport Transfers",
-      chauffeur: "Hourly Service",
+      transfers: "Airport Transfer Service",
+      chauffeur: "Chauffeur by the Hour",
       excursions: "Excursions",
     },
   },
