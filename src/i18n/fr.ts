@@ -469,8 +469,8 @@ export const fr: Translation = {
         "Explorez au-delà de Paris avec des excursions personnalisées vers des destinations françaises.",
     },
     dropdown: {
-      transfers: "Transferts Aéroport",
-      chauffeur: "Service Horaire",
+      transfers: "Service de Transfert Aéroport",
+      chauffeur: "Chauffeur à l'Heure",
       excursions: "Excursions",
     },
   },

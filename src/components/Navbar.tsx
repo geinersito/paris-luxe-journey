@@ -122,9 +122,9 @@ const Navbar = () => {
       href: "#",
       hasDropdown: true,
       dropdownItems: [
-        { name: "CDG Airport", href: "/airports/cdg" },
-        { name: "Orly Airport", href: "/airports/orly" },
-        { name: "Beauvais Airport", href: "/airports/beauvais" },
+        { name: "CDG (Charles de Gaulle)", href: "/airports/cdg" },
+        { name: "Orly (ORY)", href: "/airports/orly" },
+        { name: "Beauvais (BVA)", href: "/airports/beauvais" },
       ],
     },
     { name: t.nav.excursions, href: "/excursions" },
