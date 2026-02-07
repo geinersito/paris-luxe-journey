@@ -153,11 +153,11 @@ const Navbar = () => {
 
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-16 px-4 sm:px-6 lg:px-8">
-          <div className="flex-shrink-0">
+          <div className="flex-shrink-0 mr-4 lg:mr-6">
             <a
               href="/"
               onClick={(e) => handleNavClick(e, "/")}
-              className={`text-xl sm:text-2xl font-display font-bold transition-all duration-300 ${
+              className={`text-lg sm:text-xl xl:text-2xl font-display font-bold transition-all duration-300 whitespace-nowrap ${
                 scrolled ? "text-primary" : "text-secondary"
               }`}
             >
@@ -165,12 +165,12 @@ const Navbar = () => {
             </a>
           </div>
 
-          <div className="hidden md:flex md:items-center md:space-x-6 lg:space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-3 lg:space-x-4 xl:space-x-6 2xl:space-x-8">
             {navItems.map((item) =>
               item.hasDropdown ? (
                 <div key={item.name} className="relative group">
                   <button
-                    className="text-secondary group-hover:text-primary transition-colors duration-200 font-medium flex items-center py-2"
+                    className="text-secondary group-hover:text-primary transition-colors duration-200 font-medium flex items-center py-2 text-sm xl:text-base whitespace-nowrap"
                     onMouseEnter={() => setServicesDropdownOpen(true)}
                   >
                     {item.name} <ChevronDown className="ml-1 h-4 w-4" />
@@ -210,13 +210,13 @@ const Navbar = () => {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="text-secondary hover:text-primary transition-colors duration-200 font-medium"
+                  className="text-secondary hover:text-primary transition-colors duration-200 font-medium text-sm xl:text-base whitespace-nowrap"
                 >
                   {item.name}
                 </a>
               ),
             )}
-            <div className="ml-4">
+            <div className="ml-2 lg:ml-3 xl:ml-4 flex-shrink-0">
               <LanguageSelector />
             </div>
           </div>
