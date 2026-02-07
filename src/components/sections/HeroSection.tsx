@@ -14,6 +14,32 @@ const HERO_IMAGE_SMALL = `${HERO_IMAGE_BASE}?auto=format&fit=crop&q=80&w=640`;
 const HERO_IMAGE_MEDIUM = `${HERO_IMAGE_BASE}?auto=format&fit=crop&q=80&w=1280`;
 const HERO_IMAGE_LARGE = `${HERO_IMAGE_BASE}?auto=format&fit=crop&q=80&w=1920`;
 
+/**
+ * Normalize compact form data (codes) to full BookingForm format (display names)
+ * Maps compact location codes (cdg, orly, paris, etc.) to full location names
+ * that BookingForm expects in its initialData
+ */
+function normalizeCompactPrefill(
+  data: { pickup: string; dropoff: string; passengers: string } | null,
+): { pickup: string; dropoff: string; passengers: string } | undefined {
+  if (!data) return undefined;
+
+  // Location code → display name mapping (matches BookingForm fallback)
+  const locationMap: Record<string, string> = {
+    cdg: "Paris CDG Airport",
+    orly: "Paris Orly Airport",
+    paris: "Paris City Center",
+    disneyland: "Disneyland Paris",
+    versailles: "Versailles",
+  };
+
+  return {
+    pickup: locationMap[data.pickup] || data.pickup, // fallback to original if not a code
+    dropoff: locationMap[data.dropoff] || data.dropoff,
+    passengers: data.passengers,
+  };
+}
+
 export default function HeroSection() {
   const { t } = useLanguage();
   const navigate = useNavigate();
@@ -245,7 +271,7 @@ export default function HeroSection() {
                   tourName="Standard Transfer"
                   basePrice={0}
                   compact={true}
-                  initialData={prefilledData || undefined}
+                  initialData={normalizeCompactPrefill(prefilledData)}
                   onSubmit={async (data) => {
                     await handleBookingSubmit(data);
                     setShowBookingModal(false);
