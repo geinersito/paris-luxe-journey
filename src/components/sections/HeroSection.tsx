@@ -93,7 +93,8 @@ export default function HeroSection() {
   return (
     <section
       id="booking"
-      className="min-h-screen relative flex items-center justify-center py-24 lg:py-32 overflow-hidden"
+      className="relative flex items-center justify-center py-16 md:py-20 lg:py-24 overflow-hidden"
+      style={{ minHeight: "600px" }}
     >
       {/* Optimized background image with responsive srcset and parallax */}
       <div className="absolute inset-0 z-0">
@@ -133,43 +134,35 @@ export default function HeroSection() {
                 : "opacity-0 translate-y-8"
             }`}
           >
-            {/* Subtitle elegante con animación */}
-            <p
-              className="font-accent italic text-xl md:text-2xl text-primary-200 mb-4 tracking-wide animate-fadeInDown"
-              style={{ animationDelay: "0.2s", animationFillMode: "both" }}
-            >
-              Paris Elite Services
-            </p>
-
-            {/* Título principal con text-shadow dorado premium */}
+            {/* Título principal conversion-first */}
             <h1
-              className="text-4xl md:text-5xl lg:text-7xl font-display font-bold mb-6 leading-tight text-white text-shadow-gold animate-fadeInUp"
+              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-4 leading-tight text-white text-shadow-gold animate-fadeInUp"
               style={{
-                animationDelay: "0.4s",
+                animationDelay: "0.2s",
                 animationFillMode: "both",
                 textShadow:
                   "0 2px 20px hsl(45 93% 47% / 0.4), 0 4px 40px hsl(45 93% 47% / 0.2)",
               }}
             >
-              {t.hero.title}
+              Airport Transfers & Hourly Chauffeur
             </h1>
 
-            {/* Subtítulo con mejor contraste */}
+            {/* Subtítulo conversion-first */}
             <p
-              className="mt-4 text-lg md:text-xl text-white/95 font-sans max-w-3xl mx-auto leading-relaxed mb-10 animate-fadeInUp"
+              className="text-base md:text-lg lg:text-xl text-white/95 font-medium max-w-3xl mx-auto leading-relaxed mb-6 animate-fadeInUp"
               style={{
-                animationDelay: "0.6s",
+                animationDelay: "0.4s",
                 animationFillMode: "both",
                 textShadow: "0 2px 10px rgba(0,0,0,0.5)",
               }}
             >
-              {t.hero.subtitle}
+              Fixed Price · 24/7 Service · Flight Tracking · Meet & Greet
             </p>
 
             {/* Compact Booking Form con animación */}
             <div
-              className="mt-8 mb-6 animate-scaleIn"
-              style={{ animationDelay: "0.8s", animationFillMode: "both" }}
+              className="mt-6 mb-5 animate-scaleIn"
+              style={{ animationDelay: "0.6s", animationFillMode: "both" }}
             >
               <CompactBookingForm
                 onOpenFullForm={(data) => {
@@ -181,45 +174,27 @@ export default function HeroSection() {
 
             {/* Trust Badges - Equipaje incluido */}
             <div
-              className="mt-8 flex flex-wrap justify-center gap-4 md:gap-6 animate-fadeInUp"
-              style={{ animationDelay: "1s", animationFillMode: "both" }}
+              className="mt-5 flex flex-wrap justify-center gap-3 md:gap-4 animate-fadeInUp"
+              style={{ animationDelay: "0.8s", animationFillMode: "both" }}
             >
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-lg border border-white/20">
-                <Luggage className="w-5 h-5 text-primary-200" />
-                <span className="text-white/95 text-sm font-medium">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20">
+                <Luggage className="w-4 h-4 text-primary-200" />
+                <span className="text-white/95 text-xs md:text-sm font-medium">
                   1 Luggage/Pax Included
                 </span>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-lg border border-white/20">
-                <Shield className="w-5 h-5 text-primary-200" />
-                <span className="text-white/95 text-sm font-medium">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20">
+                <Shield className="w-4 h-4 text-primary-200" />
+                <span className="text-white/95 text-xs md:text-sm font-medium">
                   Licensed & Insured
                 </span>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-4 py-2 rounded-lg border border-white/20">
-                <Clock className="w-5 h-5 text-primary-200" />
-                <span className="text-white/95 text-sm font-medium">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20">
+                <Clock className="w-4 h-4 text-primary-200" />
+                <span className="text-white/95 text-xs md:text-sm font-medium">
                   Free Cancellation 24h
                 </span>
               </div>
-            </div>
-
-            {/* Secondary CTA mejorado */}
-            <div
-              className="mt-6 animate-fadeInUp"
-              style={{ animationDelay: "1.2s", animationFillMode: "both" }}
-            >
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("fleet")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="group text-white/90 hover:text-white font-semibold text-sm transition-all duration-300 underline underline-offset-4 hover:underline-offset-8 focus-luxury"
-                aria-label="Explore our fleet"
-              >
-                View Our Premium Fleet →
-              </button>
             </div>
           </div>
         </div>
