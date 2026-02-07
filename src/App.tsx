@@ -24,6 +24,7 @@ const DesignPreview = lazy(() => import("./pages/DesignPreview"));
 const CDGAirport = lazy(() => import("./pages/airports/CDG"));
 const OrlyAirport = lazy(() => import("./pages/airports/Orly"));
 const BeauvaisAirport = lazy(() => import("./pages/airports/Beauvais"));
+const HourlyService = lazy(() => import("./pages/Hourly"));
 const AvoidFakeTaxis = lazy(() => import("./pages/guides/AvoidFakeTaxis"));
 const FAQPage = lazy(() => import("./pages/FAQPage"));
 const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
@@ -145,6 +146,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader />}>
             <BeauvaisAirport />
+          </Suspense>
+        ),
+      },
+      {
+        path: "hourly",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <HourlyService />
           </Suspense>
         ),
       },
