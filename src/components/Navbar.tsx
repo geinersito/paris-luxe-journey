@@ -114,7 +114,7 @@ const Navbar = () => {
       hasDropdown: true,
       dropdownItems: [
         { name: t.services.dropdown.transfers, href: "/airports/cdg" },
-        { name: t.services.dropdown.chauffeur, href: "/booking" },
+        { name: t.services.dropdown.chauffeur, href: "/hourly" },
       ],
     },
     {
