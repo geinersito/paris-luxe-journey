@@ -160,7 +160,15 @@ export function EventsFeed({
               {/* Action Buttons - Premium Style */}
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Button asChild className="flex-1 silk-button">
-                  <a href="/booking">{t("events.bookRide")}</a>
+                  <a
+                    href={`https://wa.me/33668251102?text=${encodeURIComponent(
+                      `Hi, I'm interested in a ride to: ${event.title[language]}${event.venueName?.[language] ? ` at ${event.venueName[language]}` : ""}${event.startAt ? ` on ${formatDate(event.startAt)}` : ""}. Can you help me with a quote?`,
+                    )}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {t("events.bookRide")}
+                  </a>
                 </Button>
                 <Button
                   asChild
