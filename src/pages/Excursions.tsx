@@ -3,7 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
-import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Clock, Users, Star, MapPin, Check, X } from "lucide-react";
 
@@ -13,30 +19,36 @@ const translations = {
     // Hero
     hero: {
       title: "Private Day Trips from Paris",
-      subtitle: "Discover Versailles, Champagne, Giverny and more with your own private chauffeur. Door-to-door service, flexible schedule, fixed price per vehicle.",
+      subtitle:
+        "Discover Versailles, Champagne, Giverny and more with your own private chauffeur. Door-to-door service, flexible schedule, fixed price per vehicle.",
       badge1: "1-7 passengers per vehicle",
       badge2: "Fixed price per day",
       badge3: "English-speaking driver",
       ctaPrimary: "Request Your Day Trip",
-      ctaSecondary: "See Sample Itineraries"
+      ctaSecondary: "See Sample Itineraries",
     },
     // How it Works
     howItWorks: {
       title: "How It Works",
-      subtitle: "Simple, transparent, and flexible. Book your private day trip in 3 easy steps.",
+      subtitle:
+        "Simple, transparent, and flexible. Book your private day trip in 3 easy steps.",
       step1Title: "Choose Your Destination",
-      step1Text: "Select from Versailles, Champagne, Giverny, Loire Valley or request a custom itinerary.",
+      step1Text:
+        "Select from Versailles, Champagne, Giverny, Loire Valley or request a custom itinerary.",
       step2Title: "We Confirm Schedule & Price",
-      step2Text: "Fixed price per vehicle, no hidden fees. We'll confirm your booking within 2 hours.",
+      step2Text:
+        "Fixed price per vehicle, no hidden fees. We'll confirm your booking within 2 hours.",
       step3Title: "Enjoy Your Private Day Out",
-      step3Text: "Door-to-door service, flexible stops, professional English-speaking driver.",
-      cta: "Plan Your Day Trip Now"
+      step3Text:
+        "Door-to-door service, flexible stops, professional English-speaking driver.",
+      cta: "Plan Your Day Trip Now",
     },
     // Custom Quote for Agencies
     customQuote: {
       title: "Travel agency or group? Get a custom quote in 10 minutes.",
-      subtitle: "We specialize in serving travel agencies and groups with tailored itineraries, competitive rates, and reliable service.",
-      cta: "WhatsApp – Custom Quote"
+      subtitle:
+        "We specialize in serving travel agencies and groups with tailored itineraries, competitive rates, and reliable service.",
+      cta: "WhatsApp – Custom Quote",
     },
     // FAQ
     faq: {
@@ -51,7 +63,7 @@ const translations = {
       q4: "How many hours are included in each day trip package?",
       a4: "Each package includes a specific number of hours: Versailles Half-Day (5h), Versailles Full-Day (8h), Giverny (8h), Champagne Region (10h), and Loire Valley (12h). This includes travel time from/to Paris and waiting time at destinations. Need more time? Additional hours are €65/hour.",
       stillQuestions: "Still have questions? We're here to help!",
-      ctaFaq: "Contact Us on WhatsApp"
+      ctaFaq: "Contact Us on WhatsApp",
     },
     // Day Trip Card
     card: {
@@ -59,13 +71,14 @@ const translations = {
       notIncluded: "Not Included",
       ticketsOptional: "Tickets & Reservations (optional)",
       ticketsBullet1: "We can recommend official tickets and best time slots.",
-      ticketsBullet2: "If you want, we can assist with reservations via WhatsApp.",
+      ticketsBullet2:
+        "If you want, we can assist with reservations via WhatsApp.",
       from: "From",
       perVehicle: "per vehicle",
       upTo: "Up to",
       passengers: "passengers",
       cta: "Request this trip on WhatsApp",
-      hours: "hours"
+      hours: "hours",
     },
     // Filters
     filters: {
@@ -77,7 +90,8 @@ const translations = {
       clearFilters: "Clear filters",
       excursionsMatch: "excursions match",
       noResults: "No results found",
-      noResultsMessage: "No excursions match your filters. Contact us on WhatsApp and we'll propose a custom itinerary.",
+      noResultsMessage:
+        "No excursions match your filters. Contact us on WhatsApp and we'll propose a custom itinerary.",
       contactWhatsApp: "Contact us on WhatsApp",
       allTypes: "All Types",
       allLocations: "All Locations",
@@ -103,13 +117,14 @@ const translations = {
       seasonSpring: "Spring",
       seasonSummer: "Summer",
       seasonAutumn: "Autumn",
-      seasonWinter: "Winter"
+      seasonWinter: "Winter",
     },
     // Trips
     trips: {
       versaillesHalf: {
         title: "Versailles Half-Day",
-        description: "Enjoy a comfortable private transfer from Paris to Versailles with your own chauffeur. We pick you up at your hotel, drive you to the Palace, wait on site and bring you back to Paris at your preferred time.",
+        description:
+          "Enjoy a comfortable private transfer from Paris to Versailles with your own chauffeur. We pick you up at your hotel, drive you to the Palace, wait on site and bring you back to Paris at your preferred time.",
         duration: "5 hours",
         distance: "25 km from Paris",
         included: [
@@ -117,17 +132,18 @@ const translations = {
           "Professional English-speaking driver",
           "Pick-up & drop-off in Paris",
           "Waiting time at Versailles (up to 3h)",
-          "Tolls, parking, fuel"
+          "Tolls, parking, fuel",
         ],
         notIncluded: [
           "Entrance tickets to Palace & gardens (€20/person)",
           "Licensed tour guide (available on request)",
-          "Meals & personal expenses"
-        ]
+          "Meals & personal expenses",
+        ],
       },
       versaillesFull: {
         title: "Versailles Full-Day",
-        description: "Spend a full day exploring Versailles at your own pace. Your private chauffeur will wait for you while you visit the Palace, gardens, and Marie Antoinette's Estate. Perfect for those who want to take their time.",
+        description:
+          "Spend a full day exploring Versailles at your own pace. Your private chauffeur will wait for you while you visit the Palace, gardens, and Marie Antoinette's Estate. Perfect for those who want to take their time.",
         duration: "8 hours",
         distance: "25 km from Paris",
         included: [
@@ -135,17 +151,18 @@ const translations = {
           "Professional English-speaking driver",
           "Pick-up & drop-off in Paris",
           "Waiting time at Versailles (up to 6h)",
-          "Tolls, parking, fuel"
+          "Tolls, parking, fuel",
         ],
         notIncluded: [
           "Entrance tickets to Palace & gardens (€20/person)",
           "Licensed tour guide (available on request)",
-          "Meals & personal expenses"
-        ]
+          "Meals & personal expenses",
+        ],
       },
       giverny: {
         title: "Giverny Day Trip",
-        description: "Visit Monet's house and gardens in Giverny with your private chauffeur. Enjoy the scenic drive through the French countryside and explore the famous water lily pond at your leisure.",
+        description:
+          "Visit Monet's house and gardens in Giverny with your private chauffeur. Enjoy the scenic drive through the French countryside and explore the famous water lily pond at your leisure.",
         duration: "8 hours",
         distance: "75 km from Paris",
         included: [
@@ -153,17 +170,18 @@ const translations = {
           "Professional English-speaking driver",
           "Pick-up & drop-off in Paris",
           "Waiting time at Giverny (up to 4h)",
-          "Tolls, parking, fuel"
+          "Tolls, parking, fuel",
         ],
         notIncluded: [
           "Entrance tickets to Monet's house & gardens (€11/person)",
           "Licensed tour guide (available on request)",
-          "Meals & personal expenses"
-        ]
+          "Meals & personal expenses",
+        ],
       },
       champagne: {
         title: "Champagne Region",
-        description: "Discover the Champagne region with a private day trip to Reims and Épernay. Your chauffeur will take you to the famous champagne houses where you can book tastings and cellar tours on your own.",
+        description:
+          "Discover the Champagne region with a private day trip to Reims and Épernay. Your chauffeur will take you to the famous champagne houses where you can book tastings and cellar tours on your own.",
         duration: "10 hours",
         distance: "145 km from Paris",
         included: [
@@ -172,17 +190,18 @@ const translations = {
           "Pick-up & drop-off in Paris",
           "Waiting time in Champagne region (up to 6h)",
           "Tolls, parking, fuel",
-          "Suggested itinerary & recommendations"
+          "Suggested itinerary & recommendations",
         ],
         notIncluded: [
           "Champagne house tours & tastings (€25-50/person)",
           "Licensed tour guide (available on request)",
-          "Meals & personal expenses"
-        ]
+          "Meals & personal expenses",
+        ],
       },
       loire: {
         title: "Loire Valley Castles",
-        description: "Explore the magnificent châteaux of the Loire Valley with your private chauffeur. Visit Château de Chambord and Chenonceau, with flexible stops along the way. A full day of French Renaissance architecture.",
+        description:
+          "Explore the magnificent châteaux of the Loire Valley with your private chauffeur. Visit Château de Chambord and Chenonceau, with flexible stops along the way. A full day of French Renaissance architecture.",
         duration: "12 hours",
         distance: "200 km from Paris",
         included: [
@@ -191,17 +210,18 @@ const translations = {
           "Pick-up & drop-off in Paris",
           "Waiting time at castles (up to 8h)",
           "Tolls, parking, fuel",
-          "Suggested itinerary & recommendations"
+          "Suggested itinerary & recommendations",
         ],
         notIncluded: [
           "Entrance tickets to castles (€15-20/person each)",
           "Licensed tour guide (available on request)",
-          "Meals & personal expenses"
-        ]
+          "Meals & personal expenses",
+        ],
       },
       parisCityHalf: {
         title: "Paris City Tour – Half Day",
-        description: "Discover Paris highlights with your private chauffeur. Perfect for photos and getting oriented. Flexible itinerary: Eiffel Tower, Louvre, Notre-Dame, Champs-Élysées, Montmartre. Your driver adapts to your pace and interests.",
+        description:
+          "Discover Paris highlights with your private chauffeur. Perfect for photos and getting oriented. Flexible itinerary: Eiffel Tower, Louvre, Notre-Dame, Champs-Élysées, Montmartre. Your driver adapts to your pace and interests.",
         duration: "4-5 hours",
         distance: "Paris city center",
         included: [
@@ -209,17 +229,18 @@ const translations = {
           "Professional English-speaking driver",
           "Pick-up & drop-off at your hotel",
           "Flexible route & photo stops",
-          "Parking, fuel"
+          "Parking, fuel",
         ],
         notIncluded: [
           "Museum entrance tickets",
           "Licensed tour guide (available on request)",
-          "Meals & personal expenses"
-        ]
+          "Meals & personal expenses",
+        ],
       },
       parisCityFull: {
         title: "Paris City Tour – Full Day",
-        description: "Spend a full day exploring Paris at your own pace. Visit museums from outside, stroll through charming neighborhoods, enjoy a lunch break. Your chauffeur will wait and drive you between locations. Perfect for a comprehensive Paris experience.",
+        description:
+          "Spend a full day exploring Paris at your own pace. Visit museums from outside, stroll through charming neighborhoods, enjoy a lunch break. Your chauffeur will wait and drive you between locations. Perfect for a comprehensive Paris experience.",
         duration: "8 hours",
         distance: "Paris city center",
         included: [
@@ -227,17 +248,18 @@ const translations = {
           "Professional English-speaking driver",
           "Pick-up & drop-off at your hotel",
           "Flexible route & multiple stops",
-          "Parking, fuel"
+          "Parking, fuel",
         ],
         notIncluded: [
           "Museum entrance tickets",
           "Licensed tour guide (available on request)",
-          "Meals & personal expenses"
-        ]
+          "Meals & personal expenses",
+        ],
       },
       parisNight: {
         title: "Paris by Night – Illuminations",
-        description: "Experience the magic of Paris after dark. See the Eiffel Tower sparkling, illuminated monuments, and the city's most beautiful bridges. A romantic and unforgettable evening tour with your private chauffeur.",
+        description:
+          "Experience the magic of Paris after dark. See the Eiffel Tower sparkling, illuminated monuments, and the city's most beautiful bridges. A romantic and unforgettable evening tour with your private chauffeur.",
         duration: "3-4 hours",
         distance: "Paris city center",
         included: [
@@ -245,44 +267,51 @@ const translations = {
           "Professional English-speaking driver",
           "Pick-up & drop-off at your hotel",
           "Eiffel Tower, Louvre, Opéra, Champs-Élysées, Pont Alexandre III",
-          "Parking, fuel"
+          "Parking, fuel",
         ],
         notIncluded: [
           "Eiffel Tower tickets (if you want to go up)",
           "Dinner or drinks",
-          "Personal expenses"
-        ]
-      }
-    }
+          "Personal expenses",
+        ],
+      },
+    },
   },
   fr: {
     // Hero
     hero: {
       title: "Excursions Privées depuis Paris",
-      subtitle: "Découvrez Versailles, la Champagne, Giverny et plus encore avec votre propre chauffeur privé. Service porte-à-porte, horaires flexibles, prix fixe par véhicule.",
+      subtitle:
+        "Découvrez Versailles, la Champagne, Giverny et plus encore avec votre propre chauffeur privé. Service porte-à-porte, horaires flexibles, prix fixe par véhicule.",
       badge1: "1-7 passagers par véhicule",
       badge2: "Prix fixe par jour",
       badge3: "Chauffeur anglophone",
       ctaPrimary: "Demander Votre Excursion",
-      ctaSecondary: "Voir les Itinéraires"
+      ctaSecondary: "Voir les Itinéraires",
     },
     // How it Works
     howItWorks: {
       title: "Comment Ça Marche",
-      subtitle: "Simple, transparent et flexible. Réservez votre excursion privée en 3 étapes faciles.",
+      subtitle:
+        "Simple, transparent et flexible. Réservez votre excursion privée en 3 étapes faciles.",
       step1Title: "Choisissez Votre Destination",
-      step1Text: "Sélectionnez Versailles, Champagne, Giverny, Vallée de la Loire ou demandez un itinéraire personnalisé.",
+      step1Text:
+        "Sélectionnez Versailles, Champagne, Giverny, Vallée de la Loire ou demandez un itinéraire personnalisé.",
       step2Title: "Nous Confirmons l'Horaire et le Prix",
-      step2Text: "Prix fixe par véhicule, sans frais cachés. Nous confirmons votre réservation sous 2 heures.",
+      step2Text:
+        "Prix fixe par véhicule, sans frais cachés. Nous confirmons votre réservation sous 2 heures.",
       step3Title: "Profitez de Votre Journée Privée",
-      step3Text: "Service porte-à-porte, arrêts flexibles, chauffeur professionnel anglophone.",
-      cta: "Planifiez Votre Excursion Maintenant"
+      step3Text:
+        "Service porte-à-porte, arrêts flexibles, chauffeur professionnel anglophone.",
+      cta: "Planifiez Votre Excursion Maintenant",
     },
     // Custom Quote for Agencies
     customQuote: {
-      title: "Agence de voyage ou groupe ? Obtenez un devis personnalisé en 10 minutes.",
-      subtitle: "Nous sommes spécialisés dans le service aux agences de voyage et aux groupes avec des itinéraires sur mesure, des tarifs compétitifs et un service fiable.",
-      cta: "WhatsApp – Devis Personnalisé"
+      title:
+        "Agence de voyage ou groupe ? Obtenez un devis personnalisé en 10 minutes.",
+      subtitle:
+        "Nous sommes spécialisés dans le service aux agences de voyage et aux groupes avec des itinéraires sur mesure, des tarifs compétitifs et un service fiable.",
+      cta: "WhatsApp – Devis Personnalisé",
     },
     // FAQ
     faq: {
@@ -296,22 +325,25 @@ const translations = {
       a3: "Absolument ! C'est la beauté d'une excursion privée. Votre chauffeur sera flexible avec votre emploi du temps dans les heures réservées. Vous voulez ajouter un arrêt déjeuner ou visiter un lieu supplémentaire ? Dites-le simplement à votre chauffeur. Des heures supplémentaires peuvent être ajoutées à 65 €/heure.",
       q4: "Combien d'heures sont incluses dans chaque forfait d'excursion ?",
       a4: "Chaque forfait comprend un nombre d'heures spécifique : Versailles Demi-Journée (5h), Versailles Journée Complète (8h), Giverny (8h), Région Champagne (10h) et Vallée de la Loire (12h). Cela inclut le temps de trajet depuis/vers Paris et le temps d'attente aux destinations. Besoin de plus de temps ? Heures supplémentaires à 65 €/heure.",
-      stillQuestions: "Vous avez encore des questions ? Nous sommes là pour vous aider !",
-      ctaFaq: "Contactez-nous sur WhatsApp"
+      stillQuestions:
+        "Vous avez encore des questions ? Nous sommes là pour vous aider !",
+      ctaFaq: "Contactez-nous sur WhatsApp",
     },
     // Day Trip Card
     card: {
       whatsIncluded: "Inclus",
       notIncluded: "Non Inclus",
       ticketsOptional: "Billets & Réservations (optionnel)",
-      ticketsBullet1: "Nous pouvons recommander les billets officiels et les meilleurs créneaux horaires.",
-      ticketsBullet2: "Si vous le souhaitez, nous pouvons vous aider avec les réservations via WhatsApp.",
+      ticketsBullet1:
+        "Nous pouvons recommander les billets officiels et les meilleurs créneaux horaires.",
+      ticketsBullet2:
+        "Si vous le souhaitez, nous pouvons vous aider avec les réservations via WhatsApp.",
       from: "À partir de",
       perVehicle: "par véhicule",
       upTo: "Jusqu'à",
       passengers: "passagers",
       cta: "Demander cette excursion sur WhatsApp",
-      hours: "heures"
+      hours: "heures",
     },
     // Filters
     filters: {
@@ -323,7 +355,8 @@ const translations = {
       clearFilters: "Effacer les filtres",
       excursionsMatch: "excursions correspondent",
       noResults: "Aucun résultat trouvé",
-      noResultsMessage: "Aucune excursion ne correspond à vos filtres. Contactez-nous sur WhatsApp et nous vous proposerons un itinéraire personnalisé.",
+      noResultsMessage:
+        "Aucune excursion ne correspond à vos filtres. Contactez-nous sur WhatsApp et nous vous proposerons un itinéraire personnalisé.",
       contactWhatsApp: "Contactez-nous sur WhatsApp",
       allTypes: "Tous les Types",
       allLocations: "Toutes les Destinations",
@@ -349,13 +382,14 @@ const translations = {
       seasonSpring: "Printemps",
       seasonSummer: "Été",
       seasonAutumn: "Automne",
-      seasonWinter: "Hiver"
+      seasonWinter: "Hiver",
     },
     // Trips
     trips: {
       versaillesHalf: {
         title: "Versailles Demi-Journée",
-        description: "Profitez d'un transfert privé confortable de Paris à Versailles avec votre propre chauffeur. Nous vous récupérons à votre hôtel, vous conduisons au Château, attendons sur place et vous ramenons à Paris à l'heure de votre choix.",
+        description:
+          "Profitez d'un transfert privé confortable de Paris à Versailles avec votre propre chauffeur. Nous vous récupérons à votre hôtel, vous conduisons au Château, attendons sur place et vous ramenons à Paris à l'heure de votre choix.",
         duration: "5 heures",
         distance: "25 km de Paris",
         included: [
@@ -363,17 +397,18 @@ const translations = {
           "Chauffeur professionnel anglophone",
           "Prise en charge et retour à Paris",
           "Temps d'attente à Versailles (jusqu'à 3h)",
-          "Péages, parking, carburant"
+          "Péages, parking, carburant",
         ],
         notIncluded: [
           "Billets d'entrée au Château et jardins (€20/personne)",
           "Guide touristique agréé (disponible sur demande)",
-          "Repas et dépenses personnelles"
-        ]
+          "Repas et dépenses personnelles",
+        ],
       },
       versaillesFull: {
         title: "Versailles Journée Complète",
-        description: "Passez une journée complète à explorer Versailles à votre rythme. Votre chauffeur privé vous attendra pendant que vous visitez le Château, les jardins et le Domaine de Marie-Antoinette. Parfait pour ceux qui veulent prendre leur temps.",
+        description:
+          "Passez une journée complète à explorer Versailles à votre rythme. Votre chauffeur privé vous attendra pendant que vous visitez le Château, les jardins et le Domaine de Marie-Antoinette. Parfait pour ceux qui veulent prendre leur temps.",
         duration: "8 heures",
         distance: "25 km de Paris",
         included: [
@@ -381,17 +416,18 @@ const translations = {
           "Chauffeur professionnel anglophone",
           "Prise en charge et retour à Paris",
           "Temps d'attente à Versailles (jusqu'à 6h)",
-          "Péages, parking, carburant"
+          "Péages, parking, carburant",
         ],
         notIncluded: [
           "Billets d'entrée au Château et jardins (€20/personne)",
           "Guide touristique agréé (disponible sur demande)",
-          "Repas et dépenses personnelles"
-        ]
+          "Repas et dépenses personnelles",
+        ],
       },
       giverny: {
         title: "Excursion à Giverny",
-        description: "Visitez la maison et les jardins de Monet à Giverny avec votre chauffeur privé. Profitez du trajet pittoresque à travers la campagne française et explorez le célèbre étang aux nymphéas à votre guise.",
+        description:
+          "Visitez la maison et les jardins de Monet à Giverny avec votre chauffeur privé. Profitez du trajet pittoresque à travers la campagne française et explorez le célèbre étang aux nymphéas à votre guise.",
         duration: "8 heures",
         distance: "75 km de Paris",
         included: [
@@ -399,17 +435,18 @@ const translations = {
           "Chauffeur professionnel anglophone",
           "Prise en charge et retour à Paris",
           "Temps d'attente à Giverny (jusqu'à 4h)",
-          "Péages, parking, carburant"
+          "Péages, parking, carburant",
         ],
         notIncluded: [
           "Billets d'entrée à la maison et jardins de Monet (€11/personne)",
           "Guide touristique agréé (disponible sur demande)",
-          "Repas et dépenses personnelles"
-        ]
+          "Repas et dépenses personnelles",
+        ],
       },
       champagne: {
         title: "Région de Champagne",
-        description: "Découvrez la région de Champagne avec une excursion privée à Reims et Épernay. Votre chauffeur vous emmènera aux célèbres maisons de champagne où vous pourrez réserver des dégustations et visites de caves par vous-même.",
+        description:
+          "Découvrez la région de Champagne avec une excursion privée à Reims et Épernay. Votre chauffeur vous emmènera aux célèbres maisons de champagne où vous pourrez réserver des dégustations et visites de caves par vous-même.",
         duration: "10 heures",
         distance: "145 km de Paris",
         included: [
@@ -418,17 +455,18 @@ const translations = {
           "Prise en charge et retour à Paris",
           "Temps d'attente en région Champagne (jusqu'à 6h)",
           "Péages, parking, carburant",
-          "Itinéraire suggéré et recommandations"
+          "Itinéraire suggéré et recommandations",
         ],
         notIncluded: [
           "Visites et dégustations dans les maisons de champagne (€25-50/personne)",
           "Guide touristique agréé (disponible sur demande)",
-          "Repas et dépenses personnelles"
-        ]
+          "Repas et dépenses personnelles",
+        ],
       },
       loire: {
         title: "Châteaux de la Loire",
-        description: "Explorez les magnifiques châteaux de la Vallée de la Loire avec votre chauffeur privé. Visitez le Château de Chambord et Chenonceau, avec des arrêts flexibles en chemin. Une journée complète d'architecture Renaissance française.",
+        description:
+          "Explorez les magnifiques châteaux de la Vallée de la Loire avec votre chauffeur privé. Visitez le Château de Chambord et Chenonceau, avec des arrêts flexibles en chemin. Une journée complète d'architecture Renaissance française.",
         duration: "12 heures",
         distance: "200 km de Paris",
         included: [
@@ -437,17 +475,18 @@ const translations = {
           "Prise en charge et retour à Paris",
           "Temps d'attente aux châteaux (jusqu'à 8h)",
           "Péages, parking, carburant",
-          "Itinéraire suggéré et recommandations"
+          "Itinéraire suggéré et recommandations",
         ],
         notIncluded: [
           "Billets d'entrée aux châteaux (€15-20/personne chacun)",
           "Guide touristique agréé (disponible sur demande)",
-          "Repas et dépenses personnelles"
-        ]
+          "Repas et dépenses personnelles",
+        ],
       },
       parisCityHalf: {
         title: "Visite de Paris – Demi-Journée",
-        description: "Découvrez les points forts de Paris avec votre chauffeur privé. Parfait pour les photos et l'orientation. Itinéraire flexible : Tour Eiffel, Louvre, Notre-Dame, Champs-Élysées, Montmartre. Votre chauffeur s'adapte à votre rythme et vos intérêts.",
+        description:
+          "Découvrez les points forts de Paris avec votre chauffeur privé. Parfait pour les photos et l'orientation. Itinéraire flexible : Tour Eiffel, Louvre, Notre-Dame, Champs-Élysées, Montmartre. Votre chauffeur s'adapte à votre rythme et vos intérêts.",
         duration: "4-5 heures",
         distance: "Centre de Paris",
         included: [
@@ -455,17 +494,18 @@ const translations = {
           "Chauffeur professionnel anglophone",
           "Prise en charge et retour à votre hôtel",
           "Itinéraire flexible et arrêts photos",
-          "Parking, carburant"
+          "Parking, carburant",
         ],
         notIncluded: [
           "Billets d'entrée aux musées",
           "Guide touristique agréé (disponible sur demande)",
-          "Repas et dépenses personnelles"
-        ]
+          "Repas et dépenses personnelles",
+        ],
       },
       parisCityFull: {
         title: "Visite de Paris – Journée Complète",
-        description: "Passez une journée complète à explorer Paris à votre rythme. Visitez les musées de l'extérieur, promenez-vous dans les quartiers charmants, profitez d'une pause déjeuner. Votre chauffeur vous attendra et vous conduira entre les lieux. Parfait pour une expérience complète de Paris.",
+        description:
+          "Passez une journée complète à explorer Paris à votre rythme. Visitez les musées de l'extérieur, promenez-vous dans les quartiers charmants, profitez d'une pause déjeuner. Votre chauffeur vous attendra et vous conduira entre les lieux. Parfait pour une expérience complète de Paris.",
         duration: "8 heures",
         distance: "Centre de Paris",
         included: [
@@ -473,17 +513,18 @@ const translations = {
           "Chauffeur professionnel anglophone",
           "Prise en charge et retour à votre hôtel",
           "Itinéraire flexible et arrêts multiples",
-          "Parking, carburant"
+          "Parking, carburant",
         ],
         notIncluded: [
           "Billets d'entrée aux musées",
           "Guide touristique agréé (disponible sur demande)",
-          "Repas et dépenses personnelles"
-        ]
+          "Repas et dépenses personnelles",
+        ],
       },
       parisNight: {
         title: "Paris de Nuit – Illuminations",
-        description: "Vivez la magie de Paris après la tombée de la nuit. Admirez la Tour Eiffel scintillante, les monuments illuminés et les plus beaux ponts de la ville. Une soirée romantique et inoubliable avec votre chauffeur privé.",
+        description:
+          "Vivez la magie de Paris après la tombée de la nuit. Admirez la Tour Eiffel scintillante, les monuments illuminés et les plus beaux ponts de la ville. Une soirée romantique et inoubliable avec votre chauffeur privé.",
         duration: "3-4 heures",
         distance: "Centre de Paris",
         included: [
@@ -491,49 +532,57 @@ const translations = {
           "Chauffeur professionnel anglophone",
           "Prise en charge et retour à votre hôtel",
           "Tour Eiffel, Louvre, Opéra, Champs-Élysées, Pont Alexandre III",
-          "Parking, carburant"
+          "Parking, carburant",
         ],
         notIncluded: [
           "Billets Tour Eiffel (si vous souhaitez monter)",
           "Dîner ou boissons",
-          "Dépenses personnelles"
-        ]
-      }
-    }
+          "Dépenses personnelles",
+        ],
+      },
+    },
   },
   es: {
     // Hero
     hero: {
       title: "Excursiones Privadas desde París",
-      subtitle: "Descubre Versalles, Champagne, Giverny y más con tu propio chófer privado. Servicio puerta a puerta, horario flexible, precio fijo por vehículo.",
+      subtitle:
+        "Descubre Versalles, Champagne, Giverny y más con tu propio chófer privado. Servicio puerta a puerta, horario flexible, precio fijo por vehículo.",
       badge1: "1-7 pasajeros por vehículo",
       badge2: "Precio fijo por día",
       badge3: "Conductor que habla inglés",
       ctaPrimary: "Solicitar Tu Excursión",
-      ctaSecondary: "Ver Itinerarios de Ejemplo"
+      ctaSecondary: "Ver Itinerarios de Ejemplo",
     },
     // How it Works
     howItWorks: {
       title: "Cómo Funciona",
-      subtitle: "Simple, transparente y flexible. Reserva tu excursión privada en 3 sencillos pasos.",
+      subtitle:
+        "Simple, transparente y flexible. Reserva tu excursión privada en 3 sencillos pasos.",
       step1Title: "Elige Tu Destino",
-      step1Text: "Selecciona Versalles, Champagne, Giverny, Valle del Loira o solicita un itinerario personalizado.",
+      step1Text:
+        "Selecciona Versalles, Champagne, Giverny, Valle del Loira o solicita un itinerario personalizado.",
       step2Title: "Confirmamos Horario y Precio",
-      step2Text: "Precio fijo por vehículo, sin cargos ocultos. Confirmaremos tu reserva en 2 horas.",
+      step2Text:
+        "Precio fijo por vehículo, sin cargos ocultos. Confirmaremos tu reserva en 2 horas.",
       step3Title: "Disfruta de Tu Día Privado",
-      step3Text: "Servicio puerta a puerta, paradas flexibles, conductor profesional que habla inglés.",
-      cta: "Planifica Tu Excursión Ahora"
+      step3Text:
+        "Servicio puerta a puerta, paradas flexibles, conductor profesional que habla inglés.",
+      cta: "Planifica Tu Excursión Ahora",
     },
     // Custom Quote for Agencies
     customQuote: {
-      title: "¿Agencia de viajes o grupo? Obtén un presupuesto personalizado en 10 minutos.",
-      subtitle: "Nos especializamos en servir a agencias de viajes y grupos con itinerarios personalizados, tarifas competitivas y servicio confiable.",
-      cta: "WhatsApp – Presupuesto Personalizado"
+      title:
+        "¿Agencia de viajes o grupo? Obtén un presupuesto personalizado en 10 minutos.",
+      subtitle:
+        "Nos especializamos en servir a agencias de viajes y grupos con itinerarios personalizados, tarifas competitivas y servicio confiable.",
+      cta: "WhatsApp – Presupuesto Personalizado",
     },
     // FAQ
     faq: {
       title: "Preguntas Frecuentes",
-      subtitle: "Todo lo que necesitas saber sobre nuestras excursiones privadas",
+      subtitle:
+        "Todo lo que necesitas saber sobre nuestras excursiones privadas",
       q1: "¿Las entradas a las atracciones están incluidas en el precio?",
       a1: "No, las entradas no están incluidas. Nuestro servicio cubre transporte privado, conductor profesional y tiempo de espera. Deberás comprar las entradas por separado para palacios, museos o atracciones. Estaremos encantados de proporcionar recomendaciones y enlaces de reserva.",
       q2: "¿Pueden ayudarme a reservar entradas o guías turísticos?",
@@ -543,21 +592,23 @@ const translations = {
       q4: "¿Cuántas horas están incluidas en cada paquete de excursión?",
       a4: "Cada paquete incluye un número específico de horas: Versalles Medio Día (5h), Versalles Día Completo (8h), Giverny (8h), Región de Champagne (10h) y Valle del Loira (12h). Esto incluye tiempo de viaje desde/hacia París y tiempo de espera en destinos. ¿Necesitas más tiempo? Horas adicionales a €65/hora.",
       stillQuestions: "¿Aún tienes preguntas? ¡Estamos aquí para ayudarte!",
-      ctaFaq: "Contáctanos en WhatsApp"
+      ctaFaq: "Contáctanos en WhatsApp",
     },
     // Day Trip Card
     card: {
       whatsIncluded: "Incluido",
       notIncluded: "No Incluido",
       ticketsOptional: "Entradas y Reservas (opcional)",
-      ticketsBullet1: "Podemos recomendar entradas oficiales y mejores horarios.",
-      ticketsBullet2: "Si lo deseas, podemos ayudarte con las reservas por WhatsApp.",
+      ticketsBullet1:
+        "Podemos recomendar entradas oficiales y mejores horarios.",
+      ticketsBullet2:
+        "Si lo deseas, podemos ayudarte con las reservas por WhatsApp.",
       from: "Desde",
       perVehicle: "por vehículo",
       upTo: "Hasta",
       passengers: "pasajeros",
       cta: "Solicitar esta excursión en WhatsApp",
-      hours: "horas"
+      hours: "horas",
     },
     // Filters
     filters: {
@@ -569,7 +620,8 @@ const translations = {
       clearFilters: "Limpiar filtros",
       excursionsMatch: "excursiones coinciden",
       noResults: "No se encontraron resultados",
-      noResultsMessage: "Ninguna excursión coincide con tus filtros. Contáctanos en WhatsApp y te propondremos un itinerario personalizado.",
+      noResultsMessage:
+        "Ninguna excursión coincide con tus filtros. Contáctanos en WhatsApp y te propondremos un itinerario personalizado.",
       contactWhatsApp: "Contáctanos en WhatsApp",
       allTypes: "Todos los Tipos",
       allLocations: "Todas las Ubicaciones",
@@ -595,13 +647,14 @@ const translations = {
       seasonSpring: "Primavera",
       seasonSummer: "Verano",
       seasonAutumn: "Otoño",
-      seasonWinter: "Invierno"
+      seasonWinter: "Invierno",
     },
     // Trips
     trips: {
       versaillesHalf: {
         title: "Versalles Medio Día",
-        description: "Disfruta de un cómodo traslado privado desde París a Versalles con tu propio chófer. Te recogemos en tu hotel, te llevamos al Palacio, esperamos en el lugar y te traemos de vuelta a París a la hora que prefieras.",
+        description:
+          "Disfruta de un cómodo traslado privado desde París a Versalles con tu propio chófer. Te recogemos en tu hotel, te llevamos al Palacio, esperamos en el lugar y te traemos de vuelta a París a la hora que prefieras.",
         duration: "5 horas",
         distance: "25 km desde París",
         included: [
@@ -609,17 +662,18 @@ const translations = {
           "Conductor profesional que habla inglés",
           "Recogida y regreso en París",
           "Tiempo de espera en Versalles (hasta 3h)",
-          "Peajes, estacionamiento, combustible"
+          "Peajes, estacionamiento, combustible",
         ],
         notIncluded: [
           "Entradas al Palacio y jardines (€20/persona)",
           "Guía turístico autorizado (disponible bajo petición)",
-          "Comidas y gastos personales"
-        ]
+          "Comidas y gastos personales",
+        ],
       },
       versaillesFull: {
         title: "Versalles Día Completo",
-        description: "Pasa un día completo explorando Versalles a tu propio ritmo. Tu chófer privado te esperará mientras visitas el Palacio, los jardines y la Finca de María Antonieta. Perfecto para quienes quieren tomarse su tiempo.",
+        description:
+          "Pasa un día completo explorando Versalles a tu propio ritmo. Tu chófer privado te esperará mientras visitas el Palacio, los jardines y la Finca de María Antonieta. Perfecto para quienes quieren tomarse su tiempo.",
         duration: "8 horas",
         distance: "25 km desde París",
         included: [
@@ -627,17 +681,18 @@ const translations = {
           "Conductor profesional que habla inglés",
           "Recogida y regreso en París",
           "Tiempo de espera en Versalles (hasta 6h)",
-          "Peajes, estacionamiento, combustible"
+          "Peajes, estacionamiento, combustible",
         ],
         notIncluded: [
           "Entradas al Palacio y jardines (€20/persona)",
           "Guía turístico autorizado (disponible bajo petición)",
-          "Comidas y gastos personales"
-        ]
+          "Comidas y gastos personales",
+        ],
       },
       giverny: {
         title: "Excursión a Giverny",
-        description: "Visita la casa y los jardines de Monet en Giverny con tu chófer privado. Disfruta del pintoresco recorrido por la campiña francesa y explora el famoso estanque de nenúfares a tu gusto.",
+        description:
+          "Visita la casa y los jardines de Monet en Giverny con tu chófer privado. Disfruta del pintoresco recorrido por la campiña francesa y explora el famoso estanque de nenúfares a tu gusto.",
         duration: "8 horas",
         distance: "75 km desde París",
         included: [
@@ -645,17 +700,18 @@ const translations = {
           "Conductor profesional que habla inglés",
           "Recogida y regreso en París",
           "Tiempo de espera en Giverny (hasta 4h)",
-          "Peajes, estacionamiento, combustible"
+          "Peajes, estacionamiento, combustible",
         ],
         notIncluded: [
           "Entradas a la casa y jardines de Monet (€11/persona)",
           "Guía turístico autorizado (disponible bajo petición)",
-          "Comidas y gastos personales"
-        ]
+          "Comidas y gastos personales",
+        ],
       },
       champagne: {
         title: "Región de Champagne",
-        description: "Descubre la región de Champagne con una excursión privada a Reims y Épernay. Tu chófer te llevará a las famosas casas de champagne donde podrás reservar degustaciones y tours de bodegas por tu cuenta.",
+        description:
+          "Descubre la región de Champagne con una excursión privada a Reims y Épernay. Tu chófer te llevará a las famosas casas de champagne donde podrás reservar degustaciones y tours de bodegas por tu cuenta.",
         duration: "10 horas",
         distance: "145 km desde París",
         included: [
@@ -664,17 +720,18 @@ const translations = {
           "Recogida y regreso en París",
           "Tiempo de espera en la región de Champagne (hasta 6h)",
           "Peajes, estacionamiento, combustible",
-          "Itinerario sugerido y recomendaciones"
+          "Itinerario sugerido y recomendaciones",
         ],
         notIncluded: [
           "Tours y degustaciones en casas de champagne (€25-50/persona)",
           "Guía turístico autorizado (disponible bajo petición)",
-          "Comidas y gastos personales"
-        ]
+          "Comidas y gastos personales",
+        ],
       },
       loire: {
         title: "Castillos del Valle del Loira",
-        description: "Explora los magníficos castillos del Valle del Loira con tu chófer privado. Visita el Château de Chambord y Chenonceau, con paradas flexibles en el camino. Un día completo de arquitectura renacentista francesa.",
+        description:
+          "Explora los magníficos castillos del Valle del Loira con tu chófer privado. Visita el Château de Chambord y Chenonceau, con paradas flexibles en el camino. Un día completo de arquitectura renacentista francesa.",
         duration: "12 horas",
         distance: "200 km desde París",
         included: [
@@ -683,17 +740,18 @@ const translations = {
           "Recogida y regreso en París",
           "Tiempo de espera en los castillos (hasta 8h)",
           "Peajes, estacionamiento, combustible",
-          "Itinerario sugerido y recomendaciones"
+          "Itinerario sugerido y recomendaciones",
         ],
         notIncluded: [
           "Entradas a los castillos (€15-20/persona cada uno)",
           "Guía turístico autorizado (disponible bajo petición)",
-          "Comidas y gastos personales"
-        ]
+          "Comidas y gastos personales",
+        ],
       },
       parisCityHalf: {
         title: "Tour por París – Medio Día",
-        description: "Descubre los puntos destacados de París con tu chófer privado. Perfecto para fotos y orientación. Itinerario flexible: Torre Eiffel, Louvre, Notre-Dame, Champs-Élysées, Montmartre. Tu conductor se adapta a tu ritmo e intereses.",
+        description:
+          "Descubre los puntos destacados de París con tu chófer privado. Perfecto para fotos y orientación. Itinerario flexible: Torre Eiffel, Louvre, Notre-Dame, Champs-Élysées, Montmartre. Tu conductor se adapta a tu ritmo e intereses.",
         duration: "4-5 horas",
         distance: "Centro de París",
         included: [
@@ -701,17 +759,18 @@ const translations = {
           "Conductor profesional que habla inglés",
           "Recogida y regreso en tu hotel",
           "Ruta flexible y paradas para fotos",
-          "Estacionamiento, combustible"
+          "Estacionamiento, combustible",
         ],
         notIncluded: [
           "Entradas a museos",
           "Guía turístico autorizado (disponible bajo petición)",
-          "Comidas y gastos personales"
-        ]
+          "Comidas y gastos personales",
+        ],
       },
       parisCityFull: {
         title: "Tour por París – Día Completo",
-        description: "Pasa un día completo explorando París a tu propio ritmo. Visita museos por fuera, pasea por barrios encantadores, disfruta de una pausa para almorzar. Tu chófer te esperará y te llevará entre ubicaciones. Perfecto para una experiencia completa de París.",
+        description:
+          "Pasa un día completo explorando París a tu propio ritmo. Visita museos por fuera, pasea por barrios encantadores, disfruta de una pausa para almorzar. Tu chófer te esperará y te llevará entre ubicaciones. Perfecto para una experiencia completa de París.",
         duration: "8 horas",
         distance: "Centro de París",
         included: [
@@ -719,17 +778,18 @@ const translations = {
           "Conductor profesional que habla inglés",
           "Recogida y regreso en tu hotel",
           "Ruta flexible y múltiples paradas",
-          "Estacionamiento, combustible"
+          "Estacionamiento, combustible",
         ],
         notIncluded: [
           "Entradas a museos",
           "Guía turístico autorizado (disponible bajo petición)",
-          "Comidas y gastos personales"
-        ]
+          "Comidas y gastos personales",
+        ],
       },
       parisNight: {
         title: "París de Noche – Iluminaciones",
-        description: "Experimenta la magia de París después del anochecer. Ve la Torre Eiffel brillando, monumentos iluminados y los puentes más hermosos de la ciudad. Un tour nocturno romántico e inolvidable con tu chófer privado.",
+        description:
+          "Experimenta la magia de París después del anochecer. Ve la Torre Eiffel brillando, monumentos iluminados y los puentes más hermosos de la ciudad. Un tour nocturno romántico e inolvidable con tu chófer privado.",
         duration: "3-4 horas",
         distance: "Centro de París",
         included: [
@@ -737,44 +797,51 @@ const translations = {
           "Conductor profesional que habla inglés",
           "Recogida y regreso en tu hotel",
           "Torre Eiffel, Louvre, Ópera, Champs-Élysées, Pont Alexandre III",
-          "Estacionamiento, combustible"
+          "Estacionamiento, combustible",
         ],
         notIncluded: [
           "Entradas Torre Eiffel (si quieres subir)",
           "Cena o bebidas",
-          "Gastos personales"
-        ]
-      }
-    }
+          "Gastos personales",
+        ],
+      },
+    },
   },
   pt: {
     // Hero
     hero: {
       title: "Excursões Privadas de Paris",
-      subtitle: "Descubra Versalhes, Champagne, Giverny e muito mais com seu próprio motorista particular. Serviço porta a porta, horário flexível, preço fixo por veículo.",
+      subtitle:
+        "Descubra Versalhes, Champagne, Giverny e muito mais com seu próprio motorista particular. Serviço porta a porta, horário flexível, preço fixo por veículo.",
       badge1: "1-7 passageiros por veículo",
       badge2: "Preço fixo por dia",
       badge3: "Motorista que fala inglês",
       ctaPrimary: "Solicitar Sua Excursão",
-      ctaSecondary: "Ver Itinerários de Exemplo"
+      ctaSecondary: "Ver Itinerários de Exemplo",
     },
     // How it Works
     howItWorks: {
       title: "Como Funciona",
-      subtitle: "Simples, transparente e flexível. Reserve sua excursão privada em 3 passos fáceis.",
+      subtitle:
+        "Simples, transparente e flexível. Reserve sua excursão privada em 3 passos fáceis.",
       step1Title: "Escolha Seu Destino",
-      step1Text: "Selecione Versalhes, Champagne, Giverny, Vale do Loire ou solicite um itinerário personalizado.",
+      step1Text:
+        "Selecione Versalhes, Champagne, Giverny, Vale do Loire ou solicite um itinerário personalizado.",
       step2Title: "Confirmamos Horário e Preço",
-      step2Text: "Preço fixo por veículo, sem taxas ocultas. Confirmaremos sua reserva em 2 horas.",
+      step2Text:
+        "Preço fixo por veículo, sem taxas ocultas. Confirmaremos sua reserva em 2 horas.",
       step3Title: "Aproveite Seu Dia Privado",
-      step3Text: "Serviço porta a porta, paradas flexíveis, motorista profissional que fala inglês.",
-      cta: "Planeje Sua Excursão Agora"
+      step3Text:
+        "Serviço porta a porta, paradas flexíveis, motorista profissional que fala inglês.",
+      cta: "Planeje Sua Excursão Agora",
     },
     // Custom Quote for Agencies
     customQuote: {
-      title: "Agência de viagens ou grupo? Obtenha um orçamento personalizado em 10 minutos.",
-      subtitle: "Somos especializados em atender agências de viagens e grupos com itinerários personalizados, tarifas competitivas e serviço confiável.",
-      cta: "WhatsApp – Orçamento Personalizado"
+      title:
+        "Agência de viagens ou grupo? Obtenha um orçamento personalizado em 10 minutos.",
+      subtitle:
+        "Somos especializados em atender agências de viagens e grupos com itinerários personalizados, tarifas competitivas e serviço confiável.",
+      cta: "WhatsApp – Orçamento Personalizado",
     },
     // FAQ
     faq: {
@@ -789,21 +856,22 @@ const translations = {
       q4: "Quantas horas estão incluídas em cada pacote de excursão?",
       a4: "Cada pacote inclui um número específico de horas: Versalhes Meio Dia (5h), Versalhes Dia Completo (8h), Giverny (8h), Região de Champagne (10h) e Vale do Loire (12h). Isso inclui tempo de viagem de/para Paris e tempo de espera nos destinos. Precisa de mais tempo? Horas adicionais a €65/hora.",
       stillQuestions: "Ainda tem dúvidas? Estamos aqui para ajudar!",
-      ctaFaq: "Entre em Contato pelo WhatsApp"
+      ctaFaq: "Entre em Contato pelo WhatsApp",
     },
     // Day Trip Card
     card: {
       whatsIncluded: "Incluído",
       notIncluded: "Não Incluído",
       ticketsOptional: "Ingressos e Reservas (opcional)",
-      ticketsBullet1: "Podemos recomendar ingressos oficiais e melhores horários.",
+      ticketsBullet1:
+        "Podemos recomendar ingressos oficiais e melhores horários.",
       ticketsBullet2: "Se desejar, podemos ajudar com reservas via WhatsApp.",
       from: "A partir de",
       perVehicle: "por veículo",
       upTo: "Até",
       passengers: "passageiros",
       cta: "Solicitar esta excursão no WhatsApp",
-      hours: "horas"
+      hours: "horas",
     },
     // Filters
     filters: {
@@ -815,7 +883,8 @@ const translations = {
       clearFilters: "Limpar filtros",
       excursionsMatch: "excursões correspondem",
       noResults: "Nenhum resultado encontrado",
-      noResultsMessage: "Nenhuma excursão corresponde aos seus filtros. Entre em contato conosco no WhatsApp e proporemos um itinerário personalizado.",
+      noResultsMessage:
+        "Nenhuma excursão corresponde aos seus filtros. Entre em contato conosco no WhatsApp e proporemos um itinerário personalizado.",
       contactWhatsApp: "Entre em contato no WhatsApp",
       allTypes: "Todos os Tipos",
       allLocations: "Todas as Localizações",
@@ -841,13 +910,14 @@ const translations = {
       seasonSpring: "Primavera",
       seasonSummer: "Verão",
       seasonAutumn: "Outono",
-      seasonWinter: "Inverno"
+      seasonWinter: "Inverno",
     },
     // Trips
     trips: {
       versaillesHalf: {
         title: "Versalhes Meio Dia",
-        description: "Desfrute de um confortável traslado privado de Paris a Versalhes com seu próprio motorista. Buscamos você no hotel, levamos ao Palácio, esperamos no local e trazemos de volta a Paris no horário de sua preferência.",
+        description:
+          "Desfrute de um confortável traslado privado de Paris a Versalhes com seu próprio motorista. Buscamos você no hotel, levamos ao Palácio, esperamos no local e trazemos de volta a Paris no horário de sua preferência.",
         duration: "5 horas",
         distance: "25 km de Paris",
         included: [
@@ -855,17 +925,18 @@ const translations = {
           "Motorista profissional que fala inglês",
           "Busca e retorno em Paris",
           "Tempo de espera em Versalhes (até 3h)",
-          "Pedágios, estacionamento, combustível"
+          "Pedágios, estacionamento, combustível",
         ],
         notIncluded: [
           "Ingressos para o Palácio e jardins (€20/pessoa)",
           "Guia turístico licenciado (disponível sob consulta)",
-          "Refeições e despesas pessoais"
-        ]
+          "Refeições e despesas pessoais",
+        ],
       },
       versaillesFull: {
         title: "Versalhes Dia Inteiro",
-        description: "Passe um dia inteiro explorando Versalhes no seu próprio ritmo. Seu motorista particular aguardará enquanto você visita o Palácio, os jardins e a Propriedade de Maria Antonieta. Perfeito para quem quer aproveitar com calma.",
+        description:
+          "Passe um dia inteiro explorando Versalhes no seu próprio ritmo. Seu motorista particular aguardará enquanto você visita o Palácio, os jardins e a Propriedade de Maria Antonieta. Perfeito para quem quer aproveitar com calma.",
         duration: "8 horas",
         distance: "25 km de Paris",
         included: [
@@ -873,17 +944,18 @@ const translations = {
           "Motorista profissional que fala inglês",
           "Busca e retorno em Paris",
           "Tempo de espera em Versalhes (até 6h)",
-          "Pedágios, estacionamento, combustível"
+          "Pedágios, estacionamento, combustível",
         ],
         notIncluded: [
           "Ingressos para o Palácio e jardins (€20/pessoa)",
           "Guia turístico licenciado (disponível sob consulta)",
-          "Refeições e despesas pessoais"
-        ]
+          "Refeições e despesas pessoais",
+        ],
       },
       giverny: {
         title: "Excursão a Giverny",
-        description: "Visite a casa e os jardins de Monet em Giverny com seu motorista particular. Aproveite o trajeto panorâmico pelo interior francês e explore o famoso lago de nenúfares à vontade.",
+        description:
+          "Visite a casa e os jardins de Monet em Giverny com seu motorista particular. Aproveite o trajeto panorâmico pelo interior francês e explore o famoso lago de nenúfares à vontade.",
         duration: "8 horas",
         distance: "75 km de Paris",
         included: [
@@ -891,17 +963,18 @@ const translations = {
           "Motorista profissional que fala inglês",
           "Busca e retorno em Paris",
           "Tempo de espera em Giverny (até 4h)",
-          "Pedágios, estacionamento, combustível"
+          "Pedágios, estacionamento, combustível",
         ],
         notIncluded: [
           "Ingressos para a casa e jardins de Monet (€11/pessoa)",
           "Guia turístico licenciado (disponível sob consulta)",
-          "Refeições e despesas pessoais"
-        ]
+          "Refeições e despesas pessoais",
+        ],
       },
       champagne: {
         title: "Região de Champagne",
-        description: "Descubra a região de Champagne com uma excursão privada a Reims e Épernay. Seu motorista levará você às famosas casas de champagne onde poderá reservar degustações e tours de adegas por conta própria.",
+        description:
+          "Descubra a região de Champagne com uma excursão privada a Reims e Épernay. Seu motorista levará você às famosas casas de champagne onde poderá reservar degustações e tours de adegas por conta própria.",
         duration: "10 horas",
         distance: "145 km de Paris",
         included: [
@@ -910,17 +983,18 @@ const translations = {
           "Busca e retorno em Paris",
           "Tempo de espera na região de Champagne (até 6h)",
           "Pedágios, estacionamento, combustível",
-          "Itinerário sugerido e recomendações"
+          "Itinerário sugerido e recomendações",
         ],
         notIncluded: [
           "Tours e degustações nas casas de champagne (€25-50/pessoa)",
           "Guia turístico licenciado (disponível sob consulta)",
-          "Refeições e despesas pessoais"
-        ]
+          "Refeições e despesas pessoais",
+        ],
       },
       loire: {
         title: "Castelos do Vale do Loire",
-        description: "Explore os magníficos castelos do Vale do Loire com seu motorista particular. Visite o Château de Chambord e Chenonceau, com paradas flexíveis no caminho. Um dia inteiro de arquitetura renascentista francesa.",
+        description:
+          "Explore os magníficos castelos do Vale do Loire com seu motorista particular. Visite o Château de Chambord e Chenonceau, com paradas flexíveis no caminho. Um dia inteiro de arquitetura renascentista francesa.",
         duration: "12 horas",
         distance: "200 km de Paris",
         included: [
@@ -929,17 +1003,18 @@ const translations = {
           "Busca e retorno em Paris",
           "Tempo de espera nos castelos (até 8h)",
           "Pedágios, estacionamento, combustível",
-          "Itinerário sugerido e recomendações"
+          "Itinerário sugerido e recomendações",
         ],
         notIncluded: [
           "Ingressos para os castelos (€15-20/pessoa cada)",
           "Guia turístico licenciado (disponível sob consulta)",
-          "Refeições e despesas pessoais"
-        ]
+          "Refeições e despesas pessoais",
+        ],
       },
       parisCityHalf: {
         title: "Tour por Paris – Meio Dia",
-        description: "Descubra os destaques de Paris com seu motorista particular. Perfeito para fotos e orientação. Itinerário flexível: Torre Eiffel, Louvre, Notre-Dame, Champs-Élysées, Montmartre. Seu motorista se adapta ao seu ritmo e interesses.",
+        description:
+          "Descubra os destaques de Paris com seu motorista particular. Perfeito para fotos e orientação. Itinerário flexível: Torre Eiffel, Louvre, Notre-Dame, Champs-Élysées, Montmartre. Seu motorista se adapta ao seu ritmo e interesses.",
         duration: "4-5 horas",
         distance: "Centro de Paris",
         included: [
@@ -947,17 +1022,18 @@ const translations = {
           "Motorista profissional que fala inglês",
           "Busca e retorno no seu hotel",
           "Rota flexível e paradas para fotos",
-          "Estacionamento, combustível"
+          "Estacionamento, combustível",
         ],
         notIncluded: [
           "Ingressos para museus",
           "Guia turístico licenciado (disponível sob consulta)",
-          "Refeições e despesas pessoais"
-        ]
+          "Refeições e despesas pessoais",
+        ],
       },
       parisCityFull: {
         title: "Tour por Paris – Dia Inteiro",
-        description: "Passe um dia inteiro explorando Paris no seu próprio ritmo. Visite museus por fora, passeie por bairros charmosos, aproveite uma pausa para almoço. Seu motorista aguardará e levará você entre os locais. Perfeito para uma experiência completa de Paris.",
+        description:
+          "Passe um dia inteiro explorando Paris no seu próprio ritmo. Visite museus por fora, passeie por bairros charmosos, aproveite uma pausa para almoço. Seu motorista aguardará e levará você entre os locais. Perfeito para uma experiência completa de Paris.",
         duration: "8 horas",
         distance: "Centro de Paris",
         included: [
@@ -965,17 +1041,18 @@ const translations = {
           "Motorista profissional que fala inglês",
           "Busca e retorno no seu hotel",
           "Rota flexível e múltiplas paradas",
-          "Estacionamento, combustível"
+          "Estacionamento, combustível",
         ],
         notIncluded: [
           "Ingressos para museus",
           "Guia turístico licenciado (disponível sob consulta)",
-          "Refeições e despesas pessoais"
-        ]
+          "Refeições e despesas pessoais",
+        ],
       },
       parisNight: {
         title: "Paris à Noite – Iluminações",
-        description: "Experimente a magia de Paris após o anoitecer. Veja a Torre Eiffel cintilante, monumentos iluminados e as pontes mais bonitas da cidade. Um passeio noturno romântico e inesquecível com seu motorista particular.",
+        description:
+          "Experimente a magia de Paris após o anoitecer. Veja a Torre Eiffel cintilante, monumentos iluminados e as pontes mais bonitas da cidade. Um passeio noturno romântico e inesquecível com seu motorista particular.",
         duration: "3-4 horas",
         distance: "Centro de Paris",
         included: [
@@ -983,16 +1060,16 @@ const translations = {
           "Motorista profissional que fala inglês",
           "Busca e retorno no seu hotel",
           "Torre Eiffel, Louvre, Ópera, Champs-Élysées, Pont Alexandre III",
-          "Estacionamento, combustível"
+          "Estacionamento, combustível",
         ],
         notIncluded: [
           "Ingressos Torre Eiffel (se quiser subir)",
           "Jantar ou bebidas",
-          "Despesas pessoais"
-        ]
-      }
-    }
-  }
+          "Despesas pessoais",
+        ],
+      },
+    },
+  },
 };
 
 // Tipos de experiencia
@@ -1002,7 +1079,7 @@ const experienceTypes = {
   ADVENTURE: "adventure",
   LUXURY: "luxury",
   HISTORICAL: "historical",
-  PRIVATE: "private"
+  PRIVATE: "private",
 } as const;
 
 // Day Trips - Using translation keys with filter tags
@@ -1010,7 +1087,8 @@ const dayTrips = [
   {
     id: 1,
     tripKey: "parisCityHalf",
-    image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2070",
+    image:
+      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2070",
     price: 380,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1019,12 +1097,18 @@ const dayTrips = [
     // Filter tags
     durationKey: "duration2to4",
     locationKeys: ["locationParis"],
-    seasonKeys: ["seasonSpring", "seasonSummer", "seasonAutumn", "seasonWinter"]
+    seasonKeys: [
+      "seasonSpring",
+      "seasonSummer",
+      "seasonAutumn",
+      "seasonWinter",
+    ],
   },
   {
     id: 2,
     tripKey: "parisCityFull",
-    image: "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?q=80&w=2070",
+    image:
+      "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?q=80&w=2070",
     price: 550,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1033,12 +1117,18 @@ const dayTrips = [
     // Filter tags
     durationKey: "durationFullDay",
     locationKeys: ["locationParis"],
-    seasonKeys: ["seasonSpring", "seasonSummer", "seasonAutumn", "seasonWinter"]
+    seasonKeys: [
+      "seasonSpring",
+      "seasonSummer",
+      "seasonAutumn",
+      "seasonWinter",
+    ],
   },
   {
     id: 3,
     tripKey: "parisNight",
-    image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2070",
+    image:
+      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2070",
     price: 350,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1047,12 +1137,18 @@ const dayTrips = [
     // Filter tags
     durationKey: "duration2to4",
     locationKeys: ["locationParis"],
-    seasonKeys: ["seasonSpring", "seasonSummer", "seasonAutumn", "seasonWinter"]
+    seasonKeys: [
+      "seasonSpring",
+      "seasonSummer",
+      "seasonAutumn",
+      "seasonWinter",
+    ],
   },
   {
     id: 4,
     tripKey: "versaillesHalf",
-    image: "https://images.unsplash.com/photo-1624698343123-04444a0743ca?q=80&w=2070",
+    image:
+      "https://images.unsplash.com/photo-1624698343123-04444a0743ca?q=80&w=2070",
     price: 320,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1061,12 +1157,18 @@ const dayTrips = [
     // Filter tags
     durationKey: "durationHalfDay",
     locationKeys: ["locationVersailles"],
-    seasonKeys: ["seasonSpring", "seasonSummer", "seasonAutumn", "seasonWinter"]
+    seasonKeys: [
+      "seasonSpring",
+      "seasonSummer",
+      "seasonAutumn",
+      "seasonWinter",
+    ],
   },
   {
     id: 5,
     tripKey: "versaillesFull",
-    image: "https://images.unsplash.com/photo-1624698343123-04444a0743ca?q=80&w=2070",
+    image:
+      "https://images.unsplash.com/photo-1624698343123-04444a0743ca?q=80&w=2070",
     price: 480,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1075,12 +1177,18 @@ const dayTrips = [
     // Filter tags
     durationKey: "durationFullDay",
     locationKeys: ["locationVersailles"],
-    seasonKeys: ["seasonSpring", "seasonSummer", "seasonAutumn", "seasonWinter"]
+    seasonKeys: [
+      "seasonSpring",
+      "seasonSummer",
+      "seasonAutumn",
+      "seasonWinter",
+    ],
   },
   {
     id: 6,
     tripKey: "giverny",
-    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070",
+    image:
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070",
     price: 520,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1089,12 +1197,13 @@ const dayTrips = [
     // Filter tags
     durationKey: "durationFullDay",
     locationKeys: ["locationParis"], // Normandy region, accessible from Paris
-    seasonKeys: ["seasonSpring", "seasonSummer", "seasonAutumn"]
+    seasonKeys: ["seasonSpring", "seasonSummer", "seasonAutumn"],
   },
   {
     id: 7,
     tripKey: "champagne",
-    image: "https://images.unsplash.com/photo-1547595628-c61a29f496f0?q=80&w=2070",
+    image:
+      "https://images.unsplash.com/photo-1547595628-c61a29f496f0?q=80&w=2070",
     price: 650,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1103,12 +1212,18 @@ const dayTrips = [
     // Filter tags
     durationKey: "durationFullDay",
     locationKeys: ["locationChampagne"],
-    seasonKeys: ["seasonSpring", "seasonSummer", "seasonAutumn", "seasonWinter"]
+    seasonKeys: [
+      "seasonSpring",
+      "seasonSummer",
+      "seasonAutumn",
+      "seasonWinter",
+    ],
   },
   {
     id: 8,
     tripKey: "loire",
-    image: "https://images.unsplash.com/photo-1584563143659-e9e5c0b8e4e0?q=80&w=2070",
+    image:
+      "https://images.unsplash.com/photo-1584563143659-e9e5c0b8e4e0?q=80&w=2070",
     price: 750,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1117,8 +1232,8 @@ const dayTrips = [
     // Filter tags
     durationKey: "durationMultiDay",
     locationKeys: ["locationLoire"],
-    seasonKeys: ["seasonSpring", "seasonSummer", "seasonAutumn"]
-  }
+    seasonKeys: ["seasonSpring", "seasonSummer", "seasonAutumn"],
+  },
 ];
 
 const Excursions = () => {
@@ -1127,27 +1242,27 @@ const Excursions = () => {
   const navigate = useNavigate();
 
   // Quick filter state
-  const [quickFilter, setQuickFilter] = useState('all'); // 'all', 'paris', 'outside', 'night'
+  const [quickFilter, setQuickFilter] = useState("all"); // 'all', 'paris', 'outside', 'night'
 
   const [selectedTour, setSelectedTour] = useState(null);
 
   // Filter day trips based on quick filter
-  const filteredTrips = dayTrips.filter(trip => {
-    if (quickFilter === 'all') return true;
+  const filteredTrips = dayTrips.filter((trip) => {
+    if (quickFilter === "all") return true;
 
-    if (quickFilter === 'paris') {
+    if (quickFilter === "paris") {
       // Paris tours: parisCityHalf, parisCityFull, parisNight
-      return trip.location === 'Paris';
+      return trip.location === "Paris";
     }
 
-    if (quickFilter === 'outside') {
+    if (quickFilter === "outside") {
       // Outside Paris: Versailles, Giverny, Champagne, Loire
-      return trip.location !== 'Paris';
+      return trip.location !== "Paris";
     }
 
-    if (quickFilter === 'night') {
+    if (quickFilter === "night") {
       // Night tours: parisNight
-      return trip.tripKey === 'parisNight';
+      return trip.tripKey === "parisNight";
     }
 
     return true;
@@ -1155,36 +1270,17 @@ const Excursions = () => {
 
   // Clear all filters
   const clearFilters = () => {
-    setQuickFilter('all');
+    setQuickFilter("all");
   };
 
   // No pagination needed for 8 trips - show all filtered results
   const currentTrips = filteredTrips;
 
-  // Handle booking navigation
-  const handleBookNow = (tour) => {
-    navigate("/booking", {
-      state: {
-        tourId: tour.id.toString(),
-        tourName: tour.title,
-        basePrice: tour.price,
-        tourData: tour
-      }
-    });
-  };
-
-  // Handle view details - scroll to tour or open modal
-  const handleViewDetails = (tour) => {
-    setSelectedTour(tour);
-    // Could open a modal here or navigate to a detail page
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   // Day Trip Card with translations
   const DayTripCard = ({ trip, t }) => {
     const tripData = t.trips[trip.tripKey];
     const whatsappMessage = encodeURIComponent(
-      `Hi, I'm interested in the ${tripData.title} on [date] for [X] passengers. Can you confirm availability and price?`
+      `Hi, I'm interested in the ${tripData.title} on [date] for [X] passengers. Can you confirm availability and price?`,
     );
 
     return (
@@ -1211,8 +1307,12 @@ const Excursions = () => {
 
           {/* Content */}
           <div className="p-6 flex-1 flex flex-col">
-            <h3 className="text-2xl font-display font-bold text-secondary mb-2">{tripData.title}</h3>
-            <p className="text-gray-600 mb-4 leading-relaxed">{tripData.description}</p>
+            <h3 className="text-2xl font-display font-bold text-secondary mb-2">
+              {tripData.title}
+            </h3>
+            <p className="text-gray-600 mb-4 leading-relaxed">
+              {tripData.description}
+            </p>
 
             {/* What's Included */}
             <div className="mb-4">
@@ -1221,7 +1321,10 @@ const Excursions = () => {
               </h4>
               <ul className="space-y-1">
                 {tripData.included.slice(0, 3).map((item, index) => (
-                  <li key={index} className="text-xs text-gray-600 flex items-start gap-1">
+                  <li
+                    key={index}
+                    className="text-xs text-gray-600 flex items-start gap-1"
+                  >
                     <Check className="w-3 h-3 text-green-600 mt-0.5 flex-shrink-0" />
                     <span>{item}</span>
                   </li>
@@ -1236,7 +1339,10 @@ const Excursions = () => {
               </h4>
               <ul className="space-y-1">
                 {tripData.notIncluded.slice(0, 2).map((item, index) => (
-                  <li key={index} className="text-xs text-gray-500 flex items-start gap-1">
+                  <li
+                    key={index}
+                    className="text-xs text-gray-500 flex items-start gap-1"
+                  >
                     <X className="w-3 h-3 text-gray-400 mt-0.5 flex-shrink-0" />
                     <span>{item}</span>
                   </li>
@@ -1265,18 +1371,31 @@ const Excursions = () => {
             <div className="mt-auto pt-4 border-t border-primary/10">
               <div className="flex items-center justify-between mb-4">
                 <div>
-                  <div className="text-sm text-gray-500 mb-1">{t.card.from}</div>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-3xl font-display font-bold text-primary">€{trip.price}</span>
-                    <span className="text-sm text-gray-500">{t.card.perVehicle}</span>
+                  <div className="text-sm text-gray-500 mb-1">
+                    {t.card.from}
                   </div>
-                  <div className="text-xs text-gray-400 mt-1">{t.card.upTo} {trip.maxPassengers} {t.card.passengers}</div>
+                  <div className="flex items-baseline gap-2">
+                    <span className="text-3xl font-display font-bold text-primary">
+                      €{trip.price}
+                    </span>
+                    <span className="text-sm text-gray-500">
+                      {t.card.perVehicle}
+                    </span>
+                  </div>
+                  <div className="text-xs text-gray-400 mt-1">
+                    {t.card.upTo} {trip.maxPassengers} {t.card.passengers}
+                  </div>
                 </div>
               </div>
 
               <Button
                 className="silk-button w-full"
-                onClick={() => window.open(`https://wa.me/33668251102?text=${whatsappMessage}`, '_blank')}
+                onClick={() =>
+                  window.open(
+                    `https://wa.me/33668251102?text=${whatsappMessage}`,
+                    "_blank",
+                  )
+                }
               >
                 {t.card.cta}
               </Button>
@@ -1329,8 +1448,13 @@ const Excursions = () => {
             <Button
               className="silk-button h-14 px-10 text-lg"
               onClick={() => {
-                const message = encodeURIComponent("Hi, I'm interested in booking a private day trip from Paris. Can you help me?");
-                window.open(`https://wa.me/33668251102?text=${message}`, '_blank');
+                const message = encodeURIComponent(
+                  "Hi, I'm interested in booking a private day trip from Paris. Can you help me?",
+                );
+                window.open(
+                  `https://wa.me/33668251102?text=${message}`,
+                  "_blank",
+                );
               }}
             >
               {t.hero.ctaPrimary}
@@ -1339,7 +1463,7 @@ const Excursions = () => {
               variant="outline"
               className="button-outline-gold h-14 px-10 text-lg bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
               onClick={() => {
-                window.scrollTo({ top: 800, behavior: 'smooth' });
+                window.scrollTo({ top: 800, behavior: "smooth" });
               }}
             >
               {t.hero.ctaSecondary}
@@ -1406,8 +1530,13 @@ const Excursions = () => {
             <Button
               className="silk-button h-14 px-10 text-lg"
               onClick={() => {
-                const message = encodeURIComponent("Hi, I'd like to plan a private day trip from Paris. Can you help me?");
-                window.open(`https://wa.me/33668251102?text=${message}`, '_blank');
+                const message = encodeURIComponent(
+                  "Hi, I'd like to plan a private day trip from Paris. Can you help me?",
+                );
+                window.open(
+                  `https://wa.me/33668251102?text=${message}`,
+                  "_blank",
+                );
               }}
             >
               {t.howItWorks.cta}
@@ -1434,14 +1563,17 @@ const Excursions = () => {
               onClick={() => {
                 const message = encodeURIComponent(
                   `Hi, I'm from a travel agency/group and I'd like a custom quote for:\n\n` +
-                  `- Date: [your date]\n` +
-                  `- Number of passengers: [number]\n` +
-                  `- Preferred language: [language]\n` +
-                  `- Type of tour: [City Tour / Versailles / Night Tour / Other]\n` +
-                  `- Need tickets assistance: [Yes / No]\n\n` +
-                  `Please send me a quote. Thank you!`
+                    `- Date: [your date]\n` +
+                    `- Number of passengers: [number]\n` +
+                    `- Preferred language: [language]\n` +
+                    `- Type of tour: [City Tour / Versailles / Night Tour / Other]\n` +
+                    `- Need tickets assistance: [Yes / No]\n\n` +
+                    `Please send me a quote. Thank you!`,
                 );
-                window.open(`https://wa.me/33668251102?text=${message}`, '_blank');
+                window.open(
+                  `https://wa.me/33668251102?text=${message}`,
+                  "_blank",
+                );
               }}
             >
               {t.customQuote.cta}
@@ -1456,48 +1588,50 @@ const Excursions = () => {
           {/* Quick Filters Sidebar */}
           <div className="w-full lg:w-64">
             <div className="bg-white rounded-lg p-6 shadow-sm sticky top-4">
-              <h2 className="text-lg font-semibold mb-4">{t.filters.quickFilters}</h2>
+              <h2 className="text-lg font-semibold mb-4">
+                {t.filters.quickFilters}
+              </h2>
 
               <div className="space-y-2">
                 <button
-                  onClick={() => setQuickFilter('all')}
+                  onClick={() => setQuickFilter("all")}
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                    quickFilter === 'all'
-                      ? 'bg-primary text-white font-semibold shadow-md'
-                      : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                    quickFilter === "all"
+                      ? "bg-primary text-white font-semibold shadow-md"
+                      : "bg-gray-50 text-gray-700 hover:bg-gray-100"
                   }`}
                 >
                   {t.filters.allTrips}
                 </button>
 
                 <button
-                  onClick={() => setQuickFilter('paris')}
+                  onClick={() => setQuickFilter("paris")}
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                    quickFilter === 'paris'
-                      ? 'bg-primary text-white font-semibold shadow-md'
-                      : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                    quickFilter === "paris"
+                      ? "bg-primary text-white font-semibold shadow-md"
+                      : "bg-gray-50 text-gray-700 hover:bg-gray-100"
                   }`}
                 >
                   {t.filters.parisOnly}
                 </button>
 
                 <button
-                  onClick={() => setQuickFilter('outside')}
+                  onClick={() => setQuickFilter("outside")}
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                    quickFilter === 'outside'
-                      ? 'bg-primary text-white font-semibold shadow-md'
-                      : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                    quickFilter === "outside"
+                      ? "bg-primary text-white font-semibold shadow-md"
+                      : "bg-gray-50 text-gray-700 hover:bg-gray-100"
                   }`}
                 >
                   {t.filters.outsideParis}
                 </button>
 
                 <button
-                  onClick={() => setQuickFilter('night')}
+                  onClick={() => setQuickFilter("night")}
                   className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                    quickFilter === 'night'
-                      ? 'bg-primary text-white font-semibold shadow-md'
-                      : 'bg-gray-50 text-gray-700 hover:bg-gray-100'
+                    quickFilter === "night"
+                      ? "bg-primary text-white font-semibold shadow-md"
+                      : "bg-gray-50 text-gray-700 hover:bg-gray-100"
                   }`}
                 >
                   {t.filters.nightTours}
@@ -1511,20 +1645,32 @@ const Excursions = () => {
             {/* Results Counter */}
             <div className="mb-6 flex items-center justify-between">
               <p className="text-sm text-gray-600">
-                <span className="font-semibold text-primary">{filteredTrips.length}</span> {t.filters.excursionsMatch}
+                <span className="font-semibold text-primary">
+                  {filteredTrips.length}
+                </span>{" "}
+                {t.filters.excursionsMatch}
               </p>
             </div>
 
             {/* No Results Message */}
             {filteredTrips.length === 0 ? (
               <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">{t.filters.noResults}</h3>
-                <p className="text-gray-600 mb-6">{t.filters.noResultsMessage}</p>
+                <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                  {t.filters.noResults}
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  {t.filters.noResultsMessage}
+                </p>
                 <Button
                   className="silk-button"
                   onClick={() => {
-                    const message = encodeURIComponent("Hi, I'd like to plan a custom day trip from Paris. Can you help me?");
-                    window.open(`https://wa.me/33668251102?text=${message}`, '_blank');
+                    const message = encodeURIComponent(
+                      "Hi, I'd like to plan a custom day trip from Paris. Can you help me?",
+                    );
+                    window.open(
+                      `https://wa.me/33668251102?text=${message}`,
+                      "_blank",
+                    );
                   }}
                 >
                   {t.filters.contactWhatsApp}
@@ -1548,9 +1694,7 @@ const Excursions = () => {
             <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
               {t.faq.title}
             </h2>
-            <p className="text-lg text-gray-600">
-              {t.faq.subtitle}
-            </p>
+            <p className="text-lg text-gray-600">{t.faq.subtitle}</p>
           </div>
 
           <div className="space-y-6">
@@ -1559,9 +1703,7 @@ const Excursions = () => {
               <h3 className="text-lg font-semibold text-secondary mb-3">
                 {t.faq.q1}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {t.faq.a1}
-              </p>
+              <p className="text-gray-600 leading-relaxed">{t.faq.a1}</p>
             </div>
 
             {/* FAQ 2 */}
@@ -1569,9 +1711,7 @@ const Excursions = () => {
               <h3 className="text-lg font-semibold text-secondary mb-3">
                 {t.faq.q2}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {t.faq.a2}
-              </p>
+              <p className="text-gray-600 leading-relaxed">{t.faq.a2}</p>
             </div>
 
             {/* FAQ 3 */}
@@ -1579,9 +1719,7 @@ const Excursions = () => {
               <h3 className="text-lg font-semibold text-secondary mb-3">
                 {t.faq.q3}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {t.faq.a3}
-              </p>
+              <p className="text-gray-600 leading-relaxed">{t.faq.a3}</p>
             </div>
 
             {/* FAQ 4 */}
@@ -1589,22 +1727,23 @@ const Excursions = () => {
               <h3 className="text-lg font-semibold text-secondary mb-3">
                 {t.faq.q4}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
-                {t.faq.a4}
-              </p>
+              <p className="text-gray-600 leading-relaxed">{t.faq.a4}</p>
             </div>
           </div>
 
           {/* Final CTA */}
           <div className="text-center mt-12">
-            <p className="text-gray-600 mb-6">
-              {t.faq.stillQuestions}
-            </p>
+            <p className="text-gray-600 mb-6">{t.faq.stillQuestions}</p>
             <Button
               className="silk-button h-14 px-10 text-lg"
               onClick={() => {
-                const message = encodeURIComponent("Hi, I have a question about your private day trips from Paris.");
-                window.open(`https://wa.me/33668251102?text=${message}`, '_blank');
+                const message = encodeURIComponent(
+                  "Hi, I have a question about your private day trips from Paris.",
+                );
+                window.open(
+                  `https://wa.me/33668251102?text=${message}`,
+                  "_blank",
+                );
               }}
             >
               {t.faq.ctaFaq}
