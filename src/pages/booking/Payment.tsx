@@ -11,6 +11,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useLocationDetails } from "@/hooks/booking/useLocationDetails";
 import { StripePaymentForm } from "@/components/booking/StripePaymentForm";
 import { Loader2, AlertCircle } from "lucide-react";
+import { clearBookingSession } from "@/lib/bookingSession";
 
 const BookingPayment = () => {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ const BookingPayment = () => {
     if (location.state?.bookingData) {
       return location.state.bookingData;
     }
-    const saved = sessionStorage.getItem('payment_bookingData');
+    const saved = sessionStorage.getItem("payment_bookingData");
     return saved ? JSON.parse(saved) : null;
   });
 
@@ -36,7 +37,7 @@ const BookingPayment = () => {
     if (location.state?.estimatedPrice) {
       return location.state.estimatedPrice;
     }
-    const saved = sessionStorage.getItem('payment_estimatedPrice');
+    const saved = sessionStorage.getItem("payment_estimatedPrice");
     return saved ? parseFloat(saved) : null;
   });
 
@@ -151,11 +152,11 @@ const BookingPayment = () => {
   useEffect(() => {
     if (!bookingData || !estimatedPrice) {
       // Intentar recuperar de sessionStorage una última vez
-      const savedBookingData = sessionStorage.getItem('payment_bookingData');
-      const savedPrice = sessionStorage.getItem('payment_estimatedPrice');
+      const savedBookingData = sessionStorage.getItem("payment_bookingData");
+      const savedPrice = sessionStorage.getItem("payment_estimatedPrice");
 
       if (savedBookingData && savedPrice) {
-        console.log('[Payment] Recuperando datos de sessionStorage');
+        console.log("[Payment] Recuperando datos de sessionStorage");
         setBookingData(JSON.parse(savedBookingData));
         setEstimatedPrice(parseFloat(savedPrice));
         return;
@@ -172,8 +173,8 @@ const BookingPayment = () => {
     }
 
     // Guardar en sessionStorage para recuperación en caso de reload
-    sessionStorage.setItem('payment_bookingData', JSON.stringify(bookingData));
-    sessionStorage.setItem('payment_estimatedPrice', estimatedPrice.toString());
+    sessionStorage.setItem("payment_bookingData", JSON.stringify(bookingData));
+    sessionStorage.setItem("payment_estimatedPrice", estimatedPrice.toString());
 
     fetchLocationDetails(bookingData.pickup, bookingData.dropoff);
   }, [bookingData, estimatedPrice, navigate, toast, t, fetchLocationDetails]);
@@ -273,9 +274,10 @@ const BookingPayment = () => {
       }
 
       // Limpiar sessionStorage después de pago exitoso
-      sessionStorage.removeItem('payment_bookingData');
-      sessionStorage.removeItem('payment_estimatedPrice');
-      console.log('[Payment] SessionStorage limpiado después de pago exitoso');
+      sessionStorage.removeItem("payment_bookingData");
+      sessionStorage.removeItem("payment_estimatedPrice");
+      clearBookingSession();
+      console.log("[Payment] SessionStorage limpiado después de pago exitoso");
 
       navigate("/booking/confirmation", {
         replace: true,

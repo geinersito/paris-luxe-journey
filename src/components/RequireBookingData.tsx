@@ -3,6 +3,7 @@ import { Navigate, useLocation } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useBooking } from "@/contexts/BookingContext";
+import { loadBookingSession } from "@/lib/bookingSession";
 
 interface RequireBookingDataProps {
   children: ReactNode;
@@ -29,6 +30,13 @@ export const RequireBookingData = ({
   // Obtener datos de la navegación
   const navigationBookingData = location.state?.bookingData;
   const navigationPrice = location.state?.estimatedPrice; // Añadir esta línea
+  const sessionSnapshot = loadBookingSession();
+  const sessionBookingData = sessionSnapshot?.bookingData;
+
+  console.log(
+    "RequireBookingData - Datos de sessionStorage:",
+    sessionBookingData,
+  );
 
   // Efecto para actualizar el contexto con los datos de navegación si existen
   useEffect(() => {
@@ -85,7 +93,7 @@ export const RequireBookingData = ({
 
   // Modificar la verificación para ser más permisiva
   // Si hay datos en la navegación, permitir el acceso incluso si el contexto aún no está actualizado
-  if (!bookingData && !navigationBookingData) {
+  if (!bookingData && !navigationBookingData && !sessionBookingData) {
     if (isConfirmationRoute) {
       console.log(
         "RequireBookingData - Permitiendo /booking/confirmation sin contexto para mostrar fallback UI",

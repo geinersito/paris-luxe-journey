@@ -15,6 +15,7 @@ import { supabase } from "@/integrations/supabase/client";
 import { BookingFormProps } from "@/types/components";
 import { useBooking } from "@/contexts/BookingContext";
 import { MessageCircle } from "lucide-react";
+import { saveBookingSession } from "@/lib/bookingSession";
 
 interface Location {
   id: string;
@@ -442,6 +443,12 @@ const BookingForm = ({
           bookingData: bookingDataWithSurcharge,
           estimatedPrice: totalEstimatedPrice,
         };
+
+        saveBookingSession({
+          bookingData: bookingDataWithSurcharge,
+          estimatedPrice: totalEstimatedPrice,
+          luggageSurcharge,
+        });
 
         // Actualizar el contexto de reserva ANTES de navegar
         if (updateBookingData) {
