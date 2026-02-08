@@ -29,6 +29,7 @@ const AvoidFakeTaxis = lazy(() => import("./pages/guides/AvoidFakeTaxis"));
 const FAQPage = lazy(() => import("./pages/FAQPage"));
 const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
 const TermsPage = lazy(() => import("./pages/TermsPage"));
+const NotFoundPage = lazy(() => import("./pages/NotFound"));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -231,6 +232,14 @@ const router = createBrowserRouter([
             ),
           },
         ],
+      },
+      {
+        path: "*",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <NotFoundPage />
+          </Suspense>
+        ),
       },
     ],
   },
