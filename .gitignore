@@ -32,3 +32,4 @@ dist-ssr
 baseline-*.txt
 type-check-*.txt
 commit-msg.txt
+supabase/functions/create-booking-payment/config.toml
