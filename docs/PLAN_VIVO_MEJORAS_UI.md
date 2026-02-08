@@ -16,6 +16,15 @@ Documento vivo para planificar mejoras del producto mientras se revisan páginas
 - Guardrail compacto: cualquier opción del `CompactBookingForm` debe existir en `locations` con el mismo `code` (si no existe, o se elimina del mini-form o el PR incluye cambio SSOT).
 - Hard-lane (no negociable): secrets hygiene, timezone SSOT, idempotencia webhooks, anti double-booking.
 
+### 2.1) Ancla SSOT y trazabilidad de PRs (obligatorio)
+
+- SSOT del plan vivo: `docs/PLAN_VIVO_MEJORAS_UI.md`.
+- Estado operativo corto: `docs/STATUS.md`.
+- Todo PR debe declarar `Plan item(s): <ID...>` en el PR body.
+- Todo PR debe actualizar:
+  - este documento (`Estado` del ID + referencia PR/commit),
+  - `docs/STATUS.md` (HEAD de `main`, item en curso, siguientes 3).
+
 ## 3) Baseline actual (primera revisión: Home)
 
 ### Diagnóstico compartido
@@ -46,6 +55,7 @@ Estado inicial: `PENDIENTE`.
 | PR-U1b | FE-only (routing+UI) | Evitar páginas vacías de Airports top-nav | Ningún link Airports muestra placeholder vacío | `src/pages/airports/*`, `src/components/Navbar.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1c | docs-only | Política de sincronización SSOT top-nav | Cualquier cambio en `Navbar.tsx` (links) o `App.tsx` (routes) DEBE actualizar tabla SSOT en el mismo PR | `docs/PLAN_VIVO_MEJORAS_UI.md` | drift (alto si no enforceado) | Agente | PENDIENTE | - |
 | PR-Doc0 | docs-only | Trackear `docs/PLAN_VIVO_MEJORAS_UI.md` en git | `git status` sin `?? docs/PLAN_VIVO_MEJORAS_UI.md` | `docs/PLAN_VIVO_MEJORAS_UI.md` | Low | Agente | PENDIENTE | - |
+| PR-Doc1 | docs-only | Anclar gobernanza Plan Vivo + STATUS | Regla de trazabilidad en `SUPERVISOR.md` + `docs/STATUS.md` activo | `docs/SUPERVISOR.md`, `docs/PLAN_VIVO_MEJORAS_UI.md`, `docs/STATUS.md` | Low | CTO+Agente | DOING | - |
 | PR-U1d | UI-only | Optimizar `/excursions` (quote-first) | CTA visible + estructura curada sin deriva a flujo incorrecto | `src/pages/Excursions.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1e | UI-only | Reencuadrar `/events` para conversión a ride | CTA contextual y no ticketing ambiguo | `src/pages/Events.tsx`, `src/components/events/EventsFeed.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1f | FE-only (routing+UI) | Top-nav coherence + dead-page protection | 100% links top-nav con destino útil o redirect explícito | `src/components/Navbar.tsx`, `src/App.tsx`, `src/pages/*` | Med | CTO+Agente | PENDIENTE | - |
