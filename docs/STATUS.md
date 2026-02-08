@@ -23,13 +23,15 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- Ningún item en ejecución. Listo para iniciar siguiente ID del SSOT.
+- **DOCS-PLAN-RECON-01** (P0/R0) - Reconcile legacy PLAN_VIVO items into canonical SSOT
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. `(slot libre)` - definir siguiente item canónico en SSOT
-2. `(slot libre)` - definir siguiente item canónico en SSOT
-3. `(slot libre)` - definir siguiente item canónico en SSOT
+After reconciliation complete, recommended next items:
+
+1. **FLOW-BOOKING-CONFIRMATION-ROBUST-01** (P2/R1) - Robustify `/booking/confirmation` (refresh/back behavior + explicit Paris timezone)
+2. **NAV-ABOUT-CONTACT-FLEET-01** (P2/R1) - About/Contact/Fleet: anchors vs pages (coherence)
+3. **UX-TIMEPICKER-COMPACT-01** (P2/R0) - Time picker compact (quick win: "selector demasiado largo")
 
 ## Regla de actualizacion
 

@@ -31,6 +31,30 @@ Detailed product notes can continue in `docs/PLAN_VIVO_MEJORAS_UI.md`, but execu
 | NAV-HOURLY-01 | P1 | R1 | Navigation | Separate `Hourly` intent from `/booking` wizard | DONE | [#40](https://github.com/geinersito/paris-luxe-journey/pull/40) / `c06d6c1` | Intent guard + no sessionStorage mix |
 | UX-HEADER-I18N-01 | P1 | R0 | Header | Keep language dropdown crisp and navbar stable across locales | DONE | [#41](https://github.com/geinersito/paris-luxe-journey/pull/41) / `e40d506` | Compact selector (flag + code) + navbar flex stability |
 
+## Migrated from PLAN_VIVO_MEJORAS_UI.md (legacy backlog)
+
+Items below were previously tracked in the narrative plan and are now reconciled into the canonical SSOT.
+
+| ID | Legacy | Priority | Risk | Status | Title | Evidence (PR/Commit) | Notes |
+|---|---|---:|:---:|:---:|---|---|---|
+| NAV-AIRPORTS-01 | PR-U1b | P2 | R0 | DONE | Airports pages complete (CDG/Orly/Beauvais) + CTA to /booking | `7c9bc64` | Full airport landings with i18n, routing, and CTAs |
+| NAV-ABOUT-CONTACT-FLEET-01 | PR-U1j | P2 | R1 | TODO | About/Contact/Fleet: anchors vs pages (coherence) |  | Decide: anchors on home vs dedicated pages |
+| UX-EXCURSIONS-QUOTEFIRST-01 | PR-U1d | P2 | R0 | DONE | Excursions: quote-first CTAs (no /booking leakage) | `7168baa` | WhatsApp CTAs, no booking wizard navigation |
+| UX-EXCURSIONS-CURATION-01 | PR-U1h | P2 | R0 | DONE | Excursions: curation pass (scroll tax + consistent CTAs) | `7168baa` | Same commit as quote-first refactor |
+| UX-EVENTS-CONTEXT-CTA-01 | PR-U1e | P2 | R0 | TODO | Events: contextual CTA (improve intent) |  | UI-only |
+| UX-EVENTS-CTA-PREFILL-01 | PR-U1i | P2 | R0 | TODO | Events CTA prefill (reduce friction) |  | UI-only |
+| UX-TYPOGRAPHY-01 | PR-U1-1 | P2 | R0 | TODO | Typography base (tokens/scale) |  | Touches multiple components |
+| UX-TOUCHTARGETS-48PX-01 | PR-U1-2 | P2 | R0 | TODO | Touch targets 48px (mobile) |  | Accessibility |
+| UX-CONTRAST-AA-01 | PR-U1-3 | P2 | R0 | TODO | Contrast AA pass |  | Accessibility |
+| UX-HOME-HERO-UBERLIKE-01 | PR-U2 | P2 | R0 | TODO | Home hero Uber-like + larger form |  | Conversion-oriented |
+| UX-HOME-SIMPLIFY-SECTIONS-01 | PR-U3 | P2 | R0 | TODO | Simplify landing to 4–5 sections |  | IA + content pruning |
+| UX-HOME-TRUST-LAYER-01 | PR-U4 | P2 | R0 | TODO | Trust layer + supporting CTA |  | Trust near CTA without viewport saturation |
+| UX-HOME-MOBILE-STICKY-CTA-01 | PR-U5 | P2 | R0 | TODO | Mobile sticky CTA booster |  | Always-visible CTA on mobile |
+| UX-TIMEPICKER-COMPACT-01 | PR-U2c | P2 | R0 | TODO | Time picker compact |  | Reduce to ≤3 interactions |
+| UX-BOOKING-DETAILS-REDESIGN-01 | PR-U3a | P2 | R0 | TODO | Redesign /booking/details |  | UX-only (no Stripe) |
+| UX-BOOKING-PAYMENT-OPTIMIZE-01 | PR-U3b | P2 | R0 | TODO | Optimize /booking/payment |  | Consistent language + clear CTA/T&C |
+| FLOW-BOOKING-CONFIRMATION-ROBUST-01 | PR-U3c | P2 | R1 | TODO | Robustify /booking/confirmation |  | Refresh/back behavior + explicit Paris timezone |
+
 ## Risk Gates (DoD by Risk)
 
 - `R0` (UI-only):

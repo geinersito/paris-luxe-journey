@@ -62,6 +62,32 @@ Para `R1` y `R2` el PR debe evidenciar:
 
 Estado inicial: `PENDIENTE`.
 
+### Legacy → Canonical Mapping (SSOT)
+
+Items below have been migrated to `docs/plan/IMPROVEMENTS.md` with canonical IDs. For execution status, check the SSOT.
+
+- **PR-U1b** → **NAV-AIRPORTS-01** (DONE, evidence: `7c9bc64`)
+- **PR-U1j** → **NAV-ABOUT-CONTACT-FLEET-01** (TODO)
+- **PR-U1d** → **UX-EXCURSIONS-QUOTEFIRST-01** (DONE, evidence: `7168baa`)
+- **PR-U1h** → **UX-EXCURSIONS-CURATION-01** (DONE, evidence: `7168baa`)
+- **PR-U1e** → **UX-EVENTS-CONTEXT-CTA-01** (TODO)
+- **PR-U1i** → **UX-EVENTS-CTA-PREFILL-01** (TODO)
+- **PR-U1-1** → **UX-TYPOGRAPHY-01** (TODO)
+- **PR-U1-2** → **UX-TOUCHTARGETS-48PX-01** (TODO)
+- **PR-U1-3** → **UX-CONTRAST-AA-01** (TODO)
+- **PR-U2** → **UX-HOME-HERO-UBERLIKE-01** (TODO)
+- **PR-U3** → **UX-HOME-SIMPLIFY-SECTIONS-01** (TODO)
+- **PR-U4** → **UX-HOME-TRUST-LAYER-01** (TODO)
+- **PR-U5** → **UX-HOME-MOBILE-STICKY-CTA-01** (TODO)
+- **PR-U2c** → **UX-TIMEPICKER-COMPACT-01** (TODO)
+- **PR-U3a** → **UX-BOOKING-DETAILS-REDESIGN-01** (TODO)
+- **PR-U3b** → **UX-BOOKING-PAYMENT-OPTIMIZE-01** (TODO)
+- **PR-U3c** → **FLOW-BOOKING-CONFIRMATION-ROBUST-01** (TODO, R1)
+- **PR-U1k** → **UX-HEADER-I18N-01** (DONE, #41 `e40d506` - language dropdown crisp)
+- **PR-U1l** → **UX-HEADER-I18N-01** (DONE, #41 `e40d506` - navbar stable on locale change)
+
+### Legacy Table (for historical reference)
+
 | ID | Scope | Objetivo | Acceptance (DoD) | Files likely | Risk | Owner | Estado | Replaced by |
 |---|---|---|---|---|---|---|---|---|
 | PR-U1 | docs-only | Foundation visual monolítico original | Reemplazado por PR-U1-1/2/3 | `docs/PLAN_VIVO_MEJORAS_UI.md` | Low | CTO+Agente | DEPRECADO | PR-U1-1, PR-U1-2, PR-U1-3 |
@@ -69,19 +95,19 @@ Estado inicial: `PENDIENTE`.
 | PR-U1-2 | UI-only | Foundation: botones/inputs (touch 48px) | Controles primarios >=48px en páginas críticas | `src/components/ui/*`, `src/pages/booking/*` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1-3 | UI-only | Foundation: contraste AA mínimo | Texto/UI críticos pasan contraste AA en hero/forms/nav | `src/index.css`, `src/components/*` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1a | docs-only | Hourly mismatch original | Fusionado en NAV-HOURLY-01 | `docs/PLAN_VIVO_MEJORAS_UI.md` | Low | CTO+Agente | DEPRECADO | NAV-HOURLY-01 |
-| PR-U1b | FE-only (routing+UI) | Evitar páginas vacías de Airports top-nav | Ningún link Airports muestra placeholder vacío | `src/pages/airports/*`, `src/components/Navbar.tsx` | Med | CTO+Agente | PENDIENTE | - |
+| PR-U1b | FE-only (routing+UI) | Evitar páginas vacías de Airports top-nav | Ningún link Airports muestra placeholder vacío | `src/pages/airports/*`, `src/components/Navbar.tsx` | Med | CTO+Agente | DONE | NAV-AIRPORTS-01 (`7c9bc64`) |
 | PR-U1c | docs-only | Política de sincronización SSOT top-nav | Cualquier cambio en `Navbar.tsx` (links) o `App.tsx` (routes) DEBE actualizar tabla SSOT en el mismo PR | `docs/PLAN_VIVO_MEJORAS_UI.md` | drift (alto si no enforceado) | Agente | PENDIENTE | - |
 | PR-Doc0 | docs-only | Trackear `docs/PLAN_VIVO_MEJORAS_UI.md` en git | `git status` sin `?? docs/PLAN_VIVO_MEJORAS_UI.md` | `docs/PLAN_VIVO_MEJORAS_UI.md` | Low | Agente | PENDIENTE | - |
 | PR-Doc1 | docs-only | Anclar gobernanza Plan Vivo + STATUS | Regla de trazabilidad en `SUPERVISOR.md` + `docs/STATUS.md` + `docs/plan/IMPROVEMENTS.md` | `docs/SUPERVISOR.md`, `docs/PLAN_VIVO_MEJORAS_UI.md`, `docs/STATUS.md`, `docs/plan/IMPROVEMENTS.md` | Low | CTO+Agente | DONE | #35 |
-| PR-U1d | UI-only | Optimizar `/excursions` (quote-first) | CTA visible + estructura curada sin deriva a flujo incorrecto | `src/pages/Excursions.tsx` | Med | CTO+Agente | PENDIENTE | - |
+| PR-U1d | UI-only | Optimizar `/excursions` (quote-first) | CTA visible + estructura curada sin deriva a flujo incorrecto | `src/pages/Excursions.tsx` | Med | CTO+Agente | DONE | UX-EXCURSIONS-QUOTEFIRST-01 (`7168baa`) |
 | PR-U1e | UI-only | Reencuadrar `/events` para conversión a ride | CTA contextual y no ticketing ambiguo | `src/pages/Events.tsx`, `src/components/events/EventsFeed.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1f | FE-only (routing+UI) | Top-nav coherence + dead-page protection | 100% links top-nav con destino útil o redirect explícito | `src/components/Navbar.tsx`, `src/App.tsx`, `src/pages/*` | Med | CTO+Agente | DEPRECADO | NAV-COHERENCE-01 |
 | PR-U1g | FE-only (routing+UI) | Separar intención Hourly de `/booking` | `Hourly` no termina en wizard airport transfer | `src/components/Navbar.tsx`, `src/App.tsx`, `src/pages/*hourly*` | Low | CTO+Agente | DEPRECADO | NAV-HOURLY-01 |
-| PR-U1h | UI-only | Excursions curation pass | Menor scroll tax + CTA consistente por tarjeta | `src/pages/Excursions.tsx` | Med | CTO+Agente | PENDIENTE | - |
+| PR-U1h | UI-only | Excursions curation pass | Menor scroll tax + CTA consistente por tarjeta | `src/pages/Excursions.tsx` | Med | CTO+Agente | DONE | UX-EXCURSIONS-CURATION-01 (`7168baa`) |
 | PR-U1i | UI-only | Events CTA contextual con prefill si aplica | CTA de evento no salta vacío a booking genérico | `src/pages/Events.tsx`, `src/components/events/EventsFeed.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1j | FE-only (routing+UI) | IA About/Contact/Fleet: anchors vs páginas | Navegación predecible sin saltos ambiguos | `src/components/Navbar.tsx`, `src/App.tsx`, `src/pages/Home.tsx` | Low | CTO+Agente | PENDIENTE | - |
-| PR-U1k | UI-only | Language dropdown nítido sin blur/ghosting | Pass/fail de claridad y contraste en matriz de header | `src/components/LanguageSelector.tsx`, `src/components/ui/select.tsx`, `src/components/Navbar.tsx` | Low | CTO+Agente | PENDIENTE | - |
-| PR-U1l | UI-only | Navbar estable al cambiar idioma | Cero overlap brand/links en 1366/1440/1920 | `src/components/Navbar.tsx` | Low | CTO+Agente | PENDIENTE | - |
+| PR-U1k | UI-only | Language dropdown nítido sin blur/ghosting | Pass/fail de claridad y contraste en matriz de header | `src/components/LanguageSelector.tsx`, `src/components/ui/select.tsx`, `src/components/Navbar.tsx` | Low | CTO+Agente | DONE | UX-HEADER-I18N-01 (#41 `e40d506`) |
+| PR-U1l | UI-only | Navbar estable al cambiar idioma | Cero overlap brand/links en 1366/1440/1920 | `src/components/Navbar.tsx` | Low | CTO+Agente | DONE | UX-HEADER-I18N-01 (#41 `e40d506`) |
 | PR-U2 | UI-only | Hero Uber-like + formulario grande | Mensaje/acción principal clara en <5s | `src/pages/Home.tsx`, `src/components/*hero*` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U3 | UI-only | Simplificar IA landing a 4-5 secciones | Menor scroll y foco claro en CTA | `src/pages/Home.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U4 | UI-only | Trust layer y CTA de apoyo | Trust cerca del CTA sin saturar viewport | `src/pages/Home.tsx`, `src/components/*` | Low | CTO+Agente | PENDIENTE | - |
