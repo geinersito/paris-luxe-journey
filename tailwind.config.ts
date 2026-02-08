@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import tailwindcssAnimate from "tailwindcss-animate";
 
 const colors = {
   border: "hsl(var(--border))",
@@ -190,6 +191,12 @@ export default {
         '112': '28rem',
         '128': '32rem',
       },
+      zIndex: {
+        nav: '50',
+        'modal-overlay': '60',
+        floating: '80',
+        toast: '100',
+      },
       transitionTimingFunction: {
         'luxury': 'cubic-bezier(0.4, 0, 0.2, 1)',
         'smooth': 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
@@ -206,5 +213,5 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [tailwindcssAnimate],
 } satisfies Config;

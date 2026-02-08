@@ -183,7 +183,7 @@ export default function HeroSection() {
       {/* Booking Modal - FUERA del contenedor para z-index correcto */}
       {showBookingModal && (
         <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in-0 duration-300"
+          className="fixed inset-0 z-modal-overlay flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in-0 duration-300"
           onClick={() => setShowBookingModal(false)}
         >
           <div
