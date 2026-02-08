@@ -1,4 +1,3 @@
-
 import { Calendar as CalendarIcon, Clock } from "lucide-react";
 import { format } from "date-fns";
 import { es, fr, pt } from "date-fns/locale";
@@ -22,40 +21,47 @@ interface DateTimeInputsProps {
   isRoundTrip?: boolean;
 }
 
-export const DateTimeInputs = ({ 
-  date, 
-  time, 
-  returnDate, 
-  returnTime, 
+export const DateTimeInputs = ({
+  date,
+  time,
+  returnDate,
+  returnTime,
   onChange,
-  isRoundTrip 
+  isRoundTrip,
 }: DateTimeInputsProps) => {
   const { t, language } = useLanguage();
+  const MODAL_POPOVER_Z_CLASS = "z-[10050]";
 
   const getLocale = () => {
     switch (language) {
-      case 'es':
+      case "es":
         return es;
-      case 'fr':
+      case "fr":
         return fr;
-      case 'pt':
+      case "pt":
         return pt;
       default:
         return undefined; // English is the default
     }
   };
 
-  const handleDateSelect = (date: Date | undefined, isReturn: boolean = false) => {
+  const handleDateSelect = (
+    date: Date | undefined,
+    isReturn: boolean = false,
+  ) => {
     if (date) {
-      onChange(format(date, 'yyyy-MM-dd'), isReturn ? 'returnDate' : 'date');
+      onChange(format(date, "yyyy-MM-dd"), isReturn ? "returnDate" : "date");
     }
   };
+
+  const minReturnDate = date ? new Date(date) : new Date();
+  minReturnDate.setHours(0, 0, 0, 0);
 
   const generateTimeOptions = () => {
     const options = [];
     for (let hour = 0; hour < 24; hour++) {
-      for (let minute of ['00', '30']) {
-        options.push(`${hour.toString().padStart(2, '0')}:${minute}`);
+      for (const minute of ["00", "30"]) {
+        options.push(`${hour.toString().padStart(2, "0")}:${minute}`);
       }
     }
     return options;
@@ -72,10 +78,11 @@ export const DateTimeInputs = ({
           <Popover>
             <PopoverTrigger asChild>
               <Button
+                type="button"
                 variant="outline"
                 className={cn(
                   "w-full justify-start text-left font-normal h-11 px-4 py-3 text-sm",
-                  !date && "text-muted-foreground"
+                  !date && "text-muted-foreground",
                 )}
               >
                 <CalendarIcon className="mr-1.5 h-3.5 w-3.5" />
@@ -86,7 +93,10 @@ export const DateTimeInputs = ({
                 )}
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-auto p-0" align="start">
+            <PopoverContent
+              className={cn("w-auto p-0", MODAL_POPOVER_Z_CLASS)}
+              align="start"
+            >
               <Calendar
                 mode="single"
                 selected={date ? new Date(date) : undefined}
@@ -107,27 +117,32 @@ export const DateTimeInputs = ({
           <Popover>
             <PopoverTrigger asChild>
               <Button
+                type="button"
                 variant="outline"
                 className={cn(
                   "w-full justify-start text-left font-normal h-11 px-4 py-3 text-sm",
-                  !time && "text-muted-foreground"
+                  !time && "text-muted-foreground",
                 )}
               >
                 <Clock className="mr-1.5 h-3.5 w-3.5" />
                 {time || t.booking.time}
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-48" align="start">
+            <PopoverContent
+              className={cn("w-48", MODAL_POPOVER_Z_CLASS)}
+              align="start"
+            >
               <div className="grid gap-1 p-2 max-h-[300px] overflow-y-auto">
                 {generateTimeOptions().map((timeOption) => (
                   <Button
+                    type="button"
                     key={timeOption}
                     variant="ghost"
                     className={cn(
                       "justify-start font-normal text-sm",
-                      time === timeOption && "bg-accent"
+                      time === timeOption && "bg-accent",
                     )}
-                    onClick={() => onChange(timeOption, 'time')}
+                    onClick={() => onChange(timeOption, "time")}
                   >
                     {timeOption}
                   </Button>
@@ -148,10 +163,11 @@ export const DateTimeInputs = ({
             <Popover>
               <PopoverTrigger asChild>
                 <Button
+                  type="button"
                   variant="outline"
                   className={cn(
                     "w-full justify-start text-left font-normal h-11 px-4 py-3 text-sm",
-                    !returnDate && "text-muted-foreground"
+                    !returnDate && "text-muted-foreground",
                   )}
                 >
                   <CalendarIcon className="mr-1.5 h-3.5 w-3.5" />
@@ -162,12 +178,15 @@ export const DateTimeInputs = ({
                   )}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0" align="start">
+              <PopoverContent
+                className={cn("w-auto p-0", MODAL_POPOVER_Z_CLASS)}
+                align="start"
+              >
                 <Calendar
                   mode="single"
                   selected={returnDate ? new Date(returnDate) : undefined}
                   onSelect={(date) => handleDateSelect(date, true)}
-                  disabled={(date) => date < (new Date(date) || new Date())}
+                  disabled={(date) => date < minReturnDate}
                   initialFocus
                   locale={getLocale()}
                 />
@@ -183,27 +202,32 @@ export const DateTimeInputs = ({
             <Popover>
               <PopoverTrigger asChild>
                 <Button
+                  type="button"
                   variant="outline"
                   className={cn(
                     "w-full justify-start text-left font-normal h-11 px-4 py-3 text-sm",
-                    !returnTime && "text-muted-foreground"
+                    !returnTime && "text-muted-foreground",
                   )}
                 >
                   <Clock className="mr-1.5 h-3.5 w-3.5" />
                   {returnTime || t.booking.returnTime}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-48" align="start">
+              <PopoverContent
+                className={cn("w-48", MODAL_POPOVER_Z_CLASS)}
+                align="start"
+              >
                 <div className="grid gap-1 p-2 max-h-[300px] overflow-y-auto">
                   {generateTimeOptions().map((timeOption) => (
                     <Button
+                      type="button"
                       key={timeOption}
                       variant="ghost"
                       className={cn(
                         "justify-start font-normal text-sm",
-                        returnTime === timeOption && "bg-accent"
+                        returnTime === timeOption && "bg-accent",
                       )}
-                      onClick={() => onChange(timeOption, 'returnTime')}
+                      onClick={() => onChange(timeOption, "returnTime")}
                     >
                       {timeOption}
                     </Button>
