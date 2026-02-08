@@ -19,7 +19,7 @@ Detailed product notes can continue in `docs/PLAN_VIVO_MEJORAS_UI.md`, but execu
 
 | ID | Priority | Risk | Area | Description | Status | PR / Commit | Notes / DoD |
 |---|---|---|---|---|---|---|---|
-| OPS-MIG-01 | P0 | R1 | Ops | Reconcile Supabase migrations (Remote = SSOT) to unblock db push | TODO | TBD | Needs evidence pack + runbook |
+| OPS-MIG-01 | P0 | R1 | Ops | Reconcile Supabase migrations (Remote = SSOT) to unblock db push | DOING | [#28](https://github.com/geinersito/paris-luxe-journey/pull/28) | Evidence pack + runbook ready; pending merge |
 | UX-DT-01 | P0 | R0 | UX | Fix Date/Time popovers inside modal (z-layer) | DONE | [#29](https://github.com/geinersito/paris-luxe-journey/pull/29) | Verified in modal |
 | FLOW-NAV-01 | P0 | R1 | Flow | Prevent fixed-price submit state reset / double navigation | DONE | [#30](https://github.com/geinersito/paris-luxe-journey/pull/30) | Ends in `/booking/details` reliably |
 | UX-VAL-01 | P1 | R0 | UX | Disable CTA until valid + inline errors after submit attempt | DONE | [#31](https://github.com/geinersito/paris-luxe-journey/pull/31) | Inline errors for date/time/pax |
@@ -27,8 +27,9 @@ Detailed product notes can continue in `docs/PLAN_VIVO_MEJORAS_UI.md`, but execu
 | UX-ZTOK-01 | P1 | R0 | UI System | Z-index token system (`nav/overlay/floating/toast`) | DONE | [#33](https://github.com/geinersito/paris-luxe-journey/pull/33) | Tokens documented and applied |
 | FLOW-DETAILS-SS-01 | P1 | R1 | Flow | Make `/booking/details` refresh-safe via session snapshot (TTL + cleanup) | DONE | [#34](https://github.com/geinersito/paris-luxe-journey/pull/34) / `8e00b02` | Smoke A/B/C/D + security + precedence validated |
 | DOCS-SSOT-01 | P1 | R0 | Governance | Install SSOT plan + status dashboard + mandatory PR traceability | DONE | [#35](https://github.com/geinersito/paris-luxe-journey/pull/35) / `feb13f7` | Supervisor + status + SSOT alignment |
-| PR-U1f | P1 | R1 | Navigation | Top-nav coherence + dead-page protection | TODO | TBD | 100% links top-nav with useful target or explicit redirect |
-| PR-U1g | P1 | R1 | Navigation | Separate `Hourly` intent from `/booking` wizard | TODO | TBD | `Hourly` must not end in airport-transfer wizard |
+| NAV-COHERENCE-01 | P1 | R1 | Navigation | Top-nav coherence + dead-page protection | TODO | TBD | Legacy ID: `PR-U1f` |
+| NAV-HOURLY-01 | P1 | R1 | Navigation | Separate `Hourly` intent from `/booking` wizard | TODO | TBD | Legacy ID: `PR-U1g` |
+| UX-HEADER-I18N-01 | P1 | R0 | Header | Keep language dropdown crisp and navbar stable across locales | TODO | TBD | Legacy IDs: `PR-U1k` and `PR-U1l` |
 
 ## Risk Gates (DoD by Risk)
 

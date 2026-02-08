@@ -23,13 +23,13 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- Ningun item en ejecucion. Listo para iniciar siguiente ID del SSOT.
+- `OPS-MIG-01` - reconcile Supabase migrations (Remote = SSOT) en PR abierto [#28](https://github.com/geinersito/paris-luxe-journey/pull/28)
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. `OPS-MIG-01` - reconcile Supabase migrations (Remote = SSOT)
-2. `PR-U1f` - top-nav coherence + dead-page protection
-3. `PR-U1g` - separar `Hourly` del wizard `/booking`
+1. `NAV-COHERENCE-01` - top-nav coherence + dead-page protection (legacy: `PR-U1f`)
+2. `NAV-HOURLY-01` - separar `Hourly` del wizard `/booking` (legacy: `PR-U1g`)
+3. `UX-HEADER-I18N-01` - dropdown de idioma nitido + navbar estable en traducciones largas
 
 ## Regla de actualizacion
 

@@ -25,6 +25,7 @@ Documento vivo para planificar mejoras del producto mientras se revisan páginas
 - Todo PR debe actualizar:
   - `docs/plan/IMPROVEMENTS.md` (`Estado` del ID + referencia PR/commit),
   - `docs/STATUS.md` (HEAD de `main`, item en curso, siguientes 3).
+- IDs legacy de navegacion: `PR-U1f -> NAV-COHERENCE-01` y `PR-U1g -> NAV-HOURLY-01`.
 
 ### 2.2) Risk classes y gates (obligatorio)
 
@@ -67,15 +68,15 @@ Estado inicial: `PENDIENTE`.
 | PR-U1-1 | UI-only | Foundation: tipografía base y jerarquía de headings | Tipografía consistente en Home + Booking sin regresión visual crítica | `tailwind.config.ts`, `src/index.css`, `src/components/*` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1-2 | UI-only | Foundation: botones/inputs (touch 48px) | Controles primarios >=48px en páginas críticas | `src/components/ui/*`, `src/pages/booking/*` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1-3 | UI-only | Foundation: contraste AA mínimo | Texto/UI críticos pasan contraste AA en hero/forms/nav | `src/index.css`, `src/components/*` | Med | CTO+Agente | PENDIENTE | - |
-| PR-U1a | docs-only | Hourly mismatch original | Fusionado en PR-U1g | `docs/PLAN_VIVO_MEJORAS_UI.md` | Low | CTO+Agente | DEPRECADO | PR-U1g |
+| PR-U1a | docs-only | Hourly mismatch original | Fusionado en NAV-HOURLY-01 | `docs/PLAN_VIVO_MEJORAS_UI.md` | Low | CTO+Agente | DEPRECADO | NAV-HOURLY-01 |
 | PR-U1b | FE-only (routing+UI) | Evitar páginas vacías de Airports top-nav | Ningún link Airports muestra placeholder vacío | `src/pages/airports/*`, `src/components/Navbar.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1c | docs-only | Política de sincronización SSOT top-nav | Cualquier cambio en `Navbar.tsx` (links) o `App.tsx` (routes) DEBE actualizar tabla SSOT en el mismo PR | `docs/PLAN_VIVO_MEJORAS_UI.md` | drift (alto si no enforceado) | Agente | PENDIENTE | - |
 | PR-Doc0 | docs-only | Trackear `docs/PLAN_VIVO_MEJORAS_UI.md` en git | `git status` sin `?? docs/PLAN_VIVO_MEJORAS_UI.md` | `docs/PLAN_VIVO_MEJORAS_UI.md` | Low | Agente | PENDIENTE | - |
 | PR-Doc1 | docs-only | Anclar gobernanza Plan Vivo + STATUS | Regla de trazabilidad en `SUPERVISOR.md` + `docs/STATUS.md` + `docs/plan/IMPROVEMENTS.md` | `docs/SUPERVISOR.md`, `docs/PLAN_VIVO_MEJORAS_UI.md`, `docs/STATUS.md`, `docs/plan/IMPROVEMENTS.md` | Low | CTO+Agente | DONE | #35 |
 | PR-U1d | UI-only | Optimizar `/excursions` (quote-first) | CTA visible + estructura curada sin deriva a flujo incorrecto | `src/pages/Excursions.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1e | UI-only | Reencuadrar `/events` para conversión a ride | CTA contextual y no ticketing ambiguo | `src/pages/Events.tsx`, `src/components/events/EventsFeed.tsx` | Med | CTO+Agente | PENDIENTE | - |
-| PR-U1f | FE-only (routing+UI) | Top-nav coherence + dead-page protection | 100% links top-nav con destino útil o redirect explícito | `src/components/Navbar.tsx`, `src/App.tsx`, `src/pages/*` | Med | CTO+Agente | PENDIENTE | - |
-| PR-U1g | FE-only (routing+UI) | Separar intención Hourly de `/booking` | `Hourly` no termina en wizard airport transfer | `src/components/Navbar.tsx`, `src/App.tsx`, `src/pages/*hourly*` | Low | CTO+Agente | PENDIENTE | - |
+| PR-U1f | FE-only (routing+UI) | Top-nav coherence + dead-page protection | 100% links top-nav con destino útil o redirect explícito | `src/components/Navbar.tsx`, `src/App.tsx`, `src/pages/*` | Med | CTO+Agente | DEPRECADO | NAV-COHERENCE-01 |
+| PR-U1g | FE-only (routing+UI) | Separar intención Hourly de `/booking` | `Hourly` no termina en wizard airport transfer | `src/components/Navbar.tsx`, `src/App.tsx`, `src/pages/*hourly*` | Low | CTO+Agente | DEPRECADO | NAV-HOURLY-01 |
 | PR-U1h | UI-only | Excursions curation pass | Menor scroll tax + CTA consistente por tarjeta | `src/pages/Excursions.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1i | UI-only | Events CTA contextual con prefill si aplica | CTA de evento no salta vacío a booking genérico | `src/pages/Events.tsx`, `src/components/events/EventsFeed.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1j | FE-only (routing+UI) | IA About/Contact/Fleet: anchors vs páginas | Navegación predecible sin saltos ambiguos | `src/components/Navbar.tsx`, `src/App.tsx`, `src/pages/Home.tsx` | Low | CTO+Agente | PENDIENTE | - |
