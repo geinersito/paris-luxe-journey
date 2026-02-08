@@ -269,7 +269,7 @@ const BookingForm = ({
     } finally {
       setIsLoadingLocations(false);
     }
-  }, [toast, t]);
+  }, []);
 
   useEffect(() => {
     fetchLocations();
@@ -450,6 +450,8 @@ const BookingForm = ({
       updateBookingData,
       navigate,
       onSubmit,
+      tourId,
+      tourName,
     ],
   );
 
