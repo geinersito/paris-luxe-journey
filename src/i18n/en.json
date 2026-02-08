@@ -46,7 +46,11 @@
     "updatedOn": "Updated on",
     "featured": "Featured",
     "noEvents": "No events available right now",
-    "source": "Source"
+    "source": "Source",
+    "getQuote": "Get a Quote",
+    "whatsappMicrocopy": "We reply fast on WhatsApp",
+    "ctaWhatsApp": "Get a Quote on WhatsApp",
+    "ctaEmail": "Email Us"
   },
   "blog": {
     "title": "Blog",
