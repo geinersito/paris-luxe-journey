@@ -19,6 +19,10 @@ interface DateTimeInputsProps {
   returnTime?: string;
   onChange: (value: string, name: string) => void;
   isRoundTrip?: boolean;
+  showDateError?: boolean;
+  showTimeError?: boolean;
+  showReturnDateError?: boolean;
+  showReturnTimeError?: boolean;
 }
 
 export const DateTimeInputs = ({
@@ -28,6 +32,10 @@ export const DateTimeInputs = ({
   returnTime,
   onChange,
   isRoundTrip,
+  showDateError = false,
+  showTimeError = false,
+  showReturnDateError = false,
+  showReturnTimeError = false,
 }: DateTimeInputsProps) => {
   const { t, language } = useLanguage();
   const MODAL_POPOVER_Z_CLASS = "z-[10050]";
@@ -107,6 +115,9 @@ export const DateTimeInputs = ({
               />
             </PopoverContent>
           </Popover>
+          {showDateError && (
+            <p className="text-sm text-destructive">Selecciona una fecha.</p>
+          )}
         </div>
 
         <div className="space-y-1.5 group">
@@ -150,6 +161,9 @@ export const DateTimeInputs = ({
               </div>
             </PopoverContent>
           </Popover>
+          {showTimeError && (
+            <p className="text-sm text-destructive">Selecciona una hora.</p>
+          )}
         </div>
       </div>
 
@@ -192,6 +206,11 @@ export const DateTimeInputs = ({
                 />
               </PopoverContent>
             </Popover>
+            {showReturnDateError && (
+              <p className="text-sm text-destructive">
+                Selecciona fecha de regreso.
+              </p>
+            )}
           </div>
 
           <div className="space-y-1.5 group">
@@ -235,6 +254,11 @@ export const DateTimeInputs = ({
                 </div>
               </PopoverContent>
             </Popover>
+            {showReturnTimeError && (
+              <p className="text-sm text-destructive">
+                Selecciona hora de regreso.
+              </p>
+            )}
           </div>
         </div>
       )}

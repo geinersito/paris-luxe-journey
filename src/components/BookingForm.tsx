@@ -40,6 +40,7 @@ const BookingForm = ({
   const navigate = useNavigate();
   const [locations, setLocations] = useState<Location[]>([]);
   const [isLoadingLocations, setIsLoadingLocations] = useState(true);
+  const [hasTriedSubmit, setHasTriedSubmit] = useState(false);
   const hasPrefilledRef = useRef(false);
 
   const {
@@ -275,9 +276,41 @@ const BookingForm = ({
     fetchLocations();
   }, [fetchLocations]);
 
+  const validationState = useMemo(() => {
+    const hasLocations = Boolean(formData.pickup && formData.dropoff);
+    const hasDifferentLocations = hasLocations
+      ? formData.pickup !== formData.dropoff
+      : true;
+    const hasDate = Boolean(formData.date);
+    const hasTime = Boolean(formData.time);
+    const hasReturnDate =
+      formData.tripType !== "round_trip" || Boolean(formData.returnDate);
+    const hasReturnTime =
+      formData.tripType !== "round_trip" || Boolean(formData.returnTime);
+    const hasPassengers = Number(formData.passengers) >= 1;
+
+    return {
+      hasLocations,
+      hasDifferentLocations,
+      hasDate,
+      hasTime,
+      hasReturnDate,
+      hasReturnTime,
+      hasPassengers,
+      isValid:
+        hasLocations &&
+        hasDifferentLocations &&
+        hasDate &&
+        hasTime &&
+        hasReturnDate &&
+        hasReturnTime &&
+        hasPassengers,
+    };
+  }, [formData]);
+
   // Memoizar validateForm para evitar recrearla en cada render
   const validateForm = useCallback(() => {
-    if (!formData.pickup || !formData.dropoff) {
+    if (!validationState.hasLocations) {
       toast({
         title: t.common.error,
         description: t.booking.errors.selectLocations,
@@ -286,7 +319,16 @@ const BookingForm = ({
       return false;
     }
 
-    if (!formData.date || !formData.time) {
+    if (!validationState.hasDifferentLocations) {
+      toast({
+        title: t.common.error,
+        description: "Pickup y destino deben ser diferentes.",
+        variant: "destructive",
+      });
+      return false;
+    }
+
+    if (!validationState.hasDate || !validationState.hasTime) {
       toast({
         title: t.common.error,
         description: t.booking.errors.selectDateTime,
@@ -295,10 +337,7 @@ const BookingForm = ({
       return false;
     }
 
-    if (
-      formData.tripType === "round_trip" &&
-      (!formData.returnDate || !formData.returnTime)
-    ) {
+    if (!validationState.hasReturnDate || !validationState.hasReturnTime) {
       toast({
         title: t.common.error,
         description: t.booking.errors.selectReturnDateTime,
@@ -307,7 +346,7 @@ const BookingForm = ({
       return false;
     }
 
-    if (!formData.passengers || parseInt(formData.passengers) < 1) {
+    if (!validationState.hasPassengers) {
       toast({
         title: t.common.error,
         description: t.booking.errors.selectPassengers,
@@ -317,7 +356,7 @@ const BookingForm = ({
     }
 
     return true;
-  }, [formData, toast, t]);
+  }, [validationState, toast, t]);
 
   // Obtener updateBookingData del contexto
   const { updateBookingData } = useBooking();
@@ -332,6 +371,7 @@ const BookingForm = ({
   const handleFormSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
+      setHasTriedSubmit(true);
 
       if (!validateForm()) {
         return;
@@ -440,6 +480,7 @@ const BookingForm = ({
     },
     [
       validateForm,
+      setHasTriedSubmit,
       formData,
       setFormData,
       price,
@@ -496,6 +537,18 @@ const BookingForm = ({
             returnTime={formData.returnTime}
             onChange={handleChange}
             isRoundTrip={formData.tripType === "round_trip"}
+            showDateError={hasTriedSubmit && !validationState.hasDate}
+            showTimeError={hasTriedSubmit && !validationState.hasTime}
+            showReturnDateError={
+              hasTriedSubmit &&
+              formData.tripType === "round_trip" &&
+              !validationState.hasReturnDate
+            }
+            showReturnTimeError={
+              hasTriedSubmit &&
+              formData.tripType === "round_trip" &&
+              !validationState.hasReturnTime
+            }
           />
         </div>
 
@@ -527,6 +580,11 @@ const BookingForm = ({
             value={formData.passengers}
             onChange={(value) => handleChange(value, "passengers")}
           />
+          {hasTriedSubmit && !validationState.hasPassengers && (
+            <p className="text-sm text-destructive">
+              Elige al menos 1 pasajero.
+            </p>
+          )}
 
           {/* Aviso para grupos de 8+ pasajeros */}
           <div className="p-3 bg-secondary/10 border border-secondary/20 rounded-lg">
@@ -594,7 +652,7 @@ const BookingForm = ({
       <Button
         type="submit"
         className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-semibold text-base py-6 mt-6 shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02] transition-all duration-300 rounded-xl"
-        disabled={isSubmitting}
+        disabled={!validationState.isValid || isSubmitting}
       >
         {isSubmitting
           ? t.common.processing
