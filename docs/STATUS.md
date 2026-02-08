@@ -23,11 +23,16 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- Ningún item en ejecución. Listo para iniciar siguiente ID del SSOT.
+- `UX-HEADER-I18N-01` - dropdown de idioma nítido + navbar estable en traducciones largas (P1/R0)
+  - PR: [#41](https://github.com/geinersito/paris-luxe-journey/pull/41)
+  - Gates R0:
+    - [ ] npm run type-check
+    - [ ] npx eslint (touched files)
+    - [ ] Smoke: switch FR/EN/ES on /, /booking, /hourly (navbar stable + dropdown closes + labels correct)
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. `UX-HEADER-I18N-01` - dropdown de idioma nítido + navbar estable en traducciones largas (P1/R0)
+1. `(slot libre)` - definir siguiente item canónico en SSOT
 2. `(slot libre)` - definir siguiente item canónico en SSOT
 3. `(slot libre)` - definir siguiente item canónico en SSOT
 

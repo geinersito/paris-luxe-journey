@@ -183,10 +183,10 @@ const Navbar = () => {
             </a>
           </div>
 
-          <div className="hidden md:flex md:items-center md:space-x-3 lg:space-x-4 xl:space-x-6 2xl:space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-3 lg:space-x-4 xl:space-x-6 2xl:space-x-8 flex-1 min-w-0">
             {navItems.map((item) =>
               item.hasDropdown ? (
-                <div key={item.name} className="relative group">
+                <div key={item.name} className="relative group flex-shrink-0">
                   <button
                     className="text-secondary group-hover:text-primary transition-colors duration-200 font-medium flex items-center py-2 text-sm xl:text-base whitespace-nowrap"
                     onMouseEnter={() => setServicesDropdownOpen(true)}
@@ -228,13 +228,13 @@ const Navbar = () => {
                   key={item.name}
                   href={item.href}
                   onClick={(e) => handleNavClick(e, item.href)}
-                  className="text-secondary hover:text-primary transition-colors duration-200 font-medium text-sm xl:text-base whitespace-nowrap"
+                  className="text-secondary hover:text-primary transition-colors duration-200 font-medium text-sm xl:text-base whitespace-nowrap flex-shrink-0"
                 >
                   {item.name}
                 </a>
               ),
             )}
-            <div className="ml-2 lg:ml-3 xl:ml-4 flex-shrink-0">
+            <div className="ml-2 lg:ml-3 xl:ml-4 flex-shrink-0 flex-grow-0">
               <LanguageSelector />
             </div>
           </div>
