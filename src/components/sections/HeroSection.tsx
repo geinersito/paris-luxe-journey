@@ -15,27 +15,28 @@ const HERO_IMAGE_MEDIUM = `${HERO_IMAGE_BASE}?auto=format&fit=crop&q=80&w=1280`;
 const HERO_IMAGE_LARGE = `${HERO_IMAGE_BASE}?auto=format&fit=crop&q=80&w=1920`;
 
 /**
- * Normalize compact form data (codes) to full BookingForm format (display names)
- * Maps compact location codes (cdg, orly, paris, etc.) to full location names
- * that BookingForm expects in its initialData
+ * Normalize compact form data to BookingForm format
+ * CompactBookingForm emits internal slugs (cdg, orly, paris, etc.)
+ * BookingForm locations use canonical DB codes (CDG, ORY, DLP, VRS)
  */
 function normalizeCompactPrefill(
   data: { pickup: string; dropoff: string; passengers: string } | null,
 ): { pickup: string; dropoff: string; passengers: string } | undefined {
   if (!data) return undefined;
 
-  // Location code → display name mapping (matches BookingForm fallback)
-  const locationMap: Record<string, string> = {
-    cdg: "Paris CDG Airport",
-    orly: "Paris Orly Airport",
-    paris: "Paris City Center",
-    disneyland: "Disneyland Paris",
-    versailles: "Versailles",
+  const compactToCanonicalCode: Record<string, string> = {
+    cdg: "CDG",
+    orly: "ORY",
+    disneyland: "DLP",
+    versailles: "VRS",
   };
 
+  const normalizeCode = (value: string) =>
+    compactToCanonicalCode[value.trim().toLowerCase()] || value;
+
   return {
-    pickup: locationMap[data.pickup] || data.pickup, // fallback to original if not a code
-    dropoff: locationMap[data.dropoff] || data.dropoff,
+    pickup: normalizeCode(data.pickup),
+    dropoff: normalizeCode(data.dropoff),
     passengers: data.passengers,
   };
 }

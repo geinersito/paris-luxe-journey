@@ -13,6 +13,7 @@ Documento vivo para planificar mejoras del producto mientras se revisan páginas
 - Micro-PR: `<200` net lines, `<=4 files`, single concern.
 - No mezclar scopes en el mismo PR: `UI-only` / `DB-only` / `functions-only` / `docs-only`.
 - SSOT Booking/CTO: respetar `docs/SUPERVISOR.md`.
+- Guardrail compacto: cualquier opción del `CompactBookingForm` debe existir en `locations` con el mismo `code` (si no existe, o se elimina del mini-form o el PR incluye cambio SSOT).
 - Hard-lane (no negociable): secrets hygiene, timezone SSOT, idempotencia webhooks, anti double-booking.
 
 ## 3) Baseline actual (primera revisión: Home)

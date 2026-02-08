@@ -11,6 +11,13 @@ interface CompactBookingFormProps {
   }) => void;
 }
 
+const COMPACT_LOCATION_OPTIONS = [
+  { code: "CDG", label: "Charles de Gaulle Airport (CDG)" },
+  { code: "ORY", label: "Orly Airport (ORY)" },
+  { code: "DLP", label: "Disneyland Paris" },
+  { code: "VRS", label: "Palace of Versailles" },
+] as const;
+
 export function CompactBookingForm({
   onOpenFullForm,
 }: CompactBookingFormProps) {
@@ -40,11 +47,11 @@ export function CompactBookingForm({
               className="w-full px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
             >
               <option value="">{t.hero.selectPickup}</option>
-              <option value="cdg">Paris CDG Airport</option>
-              <option value="orly">Paris Orly Airport</option>
-              <option value="paris">Paris City Center</option>
-              <option value="disneyland">Disneyland Paris</option>
-              <option value="versailles">Versailles</option>
+              {COMPACT_LOCATION_OPTIONS.map((location) => (
+                <option key={location.code} value={location.code}>
+                  {location.label}
+                </option>
+              ))}
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
               <svg
@@ -77,11 +84,11 @@ export function CompactBookingForm({
               className="w-full px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
             >
               <option value="">{t.hero.selectDropoff}</option>
-              <option value="cdg">Paris CDG Airport</option>
-              <option value="orly">Paris Orly Airport</option>
-              <option value="paris">Paris City Center</option>
-              <option value="disneyland">Disneyland Paris</option>
-              <option value="versailles">Versailles</option>
+              {COMPACT_LOCATION_OPTIONS.map((location) => (
+                <option key={location.code} value={location.code}>
+                  {location.label}
+                </option>
+              ))}
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
               <svg
