@@ -23,7 +23,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- `NAV-COHERENCE-01` (`R1`) - top-nav coherence + dead-page protection.
+- `NAV-COHERENCE-01` (`R1`) - top-nav coherence + dead-page protection ([#38](https://github.com/geinersito/paris-luxe-journey/pull/38)).
 - Gates R1 (nav):
   - [ ] A: cada item del navbar abre ruta valida.
   - [ ] B: refresh en rutas principales sin crash.
