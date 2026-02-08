@@ -2,10 +2,8 @@ import React from "react";
 import BookingForm from "../BookingForm";
 import { CompactBookingForm } from "../booking/CompactBookingForm";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useNavigate } from "react-router-dom";
 import { TrustBadge } from "@/components/ui/trust-badge";
 import { Luggage, Shield, Clock } from "lucide-react";
-import type { BookingFormData } from "@/hooks/booking/types";
 
 // Optimized image URLs with different sizes for responsive loading
 const HERO_IMAGE_BASE =
@@ -32,7 +30,6 @@ function normalizeCompactPrefill(
 
 export default function HeroSection() {
   const { t } = useLanguage();
-  const navigate = useNavigate();
   const [isImageLoaded, setIsImageLoaded] = React.useState(false);
   const [showBookingModal, setShowBookingModal] = React.useState(false);
   const [scrollY, setScrollY] = React.useState(0);
@@ -72,39 +69,6 @@ export default function HeroSection() {
 
     return () => observer.disconnect();
   }, []);
-
-  const handleBookingSubmit = async (
-    bookingDetails: Partial<BookingFormData> & {
-      basePrice?: number;
-      luggageSurcharge?: number;
-      tripType?: "one_way" | "round_trip";
-    },
-  ) => {
-    try {
-      // Calcular precio final en base al precio dinámico de Supabase
-      const basePrice = bookingDetails.basePrice || 0;
-      const luggageSurcharge = bookingDetails.luggageSurcharge || 0;
-
-      console.log("HeroSection - Datos de reserva:", bookingDetails);
-      console.log("HeroSection - Precio base calculado:", basePrice);
-
-      // Calcular el precio estimado: duplicado si es ida y vuelta + recargo por equipaje
-      const estimatedPrice =
-        (bookingDetails.tripType === "round_trip" ? basePrice * 2 : basePrice) +
-        luggageSurcharge;
-
-      console.log("HeroSection - Precio estimado final:", estimatedPrice);
-
-      navigate("/booking/details", {
-        state: {
-          bookingData: bookingDetails,
-          estimatedPrice: estimatedPrice,
-        },
-      });
-    } catch (error) {
-      console.error("Error al procesar la reserva:", error);
-    }
-  };
 
   return (
     <section
@@ -262,8 +226,7 @@ export default function HeroSection() {
                   basePrice={0}
                   compact={true}
                   initialData={normalizeCompactPrefill(prefilledData)}
-                  onSubmit={async (data) => {
-                    await handleBookingSubmit(data);
+                  onSubmit={async () => {
                     setShowBookingModal(false);
                   }}
                 />
