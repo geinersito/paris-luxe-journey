@@ -12,29 +12,24 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `e34ab9b`
+- SHA: `74ec0b5`
 - Last updated: `2026-02-08`
 
 ## Ultimos PRs mergeados en main
 
-1. `#28` - Reconcile Supabase migration history (Remote = SSOT) (`e34ab9b`)
-2. `#36` - Close FLOW-DETAILS-SS-01 and refresh STATUS (`1900b18`)
-3. `#34` - Details refresh-safe via session snapshot (`8e00b02`)
+1. `#38` - Global 404 fallback + dead-page protection (`74ec0b5`)
+2. `#37` - Close OPS-MIG-01 and refresh STATUS (`5e135f0`)
+3. `#28` - Reconcile Supabase migration history (Remote = SSOT) (`e34ab9b`)
 
 ## Ahora en curso
 
-- `NAV-COHERENCE-01` (`R1`) - top-nav coherence + dead-page protection ([#38](https://github.com/geinersito/paris-luxe-journey/pull/38)).
-- Gates R1 (nav):
-  - [ ] A: cada item del navbar abre ruta valida.
-  - [ ] B: refresh en rutas principales sin crash.
-  - [ ] C: ruta desconocida (`/foo-bar`) muestra 404 + CTA.
-  - [ ] D: back/forward sin estado roto.
+- Ningun item en ejecucion. Listo para iniciar siguiente ID del SSOT.
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. `NAV-COHERENCE-01` - top-nav coherence + dead-page protection (legacy: `PR-U1f`)
-2. `NAV-HOURLY-01` - separar `Hourly` del wizard `/booking` (legacy: `PR-U1g`)
-3. `UX-HEADER-I18N-01` - dropdown de idioma nitido + navbar estable en traducciones largas
+1. `NAV-HOURLY-01` - separar `Hourly` del wizard `/booking` (legacy: `PR-U1g`)
+2. `UX-HEADER-I18N-01` - dropdown de idioma nitido + navbar estable en traducciones largas
+3. `(slot libre)` - definir siguiente item canonico en SSOT
 
 ## Regla de actualizacion
 
