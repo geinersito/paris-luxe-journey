@@ -12,24 +12,24 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `9daaa9a`
+- SHA: `3398685`
 - Last updated: `2026-02-08`
 
 ## Ultimos PRs mergeados en main
 
-1. `#44` - Compact time picker (UX-TIMEPICKER-COMPACT-01) (`9daaa9a`)
-2. `#43` - Make confirmation refresh-safe + fix price display (FLOW-BOOKING-CONFIRMATION-ROBUST-01) (`4541326`)
-3. `#41` - Compact language selector + navbar stability (UX-HEADER-I18N-01) (`e40d506`)
+1. `#45` - About/Contact/Fleet anchors + redirects (NAV-ABOUT-CONTACT-FLEET-01) (`3398685`)
+2. `#44` - Compact time picker (UX-TIMEPICKER-COMPACT-01) (`9daaa9a`)
+3. `#43` - Make confirmation refresh-safe + fix price display (FLOW-BOOKING-CONFIRMATION-ROBUST-01) (`4541326`)
 
 ## Ahora en curso
 
-- **NAV-ABOUT-CONTACT-FLEET-01** (P2/R1) - About/Contact/Fleet anchors + redirects (branch: `nav-about-contact-fleet-01`)
+- None
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **NAV-ABOUT-CONTACT-FLEET-01** (P2/R1) - About/Contact/Fleet: anchors vs pages (coherence)
-2. **UX-EVENTS-CONTEXT-CTA-01** (P2/R0) - Events: contextual CTA (improve intent)
-3. **UX-EVENTS-CTA-PREFILL-01** (P2/R0) - Events CTA prefill (reduce friction)
+1. **UX-EVENTS-CONTEXT-CTA-01** (P2/R0) - Events: contextual CTA (improve intent)
+2. **UX-EVENTS-CTA-PREFILL-01** (P2/R0) - Events CTA prefill (reduce friction)
+3. **UX-TYPOGRAPHY-01** (P2/R0) - Typography base (tokens/scale)
 
 ## Regla de actualizacion
 
