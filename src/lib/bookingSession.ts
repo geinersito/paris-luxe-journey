@@ -1,8 +1,36 @@
-const BOOKING_SESSION_KEY = "booking_flow_state_v1";
+export const BOOKING_SESSION_KEY = "plj.booking.snapshot.v1";
 export const BOOKING_SESSION_TTL_MS = 30 * 60 * 1000;
 
+type BookingScalar = string | number | boolean | null;
+type SessionBookingData = Record<string, BookingScalar>;
+
+const ALLOWED_BOOKING_KEYS = [
+  "pickup",
+  "dropoff",
+  "passengers",
+  "date",
+  "time",
+  "tripType",
+  "returnDate",
+  "returnTime",
+  "largeLuggageCount",
+  "smallLuggageCount",
+  "luggageSurcharge",
+  "basePrice",
+  "tourId",
+  "tourName",
+  "pickupLocationId",
+  "dropoffLocationId",
+  "pickupLocationName",
+  "dropoffLocationName",
+  "vehicle_id",
+  "vehicleType",
+  "flight_number",
+  "address_details",
+] as const;
+
 export interface BookingSessionSnapshot {
-  bookingData: unknown;
+  bookingData: SessionBookingData;
   estimatedPrice: number;
   luggageSurcharge: number;
   savedAt: number;
@@ -10,6 +38,30 @@ export interface BookingSessionSnapshot {
 
 const isRecord = (value: unknown): value is Record<string, unknown> =>
   typeof value === "object" && value !== null;
+
+const isBookingScalar = (value: unknown): value is BookingScalar =>
+  value === null || ["string", "number", "boolean"].includes(typeof value);
+
+const sanitizeBookingData = (value: unknown): SessionBookingData | null => {
+  if (!isRecord(value)) {
+    return null;
+  }
+
+  const sanitized: SessionBookingData = {};
+
+  for (const key of ALLOWED_BOOKING_KEYS) {
+    const current = value[key];
+    if (current !== undefined && isBookingScalar(current)) {
+      sanitized[key] = current;
+    }
+  }
+
+  if (!sanitized.pickup || !sanitized.dropoff) {
+    return null;
+  }
+
+  return sanitized;
+};
 
 const toFiniteNumber = (value: unknown): number | null => {
   const parsed = Number(value);
@@ -25,15 +77,16 @@ export const saveBookingSession = (payload: {
     return;
   }
 
+  const bookingData = sanitizeBookingData(payload.bookingData);
   const estimatedPrice = toFiniteNumber(payload.estimatedPrice);
-  if (estimatedPrice === null) {
+  if (!bookingData || estimatedPrice === null) {
     return;
   }
 
   const luggageSurcharge = toFiniteNumber(payload.luggageSurcharge ?? 0) ?? 0;
 
   const snapshot: BookingSessionSnapshot = {
-    bookingData: payload.bookingData,
+    bookingData,
     estimatedPrice,
     luggageSurcharge,
     savedAt: Date.now(),
@@ -59,15 +112,16 @@ export const loadBookingSession = (): BookingSessionSnapshot | null => {
       return null;
     }
 
+    const bookingData = sanitizeBookingData(parsed.bookingData);
     const estimatedPrice = toFiniteNumber(parsed.estimatedPrice);
     const luggageSurcharge = toFiniteNumber(parsed.luggageSurcharge);
     const savedAt = toFiniteNumber(parsed.savedAt);
 
     if (
+      !bookingData ||
       estimatedPrice === null ||
       luggageSurcharge === null ||
-      savedAt === null ||
-      !("bookingData" in parsed)
+      savedAt === null
     ) {
       clearBookingSession();
       return null;
@@ -79,7 +133,7 @@ export const loadBookingSession = (): BookingSessionSnapshot | null => {
     }
 
     return {
-      bookingData: parsed.bookingData,
+      bookingData,
       estimatedPrice,
       luggageSurcharge,
       savedAt,
