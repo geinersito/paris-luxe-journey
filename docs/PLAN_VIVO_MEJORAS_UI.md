@@ -16,6 +16,31 @@ Documento vivo para planificar mejoras del producto mientras se revisan páginas
 - Guardrail compacto: cualquier opción del `CompactBookingForm` debe existir en `locations` con el mismo `code` (si no existe, o se elimina del mini-form o el PR incluye cambio SSOT).
 - Hard-lane (no negociable): secrets hygiene, timezone SSOT, idempotencia webhooks, anti double-booking.
 
+### 2.1) Ancla SSOT y trazabilidad de PRs (obligatorio)
+
+- SSOT del backlog ejecutable: `docs/plan/IMPROVEMENTS.md`.
+- Este documento queda como narrativa y contexto de producto.
+- Estado operativo corto: `docs/STATUS.md`.
+- Todo PR debe declarar `Plan item(s): <ID...>` en el PR body.
+- Todo PR debe actualizar:
+  - `docs/plan/IMPROVEMENTS.md` (`Estado` del ID + referencia PR/commit),
+  - `docs/STATUS.md` (HEAD de `main`, item en curso, siguientes 3).
+
+### 2.2) Risk classes y gates (obligatorio)
+
+- `R0 - UI-only`: CI + smoke basico.
+- `R1 - Flow`: CI + smoke manual A/B/C/D.
+- `R2 - Money/Checkout`: todo `R1` + idempotencia + limpieza.
+
+Para `R1` y `R2` el PR debe evidenciar:
+
+- `A)` Happy path completo.
+- `B)` Refresh en `/booking/details`.
+- `C)` TTL expirado/corrupto redirige sin loop.
+- `D)` Back/Cancel sin corrupcion de estado.
+- Security: no datos sensibles en persistencia.
+- Precedencia SSOT: `location.state` > session snapshot > redirect.
+
 ## 3) Baseline actual (primera revisión: Home)
 
 ### Diagnóstico compartido
@@ -46,6 +71,7 @@ Estado inicial: `PENDIENTE`.
 | PR-U1b | FE-only (routing+UI) | Evitar páginas vacías de Airports top-nav | Ningún link Airports muestra placeholder vacío | `src/pages/airports/*`, `src/components/Navbar.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1c | docs-only | Política de sincronización SSOT top-nav | Cualquier cambio en `Navbar.tsx` (links) o `App.tsx` (routes) DEBE actualizar tabla SSOT en el mismo PR | `docs/PLAN_VIVO_MEJORAS_UI.md` | drift (alto si no enforceado) | Agente | PENDIENTE | - |
 | PR-Doc0 | docs-only | Trackear `docs/PLAN_VIVO_MEJORAS_UI.md` en git | `git status` sin `?? docs/PLAN_VIVO_MEJORAS_UI.md` | `docs/PLAN_VIVO_MEJORAS_UI.md` | Low | Agente | PENDIENTE | - |
+| PR-Doc1 | docs-only | Anclar gobernanza Plan Vivo + STATUS | Regla de trazabilidad en `SUPERVISOR.md` + `docs/STATUS.md` + `docs/plan/IMPROVEMENTS.md` | `docs/SUPERVISOR.md`, `docs/PLAN_VIVO_MEJORAS_UI.md`, `docs/STATUS.md`, `docs/plan/IMPROVEMENTS.md` | Low | CTO+Agente | DOING | - |
 | PR-U1d | UI-only | Optimizar `/excursions` (quote-first) | CTA visible + estructura curada sin deriva a flujo incorrecto | `src/pages/Excursions.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1e | UI-only | Reencuadrar `/events` para conversión a ride | CTA contextual y no ticketing ambiguo | `src/pages/Events.tsx`, `src/components/events/EventsFeed.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U1f | FE-only (routing+UI) | Top-nav coherence + dead-page protection | 100% links top-nav con destino útil o redirect explícito | `src/components/Navbar.tsx`, `src/App.tsx`, `src/pages/*` | Med | CTO+Agente | PENDIENTE | - |
@@ -63,6 +89,12 @@ Estado inicial: `PENDIENTE`.
 | PR-U3a | UI-only | Rediseñar `/booking/details` | Summary/CTA claros + validación UX mínima | `src/pages/booking/Details.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U3b | UI-only | Optimizar `/booking/payment` | Idioma consistente + CTA/T&C inequívocos | `src/pages/booking/Payment.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U3c | UI-only | Robustecer `/booking/confirmation` | Hora Paris explícita + refresh safe | `src/pages/booking/Confirmation.tsx`, `src/lib/datetime.ts` | Med | CTO+Agente | PENDIENTE | - |
+
+### 4.1) Flow IDs (risk-gated)
+
+| ID | Scope | Risk | DoD (gates) | PR | Estado |
+|---|---|---|---|---|---|
+| FLOW-DETAILS-SS-01 | Details refresh-safe via `sessionStorage` + TTL 30m | R1 | CI verde + smoke A/B/C/D + no sensitive data + precedence `state > session > redirect` | #34 | DOING |
 
 ## 5) Follow-ups fuera de scope inmediato
 
