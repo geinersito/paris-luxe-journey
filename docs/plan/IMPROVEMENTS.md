@@ -38,7 +38,7 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | ID | Legacy | Priority | Risk | Status | Title | Evidence (PR/Commit) | Notes |
 |---|---|---:|:---:|:---:|---|---|---|
 | NAV-AIRPORTS-01 | PR-U1b | P2 | R0 | DONE | Airports pages complete (CDG/Orly/Beauvais) + CTA to /booking | `7c9bc64` | Full airport landings with i18n, routing, and CTAs |
-| NAV-ABOUT-CONTACT-FLEET-01 | PR-U1j | P2 | R1 | TODO | About/Contact/Fleet: anchors vs pages (coherence) |  | Decide: anchors on home vs dedicated pages |
+| NAV-ABOUT-CONTACT-FLEET-01 | PR-U1j | P2 | R1 | DOING | About/Contact/Fleet: anchors vs pages (coherence) | Branch: `nav-about-contact-fleet-01` | Decision: all anchors on Home + client redirects for /about /contact /fleet |
 | UX-EXCURSIONS-QUOTEFIRST-01 | PR-U1d | P2 | R0 | DONE | Excursions: quote-first CTAs (no /booking leakage) | `7168baa` | WhatsApp CTAs, no booking wizard navigation |
 | UX-EXCURSIONS-CURATION-01 | PR-U1h | P2 | R0 | DONE | Excursions: curation pass (scroll tax + consistent CTAs) | `7168baa` | Same commit as quote-first refactor |
 | UX-EVENTS-CONTEXT-CTA-01 | PR-U1e | P2 | R0 | TODO | Events: contextual CTA (improve intent) |  | UI-only |
