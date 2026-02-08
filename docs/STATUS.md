@@ -23,7 +23,17 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- **DOCS-PLAN-RECON-01** (P0/R0) - Reconcile legacy PLAN_VIVO items into canonical SSOT
+- **FLOW-BOOKING-CONFIRMATION-ROBUST-01** (P2/R1) - [PR #43](https://github.com/geinersito/paris-luxe-journey/pull/43)
+  - Make `/booking/confirmation` refresh-safe via sessionStorage fallback
+  - Gates R1:
+    - [x] `npm run type-check`
+    - [x] `npm run build`
+    - [x] `npx eslint` (touched files)
+  - Smoke R1 (A/B/C/D):
+    - [ ] A) Happy path payment→confirmation OK
+    - [ ] B) Refresh confirmation page OK (rehydrates from session)
+    - [ ] C) TTL expired (>30min) → "No booking found" UI
+    - [ ] D) Back/Forward stable
 
 ## Siguientes 3 items del plan (priorizados)
 

@@ -53,7 +53,7 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | UX-TIMEPICKER-COMPACT-01 | PR-U2c | P2 | R0 | TODO | Time picker compact |  | Reduce to ≤3 interactions |
 | UX-BOOKING-DETAILS-REDESIGN-01 | PR-U3a | P2 | R0 | TODO | Redesign /booking/details |  | UX-only (no Stripe) |
 | UX-BOOKING-PAYMENT-OPTIMIZE-01 | PR-U3b | P2 | R0 | TODO | Optimize /booking/payment |  | Consistent language + clear CTA/T&C |
-| FLOW-BOOKING-CONFIRMATION-ROBUST-01 | PR-U3c | P2 | R1 | TODO | Robustify /booking/confirmation |  | Refresh/back behavior + explicit Paris timezone |
+| FLOW-BOOKING-CONFIRMATION-ROBUST-01 | PR-U3c | P2 | R1 | DOING | Robustify /booking/confirmation | [#43](https://github.com/geinersito/paris-luxe-journey/pull/43) | Refresh/back behavior + explicit Paris timezone |
 
 ## Risk Gates (DoD by Risk)
 

@@ -12,6 +12,7 @@ import {
   Luggage,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { loadBookingSession } from "@/lib/bookingSession";
 
 interface ConfirmationBookingData {
   id?: string;
@@ -21,6 +22,8 @@ interface ConfirmationBookingData {
   dropoff_location_id?: string;
   dropoff?: string;
   pickup_datetime?: string;
+  date?: string; // Added: from booking form (separate)
+  time?: string; // Added: from booking form (separate)
   passengers_count?: number | string;
   passengers?: number | string;
   large_luggage_count?: number | string;
@@ -31,6 +34,7 @@ interface ConfirmationBookingData {
 
 interface ConfirmationLocationState {
   bookingData?: ConfirmationBookingData;
+  totalPrice?: number; // Added: top-level from Payment.tsx navigation
 }
 
 const PARIS_TIME_LABEL = "Paris time";
@@ -69,13 +73,26 @@ const BookingConfirmation = () => {
   const location = useLocation();
   const { toast } = useToast();
   const { t } = useLanguage();
-  const bookingData = (location.state as ConfirmationLocationState | null)
-    ?.bookingData;
+
+  const sessionSnapshot = loadBookingSession();
+  const bookingData =
+    location.state?.bookingData ?? sessionSnapshot?.bookingData;
+
+  // DEBUG: log booking data to identify field names
+  console.log("🔍 Confirmation - bookingData:", bookingData);
+  console.log("🔍 Confirmation - sessionSnapshot:", sessionSnapshot);
+
   const hasValidBookingData =
     Boolean(bookingData?.id) && bookingData?.status === "confirmed";
-  const formattedPickupDateTime = formatParisDateTime(
-    bookingData?.pickup_datetime,
-  );
+
+  // Construct pickup datetime from either combined field or separate date+time
+  const pickupDateTimeValue = bookingData?.pickup_datetime
+    ? bookingData.pickup_datetime
+    : bookingData?.date && bookingData?.time
+      ? `${bookingData.date}T${bookingData.time}`
+      : null;
+
+  const formattedPickupDateTime = formatParisDateTime(pickupDateTimeValue);
   const passengersCount = toNumber(
     bookingData?.passengers_count ?? bookingData?.passengers,
     1,
@@ -83,6 +100,14 @@ const BookingConfirmation = () => {
   const largeLuggageCount = toNumber(bookingData?.large_luggage_count, 0);
   const smallLuggageCount = toNumber(bookingData?.small_luggage_count, 0);
   const hasLuggage = largeLuggageCount > 0 || smallLuggageCount > 0;
+
+  // Get price from location.state.totalPrice (Payment.tsx navigation) or fallbacks
+  const displayPrice =
+    (location.state as ConfirmationLocationState)?.totalPrice ??
+    bookingData?.total_price ??
+    bookingData?.estimatedPrice ??
+    sessionSnapshot?.estimatedPrice ??
+    0;
 
   const handleAddToCalendar = () => {
     toast({
@@ -225,10 +250,7 @@ const BookingConfirmation = () => {
                     Total Paid:
                   </span>
                   <span className="text-2xl md:text-3xl font-bold text-primary">
-                    €
-                    {bookingData.total_price ||
-                      bookingData.estimatedPrice ||
-                      "0"}
+                    €{displayPrice}
                   </span>
                 </div>
               </div>
