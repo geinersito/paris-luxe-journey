@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -10,6 +9,7 @@ import BookingProgress from "@/components/booking/BookingProgress";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
+import { loadBookingSession, saveBookingSession } from "@/lib/bookingSession";
 
 interface PassengerInfo {
   fullName: string;
@@ -35,18 +35,41 @@ const BookingDetails = () => {
     flightNumber: "",
   });
 
-  const bookingData = location.state?.bookingData;
-  const estimatedPrice = location.state?.estimatedPrice;
-  const luggageSurcharge = location.state?.luggageSurcharge || 0; // Obtener el recargo por maletas
-  
+  const sessionSnapshot = loadBookingSession();
+  const bookingData =
+    location.state?.bookingData ?? sessionSnapshot?.bookingData;
+  const estimatedPrice = Number(
+    location.state?.estimatedPrice ?? sessionSnapshot?.estimatedPrice,
+  );
+  const luggageSurcharge = Number(
+    location.state?.luggageSurcharge ?? sessionSnapshot?.luggageSurcharge ?? 0,
+  );
+  const hasEstimatedPrice =
+    Number.isFinite(estimatedPrice) && estimatedPrice > 0;
+
+  useEffect(() => {
+    if (!bookingData || !hasEstimatedPrice) {
+      return;
+    }
+
+    saveBookingSession({
+      bookingData,
+      estimatedPrice,
+      luggageSurcharge,
+    });
+  }, [bookingData, hasEstimatedPrice, estimatedPrice, luggageSurcharge]);
+
   // Add logging to track the price
   useEffect(() => {
-    console.log('[BookingDetails] Received booking data:', bookingData);
-    console.log('[BookingDetails] Received estimated price:', estimatedPrice);
-    console.log('[BookingDetails] Received luggage surcharge:', luggageSurcharge);
+    console.log("[BookingDetails] Received booking data:", bookingData);
+    console.log("[BookingDetails] Received estimated price:", estimatedPrice);
+    console.log(
+      "[BookingDetails] Received luggage surcharge:",
+      luggageSurcharge,
+    );
 
     // Check if booking data is present
-    if (!bookingData || !estimatedPrice) {
+    if (!bookingData || !hasEstimatedPrice) {
       toast({
         title: t.common.error,
         description: t.booking.errors.selectLocations,
@@ -60,33 +83,46 @@ const BookingDetails = () => {
       const fetchUserProfile = async () => {
         try {
           const { data: profile, error } = await supabase
-            .from('profiles')
-            .select('*')
-            .eq('id', user.id)
+            .from("profiles")
+            .select("*")
+            .eq("id", user.id)
             .single();
 
           if (error) throw error;
 
           if (profile) {
-            setFormData(prev => ({
+            setFormData((prev) => ({
               ...prev,
-              fullName: `${profile.first_name || ''} ${profile.last_name || ''}`.trim(),
-              email: profile.email || '',
-              phone: profile.phone || '',
+              fullName:
+                `${profile.first_name || ""} ${profile.last_name || ""}`.trim(),
+              email: profile.email || "",
+              phone: profile.phone || "",
             }));
           }
         } catch (error) {
-          console.error('Error fetching user profile:', error);
+          console.error("Error fetching user profile:", error);
         }
       };
 
       fetchUserProfile();
     }
-  }, [location, navigate, toast, t, user, bookingData, estimatedPrice, luggageSurcharge]);
+  }, [
+    location,
+    navigate,
+    toast,
+    t,
+    user,
+    bookingData,
+    estimatedPrice,
+    luggageSurcharge,
+    hasEstimatedPrice,
+  ]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const validateForm = () => {
@@ -119,7 +155,7 @@ const BookingDetails = () => {
 
     return true;
   };
-  
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
@@ -135,15 +171,16 @@ const BookingDetails = () => {
       const hasDropoffId = bookingData?.dropoffLocationId;
 
       if (!hasPickupId || !hasDropoffId) {
-        console.error('[BookingDetails] Missing location UUIDs:', {
+        console.error("[BookingDetails] Missing location UUIDs:", {
           pickupLocationId: hasPickupId,
           dropoffLocationId: hasDropoffId,
-          bookingData
+          bookingData,
         });
 
         toast({
           title: t.common.error,
-          description: "Faltan datos de ubicación. Por favor, vuelve al formulario de reserva.",
+          description:
+            "Faltan datos de ubicación. Por favor, vuelve al formulario de reserva.",
           variant: "destructive",
         });
 
@@ -159,30 +196,40 @@ const BookingDetails = () => {
           email: formData.email,
           phone: formData.phone,
           specialInstructions: formData.specialInstructions || "",
-          flightNumber: formData.flightNumber || ""
-        }
+          flightNumber: formData.flightNumber || "",
+        },
       };
 
-      console.log("[BookingDetails] Navigating to payment with validated data:", {
+      saveBookingSession({
         bookingData: updatedBookingData,
-        estimatedPrice: estimatedPrice,
-        luggageSurcharge: luggageSurcharge,
-        hasValidUUIDs: true
+        estimatedPrice,
+        luggageSurcharge,
       });
+
+      console.log(
+        "[BookingDetails] Navigating to payment with validated data:",
+        {
+          bookingData: updatedBookingData,
+          estimatedPrice: estimatedPrice,
+          luggageSurcharge: luggageSurcharge,
+          hasValidUUIDs: true,
+        },
+      );
 
       navigate("/booking/payment", {
         state: {
           bookingData: updatedBookingData,
           estimatedPrice: estimatedPrice,
-          luggageSurcharge: luggageSurcharge
+          luggageSurcharge: luggageSurcharge,
         },
-        replace: true
+        replace: true,
       });
     } catch (error) {
-      console.error('[BookingDetails] Error preparing booking data:', error);
+      console.error("[BookingDetails] Error preparing booking data:", error);
       toast({
         title: t.common.error,
-        description: "Ha ocurrido un error al procesar los datos. Por favor, inténtalo de nuevo.",
+        description:
+          "Ha ocurrido un error al procesar los datos. Por favor, inténtalo de nuevo.",
         variant: "destructive",
       });
     } finally {
@@ -194,15 +241,17 @@ const BookingDetails = () => {
     <div className="min-h-screen bg-background">
       <div className="container max-w-4xl py-8">
         <BookingProgress currentStep={1} />
-        
+
         <div className="mt-8">
           <h1 className="text-3xl font-display text-primary mb-6">
             {t.booking.passengerDetails}
           </h1>
-          
+
           {/* Añadir resumen de precio */}
           <div className="mb-6 p-4 bg-muted rounded-lg">
-            <h2 className="text-xl font-semibold mb-2">{t.booking.priceSummary || "Resumen de precio"}</h2>
+            <h2 className="text-xl font-semibold mb-2">
+              {t.booking.priceSummary || "Resumen de precio"}
+            </h2>
             <div className="space-y-1">
               <div className="flex justify-between">
                 <span>Precio base:</span>
@@ -220,7 +269,7 @@ const BookingDetails = () => {
               </div>
             </div>
           </div>
-          
+
           <form onSubmit={handleSubmit} className="space-y-6">
             <div className="space-y-4">
               <div>
@@ -280,7 +329,9 @@ const BookingDetails = () => {
               </div>
 
               <div>
-                <Label htmlFor="specialInstructions">{t.booking.specialInstructions}</Label>
+                <Label htmlFor="specialInstructions">
+                  {t.booking.specialInstructions}
+                </Label>
                 <Textarea
                   id="specialInstructions"
                   name="specialInstructions"
@@ -301,10 +352,7 @@ const BookingDetails = () => {
               >
                 {t.common.back}
               </Button>
-              <Button 
-                type="submit"
-                disabled={isSubmitting}
-              >
+              <Button type="submit" disabled={isSubmitting}>
                 {isSubmitting ? t.common.processing : t.common.continue}
               </Button>
             </div>
