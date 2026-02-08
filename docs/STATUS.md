@@ -23,7 +23,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- None
+- **UX-EVENTS-CONTEXT-CTA-01** (P2/R0) - Events: contextual CTA (branch: `ux-events-context-cta-01`)
 
 ## Siguientes 3 items del plan (priorizados)
 

@@ -6,7 +6,13 @@ import type {
   EventCategory,
 } from "@/types/events";
 import eventsFeedData from "@/data/events/events-feed.json";
-import { Calendar, MapPin, ExternalLink, Star } from "lucide-react";
+import {
+  Calendar,
+  MapPin,
+  ExternalLink,
+  Star,
+  MessageCircle,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
@@ -157,7 +163,7 @@ export function EventsFeed({
                 </Badge>
               )}
 
-              {/* Action Buttons - Premium Style */}
+              {/* Action Buttons - Contextual CTAs */}
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Button asChild className="flex-1 silk-button">
                   <a
@@ -166,8 +172,10 @@ export function EventsFeed({
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2"
                   >
-                    {t("events.bookRide")}
+                    <MessageCircle className="w-4 h-4" />
+                    {t("events.getQuote") || "Get a Quote"}
                   </a>
                 </Button>
                 <Button
@@ -186,6 +194,9 @@ export function EventsFeed({
                   </a>
                 </Button>
               </div>
+              <p className="text-xs text-primary/70 text-center">
+                {t("events.whatsappMicrocopy") || "We reply fast on WhatsApp"}
+              </p>
 
               {/* Source */}
               <p className="text-xs text-gray-500 text-center pt-2 border-t border-primary/10">

@@ -46,7 +46,11 @@
     "updatedOn": "Mis à jour le",
     "featured": "En Vedette",
     "noEvents": "Aucun événement disponible pour le moment",
-    "source": "Source"
+    "source": "Source",
+    "getQuote": "Demander un Devis",
+    "whatsappMicrocopy": "Nous répondons vite sur WhatsApp",
+    "ctaWhatsApp": "Demander un Devis sur WhatsApp",
+    "ctaEmail": "Nous Écrire"
   },
   "blog": {
     "title": "Blog",

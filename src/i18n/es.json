@@ -56,7 +56,11 @@
     "updatedOn": "Actualizado el",
     "featured": "Destacado",
     "noEvents": "No hay eventos disponibles en este momento",
-    "source": "Fuente"
+    "source": "Fuente",
+    "getQuote": "Pedir Presupuesto",
+    "whatsappMicrocopy": "Respondemos rápido por WhatsApp",
+    "ctaWhatsApp": "Pedir Presupuesto por WhatsApp",
+    "ctaEmail": "Envíanos un Email"
   },
   "blog": {
     "title": "Blog",

@@ -1,7 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { EventsFeed } from "@/components/events/EventsFeed";
-import { Calendar, Sparkles, MessageCircle } from "lucide-react";
+import { Sparkles, MessageCircle, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 
@@ -118,16 +118,29 @@ export default function Events() {
               </h2>
               <p className="text-lg text-muted-foreground mb-8">
                 {t("events.ctaDescription") ||
-                  "Get a quote for a luxury transfer to any event in Paris. Professional chauffeur, premium vehicles, fixed prices."}
+                  "Tell us your event and we'll confirm availability, vehicle options and a fixed price."}
               </p>
-              <Button
-                size="lg"
-                onClick={handleEventRideQuote}
-                className="silk-button"
-              >
-                <MessageCircle className="w-4 h-4 mr-2" />
-                {t("events.bookNow") || "Get a Quote"}
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button
+                  size="lg"
+                  onClick={handleEventRideQuote}
+                  className="silk-button"
+                >
+                  <MessageCircle className="w-5 h-5 mr-2" />
+                  {t("events.ctaWhatsApp") || "Get a Quote on WhatsApp"}
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  className="button-outline-gold"
+                  asChild
+                >
+                  <a href="mailto:contact@paris-elite-services.com?subject=Event%20Transfer%20Quote">
+                    <Mail className="w-5 h-5 mr-2" />
+                    {t("events.ctaEmail") || "Email Us"}
+                  </a>
+                </Button>
+              </div>
             </div>
           </div>
         </section>
