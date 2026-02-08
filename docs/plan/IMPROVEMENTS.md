@@ -50,7 +50,7 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | UX-HOME-SIMPLIFY-SECTIONS-01 | PR-U3 | P2 | R0 | TODO | Simplify landing to 4–5 sections |  | IA + content pruning |
 | UX-HOME-TRUST-LAYER-01 | PR-U4 | P2 | R0 | TODO | Trust layer + supporting CTA |  | Trust near CTA without viewport saturation |
 | UX-HOME-MOBILE-STICKY-CTA-01 | PR-U5 | P2 | R0 | TODO | Mobile sticky CTA booster |  | Always-visible CTA on mobile |
-| UX-TIMEPICKER-COMPACT-01 | PR-U2c | P2 | R0 | TODO | Time picker compact |  | Reduce to ≤3 interactions |
+| UX-TIMEPICKER-COMPACT-01 | PR-U2c | P2 | R0 | DOING | Time picker compact | Branch: `feat/ux-timepicker-compact` | Reduce to ≤3 interactions |
 | UX-BOOKING-DETAILS-REDESIGN-01 | PR-U3a | P2 | R0 | TODO | Redesign /booking/details |  | UX-only (no Stripe) |
 | UX-BOOKING-PAYMENT-OPTIMIZE-01 | PR-U3b | P2 | R0 | TODO | Optimize /booking/payment |  | Consistent language + clear CTA/T&C |
 | FLOW-BOOKING-CONFIRMATION-ROBUST-01 | PR-U3c | P2 | R1 | DONE | Robustify /booking/confirmation | [#43](https://github.com/geinersito/paris-luxe-journey/pull/43) / `4541326` | Refresh/back behavior via sessionStorage fallback + price display fix |

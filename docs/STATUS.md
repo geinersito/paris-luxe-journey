@@ -23,7 +23,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- None (ready for next item)
+- **UX-TIMEPICKER-COMPACT-01** (P2/R0) - Time picker compact (branch: `feat/ux-timepicker-compact`)
 
 ## Siguientes 3 items del plan (priorizados)
 

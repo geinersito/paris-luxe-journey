@@ -10,6 +10,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 
 interface DateTimeInputsProps {
@@ -65,16 +66,6 @@ export const DateTimeInputs = ({
   const minReturnDate = date ? new Date(date) : new Date();
   minReturnDate.setHours(0, 0, 0, 0);
 
-  const generateTimeOptions = () => {
-    const options = [];
-    for (let hour = 0; hour < 24; hour++) {
-      for (const minute of ["00", "30"]) {
-        options.push(`${hour.toString().padStart(2, "0")}:${minute}`);
-      }
-    }
-    return options;
-  };
-
   return (
     <div className="space-y-3">
       <div className="grid grid-cols-2 gap-2">
@@ -125,42 +116,13 @@ export const DateTimeInputs = ({
             <Clock className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
             {t.booking.time}
           </Label>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button
-                type="button"
-                variant="outline"
-                className={cn(
-                  "w-full justify-start text-left font-normal h-11 px-4 py-3 text-sm",
-                  !time && "text-muted-foreground",
-                )}
-              >
-                <Clock className="mr-1.5 h-3.5 w-3.5" />
-                {time || t.booking.time}
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent
-              className={cn("w-48", MODAL_POPOVER_Z_CLASS)}
-              align="start"
-            >
-              <div className="grid gap-1 p-2 max-h-[300px] overflow-y-auto">
-                {generateTimeOptions().map((timeOption) => (
-                  <Button
-                    type="button"
-                    key={timeOption}
-                    variant="ghost"
-                    className={cn(
-                      "justify-start font-normal text-sm",
-                      time === timeOption && "bg-accent",
-                    )}
-                    onClick={() => onChange(timeOption, "time")}
-                  >
-                    {timeOption}
-                  </Button>
-                ))}
-              </div>
-            </PopoverContent>
-          </Popover>
+          <Input
+            type="time"
+            value={time}
+            onChange={(e) => onChange(e.target.value, "time")}
+            step={1800}
+            className="h-11 px-4 py-3 text-sm"
+          />
           {showTimeError && (
             <p className="text-sm text-destructive">Selecciona una hora.</p>
           )}
@@ -218,42 +180,13 @@ export const DateTimeInputs = ({
               <Clock className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
               {t.booking.returnTime}
             </Label>
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  type="button"
-                  variant="outline"
-                  className={cn(
-                    "w-full justify-start text-left font-normal h-11 px-4 py-3 text-sm",
-                    !returnTime && "text-muted-foreground",
-                  )}
-                >
-                  <Clock className="mr-1.5 h-3.5 w-3.5" />
-                  {returnTime || t.booking.returnTime}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent
-                className={cn("w-48", MODAL_POPOVER_Z_CLASS)}
-                align="start"
-              >
-                <div className="grid gap-1 p-2 max-h-[300px] overflow-y-auto">
-                  {generateTimeOptions().map((timeOption) => (
-                    <Button
-                      type="button"
-                      key={timeOption}
-                      variant="ghost"
-                      className={cn(
-                        "justify-start font-normal text-sm",
-                        returnTime === timeOption && "bg-accent",
-                      )}
-                      onClick={() => onChange(timeOption, "returnTime")}
-                    >
-                      {timeOption}
-                    </Button>
-                  ))}
-                </div>
-              </PopoverContent>
-            </Popover>
+            <Input
+              type="time"
+              value={returnTime || ""}
+              onChange={(e) => onChange(e.target.value, "returnTime")}
+              step={1800}
+              className="h-11 px-4 py-3 text-sm"
+            />
             {showReturnTimeError && (
               <p className="text-sm text-destructive">
                 Selecciona hora de regreso.
