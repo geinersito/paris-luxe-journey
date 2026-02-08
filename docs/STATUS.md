@@ -12,23 +12,18 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `c06d6c1`
+- SHA: `e40d506`
 - Last updated: `2026-02-08`
 
 ## Ultimos PRs mergeados en main
 
-1. `#40` - Separate Hourly intent from `/booking` wizard (NAV-HOURLY-01) (`c06d6c1`)
-2. `#38` - Global 404 fallback + dead-page protection (`74ec0b5`)
-3. `#37` - Close OPS-MIG-01 and refresh STATUS (`5e135f0`)
+1. `#41` - Compact language selector + navbar stability (UX-HEADER-I18N-01) (`e40d506`)
+2. `#40` - Separate Hourly intent from `/booking` wizard (NAV-HOURLY-01) (`c06d6c1`)
+3. `#38` - Global 404 fallback + dead-page protection (`74ec0b5`)
 
 ## Ahora en curso
 
-- `UX-HEADER-I18N-01` - dropdown de idioma nítido + navbar estable en traducciones largas (P1/R0)
-  - PR: [#41](https://github.com/geinersito/paris-luxe-journey/pull/41)
-  - Gates R0:
-    - [ ] npm run type-check
-    - [ ] npx eslint (touched files)
-    - [ ] Smoke: switch FR/EN/ES on /, /booking, /hourly (navbar stable + dropdown closes + labels correct)
+- Ningún item en ejecución. Listo para iniciar siguiente ID del SSOT.
 
 ## Siguientes 3 items del plan (priorizados)
 
