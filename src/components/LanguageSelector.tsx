@@ -34,8 +34,15 @@ export function LanguageSelector() {
 
   return (
     <Select value={i18n.language} onValueChange={handleLanguageChange}>
-      <SelectTrigger className="w-[140px]">
-        <SelectValue>{currentLanguage.name}</SelectValue>
+      <SelectTrigger className="w-[110px] h-10 px-3">
+        <SelectValue>
+          <span className="flex items-center gap-2">
+            <span className="text-base">{currentLanguage.flag}</span>
+            <span className="font-medium uppercase text-xs tracking-wide">
+              {currentLanguage.code}
+            </span>
+          </span>
+        </SelectValue>
       </SelectTrigger>
       <SelectContent>
         {languages.map((language) => (
@@ -44,7 +51,10 @@ export function LanguageSelector() {
             value={language.code}
             className="cursor-pointer"
           >
-            {language.name}
+            <span className="flex items-center gap-2">
+              <span className="text-base">{language.flag}</span>
+              <span>{language.name}</span>
+            </span>
           </SelectItem>
         ))}
       </SelectContent>
