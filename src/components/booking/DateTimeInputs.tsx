@@ -1,4 +1,3 @@
-
 import { Calendar as CalendarIcon, Clock } from "lucide-react";
 import { format } from "date-fns";
 import { es, fr, pt } from "date-fns/locale";
@@ -12,6 +11,7 @@ import {
 } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { Input } from "@/components/ui/input";
 
 interface DateTimeInputsProps {
   date: string;
@@ -22,44 +22,46 @@ interface DateTimeInputsProps {
   isRoundTrip?: boolean;
 }
 
-export const DateTimeInputs = ({ 
-  date, 
-  time, 
-  returnDate, 
-  returnTime, 
+export const DateTimeInputs = ({
+  date,
+  time,
+  returnDate,
+  returnTime,
   onChange,
-  isRoundTrip 
+  isRoundTrip,
 }: DateTimeInputsProps) => {
   const { t, language } = useLanguage();
 
+  const todayStart = new Date();
+  todayStart.setHours(0, 0, 0, 0);
+
   const getLocale = () => {
     switch (language) {
-      case 'es':
+      case "es":
         return es;
-      case 'fr':
+      case "fr":
         return fr;
-      case 'pt':
+      case "pt":
         return pt;
       default:
         return undefined; // English is the default
     }
   };
 
-  const handleDateSelect = (date: Date | undefined, isReturn: boolean = false) => {
+  const handleDateSelect = (
+    date: Date | undefined,
+    isReturn: boolean = false,
+  ) => {
     if (date) {
-      onChange(format(date, 'yyyy-MM-dd'), isReturn ? 'returnDate' : 'date');
+      onChange(format(date, "yyyy-MM-dd"), isReturn ? "returnDate" : "date");
     }
   };
 
-  const generateTimeOptions = () => {
-    const options = [];
-    for (let hour = 0; hour < 24; hour++) {
-      for (let minute of ['00', '30']) {
-        options.push(`${hour.toString().padStart(2, '0')}:${minute}`);
-      }
-    }
-    return options;
-  };
+  const minReturnDate = date ? new Date(date) : todayStart;
+  minReturnDate.setHours(0, 0, 0, 0);
+
+  const minReturnTime =
+    date && returnDate && date === returnDate && time ? time : undefined;
 
   return (
     <div className="space-y-3">
@@ -75,7 +77,7 @@ export const DateTimeInputs = ({
                 variant="outline"
                 className={cn(
                   "w-full justify-start text-left font-normal h-11 px-4 py-3 text-sm",
-                  !date && "text-muted-foreground"
+                  !date && "text-muted-foreground",
                 )}
               >
                 <CalendarIcon className="mr-1.5 h-3.5 w-3.5" />
@@ -104,37 +106,14 @@ export const DateTimeInputs = ({
             <Clock className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
             {t.booking.time}
           </Label>
-          <Popover>
-            <PopoverTrigger asChild>
-              <Button
-                variant="outline"
-                className={cn(
-                  "w-full justify-start text-left font-normal h-11 px-4 py-3 text-sm",
-                  !time && "text-muted-foreground"
-                )}
-              >
-                <Clock className="mr-1.5 h-3.5 w-3.5" />
-                {time || t.booking.time}
-              </Button>
-            </PopoverTrigger>
-            <PopoverContent className="w-48" align="start">
-              <div className="grid gap-1 p-2 max-h-[300px] overflow-y-auto">
-                {generateTimeOptions().map((timeOption) => (
-                  <Button
-                    key={timeOption}
-                    variant="ghost"
-                    className={cn(
-                      "justify-start font-normal text-sm",
-                      time === timeOption && "bg-accent"
-                    )}
-                    onClick={() => onChange(timeOption, 'time')}
-                  >
-                    {timeOption}
-                  </Button>
-                ))}
-              </div>
-            </PopoverContent>
-          </Popover>
+          <Input
+            type="time"
+            step={1800}
+            value={time || ""}
+            onChange={(event) => onChange(event.target.value, "time")}
+            aria-label={t.booking.time}
+            className="h-11 text-sm"
+          />
         </div>
       </div>
 
@@ -151,7 +130,7 @@ export const DateTimeInputs = ({
                   variant="outline"
                   className={cn(
                     "w-full justify-start text-left font-normal h-11 px-4 py-3 text-sm",
-                    !returnDate && "text-muted-foreground"
+                    !returnDate && "text-muted-foreground",
                   )}
                 >
                   <CalendarIcon className="mr-1.5 h-3.5 w-3.5" />
@@ -167,7 +146,7 @@ export const DateTimeInputs = ({
                   mode="single"
                   selected={returnDate ? new Date(returnDate) : undefined}
                   onSelect={(date) => handleDateSelect(date, true)}
-                  disabled={(date) => date < (new Date(date) || new Date())}
+                  disabled={(date) => date < minReturnDate}
                   initialFocus
                   locale={getLocale()}
                 />
@@ -180,37 +159,15 @@ export const DateTimeInputs = ({
               <Clock className="h-4 w-4 transition-transform duration-200 group-hover:scale-110" />
               {t.booking.returnTime}
             </Label>
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  variant="outline"
-                  className={cn(
-                    "w-full justify-start text-left font-normal h-11 px-4 py-3 text-sm",
-                    !returnTime && "text-muted-foreground"
-                  )}
-                >
-                  <Clock className="mr-1.5 h-3.5 w-3.5" />
-                  {returnTime || t.booking.returnTime}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent className="w-48" align="start">
-                <div className="grid gap-1 p-2 max-h-[300px] overflow-y-auto">
-                  {generateTimeOptions().map((timeOption) => (
-                    <Button
-                      key={timeOption}
-                      variant="ghost"
-                      className={cn(
-                        "justify-start font-normal text-sm",
-                        returnTime === timeOption && "bg-accent"
-                      )}
-                      onClick={() => onChange(timeOption, 'returnTime')}
-                    >
-                      {timeOption}
-                    </Button>
-                  ))}
-                </div>
-              </PopoverContent>
-            </Popover>
+            <Input
+              type="time"
+              step={1800}
+              min={minReturnTime}
+              value={returnTime || ""}
+              onChange={(event) => onChange(event.target.value, "returnTime")}
+              aria-label={t.booking.returnTime}
+              className="h-11 text-sm"
+            />
           </div>
         </div>
       )}
