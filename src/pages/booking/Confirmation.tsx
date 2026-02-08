@@ -12,6 +12,7 @@ import {
   Luggage,
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { loadBookingSession } from "@/lib/bookingSession";
 
 interface ConfirmationBookingData {
   id?: string;
@@ -69,8 +70,10 @@ const BookingConfirmation = () => {
   const location = useLocation();
   const { toast } = useToast();
   const { t } = useLanguage();
-  const bookingData = (location.state as ConfirmationLocationState | null)
-    ?.bookingData;
+
+  const sessionSnapshot = loadBookingSession();
+  const bookingData =
+    location.state?.bookingData ?? sessionSnapshot?.bookingData;
   const hasValidBookingData =
     Boolean(bookingData?.id) && bookingData?.status === "confirmed";
   const formattedPickupDateTime = formatParisDateTime(
