@@ -12,31 +12,24 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `74ec0b5`
+- SHA: `c06d6c1`
 - Last updated: `2026-02-08`
-- Current working branch: `nav-hourly-01`
 
 ## Ultimos PRs mergeados en main
 
-1. `#38` - Global 404 fallback + dead-page protection (`74ec0b5`)
-2. `#37` - Close OPS-MIG-01 and refresh STATUS (`5e135f0`)
-3. `#28` - Reconcile Supabase migration history (Remote = SSOT) (`e34ab9b`)
+1. `#40` - Separate Hourly intent from `/booking` wizard (NAV-HOURLY-01) (`c06d6c1`)
+2. `#38` - Global 404 fallback + dead-page protection (`74ec0b5`)
+3. `#37` - Close OPS-MIG-01 and refresh STATUS (`5e135f0`)
 
 ## Ahora en curso
 
-- `NAV-HOURLY-01` - Separating Hourly intent from `/booking` wizard (PR #39, branch `nav-hourly-01`)
-  - ✅ Created `/hourly/quote` page with `intent=hourly` guard
-  - ✅ Updated Hourly CTAs to route to `/hourly/quote?intent=hourly`
-  - ✅ Added guard in `/booking` to redirect `intent=hourly` to `/hourly`
-  - ✅ Verified sessionStorage separation (hourly uses contact flow, no booking snapshot)
-  - ⏳ Gates: type-check, build, eslint pending
-  - ⏳ Manual smoke R1 (A/B/C/D) pending
+- Ningún item en ejecución. Listo para iniciar siguiente ID del SSOT.
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. `NAV-HOURLY-01` - separar `Hourly` del wizard `/booking` (legacy: `PR-U1g`)
-2. `UX-HEADER-I18N-01` - dropdown de idioma nitido + navbar estable en traducciones largas
-3. `(slot libre)` - definir siguiente item canonico en SSOT
+1. `UX-HEADER-I18N-01` - dropdown de idioma nítido + navbar estable en traducciones largas (P1/R0)
+2. `(slot libre)` - definir siguiente item canónico en SSOT
+3. `(slot libre)` - definir siguiente item canónico en SSOT
 
 ## Regla de actualizacion
 
