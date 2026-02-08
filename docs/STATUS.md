@@ -23,7 +23,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- None (ready for next item)
+- **NAV-ABOUT-CONTACT-FLEET-01** (P2/R1) - About/Contact/Fleet anchors + redirects (branch: `nav-about-contact-fleet-01`)
 
 ## Siguientes 3 items del plan (priorizados)
 

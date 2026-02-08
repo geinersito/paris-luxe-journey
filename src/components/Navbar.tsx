@@ -81,6 +81,8 @@ const Navbar = () => {
         const element = document.querySelector(href);
         if (element) {
           scrollToElementWithOffset(element);
+          // Update URL to reflect the anchor (shareable)
+          window.history.replaceState(null, "", "/#" + href.slice(1));
         }
       }
     } else {

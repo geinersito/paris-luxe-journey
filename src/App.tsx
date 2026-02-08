@@ -1,12 +1,25 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import {
+  RouterProvider,
+  createBrowserRouter,
+  useNavigate,
+} from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { AuthProvider } from "./contexts/AuthContext";
 import { RequireBookingData } from "./components/RequireBookingData";
 import { Layout } from "./components/Layout";
 import { BookingProvider } from "@/contexts/BookingContext";
+
+/** Client-side redirect from /about, /contact, /fleet to Home anchors */
+const HashRedirect = ({ hash }: { hash: string }) => {
+  const navigate = useNavigate();
+  useEffect(() => {
+    navigate(`/#${hash}`, { replace: true });
+  }, [hash, navigate]);
+  return null;
+};
 
 // Lazy load pages for better code splitting
 const Home = lazy(() => import("./pages/Home"));
@@ -247,6 +260,10 @@ const router = createBrowserRouter([
           },
         ],
       },
+      // Legacy direct routes → Home anchors (NAV-ABOUT-CONTACT-FLEET-01)
+      { path: "about", element: <HashRedirect hash="about" /> },
+      { path: "contact", element: <HashRedirect hash="contact" /> },
+      { path: "fleet", element: <HashRedirect hash="fleet" /> },
       {
         path: "*",
         element: (
