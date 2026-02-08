@@ -55,7 +55,12 @@ const BookingForm = ({
 
   // Prellenar el formulario con initialData si existe (después de cargar ubicaciones)
   useEffect(() => {
-    if (initialData && !isLoadingLocations && locations.length > 0 && !hasPrefilledRef.current) {
+    if (
+      initialData &&
+      !isLoadingLocations &&
+      locations.length > 0 &&
+      !hasPrefilledRef.current
+    ) {
       hasPrefilledRef.current = true;
       setFormData((prev) => ({
         ...prev,
@@ -73,7 +78,7 @@ const BookingForm = ({
 
       // Timeout para detectar si Supabase está colgado
       const timeoutPromise = new Promise((_, reject) =>
-        setTimeout(() => reject(new Error('Timeout')), 5000)
+        setTimeout(() => reject(new Error("Timeout")), 5000),
       );
 
       const fetchPromise = supabase
@@ -81,31 +86,124 @@ const BookingForm = ({
         .select("id, name, name_en, name_es, name_fr, name_pt, type, code")
         .order("name");
 
-      const { data, error } = await Promise.race([fetchPromise, timeoutPromise]) as any;
+      const { data, error } = (await Promise.race([
+        fetchPromise,
+        timeoutPromise,
+      ])) as Awaited<typeof fetchPromise>;
 
       if (error) {
-        console.error('Error loading locations:', error);
+        console.error("Error loading locations:", error);
         // Usar ubicaciones hardcodeadas como fallback
         const fallbackLocations = [
-          { id: '1', name: 'Paris CDG Airport', name_en: 'Paris CDG Airport', name_es: 'Aeropuerto CDG de París', name_fr: 'Aéroport CDG Paris', name_pt: 'Aeroporto CDG Paris', type: 'airport', code: 'cdg' },
-          { id: '2', name: 'Paris Orly Airport', name_en: 'Paris Orly Airport', name_es: 'Aeropuerto Orly de París', name_fr: 'Aéroport Orly Paris', name_pt: 'Aeroporto Orly Paris', type: 'airport', code: 'orly' },
-          { id: '3', name: 'Paris City Center', name_en: 'Paris City Center', name_es: 'Centro de París', name_fr: 'Centre de Paris', name_pt: 'Centro de Paris', type: 'city', code: 'paris' },
-          { id: '4', name: 'Disneyland Paris', name_en: 'Disneyland Paris', name_es: 'Disneyland París', name_fr: 'Disneyland Paris', name_pt: 'Disneyland Paris', type: 'attraction', code: 'disneyland' },
-          { id: '5', name: 'Versailles', name_en: 'Versailles', name_es: 'Versalles', name_fr: 'Versailles', name_pt: 'Versalhes', type: 'city', code: 'versailles' },
+          {
+            id: "1",
+            name: "Paris CDG Airport",
+            name_en: "Paris CDG Airport",
+            name_es: "Aeropuerto CDG de París",
+            name_fr: "Aéroport CDG Paris",
+            name_pt: "Aeroporto CDG Paris",
+            type: "airport",
+            code: "cdg",
+          },
+          {
+            id: "2",
+            name: "Paris Orly Airport",
+            name_en: "Paris Orly Airport",
+            name_es: "Aeropuerto Orly de París",
+            name_fr: "Aéroport Orly Paris",
+            name_pt: "Aeroporto Orly Paris",
+            type: "airport",
+            code: "orly",
+          },
+          {
+            id: "3",
+            name: "Paris City Center",
+            name_en: "Paris City Center",
+            name_es: "Centro de París",
+            name_fr: "Centre de Paris",
+            name_pt: "Centro de Paris",
+            type: "city",
+            code: "paris",
+          },
+          {
+            id: "4",
+            name: "Disneyland Paris",
+            name_en: "Disneyland Paris",
+            name_es: "Disneyland París",
+            name_fr: "Disneyland Paris",
+            name_pt: "Disneyland Paris",
+            type: "attraction",
+            code: "disneyland",
+          },
+          {
+            id: "5",
+            name: "Versailles",
+            name_en: "Versailles",
+            name_es: "Versalles",
+            name_fr: "Versailles",
+            name_pt: "Versalhes",
+            type: "city",
+            code: "versailles",
+          },
         ];
         setLocations(fallbackLocations);
         return;
       }
 
       if (!data || data.length === 0) {
-        console.warn('No locations found in database, using fallback');
+        console.warn("No locations found in database, using fallback");
         // Usar ubicaciones hardcodeadas como fallback
         const fallbackLocations = [
-          { id: '1', name: 'Paris CDG Airport', name_en: 'Paris CDG Airport', name_es: 'Aeropuerto CDG de París', name_fr: 'Aéroport CDG Paris', name_pt: 'Aeroporto CDG Paris', type: 'airport', code: 'cdg' },
-          { id: '2', name: 'Paris Orly Airport', name_en: 'Paris Orly Airport', name_es: 'Aeropuerto Orly de París', name_fr: 'Aéroport Orly Paris', name_pt: 'Aeroporto Orly Paris', type: 'airport', code: 'orly' },
-          { id: '3', name: 'Paris City Center', name_en: 'Paris City Center', name_es: 'Centro de París', name_fr: 'Centre de Paris', name_pt: 'Centro de Paris', type: 'city', code: 'paris' },
-          { id: '4', name: 'Disneyland Paris', name_en: 'Disneyland Paris', name_es: 'Disneyland París', name_fr: 'Disneyland Paris', name_pt: 'Disneyland Paris', type: 'attraction', code: 'disneyland' },
-          { id: '5', name: 'Versailles', name_en: 'Versailles', name_es: 'Versalles', name_fr: 'Versailles', name_pt: 'Versalhes', type: 'city', code: 'versailles' },
+          {
+            id: "1",
+            name: "Paris CDG Airport",
+            name_en: "Paris CDG Airport",
+            name_es: "Aeropuerto CDG de París",
+            name_fr: "Aéroport CDG Paris",
+            name_pt: "Aeroporto CDG Paris",
+            type: "airport",
+            code: "cdg",
+          },
+          {
+            id: "2",
+            name: "Paris Orly Airport",
+            name_en: "Paris Orly Airport",
+            name_es: "Aeropuerto Orly de París",
+            name_fr: "Aéroport Orly Paris",
+            name_pt: "Aeroporto Orly Paris",
+            type: "airport",
+            code: "orly",
+          },
+          {
+            id: "3",
+            name: "Paris City Center",
+            name_en: "Paris City Center",
+            name_es: "Centro de París",
+            name_fr: "Centre de Paris",
+            name_pt: "Centro de Paris",
+            type: "city",
+            code: "paris",
+          },
+          {
+            id: "4",
+            name: "Disneyland Paris",
+            name_en: "Disneyland Paris",
+            name_es: "Disneyland París",
+            name_fr: "Disneyland Paris",
+            name_pt: "Disneyland Paris",
+            type: "attraction",
+            code: "disneyland",
+          },
+          {
+            id: "5",
+            name: "Versailles",
+            name_en: "Versailles",
+            name_es: "Versalles",
+            name_fr: "Versailles",
+            name_pt: "Versalhes",
+            type: "city",
+            code: "versailles",
+          },
         ];
         setLocations(fallbackLocations);
         return;
@@ -113,20 +211,65 @@ const BookingForm = ({
 
       setLocations(data);
     } catch (error) {
-      console.error('Exception loading locations:', error);
+      console.error("Exception loading locations:", error);
       // Usar ubicaciones hardcodeadas como fallback
       const fallbackLocations = [
-        { id: '1', name: 'Paris CDG Airport', name_en: 'Paris CDG Airport', name_es: 'Aeropuerto CDG de París', name_fr: 'Aéroport CDG Paris', name_pt: 'Aeroporto CDG Paris', type: 'airport', code: 'cdg' },
-        { id: '2', name: 'Paris Orly Airport', name_en: 'Paris Orly Airport', name_es: 'Aeropuerto Orly de París', name_fr: 'Aéroport Orly Paris', name_pt: 'Aeroporto Orly Paris', type: 'airport', code: 'orly' },
-        { id: '3', name: 'Paris City Center', name_en: 'Paris City Center', name_es: 'Centro de París', name_fr: 'Centre de Paris', name_pt: 'Centro de Paris', type: 'city', code: 'paris' },
-        { id: '4', name: 'Disneyland Paris', name_en: 'Disneyland Paris', name_es: 'Disneyland París', name_fr: 'Disneyland Paris', name_pt: 'Disneyland Paris', type: 'attraction', code: 'disneyland' },
-        { id: '5', name: 'Versailles', name_en: 'Versailles', name_es: 'Versalles', name_fr: 'Versailles', name_pt: 'Versalhes', type: 'city', code: 'versailles' },
+        {
+          id: "1",
+          name: "Paris CDG Airport",
+          name_en: "Paris CDG Airport",
+          name_es: "Aeropuerto CDG de París",
+          name_fr: "Aéroport CDG Paris",
+          name_pt: "Aeroporto CDG Paris",
+          type: "airport",
+          code: "cdg",
+        },
+        {
+          id: "2",
+          name: "Paris Orly Airport",
+          name_en: "Paris Orly Airport",
+          name_es: "Aeropuerto Orly de París",
+          name_fr: "Aéroport Orly Paris",
+          name_pt: "Aeroporto Orly Paris",
+          type: "airport",
+          code: "orly",
+        },
+        {
+          id: "3",
+          name: "Paris City Center",
+          name_en: "Paris City Center",
+          name_es: "Centro de París",
+          name_fr: "Centre de Paris",
+          name_pt: "Centro de Paris",
+          type: "city",
+          code: "paris",
+        },
+        {
+          id: "4",
+          name: "Disneyland Paris",
+          name_en: "Disneyland Paris",
+          name_es: "Disneyland París",
+          name_fr: "Disneyland Paris",
+          name_pt: "Disneyland Paris",
+          type: "attraction",
+          code: "disneyland",
+        },
+        {
+          id: "5",
+          name: "Versailles",
+          name_en: "Versailles",
+          name_es: "Versalles",
+          name_fr: "Versailles",
+          name_pt: "Versalhes",
+          type: "city",
+          code: "versailles",
+        },
       ];
       setLocations(fallbackLocations);
     } finally {
       setIsLoadingLocations(false);
     }
-  }, [toast, t]);
+  }, []);
 
   useEffect(() => {
     fetchLocations();
@@ -186,111 +329,131 @@ const BookingForm = ({
     return basePrice + luggageSurcharge;
   }, [price, luggageSurcharge, formData.tripType]);
 
-  const handleFormSubmit = useCallback(async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleFormSubmit = useCallback(
+    async (e: React.FormEvent) => {
+      e.preventDefault();
 
-    if (!validateForm()) {
-      return;
-    }
-
-    try {
-      // Actualizar formData con la información del tour
-      const updatedFormData = {
-        ...formData,
-        tourId,
-        tourName,
-      };
-
-      // Actualizar el estado local primero
-      setFormData(updatedFormData);
-
-      // Calcular el precio final con recargos
-      const isRoundTrip = updatedFormData.tripType === "round_trip";
-      const basePrice = isRoundTrip ? price * 2 : price;
-      const totalEstimatedPrice = basePrice + luggageSurcharge;
-
-      // Buscar los UUIDs de las ubicaciones seleccionadas
-      const pickupLocation = locations.find(
-        (loc) => loc.code === updatedFormData.pickup,
-      );
-      const dropoffLocation = locations.find(
-        (loc) => loc.code === updatedFormData.dropoff,
-      );
-
-      // Verificar que se encontraron las ubicaciones
-      if (!pickupLocation || !pickupLocation.id) {
-        toast({
-          title: t.common.error,
-          description: t.booking.errors.locationNotFound,
-          variant: "destructive",
-        });
+      if (!validateForm()) {
         return;
       }
 
-      if (!dropoffLocation || !dropoffLocation.id) {
-        toast({
-          title: t.common.error,
-          description: t.booking.errors.locationNotFound,
-          variant: "destructive",
-        });
-        return;
-      }
-
-      // Preparar datos para navegación y contexto con UUIDs de ubicaciones
-      const bookingDataWithSurcharge = {
-        ...updatedFormData,
-        passengers: Number(updatedFormData.passengers), // Convert string to number
-        luggageSurcharge,
-        basePrice, // Añadir el precio base explícitamente
-        // Añadir los UUIDs de las ubicaciones
-        pickupLocationId: pickupLocation.id,
-        dropoffLocationId: dropoffLocation.id,
-        // También incluir los nombres completos para mostrar
-        pickupLocationName: pickupLocation.name,
-        dropoffLocationName: dropoffLocation.name,
-      };
-
-      const navigationState = {
-        bookingData: bookingDataWithSurcharge,
-        estimatedPrice: totalEstimatedPrice,
-      };
-
-      // Actualizar el contexto de reserva ANTES de navegar
-      if (updateBookingData) {
-        try {
-          await updateBookingData(bookingDataWithSurcharge);
-        } catch (updateError) {
-          console.error('[BookingForm] Error updating booking context:', updateError);
-          // Continuar con la navegación aunque falle la actualización del contexto
-        }
-      }
-
-      // Navegar directamente sin setTimeout (anti-pattern eliminado)
       try {
-        navigate("/booking/details", {
-          state: navigationState,
-        });
+        // Actualizar formData con la información del tour
+        const updatedFormData = {
+          ...formData,
+          tourId,
+          tourName,
+        };
 
-        // Llamar al onSubmit prop si existe (para compatibilidad)
-        if (typeof onSubmit === "function") {
-          onSubmit(updatedFormData);
+        // Actualizar el estado local primero
+        setFormData(updatedFormData);
+
+        // Calcular el precio final con recargos
+        const isRoundTrip = updatedFormData.tripType === "round_trip";
+        const basePrice = isRoundTrip ? price * 2 : price;
+        const totalEstimatedPrice = basePrice + luggageSurcharge;
+
+        // Buscar los UUIDs de las ubicaciones seleccionadas
+        const pickupLocation = locations.find(
+          (loc) => loc.code === updatedFormData.pickup,
+        );
+        const dropoffLocation = locations.find(
+          (loc) => loc.code === updatedFormData.dropoff,
+        );
+
+        // Verificar que se encontraron las ubicaciones
+        if (!pickupLocation || !pickupLocation.id) {
+          toast({
+            title: t.common.error,
+            description: t.booking.errors.locationNotFound,
+            variant: "destructive",
+          });
+          return;
         }
-      } catch (navError) {
-        console.error('[BookingForm] Navigation error:', navError);
+
+        if (!dropoffLocation || !dropoffLocation.id) {
+          toast({
+            title: t.common.error,
+            description: t.booking.errors.locationNotFound,
+            variant: "destructive",
+          });
+          return;
+        }
+
+        // Preparar datos para navegación y contexto con UUIDs de ubicaciones
+        const bookingDataWithSurcharge = {
+          ...updatedFormData,
+          passengers: Number(updatedFormData.passengers), // Convert string to number
+          luggageSurcharge,
+          basePrice, // Añadir el precio base explícitamente
+          // Añadir los UUIDs de las ubicaciones
+          pickupLocationId: pickupLocation.id,
+          dropoffLocationId: dropoffLocation.id,
+          // También incluir los nombres completos para mostrar
+          pickupLocationName: pickupLocation.name,
+          dropoffLocationName: dropoffLocation.name,
+        };
+
+        const navigationState = {
+          bookingData: bookingDataWithSurcharge,
+          estimatedPrice: totalEstimatedPrice,
+        };
+
+        // Actualizar el contexto de reserva ANTES de navegar
+        if (updateBookingData) {
+          try {
+            await updateBookingData(bookingDataWithSurcharge);
+          } catch (updateError) {
+            console.error(
+              "[BookingForm] Error updating booking context:",
+              updateError,
+            );
+            // Continuar con la navegación aunque falle la actualización del contexto
+          }
+        }
+
+        // Navegar directamente sin setTimeout (anti-pattern eliminado)
+        try {
+          navigate("/booking/details", {
+            state: navigationState,
+          });
+
+          // Llamar al onSubmit prop si existe (para compatibilidad)
+          if (typeof onSubmit === "function") {
+            onSubmit(bookingDataWithSurcharge);
+          }
+        } catch (navError) {
+          console.error("[BookingForm] Navigation error:", navError);
+          toast({
+            title: t.common.error,
+            description: t.booking.errors.bookingCreationError,
+            variant: "destructive",
+          });
+        }
+      } catch (error) {
         toast({
           title: t.common.error,
           description: t.booking.errors.bookingCreationError,
           variant: "destructive",
         });
       }
-    } catch (error) {
-      toast({
-        title: t.common.error,
-        description: t.booking.errors.bookingCreationError,
-        variant: "destructive",
-      });
-    }
-  }, [validateForm, formData, setFormData, price, luggageSurcharge, locations, toast, t, updateBookingData, navigate, onSubmit]);
+    },
+    [
+      validateForm,
+      formData,
+      setFormData,
+      price,
+      luggageSurcharge,
+      locations,
+      toast,
+      t,
+      updateBookingData,
+      navigate,
+      onSubmit,
+      tourId,
+      tourName,
+    ],
+  );
 
   if (isLoadingLocations) {
     return (
@@ -303,9 +466,10 @@ const BookingForm = ({
   return (
     <form
       onSubmit={handleFormSubmit}
-      className={compact
-        ? "w-full"
-        : "glass-card px-6 py-8 md:px-10 md:py-10 rounded-3xl max-w-2xl w-full mx-auto animate-fadeIn bg-white/95 dark:bg-primary-dark/95 backdrop-blur-lg shadow-2xl ring-1 ring-primary/10 hover:shadow-[0_25px_50px_-12px_rgba(11,37,69,0.25)] transition-shadow duration-300 border border-metallic/20"
+      className={
+        compact
+          ? "w-full"
+          : "glass-card px-6 py-8 md:px-10 md:py-10 rounded-3xl max-w-2xl w-full mx-auto animate-fadeIn bg-white/95 dark:bg-primary-dark/95 backdrop-blur-lg shadow-2xl ring-1 ring-primary/10 hover:shadow-[0_25px_50px_-12px_rgba(11,37,69,0.25)] transition-shadow duration-300 border border-metallic/20"
       }
     >
       {!compact && (
@@ -367,15 +531,18 @@ const BookingForm = ({
           {/* Aviso para grupos de 8+ pasajeros */}
           <div className="p-3 bg-secondary/10 border border-secondary/20 rounded-lg">
             <p className="text-sm text-muted-foreground mb-2">
-              <strong>{t.booking.groupNotice?.title || "Groups of 8+ passengers"}:</strong>{" "}
-              {t.booking.groupNotice?.description || "For groups of 8 or more passengers, please contact us via WhatsApp for a personalized quote."}
+              <strong>
+                {t.booking.groupNotice?.title || "Groups of 8+ passengers"}:
+              </strong>{" "}
+              {t.booking.groupNotice?.description ||
+                "For groups of 8 or more passengers, please contact us via WhatsApp for a personalized quote."}
             </p>
             <Button
               type="button"
               variant="outline"
               size="sm"
               className="w-full"
-              onClick={() => window.open('https://wa.me/33668251102', '_blank')}
+              onClick={() => window.open("https://wa.me/33668251102", "_blank")}
             >
               <MessageCircle className="w-4 h-4 mr-2" />
               {t.booking.groupNotice?.cta || "Contact via WhatsApp"}
@@ -429,11 +596,14 @@ const BookingForm = ({
         className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-semibold text-base py-6 mt-6 shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02] transition-all duration-300 rounded-xl"
         disabled={isSubmitting}
       >
-        {isSubmitting ? t.common.processing : (t.booking.submitButton || "Voir Votre Prix Fixe")}
+        {isSubmitting
+          ? t.common.processing
+          : t.booking.submitButton || "Voir Votre Prix Fixe"}
       </Button>
 
       <p className="mt-4 px-4 text-sm text-center text-muted-foreground">
-        {t.booking.noPaymentRequired || "Aucun paiement requis - l'étape suivante affiche votre prix final"}
+        {t.booking.noPaymentRequired ||
+          "Aucun paiement requis - l'étape suivante affiche votre prix final"}
       </p>
     </form>
   );
