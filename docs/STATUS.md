@@ -12,24 +12,24 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `3398685`
+- SHA: `dc928d3`
 - Last updated: `2026-02-08`
 
 ## Ultimos PRs mergeados en main
 
-1. `#45` - About/Contact/Fleet anchors + redirects (NAV-ABOUT-CONTACT-FLEET-01) (`3398685`)
-2. `#44` - Compact time picker (UX-TIMEPICKER-COMPACT-01) (`9daaa9a`)
-3. `#43` - Make confirmation refresh-safe + fix price display (FLOW-BOOKING-CONFIRMATION-ROBUST-01) (`4541326`)
+1. `#46` - Contextual CTAs on Events page (UX-EVENTS-CONTEXT-CTA-01) (`dc928d3`)
+2. `#45` - About/Contact/Fleet anchors + redirects (NAV-ABOUT-CONTACT-FLEET-01) (`3398685`)
+3. `#44` - Compact time picker (UX-TIMEPICKER-COMPACT-01) (`9daaa9a`)
 
 ## Ahora en curso
 
-- **UX-EVENTS-CONTEXT-CTA-01** (P2/R0) - Events: contextual CTA (branch: `ux-events-context-cta-01`)
+- None
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **UX-EVENTS-CONTEXT-CTA-01** (P2/R0) - Events: contextual CTA (improve intent)
-2. **UX-EVENTS-CTA-PREFILL-01** (P2/R0) - Events CTA prefill (reduce friction)
-3. **UX-TYPOGRAPHY-01** (P2/R0) - Typography base (tokens/scale)
+1. **UX-EVENTS-CTA-PREFILL-01** (P2/R0) - Events CTA prefill (reduce friction)
+2. **UX-TYPOGRAPHY-01** (P2/R0) - Typography base (tokens/scale)
+3. **UX-TOUCHTARGETS-48PX-01** (P2/R0) - Touch targets 48px (mobile)
 
 ## Regla de actualizacion
 
