@@ -30,6 +30,7 @@ export const DateTimeInputs = ({
   isRoundTrip,
 }: DateTimeInputsProps) => {
   const { t, language } = useLanguage();
+  const MODAL_POPOVER_Z_CLASS = "z-[10050]";
 
   const getLocale = () => {
     switch (language) {
@@ -92,7 +93,10 @@ export const DateTimeInputs = ({
                 )}
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-auto p-0 z-[10050]" align="start">
+            <PopoverContent
+              className={cn("w-auto p-0", MODAL_POPOVER_Z_CLASS)}
+              align="start"
+            >
               <Calendar
                 mode="single"
                 selected={date ? new Date(date) : undefined}
@@ -124,7 +128,10 @@ export const DateTimeInputs = ({
                 {time || t.booking.time}
               </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-48 z-[10050]" align="start">
+            <PopoverContent
+              className={cn("w-48", MODAL_POPOVER_Z_CLASS)}
+              align="start"
+            >
               <div className="grid gap-1 p-2 max-h-[300px] overflow-y-auto">
                 {generateTimeOptions().map((timeOption) => (
                   <Button
@@ -171,7 +178,10 @@ export const DateTimeInputs = ({
                   )}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-auto p-0 z-[10050]" align="start">
+              <PopoverContent
+                className={cn("w-auto p-0", MODAL_POPOVER_Z_CLASS)}
+                align="start"
+              >
                 <Calendar
                   mode="single"
                   selected={returnDate ? new Date(returnDate) : undefined}
@@ -203,7 +213,10 @@ export const DateTimeInputs = ({
                   {returnTime || t.booking.returnTime}
                 </Button>
               </PopoverTrigger>
-              <PopoverContent className="w-48 z-[10050]" align="start">
+              <PopoverContent
+                className={cn("w-48", MODAL_POPOVER_Z_CLASS)}
+                align="start"
+              >
                 <div className="grid gap-1 p-2 max-h-[300px] overflow-y-auto">
                   {generateTimeOptions().map((timeOption) => (
                     <Button
