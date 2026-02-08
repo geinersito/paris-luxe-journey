@@ -368,6 +368,10 @@ const BookingForm = ({
     return basePrice + luggageSurcharge;
   }, [price, luggageSurcharge, formData.tripType]);
 
+  const showPickupDropoffSameError =
+    (hasTriedSubmit || validationState.hasLocations) &&
+    !validationState.hasDifferentLocations;
+
   const handleFormSubmit = useCallback(
     async (e: React.FormEvent) => {
       e.preventDefault();
@@ -529,6 +533,11 @@ const BookingForm = ({
             standardLocations={locations}
             isLoadingLocations={isLoadingLocations}
           />
+          {showPickupDropoffSameError && (
+            <p className="text-sm text-destructive mt-1">
+              El punto de recogida y el destino no pueden ser iguales.
+            </p>
+          )}
 
           <DateTimeInputs
             date={formData.date}
