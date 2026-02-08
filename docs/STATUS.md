@@ -22,8 +22,16 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Ahora en curso
 
 - `PR #34` (`ux-details-sessionstorage-refresh-safe`)
-- ID plan: `PR-U3a/U3b` hardening de flujo details/payment (refresh-safe con `sessionStorage`)
+- ID plan: `FLOW-DETAILS-SS-01`
+- Risk class: `R1`
 - Estado: pending merge review
+- Gate R1:
+  - `A)` Happy path ✅
+  - `B)` Refresh details ✅
+  - `C)` TTL expiry redirect ✅
+  - `D)` Back/cancel consistency ✅
+  - Security (`no sensitive data persisted`) ✅
+  - Precedence (`state > session > redirect`) ✅
 
 ## Siguientes 3 items del plan (priorizados)
 

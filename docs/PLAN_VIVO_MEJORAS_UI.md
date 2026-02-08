@@ -25,6 +25,21 @@ Documento vivo para planificar mejoras del producto mientras se revisan páginas
   - este documento (`Estado` del ID + referencia PR/commit),
   - `docs/STATUS.md` (HEAD de `main`, item en curso, siguientes 3).
 
+### 2.2) Risk classes y gates (obligatorio)
+
+- `R0 - UI-only`: CI + smoke basico.
+- `R1 - Flow`: CI + smoke manual A/B/C/D.
+- `R2 - Money/Checkout`: todo `R1` + idempotencia + limpieza.
+
+Para `R1` y `R2` el PR debe evidenciar:
+
+- `A)` Happy path completo.
+- `B)` Refresh en `/booking/details`.
+- `C)` TTL expirado/corrupto redirige sin loop.
+- `D)` Back/Cancel sin corrupcion de estado.
+- Security: no datos sensibles en persistencia.
+- Precedencia SSOT: `location.state` > session snapshot > redirect.
+
 ## 3) Baseline actual (primera revisión: Home)
 
 ### Diagnóstico compartido
@@ -73,6 +88,12 @@ Estado inicial: `PENDIENTE`.
 | PR-U3a | UI-only | Rediseñar `/booking/details` | Summary/CTA claros + validación UX mínima | `src/pages/booking/Details.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U3b | UI-only | Optimizar `/booking/payment` | Idioma consistente + CTA/T&C inequívocos | `src/pages/booking/Payment.tsx` | Med | CTO+Agente | PENDIENTE | - |
 | PR-U3c | UI-only | Robustecer `/booking/confirmation` | Hora Paris explícita + refresh safe | `src/pages/booking/Confirmation.tsx`, `src/lib/datetime.ts` | Med | CTO+Agente | PENDIENTE | - |
+
+### 4.1) Flow IDs (risk-gated)
+
+| ID | Scope | Risk | DoD (gates) | PR | Estado |
+|---|---|---|---|---|---|
+| FLOW-DETAILS-SS-01 | Details refresh-safe via `sessionStorage` + TTL 30m | R1 | CI verde + smoke A/B/C/D + no sensitive data + precedence `state > session > redirect` | #34 | DOING |
 
 ## 5) Follow-ups fuera de scope inmediato
 
