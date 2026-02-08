@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
-import { Calendar, MapPin, Users } from "lucide-react";
+import { MapPin, Users } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 
 interface CompactBookingFormProps {
   onOpenFullForm: (data: {
@@ -11,20 +12,114 @@ interface CompactBookingFormProps {
   }) => void;
 }
 
-const COMPACT_LOCATION_OPTIONS = [
-  { code: "CDG", label: "Charles de Gaulle Airport (CDG)" },
-  { code: "ORY", label: "Orly Airport (ORY)" },
-  { code: "DLP", label: "Disneyland Paris" },
-  { code: "VRS", label: "Palace of Versailles" },
-] as const;
+interface CompactLocation {
+  id: string;
+  code: string | null;
+  name: string;
+  name_en: string | null;
+  name_es: string | null;
+  name_fr: string | null;
+  name_pt: string | null;
+}
+
+const COMPACT_CODE_ORDER = ["CDG", "ORY", "PAR", "DLP", "VRS"] as const;
+const COMPACT_CODE_SET = new Set<string>(COMPACT_CODE_ORDER);
 
 export function CompactBookingForm({
   onOpenFullForm,
 }: CompactBookingFormProps) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [pickup, setPickup] = useState("");
   const [dropoff, setDropoff] = useState("");
   const [passengers, setPassengers] = useState("2");
+  const [locations, setLocations] = useState<CompactLocation[]>([]);
+  const [isLoadingLocations, setIsLoadingLocations] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchCompactLocations = async () => {
+      try {
+        setIsLoadingLocations(true);
+        const { data, error } = await supabase
+          .from("locations")
+          .select("id, code, name, name_en, name_es, name_fr, name_pt");
+
+        if (error) {
+          console.error("[CompactBookingForm] Error loading locations:", error);
+          if (isMounted) {
+            setLocations([]);
+          }
+          return;
+        }
+
+        if (isMounted) {
+          setLocations(data || []);
+        }
+      } catch (error) {
+        console.error(
+          "[CompactBookingForm] Exception loading locations:",
+          error,
+        );
+        if (isMounted) {
+          setLocations([]);
+        }
+      } finally {
+        if (isMounted) {
+          setIsLoadingLocations(false);
+        }
+      }
+    };
+
+    fetchCompactLocations();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const compactLocationOptions = useMemo(() => {
+    const byCode = new Map<string, CompactLocation>();
+
+    for (const location of locations) {
+      const rawCode = location.code?.trim();
+      if (!rawCode) continue;
+
+      const normalizedCode = rawCode.toUpperCase();
+      if (!COMPACT_CODE_SET.has(normalizedCode) || byCode.has(normalizedCode)) {
+        continue;
+      }
+
+      byCode.set(normalizedCode, location);
+    }
+
+    const getLocalizedName = (location: CompactLocation) => {
+      switch (language) {
+        case "es":
+          return location.name_es || location.name;
+        case "fr":
+          return location.name_fr || location.name;
+        case "pt":
+          return location.name_pt || location.name;
+        default:
+          return location.name_en || location.name;
+      }
+    };
+
+    return COMPACT_CODE_ORDER.filter((code) => byCode.has(code)).map((code) => {
+      const location = byCode.get(code)!;
+      return {
+        code: location.code?.trim() || code,
+        label: getLocalizedName(location),
+      };
+    });
+  }, [language, locations]);
+
+  const canQuickBook =
+    compactLocationOptions.length > 0 &&
+    pickup.trim() !== "" &&
+    dropoff.trim() !== "" &&
+    passengers.trim() !== "";
 
   const handleQuickBook = () => {
     // Pasar los datos al formulario completo
@@ -44,10 +139,15 @@ export function CompactBookingForm({
             <select
               value={pickup}
               onChange={(e) => setPickup(e.target.value)}
+              disabled={
+                isLoadingLocations || compactLocationOptions.length === 0
+              }
               className="w-full px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
             >
-              <option value="">{t.hero.selectPickup}</option>
-              {COMPACT_LOCATION_OPTIONS.map((location) => (
+              <option value="">
+                {isLoadingLocations ? "Loading..." : t.hero.selectPickup}
+              </option>
+              {compactLocationOptions.map((location) => (
                 <option key={location.code} value={location.code}>
                   {location.label}
                 </option>
@@ -81,10 +181,15 @@ export function CompactBookingForm({
             <select
               value={dropoff}
               onChange={(e) => setDropoff(e.target.value)}
+              disabled={
+                isLoadingLocations || compactLocationOptions.length === 0
+              }
               className="w-full px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
             >
-              <option value="">{t.hero.selectDropoff}</option>
-              {COMPACT_LOCATION_OPTIONS.map((location) => (
+              <option value="">
+                {isLoadingLocations ? "Loading..." : t.hero.selectDropoff}
+              </option>
+              {compactLocationOptions.map((location) => (
                 <option key={location.code} value={location.code}>
                   {location.label}
                 </option>
@@ -148,6 +253,7 @@ export function CompactBookingForm({
         <div className="w-full lg:w-auto lg:pt-[1.625rem]">
           <Button
             onClick={handleQuickBook}
+            disabled={!canQuickBook}
             className="silk-button w-full lg:w-auto px-8 py-3 text-sm font-bold whitespace-nowrap group shadow-gold-glow hover:shadow-gold-glow-strong"
           >
             {t.hero.getInstantQuote}
