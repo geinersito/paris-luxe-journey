@@ -25,8 +25,10 @@ Detailed product notes can continue in `docs/PLAN_VIVO_MEJORAS_UI.md`, but execu
 | UX-VAL-01 | P1 | R0 | UX | Disable CTA until valid + inline errors after submit attempt | DONE | [#31](https://github.com/geinersito/paris-luxe-journey/pull/31) | Inline errors for date/time/pax |
 | UX-VAL-02 | P1 | R0 | UX | Inline error when `pickup === dropoff` | DONE | [#32](https://github.com/geinersito/paris-luxe-journey/pull/32) | Specific message shown |
 | UX-ZTOK-01 | P1 | R0 | UI System | Z-index token system (`nav/overlay/floating/toast`) | DONE | [#33](https://github.com/geinersito/paris-luxe-journey/pull/33) | Tokens documented and applied |
-| FLOW-DETAILS-SS-01 | P1 | R1 | Flow | Make `/booking/details` refresh-safe via session snapshot (TTL + cleanup) | DOING | [#34](https://github.com/geinersito/paris-luxe-journey/pull/34) | Requires smoke A/B/C/D + no sensitive data |
-| DOCS-SSOT-01 | P1 | R0 | Governance | Install SSOT plan + status dashboard + mandatory PR traceability | DOING | [#35](https://github.com/geinersito/paris-luxe-journey/pull/35) | Supervisor + status + SSOT alignment |
+| FLOW-DETAILS-SS-01 | P1 | R1 | Flow | Make `/booking/details` refresh-safe via session snapshot (TTL + cleanup) | DONE | [#34](https://github.com/geinersito/paris-luxe-journey/pull/34) / `8e00b02` | Smoke A/B/C/D + security + precedence validated |
+| DOCS-SSOT-01 | P1 | R0 | Governance | Install SSOT plan + status dashboard + mandatory PR traceability | DONE | [#35](https://github.com/geinersito/paris-luxe-journey/pull/35) / `feb13f7` | Supervisor + status + SSOT alignment |
+| PR-U1f | P1 | R1 | Navigation | Top-nav coherence + dead-page protection | TODO | TBD | 100% links top-nav with useful target or explicit redirect |
+| PR-U1g | P1 | R1 | Navigation | Separate `Hourly` intent from `/booking` wizard | TODO | TBD | `Hourly` must not end in airport-transfer wizard |
 
 ## Risk Gates (DoD by Risk)
 

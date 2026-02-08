@@ -12,32 +12,22 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `372fce2`
+- SHA: `8e00b02`
 - Last updated: `2026-02-08`
 
 ## Ultimos PRs mergeados en main
 
-1. `#33` - Stack normalization de z-index tokens (`372fce2`)
-2. `#32` - Error inline especifico para `pickup === dropoff` (`f177a96`)
-3. `#31` - CTA disabled hasta formulario valido + errores inline (`bd21e37`)
+1. `#34` - Details refresh-safe via session snapshot (`8e00b02`)
+2. `#35` - Plan SSOT + status dashboard + PR governance (`feb13f7`)
+3. `#33` - Stack normalization de z-index tokens (`372fce2`)
 
 ## Ahora en curso
 
-- `PR #34` (`ux-details-sessionstorage-refresh-safe`)
-- ID plan: `FLOW-DETAILS-SS-01`
-- Risk class: `R1`
-- Estado: pending merge review
-- Gate R1:
-  - `A)` Happy path ✅
-  - `B)` Refresh details ✅
-  - `C)` TTL expiry redirect ✅
-  - `D)` Back/cancel consistency ✅
-  - Security (`no sensitive data persisted`) ✅
-  - Precedence (`state > session > redirect`) ✅
+- Ningun item en ejecucion. Listo para iniciar siguiente ID del SSOT.
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. `DOCS-SSOT-01` - anclar SSOT backlog + status + gobernanza obligatoria
+1. `OPS-MIG-01` - reconcile Supabase migrations (Remote = SSOT)
 2. `PR-U1f` - top-nav coherence + dead-page protection
 3. `PR-U1g` - separar `Hourly` del wizard `/booking`
 
