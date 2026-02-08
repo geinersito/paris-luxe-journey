@@ -19,7 +19,7 @@ Detailed product notes can continue in `docs/PLAN_VIVO_MEJORAS_UI.md`, but execu
 
 | ID | Priority | Risk | Area | Description | Status | PR / Commit | Notes / DoD |
 |---|---|---|---|---|---|---|---|
-| OPS-MIG-01 | P0 | R1 | Ops | Reconcile Supabase migrations (Remote = SSOT) to unblock db push | DOING | [#28](https://github.com/geinersito/paris-luxe-journey/pull/28) | Evidence pack + runbook ready; pending merge |
+| OPS-MIG-01 | P0 | R1 | Ops | Reconcile Supabase migrations (Remote = SSOT) to unblock db push | DONE | [#28](https://github.com/geinersito/paris-luxe-journey/pull/28) / `e34ab9b` | Remote SSOT imported; local orphaned quarantined; evidence + runbook merged |
 | UX-DT-01 | P0 | R0 | UX | Fix Date/Time popovers inside modal (z-layer) | DONE | [#29](https://github.com/geinersito/paris-luxe-journey/pull/29) | Verified in modal |
 | FLOW-NAV-01 | P0 | R1 | Flow | Prevent fixed-price submit state reset / double navigation | DONE | [#30](https://github.com/geinersito/paris-luxe-journey/pull/30) | Ends in `/booking/details` reliably |
 | UX-VAL-01 | P1 | R0 | UX | Disable CTA until valid + inline errors after submit attempt | DONE | [#31](https://github.com/geinersito/paris-luxe-journey/pull/31) | Inline errors for date/time/pax |

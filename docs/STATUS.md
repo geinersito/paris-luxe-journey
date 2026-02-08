@@ -12,18 +12,18 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `8e00b02`
+- SHA: `e34ab9b`
 - Last updated: `2026-02-08`
 
 ## Ultimos PRs mergeados en main
 
-1. `#34` - Details refresh-safe via session snapshot (`8e00b02`)
-2. `#35` - Plan SSOT + status dashboard + PR governance (`feb13f7`)
-3. `#33` - Stack normalization de z-index tokens (`372fce2`)
+1. `#28` - Reconcile Supabase migration history (Remote = SSOT) (`e34ab9b`)
+2. `#36` - Close FLOW-DETAILS-SS-01 and refresh STATUS (`1900b18`)
+3. `#34` - Details refresh-safe via session snapshot (`8e00b02`)
 
 ## Ahora en curso
 
-- `OPS-MIG-01` - reconcile Supabase migrations (Remote = SSOT) en PR abierto [#28](https://github.com/geinersito/paris-luxe-journey/pull/28)
+- Ningun item en ejecucion. Listo para iniciar siguiente ID del SSOT.
 
 ## Siguientes 3 items del plan (priorizados)
 
