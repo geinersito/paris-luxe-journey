@@ -14,6 +14,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 - Branch: `main`
 - SHA: `74ec0b5`
 - Last updated: `2026-02-08`
+- Current working branch: `nav-hourly-01`
 
 ## Ultimos PRs mergeados en main
 
@@ -23,7 +24,13 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- Ningun item en ejecucion. Listo para iniciar siguiente ID del SSOT.
+- `NAV-HOURLY-01` - Separating Hourly intent from `/booking` wizard (PR #39, branch `nav-hourly-01`)
+  - ✅ Created `/hourly/quote` page with `intent=hourly` guard
+  - ✅ Updated Hourly CTAs to route to `/hourly/quote?intent=hourly`
+  - ✅ Added guard in `/booking` to redirect `intent=hourly` to `/hourly`
+  - ✅ Verified sessionStorage separation (hourly uses contact flow, no booking snapshot)
+  - ⏳ Gates: type-check, build, eslint pending
+  - ⏳ Manual smoke R1 (A/B/C/D) pending
 
 ## Siguientes 3 items del plan (priorizados)
 
