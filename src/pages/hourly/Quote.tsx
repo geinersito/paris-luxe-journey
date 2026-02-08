@@ -8,6 +8,8 @@ export default function HourlyQuote() {
   const [searchParams] = useSearchParams();
   const intent = searchParams.get("intent");
 
+  // Guard: intentionally strict to prevent hourly intent leakage
+  // Only allow access when intent=hourly is explicitly set
   useEffect(() => {
     if (intent !== "hourly") {
       navigate("/hourly", { replace: true });

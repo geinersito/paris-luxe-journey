@@ -9,12 +9,15 @@ const BookingPage = () => {
   const [searchParams] = useSearchParams();
   const intent = searchParams.get("intent");
 
+  // Guard: prevent hourly intent from entering transfer wizard
+  // Redirect to /hourly if intent=hourly is detected
   useEffect(() => {
     if (intent === "hourly") {
       navigate("/hourly", { replace: true });
     }
   }, [intent, navigate]);
 
+  // Prevent flash while redirecting
   if (intent === "hourly") {
     return null;
   }
