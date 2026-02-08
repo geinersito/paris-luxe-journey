@@ -53,7 +53,7 @@ export default function HourlyService() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button
                 size="lg"
-                onClick={() => navigate("/#contact")}
+                onClick={() => navigate("/hourly/quote?intent=hourly")}
                 className="bg-secondary hover:bg-secondary/90 text-white px-8 py-6 text-lg font-semibold shadow-xl"
               >
                 Request an Hourly Quote
@@ -207,7 +207,7 @@ export default function HourlyService() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
                   size="lg"
-                  onClick={() => navigate("/#contact")}
+                  onClick={() => navigate("/hourly/quote?intent=hourly")}
                   className="bg-secondary hover:bg-secondary/90 text-white px-8 py-4 text-lg font-semibold"
                 >
                   Get a Quote
