@@ -38,7 +38,7 @@ export const DateTimeInputs = ({
   showReturnTimeError = false,
 }: DateTimeInputsProps) => {
   const { t, language } = useLanguage();
-  const MODAL_POPOVER_Z_CLASS = "z-[10050]";
+  const MODAL_POPOVER_Z_CLASS = "z-floating";
 
   const getLocale = () => {
     switch (language) {
