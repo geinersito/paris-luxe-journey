@@ -27,7 +27,7 @@ Detailed product notes can continue in `docs/PLAN_VIVO_MEJORAS_UI.md`, but execu
 | UX-ZTOK-01 | P1 | R0 | UI System | Z-index token system (`nav/overlay/floating/toast`) | DONE | [#33](https://github.com/geinersito/paris-luxe-journey/pull/33) | Tokens documented and applied |
 | FLOW-DETAILS-SS-01 | P1 | R1 | Flow | Make `/booking/details` refresh-safe via session snapshot (TTL + cleanup) | DONE | [#34](https://github.com/geinersito/paris-luxe-journey/pull/34) / `8e00b02` | Smoke A/B/C/D + security + precedence validated |
 | DOCS-SSOT-01 | P1 | R0 | Governance | Install SSOT plan + status dashboard + mandatory PR traceability | DONE | [#35](https://github.com/geinersito/paris-luxe-journey/pull/35) / `feb13f7` | Supervisor + status + SSOT alignment |
-| NAV-COHERENCE-01 | P1 | R1 | Navigation | Top-nav coherence + dead-page protection | DOING | [#38](https://github.com/geinersito/paris-luxe-journey/pull/38) | Legacy ID: `PR-U1f` |
+| NAV-COHERENCE-01 | P1 | R1 | Navigation | Top-nav coherence + dead-page protection | DONE | [#38](https://github.com/geinersito/paris-luxe-journey/pull/38) / `74ec0b5` | Global wildcard fallback + dedicated 404 with CTA |
 | NAV-HOURLY-01 | P1 | R1 | Navigation | Separate `Hourly` intent from `/booking` wizard | TODO | TBD | Legacy ID: `PR-U1g` |
 | UX-HEADER-I18N-01 | P1 | R0 | Header | Keep language dropdown crisp and navbar stable across locales | TODO | TBD | Legacy IDs: `PR-U1k` and `PR-U1l` |
 
