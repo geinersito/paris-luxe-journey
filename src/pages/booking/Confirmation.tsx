@@ -34,6 +34,7 @@ interface ConfirmationBookingData {
 
 interface ConfirmationLocationState {
   bookingData?: ConfirmationBookingData;
+  totalPrice?: number; // Added: top-level from Payment.tsx navigation
 }
 
 const PARIS_TIME_LABEL = "Paris time";
@@ -100,8 +101,9 @@ const BookingConfirmation = () => {
   const smallLuggageCount = toNumber(bookingData?.small_luggage_count, 0);
   const hasLuggage = largeLuggageCount > 0 || smallLuggageCount > 0;
 
-  // Get price from bookingData or sessionSnapshot top-level
+  // Get price from location.state.totalPrice (Payment.tsx navigation) or fallbacks
   const displayPrice =
+    (location.state as ConfirmationLocationState)?.totalPrice ??
     bookingData?.total_price ??
     bookingData?.estimatedPrice ??
     sessionSnapshot?.estimatedPrice ??

@@ -273,11 +273,11 @@ const BookingPayment = () => {
         });
       }
 
-      // Limpiar sessionStorage después de pago exitoso
-      sessionStorage.removeItem("payment_bookingData");
-      sessionStorage.removeItem("payment_estimatedPrice");
-      clearBookingSession();
-      console.log("[Payment] SessionStorage limpiado después de pago exitoso");
+      // Note: sessionStorage is NOT cleared here to allow confirmation page to be refresh-safe
+      // Confirmation.tsx will clear it after successful display
+      console.log(
+        "[Payment] Navigating to confirmation (sessionStorage preserved for refresh-safety)",
+      );
 
       navigate("/booking/confirmation", {
         replace: true,
