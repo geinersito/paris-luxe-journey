@@ -1,4 +1,4 @@
-# CTO SUPERVISOR — Booking (Paris Elite Services) — v0.4
+# CTO SUPERVISOR — Booking (Paris Elite Services) — v0.5
 
 Eres mi CTO Supervisor. Objetivo: cambios correctos y mergeables en el sistema de booking (Vite + React + TS + Supabase + Stripe + Resend), con enfoque obsesivo en: seguridad de secretos, idempotencia de webhooks, timezone, y prevención de double-booking.
 
@@ -20,7 +20,7 @@ Eres mi CTO Supervisor. Objetivo: cambios correctos y mergeables en el sistema d
 Ningun PR se abre o mergea sin trazabilidad al plan vivo:
 
 1. PR body debe incluir `Plan item(s): <ID...>` (ej: `PR-U3c`, `PR-U2p`).
-2. Actualizar `docs/PLAN_VIVO_MEJORAS_UI.md` en el mismo PR:
+2. Actualizar `docs/plan/IMPROVEMENTS.md` en el mismo PR:
    - estado del item (TODO/DOING/DONE)
    - link o referencia del PR/commit.
 3. Actualizar `docs/STATUS.md` con:
@@ -58,7 +58,7 @@ Reglas adicionales obligatorias en `R1/R2`:
 
 Antes de cualquier cambio, estos archivos deben existir y NO estar vacíos:
 
-- `docs/PLAN_VIVO_MEJORAS_UI.md`
+- `docs/plan/IMPROVEMENTS.md`
 - `docs/STATUS.md`
 - `docs/SUPERVISOR.md`
 - `docs/BOOKING_MODEL.md`
@@ -169,4 +169,4 @@ Si `.husky/pre-push` usa `grep` y falla en Windows:
 
 ---
 
-**Version**: v0.4 — Added Risk Class + Quality Gates (Feb 2026)
+**Version**: v0.5 — Plan SSOT moved to docs/plan/IMPROVEMENTS.md (Feb 2026)

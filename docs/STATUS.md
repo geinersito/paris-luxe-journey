@@ -4,7 +4,8 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## SSOT
 
-- Plan vivo: `docs/PLAN_VIVO_MEJORAS_UI.md`
+- Plan backlog (canonical): `docs/plan/IMPROVEMENTS.md`
+- Plan narrativo detallado: `docs/PLAN_VIVO_MEJORAS_UI.md`
 - Gobernanza: `docs/SUPERVISOR.md`
 - Estado operativo: `docs/STATUS.md`
 
@@ -12,6 +13,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 - Branch: `main`
 - SHA: `372fce2`
+- Last updated: `2026-02-08`
 
 ## Ultimos PRs mergeados en main
 
@@ -35,7 +37,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. `PR-Doc1` - anclar trazabilidad Plan Vivo + STATUS en gobernanza
+1. `DOCS-SSOT-01` - anclar SSOT backlog + status + gobernanza obligatoria
 2. `PR-U1f` - top-nav coherence + dead-page protection
 3. `PR-U1g` - separar `Hourly` del wizard `/booking`
 
