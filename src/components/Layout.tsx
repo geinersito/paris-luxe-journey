@@ -12,7 +12,7 @@ export function Layout() {
     <div className="min-h-screen flex flex-col bg-background text-foreground antialiased transition-colors duration-300">
       <HashScroll />
       <Navbar />
-      <main className="flex-1 pt-16">
+      <main className="flex-1 pt-16 pb-20 lg:pb-0">
         <Outlet />
       </main>
       <Footer />
