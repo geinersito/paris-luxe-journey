@@ -142,7 +142,7 @@ export function CompactBookingForm({
               disabled={
                 isLoadingLocations || compactLocationOptions.length === 0
               }
-              className="w-full px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
+              className="w-full truncate px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
             >
               <option value="">
                 {isLoadingLocations ? "Loading..." : t.hero.selectPickup}
@@ -184,7 +184,7 @@ export function CompactBookingForm({
               disabled={
                 isLoadingLocations || compactLocationOptions.length === 0
               }
-              className="w-full px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
+              className="w-full truncate px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
             >
               <option value="">
                 {isLoadingLocations ? "Loading..." : t.hero.selectDropoff}
@@ -223,7 +223,7 @@ export function CompactBookingForm({
             <select
               value={passengers}
               onChange={(e) => setPassengers(e.target.value)}
-              className="w-full px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
+              className="w-full truncate px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
             >
               {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
                 <option key={num} value={num}>

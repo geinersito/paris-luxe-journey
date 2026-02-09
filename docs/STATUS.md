@@ -23,7 +23,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- Nada activo — próximo item por iniciar
+- **FIX-I18N-SELECT-PLACEHOLDERS-01** (P2/R0) - Shorten hero select placeholders + truncate safety
 
 ## Siguientes 3 items del plan (priorizados)
 
