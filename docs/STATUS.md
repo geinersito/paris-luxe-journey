@@ -12,24 +12,24 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `fe1ac10`
+- SHA: `646fe9d`
 - Last updated: `2026-02-08`
 
 ## Ultimos PRs mergeados en main
 
-1. `#49` - 48px touch targets on Button/Input/Select (UX-TOUCHTARGETS-48PX-01) (`fe1ac10`)
-2. `#48` - Fluid typography tokens + dead CSS cleanup (UX-TYPOGRAPHY-01) (`afcdaf7`)
-3. `#47` - Prefill WhatsApp/email CTAs (UX-EVENTS-CTA-PREFILL-01) (`331907f`)
+1. `#50` - WCAG AA contrast pass on color tokens (UX-CONTRAST-AA-01) (`646fe9d`)
+2. `#49` - 48px touch targets on Button/Input/Select (UX-TOUCHTARGETS-48PX-01) (`fe1ac10`)
+3. `#48` - Fluid typography tokens + dead CSS cleanup (UX-TYPOGRAPHY-01) (`afcdaf7`)
 
 ## Ahora en curso
 
-- **UX-CONTRAST-AA-01** (P2/R0) - Contrast AA pass — branch `ux/contrast-aa-01`
+- (ninguno)
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **UX-CONTRAST-AA-01** (P2/R0) - Contrast AA pass
-2. **UX-HOME-HERO-UBERLIKE-01** (P2/R0) - Home hero Uber-like + larger form
-3. **UX-HOME-SIMPLIFY-SECTIONS-01** (P2/R0) - Simplify landing to 4-5 sections
+1. **UX-HOME-HERO-UBERLIKE-01** (P2/R0) - Home hero Uber-like + larger form
+2. **UX-HOME-SIMPLIFY-SECTIONS-01** (P2/R0) - Simplify landing to 4-5 sections
+3. **UX-HOME-TRUST-LAYER-01** (P2/R0) - Trust layer + supporting CTA
 
 ## Regla de actualizacion
 
