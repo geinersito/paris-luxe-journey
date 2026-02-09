@@ -15,6 +15,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { buildEventWhatsAppUrl } from "@/lib/eventsPrefill";
 
 export function EventsFeed({
   range,
@@ -167,9 +168,7 @@ export function EventsFeed({
               <div className="flex flex-col sm:flex-row gap-3 pt-2">
                 <Button asChild className="flex-1 silk-button">
                   <a
-                    href={`https://wa.me/33668251102?text=${encodeURIComponent(
-                      `Hi, I'm interested in a ride to: ${event.title[language]}${event.venueName?.[language] ? ` at ${event.venueName[language]}` : ""}${event.startAt ? ` on ${formatDate(event.startAt)}` : ""}. Can you help me with a quote?`,
-                    )}`}
+                    href={buildEventWhatsAppUrl(event, language, formatDate)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2"
