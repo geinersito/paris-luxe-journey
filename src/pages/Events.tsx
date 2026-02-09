@@ -8,29 +8,66 @@ import {
   buildGenericWhatsAppUrl,
   buildGenericEmailUrl,
 } from "@/lib/eventsPrefill";
+import { getSiteOrigin } from "@/lib/seo/site";
 
 export default function Events() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const language = i18n.language;
 
+  const siteOrigin = getSiteOrigin();
+  const canonicalUrl = `${siteOrigin}/events`;
+  const pageTitle =
+    t("events.pageTitle") || "Events in Paris | Paris Luxe Journey";
+  const pageDescription =
+    t("events.pageDescription") ||
+    "Discover the best events, concerts, exhibitions and activities happening in Paris this week and month. Book your luxury transfer to any event.";
+
+  const webPageJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: pageTitle,
+    description: pageDescription,
+    url: canonicalUrl,
+    inLanguage: language,
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Paris Luxe Journey",
+      url: siteOrigin,
+    },
+  };
+
   return (
     <>
       <Helmet>
-        <title>
-          {t("events.pageTitle") || "Events in Paris | Paris Luxe Journey"}
-        </title>
-        <meta
-          name="description"
-          content={
-            t("events.pageDescription") ||
-            "Discover the best events, concerts, exhibitions and activities happening in Paris this week and month. Book your luxury transfer to any event."
-          }
-        />
+        <title>{pageTitle}</title>
+        <meta name="description" content={pageDescription} />
         <meta
           name="keywords"
           content="Paris events, concerts Paris, exhibitions Paris, Paris activities, events this week Paris, events this month Paris"
         />
+
+        {/* Canonical */}
+        <link rel="canonical" href={canonicalUrl} />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={`${siteOrigin}/og-image.jpg`} />
+
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={`${siteOrigin}/og-image.jpg`} />
+
+        {/* JSON-LD */}
+        <script type="application/ld+json">
+          {JSON.stringify(webPageJsonLd)}
+        </script>
       </Helmet>
 
       <div className="min-h-screen bg-background">

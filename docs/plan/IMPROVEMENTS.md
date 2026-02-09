@@ -58,6 +58,14 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | UX-BOOKING-PAYMENT-OPTIMIZE-01 | PR-U3b | P2 | R0 | DONE | Optimize /booking/payment | [#57](https://github.com/geinersito/paris-luxe-journey/pull/57) / `049e252` | 2-col layout (form + sticky summary), i18n all hardcoded ES strings, trust microcopy, consistent with Details redesign |
 | FLOW-BOOKING-CONFIRMATION-ROBUST-01 | PR-U3c | P2 | R1 | DONE | Robustify /booking/confirmation | [#43](https://github.com/geinersito/paris-luxe-journey/pull/43) / `4541326` | Refresh/back behavior via sessionStorage fallback + price display fix |
 
+### SEO / Hygiene
+
+| ID | Legacy | Priority | Risk | Status | Title | Evidence (PR/Commit) | Notes |
+|---|---|---:|:---:|:---:|---|---|---|
+| UX-SEO-METADATA-01 | PR-SEO1 | P2 | R0 | DOING | Events + BlogIndex meta/canonical/OG + JSON-LD |  | Localized title/desc, canonical, OG, JSON-LD for /events and /blog |
+| UX-SEO-SITEMAP-ROBOTS-01 | PR-SEO3 | P2 | R0 | TODO | Automate sitemap.xml + robots.txt in build |  | Connect existing generate-sitemap script to build, fix route prefixes |
+| UX-LOCATION-FALLBACKS-01 | PR-U6A | P2 | R0 | TODO | Centralize location fallbacks config |  | Single source for booking locations, eliminate 3x duplication |
+
 ## Risk Gates (DoD by Risk)
 
 - `R0` (UI-only):
