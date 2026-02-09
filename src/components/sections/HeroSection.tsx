@@ -2,8 +2,6 @@ import React from "react";
 import BookingForm from "../BookingForm";
 import { CompactBookingForm } from "../booking/CompactBookingForm";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { TrustBadge } from "@/components/ui/trust-badge";
-import { Luggage, Shield, Clock } from "lucide-react";
 
 // Optimized image URLs with different sizes for responsive loading
 const HERO_IMAGE_BASE =
@@ -73,8 +71,8 @@ export default function HeroSection() {
   return (
     <section
       id="booking"
-      className="relative flex items-center justify-center py-16 md:py-20 lg:py-24 overflow-hidden"
-      style={{ minHeight: "600px" }}
+      className="relative flex items-center justify-center py-12 md:py-16 lg:py-24 overflow-hidden"
+      style={{ minHeight: "540px" }}
     >
       {/* Optimized background image with responsive srcset and parallax */}
       <div className="absolute inset-0 z-0">
@@ -105,16 +103,15 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 z-10" />
 
       <div className="container relative z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="flex flex-col items-center text-center">
-          {/* Main Content - Centered with Staggered Animations */}
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
+          {/* Left column — headline + subtitle */}
           <div
-            className={`max-w-5xl w-full transition-all duration-1000 ${
+            className={`lg:col-span-6 text-center lg:text-left transition-all duration-1000 ${
               isImageLoaded
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
             }`}
           >
-            {/* Título principal conversion-first */}
             <h1
               className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-4 leading-tight text-white text-shadow-gold animate-fadeInUp"
               style={{
@@ -127,9 +124,8 @@ export default function HeroSection() {
               Airport Transfers & Hourly Chauffeur
             </h1>
 
-            {/* Subtítulo conversion-first */}
             <p
-              className="text-base md:text-lg lg:text-xl text-white/95 font-medium max-w-3xl mx-auto leading-relaxed mb-6 animate-fadeInUp"
+              className="text-base md:text-lg lg:text-xl text-white/95 font-medium max-w-3xl mx-auto lg:mx-0 leading-relaxed mb-0 animate-fadeInUp"
               style={{
                 animationDelay: "0.4s",
                 animationFillMode: "both",
@@ -138,44 +134,19 @@ export default function HeroSection() {
             >
               Fixed Price · 24/7 Service · Flight Tracking · Meet & Greet
             </p>
+          </div>
 
-            {/* Compact Booking Form con animación */}
-            <div
-              className="mt-6 mb-5 animate-scaleIn"
-              style={{ animationDelay: "0.6s", animationFillMode: "both" }}
-            >
-              <CompactBookingForm
-                onOpenFullForm={(data) => {
-                  setPrefilledData(data);
-                  setShowBookingModal(true);
-                }}
-              />
-            </div>
-
-            {/* Trust Badges - Equipaje incluido */}
-            <div
-              className="mt-5 flex flex-wrap justify-center gap-3 md:gap-4 animate-fadeInUp"
-              style={{ animationDelay: "0.8s", animationFillMode: "both" }}
-            >
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20">
-                <Luggage className="w-4 h-4 text-primary-200" />
-                <span className="text-white/95 text-xs md:text-sm font-medium">
-                  1 Luggage/Pax Included
-                </span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20">
-                <Shield className="w-4 h-4 text-primary-200" />
-                <span className="text-white/95 text-xs md:text-sm font-medium">
-                  Licensed & Insured
-                </span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md px-3 py-1.5 rounded-lg border border-white/20">
-                <Clock className="w-4 h-4 text-primary-200" />
-                <span className="text-white/95 text-xs md:text-sm font-medium">
-                  Free Cancellation 24h
-                </span>
-              </div>
-            </div>
+          {/* Right column — booking widget */}
+          <div
+            className="lg:col-span-6 animate-scaleIn"
+            style={{ animationDelay: "0.6s", animationFillMode: "both" }}
+          >
+            <CompactBookingForm
+              onOpenFullForm={(data) => {
+                setPrefilledData(data);
+                setShowBookingModal(true);
+              }}
+            />
           </div>
         </div>
       </div>
