@@ -23,7 +23,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- (ninguno)
+- **UX-BOOKING-PAYMENT-OPTIMIZE-01** (P2/R0) - Optimize /booking/payment
 
 ## Siguientes 3 items del plan (priorizados)
 

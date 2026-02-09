@@ -262,6 +262,33 @@ export const fr: Translation = {
     payment: {
       title: "Détails du Paiement",
       cardDetails: "Détails de la Carte",
+      securePaymentNotice:
+        "Votre paiement sera traité de manière sécurisée. Vous recevrez un email de confirmation après la réservation.",
+      sessionExpired: "Session expirée",
+      sessionExpiredDesc:
+        "Veuillez remplir le formulaire de réservation à nouveau.",
+      loadingLocations: "Chargement des données de localisation...",
+      locationError: "Erreur lors du chargement des données",
+      paymentDetails: "Détails du Paiement",
+      secureCardIntro:
+        "Continuez pour saisir vos coordonnées bancaires de manière sécurisée.",
+      acceptTerms: "J'accepte les conditions générales du service",
+      confirmAndPay: "Confirmer et Payer",
+      pay: "Payer",
+      retryPayment: "Réessayer le paiement",
+      fixDetails: "Corriger les données",
+      processingPayment: "Traitement du paiement...",
+      bookingConfirmed: "Réservation confirmée !",
+      bookingConfirmedDesc:
+        "Votre réservation a été confirmée. Nous vous avons envoyé un email de confirmation.",
+      emailWarning:
+        "Réservation confirmée mais un problème est survenu lors de l'envoi des emails de confirmation.",
+      finalizationError:
+        "Une erreur est survenue lors de la finalisation de la réservation.",
+      paymentError: "Erreur de paiement",
+      incompleteLocationData:
+        "Données de localisation incomplètes. Veuillez réessayer.",
+      paymentSuccessRedirect: "Paiement effectué ! Redirection...",
     },
     submit: "Réserver",
     submitButton: "Voir Votre Prix Fixe",
@@ -290,8 +317,12 @@ export const fr: Translation = {
       total: "Prix Total",
       estimated: "Prix Estimé",
       distance: "Distance estimée",
-      basePrice: "Prix de base à partir de",
+      basePrice: "Prix de base",
       roundTripIncluded: "*Prix incluant l'aller-retour",
+      luggageSurcharge: "Bagages supplémentaires",
+      passengerSurcharge: "Supplément groupe (4–7 pax)",
+      luggageIncluded: "Inclus : 1 grand + 1 petit par passager",
+      selectedLuggage: "Bagages sélectionnés",
     },
     success: {
       title: "Réservation Confirmée !",

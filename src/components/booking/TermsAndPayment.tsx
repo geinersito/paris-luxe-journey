@@ -1,14 +1,14 @@
-
-import { Card } from "../ui/card";
 import { Button } from "../ui/button";
 import { Checkbox } from "../ui/checkbox";
 import { Label } from "../ui/label";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { ArrowRight, Lock } from "lucide-react";
 
 interface TermsAndPaymentProps {
   acceptedTerms: boolean;
   setAcceptedTerms: (accepted: boolean) => void;
   isProcessing: boolean;
-  isLocationsLoading?: boolean; // Añadir prop para indicar si las ubicaciones se están cargando
+  isLocationsLoading?: boolean;
   onSubmit: (e: React.FormEvent) => void;
   onBack: () => void;
 }
@@ -17,46 +17,57 @@ const TermsAndPayment = ({
   acceptedTerms,
   setAcceptedTerms,
   isProcessing,
-  isLocationsLoading = false, // Valor por defecto para compatibilidad con código existente
+  isLocationsLoading = false,
   onSubmit,
-  onBack
+  onBack,
 }: TermsAndPaymentProps) => {
+  const { t } = useLanguage();
+
   return (
     <form onSubmit={onSubmit} className="space-y-6">
-      <div className="space-y-4">
-        <Card className="p-6">
-          <h3 className="font-semibold mb-4">Detalles del Pago</h3>
-          <p className="text-sm text-muted-foreground mb-4">
-            Al continuar, podrás introducir los datos de tu tarjeta de forma segura.
-          </p>
-        </Card>
-        
-        <div className="flex items-start space-x-2">
-          <Checkbox 
-            id="terms" 
+      <div className="rounded-2xl border border-border bg-white p-5 md:p-6 shadow-sm space-y-4">
+        <div className="flex items-center gap-2">
+          <Lock className="w-4 h-4 text-primary" />
+          <h3 className="font-semibold">{t.booking.payment.paymentDetails}</h3>
+        </div>
+        <p className="text-sm text-muted-foreground">
+          {t.booking.payment.secureCardIntro}
+        </p>
+
+        <div className="flex items-start space-x-2 pt-2">
+          <Checkbox
+            id="terms"
             checked={acceptedTerms}
             onCheckedChange={(checked) => setAcceptedTerms(checked as boolean)}
           />
           <Label htmlFor="terms" className="text-sm">
-            Acepto los términos y condiciones del servicio
+            {t.booking.payment.acceptTerms}
           </Label>
         </div>
       </div>
 
-      <div className="flex justify-between pt-6">
+      <div className="flex justify-between pt-2">
         <Button
           type="button"
           variant="outline"
           onClick={onBack}
+          disabled={isProcessing}
         >
-          Volver
+          {t.common.back}
         </Button>
-        <Button type="submit" disabled={!acceptedTerms || isProcessing || isLocationsLoading}>
-          {isProcessing 
-            ? "Procesando..." 
-            : isLocationsLoading 
-              ? "Cargando ubicaciones..." 
-              : "Continuar"}
+        <Button
+          type="submit"
+          disabled={!acceptedTerms || isProcessing || isLocationsLoading}
+          className="silk-button gap-2"
+        >
+          {isProcessing
+            ? t.common.processing
+            : isLocationsLoading
+              ? t.booking.payment.loadingLocations
+              : t.booking.payment.confirmAndPay}
+          {!isProcessing && !isLocationsLoading && (
+            <ArrowRight className="w-4 h-4" />
+          )}
         </Button>
       </div>
     </form>

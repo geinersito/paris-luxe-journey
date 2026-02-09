@@ -189,12 +189,42 @@ export const pt: Translation = {
       total: "Preço Total",
       estimated: "Preço Estimado",
       distance: "Distância estimada",
-      basePrice: "Preço base a partir de",
+      basePrice: "Preço base",
       roundTripIncluded: "*Preço inclui ida e volta",
+      luggageSurcharge: "Bagagem extra",
+      passengerSurcharge: "Suplemento grupo (4–7 pax)",
+      luggageIncluded: "Incluído: 1 grande + 1 pequena por passageiro",
+      selectedLuggage: "Bagagem selecionada",
     },
     payment: {
       title: "Detalhes do Pagamento",
       cardDetails: "Detalhes do Cartão",
+      securePaymentNotice:
+        "O seu pagamento será processado de forma segura. Receberá um email de confirmação após concluir a reserva.",
+      sessionExpired: "Sessão expirada",
+      sessionExpiredDesc:
+        "Por favor, preencha o formulário de reserva novamente.",
+      loadingLocations: "A carregar dados de localização...",
+      locationError: "Erro ao carregar dados de localização",
+      paymentDetails: "Detalhes do Pagamento",
+      secureCardIntro:
+        "Continue para introduzir os dados do seu cartão de forma segura.",
+      acceptTerms: "Aceito os termos e condições do serviço",
+      confirmAndPay: "Confirmar e Pagar",
+      pay: "Pagar",
+      retryPayment: "Tentar novamente",
+      fixDetails: "Corrigir dados",
+      processingPayment: "A processar pagamento...",
+      bookingConfirmed: "Reserva confirmada!",
+      bookingConfirmedDesc:
+        "A sua reserva foi confirmada. Enviámos um email de confirmação.",
+      emailWarning:
+        "Reserva confirmada mas houve um problema ao enviar os emails de confirmação.",
+      finalizationError: "Ocorreu um erro ao finalizar a reserva.",
+      paymentError: "Erro no pagamento",
+      incompleteLocationData:
+        "Dados de localização incompletos. Por favor, tente novamente.",
+      paymentSuccessRedirect: "Pagamento concluído! A redirecionar...",
     },
     success: {
       title: "Reserva Confirmada!",

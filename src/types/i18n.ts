@@ -324,6 +324,26 @@ export interface Translation {
     payment: {
       title: string;
       cardDetails: string;
+      securePaymentNotice: string;
+      sessionExpired: string;
+      sessionExpiredDesc: string;
+      loadingLocations: string;
+      locationError: string;
+      paymentDetails: string;
+      secureCardIntro: string;
+      acceptTerms: string;
+      confirmAndPay: string;
+      pay: string;
+      retryPayment: string;
+      fixDetails: string;
+      processingPayment: string;
+      bookingConfirmed: string;
+      bookingConfirmedDesc: string;
+      emailWarning: string;
+      finalizationError: string;
+      paymentError: string;
+      incompleteLocationData: string;
+      paymentSuccessRedirect: string;
     };
     submit: string;
     submitButton?: string;
@@ -351,6 +371,10 @@ export interface Translation {
       distance: string;
       basePrice: string;
       roundTripIncluded: string;
+      luggageSurcharge: string;
+      passengerSurcharge: string;
+      luggageIncluded: string;
+      selectedLuggage: string;
     };
     summary: {
       title: string;

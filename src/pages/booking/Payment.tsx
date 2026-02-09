@@ -2,16 +2,20 @@ import { useEffect, useState, useCallback, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useToast } from "@/hooks/use-toast";
 import BookingProgress from "@/components/booking/BookingProgress";
-import TrustBar from "@/components/TrustBar";
-import { Card } from "@/components/ui/card";
 import { supabase } from "@/integrations/supabase/client";
-import { PaymentSummary } from "@/components/booking/PaymentSummary";
 import { TermsAndPayment } from "@/components/booking/TermsAndPayment";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useLocationDetails } from "@/hooks/booking/useLocationDetails";
 import { StripePaymentForm } from "@/components/booking/StripePaymentForm";
-import { Loader2, AlertCircle } from "lucide-react";
-import { clearBookingSession } from "@/lib/bookingSession";
+import {
+  Loader2,
+  AlertCircle,
+  MapPin,
+  Calendar,
+  Clock,
+  Users,
+  Shield,
+} from "lucide-react";
 
 const BookingPayment = () => {
   const navigate = useNavigate();
@@ -24,7 +28,7 @@ const BookingPayment = () => {
   const [bookingId, setBookingId] = useState<string | null>(null);
   const [paymentId, setPaymentId] = useState<string | null>(null);
 
-  // Intentar recuperar de location.state primero, luego de sessionStorage
+  // Recover from location.state first, then sessionStorage
   const [bookingData, setBookingData] = useState(() => {
     if (location.state?.bookingData) {
       return location.state.bookingData;
@@ -41,14 +45,14 @@ const BookingPayment = () => {
     return saved ? parseFloat(saved) : null;
   });
 
+  const luggageSurcharge = Number(location.state?.luggageSurcharge ?? 0);
+
   const { locationDetails, fetchLocationDetails, isLoading } =
     useLocationDetails();
 
-  // Verificación explícita de que tenemos todos los datos necesarios para proceder con el pago
   const canProceedToPayment = useMemo(() => {
     if (!bookingData) return false;
 
-    // Verificar que tenemos los UUIDs de las ubicaciones, ya sea en bookingData o en locationDetails
     const hasPickupId = !!(
       bookingData.pickupLocationId ||
       (locationDetails && locationDetails.pickupId)
@@ -72,32 +76,26 @@ const BookingPayment = () => {
       throw new Error("Missing booking data or price");
     }
 
-    // Ensure price is normalized and valid
-    // IMPORTANTE: Este precio está en EUROS, la función Edge lo convertirá a CÉNTIMOS para Stripe
+    // Price is in EUROS — the Edge function converts to cents for Stripe
     const normalizedPrice = Math.round(Number(estimatedPrice));
     if (isNaN(normalizedPrice) || normalizedPrice <= 0) {
-      throw new Error("El precio debe ser un número válido mayor que cero");
+      throw new Error("Invalid price");
     }
 
     const pickupDateTime = new Date(`${bookingData.date}T${bookingData.time}`);
 
-    // Intentar obtener los IDs de ubicación de todas las fuentes posibles
     const pickupId =
       bookingData?.pickupLocationId || locationDetails?.pickupId || "";
     const dropoffId =
       bookingData?.dropoffLocationId || locationDetails?.dropoffId || "";
 
-    // Validar que tengamos los IDs (UUIDs) de las ubicaciones
     if (!pickupId || !dropoffId) {
-      throw new Error(
-        "No se pudieron obtener los identificadores de las ubicaciones. Por favor, inténtalo de nuevo.",
-      );
+      throw new Error(t.booking.payment.incompleteLocationData);
     }
 
-    // Convertir valores a su tipo correcto para evitar problemas de validación
     const newBookingData = {
-      pickup_location_id: pickupId, // Usar UUID obtenido de cualquier fuente disponible
-      dropoff_location_id: dropoffId, // Usar UUID obtenido de cualquier fuente disponible
+      pickup_location_id: pickupId,
+      dropoff_location_id: dropoffId,
       pickup_datetime: pickupDateTime.toISOString(),
       passengers_count: Number(bookingData.passengers),
       vehicle_id: bookingData.vehicle_id || "",
@@ -114,13 +112,12 @@ const BookingPayment = () => {
       total_price: normalizedPrice,
     };
 
-    // Validar datos críticos
     if (
       !newBookingData.customer_name ||
       !newBookingData.customer_email ||
       !newBookingData.customer_phone
     ) {
-      throw new Error("Faltan datos del cliente necesarios para el pago");
+      throw new Error(t.booking.errors.requiredFields);
     }
 
     const { data, error } = await supabase.functions.invoke(
@@ -135,7 +132,7 @@ const BookingPayment = () => {
     }
 
     if (!data?.client_secret || !data?.booking_id) {
-      throw new Error("No se recibieron los datos necesarios del servidor");
+      throw new Error(t.booking.errors.paymentIntentError);
     }
 
     setBookingId(data.booking_id);
@@ -147,32 +144,30 @@ const BookingPayment = () => {
     estimatedPrice,
     locationDetails?.pickupId,
     locationDetails?.dropoffId,
+    t,
   ]);
 
   useEffect(() => {
     if (!bookingData || !estimatedPrice) {
-      // Intentar recuperar de sessionStorage una última vez
       const savedBookingData = sessionStorage.getItem("payment_bookingData");
       const savedPrice = sessionStorage.getItem("payment_estimatedPrice");
 
       if (savedBookingData && savedPrice) {
-        console.log("[Payment] Recuperando datos de sessionStorage");
+        console.log("[Payment] Recovering data from sessionStorage");
         setBookingData(JSON.parse(savedBookingData));
         setEstimatedPrice(parseFloat(savedPrice));
         return;
       }
 
-      // Si no hay datos en ningún lado, redirigir
       toast({
-        title: "Sesión expirada",
-        description: "Por favor, completa el formulario de reserva nuevamente.",
+        title: t.booking.payment.sessionExpired,
+        description: t.booking.payment.sessionExpiredDesc,
         variant: "destructive",
       });
       navigate("/booking");
       return;
     }
 
-    // Guardar en sessionStorage para recuperación en caso de reload
     sessionStorage.setItem("payment_bookingData", JSON.stringify(bookingData));
     sessionStorage.setItem("payment_estimatedPrice", estimatedPrice.toString());
 
@@ -191,12 +186,10 @@ const BookingPayment = () => {
       return;
     }
 
-    // Verificación adicional para evitar procesar el pago sin los UUIDs
     if (!canProceedToPayment) {
       toast({
         title: t.common.error,
-        description:
-          "Datos de ubicación incompletos. Por favor, inténtalo nuevamente.",
+        description: t.booking.payment.incompleteLocationData,
         variant: "destructive",
       });
 
@@ -238,8 +231,6 @@ const BookingPayment = () => {
         throw error;
       }
 
-      // Enviar emails de confirmación
-
       const { error: emailError } = await supabase.functions.invoke(
         "send-booking-emails",
         {
@@ -260,21 +251,18 @@ const BookingPayment = () => {
 
       if (emailError) {
         toast({
-          title: "Advertencia",
-          description:
-            "La reserva se ha confirmado pero hubo un problema al enviar los emails de confirmación.",
+          title: t.common.warning,
+          description: t.booking.payment.emailWarning,
           variant: "destructive",
         });
       } else {
         toast({
-          title: "¡Reserva confirmada!",
-          description:
-            "Tu reserva ha sido procesada exitosamente. Hemos enviado un email de confirmación.",
+          title: t.booking.payment.bookingConfirmed,
+          description: t.booking.payment.bookingConfirmedDesc,
         });
       }
 
-      // Note: sessionStorage is NOT cleared here to allow confirmation page to be refresh-safe
-      // Confirmation.tsx will clear it after successful display
+      // sessionStorage is NOT cleared here — Confirmation.tsx handles cleanup
       console.log(
         "[Payment] Navigating to confirmation (sessionStorage preserved for refresh-safety)",
       );
@@ -293,8 +281,8 @@ const BookingPayment = () => {
       });
     } catch (error) {
       toast({
-        title: "Error",
-        description: "Hubo un error al finalizar la reserva.",
+        title: t.common.error,
+        description: t.booking.payment.finalizationError,
         variant: "destructive",
       });
     }
@@ -302,49 +290,46 @@ const BookingPayment = () => {
 
   const handlePaymentError = (error: Error) => {
     toast({
-      title: "Error en el pago",
+      title: t.booking.payment.paymentError,
       description: error.message,
       variant: "destructive",
     });
     setIsProcessing(false);
   };
 
-  // Si no hay datos básicos, no mostramos nada
   if (!bookingData || !estimatedPrice) {
     return null;
   }
 
-  // Mostrar un indicador de carga mientras se obtienen los datos de ubicación
   if (isLoading) {
     return (
       <div className="min-h-screen bg-background">
-        <div className="container max-w-4xl py-8">
+        <div className="container max-w-6xl py-8 px-4 sm:px-6">
           <BookingProgress currentStep={2} />
 
           <div className="flex flex-col items-center justify-center mt-12 py-12">
             <Loader2 className="h-10 w-10 animate-spin text-primary mb-4" />
-            <p className="text-lg">Cargando datos de ubicación...</p>
+            <p className="text-lg">{t.booking.payment.loadingLocations}</p>
           </div>
         </div>
       </div>
     );
   }
 
-  // Mostrar un mensaje de error si hay problemas con los datos de ubicación
   if (!locationDetails?.pickupId || !locationDetails?.dropoffId) {
     return (
       <div className="min-h-screen bg-background">
-        <div className="container max-w-4xl py-8">
+        <div className="container max-w-6xl py-8 px-4 sm:px-6">
           <BookingProgress currentStep={2} />
 
           <div className="flex flex-col items-center justify-center mt-12 py-12">
             <AlertCircle className="h-10 w-10 text-destructive mb-4" />
-            <p className="text-lg mb-4">Error al cargar datos de ubicación</p>
+            <p className="text-lg mb-4">{t.booking.payment.locationError}</p>
             <button
               className="px-4 py-2 bg-primary text-primary-foreground rounded"
               onClick={() => navigate("/booking/details")}
             >
-              {t.common.back || "Volver"}
+              {t.common.back}
             </button>
           </div>
         </div>
@@ -352,56 +337,166 @@ const BookingPayment = () => {
     );
   }
 
+  const normalizedEstimatedPrice = Math.round(Number(estimatedPrice));
+
   return (
     <div className="min-h-screen bg-background">
-      <div className="container max-w-4xl py-8">
+      <div className="container max-w-6xl py-8 px-4 sm:px-6">
         <BookingProgress currentStep={2} />
 
-        {/* TrustBar - Señales de confianza para aumentar conversión */}
-        <div className="mt-8 -mx-4 sm:mx-0">
-          <TrustBar />
-        </div>
+        <div className="mt-12 grid gap-8 lg:grid-cols-12">
+          {/* Left column — Payment form */}
+          <div className="lg:col-span-7">
+            <h1 className="text-2xl md:text-3xl font-display text-primary mb-6">
+              {t.booking.payment.title}
+            </h1>
 
-        <div className="mt-8">
-          <h1 className="text-3xl font-display text-primary mb-6">
-            {t.booking.payment.title}
-          </h1>
-
-          <div className="grid gap-8 md:grid-cols-2">
-            <PaymentSummary
-              estimatedPrice={estimatedPrice}
-              locationDetails={locationDetails}
-              bookingData={bookingData}
-            />
-
-            <div>
-              {!clientSecret ? (
-                <TermsAndPayment
-                  acceptedTerms={acceptedTerms}
-                  setAcceptedTerms={setAcceptedTerms}
+            {!clientSecret ? (
+              <TermsAndPayment
+                acceptedTerms={acceptedTerms}
+                setAcceptedTerms={setAcceptedTerms}
+                isProcessing={isProcessing}
+                isLocationsLoading={isLoading}
+                onSubmit={handleSubmit}
+                onBack={() => navigate("/booking/details")}
+              />
+            ) : (
+              <div className="rounded-2xl border border-border bg-white p-5 md:p-6 shadow-sm">
+                <h3 className="font-semibold mb-4">
+                  {t.booking.payment.cardDetails}
+                </h3>
+                <StripePaymentForm
+                  clientSecret={clientSecret}
                   isProcessing={isProcessing}
-                  isLocationsLoading={isLoading}
-                  onSubmit={handleSubmit}
-                  onBack={() => navigate("/booking/details")}
+                  onSuccess={handlePaymentSuccess}
+                  onError={handlePaymentError}
+                  customerName={bookingData.passengerInfo.fullName}
+                  customerEmail={bookingData.passengerInfo.email}
+                  customerPhone={bookingData.passengerInfo.phone}
                 />
-              ) : (
-                <Card className="p-6">
-                  <h3 className="font-semibold mb-4">
-                    {t.booking.payment.cardDetails}
-                  </h3>
-                  <StripePaymentForm
-                    clientSecret={clientSecret}
-                    isProcessing={isProcessing}
-                    onSuccess={handlePaymentSuccess}
-                    onError={handlePaymentError}
-                    customerName={bookingData.passengerInfo.fullName}
-                    customerEmail={bookingData.passengerInfo.email}
-                    customerPhone={bookingData.passengerInfo.phone}
-                  />
-                </Card>
-              )}
-            </div>
+              </div>
+            )}
           </div>
+
+          {/* Right column — Sticky summary */}
+          <aside className="lg:col-span-5">
+            <div className="lg:sticky lg:top-24 space-y-4">
+              {/* Route & schedule summary */}
+              <div className="rounded-2xl border border-border bg-white p-5 md:p-6 shadow-sm space-y-4">
+                <h2 className="text-lg font-semibold text-secondary">
+                  {t.booking.summary?.title || t.booking.priceSummary}
+                </h2>
+
+                {/* Route */}
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                    <div className="text-sm">
+                      <span className="text-muted-foreground">
+                        {t.booking.form?.from || t.booking.pickup}
+                      </span>
+                      <p className="font-medium">
+                        {locationDetails?.pickup ||
+                          bookingData?.pickupLocationName ||
+                          bookingData?.pickup}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                    <div className="text-sm">
+                      <span className="text-muted-foreground">
+                        {t.booking.form?.to || t.booking.dropoff}
+                      </span>
+                      <p className="font-medium">
+                        {locationDetails?.dropoff ||
+                          bookingData?.dropoffLocationName ||
+                          bookingData?.dropoff}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <hr className="border-border" />
+
+                {/* Date, time, passengers */}
+                <div className="grid grid-cols-2 gap-3 text-sm">
+                  {bookingData?.date && (
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4 text-primary shrink-0" />
+                      <span>{bookingData.date}</span>
+                    </div>
+                  )}
+                  {bookingData?.time && (
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-primary shrink-0" />
+                      <span>{bookingData.time}</span>
+                    </div>
+                  )}
+                  {bookingData?.passengers && (
+                    <div className="flex items-center gap-2">
+                      <Users className="w-4 h-4 text-primary shrink-0" />
+                      <span>
+                        {bookingData.passengers}{" "}
+                        {t.booking.success?.passenger || "pax"}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                {bookingData?.tripType === "round_trip" && (
+                  <>
+                    <hr className="border-border" />
+                    <p className="text-xs text-muted-foreground">
+                      {t.booking.price.roundTripIncluded}
+                    </p>
+                  </>
+                )}
+
+                <hr className="border-border" />
+
+                {/* Price breakdown */}
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">
+                      {t.booking.price?.basePrice || "Base price"}
+                    </span>
+                    <span>
+                      €
+                      {(normalizedEstimatedPrice - luggageSurcharge).toFixed(2)}
+                    </span>
+                  </div>
+                  {luggageSurcharge > 0 && (
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">
+                        {t.booking.price.luggageSurcharge}
+                      </span>
+                      <span>€{luggageSurcharge.toFixed(2)}</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between font-bold text-base pt-2 border-t border-border">
+                    <span>{t.booking.price?.total || "Total"}</span>
+                    <span className="text-primary">
+                      €{normalizedEstimatedPrice.toFixed(2)}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Trust microcopy */}
+              <div className="rounded-2xl border border-border bg-primary/5 p-4 flex items-start gap-3">
+                <Shield className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                <div className="text-xs text-muted-foreground space-y-1">
+                  <p>
+                    {t.hero.fixedPrice} · {t.hero.freeCancellation}
+                  </p>
+                  <p>
+                    {t.trustBar?.securePayment} · {t.hero.support247}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </div>
