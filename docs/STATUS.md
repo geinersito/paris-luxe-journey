@@ -23,7 +23,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- (ninguno)
+- UX-HOME-HERO-UBERLIKE-01
 
 ## Siguientes 3 items del plan (priorizados)
 

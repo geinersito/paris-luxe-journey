@@ -127,7 +127,7 @@ export function CompactBookingForm({
   };
 
   return (
-    <div className="glass-card-premium p-6 md:p-8 max-w-5xl mx-auto shadow-luxury hover:shadow-luxury-hover transition-all duration-500">
+    <div className="glass-card-premium p-5 md:p-7 w-full shadow-luxury hover:shadow-luxury-hover transition-all duration-500">
       <div className="flex flex-col lg:flex-row gap-4 items-end">
         {/* Pickup Location */}
         <div className="flex-1 w-full">
@@ -275,7 +275,7 @@ export function CompactBookingForm({
       </div>
 
       {/* Quick Info - Trust Badges */}
-      <div className="mt-5 pt-5 border-t border-primary/10 flex flex-wrap gap-4 text-xs justify-center lg:justify-start">
+      <div className="mt-4 pt-4 border-t border-primary/10 flex flex-wrap gap-3 text-xs leading-tight justify-center lg:justify-start">
         <span className="group flex items-center gap-2 font-semibold text-secondary/80 hover:text-secondary transition-colors duration-300">
           <svg
             className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-300"
