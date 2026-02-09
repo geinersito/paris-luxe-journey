@@ -42,7 +42,7 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | UX-EXCURSIONS-QUOTEFIRST-01 | PR-U1d | P2 | R0 | DONE | Excursions: quote-first CTAs (no /booking leakage) | `7168baa` | WhatsApp CTAs, no booking wizard navigation |
 | UX-EXCURSIONS-CURATION-01 | PR-U1h | P2 | R0 | DONE | Excursions: curation pass (scroll tax + consistent CTAs) | `7168baa` | Same commit as quote-first refactor |
 | UX-EVENTS-CONTEXT-CTA-01 | PR-U1e | P2 | R0 | DONE | Events: contextual CTA (improve intent) | [#46](https://github.com/geinersito/paris-luxe-journey/pull/46) / `dc928d3` | Card CTA + WhatsApp microcopy + dual bottom CTA |
-| UX-EVENTS-CTA-PREFILL-01 | PR-U1i | P2 | R0 | DOING | Events CTA prefill (reduce friction) | Branch: `ux-events-cta-prefill-01` | UI-only |
+| UX-EVENTS-CTA-PREFILL-01 | PR-U1i | P2 | R0 | DONE | Events CTA prefill (reduce friction) | [#47](https://github.com/geinersito/paris-luxe-journey/pull/47) / `331907f` | Prefill helpers + wired CTAs |
 | UX-TYPOGRAPHY-01 | PR-U1-1 | P2 | R0 | TODO | Typography base (tokens/scale) |  | Touches multiple components |
 | UX-TOUCHTARGETS-48PX-01 | PR-U1-2 | P2 | R0 | TODO | Touch targets 48px (mobile) |  | Accessibility |
 | UX-CONTRAST-AA-01 | PR-U1-3 | P2 | R0 | TODO | Contrast AA pass |  | Accessibility |

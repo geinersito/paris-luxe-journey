@@ -12,24 +12,24 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `dc928d3`
+- SHA: `331907f`
 - Last updated: `2026-02-08`
 
 ## Ultimos PRs mergeados en main
 
-1. `#46` - Contextual CTAs on Events page (UX-EVENTS-CONTEXT-CTA-01) (`dc928d3`)
-2. `#45` - About/Contact/Fleet anchors + redirects (NAV-ABOUT-CONTACT-FLEET-01) (`3398685`)
-3. `#44` - Compact time picker (UX-TIMEPICKER-COMPACT-01) (`9daaa9a`)
+1. `#47` - Prefill WhatsApp/email CTAs (UX-EVENTS-CTA-PREFILL-01) (`331907f`)
+2. `#46` - Contextual CTAs on Events page (UX-EVENTS-CONTEXT-CTA-01) (`dc928d3`)
+3. `#45` - About/Contact/Fleet anchors + redirects (NAV-ABOUT-CONTACT-FLEET-01) (`3398685`)
 
 ## Ahora en curso
 
-- **UX-EVENTS-CTA-PREFILL-01** (P2/R0) - Events CTA prefill (branch: `ux-events-cta-prefill-01`)
+- (ninguno)
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **UX-EVENTS-CTA-PREFILL-01** (P2/R0) - Events CTA prefill (reduce friction)
-2. **UX-TYPOGRAPHY-01** (P2/R0) - Typography base (tokens/scale)
-3. **UX-TOUCHTARGETS-48PX-01** (P2/R0) - Touch targets 48px (mobile)
+1. **UX-TYPOGRAPHY-01** (P2/R0) - Typography base (tokens/scale)
+2. **UX-TOUCHTARGETS-48PX-01** (P2/R0) - Touch targets 48px (mobile)
+3. **UX-CONTRAST-AA-01** (P2/R0) - Contrast AA pass
 
 ## Regla de actualizacion
 
