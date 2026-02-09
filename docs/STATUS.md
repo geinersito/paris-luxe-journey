@@ -23,13 +23,13 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- (ninguno)
+- **UX-SEO-METADATA-01** (P2/R0) - Events + BlogIndex meta/canonical/OG + JSON-LD
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. Backlog review needed
-2. —
-3. —
+1. **UX-SEO-METADATA-01** (P2/R0) - Events + BlogIndex metadata
+2. **UX-SEO-SITEMAP-ROBOTS-01** (P2/R0) - Automate sitemap.xml + robots.txt
+3. **UX-LOCATION-FALLBACKS-01** (P2/R0) - Centralize location fallbacks
 
 ## Regla de actualizacion
 
