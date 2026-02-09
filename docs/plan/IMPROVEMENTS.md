@@ -47,7 +47,7 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | UX-TOUCHTARGETS-48PX-01 | PR-U1-2 | P2 | R0 | DONE | Touch targets 48px (mobile) | [#49](https://github.com/geinersito/paris-luxe-journey/pull/49) / `fe1ac10` | Button/Input/Select → h-12 (48px) |
 | UX-CONTRAST-AA-01 | PR-U1-3 | P2 | R0 | DONE | Contrast AA pass | [#50](https://github.com/geinersito/paris-luxe-journey/pull/50) / `646fe9d` | AA tokens: primary + muted-foreground darkened, contract doc added |
 | UX-HOME-HERO-UBERLIKE-01 | PR-U2 | P2 | R0 | DONE | Home hero Uber-like + larger form | [#51](https://github.com/geinersito/paris-luxe-journey/pull/51) / `9bc49af` | Conversion-oriented: lg 2-col grid, widget right, trust dedup |
-| UX-HOME-SIMPLIFY-SECTIONS-01 | PR-U3 | P2 | R0 | TODO | Simplify landing to 4–5 sections |  | IA + content pruning |
+| UX-HOME-SIMPLIFY-SECTIONS-01 | PR-U3 | P2 | R0 | DOING | Simplify landing to 4–5 sections |  | IA + content pruning |
 | UX-HOME-TRUST-LAYER-01 | PR-U4 | P2 | R0 | TODO | Trust layer + supporting CTA |  | Trust near CTA without viewport saturation |
 | UX-HOME-MOBILE-STICKY-CTA-01 | PR-U5 | P2 | R0 | TODO | Mobile sticky CTA booster |  | Always-visible CTA on mobile |
 | UX-TIMEPICKER-COMPACT-01 | PR-U2c | P2 | R0 | DONE | Time picker compact | [#44](https://github.com/geinersito/paris-luxe-journey/pull/44) / `9daaa9a` | Native `<input type="time">` replaces 48-item popover |
