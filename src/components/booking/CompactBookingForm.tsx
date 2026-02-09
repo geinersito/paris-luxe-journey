@@ -254,22 +254,24 @@ export function CompactBookingForm({
           <Button
             onClick={handleQuickBook}
             disabled={!canQuickBook}
-            className="silk-button w-full lg:w-auto px-6 py-3 text-sm font-bold text-center leading-tight group shadow-gold-glow hover:shadow-gold-glow-strong"
+            className="silk-button w-full lg:w-auto px-4 py-3 text-sm font-bold text-center group shadow-gold-glow hover:shadow-gold-glow-strong min-h-[48px]"
           >
-            {t.hero.getInstantQuote}
-            <svg
-              className="inline-block ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform duration-300"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2.5}
-                d="M13 7l5 5m0 0l-5 5m5-5H6"
-              />
-            </svg>
+            <span className="inline-flex items-center justify-center gap-2 flex-wrap leading-tight">
+              <span>{t.hero.getInstantQuote}</span>
+              <svg
+                className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2.5}
+                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+                />
+              </svg>
+            </span>
           </Button>
         </div>
       </div>
