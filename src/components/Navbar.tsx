@@ -111,23 +111,6 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Handle hash navigation after page load (cross-page navigation)
-  useEffect(() => {
-    // Check if there's a hash in the URL
-    const hash = window.location.hash;
-    if (hash) {
-      // Wait a bit for the page to render
-      const timeoutId = setTimeout(() => {
-        const element = document.querySelector(hash);
-        if (element) {
-          scrollToElementWithOffset(element);
-        }
-      }, 300);
-
-      return () => clearTimeout(timeoutId);
-    }
-  }, [location]);
-
   const navItems: NavItem[] = [
     { name: t.nav.home, href: "/" },
     {

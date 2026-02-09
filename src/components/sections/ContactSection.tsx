@@ -81,7 +81,7 @@ const ContactSection = () => {
       className="py-28 bg-pearl dark:bg-gray-900 animate-fadeIn"
     >
       {/* Also respond to #about anchor since About was folded into Contact */}
-      <div id="about" className="absolute -top-20" />
+      <div id="about" className="scroll-mt-24" />
       <div className="container max-w-6xl mx-auto px-4">
         <h2 className="text-3xl md:text-4xl font-display font-bold text-primary dark:text-primary-foreground text-center mb-8">
           {t.contact.title}
