@@ -12,14 +12,14 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `9fedcfb`
+- SHA: `21372f2`
 - Last updated: `2026-02-09`
 
 ## Ultimos PRs mergeados en main
 
-1. `#52` - Home pruned to 5 sections + About folded + -19% bundle (UX-HOME-SIMPLIFY-SECTIONS-01) (`9fedcfb`)
-2. `#51` - Hero lg 2-col grid + booking widget right + trust dedup (UX-HOME-HERO-UBERLIKE-01) (`9bc49af`)
-3. `#50` - WCAG AA contrast pass on color tokens (UX-CONTRAST-AA-01) (`646fe9d`)
+1. **Hotfix** - SPA-safe anchor navigation (HashScroll component) (`21372f2`)
+2. `#52` - Home pruned to 5 sections + About folded + -19% bundle (UX-HOME-SIMPLIFY-SECTIONS-01) (`9fedcfb`)
+3. `#51` - Hero lg 2-col grid + booking widget right + trust dedup (UX-HOME-HERO-UBERLIKE-01) (`9bc49af`)
 
 ## Ahora en curso
 
