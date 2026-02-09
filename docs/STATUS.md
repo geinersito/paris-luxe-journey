@@ -12,24 +12,24 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `646fe9d`
-- Last updated: `2026-02-08`
+- SHA: `9bc49af`
+- Last updated: `2026-02-09`
 
 ## Ultimos PRs mergeados en main
 
-1. `#50` - WCAG AA contrast pass on color tokens (UX-CONTRAST-AA-01) (`646fe9d`)
-2. `#49` - 48px touch targets on Button/Input/Select (UX-TOUCHTARGETS-48PX-01) (`fe1ac10`)
-3. `#48` - Fluid typography tokens + dead CSS cleanup (UX-TYPOGRAPHY-01) (`afcdaf7`)
+1. `#51` - Hero lg 2-col grid + booking widget right + trust dedup (UX-HOME-HERO-UBERLIKE-01) (`9bc49af`)
+2. `#50` - WCAG AA contrast pass on color tokens (UX-CONTRAST-AA-01) (`646fe9d`)
+3. `#49` - 48px touch targets on Button/Input/Select (UX-TOUCHTARGETS-48PX-01) (`fe1ac10`)
 
 ## Ahora en curso
 
-- UX-HOME-HERO-UBERLIKE-01
+- (ninguno)
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **UX-HOME-HERO-UBERLIKE-01** (P2/R0) - Home hero Uber-like + larger form
-2. **UX-HOME-SIMPLIFY-SECTIONS-01** (P2/R0) - Simplify landing to 4-5 sections
-3. **UX-HOME-TRUST-LAYER-01** (P2/R0) - Trust layer + supporting CTA
+1. **UX-HOME-SIMPLIFY-SECTIONS-01** (P2/R0) - Simplify landing to 4-5 sections
+2. **UX-HOME-TRUST-LAYER-01** (P2/R0) - Trust layer + supporting CTA
+3. **UX-HOME-MOBILE-STICKY-CTA-01** (P2/R0) - Mobile sticky CTA booster
 
 ## Regla de actualizacion
 

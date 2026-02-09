@@ -46,7 +46,7 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | UX-TYPOGRAPHY-01 | PR-U1-1 | P2 | R0 | DONE | Typography base (tokens/scale) | [#48](https://github.com/geinersito/paris-luxe-journey/pull/48) / `afcdaf7` | Fluid tokens wired to Tailwind + dead CSS pruned |
 | UX-TOUCHTARGETS-48PX-01 | PR-U1-2 | P2 | R0 | DONE | Touch targets 48px (mobile) | [#49](https://github.com/geinersito/paris-luxe-journey/pull/49) / `fe1ac10` | Button/Input/Select → h-12 (48px) |
 | UX-CONTRAST-AA-01 | PR-U1-3 | P2 | R0 | DONE | Contrast AA pass | [#50](https://github.com/geinersito/paris-luxe-journey/pull/50) / `646fe9d` | AA tokens: primary + muted-foreground darkened, contract doc added |
-| UX-HOME-HERO-UBERLIKE-01 | PR-U2 | P2 | R0 | DOING | Home hero Uber-like + larger form |  | Conversion-oriented |
+| UX-HOME-HERO-UBERLIKE-01 | PR-U2 | P2 | R0 | DONE | Home hero Uber-like + larger form | [#51](https://github.com/geinersito/paris-luxe-journey/pull/51) / `9bc49af` | Conversion-oriented: lg 2-col grid, widget right, trust dedup |
 | UX-HOME-SIMPLIFY-SECTIONS-01 | PR-U3 | P2 | R0 | TODO | Simplify landing to 4–5 sections |  | IA + content pruning |
 | UX-HOME-TRUST-LAYER-01 | PR-U4 | P2 | R0 | TODO | Trust layer + supporting CTA |  | Trust near CTA without viewport saturation |
 | UX-HOME-MOBILE-STICKY-CTA-01 | PR-U5 | P2 | R0 | TODO | Mobile sticky CTA booster |  | Always-visible CTA on mobile |
