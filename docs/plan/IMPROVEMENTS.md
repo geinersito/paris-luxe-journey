@@ -63,7 +63,7 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | ID | Legacy | Priority | Risk | Status | Title | Evidence (PR/Commit) | Notes |
 |---|---|---:|:---:|:---:|---|---|---|
 | UX-SEO-METADATA-01 | PR-SEO1 | P2 | R0 | DONE | Events + BlogIndex meta/canonical/OG + JSON-LD | [#58](https://github.com/geinersito/paris-luxe-journey/pull/58) / `34060f1` | Localized title/desc, canonical, OG, JSON-LD for /events and /blog |
-| UX-SEO-SITEMAP-ROBOTS-01 | PR-SEO3 | P2 | R0 | TODO | Automate sitemap.xml + robots.txt in build |  | Connect existing generate-sitemap script to build, fix route prefixes |
+| UX-SEO-SITEMAP-ROBOTS-01 | PR-SEO3 | P2 | R0 | DOING | Automate sitemap.xml + robots.txt in build |  | Connect existing generate-sitemap script to build, fix route prefixes |
 | UX-LOCATION-FALLBACKS-01 | PR-U6A | P2 | R0 | TODO | Centralize location fallbacks config |  | Single source for booking locations, eliminate 3x duplication |
 
 ## Risk Gates (DoD by Risk)
