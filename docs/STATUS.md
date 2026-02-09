@@ -23,7 +23,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- None
+- **UX-EVENTS-CTA-PREFILL-01** (P2/R0) - Events CTA prefill (branch: `ux-events-cta-prefill-01`)
 
 ## Siguientes 3 items del plan (priorizados)
 

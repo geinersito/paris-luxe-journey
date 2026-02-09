@@ -4,17 +4,15 @@ import { EventsFeed } from "@/components/events/EventsFeed";
 import { Sparkles, MessageCircle, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import {
+  buildGenericWhatsAppUrl,
+  buildGenericEmailUrl,
+} from "@/lib/eventsPrefill";
 
 export default function Events() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-
-  const handleEventRideQuote = () => {
-    const message = encodeURIComponent(
-      "Hi, I'm interested in booking a ride to an event in Paris. Can you help me with a quote?",
-    );
-    window.open(`https://wa.me/33668251102?text=${message}`, "_blank");
-  };
+  const language = i18n.language;
 
   return (
     <>
@@ -58,13 +56,15 @@ export default function Events() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  onClick={handleEventRideQuote}
-                  className="silk-button"
-                >
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  {t("events.bookTransfer") || "Get a Ride Quote"}
+                <Button size="lg" className="silk-button" asChild>
+                  <a
+                    href={buildGenericWhatsAppUrl(language)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    {t("events.bookTransfer") || "Get a Ride Quote"}
+                  </a>
                 </Button>
                 <Button
                   size="lg"
@@ -121,13 +121,15 @@ export default function Events() {
                   "Tell us your event and we'll confirm availability, vehicle options and a fixed price."}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  size="lg"
-                  onClick={handleEventRideQuote}
-                  className="silk-button"
-                >
-                  <MessageCircle className="w-5 h-5 mr-2" />
-                  {t("events.ctaWhatsApp") || "Get a Quote on WhatsApp"}
+                <Button size="lg" className="silk-button" asChild>
+                  <a
+                    href={buildGenericWhatsAppUrl(language)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    {t("events.ctaWhatsApp") || "Get a Quote on WhatsApp"}
+                  </a>
                 </Button>
                 <Button
                   size="lg"
@@ -135,7 +137,7 @@ export default function Events() {
                   className="button-outline-gold"
                   asChild
                 >
-                  <a href="mailto:contact@paris-elite-services.com?subject=Event%20Transfer%20Quote">
+                  <a href={buildGenericEmailUrl(language)}>
                     <Mail className="w-5 h-5 mr-2" />
                     {t("events.ctaEmail") || "Email Us"}
                   </a>
