@@ -12,24 +12,24 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `afcdaf7`
+- SHA: `fe1ac10`
 - Last updated: `2026-02-08`
 
 ## Ultimos PRs mergeados en main
 
-1. `#48` - Fluid typography tokens + dead CSS cleanup (UX-TYPOGRAPHY-01) (`afcdaf7`)
-2. `#47` - Prefill WhatsApp/email CTAs (UX-EVENTS-CTA-PREFILL-01) (`331907f`)
-3. `#46` - Contextual CTAs on Events page (UX-EVENTS-CONTEXT-CTA-01) (`dc928d3`)
+1. `#49` - 48px touch targets on Button/Input/Select (UX-TOUCHTARGETS-48PX-01) (`fe1ac10`)
+2. `#48` - Fluid typography tokens + dead CSS cleanup (UX-TYPOGRAPHY-01) (`afcdaf7`)
+3. `#47` - Prefill WhatsApp/email CTAs (UX-EVENTS-CTA-PREFILL-01) (`331907f`)
 
 ## Ahora en curso
 
-- **UX-TOUCHTARGETS-48PX-01** (P2/R0) - Touch targets 48px (branch: `ux/touchtargets-48px-01`)
+- (ninguno)
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **UX-TOUCHTARGETS-48PX-01** (P2/R0) - Touch targets 48px (mobile)
-2. **UX-CONTRAST-AA-01** (P2/R0) - Contrast AA pass
-3. **UX-HOME-HERO-UBERLIKE-01** (P2/R0) - Home hero Uber-like + larger form
+1. **UX-CONTRAST-AA-01** (P2/R0) - Contrast AA pass
+2. **UX-HOME-HERO-UBERLIKE-01** (P2/R0) - Home hero Uber-like + larger form
+3. **UX-HOME-SIMPLIFY-SECTIONS-01** (P2/R0) - Simplify landing to 4-5 sections
 
 ## Regla de actualizacion
 
