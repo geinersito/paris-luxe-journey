@@ -1,23 +1,25 @@
-
 import { Check } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface BookingProgressProps {
   currentStep: number;
 }
 
-const steps = [
-  { id: 1, name: "Detalles" },
-  { id: 2, name: "Pago" },
-  { id: 3, name: "Confirmación" }
-];
-
 const BookingProgress = ({ currentStep }: BookingProgressProps) => {
+  const { t } = useLanguage();
+
+  const steps = [
+    { id: 1, name: t.booking.passengerDetails },
+    { id: 2, name: t.booking.payment.title },
+    { id: 3, name: t.booking.success.bookingDetails },
+  ];
+
   return (
     <nav aria-label="Progress">
       <ol role="list" className="flex items-center">
         {steps.map((step, stepIdx) => (
           <li
-            key={step.name}
+            key={step.id}
             className={`relative ${
               stepIdx !== steps.length - 1 ? "pr-8 sm:pr-20 w-full" : ""
             }`}
@@ -28,8 +30,8 @@ const BookingProgress = ({ currentStep }: BookingProgressProps) => {
                   step.id < currentStep
                     ? "bg-primary text-primary-foreground"
                     : step.id === currentStep
-                    ? "border-2 border-primary bg-background"
-                    : "border-2 border-gray-300 bg-background"
+                      ? "border-2 border-primary bg-background"
+                      : "border-2 border-gray-300 bg-background"
                 }`}
               >
                 {step.id < currentStep ? (

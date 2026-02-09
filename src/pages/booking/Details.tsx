@@ -10,6 +10,14 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { loadBookingSession, saveBookingSession } from "@/lib/bookingSession";
+import {
+  MapPin,
+  Calendar,
+  Clock,
+  Users,
+  Shield,
+  ArrowRight,
+} from "lucide-react";
 
 interface PassengerInfo {
   fullName: string;
@@ -59,16 +67,7 @@ const BookingDetails = () => {
     });
   }, [bookingData, hasEstimatedPrice, estimatedPrice, luggageSurcharge]);
 
-  // Add logging to track the price
   useEffect(() => {
-    console.log("[BookingDetails] Received booking data:", bookingData);
-    console.log("[BookingDetails] Received estimated price:", estimatedPrice);
-    console.log(
-      "[BookingDetails] Received luggage surcharge:",
-      luggageSurcharge,
-    );
-
-    // Check if booking data is present
     if (!bookingData || !hasEstimatedPrice) {
       toast({
         title: t.common.error,
@@ -147,7 +146,7 @@ const BookingDetails = () => {
     if (!formData.phone.trim()) {
       toast({
         title: t.common.error,
-        description: "Por favor, introduce un número de teléfono válido",
+        description: t.booking.errors.invalidPhone,
         variant: "destructive",
       });
       return false;
@@ -166,25 +165,15 @@ const BookingDetails = () => {
     setIsSubmitting(true);
 
     try {
-      // Validar que tenemos los UUIDs de las ubicaciones
       const hasPickupId = bookingData?.pickupLocationId;
       const hasDropoffId = bookingData?.dropoffLocationId;
 
       if (!hasPickupId || !hasDropoffId) {
-        console.error("[BookingDetails] Missing location UUIDs:", {
-          pickupLocationId: hasPickupId,
-          dropoffLocationId: hasDropoffId,
-          bookingData,
-        });
-
         toast({
           title: t.common.error,
-          description:
-            "Faltan datos de ubicación. Por favor, vuelve al formulario de reserva.",
+          description: t.booking.errors.selectLocations,
           variant: "destructive",
         });
-
-        // Redirigir al formulario de reserva para que seleccione las ubicaciones de nuevo
         navigate("/booking", { replace: true });
         return;
       }
@@ -206,16 +195,6 @@ const BookingDetails = () => {
         luggageSurcharge,
       });
 
-      console.log(
-        "[BookingDetails] Navigating to payment with validated data:",
-        {
-          bookingData: updatedBookingData,
-          estimatedPrice: estimatedPrice,
-          luggageSurcharge: luggageSurcharge,
-          hasValidUUIDs: true,
-        },
-      );
-
       navigate("/booking/payment", {
         state: {
           bookingData: updatedBookingData,
@@ -228,8 +207,7 @@ const BookingDetails = () => {
       console.error("[BookingDetails] Error preparing booking data:", error);
       toast({
         title: t.common.error,
-        description:
-          "Ha ocurrido un error al procesar los datos. Por favor, inténtalo de nuevo.",
+        description: t.booking.errors.bookingCreationError,
         variant: "destructive",
       });
     } finally {
@@ -239,124 +217,216 @@ const BookingDetails = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container max-w-4xl py-8">
+      <div className="container max-w-6xl py-8 px-4 sm:px-6">
         <BookingProgress currentStep={1} />
 
-        <div className="mt-8">
-          <h1 className="text-3xl font-display text-primary mb-6">
-            {t.booking.passengerDetails}
-          </h1>
+        <div className="mt-12 grid gap-8 lg:grid-cols-12">
+          {/* Left column — Form */}
+          <div className="lg:col-span-7">
+            <h1 className="text-2xl md:text-3xl font-display text-primary mb-6">
+              {t.booking.passengerDetails}
+            </h1>
 
-          {/* Añadir resumen de precio */}
-          <div className="mb-6 p-4 bg-muted rounded-lg">
-            <h2 className="text-xl font-semibold mb-2">
-              {t.booking.priceSummary || "Resumen de precio"}
-            </h2>
-            <div className="space-y-1">
-              <div className="flex justify-between">
-                <span>Precio base:</span>
-                <span>€{(estimatedPrice - luggageSurcharge).toFixed(2)}</span>
-              </div>
-              {luggageSurcharge > 0 && (
-                <div className="flex justify-between text-muted-foreground">
-                  <span>Recargo por equipaje:</span>
-                  <span>€{luggageSurcharge.toFixed(2)}</span>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="rounded-2xl border border-border bg-white p-5 md:p-6 shadow-sm space-y-4">
+                <div>
+                  <Label htmlFor="fullName">{t.booking.fullName}</Label>
+                  <Input
+                    id="fullName"
+                    name="fullName"
+                    value={formData.fullName}
+                    onChange={handleChange}
+                    placeholder={t.booking.fullNamePlaceholder}
+                    required
+                    disabled={isSubmitting}
+                    className="mt-1.5"
+                  />
                 </div>
-              )}
-              <div className="flex justify-between font-bold pt-2 border-t border-border">
-                <span>Precio total:</span>
-                <span>€{estimatedPrice.toFixed(2)}</span>
+
+                <div>
+                  <Label htmlFor="email">{t.booking.email}</Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder={t.booking.emailPlaceholder}
+                    required
+                    disabled={isSubmitting}
+                    className="mt-1.5"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="phone">{t.booking.phone}</Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder={t.booking.phonePlaceholder}
+                    required
+                    disabled={isSubmitting}
+                    className="mt-1.5"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="flightNumber">{t.booking.flightNumber}</Label>
+                  <Input
+                    id="flightNumber"
+                    name="flightNumber"
+                    value={formData.flightNumber}
+                    onChange={handleChange}
+                    placeholder={t.booking.flightNumberPlaceholder}
+                    disabled={isSubmitting}
+                    className="mt-1.5"
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="specialInstructions">
+                    {t.booking.specialInstructions}
+                  </Label>
+                  <Textarea
+                    id="specialInstructions"
+                    name="specialInstructions"
+                    value={formData.specialInstructions}
+                    onChange={handleChange}
+                    placeholder={t.booking.specialInstructionsPlaceholder}
+                    disabled={isSubmitting}
+                    className="mt-1.5"
+                  />
+                </div>
               </div>
-            </div>
+
+              <div className="flex justify-between pt-2">
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => navigate("/booking")}
+                  disabled={isSubmitting}
+                >
+                  {t.common.back}
+                </Button>
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="silk-button gap-2"
+                >
+                  {isSubmitting ? t.common.processing : t.common.continue}
+                  {!isSubmitting && <ArrowRight className="w-4 h-4" />}
+                </Button>
+              </div>
+            </form>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div className="space-y-4">
-              <div>
-                <Label htmlFor="fullName">{t.booking.fullName}</Label>
-                <Input
-                  id="fullName"
-                  name="fullName"
-                  value={formData.fullName}
-                  onChange={handleChange}
-                  placeholder={t.booking.fullNamePlaceholder}
-                  required
-                  disabled={isSubmitting}
-                  aria-describedby="fullName-error"
-                />
+          {/* Right column — Sticky summary */}
+          <aside className="lg:col-span-5">
+            <div className="lg:sticky lg:top-24 space-y-4">
+              {/* Route & schedule summary */}
+              <div className="rounded-2xl border border-border bg-white p-5 md:p-6 shadow-sm space-y-4">
+                <h2 className="text-lg font-semibold text-secondary">
+                  {t.booking.summary?.title || t.booking.priceSummary}
+                </h2>
+
+                {/* Route */}
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                    <div className="text-sm">
+                      <span className="text-muted-foreground">
+                        {t.booking.form?.from || t.booking.pickup}
+                      </span>
+                      <p className="font-medium">
+                        {bookingData?.pickupLocationName || bookingData?.pickup}
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <MapPin className="w-4 h-4 text-primary mt-0.5 shrink-0" />
+                    <div className="text-sm">
+                      <span className="text-muted-foreground">
+                        {t.booking.form?.to || t.booking.dropoff}
+                      </span>
+                      <p className="font-medium">
+                        {bookingData?.dropoffLocationName ||
+                          bookingData?.dropoff}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <hr className="border-border" />
+
+                {/* Date, time, passengers */}
+                <div className="grid grid-cols-2 gap-3 text-sm">
+                  {bookingData?.date && (
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4 text-primary shrink-0" />
+                      <span>{bookingData.date}</span>
+                    </div>
+                  )}
+                  {bookingData?.time && (
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-4 h-4 text-primary shrink-0" />
+                      <span>{bookingData.time}</span>
+                    </div>
+                  )}
+                  {bookingData?.passengers && (
+                    <div className="flex items-center gap-2">
+                      <Users className="w-4 h-4 text-primary shrink-0" />
+                      <span>
+                        {bookingData.passengers}{" "}
+                        {t.booking.success?.passenger || "pax"}
+                      </span>
+                    </div>
+                  )}
+                </div>
+
+                <hr className="border-border" />
+
+                {/* Price breakdown */}
+                <div className="space-y-2 text-sm">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">
+                      {t.booking.price?.basePrice || "Base price"}
+                    </span>
+                    <span>
+                      €{(estimatedPrice - luggageSurcharge).toFixed(2)}
+                    </span>
+                  </div>
+                  {luggageSurcharge > 0 && (
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">
+                        {t.booking.largeLuggage}
+                      </span>
+                      <span>€{luggageSurcharge.toFixed(2)}</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between font-bold text-base pt-2 border-t border-border">
+                    <span>{t.booking.price?.total || "Total"}</span>
+                    <span className="text-primary">
+                      €{estimatedPrice.toFixed(2)}
+                    </span>
+                  </div>
+                </div>
               </div>
 
-              <div>
-                <Label htmlFor="email">{t.booking.email}</Label>
-                <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  value={formData.email}
-                  onChange={handleChange}
-                  placeholder={t.booking.emailPlaceholder}
-                  required
-                  disabled={isSubmitting}
-                  aria-describedby="email-error"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="phone">{t.booking.phone}</Label>
-                <Input
-                  id="phone"
-                  name="phone"
-                  type="tel"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder={t.booking.phonePlaceholder}
-                  required
-                  disabled={isSubmitting}
-                  aria-describedby="phone-error"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="flightNumber">{t.booking.flightNumber}</Label>
-                <Input
-                  id="flightNumber"
-                  name="flightNumber"
-                  value={formData.flightNumber}
-                  onChange={handleChange}
-                  placeholder={t.booking.flightNumberPlaceholder}
-                  disabled={isSubmitting}
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="specialInstructions">
-                  {t.booking.specialInstructions}
-                </Label>
-                <Textarea
-                  id="specialInstructions"
-                  name="specialInstructions"
-                  value={formData.specialInstructions}
-                  onChange={handleChange}
-                  placeholder={t.booking.specialInstructionsPlaceholder}
-                  disabled={isSubmitting}
-                />
+              {/* Trust microcopy */}
+              <div className="rounded-2xl border border-border bg-primary/5 p-4 flex items-start gap-3">
+                <Shield className="w-5 h-5 text-primary shrink-0 mt-0.5" />
+                <div className="text-xs text-muted-foreground space-y-1">
+                  <p>
+                    {t.hero.fixedPrice} · {t.hero.freeCancellation}
+                  </p>
+                  <p>{t.hero.support247}</p>
+                </div>
               </div>
             </div>
-
-            <div className="flex justify-between pt-6">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => navigate("/booking")}
-                disabled={isSubmitting}
-              >
-                {t.common.back}
-              </Button>
-              <Button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? t.common.processing : t.common.continue}
-              </Button>
-            </div>
-          </form>
+          </aside>
         </div>
       </div>
     </div>
