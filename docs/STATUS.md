@@ -12,18 +12,18 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `e618fe3`
+- SHA: `acde874`
 - Last updated: `2026-02-09`
 
 ## Ultimos PRs mergeados en main
 
-1. `#53` - Trust layer + CTA i18n overflow fix (UX-HOME-TRUST-LAYER-01 + FIX-CTA-I18N-OVERFLOW-01) (`e618fe3`)
-2. **Hotfix** - SPA-safe anchor navigation (HashScroll component) (`21372f2`)
-3. `#52` - Home pruned to 5 sections + About folded + -19% bundle (UX-HOME-SIMPLIFY-SECTIONS-01) (`9fedcfb`)
+1. `#54` - Shorten select placeholders + truncate safety (FIX-I18N-SELECT-PLACEHOLDERS-01) (`acde874`)
+2. `#53` - Trust layer + CTA i18n overflow fix (UX-HOME-TRUST-LAYER-01 + FIX-CTA-I18N-OVERFLOW-01) (`e618fe3`)
+3. **Hotfix** - SPA-safe anchor navigation (HashScroll component) (`21372f2`)
 
 ## Ahora en curso
 
-- **FIX-I18N-SELECT-PLACEHOLDERS-01** (P2/R0) - Shorten hero select placeholders + truncate safety
+- Nada activo — próximo item por iniciar
 
 ## Siguientes 3 items del plan (priorizados)
 

@@ -51,7 +51,7 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | FIX-NAV-ABOUT-ANCHOR-SCROLL | Hotfix | P2 | R0 | DONE | SPA-safe anchor navigation (#about fix) | `21372f2` | Centralized hash handling in HashScroll component, removed Navbar setTimeout hack, fixed ContactSection anchor offset |
 | UX-HOME-TRUST-LAYER-01 | PR-U4 | P2 | R0 | DONE | Trust layer + supporting CTA | [#53](https://github.com/geinersito/paris-luxe-journey/pull/53) / `e618fe3` | Inline trust badges in PremiumSection cards (above CTA), service-specific (not duplicated) |
 | FIX-CTA-I18N-OVERFLOW-01 | Hotfix | P2 | R0 | DONE | i18n CTA overflow (ES locale) | [#53](https://github.com/geinersito/paris-luxe-journey/pull/53) / `e618fe3` | Allow text wrap + reduce px, maintain 48px touch target |
-| FIX-I18N-SELECT-PLACEHOLDERS-01 | Hotfix | P2 | R0 | DOING | Shorten select placeholders + truncate safety |  | Short i18n placeholders (labels provide context); `truncate` on `<select>` as safety net |
+| FIX-I18N-SELECT-PLACEHOLDERS-01 | Hotfix | P2 | R0 | DONE | Shorten select placeholders + truncate safety | [#54](https://github.com/geinersito/paris-luxe-journey/pull/54) / `acde874` | Short i18n placeholders (labels provide context); `truncate` on `<select>` as safety net |
 | UX-HOME-MOBILE-STICKY-CTA-01 | PR-U5 | P2 | R0 | TODO | Mobile sticky CTA booster |  | Always-visible CTA on mobile |
 | UX-TIMEPICKER-COMPACT-01 | PR-U2c | P2 | R0 | DONE | Time picker compact | [#44](https://github.com/geinersito/paris-luxe-journey/pull/44) / `9daaa9a` | Native `<input type="time">` replaces 48-item popover |
 | UX-BOOKING-DETAILS-REDESIGN-01 | PR-U3a | P2 | R0 | TODO | Redesign /booking/details |  | UX-only (no Stripe) |
