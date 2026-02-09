@@ -21,6 +21,8 @@ interface ConfirmationBookingData {
   pickup?: string;
   dropoff_location_id?: string;
   dropoff?: string;
+  pickupLocationName?: string;
+  dropoffLocationName?: string;
   pickup_datetime?: string;
   date?: string; // Added: from booking form (separate)
   time?: string; // Added: from booking form (separate)
@@ -100,6 +102,16 @@ const BookingConfirmation = () => {
   const largeLuggageCount = toNumber(bookingData?.large_luggage_count, 0);
   const smallLuggageCount = toNumber(bookingData?.small_luggage_count, 0);
   const hasLuggage = largeLuggageCount > 0 || smallLuggageCount > 0;
+  const pickupDisplay =
+    bookingData?.pickupLocationName ||
+    bookingData?.pickup ||
+    bookingData?.pickup_location_id ||
+    "Pickup location";
+  const dropoffDisplay =
+    bookingData?.dropoffLocationName ||
+    bookingData?.dropoff ||
+    bookingData?.dropoff_location_id ||
+    "Dropoff location";
 
   // Get price from location.state.totalPrice (Payment.tsx navigation) or fallbacks
   const displayPrice =
@@ -189,13 +201,9 @@ const BookingConfirmation = () => {
                 <div className="flex-1">
                   <p className="text-sm text-muted-foreground mb-1">Route</p>
                   <p className="font-semibold text-foreground">
-                    {bookingData.pickup_location_id ||
-                      bookingData.pickup ||
-                      "Pickup location"}
+                    {pickupDisplay}
                     <span className="text-primary mx-2">→</span>
-                    {bookingData.dropoff_location_id ||
-                      bookingData.dropoff ||
-                      "Dropoff location"}
+                    {dropoffDisplay}
                   </p>
                 </div>
               </div>
