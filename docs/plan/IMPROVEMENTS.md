@@ -49,7 +49,7 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | UX-HOME-HERO-UBERLIKE-01 | PR-U2 | P2 | R0 | DONE | Home hero Uber-like + larger form | [#51](https://github.com/geinersito/paris-luxe-journey/pull/51) / `9bc49af` | Conversion-oriented: lg 2-col grid, widget right, trust dedup |
 | UX-HOME-SIMPLIFY-SECTIONS-01 | PR-U3 | P2 | R0 | DONE | Simplify landing to 4–5 sections | [#52](https://github.com/geinersito/paris-luxe-journey/pull/52) / `9fedcfb` | IA + content pruning: 9→5 sections, About folded, -19% bundle |
 | FIX-NAV-ABOUT-ANCHOR-SCROLL | Hotfix | P2 | R0 | DONE | SPA-safe anchor navigation (#about fix) | `21372f2` | Centralized hash handling in HashScroll component, removed Navbar setTimeout hack, fixed ContactSection anchor offset |
-| UX-HOME-TRUST-LAYER-01 | PR-U4 | P2 | R0 | TODO | Trust layer + supporting CTA |  | Trust near CTA without viewport saturation |
+| UX-HOME-TRUST-LAYER-01 | PR-U4 | P2 | R0 | DOING | Trust layer + supporting CTA |  | Inline trust badges in PremiumSection cards (above CTA), service-specific (not duplicated) |
 | UX-HOME-MOBILE-STICKY-CTA-01 | PR-U5 | P2 | R0 | TODO | Mobile sticky CTA booster |  | Always-visible CTA on mobile |
 | UX-TIMEPICKER-COMPACT-01 | PR-U2c | P2 | R0 | DONE | Time picker compact | [#44](https://github.com/geinersito/paris-luxe-journey/pull/44) / `9daaa9a` | Native `<input type="time">` replaces 48-item popover |
 | UX-BOOKING-DETAILS-REDESIGN-01 | PR-U3a | P2 | R0 | TODO | Redesign /booking/details |  | UX-only (no Stripe) |
