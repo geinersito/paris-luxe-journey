@@ -23,7 +23,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- (ninguno)
+- **UX-CONTRAST-AA-01** (P2/R0) - Contrast AA pass — branch `ux/contrast-aa-01`
 
 ## Siguientes 3 items del plan (priorizados)
 

@@ -8,9 +8,9 @@ const colors = {
   background: "hsl(var(--background))",
   foreground: "hsl(var(--foreground))",
   primary: {
-    DEFAULT: "#B8956A", // Oro champagne suave - elegante y refinado
+    DEFAULT: "#906B47", // Oro champagne (AA-safe ≥4.5:1)
     foreground: "#FFFFFF",
-    accent: "#9A7B52", // Hover más oscuro pero suave
+    accent: "#805E3C", // Hover más oscuro (AA-safe)
     dark: "#7D6344", // Dark mode
     light: "#D4C4A8", // Claro para gradientes suaves
     50: "#FAF8F4",
@@ -18,8 +18,8 @@ const colors = {
     200: "#E8DFD0",
     300: "#D4C4A8",
     400: "#C6AD8A",
-    500: "#B8956A", // DEFAULT - champagne gold
-    600: "#9A7B52",
+    500: "#906B47", // DEFAULT - champagne gold (AA-safe)
+    600: "#805E3C",
     700: "#7D6344",
     800: "#5F4A33",
     900: "#3D2F20",
@@ -188,8 +188,8 @@ export default {
         'fluid-5xl': 'var(--text-5xl)',
       },
       backgroundImage: {
-        'gradient-gold': 'linear-gradient(135deg, #D4C4A8 0%, #B8956A 50%, #9A7B52 100%)',
-        'gradient-gold-radial': 'radial-gradient(circle, #D4C4A8 0%, #B8956A 50%, #7D6344 100%)',
+        'gradient-gold': 'linear-gradient(135deg, #D4C4A8 0%, #906B47 50%, #805E3C 100%)',
+        'gradient-gold-radial': 'radial-gradient(circle, #D4C4A8 0%, #906B47 50%, #7D6344 100%)',
         'gradient-champagne': 'linear-gradient(180deg, #FEFCF8 0%, #F7F3E9 100%)',
         'gradient-dark': 'linear-gradient(135deg, #1F2D42 0%, #232F3E 100%)',
         'gradient-gold-subtle': 'linear-gradient(135deg, #F3EFE7 0%, #E8DFD0 50%, #D4C4A8 100%)',
