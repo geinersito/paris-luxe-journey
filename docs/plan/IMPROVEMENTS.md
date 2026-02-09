@@ -54,7 +54,7 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | FIX-I18N-SELECT-PLACEHOLDERS-01 | Hotfix | P2 | R0 | DONE | Shorten select placeholders + truncate safety | [#54](https://github.com/geinersito/paris-luxe-journey/pull/54) / `acde874` | Short i18n placeholders (labels provide context); `truncate` on `<select>` as safety net |
 | UX-HOME-MOBILE-STICKY-CTA-01 | PR-U5 | P2 | R0 | DONE | Mobile sticky CTA booster | [#55](https://github.com/geinersito/paris-luxe-journey/pull/55) / `2c2c9cf` | Fixed bottom CTA on mobile; hidden when hero widget visible (IntersectionObserver); opens existing booking modal |
 | UX-TIMEPICKER-COMPACT-01 | PR-U2c | P2 | R0 | DONE | Time picker compact | [#44](https://github.com/geinersito/paris-luxe-journey/pull/44) / `9daaa9a` | Native `<input type="time">` replaces 48-item popover |
-| UX-BOOKING-DETAILS-REDESIGN-01 | PR-U3a | P2 | R0 | DOING | Redesign /booking/details |  | 2-col layout (form + sticky summary), i18n stepper, hardcoded ES strings fixed |
+| UX-BOOKING-DETAILS-REDESIGN-01 | PR-U3a | P2 | R0 | DONE | Redesign /booking/details | [#56](https://github.com/geinersito/paris-luxe-journey/pull/56) / `05275dd` | 2-col layout (form + sticky summary), i18n stepper, hardcoded ES strings fixed |
 | UX-BOOKING-PAYMENT-OPTIMIZE-01 | PR-U3b | P2 | R0 | TODO | Optimize /booking/payment |  | Consistent language + clear CTA/T&C |
 | FLOW-BOOKING-CONFIRMATION-ROBUST-01 | PR-U3c | P2 | R1 | DONE | Robustify /booking/confirmation | [#43](https://github.com/geinersito/paris-luxe-journey/pull/43) / `4541326` | Refresh/back behavior via sessionStorage fallback + price display fix |
 

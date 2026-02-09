@@ -12,24 +12,24 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `2c2c9cf`
+- SHA: `05275dd`
 - Last updated: `2026-02-09`
 
 ## Ultimos PRs mergeados en main
 
-1. `#55` - Mobile sticky CTA booster (UX-HOME-MOBILE-STICKY-CTA-01) (`2c2c9cf`)
-2. `#54` - Shorten select placeholders + truncate safety (FIX-I18N-SELECT-PLACEHOLDERS-01) (`acde874`)
-3. `#53` - Trust layer + CTA i18n overflow fix (UX-HOME-TRUST-LAYER-01 + FIX-CTA-I18N-OVERFLOW-01) (`e618fe3`)
+1. `#56` - Redesign /booking/details (UX-BOOKING-DETAILS-REDESIGN-01) (`05275dd`)
+2. `#55` - Mobile sticky CTA booster (UX-HOME-MOBILE-STICKY-CTA-01) (`2c2c9cf`)
+3. `#54` - Shorten select placeholders + truncate safety (FIX-I18N-SELECT-PLACEHOLDERS-01) (`acde874`)
 
 ## Ahora en curso
 
-- **UX-BOOKING-DETAILS-REDESIGN-01** (P2/R0) - Redesign /booking/details
+- (ninguno)
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **UX-BOOKING-DETAILS-REDESIGN-01** (P2/R0) - Redesign /booking/details
-2. **UX-BOOKING-PAYMENT-OPTIMIZE-01** (P2/R0) - Optimize /booking/payment
-3. Backlog review needed
+1. **UX-BOOKING-PAYMENT-OPTIMIZE-01** (P2/R0) - Optimize /booking/payment
+2. Backlog review needed
+3. —
 
 ## Regla de actualizacion
 
