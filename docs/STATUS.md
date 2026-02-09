@@ -12,18 +12,18 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `331907f`
+- SHA: `afcdaf7`
 - Last updated: `2026-02-08`
 
 ## Ultimos PRs mergeados en main
 
-1. `#47` - Prefill WhatsApp/email CTAs (UX-EVENTS-CTA-PREFILL-01) (`331907f`)
-2. `#46` - Contextual CTAs on Events page (UX-EVENTS-CONTEXT-CTA-01) (`dc928d3`)
-3. `#45` - About/Contact/Fleet anchors + redirects (NAV-ABOUT-CONTACT-FLEET-01) (`3398685`)
+1. `#48` - Fluid typography tokens + dead CSS cleanup (UX-TYPOGRAPHY-01) (`afcdaf7`)
+2. `#47` - Prefill WhatsApp/email CTAs (UX-EVENTS-CTA-PREFILL-01) (`331907f`)
+3. `#46` - Contextual CTAs on Events page (UX-EVENTS-CONTEXT-CTA-01) (`dc928d3`)
 
 ## Ahora en curso
 
-- **UX-TYPOGRAPHY-01** (P2/R0) - Typography base (branch: `ux/typography-01`)
+- (ninguno)
 
 ## Siguientes 3 items del plan (priorizados)
 
