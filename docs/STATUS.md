@@ -23,7 +23,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- (ninguno)
+- **UX-HOME-TRUST-LAYER-01** (P2/R0) - Trust layer + supporting CTA
 
 ## Siguientes 3 items del plan (priorizados)
 
