@@ -1,6 +1,7 @@
 import React from "react";
 import BookingForm from "../BookingForm";
 import { CompactBookingForm } from "../booking/CompactBookingForm";
+import MobileStickyCTA from "../MobileStickyCTA";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 // Optimized image URLs with different sizes for responsive loading
@@ -37,6 +38,8 @@ export default function HeroSection() {
     dropoff: string;
     passengers: string;
   } | null>(null);
+  const [showStickyCTA, setShowStickyCTA] = React.useState(false);
+  const widgetRef = React.useRef<HTMLDivElement>(null);
 
   // Parallax effect
   React.useEffect(() => {
@@ -65,6 +68,22 @@ export default function HeroSection() {
       observer.observe(imageRef.current);
     }
 
+    return () => observer.disconnect();
+  }, []);
+
+  // Track hero widget visibility for mobile sticky CTA
+  React.useEffect(() => {
+    const node = widgetRef.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowStickyCTA(!entry.isIntersecting);
+      },
+      { threshold: 0.25 },
+    );
+
+    observer.observe(node);
     return () => observer.disconnect();
   }, []);
 
@@ -138,6 +157,7 @@ export default function HeroSection() {
 
           {/* Right column — booking widget */}
           <div
+            ref={widgetRef}
             className="lg:col-span-6 animate-scaleIn"
             style={{ animationDelay: "0.6s", animationFillMode: "both" }}
           >
@@ -206,6 +226,12 @@ export default function HeroSection() {
           </div>
         </div>
       )}
+
+      <MobileStickyCTA
+        label={t.hero.getInstantQuote}
+        onClick={() => setShowBookingModal(true)}
+        isVisible={showStickyCTA}
+      />
 
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
         <svg

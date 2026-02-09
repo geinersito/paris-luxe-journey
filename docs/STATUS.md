@@ -23,7 +23,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- Nada activo — próximo item por iniciar
+- **UX-HOME-MOBILE-STICKY-CTA-01** (P2/R0) - Mobile sticky CTA booster
 
 ## Siguientes 3 items del plan (priorizados)
 
