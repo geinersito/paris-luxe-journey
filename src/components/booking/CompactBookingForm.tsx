@@ -254,7 +254,7 @@ export function CompactBookingForm({
           <Button
             onClick={handleQuickBook}
             disabled={!canQuickBook}
-            className="silk-button w-full lg:w-auto px-8 py-3 text-sm font-bold whitespace-nowrap group shadow-gold-glow hover:shadow-gold-glow-strong"
+            className="silk-button w-full lg:w-auto px-6 py-3 text-sm font-bold text-center leading-tight group shadow-gold-glow hover:shadow-gold-glow-strong"
           >
             {t.hero.getInstantQuote}
             <svg
