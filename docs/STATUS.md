@@ -23,13 +23,13 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- (ninguno)
+- **UX-TYPOGRAPHY-01** (P2/R0) - Typography base (branch: `ux/typography-01`)
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **UX-TYPOGRAPHY-01** (P2/R0) - Typography base (tokens/scale)
-2. **UX-TOUCHTARGETS-48PX-01** (P2/R0) - Touch targets 48px (mobile)
-3. **UX-CONTRAST-AA-01** (P2/R0) - Contrast AA pass
+1. **UX-TOUCHTARGETS-48PX-01** (P2/R0) - Touch targets 48px (mobile)
+2. **UX-CONTRAST-AA-01** (P2/R0) - Contrast AA pass
+3. **UX-HOME-HERO-UBERLIKE-01** (P2/R0) - Home hero Uber-like + larger form
 
 ## Regla de actualizacion
 

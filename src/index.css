@@ -66,7 +66,29 @@
   --space-2xl: 3rem;
   --space-3xl: 4rem;
 
-  /* Typography Scale */
+  /*
+   * Typography Scale (SSOT)
+   *
+   * Fluid sizes using clamp(min, preferred, max).
+   * Wired to Tailwind via text-fluid-* classes (see tailwind.config.ts).
+   *
+   * Token        Tailwind class      Intent               Font family
+   * ─────────    ──────────────      ──────               ───────────
+   * --text-xs    text-fluid-xs       caption / micro      font-sans
+   * --text-sm    text-fluid-sm       labels / helper      font-sans
+   * --text-base  text-fluid-base     body text            font-sans
+   * --text-lg    text-fluid-lg       lead / emphasis      font-sans
+   * --text-xl    text-fluid-xl       card title / h3      font-display
+   * --text-2xl   text-fluid-2xl      section sub / h3     font-display
+   * --text-3xl   text-fluid-3xl      section title / h2   font-display
+   * --text-4xl   text-fluid-4xl      page title / h1      font-display
+   * --text-5xl   text-fluid-5xl      hero display         font-display
+   *
+   * Font families (tailwind.config.ts):
+   *   font-display → Playfair Display (serif) — headings
+   *   font-accent  → Cormorant Garamond (serif italic) — decorative
+   *   font-sans    → Montserrat (sans-serif) — body / UI
+   */
   --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
   --text-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);
   --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
@@ -319,23 +341,6 @@
 
   .button-outline-gold {
     @apply border-2 border-primary/40 hover:bg-primary/5 hover:border-primary transition-all duration-300 px-8 py-4 rounded-xl font-semibold;
-  }
-
-  /* Typography Utilities */
-  .heading-primary {
-    @apply font-display font-bold text-primary dark:text-primary-foreground;
-  }
-
-  .heading-accent {
-    @apply font-display italic font-normal text-secondary;
-  }
-
-  .heading-script {
-    @apply font-accent italic font-medium text-secondary;
-  }
-
-  .body-text {
-    @apply font-sans text-foreground;
   }
 
   .text-shadow-gold {
