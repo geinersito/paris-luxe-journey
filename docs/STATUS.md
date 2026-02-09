@@ -12,24 +12,24 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `21372f2`
+- SHA: `e618fe3`
 - Last updated: `2026-02-09`
 
 ## Ultimos PRs mergeados en main
 
-1. **Hotfix** - SPA-safe anchor navigation (HashScroll component) (`21372f2`)
-2. `#52` - Home pruned to 5 sections + About folded + -19% bundle (UX-HOME-SIMPLIFY-SECTIONS-01) (`9fedcfb`)
-3. `#51` - Hero lg 2-col grid + booking widget right + trust dedup (UX-HOME-HERO-UBERLIKE-01) (`9bc49af`)
+1. `#53` - Trust layer + CTA i18n overflow fix (UX-HOME-TRUST-LAYER-01 + FIX-CTA-I18N-OVERFLOW-01) (`e618fe3`)
+2. **Hotfix** - SPA-safe anchor navigation (HashScroll component) (`21372f2`)
+3. `#52` - Home pruned to 5 sections + About folded + -19% bundle (UX-HOME-SIMPLIFY-SECTIONS-01) (`9fedcfb`)
 
 ## Ahora en curso
 
-- **UX-HOME-TRUST-LAYER-01** (P2/R0) - Trust layer + supporting CTA
+- Nada activo — próximo item por iniciar
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **UX-HOME-TRUST-LAYER-01** (P2/R0) - Trust layer + supporting CTA
-2. **UX-HOME-MOBILE-STICKY-CTA-01** (P2/R0) - Mobile sticky CTA booster
-3. **UX-BOOKING-DETAILS-REDESIGN-01** (P2/R0) - Redesign /booking/details
+1. **UX-HOME-MOBILE-STICKY-CTA-01** (P2/R0) - Mobile sticky CTA booster
+2. **UX-BOOKING-DETAILS-REDESIGN-01** (P2/R0) - Redesign /booking/details
+3. **UX-BOOKING-PAYMENT-OPTIMIZE-01** (P2/R0) - Optimize /booking/payment
 
 ## Regla de actualizacion
 
