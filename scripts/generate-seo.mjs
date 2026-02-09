@@ -1,199 +1,281 @@
 /**
  * Build-time generator for sitemap.xml and robots.txt
- * Runs after `vite build` — writes to dist/
+ * Runs after `vite build` and writes to dist/.
  *
- * Usage: node scripts/generate-seo.mjs
+ * Usage:
+ *   node scripts/generate-seo.mjs
  *
- * Requires VITE_SITE_URL env var (fails if missing in CI).
+ * Requirements:
+ *   - VITE_PUBLIC_SITE_URL must exist in process env or .env* files.
  */
 
-import { writeFileSync, readFileSync, existsSync } from "fs";
-import { join } from "path";
+import { existsSync, readFileSync, writeFileSync } from "fs";
+import { join, resolve } from "path";
 
-// ── Base URL ────────────────────────────────────────────────────────────────
+const REQUIRED_SITE_URL_ENV = "VITE_PUBLIC_SITE_URL";
+const ROBOTS_NOINDEX_ENV = "VITE_ROBOTS_NOINDEX";
+const ENV_FILES_IN_PRECEDENCE = [
+  ".env",
+  ".env.local",
+  ".env.production",
+  ".env.production.local",
+];
 
-const SITE_URL =
-  process.env.VITE_SITE_URL || process.env.VITE_APP_URL || "";
+const STATIC_ROUTES = [
+  "/",
+  "/booking",
+  "/events",
+  "/blog",
+  "/excursions",
+  "/airports/cdg",
+  "/airports/orly",
+  "/airports/beauvais",
+  "/hourly",
+  "/hourly/quote",
+  "/faq",
+  "/guides/avoid-fake-taxis",
+  "/privacy",
+  "/terms",
+];
 
-if (!SITE_URL) {
-  // Allow local dev builds without the env var (fallback)
-  // In CI this should always be set
-  if (process.env.CI) {
+const BLOG_SLUG_EXCLUSIONS = [
+  /^example-/i,
+  /^sample-/i,
+  /^draft-/i,
+  /^todo-/i,
+  /^placeholder-/i,
+  /lorem-ipsum/i,
+];
+
+function parseDotEnvFile(filePath) {
+  const parsed = {};
+  if (!existsSync(filePath)) {
+    return parsed;
+  }
+
+  const content = readFileSync(filePath, "utf8");
+  const lines = content.split(/\r?\n/);
+
+  for (const line of lines) {
+    const trimmed = line.trim();
+    if (!trimmed || trimmed.startsWith("#")) {
+      continue;
+    }
+
+    const equalsIndex = trimmed.indexOf("=");
+    if (equalsIndex <= 0) {
+      continue;
+    }
+
+    const key = trimmed.slice(0, equalsIndex).trim();
+    let value = trimmed.slice(equalsIndex + 1).trim();
+
+    if (
+      (value.startsWith('"') && value.endsWith('"')) ||
+      (value.startsWith("'") && value.endsWith("'"))
+    ) {
+      value = value.slice(1, -1);
+    }
+
+    parsed[key] = value;
+  }
+
+  return parsed;
+}
+
+function loadBuildEnvFromFiles() {
+  const merged = {};
+  for (const envFile of ENV_FILES_IN_PRECEDENCE) {
+    const envPath = resolve(process.cwd(), envFile);
+    Object.assign(merged, parseDotEnvFile(envPath));
+  }
+  return merged;
+}
+
+function normalizeBaseUrl(rawValue) {
+  try {
+    const parsed = new URL(rawValue);
+    return parsed.origin;
+  } catch {
     console.error(
-      "ERROR: VITE_SITE_URL is required in CI. Set it in your deployment env.",
+      `ERROR: ${REQUIRED_SITE_URL_ENV} must be a valid absolute URL, got "${rawValue}".`,
     );
     process.exit(1);
   }
-  // Local fallback
-  console.warn(
-    "WARN: VITE_SITE_URL not set, using default https://eliteparistransfer.com",
-  );
 }
 
-const BASE = SITE_URL || "https://eliteparistransfer.com";
-const TODAY = new Date().toISOString().split("T")[0];
+function resolveBaseUrl() {
+  const fileEnv = loadBuildEnvFromFiles();
+  const rawSiteUrl =
+    process.env[REQUIRED_SITE_URL_ENV] ?? fileEnv[REQUIRED_SITE_URL_ENV] ?? "";
+  const trimmed = rawSiteUrl.trim();
 
-// ── Static routes ───────────────────────────────────────────────────────────
+  if (!trimmed) {
+    console.error(
+      `ERROR: Missing ${REQUIRED_SITE_URL_ENV}. Define it in CI or in .env.production before running build.`,
+    );
+    process.exit(1);
+  }
 
-const STATIC_ROUTES = [
-  { path: "/", changefreq: "weekly", priority: 1.0 },
-  { path: "/booking", changefreq: "monthly", priority: 0.9 },
-  { path: "/events", changefreq: "daily", priority: 0.8 },
-  { path: "/blog", changefreq: "daily", priority: 0.8 },
-  { path: "/excursions", changefreq: "monthly", priority: 0.7 },
-  { path: "/airports/cdg", changefreq: "monthly", priority: 0.7 },
-  { path: "/airports/orly", changefreq: "monthly", priority: 0.7 },
-  { path: "/airports/beauvais", changefreq: "monthly", priority: 0.7 },
-  { path: "/hourly", changefreq: "monthly", priority: 0.6 },
-  { path: "/faq", changefreq: "monthly", priority: 0.5 },
-  { path: "/guides/avoid-fake-taxis", changefreq: "monthly", priority: 0.6 },
-  { path: "/privacy", changefreq: "yearly", priority: 0.2 },
-  { path: "/terms", changefreq: "yearly", priority: 0.2 },
-];
+  return normalizeBaseUrl(trimmed);
+}
 
-// ── Blog post extraction ────────────────────────────────────────────────────
+function xmlEscape(value) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
+function safeIsoDate(value) {
+  if (!value) {
+    return null;
+  }
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) {
+    return null;
+  }
+  return parsed.toISOString().slice(0, 10);
+}
+
+function isIndexableBlogSlug(slug) {
+  if (!slug) {
+    return false;
+  }
+  return !BLOG_SLUG_EXCLUSIONS.some((pattern) => pattern.test(slug));
+}
 
 function extractBlogPosts() {
-  const postsFile = join(
-    process.cwd(),
-    "src",
-    "data",
-    "blog",
-    "posts.meta.ts",
-  );
-
-  if (!existsSync(postsFile)) {
-    console.warn("WARN: posts.meta.ts not found, skipping blog posts");
+  const postsPath = join(process.cwd(), "src", "data", "blog", "posts.meta.ts");
+  if (!existsSync(postsPath)) {
     return [];
   }
 
-  const content = readFileSync(postsFile, "utf-8");
+  const content = readFileSync(postsPath, "utf8");
+  const postRegex =
+    /\{\s*id:\s*"[^"]+"[\s\S]*?slug:\s*"([^"]+)"[\s\S]*?category:\s*"([^"]+)"[\s\S]*?publishedAt:\s*"([^"]+)"(?:[\s\S]*?updatedAt:\s*"([^"]+)")?[\s\S]*?\n  },/g;
+
   const posts = [];
+  let match;
 
-  // Match each post object: slug, category, updatedAt
-  const slugRegex = /slug:\s*["']([^"']+)["']/g;
-  const categoryRegex = /category:\s*["']([^"']+)["']/g;
-  const updatedAtRegex = /updatedAt:\s*["']([^"']+)["']/g;
+  while ((match = postRegex.exec(content)) !== null) {
+    const slug = match[1];
+    const category = match[2];
+    const publishedAt = match[3];
+    const updatedAt = match[4];
 
-  const slugs = [...content.matchAll(slugRegex)].map((m) => m[1]);
-  const categories = [...content.matchAll(categoryRegex)].map((m) => m[1]);
-  const updatedAts = [...content.matchAll(updatedAtRegex)].map((m) => m[1]);
+    if (!isIndexableBlogSlug(slug)) {
+      continue;
+    }
 
-  for (let i = 0; i < slugs.length; i++) {
     posts.push({
-      slug: slugs[i],
-      category: categories[i],
-      updatedAt: updatedAts[i] || TODAY,
+      slug,
+      category,
+      lastmod: safeIsoDate(updatedAt) ?? safeIsoDate(publishedAt),
     });
   }
 
   return posts;
 }
 
-// ── Blog category extraction ────────────────────────────────────────────────
-
 function extractBlogCategories() {
-  const catFile = join(
+  const categoriesPath = join(
     process.cwd(),
     "src",
     "data",
     "blog",
     "categories.ts",
   );
-
-  if (!existsSync(catFile)) {
+  if (!existsSync(categoriesPath)) {
     return [];
   }
 
-  const content = readFileSync(catFile, "utf-8");
+  const content = readFileSync(categoriesPath, "utf8");
   const slugRegex = /slug:\s*["']([^"']+)["']/g;
-  return [...content.matchAll(slugRegex)].map((m) => m[1]);
+  return [...content.matchAll(slugRegex)].map((match) => match[1]);
 }
 
-// ── Generators ──────────────────────────────────────────────────────────────
+function dedupeUrlEntries(entries) {
+  const seen = new Set();
+  return entries.filter((entry) => {
+    if (seen.has(entry.loc)) {
+      return false;
+    }
+    seen.add(entry.loc);
+    return true;
+  });
+}
 
-function generateSitemapXml() {
-  const blogPosts = extractBlogPosts();
-  const blogCategories = extractBlogCategories();
+function buildSitemapEntries(baseUrl) {
+  const staticEntries = STATIC_ROUTES.map((path) => ({
+    loc: `${baseUrl}${path}`,
+  }));
 
-  const urls = [];
+  const categoryEntries = extractBlogCategories().map((categorySlug) => ({
+    loc: `${baseUrl}/blog/${encodeURIComponent(categorySlug)}`,
+  }));
 
-  // Static routes
-  for (const route of STATIC_ROUTES) {
-    urls.push(
-      `  <url>
-    <loc>${BASE}${route.path}</loc>
-    <lastmod>${TODAY}</lastmod>
-    <changefreq>${route.changefreq}</changefreq>
-    <priority>${route.priority}</priority>
-  </url>`,
-    );
-  }
+  const postEntries = extractBlogPosts().map((post) => ({
+    loc: `${baseUrl}/blog/${encodeURIComponent(post.category)}/${encodeURIComponent(post.slug)}`,
+    lastmod: post.lastmod,
+  }));
 
-  // Blog category pages
-  for (const cat of blogCategories) {
-    urls.push(
-      `  <url>
-    <loc>${BASE}/blog/${cat}</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
-  </url>`,
-    );
-  }
+  return dedupeUrlEntries([...staticEntries, ...categoryEntries, ...postEntries]);
+}
 
-  // Blog posts
-  for (const post of blogPosts) {
-    urls.push(
-      `  <url>
-    <loc>${BASE}/blog/${post.category}/${post.slug}</loc>
-    <lastmod>${post.updatedAt}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>`,
-    );
-  }
+function buildSitemapXml(entries) {
+  const urlBlocks = entries.map((entry) => {
+    const lines = ["  <url>", `    <loc>${xmlEscape(entry.loc)}</loc>`];
+    if (entry.lastmod) {
+      lines.push(`    <lastmod>${entry.lastmod}</lastmod>`);
+    }
+    lines.push("  </url>");
+    return lines.join("\n");
+  });
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls.join("\n")}
+${urlBlocks.join("\n")}
 </urlset>
 `;
 }
 
-function generateRobotsTxt() {
+function buildRobotsTxt(baseUrl) {
+  if (process.env[ROBOTS_NOINDEX_ENV] === "1") {
+    return `User-agent: *
+Disallow: /
+`;
+  }
+
   return `User-agent: *
 Allow: /
 
-Sitemap: ${BASE}/sitemap.xml
-
-# Private pages
-Disallow: /booking/details
-Disallow: /booking/payment
-Disallow: /booking/confirmation
+Sitemap: ${baseUrl}/sitemap.xml
 `;
 }
 
-// ── Main ────────────────────────────────────────────────────────────────────
-
 function main() {
   const distDir = join(process.cwd(), "dist");
-
   if (!existsSync(distDir)) {
     console.error("ERROR: dist/ not found. Run `vite build` first.");
     process.exit(1);
   }
 
-  const sitemap = generateSitemapXml();
-  const robots = generateRobotsTxt();
+  const baseUrl = resolveBaseUrl();
+  const sitemapEntries = buildSitemapEntries(baseUrl);
+  const sitemapXml = buildSitemapXml(sitemapEntries);
+  const robotsTxt = buildRobotsTxt(baseUrl);
 
-  writeFileSync(join(distDir, "sitemap.xml"), sitemap, "utf-8");
-  writeFileSync(join(distDir, "robots.txt"), robots, "utf-8");
+  writeFileSync(join(distDir, "sitemap.xml"), sitemapXml, "utf8");
+  writeFileSync(join(distDir, "robots.txt"), robotsTxt, "utf8");
 
-  // Count URLs for summary
-  const urlCount = (sitemap.match(/<url>/g) || []).length;
-  console.log(`sitemap.xml: ${urlCount} URLs written to dist/sitemap.xml`);
-  console.log(`robots.txt: written to dist/robots.txt`);
-  console.log(`Base URL: ${BASE}`);
+  console.log(
+    `sitemap.xml: ${sitemapEntries.length} URLs written to dist/sitemap.xml`,
+  );
+  console.log("robots.txt: written to dist/robots.txt");
+  console.log(`Base URL: ${baseUrl}`);
 }
 
 main();
