@@ -174,6 +174,19 @@ export default {
         accent: ["Cormorant Garamond", "serif"], // Subtítulos decorativos
         sans: ["Montserrat", "sans-serif"], // Cuerpo de texto premium
       },
+      fontSize: {
+        // Fluid typography tokens — map to clamp() CSS vars in index.css
+        // Usage: text-fluid-sm, text-fluid-2xl, etc.
+        'fluid-xs':  'var(--text-xs)',
+        'fluid-sm':  'var(--text-sm)',
+        'fluid-base': 'var(--text-base)',
+        'fluid-lg':  'var(--text-lg)',
+        'fluid-xl':  'var(--text-xl)',
+        'fluid-2xl': 'var(--text-2xl)',
+        'fluid-3xl': 'var(--text-3xl)',
+        'fluid-4xl': 'var(--text-4xl)',
+        'fluid-5xl': 'var(--text-5xl)',
+      },
       backgroundImage: {
         'gradient-gold': 'linear-gradient(135deg, #D4C4A8 0%, #B8956A 50%, #9A7B52 100%)',
         'gradient-gold-radial': 'radial-gradient(circle, #D4C4A8 0%, #B8956A 50%, #7D6344 100%)',
