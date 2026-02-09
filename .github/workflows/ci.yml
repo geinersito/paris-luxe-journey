@@ -30,6 +30,9 @@ jobs:
         run: npx tsc --noEmit
 
       - name: Build
+        env:
+          # Required by scripts/generate-seo.mjs during build
+          VITE_PUBLIC_SITE_URL: ${{ vars.VITE_PUBLIC_SITE_URL || 'https://eliteparistransfer.com' }}
         run: npm run build
 
       - name: Fetch main branch

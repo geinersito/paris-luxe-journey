@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/generate-seo.mjs",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "lint:changed": "git diff --name-only origin/main...HEAD -- '*.ts' '*.tsx' '*.js' '*.jsx' | xargs -r npx eslint",

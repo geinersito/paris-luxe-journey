@@ -23,7 +23,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- (none — awaiting runbook)
+- **UX-SEO-SITEMAP-ROBOTS-01** (P2/R0) - Automate sitemap.xml + robots.txt in build
 
 ## Siguientes 3 items del plan (priorizados)
 
