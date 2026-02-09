@@ -189,8 +189,12 @@ export const es: Translation = {
       total: "Precio Total",
       estimated: "Precio Estimado",
       distance: "Distancia estimada",
-      basePrice: "Precio base desde",
+      basePrice: "Precio base",
       roundTripIncluded: "*Precio incluye ida y vuelta",
+      luggageSurcharge: "Maletas adicionales",
+      passengerSurcharge: "Suplemento grupo (4–7 pax)",
+      luggageIncluded: "Incluido: 1 grande + 1 pequeña por pasajero",
+      selectedLuggage: "Equipaje seleccionado",
     },
     passengerDetails: "Detalles del Pasajero",
     fullName: "Nombre Completo",
@@ -207,6 +211,32 @@ export const es: Translation = {
     payment: {
       title: "Detalles del Pago",
       cardDetails: "Detalles de la Tarjeta",
+      securePaymentNotice:
+        "Tu pago se procesará de forma segura. Recibirás un email de confirmación al completar la reserva.",
+      sessionExpired: "Sesión expirada",
+      sessionExpiredDesc:
+        "Por favor, completa el formulario de reserva nuevamente.",
+      loadingLocations: "Cargando datos de ubicación...",
+      locationError: "Error al cargar datos de ubicación",
+      paymentDetails: "Detalles del Pago",
+      secureCardIntro:
+        "Continúa para introducir los datos de tu tarjeta de forma segura.",
+      acceptTerms: "Acepto los términos y condiciones del servicio",
+      confirmAndPay: "Confirmar y Pagar",
+      pay: "Pagar",
+      retryPayment: "Reintentar pago",
+      fixDetails: "Corregir datos",
+      processingPayment: "Procesando pago...",
+      bookingConfirmed: "¡Reserva confirmada!",
+      bookingConfirmedDesc:
+        "Tu reserva ha sido procesada exitosamente. Hemos enviado un email de confirmación.",
+      emailWarning:
+        "La reserva se ha confirmado pero hubo un problema al enviar los emails de confirmación.",
+      finalizationError: "Hubo un error al finalizar la reserva.",
+      paymentError: "Error en el pago",
+      incompleteLocationData:
+        "Datos de ubicación incompletos. Por favor, inténtalo nuevamente.",
+      paymentSuccessRedirect: "¡Pago completado exitosamente! Redirigiendo...",
     },
     success: {
       title: "¡Reserva Confirmada!",
