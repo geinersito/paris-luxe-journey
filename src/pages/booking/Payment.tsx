@@ -17,6 +17,126 @@ import {
   Shield,
 } from "lucide-react";
 
+const CONFLICT_ERROR_CODES = new Set(["23P01", "23505"]);
+
+const extractCodeFromPayload = (payload: unknown): string | null => {
+  if (!payload || typeof payload !== "object") {
+    return null;
+  }
+
+  const record = payload as Record<string, unknown>;
+  const nestedError =
+    record.error && typeof record.error === "object"
+      ? (record.error as Record<string, unknown>)
+      : null;
+  const nestedData =
+    record.data && typeof record.data === "object"
+      ? (record.data as Record<string, unknown>)
+      : null;
+
+  const codes = [record.code, nestedError?.code, nestedData?.code];
+
+  for (const code of codes) {
+    if (typeof code === "string") {
+      return code;
+    }
+  }
+
+  return null;
+};
+
+const parseEmbeddedJson = (value: string): unknown | null => {
+  const jsonStart = value.indexOf("{");
+  const jsonEnd = value.lastIndexOf("}");
+
+  if (jsonStart < 0 || jsonEnd <= jsonStart) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(value.slice(jsonStart, jsonEnd + 1));
+  } catch {
+    return null;
+  }
+};
+
+const extractDbCode = async (err: unknown): Promise<string | null> => {
+  if (!err) {
+    return null;
+  }
+
+  const message = err instanceof Error ? err.message : String(err);
+
+  for (const code of CONFLICT_ERROR_CODES) {
+    if (message.includes(code)) {
+      return code;
+    }
+  }
+
+  const parsedFromMessage = parseEmbeddedJson(message);
+  const codeFromMessage = extractCodeFromPayload(parsedFromMessage);
+  if (codeFromMessage) {
+    return codeFromMessage;
+  }
+
+  const errRecord =
+    err && typeof err === "object" ? (err as Record<string, unknown>) : null;
+  const codeFromErrorObject = extractCodeFromPayload(errRecord);
+  if (codeFromErrorObject) {
+    return codeFromErrorObject;
+  }
+
+  const context =
+    errRecord?.context && typeof errRecord.context === "object"
+      ? (errRecord.context as Record<string, unknown>)
+      : null;
+  const response = context?.response;
+
+  if (response instanceof Response) {
+    try {
+      const body = await response.clone().json();
+      const codeFromBody = extractCodeFromPayload(body);
+      if (codeFromBody) {
+        return codeFromBody;
+      }
+
+      const bodyText = JSON.stringify(body);
+      for (const code of CONFLICT_ERROR_CODES) {
+        if (bodyText.includes(code)) {
+          return code;
+        }
+      }
+    } catch {
+      try {
+        const bodyText = await response.clone().text();
+        for (const code of CONFLICT_ERROR_CODES) {
+          if (bodyText.includes(code)) {
+            return code;
+          }
+        }
+
+        const parsedBody = parseEmbeddedJson(bodyText);
+        const codeFromBody = extractCodeFromPayload(parsedBody);
+        if (codeFromBody) {
+          return codeFromBody;
+        }
+      } catch {
+        // Ignore body parsing issues and keep fallback matching below.
+      }
+    }
+  }
+
+  if (
+    message.includes("exclusion constraint") ||
+    message.includes("bookings_no_overlap") ||
+    message.includes("bookings_unique_vehicle_pickup")
+  ) {
+    return "CONFLICT";
+  }
+
+  return null;
+};
+
 const BookingPayment = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -146,16 +266,8 @@ const BookingPayment = () => {
     );
 
     if (error) {
-      // Detect overlap / duplicate booking constraint violations
-      const errMsg =
-        error instanceof Error ? error.message : JSON.stringify(error);
-      if (
-        errMsg.includes("exclusion constraint") ||
-        errMsg.includes("bookings_no_overlap") ||
-        errMsg.includes("23P01") ||
-        errMsg.includes("bookings_unique_vehicle_pickup") ||
-        errMsg.includes("23505")
-      ) {
+      const dbCode = await extractDbCode(error);
+      if (dbCode === "23P01" || dbCode === "23505" || dbCode === "CONFLICT") {
         throw new Error(
           "Este vehículo ya está reservado en ese horario. Elige otra hora o vehículo.",
         );
