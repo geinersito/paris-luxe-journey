@@ -17,6 +17,162 @@ import {
   Shield,
 } from "lucide-react";
 
+const CONFLICT_ERROR_CODES = new Set(["23P01", "23505"]);
+const CONFLICT_ERROR_MARKERS = [
+  "exclusion constraint",
+  "bookings_no_overlap",
+  "bookings_unique_vehicle_pickup",
+];
+
+const isResponseLike = (value: unknown): value is Response => {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const candidate = value as Response;
+  return (
+    typeof candidate.clone === "function" &&
+    typeof candidate.json === "function" &&
+    typeof candidate.text === "function"
+  );
+};
+
+const extractCodeFromPayload = (payload: unknown): string | null => {
+  if (!payload || typeof payload !== "object") {
+    return null;
+  }
+
+  const record = payload as Record<string, unknown>;
+  const nestedError =
+    record.error && typeof record.error === "object"
+      ? (record.error as Record<string, unknown>)
+      : null;
+  const nestedData =
+    record.data && typeof record.data === "object"
+      ? (record.data as Record<string, unknown>)
+      : null;
+  const nestedDetails =
+    record.details && typeof record.details === "object"
+      ? (record.details as Record<string, unknown>)
+      : null;
+
+  const codes = [
+    record.code,
+    nestedError?.code,
+    nestedData?.code,
+    nestedDetails?.code,
+  ];
+
+  for (const code of codes) {
+    if (typeof code === "string") {
+      return code;
+    }
+  }
+
+  return null;
+};
+
+const parseEmbeddedJson = (value: string): unknown | null => {
+  const jsonStart = value.indexOf("{");
+  const jsonEnd = value.lastIndexOf("}");
+
+  if (jsonStart < 0 || jsonEnd <= jsonStart) {
+    return null;
+  }
+
+  try {
+    return JSON.parse(value.slice(jsonStart, jsonEnd + 1));
+  } catch {
+    return null;
+  }
+};
+
+const extractDbCode = async (err: unknown): Promise<string | null> => {
+  if (!err) {
+    return null;
+  }
+
+  const message = err instanceof Error ? err.message : String(err);
+
+  for (const code of CONFLICT_ERROR_CODES) {
+    if (message.includes(code)) {
+      return code;
+    }
+  }
+
+  const parsedFromMessage = parseEmbeddedJson(message);
+  const codeFromMessage = extractCodeFromPayload(parsedFromMessage);
+  if (codeFromMessage) {
+    return codeFromMessage;
+  }
+
+  const errRecord =
+    err && typeof err === "object" ? (err as Record<string, unknown>) : null;
+  const codeFromErrorObject = extractCodeFromPayload(errRecord);
+  if (codeFromErrorObject) {
+    return codeFromErrorObject;
+  }
+
+  const contextValue = errRecord?.context;
+  const contextRecord =
+    contextValue && typeof contextValue === "object"
+      ? (contextValue as Record<string, unknown>)
+      : null;
+  const response = isResponseLike(contextValue)
+    ? contextValue
+    : isResponseLike(contextRecord?.response)
+      ? contextRecord.response
+      : null;
+
+  if (response) {
+    try {
+      const body = await response.clone().json();
+      const codeFromBody = extractCodeFromPayload(body);
+      if (codeFromBody) {
+        return codeFromBody;
+      }
+
+      const bodyText = JSON.stringify(body);
+      for (const code of CONFLICT_ERROR_CODES) {
+        if (bodyText.includes(code)) {
+          return code;
+        }
+      }
+      if (CONFLICT_ERROR_MARKERS.some((marker) => bodyText.includes(marker))) {
+        return "CONFLICT";
+      }
+    } catch {
+      try {
+        const bodyText = await response.clone().text();
+        for (const code of CONFLICT_ERROR_CODES) {
+          if (bodyText.includes(code)) {
+            return code;
+          }
+        }
+        if (
+          CONFLICT_ERROR_MARKERS.some((marker) => bodyText.includes(marker))
+        ) {
+          return "CONFLICT";
+        }
+
+        const parsedBody = parseEmbeddedJson(bodyText);
+        const codeFromBody = extractCodeFromPayload(parsedBody);
+        if (codeFromBody) {
+          return codeFromBody;
+        }
+      } catch {
+        // Ignore body parsing issues and keep fallback matching below.
+      }
+    }
+  }
+
+  if (CONFLICT_ERROR_MARKERS.some((marker) => message.includes(marker))) {
+    return "CONFLICT";
+  }
+
+  return null;
+};
+
 const BookingPayment = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -84,6 +240,23 @@ const BookingPayment = () => {
 
     const pickupDateTime = new Date(`${bookingData.date}T${bookingData.time}`);
 
+    // Calculate service_end_datetime for anti-overlap constraint
+    const BOOKING_WINDOW_MS = 7200000; // 2 hours in milliseconds
+    let serviceEndDateTime: Date;
+    if (
+      bookingData.tripType === "round_trip" &&
+      bookingData.returnDate &&
+      bookingData.returnTime
+    ) {
+      serviceEndDateTime = new Date(
+        `${bookingData.returnDate}T${bookingData.returnTime}`,
+      );
+    } else {
+      serviceEndDateTime = new Date(
+        pickupDateTime.getTime() + BOOKING_WINDOW_MS,
+      );
+    }
+
     const pickupId =
       bookingData?.pickupLocationId || locationDetails?.pickupId || "";
     const dropoffId =
@@ -97,6 +270,7 @@ const BookingPayment = () => {
       pickup_location_id: pickupId,
       dropoff_location_id: dropoffId,
       pickup_datetime: pickupDateTime.toISOString(),
+      service_end_datetime: serviceEndDateTime.toISOString(),
       passengers_count: Number(bookingData.passengers),
       vehicle_id: bookingData.vehicle_id || "",
       flight_number: bookingData.flight_number || null,
@@ -128,6 +302,12 @@ const BookingPayment = () => {
     );
 
     if (error) {
+      const dbCode = await extractDbCode(error);
+      if (dbCode === "23P01" || dbCode === "23505" || dbCode === "CONFLICT") {
+        throw new Error(
+          "Este vehículo ya está reservado en ese horario. Elige otra hora o vehículo.",
+        );
+      }
       throw error;
     }
 
