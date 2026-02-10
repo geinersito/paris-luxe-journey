@@ -12,14 +12,14 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `a91a115`
+- SHA: `c9d845b`
 - Last updated: `2026-02-10`
 
 ## Ultimos PRs mergeados en main
 
-1. `#66` - Persist service_end_datetime + robust overlap handling (BOOKING-DB-ANTI-DOUBLEBOOK-01b-APP) (`a91a115`)
-2. `#65` - Post-merge SSOT BOOKING-DB-ANTI-DOUBLEBOOK-01b DONE (`7336aa7`)
-3. `#64` - EXCLUDE USING gist anti-overlap constraint (BOOKING-DB-ANTI-DOUBLEBOOK-01b) (`2daf54c`)
+1. `#67` - Foundation i18n: add vehicleUnavailable booking error key (`c9d845b`)
+2. `#68` - Post-merge SSOT BOOKING-DB-ANTI-DOUBLEBOOK-01b-APP (`9f0a3e4`)
+3. `#66` - Persist service_end_datetime + robust overlap handling (BOOKING-DB-ANTI-DOUBLEBOOK-01b-APP) (`a91a115`)
 
 ## Ahora en curso
 
