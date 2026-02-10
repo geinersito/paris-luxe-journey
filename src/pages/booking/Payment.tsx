@@ -84,6 +84,23 @@ const BookingPayment = () => {
 
     const pickupDateTime = new Date(`${bookingData.date}T${bookingData.time}`);
 
+    // Calculate service_end_datetime for anti-overlap constraint
+    const BOOKING_WINDOW_MS = 7200000; // 2 hours in milliseconds
+    let serviceEndDateTime: Date;
+    if (
+      bookingData.tripType === "round_trip" &&
+      bookingData.returnDate &&
+      bookingData.returnTime
+    ) {
+      serviceEndDateTime = new Date(
+        `${bookingData.returnDate}T${bookingData.returnTime}`,
+      );
+    } else {
+      serviceEndDateTime = new Date(
+        pickupDateTime.getTime() + BOOKING_WINDOW_MS,
+      );
+    }
+
     const pickupId =
       bookingData?.pickupLocationId || locationDetails?.pickupId || "";
     const dropoffId =
@@ -97,6 +114,7 @@ const BookingPayment = () => {
       pickup_location_id: pickupId,
       dropoff_location_id: dropoffId,
       pickup_datetime: pickupDateTime.toISOString(),
+      service_end_datetime: serviceEndDateTime.toISOString(),
       passengers_count: Number(bookingData.passengers),
       vehicle_id: bookingData.vehicle_id || "",
       flight_number: bookingData.flight_number || null,
@@ -128,6 +146,21 @@ const BookingPayment = () => {
     );
 
     if (error) {
+      // Detect overlap / duplicate booking constraint violations
+      const errMsg =
+        error instanceof Error ? error.message : JSON.stringify(error);
+      if (
+        errMsg.includes("exclusion constraint") ||
+        errMsg.includes("bookings_no_overlap") ||
+        errMsg.includes("23P01") ||
+        errMsg.includes("bookings_unique_vehicle_pickup") ||
+        errMsg.includes("23505")
+      ) {
+        throw new Error(
+          t.booking.errors.vehicleUnavailable ||
+            "Este vehículo ya está reservado en ese horario. Elige otra hora o vehículo.",
+        );
+      }
       throw error;
     }
 
