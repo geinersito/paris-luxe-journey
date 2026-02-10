@@ -398,6 +398,8 @@ export const fr: Translation = {
       finalizationError: "Erreur lors de la finalisation de la réservation",
       noBookingData: "Aucune donnée de réservation trouvée",
       requiredFields: "Veuillez remplir tous les champs obligatoires",
+      vehicleUnavailable:
+        "Ce véhicule est déjà réservé pour ce créneau. Veuillez choisir un autre horaire ou véhicule.",
       invalidPassengerInfo: "Informations passager non valides",
       invalidPhone: "Numéro de téléphone invalide",
       serviceLevelsNotLoaded: "Impossible de charger les niveaux de service",
