@@ -33,8 +33,17 @@ const extractCodeFromPayload = (payload: unknown): string | null => {
     record.data && typeof record.data === "object"
       ? (record.data as Record<string, unknown>)
       : null;
+  const nestedDetails =
+    record.details && typeof record.details === "object"
+      ? (record.details as Record<string, unknown>)
+      : null;
 
-  const codes = [record.code, nestedError?.code, nestedData?.code];
+  const codes = [
+    record.code,
+    nestedError?.code,
+    nestedData?.code,
+    nestedDetails?.code,
+  ];
 
   for (const code of codes) {
     if (typeof code === "string") {
@@ -90,9 +99,15 @@ const extractDbCode = async (err: unknown): Promise<string | null> => {
     errRecord?.context && typeof errRecord.context === "object"
       ? (errRecord.context as Record<string, unknown>)
       : null;
-  const response = context?.response;
+  const response =
+    context?.response &&
+    typeof context.response === "object" &&
+    typeof (context.response as Response).clone === "function" &&
+    typeof (context.response as Response).json === "function"
+      ? (context.response as Response)
+      : null;
 
-  if (response instanceof Response) {
+  if (response) {
     try {
       const body = await response.clone().json();
       const codeFromBody = extractCodeFromPayload(body);
