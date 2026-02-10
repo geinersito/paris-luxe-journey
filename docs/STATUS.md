@@ -12,18 +12,18 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `72cea85`
+- SHA: `164d193`
 - Last updated: `2026-02-10`
 
 ## Ultimos PRs mergeados en main
 
-1. `#61` - Post-merge SSOT UX-LOCATION-FALLBACKS-01 DONE (`72cea85`)
-2. `#60` - Centralize fallback locations (UX-LOCATION-FALLBACKS-01) (`3712daf`)
-3. `#59` - Build-time sitemap.xml + robots.txt (UX-SEO-SITEMAP-ROBOTS-01) (`a3a91ca`)
+1. `#62` - Anti-double-booking unique index (BOOKING-DB-ANTI-DOUBLEBOOK-01a) (`164d193`)
+2. `#61` - Post-merge SSOT UX-LOCATION-FALLBACKS-01 DONE (`72cea85`)
+3. `#60` - Centralize fallback locations (UX-LOCATION-FALLBACKS-01) (`3712daf`)
 
 ## Ahora en curso
 
-- **BOOKING-DB-ANTI-DOUBLEBOOK-01a** (P0/R2) - Anti-double-booking unique index
+- (none)
 
 ## Siguientes 3 items del plan (priorizados)
 
