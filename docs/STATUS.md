@@ -12,22 +12,22 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `a3a91ca`
-- Last updated: `2026-02-09`
+- SHA: `3712daf`
+- Last updated: `2026-02-10`
 
 ## Ultimos PRs mergeados en main
 
-1. `#59` - Build-time sitemap.xml + robots.txt (UX-SEO-SITEMAP-ROBOTS-01) (`a3a91ca`)
-2. `#58` - Events + BlogIndex SEO metadata (UX-SEO-METADATA-01) (`34060f1`)
-3. `#57` - Optimize /booking/payment (UX-BOOKING-PAYMENT-OPTIMIZE-01) (`049e252`)
+1. `#60` - Centralize fallback locations (UX-LOCATION-FALLBACKS-01) (`3712daf`)
+2. `#59` - Build-time sitemap.xml + robots.txt (UX-SEO-SITEMAP-ROBOTS-01) (`a3a91ca`)
+3. `#58` - Events + BlogIndex SEO metadata (UX-SEO-METADATA-01) (`34060f1`)
 
 ## Ahora en curso
 
-- **UX-LOCATION-FALLBACKS-01** (P2/R0) - Centralize location fallbacks
+- (none)
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **UX-LOCATION-FALLBACKS-01** (P2/R0) - Centralize location fallbacks
+1. (backlog empty — needs triage)
 2. (backlog empty — needs triage)
 3. (backlog empty — needs triage)
 
