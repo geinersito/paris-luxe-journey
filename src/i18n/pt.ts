@@ -297,8 +297,6 @@ export const pt: Translation = {
       finalizationError: "Erro ao finalizar a reserva",
       noBookingData: "Nenhum dado de reserva encontrado",
       requiredFields: "Por favor, preencha todos os campos obrigatórios",
-      vehicleUnavailable:
-        "Este veículo já está reservado para esse horário. Escolha outro horário ou veículo.",
       invalidPassengerInfo: "Informações do passageiro inválidas",
       invalidPhone: "Número de telefone inválido",
       serviceLevelsNotLoaded: "Não foi possível carregar os níveis de serviço",

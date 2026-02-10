@@ -286,8 +286,6 @@ export const en: Translation = {
       finalizationError: "Error finalizing booking",
       noBookingData: "No booking data found",
       requiredFields: "Please fill in all required fields",
-      vehicleUnavailable:
-        "This vehicle is already booked for that time slot. Please choose a different time or vehicle.",
       invalidPassengerInfo: "Invalid passenger information provided",
       invalidPhone: "Invalid phone number",
       serviceLevelsNotLoaded: "Could not load service levels",

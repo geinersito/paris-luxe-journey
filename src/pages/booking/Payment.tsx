@@ -157,8 +157,7 @@ const BookingPayment = () => {
         errMsg.includes("23505")
       ) {
         throw new Error(
-          t.booking.errors.vehicleUnavailable ||
-            "Este vehículo ya está reservado en ese horario. Elige otra hora o vehículo.",
+          "Este vehículo ya está reservado en ese horario. Elige otra hora o vehículo.",
         );
       }
       throw error;

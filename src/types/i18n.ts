@@ -473,7 +473,6 @@ export interface Translation {
       finalizationError: string;
       noBookingData: string;
       requiredFields: string;
-      vehicleUnavailable: string;
       invalidPassengerInfo: string;
       invalidPhone: string;
       serviceLevelsNotLoaded: string;
