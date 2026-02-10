@@ -65,6 +65,11 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | UX-SEO-METADATA-01 | PR-SEO1 | P2 | R0 | DONE | Events + BlogIndex meta/canonical/OG + JSON-LD | [#58](https://github.com/geinersito/paris-luxe-journey/pull/58) / `34060f1` | Localized title/desc, canonical, OG, JSON-LD for /events and /blog |
 | UX-SEO-SITEMAP-ROBOTS-01 | PR-SEO3 | P2 | R0 | DONE | Automate sitemap.xml + robots.txt in build | [#59](https://github.com/geinersito/paris-luxe-journey/pull/59) / `a3a91ca` | Build-time `dist` generation, `VITE_PUBLIC_SITE_URL` fail-fast, CI env wired |
 | UX-LOCATION-FALLBACKS-01 | PR-U6A | P2 | R0 | DONE | Centralize location fallbacks config | [#60](https://github.com/geinersito/paris-luxe-journey/pull/60) / `3712daf` | Extracted 3x duplicate array to `src/lib/locations/fallbacks.ts` |
+| BOOKING-DB-ANTI-DOUBLEBOOK-01a | — | P0 | R2 | DOING | Anti-double-booking: unique index (vehicle_id, pickup_datetime) |  | Incremental guard; prevents identical race-condition duplicates. Full tstzrange EXCLUDE planned as 01b |
+| BOOKING-DB-ANTI-DOUBLEBOOK-01b | — | P1 | R2 | TODO | Anti-double-booking: EXCLUDE USING gist with tstzrange |  | Requires adding service_end_datetime column first (DB+App PRs) |
+| TZ-PARIS-DISPLAY-SSOT-01 | — | P2 | R0 | TODO | Audit + fix toLocaleString without timeZone |  | 4 violations in 3 files (chart.tsx, blog-utils.ts, EventsFeed.tsx) |
+| CI-SEO-SITE-URL-01 | — | P2 | R0 | TODO | Resolve VITE_PUBLIC_SITE_URL CI debt |  | Post-build SEO script fails without env var |
+| OPS-STRIPE-LEGACY-DEPRECATE-01 | — | P2 | R1 | TODO | Deprecate legacy stripe-webhooks handler |  | No idempotency; v312 handlers are the active SSOT |
 
 ## Risk Gates (DoD by Risk)
 
