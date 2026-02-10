@@ -12,18 +12,18 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `7336aa7`
+- SHA: `a91a115`
 - Last updated: `2026-02-10`
 
 ## Ultimos PRs mergeados en main
 
-1. `#65` - Post-merge SSOT BOOKING-DB-ANTI-DOUBLEBOOK-01b DONE (`7336aa7`)
-2. `#64` - EXCLUDE USING gist anti-overlap constraint (BOOKING-DB-ANTI-DOUBLEBOOK-01b) (`2daf54c`)
-3. `#63` - Post-merge SSOT BOOKING-DB-ANTI-DOUBLEBOOK-01a DONE (`1679a54`)
+1. `#66` - Persist service_end_datetime + robust overlap handling (BOOKING-DB-ANTI-DOUBLEBOOK-01b-APP) (`a91a115`)
+2. `#65` - Post-merge SSOT BOOKING-DB-ANTI-DOUBLEBOOK-01b DONE (`7336aa7`)
+3. `#64` - EXCLUDE USING gist anti-overlap constraint (BOOKING-DB-ANTI-DOUBLEBOOK-01b) (`2daf54c`)
 
 ## Ahora en curso
 
-- **BOOKING-DB-ANTI-DOUBLEBOOK-01b-APP** (P1/R2) - Wire app: persist service_end_datetime + handle overlap (23P01)
+- **OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01** (P1/R2) - Stop retry loop on deterministic DB conflicts (23P01/23505)
 
 ## Siguientes 3 items del plan (priorizados)
 
