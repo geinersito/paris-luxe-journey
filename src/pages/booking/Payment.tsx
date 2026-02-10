@@ -18,6 +18,24 @@ import {
 } from "lucide-react";
 
 const CONFLICT_ERROR_CODES = new Set(["23P01", "23505"]);
+const CONFLICT_ERROR_MARKERS = [
+  "exclusion constraint",
+  "bookings_no_overlap",
+  "bookings_unique_vehicle_pickup",
+];
+
+const isResponseLike = (value: unknown): value is Response => {
+  if (!value || typeof value !== "object") {
+    return false;
+  }
+
+  const candidate = value as Response;
+  return (
+    typeof candidate.clone === "function" &&
+    typeof candidate.json === "function" &&
+    typeof candidate.text === "function"
+  );
+};
 
 const extractCodeFromPayload = (payload: unknown): string | null => {
   if (!payload || typeof payload !== "object") {
@@ -95,16 +113,15 @@ const extractDbCode = async (err: unknown): Promise<string | null> => {
     return codeFromErrorObject;
   }
 
-  const context =
-    errRecord?.context && typeof errRecord.context === "object"
-      ? (errRecord.context as Record<string, unknown>)
+  const contextValue = errRecord?.context;
+  const contextRecord =
+    contextValue && typeof contextValue === "object"
+      ? (contextValue as Record<string, unknown>)
       : null;
-  const response =
-    context?.response &&
-    typeof context.response === "object" &&
-    typeof (context.response as Response).clone === "function" &&
-    typeof (context.response as Response).json === "function"
-      ? (context.response as Response)
+  const response = isResponseLike(contextValue)
+    ? contextValue
+    : isResponseLike(contextRecord?.response)
+      ? contextRecord.response
       : null;
 
   if (response) {
@@ -121,6 +138,9 @@ const extractDbCode = async (err: unknown): Promise<string | null> => {
           return code;
         }
       }
+      if (CONFLICT_ERROR_MARKERS.some((marker) => bodyText.includes(marker))) {
+        return "CONFLICT";
+      }
     } catch {
       try {
         const bodyText = await response.clone().text();
@@ -128,6 +148,11 @@ const extractDbCode = async (err: unknown): Promise<string | null> => {
           if (bodyText.includes(code)) {
             return code;
           }
+        }
+        if (
+          CONFLICT_ERROR_MARKERS.some((marker) => bodyText.includes(marker))
+        ) {
+          return "CONFLICT";
         }
 
         const parsedBody = parseEmbeddedJson(bodyText);
@@ -141,11 +166,7 @@ const extractDbCode = async (err: unknown): Promise<string | null> => {
     }
   }
 
-  if (
-    message.includes("exclusion constraint") ||
-    message.includes("bookings_no_overlap") ||
-    message.includes("bookings_unique_vehicle_pickup")
-  ) {
+  if (CONFLICT_ERROR_MARKERS.some((marker) => message.includes(marker))) {
     return "CONFLICT";
   }
 
