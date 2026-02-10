@@ -23,7 +23,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- (none)
+- **UX-LOCATION-FALLBACKS-01** (P2/R0) - Centralize location fallbacks
 
 ## Siguientes 3 items del plan (priorizados)
 
