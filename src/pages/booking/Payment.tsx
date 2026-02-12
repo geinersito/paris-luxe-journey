@@ -280,7 +280,7 @@ const BookingPayment = () => {
       pickup_datetime: pickupDateTime.toISOString(),
       service_end_datetime: serviceEndDateTime.toISOString(),
       passengers_count: Number(bookingData.passengers),
-      vehicle_id: bookingData.vehicle_id || "",
+      // vehicle_id: assigned later in ERP/dispatch, not at booking time
       flight_number: bookingData.flight_number || null,
       address_details: bookingData.address_details || null,
       trip_type: bookingData.tripType || "one_way",
