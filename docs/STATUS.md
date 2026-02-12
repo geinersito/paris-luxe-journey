@@ -12,23 +12,23 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `3e51bad`
+- SHA: `e219398`
 - Last updated: `2026-02-12`
 
 ## Ultimos PRs mergeados en main
 
-1. `#74` - Dedupe logic in stripe-webhooks (OPS-WEBHOOK-IDEMPOTENCY-TABLE-01 PR2) (`3e51bad`)
-2. `#73` - DB migration for processed_stripe_events (OPS-WEBHOOK-IDEMPOTENCY-TABLE-01 PR1) (`7e31067`)
-3. `#72` - Delete unused client-side Resend helper (SEC-RESEND01 PR2) (`8e0b4a3`)
+1. `#75` - Smart retry classifier for create-booking-payment (OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01) (`e219398`)
+2. `#74` - Dedupe logic in stripe-webhooks (OPS-WEBHOOK-IDEMPOTENCY-TABLE-01 PR2) (`3e51bad`)
+3. `#73` - DB migration for processed_stripe_events (OPS-WEBHOOK-IDEMPOTENCY-TABLE-01 PR1) (`7e31067`)
 
 ## Ahora en curso
 
-- **OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01** (P1/R2) — Skip retry on deterministic conflicts (23P01/23505) in canonical endpoint
+- **TZ-PARIS-DISPLAY-SSOT-01** (P2/R0) — Audit + fix toLocaleString without timeZone (PR #76 open)
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01** (P1) — Skip retry on 23P01/23505 in canonical endpoint (unblocked by RB-00)
-2. **TZ-PARIS-DISPLAY-SSOT-01** (P2) — Audit + fix toLocaleString without timeZone
+1. **TZ-PARIS-DISPLAY-SSOT-01** (P2) — Audit + fix toLocaleString without timeZone (PR #76 open)
+2. **CI-SEO-SITE-URL-01** (P2) — Resolve VITE_PUBLIC_SITE_URL CI debt
 3. **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2) — Deprecate legacy stripe-webhooks handler
 
 ## Urgent out-of-repo
