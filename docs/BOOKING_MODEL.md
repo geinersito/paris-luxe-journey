@@ -106,7 +106,7 @@ cancelled    cancelled
 | pending_payment -> confirmed | Stripe webhook: `payment_intent.succeeded` | [WARN] TODO: cite webhook handler |
 | * -> cancelled | User/admin action | [WARN] TODO: cite cancellation endpoint |
 
-**HIGH RISK**: No webhook handler implementation found yet in codebase (see BOOKING_STATUS.md).
+**Note**: Webhook handlers exist (3 coexist — see §3.3). Canonical handler TBD per `RB-00-CANONICAL-STACK-01`.
 
 ### 2.2 Payment Status (Stripe-side)
 
@@ -135,41 +135,45 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
 
 **Action required**: Audit all date/time display code for `toLocaleString()` without `timeZone` parameter (see BOOKING_STATUS.md blockers).
 
-### 3.2 Anti-Double-Booking (HIGH RISK)
+### 3.2 Anti-Double-Booking ✅ IMPLEMENTED
 
-**Current guarantee**: [ERROR] **NONE (app-level only, NO DB constraint)**
+**Current guarantee**: ✅ **DB-level constraint (EXCLUDE USING gist + partial unique index)**
 
-**Evidence**:
-- No unique constraint on `(booking_date, vehicle_id)` or similar
-- No capacity/resource table enforcing "1 vehicle = 1 booking per timeslot"
-- No optimistic locking (e.g., `version` column)
+**Implementation** (PRs #62, #64, #66):
+1. **Partial unique index** on `(vehicle_id, pickup_datetime)` WHERE status IN active states — rejects exact time duplicates (error 23505)
+2. **EXCLUDE USING gist** constraint with `tstzrange(pickup_datetime, service_end_datetime)` — rejects overlapping time ranges (error 23P01)
+3. **App layer** persists real `service_end_datetime` and handles overlap errors from `FunctionsHttpError`
 
-**Risk**: Two concurrent bookings can reserve the same vehicle/driver for overlapping times.
+**Migrations** (official):
+- `supabase/migrations/20260226120000_booking_unique_vehicle_pickup_active.sql`
+- `supabase/migrations/20260226130000_booking_overlap_exclusion.sql`
 
-**Mitigation options** (not yet implemented):
+**Status**: ✅ DONE — DB-level guarantee active. See `IMPROVEMENTS.md` items `BOOKING-DB-ANTI-DOUBLEBOOK-01a/01b/01b-APP`.
 
-1. **DB-level** (recommended): 
-   - Add `vehicle_assignments` table with UNIQUE constraint on `(vehicle_id, booking_date, timeslot)`
-   - Use DB transactions with `SELECT ... FOR UPDATE`
-2. **App-level** (weaker):
-   - Check availability before insert + hope no race condition
-   - Use Supabase RLS + row-level locking (complex)
+*Reconciled by RB-00-CANONICAL-STACK-01.*
 
-**Status**: [RED] **BLOCKER for production** (must be addressed before live traffic).
-
-### 3.3 Webhook Idempotency (HARD)
+### 3.3 Webhook Idempotency (HARD) — ⚠️ PARTIAL
 
 **Rule**: Stripe webhooks can retry -> each event ID must be processed **once only**.
 
-**Current implementation**: [ERROR] **NOT IMPLEMENTED**
+**Current implementation**: ⚠️ PARTIAL — handlers exist, dedupe table missing.
 
-**Evidence**: No webhook handler found in codebase, no `stripe_events` table for deduplication.
+**Evidence** (3 webhook handlers coexist):
+- `supabase/functions/stripe-webhooks/index.ts` — legacy, no idempotency
+- `supabase/functions/stripe-webhooks-v312/index.ts` — v312 standalone
+- `supabase/functions/stripe-webhooks-v312-integrated/index.ts` — v312 integrated, has idempotency logic but no `processed_stripe_events` table
 
-**Required**:
-- Persist `event.id` (Stripe event ID) in DB table (e.g., `processed_stripe_events`)
-- On webhook receipt: check if `event.id` exists -> if yes, return 200 OK (idempotent); if no, process + insert
+**Remaining gaps**:
+1. No `processed_stripe_events` table exists → events can be double-processed on retry
+2. Canonical webhook handler not yet decided (see `RB-00-CANONICAL-STACK-01` in IMPROVEMENTS.md)
+
+**Required** (tracked as `OPS-WEBHOOK-IDEMPOTENCY-TABLE-01`):
+- Create `processed_stripe_events` table with `event_id` PK
+- On webhook receipt: check if `event.id` exists → if yes, return 200 OK; if no, process + insert
 
 **Reference**: Stripe docs on [webhook idempotency](https://stripe.com/docs/webhooks/best-practices#event-ids).
+
+*Reconciled by RB-00-CANONICAL-STACK-01.*
 
 ### 3.4 Secrets Hygiene (HARD)
 
@@ -229,14 +233,16 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
 
 ## 5. Known Gaps & TODOs
 
-| Area | Status | Action Required |
-|------|--------|-----------------|
-| Webhook handler | [ERROR] Not implemented | Create Edge Function for Stripe webhooks with idempotency |
-| Anti-double-booking | [ERROR] No DB guarantee | Design + implement resource locking (vehicle_assignments table) |
-| Timezone enforcement (frontend) | [WARN] Partial | Audit all `toLocaleString()` calls, add `timeZone: 'Europe/Paris'` |
-| Secrets in VITE_* | [RED] CRITICAL | Move to Edge Functions (P0 blocker) |
-| Payment retry logic | [ERROR] Not defined | Define behavior for `payment_intent.payment_failed` |
-| Cancellation flow | [ERROR] Not implemented | Define refund policy + state transitions |
+| Area | Status | Action Required | Tracking |
+|------|--------|-----------------|----------|
+| Canonical stack undefined | ⚠️ HIGH | RB-00 decision matrix (docs-only) | `RB-00-CANONICAL-STACK-01` DOING |
+| Secrets in VITE_* | [RED] CRITICAL | Move to Edge Functions (P0 blocker) | `SEC-RESEND01-SECRETS-HYGIENE-01` TODO |
+| Webhook idempotency table | ⚠️ HIGH | Create `processed_stripe_events` + dedupe | `OPS-WEBHOOK-IDEMPOTENCY-TABLE-01` TODO |
+| Anti-double-booking | ✅ DONE | DB-level EXCLUDE + unique index | PRs #62, #64, #66 |
+| Payment retry on conflicts | ⚠️ MEDIUM | Skip retry on 23P01/23505 | `OPS-FN-...` BLOCKED by RB-00 |
+| Timezone enforcement (frontend) | ⚠️ MEDIUM | Audit `toLocaleString()` calls | `TZ-PARIS-DISPLAY-SSOT-01` TODO |
+| 3 webhook handlers coexist | ⚠️ HIGH | Deprecate legacy after canonical decided | `OPS-STRIPE-LEGACY-DEPRECATE-01` TODO |
+| Cancellation flow | ❌ Not defined | Define refund policy + state transitions | No item yet |
 
 ---
 

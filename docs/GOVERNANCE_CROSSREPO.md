@@ -125,7 +125,32 @@ We currently use one Supabase project for speed/ROI. To keep it safe:
 
 ---
 
-## 8) Conflict Resolution Protocol (when 2 PRs exist for same feature)
+## 8) Workspace Layout (SSOT — updated 2026-02-10)
+
+```
+C:\Users\paris\Desktop\WORKSPACE_VTC\
+├── paris-dispatcher/          ← SSOT ERP (React+TS+Supabase)
+├── paris-luxe-journey/        ← SSOT Booking (React+TS+Supabase+Stripe)
+├── _lab/                      ← Projects under evaluation
+│   └── boers-vtc-docs/        → VTC document templates (voucher/billet) — testing
+└── _archive/                  ← Archived projects (21 folders, no active use)
+```
+
+### _lab audit policy
+- Each project gets: inspect → test → verdict (KEEP / RECYCLE / ARCHIVE)
+- Every archived project must have an `ARCHIVE_NOTE.md` (date, verdict, reason, value extracted)
+- No `_lab` project may be imported/depended-on from SSOT repos without CTO Master approval
+
+### _lab audit results (2026-02-10)
+| Project | Verdict | Reason |
+|---|---|---|
+| VTC360-pricing-python | ARCHIVE | SSOT pricing superior (BDD, cents, TVA, commissions) |
+| vtc-reservas-django | ARCHIVE | Empty Django scaffold, zero custom code |
+| Gestion-PES-datos | ARCHIVE | Manual markdown/CSV, replaced by Supabase. **RGPD: repo PUBLIC with real PII — set to PRIVATE** |
+| vtc-docu-genius | ARCHIVE | Lovable prototype, trivial PDF generator, covered by SSOT |
+| boers-vtc-docs | TESTING | Document templates (voucher, billet) potentially valuable |
+
+## 9) Conflict Resolution Protocol (when 2 PRs exist for same feature)
 
 If two branches/PRs exist for the same goal (e.g., `fn/emit-booking-confirmed-v1` vs `fn/emit-booking-confirmed-v1-rgpd`):
 

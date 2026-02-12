@@ -112,40 +112,38 @@
 
 **Next PR**: `SEC-RESEND01` (security-only, <=4 files) - move Resend to Edge Function.
 
-### 3.2 Booking Guarantees (P0 BLOCKER)
+### 3.2 Booking Guarantees — Anti-Double-Booking ✅ RESOLVED
 
-**Blocker**: No anti-double-booking guarantee (DB-level).
+**Status**: ✅ DONE — DB-level guarantee implemented.
 
-**Evidence** (from BOOKING_MODEL.md Section 3.2):
-- No unique constraint on `(booking_date, vehicle_id)` or resource capacity
-- No `vehicle_assignments` table
-- Race condition possible: 2 concurrent bookings can reserve same vehicle
+**Evidence** (IMPROVEMENTS.md items DONE):
+- **PR #62** (`BOOKING-DB-ANTI-DOUBLEBOOK-01a`): Partial unique index on `(vehicle_id, pickup_datetime)` for active bookings — rejects exact duplicates (23505)
+- **PR #64** (`BOOKING-DB-ANTI-DOUBLEBOOK-01b`): `EXCLUDE USING gist` constraint with `tstzrange(pickup_datetime, service_end_datetime)` — rejects overlapping time ranges (23P01)
+- **PR #66** (`BOOKING-DB-ANTI-DOUBLEBOOK-01b-APP`): App persists real `service_end_datetime` + handles overlap errors from `FunctionsHttpError`
 
-**Risk**: Production overbooking -> customer service failure.
+**Migrations** (official, in `supabase/migrations/`):
+- `20260226120000_booking_unique_vehicle_pickup_active.sql`
+- `20260226130000_booking_overlap_exclusion.sql`
 
-**Fix required** (DB-only PR, P0):
-1. Design resource model: `vehicle_assignments` table with availability slots
-2. Add unique constraint or CHECK constraint preventing overlaps
-3. Update booking insert logic to validate availability atomically
+*Docs reconciled by RB-00-CANONICAL-STACK-01.*
 
-**Next PR**: `DB-AVAILABILITY01` (DB-only migration + RLS) - prevent double-booking.
+### 3.3 Stripe Webhooks — ⚠️ PARTIAL (handlers exist, idempotency incomplete)
 
-### 3.3 Stripe Webhooks (P0 for live payments)
+**Status**: ⚠️ PARTIAL — Webhook handlers exist but canonical stack not yet decided.
 
-**Blocker**: No webhook handler implemented.
+**Evidence** (3 handlers coexist):
+- `supabase/functions/stripe-webhooks/index.ts` — legacy, no idempotency
+- `supabase/functions/stripe-webhooks-v312/index.ts` — v312 standalone
+- `supabase/functions/stripe-webhooks-v312-integrated/index.ts` — v312 integrated, has idempotency logic
 
-**Evidence**: No Edge Function for Stripe events, no `processed_stripe_events` table.
+**Remaining gaps**:
+1. No `processed_stripe_events` table for event deduplication (tracked: `OPS-WEBHOOK-IDEMPOTENCY-TABLE-01`)
+2. Canonical webhook not yet decided (tracked: `RB-00-CANONICAL-STACK-01`)
+3. Legacy handler not yet deprecated (tracked: `OPS-STRIPE-LEGACY-DEPRECATE-01`)
 
-**Impact**: Payments succeed in Stripe, but booking status never updates to `confirmed`.
+**Next**: RB-00 decides canonical stack → then add idempotency table → then deprecate legacy.
 
-**Fix required** (functions-only PR):
-1. Create Edge Function: `supabase/functions/stripe-webhook`
-2. Verify signature (`stripe.webhooks.constructEvent`)
-3. Handle `payment_intent.succeeded` -> update booking status + send confirmation email
-4. Implement idempotency: store `event.id` in `processed_stripe_events` table
-5. Register webhook URL in Stripe dashboard
-
-**Next PR**: `FN-WEBHOOK01` (functions-only) - Stripe webhook idempotency.
+*Docs reconciled by RB-00-CANONICAL-STACK-01.*
 
 ---
 
@@ -192,12 +190,15 @@
 
 | Risk | Severity | Mitigation | Status |
 |------|----------|------------|--------|
-| Secrets in VITE_* | [RED] CRITICAL | Move to Edge Functions | BLOCKED (awaiting SEC-RESEND01) |
-| Double-booking possible | [RED] CRITICAL | DB-level unique constraint | BLOCKED (awaiting DB-AVAILABILITY01) |
-| Webhook idempotency missing | [RED] HIGH | Store event IDs, check before processing | BLOCKED (awaiting FN-WEBHOOK01) |
-| Timezone not enforced (frontend) | [YELLOW] MEDIUM | Audit `toLocaleString()` calls, add `timeZone: 'Europe/Paris'` | TODO (no PR yet) |
-| Payment retry logic undefined | [YELLOW] MEDIUM | Define behavior for `payment_intent.payment_failed` | TODO (design needed) |
-| 95 legacy lint errors | [GREEN] LOW | Changed-files-only gate implemented | [OK] MITIGATED (PR #13) |
+| Secrets in VITE_* | [RED] CRITICAL | Move to Edge Functions | TODO (`SEC-RESEND01-SECRETS-HYGIENE-01`) |
+| Canonical stack undefined | [RED] HIGH | RB-00 decision matrix | DOING (`RB-00-CANONICAL-STACK-01`) |
+| Double-booking possible | ~~[RED]~~ ✅ | DB-level EXCLUDE + unique index | DONE (PRs #62, #64, #66) |
+| Webhook idempotency incomplete | [YELLOW] HIGH | `processed_stripe_events` table + dedupe | TODO (`OPS-WEBHOOK-IDEMPOTENCY-TABLE-01`) |
+| 3 webhook handlers coexist | [YELLOW] HIGH | Deprecate legacy after RB-00 | TODO (`OPS-STRIPE-LEGACY-DEPRECATE-01`) |
+| Payment retry on conflicts | [YELLOW] MEDIUM | Skip retry on 23P01/23505 | BLOCKED by RB-00 (`OPS-FN-...`) |
+| Timezone not enforced (frontend) | [YELLOW] MEDIUM | Audit `toLocaleString()` calls | TODO (`TZ-PARIS-DISPLAY-SSOT-01`) |
+| RGPD: Gestion-PES repo PUBLIC | [RED] CRITICAL | Set repo to PRIVATE | TODO (out-of-repo) |
+| 95 legacy lint errors | [GREEN] LOW | Changed-files-only gate | [OK] MITIGATED (PR #13) |
 
 ---
 
