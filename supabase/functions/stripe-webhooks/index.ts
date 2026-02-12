@@ -48,6 +48,35 @@ serve(async (req) => {
 
     console.log('Evento Stripe recibido:', event.type);
 
+    // --- Idempotency: dedupe by event_id ---
+    const { error: dedupeError } = await supabase
+      .from('processed_stripe_events')
+      .insert({
+        event_id: event.id,
+        event_type: event.type,
+        livemode: event.livemode,
+        payload: event.data.object,
+        handler: 'stripe-webhooks',
+      });
+
+    if (dedupeError) {
+      // 23505 = unique_violation → already processed
+      if (dedupeError.code === '23505') {
+        console.log('Event already processed (deduped):', event.id);
+        return new Response(
+          JSON.stringify({ ok: true, deduped: true }),
+          { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 200 }
+        );
+      }
+      // Any other DB error → 500 so Stripe retries
+      console.error('Idempotency insert failed:', dedupeError);
+      return new Response(
+        JSON.stringify({ error: 'idempotency_check_failed' }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' }, status: 500 }
+      );
+    }
+    // --- End idempotency ---
+
     // Manejar diferentes tipos de eventos
     switch (event.type) {
       case 'payment_intent.succeeded': {
