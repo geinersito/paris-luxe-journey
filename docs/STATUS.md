@@ -12,28 +12,24 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `a91a115`
-- Last updated: `2026-02-10`
+- SHA: `8e0b4a3`
+- Last updated: `2026-02-12`
 
 ## Ultimos PRs mergeados en main
 
-1. `#66` - Persist service_end_datetime + robust overlap handling (BOOKING-DB-ANTI-DOUBLEBOOK-01b-APP) (`a91a115`)
-2. `#65` - Post-merge SSOT BOOKING-DB-ANTI-DOUBLEBOOK-01b DONE (`7336aa7`)
-3. `#64` - EXCLUDE USING gist anti-overlap constraint (BOOKING-DB-ANTI-DOUBLEBOOK-01b) (`2daf54c`)
+1. `#72` - Delete unused client-side Resend helper (SEC-RESEND01 PR2) (`8e0b4a3`)
+2. `#71` - Remove Stripe/Resend secrets from .env.example (SEC-RESEND01 PR1) (`e8c2ac2`)
+3. `#70` - Canonical payments stack + register P0/P1 gaps (RB-00-CANONICAL-STACK-01) (`8140e44`)
 
 ## Ahora en curso
 
-- **RB-00-CANONICAL-STACK-01** (P0/R0) — Docs-only: define canonical payments/webhooks stack. Decision matrix + Go/No-Go checklist. BLOCKER for all payments work.
+- **OPS-WEBHOOK-IDEMPOTENCY-TABLE-01** (P1/R2) — Create `processed_stripe_events` table + dedupe logic in canonical webhook
 
-## BLOCKED (waiting for RB-00)
+## Siguientes 3 items del plan (priorizados)
 
-- **OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01** (P1/R2) — BLOCKED by RB-00: must know canonical endpoint before applying conflict fix
-
-## Siguientes 3 items del plan (priorizados, post RB-00)
-
-1. **SEC-RESEND01-SECRETS-HYGIENE-01** (P0) — Move secrets out of VITE_* to Edge Functions (production blocker)
-2. **OPS-WEBHOOK-IDEMPOTENCY-TABLE-01** (P1) — `processed_stripe_events` table + dedupe in canonical webhook
-3. **OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01** (P1) — Skip retry on 23P01/23505 in canonical endpoint
+1. **OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01** (P1) — Skip retry on 23P01/23505 in canonical endpoint (unblocked by RB-00)
+2. **TZ-PARIS-DISPLAY-SSOT-01** (P2) — Audit + fix toLocaleString without timeZone
+3. **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2) — Deprecate legacy stripe-webhooks handler
 
 ## Urgent out-of-repo
 
