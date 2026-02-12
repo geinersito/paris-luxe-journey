@@ -10,36 +10,98 @@ const corsHeaders = {
   'Access-Control-Max-Age': '86400',
 }
 
-// Función de retry con backoff exponencial
-async function retryWithBackoff<T>(
-  fn: () => Promise<T>,
-  maxRetries: number = 3,
-  baseDelay: number = 1000,
-  operationName: string = 'operation'
-): Promise<T> {
-  let lastError: Error | null = null;
+type RetryDecision = {
+  retry: boolean;
+  status?: number;
+  code?: string;
+};
 
-  for (let attempt = 0; attempt < maxRetries; attempt++) {
-    try {
-      console.log(`[${operationName}] Intento ${attempt + 1}/${maxRetries}`);
-      return await fn();
-    } catch (error) {
-      lastError = error as Error;
-      console.error(`[${operationName}] Error en intento ${attempt + 1}:`, error);
+function classifyError(err: unknown): RetryDecision {
+  const anyErr = err as any;
+  const code = anyErr?.code ?? anyErr?.error?.code;
+  const status = anyErr?.status ?? anyErr?.error?.status;
+  const message = String(anyErr?.message ?? anyErr?.error?.message ?? "");
 
-      // No reintentar en el último intento
-      if (attempt === maxRetries - 1) {
-        break;
-      }
-
-      // Calcular delay con backoff exponencial
-      const delay = baseDelay * Math.pow(2, attempt);
-      console.log(`[${operationName}] Reintentando en ${delay}ms...`);
-      await new Promise(resolve => setTimeout(resolve, delay));
-    }
+  // Deterministic DB conflicts: NEVER RETRY
+  if (code === "23505" || code === "23P01" || code === "23503" || code === "23514") {
+    return { retry: false, status: 409, code: "DB_CONFLICT" };
+  }
+  if (status === 409) {
+    return { retry: false, status: 409, code: "CONFLICT" };
+  }
+  if (status === 400) {
+    return { retry: false, status: 400, code: "BAD_REQUEST" };
   }
 
-  throw new Error(`${operationName} falló después de ${maxRetries} intentos: ${lastError?.message}`);
+  // Stripe errors: retry only on transient types
+  const stripeType = anyErr?.type ?? anyErr?.error?.type;
+  if (typeof stripeType === "string") {
+    if (
+      stripeType.includes("api_connection") ||
+      stripeType.includes("rate_limit") ||
+      stripeType.includes("api_error")
+    ) {
+      return { retry: true };
+    }
+    return { retry: false, status: 402, code: "STRIPE_ERROR" };
+  }
+
+  // Retryable infra/network
+  if (status === 429) return { retry: true };
+  if (status && status >= 500) return { retry: true };
+  if (message.toLowerCase().includes("timeout") || message.toLowerCase().includes("timed out")) {
+    return { retry: true };
+  }
+
+  // Default: no retry (conservative)
+  return { retry: false, status: 500, code: "UNKNOWN_ERROR" };
+}
+
+async function retryWithBackoff<T>(
+  fn: () => Promise<T>,
+  opts?: { label?: string; maxAttempts?: number; baseDelayMs?: number }
+): Promise<T> {
+  const maxAttempts = opts?.maxAttempts ?? 3;
+  const baseDelayMs = opts?.baseDelayMs ?? 250;
+  let attempt = 0;
+
+  while (true) {
+    try {
+      return await fn();
+    } catch (err) {
+      attempt += 1;
+      const decision = classifyError(err);
+
+      if (!decision.retry || attempt >= maxAttempts) {
+        (err as any).__retryDecision = decision;
+        (err as any).__retryLabel = opts?.label ?? "retryWithBackoff";
+        (err as any).__retryAttempt = attempt;
+        throw err;
+      }
+
+      const delay = baseDelayMs * Math.pow(2, attempt - 1);
+      await new Promise((r) => setTimeout(r, delay));
+    }
+  }
+}
+
+function errorResponse(err: unknown, fallbackStatus = 500) {
+  const anyErr = err as any;
+  const decision = anyErr?.__retryDecision as RetryDecision | undefined;
+
+  const status = decision?.status ?? fallbackStatus;
+  const code = decision?.code ?? "ERROR";
+
+  return new Response(
+    JSON.stringify({
+      ok: false,
+      code,
+      message: String(anyErr?.message ?? "error"),
+      details: anyErr?.details ?? anyErr?.error?.details ?? null,
+      dbCode: anyErr?.code ?? anyErr?.error?.code ?? null,
+    }),
+    { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } },
+  );
 }
 
 interface BookingData {
@@ -90,27 +152,30 @@ serve(async (req) => {
 
     // 3. Crear la reserva con retry
     console.log('[create-booking-payment] Creando reserva');
-    const booking = await retryWithBackoff(
-      async () => {
-        const { data, error } = await supabase
-          .from('bookings')
-          .insert([{
-            ...bookingData,
-            status: 'pending'
-          }])
-          .select()
-          .single();
+    let booking;
+    try {
+      booking = await retryWithBackoff(
+        async () => {
+          const { data, error } = await supabase
+            .from('bookings')
+            .insert([{
+              ...bookingData,
+              status: 'pending'
+            }])
+            .select()
+            .single();
 
-        if (error) {
-          throw new Error(`Error al crear la reserva: ${error.message}`);
-        }
+          if (error) {
+            throw error;
+          }
 
-        return data;
-      },
-      3,
-      1000,
-      'crear-reserva'
-    );
+          return data;
+        },
+        { label: 'insert_booking', maxAttempts: 3, baseDelayMs: 250 }
+      );
+    } catch (err) {
+      return errorResponse(err, 409);
+    }
 
     // 4. Buscar o crear cliente en Stripe
     console.log('[create-booking-payment] Buscando cliente en Stripe');
@@ -141,55 +206,61 @@ serve(async (req) => {
     // 5. Crear Payment Intent con retry
     console.log('[create-booking-payment] Creando Payment Intent');
     const amountInCents = Math.round(Number(bookingData.total_price) * 100);
-    const paymentIntent = await retryWithBackoff(
-      async () => {
-        return await stripe.paymentIntents.create({
-          amount: amountInCents,
-          currency: 'eur',
-          customer: customer.id,
-          metadata: {
-            booking_id: booking.id,
-            customer_email: bookingData.customer_email,
-            customer_name: bookingData.customer_name
-          },
-          automatic_payment_methods: {
-            enabled: true,
-          }
-        });
-      },
-      3,
-      1000,
-      'crear-payment-intent'
-    );
+    let paymentIntent;
+    try {
+      paymentIntent = await retryWithBackoff(
+        async () => {
+          return await stripe.paymentIntents.create({
+            amount: amountInCents,
+            currency: 'eur',
+            customer: customer.id,
+            metadata: {
+              booking_id: booking.id,
+              customer_email: bookingData.customer_email,
+              customer_name: bookingData.customer_name
+            },
+            automatic_payment_methods: {
+              enabled: true,
+            }
+          });
+        },
+        { label: 'stripe_create_payment_intent', maxAttempts: 3, baseDelayMs: 250 }
+      );
+    } catch (err) {
+      return errorResponse(err, 502);
+    }
 
     // 6. Crear registro de pago con retry
     console.log('[create-booking-payment] Creando registro de pago');
-    const payment = await retryWithBackoff(
-      async () => {
-        const { data, error } = await supabase
-          .from('payments')
-          .insert([{
-            booking_id: booking.id,
-            amount: bookingData.total_price,
-            customer_email: bookingData.customer_email,
-            customer_name: bookingData.customer_name,
-            stripe_customer_id: customer.id,
-            stripe_payment_intent_id: paymentIntent.id,
-            status: 'pending'
-          }])
-          .select()
-          .single();
+    let payment;
+    try {
+      payment = await retryWithBackoff(
+        async () => {
+          const { data, error } = await supabase
+            .from('payments')
+            .insert([{
+              booking_id: booking.id,
+              amount: bookingData.total_price,
+              customer_email: bookingData.customer_email,
+              customer_name: bookingData.customer_name,
+              stripe_customer_id: customer.id,
+              stripe_payment_intent_id: paymentIntent.id,
+              status: 'pending'
+            }])
+            .select()
+            .single();
 
-        if (error) {
-          throw new Error(`Error al crear el registro de pago: ${error.message}`);
-        }
+          if (error) {
+            throw error;
+          }
 
-        return data;
-      },
-      3,
-      1000,
-      'crear-registro-pago'
-    );
+          return data;
+        },
+        { label: 'insert_payment_record', maxAttempts: 3, baseDelayMs: 250 }
+      );
+    } catch (err) {
+      return errorResponse(err, 409);
+    }
 
     // 7. Actualizar la reserva con el ID del pago
     const { error: updateError } = await supabase
