@@ -23,13 +23,13 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- **TZ-PARIS-DISPLAY-SSOT-01** (P2/R0) — Audit + fix toLocaleString without timeZone
+- **TZ-PARIS-DISPLAY-SSOT-01** (P2/R0) — Audit + fix toLocaleString without timeZone (PR #76 open)
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **TZ-PARIS-DISPLAY-SSOT-01** (P2) — Audit + fix toLocaleString without timeZone
-2. **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2) — Deprecate legacy stripe-webhooks handler
-3. **CI-SEO-SITE-URL-01** (P2) — Resolve VITE_PUBLIC_SITE_URL CI debt
+1. **TZ-PARIS-DISPLAY-SSOT-01** (P2) — Audit + fix toLocaleString without timeZone (PR #76 open)
+2. **CI-SEO-SITE-URL-01** (P2) — Resolve VITE_PUBLIC_SITE_URL CI debt
+3. **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2) — Deprecate legacy stripe-webhooks handler
 
 ## Urgent out-of-repo
 
