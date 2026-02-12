@@ -288,6 +288,17 @@ serve(async (req) => {
 
   } catch (error) {
     console.error('[create-booking-payment] Error:', error);
+    
+    // Classify error to return proper HTTP status
+    const anyErr = error as any;
+    const code = anyErr?.code ?? anyErr?.error?.code;
+    
+    // DB conflicts should be 409, not 500
+    if (code === "23505" || code === "23P01" || code === "23503" || code === "23514") {
+      return errorResponse(error, 409);
+    }
+    
+    // Otherwise fallback to 500 for unexpected errors
     return errorResponse(error, 500);
   }
 });
