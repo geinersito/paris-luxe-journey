@@ -110,11 +110,24 @@ function resolveBaseUrl() {
     process.env[REQUIRED_SITE_URL_ENV] ?? fileEnv[REQUIRED_SITE_URL_ENV] ?? "";
   const trimmed = rawSiteUrl.trim();
 
+  const fallback = "http://localhost:8082";
+
   if (!trimmed) {
-    console.error(
-      `ERROR: Missing ${REQUIRED_SITE_URL_ENV}. Define it in CI or in .env.production before running build.`,
+    console.warn(
+      `⚠️  WARNING: ${REQUIRED_SITE_URL_ENV} not set. Using fallback: ${fallback}`,
     );
-    process.exit(1);
+    console.warn(
+      `   For production builds, set ${REQUIRED_SITE_URL_ENV} in CI or .env.production (e.g. https://eliteparistransfer.com).`,
+    );
+    return normalizeBaseUrl(fallback);
+  }
+
+  // Basic scheme validation to avoid malformed canonicals like "eliteparistransfer.com"
+  if (!/^https?:\/\//i.test(trimmed)) {
+    console.warn(
+      `⚠️  WARNING: ${REQUIRED_SITE_URL_ENV} is invalid (missing http/https): "${trimmed}". Using fallback: ${fallback}`,
+    );
+    return normalizeBaseUrl(fallback);
   }
 
   return normalizeBaseUrl(trimmed);
