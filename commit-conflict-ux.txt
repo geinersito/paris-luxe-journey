@@ -1,0 +1,17 @@
+fix(fn+ui): handle DB conflict with dedicated UX
+
+Backend:
+- Replace generic catch with errorResponse() for structured errors
+- Always return {ok, code, dbCode, message, details}
+
+Frontend (Payment.tsx):
+- Add conflictError state
+- Detect 23P01/23505/CONFLICT in handleSubmit
+- Show dedicated UI with AlertCircle + actions:
+  - Back to Details (change slot)
+  - Retry (same booking)
+
+DoD R1:
+- TypeScript OK
+- User no longer stuck on payment page when conflict
+- Clear messaging + actionable buttons

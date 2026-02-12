@@ -288,14 +288,6 @@ serve(async (req) => {
 
   } catch (error) {
     console.error('[create-booking-payment] Error:', error);
-    return new Response(
-      JSON.stringify({
-        error: error instanceof Error ? error.message : 'Error desconocido',
-      }),
-      {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
-        status: 400,
-      }
-    );
+    return errorResponse(error, 500);
   }
 });

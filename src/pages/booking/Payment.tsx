@@ -183,6 +183,7 @@ const BookingPayment = () => {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [bookingId, setBookingId] = useState<string | null>(null);
   const [paymentId, setPaymentId] = useState<string | null>(null);
+  const [conflictError, setConflictError] = useState<string | null>(null);
 
   // Recover from location.state first, then sessionStorage
   const [bookingData, setBookingData] = useState(() => {
@@ -378,9 +379,21 @@ const BookingPayment = () => {
 
     try {
       setIsProcessing(true);
+      setConflictError(null);
       await initializePayment();
     } catch (error) {
       setIsProcessing(false);
+
+      const dbCode = await extractDbCode(error);
+      if (dbCode === "23P01" || dbCode === "23505" || dbCode === "CONFLICT") {
+        setConflictError(
+          error instanceof Error
+            ? error.message
+            : "Este horario ya no está disponible. Elige otro horario o vehículo.",
+        );
+        return;
+      }
+
       toast({
         title: t.common.error,
         description:
@@ -511,6 +524,44 @@ const BookingPayment = () => {
             >
               {t.common.back}
             </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (conflictError) {
+    return (
+      <div className="min-h-screen bg-background">
+        <div className="container max-w-6xl py-8 px-4 sm:px-6">
+          <BookingProgress currentStep={2} />
+
+          <div className="flex flex-col items-center justify-center mt-12 py-12 max-w-lg mx-auto">
+            <AlertCircle className="h-12 w-12 text-destructive mb-4" />
+            <h2 className="text-xl font-semibold mb-2">Slot unavailable</h2>
+            <p className="text-muted-foreground text-center mb-6">
+              {conflictError}
+            </p>
+            <div className="flex gap-3">
+              <button
+                className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition"
+                onClick={() => {
+                  setConflictError(null);
+                  navigate("/booking/details");
+                }}
+              >
+                {t.common.back}
+              </button>
+              <button
+                className="px-6 py-2 border border-border rounded-lg hover:bg-accent transition"
+                onClick={() => {
+                  setConflictError(null);
+                  setIsProcessing(false);
+                }}
+              >
+                Retry
+              </button>
+            </div>
           </div>
         </div>
       </div>
