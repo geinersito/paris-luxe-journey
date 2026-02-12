@@ -150,6 +150,10 @@ serve(async (req) => {
       throw new Error('El precio total debe ser mayor que 0');
     }
 
+    // Defense-in-depth: vehicle_id is assigned later in dispatch, not at booking time
+    // Remove it from payload even if frontend mistakenly sends it
+    delete bookingData.vehicle_id;
+
     // 3. Crear la reserva con retry
     console.log('[create-booking-payment] Creando reserva');
     let booking;
