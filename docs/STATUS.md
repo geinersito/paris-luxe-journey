@@ -12,18 +12,18 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `8e0b4a3`
+- SHA: `3e51bad`
 - Last updated: `2026-02-12`
 
 ## Ultimos PRs mergeados en main
 
-1. `#72` - Delete unused client-side Resend helper (SEC-RESEND01 PR2) (`8e0b4a3`)
-2. `#71` - Remove Stripe/Resend secrets from .env.example (SEC-RESEND01 PR1) (`e8c2ac2`)
-3. `#70` - Canonical payments stack + register P0/P1 gaps (RB-00-CANONICAL-STACK-01) (`8140e44`)
+1. `#74` - Dedupe logic in stripe-webhooks (OPS-WEBHOOK-IDEMPOTENCY-TABLE-01 PR2) (`3e51bad`)
+2. `#73` - DB migration for processed_stripe_events (OPS-WEBHOOK-IDEMPOTENCY-TABLE-01 PR1) (`7e31067`)
+3. `#72` - Delete unused client-side Resend helper (SEC-RESEND01 PR2) (`8e0b4a3`)
 
 ## Ahora en curso
 
-- **OPS-WEBHOOK-IDEMPOTENCY-TABLE-01** (P1/R2) — Create `processed_stripe_events` table + dedupe logic in canonical webhook
+- **OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01** (P1/R2) — Skip retry on deterministic conflicts (23P01/23505) in canonical endpoint
 
 ## Siguientes 3 items del plan (priorizados)
 

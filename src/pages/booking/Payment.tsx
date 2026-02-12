@@ -24,6 +24,13 @@ const CONFLICT_ERROR_MARKERS = [
   "bookings_unique_vehicle_pickup",
 ];
 
+class ConflictError extends Error {
+  constructor(message: string) {
+    super(message);
+    this.name = "ConflictError";
+  }
+}
+
 const isResponseLike = (value: unknown): value is Response => {
   if (!value || typeof value !== "object") {
     return false;
@@ -183,6 +190,7 @@ const BookingPayment = () => {
   const [clientSecret, setClientSecret] = useState<string | null>(null);
   const [bookingId, setBookingId] = useState<string | null>(null);
   const [paymentId, setPaymentId] = useState<string | null>(null);
+  const [conflictError, setConflictError] = useState<string | null>(null);
 
   // Recover from location.state first, then sessionStorage
   const [bookingData, setBookingData] = useState(() => {
@@ -272,7 +280,7 @@ const BookingPayment = () => {
       pickup_datetime: pickupDateTime.toISOString(),
       service_end_datetime: serviceEndDateTime.toISOString(),
       passengers_count: Number(bookingData.passengers),
-      vehicle_id: bookingData.vehicle_id || "",
+      // vehicle_id: assigned later in ERP/dispatch, not at booking time
       flight_number: bookingData.flight_number || null,
       address_details: bookingData.address_details || null,
       trip_type: bookingData.tripType || "one_way",
@@ -302,12 +310,24 @@ const BookingPayment = () => {
     );
 
     if (error) {
-      const dbCode = await extractDbCode(error);
-      if (dbCode === "23P01" || dbCode === "23505" || dbCode === "CONFLICT") {
-        throw new Error(
-          "Este vehículo ya está reservado en ese horario. Elige otra hora o vehículo.",
+      // Extract HTTP status and structured error body
+      const httpStatus = (error as any)?.context?.response?.status;
+      const errorBody = data as any;
+      
+      // Check for DB conflicts: HTTP 409 OR dbCode/code indicates conflict
+      const isConflict = 
+        httpStatus === 409 ||
+        errorBody?.dbCode === "23P01" ||
+        errorBody?.dbCode === "23505" ||
+        errorBody?.code === "DB_CONFLICT";
+      
+      if (isConflict) {
+        throw new ConflictError(
+          errorBody?.message || 
+          "This time slot is no longer available. Please choose a different time.",
         );
       }
+      
       throw error;
     }
 
@@ -378,9 +398,18 @@ const BookingPayment = () => {
 
     try {
       setIsProcessing(true);
+      setConflictError(null);
       await initializePayment();
     } catch (error) {
       setIsProcessing(false);
+
+      // Handle conflict errors with dedicated UI
+      if (error instanceof ConflictError) {
+        setConflictError(error.message);
+        return;
+      }
+
+      // Show toast for all other errors
       toast({
         title: t.common.error,
         description:
@@ -511,6 +540,44 @@ const BookingPayment = () => {
             >
               {t.common.back}
             </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (conflictError) {
+    return (
+      <div className="min-h-screen bg-background">
+        <div className="container max-w-6xl py-8 px-4 sm:px-6">
+          <BookingProgress currentStep={2} />
+
+          <div className="flex flex-col items-center justify-center mt-12 py-12 max-w-lg mx-auto">
+            <AlertCircle className="h-12 w-12 text-destructive mb-4" />
+            <h2 className="text-xl font-semibold mb-2">Time Slot Unavailable</h2>
+            <p className="text-muted-foreground text-center mb-6">
+              {conflictError}
+            </p>
+            <div className="flex gap-3">
+              <button
+                className="px-6 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition"
+                onClick={() => {
+                  setConflictError(null);
+                  navigate("/booking/details");
+                }}
+              >
+                Change Time Slot
+              </button>
+              <button
+                className="px-6 py-2 border border-border rounded-lg hover:bg-accent transition"
+                onClick={() => {
+                  setConflictError(null);
+                  setIsProcessing(false);
+                }}
+              >
+                Try Again
+              </button>
+            </div>
           </div>
         </div>
       </div>
