@@ -12,24 +12,24 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `382d9fa`
+- SHA: `8f33d2c`
 - Last updated: `2026-02-12`
 
 ## Ultimos PRs mergeados en main
 
-1. `#76` - Enforce Europe/Paris timezone for date display (TZ-PARIS-DISPLAY-SSOT-01) (`382d9fa`)
-2. `#75` - Smart retry classifier for create-booking-payment (OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01) (`e219398`)
-3. `#74` - Dedupe logic in stripe-webhooks (OPS-WEBHOOK-IDEMPOTENCY-TABLE-01 PR2) (`3e51bad`)
+1. `#77` - Make VITE_PUBLIC_SITE_URL optional with localhost fallback (CI-SEO-SITE-URL-01) (`8f33d2c`)
+2. `#76` - Enforce Europe/Paris timezone for date display (TZ-PARIS-DISPLAY-SSOT-01) (`382d9fa`)
+3. `#75` - Smart retry classifier for create-booking-payment (OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01) (`e219398`)
 
 ## Ahora en curso
 
-- **CI-SEO-SITE-URL-01** (P2/R0) — Resolve VITE_PUBLIC_SITE_URL CI debt
+- **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2/R1) — Deprecate legacy stripe-webhooks handler
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **CI-SEO-SITE-URL-01** (P2) — Resolve VITE_PUBLIC_SITE_URL CI debt
-2. **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2) — Deprecate legacy stripe-webhooks handler
-3. **RGPD-GESTION-PES-REPO-PRIVATE-01** (P0) — Set Gestion-PES repo to PRIVATE (urgent)
+1. **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2) — Deprecate legacy stripe-webhooks handler
+2. **RGPD-GESTION-PES-REPO-PRIVATE-01** (P0) — Set Gestion-PES repo to PRIVATE (urgent)
+3. (Next item from backlog)
 
 ## Urgent out-of-repo
 
