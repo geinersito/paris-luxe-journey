@@ -16,6 +16,10 @@ import {
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { buildEventWhatsAppUrl } from "@/lib/eventsPrefill";
+import {
+  formatParisDateWithLocale,
+  formatParisDate,
+} from "@/lib/datetime/paris";
 
 export function EventsFeed({
   range,
@@ -39,7 +43,6 @@ export function EventsFeed({
 
   // Format date according to language
   const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
     const options: Intl.DateTimeFormatOptions = {
       weekday: "short",
       month: "short",
@@ -55,7 +58,7 @@ export function EventsFeed({
       pt: "pt-PT",
     };
 
-    return date.toLocaleDateString(localeMap[language], options);
+    return formatParisDateWithLocale(dateString, localeMap[language], options);
   };
 
   if (!events || events.length === 0) {
@@ -76,7 +79,7 @@ export function EventsFeed({
           </h2>
           {daysSinceUpdate > 14 && (
             <p className="text-sm text-gray-600 mt-2">
-              {t("events.updatedOn")} {generatedAt.toLocaleDateString()}
+              {t("events.updatedOn")} {formatParisDate(generatedAt)}
             </p>
           )}
         </div>
