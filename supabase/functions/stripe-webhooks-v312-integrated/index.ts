@@ -47,6 +47,13 @@ const corsHeaders = {
   'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type, stripe-signature',
 };
 
+const deprecatedHeaders = {
+  ...corsHeaders,
+  'X-Webhook-Deprecated': 'true',
+  'X-Webhook-Canonical': '/functions/v1/stripe-webhooks',
+  'Content-Type': 'application/json',
+};
+
 serve(async (req) => {
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders });
@@ -77,6 +84,15 @@ serve(async (req) => {
 
     console.log(`[Webhook] Event type: ${event.type}, ID: ${event.id}`);
 
+    // DEPRECATION WARNING
+    console.warn('[DEPRECATED_WEBHOOK_HIT]', JSON.stringify({
+      handler: 'stripe-webhooks-v312-integrated',
+      eventId: event.id,
+      eventType: event.type,
+      livemode: event.livemode,
+      timestamp: new Date().toISOString(),
+    }));
+
     // 3. Verificar idempotencia
     const { data: existingEvent } = await supabase
       .from('stripe_webhook_events')
@@ -86,8 +102,15 @@ serve(async (req) => {
 
     if (existingEvent) {
       console.log(`[Webhook] Event ${event.id} already processed (idempotent)`);
-      return new Response(JSON.stringify({ received: true, idempotent: true }), {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      return new Response(JSON.stringify({ 
+        ok: true,
+        received: true, 
+        idempotent: true,
+        deprecated: true,
+        canonical: '/functions/v1/stripe-webhooks',
+      }), {
+        headers: deprecatedHeaders,
+        status: 200,
       });
     }
 
@@ -105,8 +128,15 @@ serve(async (req) => {
 
     if (!bookingId) {
       console.warn('[Webhook] No booking_id in metadata');
-      return new Response(JSON.stringify({ received: true, warning: 'No booking_id' }), {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      return new Response(JSON.stringify({ 
+        ok: true,
+        received: true, 
+        warning: 'No booking_id',
+        deprecated: true,
+        canonical: '/functions/v1/stripe-webhooks',
+      }), {
+        headers: deprecatedHeaders,
+        status: 200,
       });
     }
 
@@ -154,12 +184,15 @@ serve(async (req) => {
 
     return new Response(
       JSON.stringify({
+        ok: true,
         received: true,
         booking_id: bookingId,
         transition,
+        deprecated: true,
+        canonical: '/functions/v1/stripe-webhooks',
       }),
       {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        headers: deprecatedHeaders,
         status: 200,
       }
     );
@@ -169,10 +202,13 @@ serve(async (req) => {
 
     return new Response(
       JSON.stringify({
-        error: error.message,
+        ok: false,
+        error: error instanceof Error ? error.message : 'Unknown error',
+        deprecated: true,
+        canonical: '/functions/v1/stripe-webhooks',
       }),
       {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        headers: deprecatedHeaders,
         status: 400,
       }
     );

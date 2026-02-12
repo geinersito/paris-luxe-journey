@@ -31,6 +31,13 @@ const corsHeaders = {
   'Access-Control-Max-Age': '86400',
 };
 
+const deprecatedHeaders = {
+  ...corsHeaders,
+  'X-Webhook-Deprecated': 'true',
+  'X-Webhook-Canonical': '/functions/v1/stripe-webhooks',
+  'Content-Type': 'application/json',
+};
+
 serve(async (req) => {
   // Handle CORS preflight
   if (req.method === 'OPTIONS') {
@@ -75,6 +82,15 @@ serve(async (req) => {
 
     console.log('[stripe-webhooks-v312] Evento verificado:', event.type, event.id);
 
+    // DEPRECATION WARNING
+    console.warn('[DEPRECATED_WEBHOOK_HIT]', JSON.stringify({
+      handler: 'stripe-webhooks-v312',
+      eventId: event.id,
+      eventType: event.type,
+      livemode: event.livemode,
+      timestamp: new Date().toISOString(),
+    }));
+
     // 3. Verificar idempotencia
     const { data: existingEvent } = await supabase
       .from('stripe_webhook_events')
@@ -84,8 +100,14 @@ serve(async (req) => {
 
     if (existingEvent) {
       console.log('[stripe-webhooks-v312] Evento ya procesado (idempotencia):', event.id);
-      return new Response(JSON.stringify({ received: true, duplicate: true }), {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+      return new Response(JSON.stringify({ 
+        ok: true,
+        received: true, 
+        duplicate: true,
+        deprecated: true,
+        canonical: '/functions/v1/stripe-webhooks',
+      }), {
+        headers: deprecatedHeaders,
         status: 200,
       });
     }
@@ -145,8 +167,13 @@ serve(async (req) => {
         console.log('[stripe-webhooks-v312] Evento no manejado:', event.type);
     }
 
-    return new Response(JSON.stringify({ received: true }), {
-      headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+    return new Response(JSON.stringify({ 
+      ok: true,
+      received: true,
+      deprecated: true,
+      canonical: '/functions/v1/stripe-webhooks',
+    }), {
+      headers: deprecatedHeaders,
       status: 200,
     });
   } catch (error) {
@@ -154,10 +181,13 @@ serve(async (req) => {
     
     return new Response(
       JSON.stringify({
+        ok: false,
         error: error instanceof Error ? error.message : 'Unknown error',
+        deprecated: true,
+        canonical: '/functions/v1/stripe-webhooks',
       }),
       {
-        headers: { ...corsHeaders, 'Content-Type': 'application/json' },
+        headers: deprecatedHeaders,
         status: 400,
       }
     );
