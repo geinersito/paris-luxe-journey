@@ -12,24 +12,24 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `e219398`
+- SHA: `382d9fa`
 - Last updated: `2026-02-12`
 
 ## Ultimos PRs mergeados en main
 
-1. `#75` - Smart retry classifier for create-booking-payment (OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01) (`e219398`)
-2. `#74` - Dedupe logic in stripe-webhooks (OPS-WEBHOOK-IDEMPOTENCY-TABLE-01 PR2) (`3e51bad`)
-3. `#73` - DB migration for processed_stripe_events (OPS-WEBHOOK-IDEMPOTENCY-TABLE-01 PR1) (`7e31067`)
+1. `#76` - Enforce Europe/Paris timezone for date display (TZ-PARIS-DISPLAY-SSOT-01) (`382d9fa`)
+2. `#75` - Smart retry classifier for create-booking-payment (OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01) (`e219398`)
+3. `#74` - Dedupe logic in stripe-webhooks (OPS-WEBHOOK-IDEMPOTENCY-TABLE-01 PR2) (`3e51bad`)
 
 ## Ahora en curso
 
-- **TZ-PARIS-DISPLAY-SSOT-01** (P2/R0) — Audit + fix toLocaleString without timeZone (PR #76 open)
+- **CI-SEO-SITE-URL-01** (P2/R0) — Resolve VITE_PUBLIC_SITE_URL CI debt
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **TZ-PARIS-DISPLAY-SSOT-01** (P2) — Audit + fix toLocaleString without timeZone (PR #76 open)
-2. **CI-SEO-SITE-URL-01** (P2) — Resolve VITE_PUBLIC_SITE_URL CI debt
-3. **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2) — Deprecate legacy stripe-webhooks handler
+1. **CI-SEO-SITE-URL-01** (P2) — Resolve VITE_PUBLIC_SITE_URL CI debt
+2. **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2) — Deprecate legacy stripe-webhooks handler
+3. **RGPD-GESTION-PES-REPO-PRIVATE-01** (P0) — Set Gestion-PES repo to PRIVATE (urgent)
 
 ## Urgent out-of-repo
 
