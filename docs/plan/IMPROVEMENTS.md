@@ -68,10 +68,14 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | BOOKING-DB-ANTI-DOUBLEBOOK-01a | — | P0 | R2 | DONE | Anti-double-booking: unique index (vehicle_id, pickup_datetime) | [#62](https://github.com/geinersito/paris-luxe-journey/pull/62) / `164d193` | Partial unique index on active bookings; race test verified (23505) |
 | BOOKING-DB-ANTI-DOUBLEBOOK-01b | — | P1 | R2 | DONE | Anti-double-booking: EXCLUDE USING gist with tstzrange | [#64](https://github.com/geinersito/paris-luxe-journey/pull/64) / `2daf54c` | service_end_datetime + is_active + EXCLUDE constraint; overlap test verified (23P01) |
 | BOOKING-DB-ANTI-DOUBLEBOOK-01b-APP | — | P1 | R2 | DONE | Wire app: persist service_end_datetime + handle overlap (23P01) | [#66](https://github.com/geinersito/paris-luxe-journey/pull/66) / `a91a115` | App writes real `service_end_datetime`; overlap handling hardened for FunctionsHttpError payload parsing |
-| OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01 | — | P1 | R2 | DOING | create-booking-payment: skip retry on deterministic conflicts (23P01/23505) |  | Functions-only follow-up: return immediately on conflict; keep retry only for transient failures |
+| RB-00-CANONICAL-STACK-01 | — | P0 | R0 | DOING | Docs-only: define canonical payments/webhooks stack + decision matrix | | BLOCKER — must close before any payments/webhook work. See §RB-00 below |
+| SEC-RESEND01-SECRETS-HYGIENE-01 | — | P0 | R0→R2 | TODO | Move VITE_STRIPE_SECRET_KEY + VITE_RESEND_API_KEY to Edge Functions | | CRITICAL security blocker for production. `.env.example:7` + `:10`, `src/lib/email.ts:19` |
+| OPS-WEBHOOK-IDEMPOTENCY-TABLE-01 | — | P1 | R2 | TODO | Create `processed_stripe_events` table + dedupe logic in canonical webhook | | No dedupe table exists; webhooks can double-process Stripe events |
+| RGPD-GESTION-PES-REPO-PRIVATE-01 | — | P0 | — | TODO | Set `geinersito/Gestion-PES` repo to PRIVATE (real PII exposed) | | Out-of-repo tracking item. Urgent RGPD compliance |
+| OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01 | — | P1 | R2 | BLOCKED | create-booking-payment: skip retry on deterministic conflicts (23P01/23505) |  | BLOCKED by RB-00 (must know canonical endpoint first). Functions-only follow-up |
 | TZ-PARIS-DISPLAY-SSOT-01 | — | P2 | R0 | TODO | Audit + fix toLocaleString without timeZone |  | 4 violations in 3 files (chart.tsx, blog-utils.ts, EventsFeed.tsx) |
 | CI-SEO-SITE-URL-01 | — | P2 | R0 | TODO | Resolve VITE_PUBLIC_SITE_URL CI debt |  | Post-build SEO script fails without env var |
-| OPS-STRIPE-LEGACY-DEPRECATE-01 | — | P2 | R1 | TODO | Deprecate legacy stripe-webhooks handler |  | No idempotency; v312 handlers are the active SSOT |
+| OPS-STRIPE-LEGACY-DEPRECATE-01 | — | P2 | R1 | TODO | Deprecate legacy stripe-webhooks handler |  | Subsumed by RB-02 webhook cutover (depends on RB-00) |
 
 ## Risk Gates (DoD by Risk)
 
@@ -93,3 +97,85 @@ Items below were previously tracked in the narrative plan and are now reconciled
   - all `R1`
   - idempotency and double-submit protection verified
   - cleanup only on success
+
+---
+
+## RB-00-CANONICAL-STACK-01 — Decision Matrix & Go/No-Go
+
+### Context
+
+Three webhook handlers coexist, two table families are referenced, and v312 schema lives in `_local_orphaned`. This section defines the canonical stack based on evidence, not assumption.
+
+### Candidate Stacks
+
+| Aspect | Candidate A (current production) | Candidate B (v312-integrated) |
+|---|---|---|
+| **Payment create** | `supabase/functions/create-booking-payment/index.ts` | `supabase/functions/create-prepaid-payment-v312/index.ts` |
+| **Tables** | `bookings` + `payments` (standard migrations) | `bookings_v312` + v312 payment tables |
+| **Webhook** | `supabase/functions/stripe-webhooks/index.ts` (legacy, no idempotency) | `supabase/functions/stripe-webhooks-v312-integrated/index.ts` (has idempotency logic) |
+| **Frontend uses?** | ✅ Yes — `src/pages/booking/Payment.tsx:298` calls `create-booking-payment` | ❌ No frontend path found |
+| **Schema official?** | ✅ Yes — standard migrations | ⚠️ **NO** — `supabase/migrations/_local_orphaned/20251214_v312_payment_system.sql` |
+| **Runbooks test?** | ❌ Not directly | ✅ `TESTING_E2E_V312.md`, `RUNBOOK_DEPLOYMENT_V312.md` |
+
+### Go/No-Go Checklist
+
+Before declaring a canonical stack, ALL must be ✅:
+
+| # | Check | Candidate A | Candidate B | Notes |
+|---|---|---|---|---|
+| 1 | Schema in official migrations (not `_local_orphaned`) | ✅ | ❌ FAIL | v312 schema not promoted |
+| 2 | Frontend points to canonical create endpoint | ✅ | ❌ | Payment.tsx uses `create-booking-payment` |
+| 3 | Runbooks aligned with canonical | ❌ PARTIAL | ✅ | Runbooks reference v312 |
+| 4 | Webhook has idempotency (event_id stored) | ❌ FAIL | ⚠️ Logic exists, no table | Neither has `processed_stripe_events` table |
+| 5 | Rollback plan documented | ❌ | ❌ | Neither has explicit rollback |
+
+### Decision (Provisional)
+
+**Canonical = Candidate A** (until v312 migration is promoted to official).
+
+Rationale:
+- v312 schema is in `_local_orphaned` → cannot be canonical
+- Frontend already uses Candidate A endpoints
+- Candidate A tables exist in official migrations
+
+**Decision becomes final** when:
+1. v312 migration is promoted to official → re-evaluate (B may become canonical), OR
+2. Candidate A receives idempotency + conflict handling upgrades → A confirmed as canonical
+
+### Deprecated Components (pending cutover)
+
+| Component | Path | Reason | Remove condition |
+|---|---|---|---|
+| Legacy webhook | `supabase/functions/stripe-webhooks/index.ts` | No idempotency, no v312 features | After canonical webhook gets idempotency table |
+| v312 webhook (standalone) | `supabase/functions/stripe-webhooks-v312/index.ts` | Superseded by v312-integrated | After RB-00 decision is final |
+| v312-integrated webhook | `supabase/functions/stripe-webhooks-v312-integrated/index.ts` | Not canonical (migration not official) | Becomes canonical if v312 migration promoted |
+| Orphaned migration | `supabase/migrations/_local_orphaned/20251214_v312_payment_system.sql` | Local-only, not in remote SSOT | Promote to official OR archive permanently |
+
+### Dependency Chain (RB-00 → RB-04)
+
+```
+RB-00 (this item, docs-only)
+  ├── Unblocks: OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01 (RB-01)
+  │              → apply conflict fix on canonical endpoint only
+  ├── Unblocks: OPS-STRIPE-LEGACY-DEPRECATE-01 (RB-02)
+  │              → cutover/remove legacy webhook after canonical has idempotency
+  ├── Unblocks: SEC-RESEND01-SECRETS-HYGIENE-01 (RB-03)
+  │              → move secrets to Edge Functions (canonical stack)
+  └── Unblocks: TZ-PARIS-DISPLAY-SSOT-01 (RB-04)
+       → timezone audit (independent but sequenced for focus)
+```
+
+### Validation Checklist (post-merge)
+
+To confirm docs match code reality, grep:
+
+```bash
+# Canonical endpoint used by frontend
+grep -r "create-booking-payment" src/
+# Webhook functions that exist
+ls supabase/functions/stripe-webhooks*/
+# v312 orphaned migration
+ls supabase/migrations/_local_orphaned/*v312*
+# Tables in official migrations
+grep -r "CREATE TABLE.*bookings" supabase/migrations/*.sql
+```

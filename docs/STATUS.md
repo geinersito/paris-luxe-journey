@@ -23,13 +23,27 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
-- **OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01** (P1/R2) - Stop retry loop on deterministic DB conflicts (23P01/23505)
+- **RB-00-CANONICAL-STACK-01** (P0/R0) — Docs-only: define canonical payments/webhooks stack. Decision matrix + Go/No-Go checklist. BLOCKER for all payments work.
 
-## Siguientes 3 items del plan (priorizados)
+## BLOCKED (waiting for RB-00)
 
-1. **TZ-PARIS-DISPLAY-SSOT-01** (P2/R0) - Fix toLocaleString timezone violations
-2. **CI-SEO-SITE-URL-01** (P2/R0) - Resolve VITE_PUBLIC_SITE_URL CI debt
-3. **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2/R1) - Deprecate legacy stripe-webhooks handler
+- **OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01** (P1/R2) — BLOCKED by RB-00: must know canonical endpoint before applying conflict fix
+
+## Siguientes 3 items del plan (priorizados, post RB-00)
+
+1. **SEC-RESEND01-SECRETS-HYGIENE-01** (P0) — Move secrets out of VITE_* to Edge Functions (production blocker)
+2. **OPS-WEBHOOK-IDEMPOTENCY-TABLE-01** (P1) — `processed_stripe_events` table + dedupe in canonical webhook
+3. **OPS-FN-CREATE-BOOKING-PAYMENT-NO-RETRY-ON-CONFLICT-01** (P1) — Skip retry on 23P01/23505 in canonical endpoint
+
+## Urgent out-of-repo
+
+- **RGPD-GESTION-PES-REPO-PRIVATE-01** (P0) — `geinersito/Gestion-PES` repo PUBLIC with real PII → set to PRIVATE
+
+## Workspace _lab audit (2026-02-10)
+- 5 projects audited in `_lab/`, 4 archived, 1 still testing (boers-vtc-docs)
+- VTC360 pricing engine: **no portage** — SSOT pricing already superior
+- Full audit table: `docs/GOVERNANCE_CROSSREPO.md` §8
+- **RGPD action**: `geinersito/Gestion-PES` repo is PUBLIC with real PII — set to PRIVATE
 
 ## Regla de actualizacion
 
