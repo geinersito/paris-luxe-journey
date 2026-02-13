@@ -16,6 +16,9 @@
  * 7. payment_intent.canceled → HOLD_CANCELLED
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any -- legacy deprecated webhook handler kept only for telemetry during deprecation window; remove in PR3 */
+// TODO(OPS-STRIPE-LEGACY-DEPRECATE-01/PR3): delete this handler once telemetry shows 0 hits for 48-72h.
+
 import { serve } from 'https://deno.land/std@0.168.0/http/server.ts';
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import Stripe from 'https://esm.sh/stripe@13.10.0';
