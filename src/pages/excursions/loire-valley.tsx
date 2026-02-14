@@ -6,9 +6,10 @@ import { DestinationContent } from "@/components/destination/DestinationContent"
 import { DestinationSidebar } from "@/components/destination/DestinationSidebar";
 import { TourCard } from "@/components/TourCard";
 import { excursions } from "@/data/excursions";
+import { getExcursionFaqItems } from "@/data/excursions/faq-content";
 
 export default function LoireValleyPage() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeSection, setActiveSection] = React.useState("description");
   const [selectedTour, setSelectedTour] = React.useState<string | null>(null);
 
@@ -26,6 +27,8 @@ export default function LoireValleyPage() {
   const handleSectionChange = (sectionId: string) => {
     setActiveSection(sectionId);
   };
+
+  const faqItems = getExcursionFaqItems(language, t.loire.title);
 
   const content = {
     description: (
@@ -81,48 +84,12 @@ export default function LoireValleyPage() {
       <div>
         <h3 className="text-2xl font-bold mb-4">{t.loire.navigation.faq}</h3>
         <div className="space-y-4">
-          <div>
-            <h5 className="font-semibold mb-2">
-              What is included in the tour?
-            </h5>
-            <p className="text-gray-600">
-              All tours include private luxury transport, entry tickets to
-              castles, professional guide, and gourmet lunch. Specific
-              inclusions vary by tour package.
-            </p>
-          </div>
-          <div>
-            <h5 className="font-semibold mb-2">How long is the tour?</h5>
-            <p className="text-gray-600">
-              Tours range from 10 to 12 hours depending on the package selected
-              and traffic conditions.
-            </p>
-          </div>
-          <div>
-            <h5 className="font-semibold mb-2">Which castles will we visit?</h5>
-            <p className="text-gray-600">
-              The classic tour includes Château de Chambord and Château de
-              Chenonceau, two of the most iconic Loire Valley castles.
-            </p>
-          </div>
-          <div>
-            <h5 className="font-semibold mb-2">
-              Can we customize the itinerary?
-            </h5>
-            <p className="text-gray-600">
-              Yes, we offer fully customizable private tours. Contact us to
-              discuss your preferences.
-            </p>
-          </div>
-          <div>
-            <h5 className="font-semibold mb-2">
-              What is the cancellation policy?
-            </h5>
-            <p className="text-gray-600">
-              Free cancellation up to 24 hours before the tour. Cancellations
-              within 24 hours are subject to a fee.
-            </p>
-          </div>
+          {faqItems.map((item) => (
+            <div key={item.question}>
+              <h5 className="font-semibold mb-2">{item.question}</h5>
+              <p className="text-gray-600">{item.answer}</p>
+            </div>
+          ))}
         </div>
       </div>
     ),

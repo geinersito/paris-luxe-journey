@@ -6,9 +6,10 @@ import { DestinationContent } from "@/components/destination/DestinationContent"
 import { DestinationSidebar } from "@/components/destination/DestinationSidebar";
 import { TourCard } from "@/components/TourCard";
 import { excursions } from "@/data/excursions";
+import { getExcursionFaqItems } from "@/data/excursions/faq-content";
 
 export default function GivernyHonfleurPage() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeSection, setActiveSection] = React.useState("description");
   const [selectedTour, setSelectedTour] = React.useState<string | null>(null);
 
@@ -26,6 +27,8 @@ export default function GivernyHonfleurPage() {
   const handleSectionChange = (sectionId: string) => {
     setActiveSection(sectionId);
   };
+
+  const faqItems = getExcursionFaqItems(language, t.giverny.title);
 
   const content = {
     description: (
@@ -85,49 +88,12 @@ export default function GivernyHonfleurPage() {
       <div>
         <h3 className="text-2xl font-bold mb-4">{t.giverny.navigation.faq}</h3>
         <div className="space-y-4">
-          <div>
-            <h5 className="font-semibold mb-2">
-              What is included in the tour?
-            </h5>
-            <p className="text-gray-600">
-              All tours include private luxury transport, entry to Monet's House
-              and Gardens, professional art historian guide, and gourmet lunch.
-              Specific inclusions vary by tour package.
-            </p>
-          </div>
-          <div>
-            <h5 className="font-semibold mb-2">How long is the tour?</h5>
-            <p className="text-gray-600">
-              Tours range from 10 to 12 hours depending on the package selected
-              and traffic conditions.
-            </p>
-          </div>
-          <div>
-            <h5 className="font-semibold mb-2">
-              When is the best time to visit Giverny?
-            </h5>
-            <p className="text-gray-600">
-              The gardens are most beautiful from April to October, with peak
-              blooms in May and June. Monet's famous water lilies bloom from
-              mid-June to September.
-            </p>
-          </div>
-          <div>
-            <h5 className="font-semibold mb-2">Is photography allowed?</h5>
-            <p className="text-gray-600">
-              Photography is allowed in the gardens but not inside Monet's
-              house. Professional tripods require advance permission.
-            </p>
-          </div>
-          <div>
-            <h5 className="font-semibold mb-2">
-              What is the cancellation policy?
-            </h5>
-            <p className="text-gray-600">
-              Free cancellation up to 24 hours before the tour. Cancellations
-              within 24 hours are subject to a fee.
-            </p>
-          </div>
+          {faqItems.map((item) => (
+            <div key={item.question}>
+              <h5 className="font-semibold mb-2">{item.question}</h5>
+              <p className="text-gray-600">{item.answer}</p>
+            </div>
+          ))}
         </div>
       </div>
     ),
