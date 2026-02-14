@@ -14,21 +14,21 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `2539c74`
+- SHA: `9ae13b0`
 - Last updated: `2026-02-14`
 
 ## Ultimos PRs mergeados en main
 
-1. `#101` - content(excursions): unify faq blocks across detail pages (`2539c74`)
-2. `#100` - docs(ssot): post-merge sync after PR #99 (`6e48b9c`)
-3. `#99` - feat(media): add local image library MVP for excursions events and trust (`013a0df`)
-4. `#98` - docs(ssot): post-merge sync after PR #95 (`4799d01`)
-5. `#95` - content(events): refresh feed freshness and source attribution (`09834ef`)
-6. `#97` - docs(status): define stable baseline semantics (`11737de`)
-7. `#96` - docs(status): sync head after PR #94 (`46185a1`)
-8. `#94` - docs(status): sync head after PR #93 (`61f838f`)
-9. `#93` - docs(status): sync head after PR #92 (`ac8448e9`)
-10. `#92` - SSOT post-merge sync after PR #91 (`e9eee59`)
+1. `#103` - feat(excursions): reduce pre-list scroll above fold (`9ae13b0`)
+2. `#102` - docs(ssot): post-merge sync after PR #101 (`431f18b`)
+3. `#101` - content(excursions): unify faq blocks across detail pages (`2539c74`)
+4. `#100` - docs(ssot): post-merge sync after PR #99 (`6e48b9c`)
+5. `#99` - feat(media): add local image library MVP for excursions events and trust (`013a0df`)
+6. `#98` - docs(ssot): post-merge sync after PR #95 (`4799d01`)
+7. `#95` - content(events): refresh feed freshness and source attribution (`09834ef`)
+8. `#97` - docs(status): define stable baseline semantics (`11737de`)
+9. `#96` - docs(status): sync head after PR #94 (`46185a1`)
+10. `#94` - docs(status): sync head after PR #93 (`61f838f`)
 
 ## Ahora en curso
 
