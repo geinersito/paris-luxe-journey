@@ -36,6 +36,32 @@ export const pt: Translation = {
     insurance: "Seguro Completo",
     insuranceDesc: "Cobertura total",
   },
+  trust: {
+    title: "Confianca e garantias",
+    subtitle: "Padroes de servico claros antes da reserva.",
+    items: {
+      licensed: {
+        title: "Servico privado de motorista licenciado",
+        body: "Servico VTC profissional operado sob regras francesas.",
+      },
+      pricing: {
+        title: "Preco transparente",
+        body: "Orcamento fixo antes da confirmacao, sem taxas ocultas.",
+      },
+      flexibility: {
+        title: "Flexibilidade porta a porta",
+        body: "Recolha privada e ajustes de itinerario quando viavel.",
+      },
+      payment: {
+        title: "Pagamento seguro e fatura",
+        body: "Checkout protegido com fatura disponivel mediante pedido.",
+      },
+      support: {
+        title: "Suporte por WhatsApp e e-mail",
+        body: "Atendimento rapido antes da reserva e durante o servico.",
+      },
+    },
+  },
   routes: {
     title: "Rotas Populares",
     subtitle: "Nossos destinos mais solicitados com preços fixos",

@@ -36,6 +36,32 @@ export const fr: Translation = {
     insurance: "Assurance Complète",
     insuranceDesc: "Couverture totale",
   },
+  trust: {
+    title: "Confiance & garanties",
+    subtitle: "Des standards de service clairs avant votre reservation.",
+    items: {
+      licensed: {
+        title: "Service de chauffeur prive avec licence",
+        body: "Service VTC professionnel opere selon la reglementation francaise.",
+      },
+      pricing: {
+        title: "Tarification transparente",
+        body: "Devis fixe avant confirmation, sans frais caches.",
+      },
+      flexibility: {
+        title: "Service porte-a-porte flexible",
+        body: "Prise en charge privee et ajustements d'itineraire quand possible.",
+      },
+      payment: {
+        title: "Paiement securise et facture",
+        body: "Paiement protege avec facture disponible sur demande.",
+      },
+      support: {
+        title: "Support WhatsApp et e-mail",
+        body: "Assistance rapide avant la reservation et pendant le trajet.",
+      },
+    },
+  },
   routes: {
     title: "Trajets Populaires",
     subtitle: "Nos destinations les plus demandées à prix fixes",

@@ -36,6 +36,32 @@ export const en: Translation = {
     insurance: "Full Insurance",
     insuranceDesc: "Complete coverage",
   },
+  trust: {
+    title: "Trust & Guarantees",
+    subtitle: "Clear service standards before you book.",
+    items: {
+      licensed: {
+        title: "Licensed private chauffeur service",
+        body: "Professional VTC service operated under French transport rules.",
+      },
+      pricing: {
+        title: "Transparent pricing",
+        body: "Fixed quote before confirmation with no hidden fees.",
+      },
+      flexibility: {
+        title: "Door-to-door flexibility",
+        body: "Private pickup and drop-off with itinerary adjustments when feasible.",
+      },
+      payment: {
+        title: "Secure payment and invoice",
+        body: "Protected checkout with invoice available on request.",
+      },
+      support: {
+        title: "WhatsApp and email support",
+        body: "Fast pre-booking support and trip updates through our channels.",
+      },
+    },
+  },
   routes: {
     title: "Popular Routes",
     subtitle: "Our most requested destinations with fixed prices",
