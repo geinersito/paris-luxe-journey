@@ -79,6 +79,9 @@ const translations = {
       passengers: "passengers",
       cta: "Request this trip on WhatsApp",
       hours: "hours",
+      viewDetails: "View Details",
+      requestQuote: "Request Quote",
+      privateChauffeur: "Private Chauffeur",
     },
     // Filters
     filters: {
@@ -344,6 +347,9 @@ const translations = {
       passengers: "passagers",
       cta: "Demander cette excursion sur WhatsApp",
       hours: "heures",
+      viewDetails: "Voir les Détails",
+      requestQuote: "Demander un Devis",
+      privateChauffeur: "Chauffeur Privé",
     },
     // Filters
     filters: {
@@ -609,6 +615,9 @@ const translations = {
       passengers: "pasajeros",
       cta: "Solicitar esta excursión en WhatsApp",
       hours: "horas",
+      viewDetails: "Ver Detalles",
+      requestQuote: "Solicitar Presupuesto",
+      privateChauffeur: "Chófer Privado",
     },
     // Filters
     filters: {
@@ -872,6 +881,9 @@ const translations = {
       passengers: "passageiros",
       cta: "Solicitar esta excursão no WhatsApp",
       hours: "horas",
+      viewDetails: "Ver Detalhes",
+      requestQuote: "Solicitar Orçamento",
+      privateChauffeur: "Motorista Particular",
     },
     // Filters
     filters: {
@@ -1276,129 +1288,94 @@ const Excursions = () => {
   // No pagination needed for 8 trips - show all filtered results
   const currentTrips = filteredTrips;
 
-  // Day Trip Card with translations
+  // Day Trip Card - Compact Overview Version
   const DayTripCard = ({ trip, t }) => {
     const tripData = t.trips[trip.tripKey];
     const whatsappMessage = encodeURIComponent(
       `Hi, I'm interested in the ${tripData.title} on [date] for [X] passengers. Can you confirm availability and price?`,
     );
 
+    const detailRouteMap = {
+      loire: "/excursions/loire-valley",
+      champagne: "/excursions/champagne",
+      giverny: "/excursions/giverny-honfleur",
+    };
+    const detailRoute = detailRouteMap[trip.tripKey];
+
     return (
-      <div className="glass-card-premium overflow-hidden hover:shadow-2xl transition-all duration-500">
-        <div className="flex flex-col md:flex-row">
-          {/* Image */}
-          <div className="md:w-80 h-56 md:h-auto relative">
+      <div className="glass-card-premium overflow-hidden hover:shadow-lg transition-all duration-300">
+        <div className="flex flex-col sm:flex-row gap-4 p-4">
+          {/* Compact Image */}
+          <div className="sm:w-48 h-40 sm:h-auto flex-shrink-0 relative rounded-lg overflow-hidden">
             <img
               src={trip.image}
               alt={tripData.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute bottom-4 left-4 flex gap-2">
-              <div className="bg-black/70 text-white px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm flex items-center gap-1">
-                <Clock className="w-3 h-3" />
-                {tripData.duration}
-              </div>
-              <div className="bg-black/70 text-white px-3 py-1.5 rounded-full text-xs font-medium backdrop-blur-sm flex items-center gap-1">
-                <MapPin className="w-3 h-3" />
-                {tripData.distance}
-              </div>
-            </div>
           </div>
 
           {/* Content */}
-          <div className="p-6 flex-1 flex flex-col">
-            <h3 className="text-2xl font-display font-bold text-secondary mb-2">
-              {tripData.title}
-            </h3>
-            <p className="text-gray-600 mb-4 leading-relaxed">
-              {tripData.description}
-            </p>
+          <div className="flex-1 flex flex-col justify-between min-w-0">
+            <div>
+              <h3 className="text-xl font-display font-bold text-secondary mb-2 truncate">
+                {tripData.title}
+              </h3>
+              <p className="text-sm text-gray-600 mb-3 line-clamp-2">
+                {tripData.description}
+              </p>
 
-            {/* What's Included */}
-            <div className="mb-4">
-              <h4 className="text-sm font-semibold text-green-700 mb-2 flex items-center gap-1">
-                <Check className="w-4 h-4" /> {t.card.whatsIncluded}
-              </h4>
-              <ul className="space-y-1">
-                {tripData.included.slice(0, 3).map((item, index) => (
-                  <li
-                    key={index}
-                    className="text-xs text-gray-600 flex items-start gap-1"
-                  >
-                    <Check className="w-3 h-3 text-green-600 mt-0.5 flex-shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Not Included */}
-            <div className="mb-4">
-              <h4 className="text-sm font-semibold text-gray-500 mb-2 flex items-center gap-1">
-                <X className="w-4 h-4" /> {t.card.notIncluded}
-              </h4>
-              <ul className="space-y-1">
-                {tripData.notIncluded.slice(0, 2).map((item, index) => (
-                  <li
-                    key={index}
-                    className="text-xs text-gray-500 flex items-start gap-1"
-                  >
-                    <X className="w-3 h-3 text-gray-400 mt-0.5 flex-shrink-0" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Tickets & Reservations (optional) */}
-            <div className="mb-4 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-              <h4 className="text-sm font-semibold text-blue-800 mb-2">
-                {t.card.ticketsOptional}
-              </h4>
-              <ul className="space-y-1">
-                <li className="text-xs text-blue-700 flex items-start gap-1">
-                  <Check className="w-3 h-3 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span>{t.card.ticketsBullet1}</span>
-                </li>
-                <li className="text-xs text-blue-700 flex items-start gap-1">
-                  <Check className="w-3 h-3 text-blue-600 mt-0.5 flex-shrink-0" />
-                  <span>{t.card.ticketsBullet2}</span>
-                </li>
-              </ul>
-            </div>
-
-            {/* Price & CTA */}
-            <div className="mt-auto pt-4 border-t border-primary/10">
-              <div className="flex items-center justify-between mb-4">
-                <div>
-                  <div className="text-sm text-gray-500 mb-1">
-                    {t.card.from}
-                  </div>
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-3xl font-display font-bold text-primary">
-                      €{trip.price}
-                    </span>
-                    <span className="text-sm text-gray-500">
-                      {t.card.perVehicle}
-                    </span>
-                  </div>
-                  <div className="text-xs text-gray-400 mt-1">
-                    {t.card.upTo} {trip.maxPassengers} {t.card.passengers}
-                  </div>
+              {/* Quick Facts */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                  <Clock className="w-3 h-3" />
+                  {tripData.duration}
+                </div>
+                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                  <MapPin className="w-3 h-3" />
+                  {tripData.distance}
+                </div>
+                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                  <Users className="w-3 h-3" />
+                  {t.card.privateChauffeur}
                 </div>
               </div>
+            </div>
 
-              <Button
-                className="silk-button w-full"
-                onClick={() =>
-                  window.open(
-                    `https://wa.me/33668251102?text=${whatsappMessage}`,
-                    "_blank",
-                  )
-                }
-              >
-                {t.card.cta}
-              </Button>
+            {/* Price & CTAs */}
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-gray-200">
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl font-display font-bold text-primary">
+                  €{trip.price}
+                </span>
+                <span className="text-xs text-gray-500">
+                  {t.card.perVehicle}
+                </span>
+              </div>
+
+              <div className="flex gap-2">
+                {detailRoute && (
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="border-primary text-primary hover:bg-primary hover:text-white transition-colors"
+                    onClick={() => navigate(detailRoute)}
+                  >
+                    {t.card.viewDetails}
+                  </Button>
+                )}
+                <Button
+                  size="sm"
+                  className="silk-button"
+                  onClick={() =>
+                    window.open(
+                      `https://wa.me/33668251102?text=${whatsappMessage}`,
+                      "_blank",
+                    )
+                  }
+                >
+                  {t.card.requestQuote}
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -1408,8 +1385,8 @@ const Excursions = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-cream via-white to-champagne">
-      {/* Hero Section - Honest & Clear */}
-      <section className="relative h-[600px] flex items-center justify-center">
+      {/* Hero Section - Compact & Clear */}
+      <section className="relative h-[400px] flex items-center justify-center">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2073"
@@ -1420,15 +1397,15 @@ const Excursions = () => {
         </div>
 
         <div className="relative z-10 w-full max-w-6xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-display font-bold mb-6 leading-tight drop-shadow-2xl">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-display font-bold mb-4 leading-tight drop-shadow-2xl">
             {t.hero.title}
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-white/90 mb-6 max-w-3xl mx-auto leading-relaxed">
             {t.hero.subtitle}
           </p>
 
           {/* Trust Badges */}
-          <div className="flex flex-wrap justify-center gap-4 mb-10">
+          <div className="flex flex-wrap justify-center gap-3 mb-6">
             <div className="glass-card-premium px-6 py-3 flex items-center gap-2">
               <Users className="w-5 h-5 text-primary" />
               <span className="text-white font-medium">{t.hero.badge1}</span>
@@ -1444,9 +1421,9 @@ const Excursions = () => {
           </div>
 
           {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Button
-              className="silk-button h-14 px-10 text-lg"
+              className="silk-button h-12 px-8"
               onClick={() => {
                 const message = encodeURIComponent(
                   "Hi, I'm interested in booking a private day trip from Paris. Can you help me?",
@@ -1461,9 +1438,9 @@ const Excursions = () => {
             </Button>
             <Button
               variant="outline"
-              className="button-outline-gold h-14 px-10 text-lg bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
+              className="button-outline-gold h-12 px-8 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
               onClick={() => {
-                window.scrollTo({ top: 800, behavior: "smooth" });
+                window.scrollTo({ top: 550, behavior: "smooth" });
               }}
             >
               {t.hero.ctaSecondary}
