@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { getCategoryBySlug, isValidCategory } from "@/data/blog/categories";
 import { getPostsByCategory } from "@/data/blog/posts.meta";
+import { getSiteOrigin } from "@/lib/seo/site";
 import BlogCard from "@/components/blog/BlogCard";
 import Breadcrumb from "@/components/blog/Breadcrumb";
 import NewsletterCTA from "@/components/blog/NewsletterCTA";
@@ -46,22 +47,31 @@ export default function BlogCategory() {
     { label: categoryMeta.name[currentLang] },
   ];
 
+  const siteOrigin = getSiteOrigin();
+  const canonicalUrl = `${siteOrigin}/blog/${category}`;
+
   return (
     <>
       <Helmet>
         <title>{categoryMeta.seo.metaTitle[currentLang]}</title>
-        <meta name="description" content={categoryMeta.seo.metaDescription[currentLang]} />
+        <meta
+          name="description"
+          content={categoryMeta.seo.metaDescription[currentLang]}
+        />
 
         {/* Open Graph */}
-        <meta property="og:title" content={categoryMeta.seo.metaTitle[currentLang]} />
-        <meta property="og:description" content={categoryMeta.seo.metaDescription[currentLang]} />
+        <meta
+          property="og:title"
+          content={categoryMeta.seo.metaTitle[currentLang]}
+        />
+        <meta
+          property="og:description"
+          content={categoryMeta.seo.metaDescription[currentLang]}
+        />
         <meta property="og:type" content="website" />
 
         {/* Canonical URL */}
-        <link
-          rel="canonical"
-          href={`https://parisluxejourney.com/blog/${category}`}
-        />
+        <link rel="canonical" href={canonicalUrl} />
       </Helmet>
 
       <div className="min-h-screen bg-background">
