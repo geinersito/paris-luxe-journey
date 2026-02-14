@@ -12,7 +12,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `d7c8606`
+- SHA: `28bee7b`
 - Last updated: `2026-02-13`
 
 ## Ultimos PRs mergeados en main
@@ -28,12 +28,12 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Siguientes 3 items del plan (priorizados)
 
 1. **OPS-STRIPE-LEGACY-DEPRECATE-01 / PR3** (P2/R1) — Remove/410 legacy handlers after 48-72h zero hits
-2. **RGPD-GESTION-PES-REPO-PRIVATE-01** (P0) — Set Gestion-PES repo to PRIVATE (urgent)
-3. (Next item from backlog)
+2. **SEO-SYSTEM-CONTENT-SSOT-01** (P2/R0) — Create SEO system docs + agent prompt (docs-only)
+3. **SEO-BLOG-META-CANONICALS-01** (P2/R0) — Ensure unique title/meta/canonical across blog posts
 
 ## Urgent out-of-repo
 
-- **RGPD-GESTION-PES-REPO-PRIVATE-01** (P0) — `geinersito/Gestion-PES` repo PUBLIC with real PII → set to PRIVATE
+- **None** — Previous RGPD concern (`Gestion-PES`) confirmed already PRIVATE ✅
 
 ## Workspace _lab audit (2026-02-10)
 - 5 projects audited in `_lab/`, 4 archived, 1 still testing (boers-vtc-docs)

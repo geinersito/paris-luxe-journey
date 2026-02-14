@@ -77,6 +77,16 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | CI-SEO-SITE-URL-01 | — | P2 | R0 | DONE | Resolve VITE_PUBLIC_SITE_URL CI debt | [#77](https://github.com/geinersito/paris-luxe-journey/pull/77) / `8f33d2c` | Fallback to localhost:8082 when env var missing; scheme validation (http/https); prevents build crashes in local/CI environments |
 | OPS-STRIPE-LEGACY-DEPRECATE-01 | — | P2 | R0→R1 | DOING | Deprecate legacy stripe-webhooks handler | [#78](https://github.com/geinersito/paris-luxe-journey/pull/78) / `8fd3365` (docs), [#79](https://github.com/geinersito/paris-luxe-journey/pull/79) / `d7c8606` (telemetry) | PR1 (cutover plan) ✅ PR2 (deprecation warnings + headers) ✅ — telemetry active; waiting 48–72h no-hit window for PR3 removal |
 
+### Content SEO System
+
+| ID | Legacy | Priority | Risk | Status | Title | Evidence (PR/Commit) | Notes |
+|---|---|---:|:---:|:---:|---|---|---|
+| SEO-SYSTEM-CONTENT-SSOT-01 | — | P2 | R0 | TODO | Create SEO system docs + agent prompt + backlog items | | Docs-only: `docs/seo/CONTENT_SEO_SYSTEM.md` + `docs/seo/CONTENT_SEO_PROMPT.md`; establishes taxonomy, templates, schema.org, DoD for Blog/Events/Excursions |
+| SEO-BLOG-META-CANONICALS-01 | — | P2 | R0 | TODO | Ensure unique title/meta/canonical across blog posts | | Audit duplicates, rewrite to unique, follow templates (max 60/155 chars) |
+| SEO-EVENTS-SCHEMA-01 | — | P2 | R0 | TODO | Add Event schema.org (JSON-LD) to all event pages | | Implement Event schema with required fields (name, startDate, endDate, location, organizer); validate with Google Rich Results Test |
+| SEO-EXCURSIONS-SCHEMA-01 | — | P2 | R0 | TODO | Add TouristTrip schema.org (JSON-LD) to excursion pages | | Implement TouristTrip or Product schema with itinerary, offers; validate with Google Rich Results Test |
+| SEO-INTERNALLINK-RULES-01 | — | P2 | R0 | TODO | Audit + enforce internal linking rules | | Blog: min 2→Excursions, 1→/booking, 1→Events; Event: min 1→Excursion, 1→/booking; Excursion: min 2→related, 1→/booking |
+
 ## Risk Gates (DoD by Risk)
 
 - `R0` (UI-only):
