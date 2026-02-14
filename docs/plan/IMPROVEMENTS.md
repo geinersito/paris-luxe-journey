@@ -87,6 +87,22 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | SEO-EXCURSIONS-SCHEMA-01 | — | P2 | R0 | TODO | Add TouristTrip schema.org (JSON-LD) to excursion pages | | Implement TouristTrip or Product schema with itinerary, offers; validate with Google Rich Results Test |
 | SEO-INTERNALLINK-RULES-01 | — | P2 | R0 | TODO | Audit + enforce internal linking rules | | Blog: min 2→Excursions, 1→/booking, 1→Events; Event: min 1→Excursion, 1→/booking; Excursion: min 2→related, 1→/booking |
 
+### Content Integrity Program (Site-Wide + Multi-Language)
+
+| ID | Legacy | Priority | Risk | Status | Title | Evidence (PR/Commit) | Notes |
+|---|---|---:|:---:|:---:|---|---|---|
+| CONTENT-AUDIT-SITEWIDE-I18N-01 | — | P2 | R0 | DOING | Site-wide content integrity audit (docs-only) | PR #pending | Inventory + scoring across 10 sections × 4 languages (EN/FR/ES/PT); identifies Top 10 fix targets (P0/P1/P2); deliverable: docs/content/CONTENT_INTEGRITY_AUDIT.md |
+| CONTENT-EXCURSIONS-PAGES-ENRICH-01 | — | P0 | R1 | TODO | Create missing excursion detail pages (Loire, Champagne, Giverny) | | 404 fix: 3 pages missing (only Versailles exists); use versailles.tsx as template; add FAQ, What's Included, Meeting Point, Cancellation blocks per page |
+| CONTENT-EVENTS-FRESHNESS-01 | — | P0 | R0 | TODO | Update Events data + establish freshness workflow | | Remove stale 2025-01-13 events; archive past events; add "Last Updated" timestamp; enforce source attribution per event (per CONTENT_SEO_SYSTEM.md) |
+| MEDIA-IMAGES-LIBRARY-01 | — | P0 | R0 | TODO | Replace image placeholders with real/licensed assets | | ~50-80 images needed: excursions, hero, blog authors, airport terminals, hourly use cases, trust badges; priority: Excursions (currently 404 placeholders) |
+| CONTENT-EXCURSIONS-FAQ-BLOCKS-01 | — | P1 | R1 | TODO | Add detail blocks to Excursion pages (FAQ, Logistics) | | Per page: FAQ (3-5 Q&A), What's Included/Excluded, Meeting Point, Cancellation Policy, Pricing Disclaimer; improves conversion + reduces support queries |
+| CONTENT-TRUST-SIGNALS-01 | — | P1 | R0 | TODO | Add trust signals (Home, Booking flow) | | Reviews count, certifications, payment badges (Stripe Verified, SSL), years established; place on Home hero + Payment page |
+| CONTENT-AIRPORTS-TERMINAL-GUIDE-01 | — | P1 | R0 | TODO | Add terminal breakdown to Airport pages | | CDG (T1/T2A/T2B/T2C/T2D/T2E/T2F/T2G/T3), Orly (1/2/3/4), Beauvais; add "Where to meet driver" with photos/maps; luggage guidance per vehicle class |
+| CONTENT-HOURLY-ITINERARIES-01 | — | P2 | R0 | TODO | Add sample hourly itineraries (3-5 use cases) | | Business meeting circuit, Paris by night, custom wine tour, wedding transport, family sightseeing; with photos + duration + example pricing |
+| CONTENT-BLOG-EDITORIAL-MAP-01 | — | P2 | R0 | TODO | Create blog editorial calendar (next 12 posts) | | Plan 2-4 posts/week cadence per SEO strategy; topics aligned with keyword research; assign authors; schedule publication dates |
+| CONTENT-FAQ-VISUAL-AIDS-01 | — | P2 | R0 | TODO | Add visual aids to FAQ/Legal pages | | Payment flow diagram, cancellation timeline, vehicle class comparison chart; improves comprehension + reduces support queries |
+| TECH-I18N-EXCURSIONS-REFACTOR-01 | — | P2 | R1 | TODO | Refactor Excursions.tsx embedded translations to centralized i18n | | Move 1759 lines of embedded EN/FR/ES/PT translations to src/i18n/excursions.ts; standardize on t() pattern; improves maintainability |
+
 ## Risk Gates (DoD by Risk)
 
 - `R0` (UI-only):

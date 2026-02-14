@@ -24,13 +24,14 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Ahora en curso
 
 - **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2/R1) — PR2 merged (#79 / `d7c8606`), telemetry enabled — monitoring 48-72h for zero hits before PR3
+- **CONTENT-AUDIT-SITEWIDE-I18N-01** (P2/R0) — PR open (docs-only audit: 10 sections × 4 languages, Top 10 fix targets identified)
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **OPS-STRIPE-LEGACY-DEPRECATE-01 / PR3** (P2/R1) — Remove/410 legacy handlers after 48-72h zero hits
-2. **SEO-EVENTS-SCHEMA-01** (P2/R0) — Add Event schema.org (JSON-LD) to all event pages
-3. **SEO-EXCURSIONS-SCHEMA-01** (P2/R0) — Add TouristTrip schema.org (JSON-LD) to excursion pages
-4. **SEO-INTERNALLINK-RULES-01** (P2/R0) — Audit + enforce internal linking rules
+1. **CONTENT-EXCURSIONS-PAGES-ENRICH-01** (P0/R1) — Create missing excursion detail pages (Loire, Champagne, Giverny) - 404 fix
+2. **CONTENT-EVENTS-FRESHNESS-01** (P0/R0) — Update stale Events data (2025-01-13) + establish freshness workflow
+3. **MEDIA-IMAGES-LIBRARY-01** (P0/R0) — Replace ~50-80 image placeholders with real/licensed assets (priority: Excursions)
+4. **OPS-STRIPE-LEGACY-DEPRECATE-01 / PR3** (P2/R1) — Remove/410 legacy handlers after 48-72h zero hits
 
 ## Urgent out-of-repo
 
