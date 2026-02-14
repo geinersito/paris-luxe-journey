@@ -169,6 +169,32 @@ export interface Translation {
     bookNow: string;
     allInclusive: string;
   };
+  airports: {
+    terminalGuide: {
+      title: string;
+      subtitle: string;
+      lastUpdated: string;
+      meetPoint: string;
+      tips: string;
+      transferTimeHint: string;
+      disclaimer: string;
+      airports: {
+        cdg: string;
+        ory: string;
+        bva: string;
+      };
+      terminals: Record<
+        string,
+        {
+          name: string;
+          airlinesHint?: string;
+          meetPoint: string;
+          transferTimeHint?: string;
+          tips: Record<string, string>;
+        }
+      >;
+    };
+  };
   fleet: {
     title: string;
     subtitle: string;

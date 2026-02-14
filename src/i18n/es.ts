@@ -78,6 +78,139 @@ export const es: Translation = {
     allInclusive:
       "✓ Todos los precios incluyen peajes, parking y tiempo de espera",
   },
+  airports: {
+    terminalGuide: {
+      title: "Guia de terminales",
+      subtitle:
+        "Puntos de encuentro practicos y recomendaciones de recogida para CDG, Orly y Beauvais.",
+      lastUpdated: "Ultima actualizacion:",
+      meetPoint: "Punto de encuentro recomendado",
+      tips: "Consejos practicos",
+      transferTimeHint: "Tiempo estimado para encontrarse",
+      disclaimer:
+        "La operativa de terminales puede cambiar. Sigue siempre la senalizacion del aeropuerto y tu confirmacion de reserva.",
+      airports: {
+        cdg: "Charles de Gaulle (CDG)",
+        ory: "Paris Orly (ORY)",
+        bva: "Beauvais-Tille (BVA)",
+      },
+      terminals: {
+        cdg_t1: {
+          name: "Terminal 1",
+          airlinesHint: "Frecuente para muchas llegadas internacionales.",
+          meetPoint:
+            "Hall publico de llegadas cerca del punto principal de informacion.",
+          transferTimeHint:
+            "Aprox. 8-12 min desde puerta de llegada hasta area publica.",
+          tips: {
+            tip1: "Comparte tu estado al salir del control de pasaportes.",
+            tip2: "Sigue la senalizacion de Llegadas y mantente localizable.",
+            tip3: "Si hay retraso de equipaje, avisa al chofer de inmediato.",
+          },
+        },
+        cdg_t2ac: {
+          name: "Terminal 2A-2C",
+          airlinesHint: "Operacion frecuente Schengen e internacional.",
+          meetPoint: "Salida de Llegadas mas cercana a tu cinta de equipaje.",
+          transferTimeHint:
+            "Aprox. 6-10 min desde pasillo de llegadas al punto de encuentro.",
+          tips: {
+            tip1: "Confirma la letra exacta de terminal por mensaje.",
+            tip2: "Usa salidas de Llegadas, no niveles de Salidas.",
+            tip3: "Espera en zona publica junto a senalizacion oficial pickup.",
+          },
+        },
+        cdg_t2df: {
+          name: "Terminal 2D-2F",
+          airlinesHint: "Zonas de alto volumen con varios flujos de llegada.",
+          meetPoint:
+            "Zona publica de llegadas cerca de la senalizacion pickup.",
+          transferTimeHint:
+            "Aprox. 8-14 min segun puerta y recogida de equipaje.",
+          tips: {
+            tip1: "Verifica la letra del terminal antes de escribir al chofer.",
+            tip2: "Usa ascensores o escaleras mecanicas hacia Llegadas.",
+            tip3: "Permanece en zona publica iluminada y facil de ubicar.",
+          },
+        },
+        cdg_t2g: {
+          name: "Terminal 2G",
+          airlinesHint: "Terminal remoto con conexion por bus lanzadera.",
+          meetPoint:
+            "Salida principal publica de llegadas tras el bus interno.",
+          transferTimeHint:
+            "Aprox. 12-18 min incluyendo traslado en lanzadera.",
+          tips: {
+            tip1: "Considera tiempo extra por el traslado interno.",
+            tip2: "Mantén datos moviles activos para mensajes del chofer.",
+            tip3: "Escribe cuando estes llegando al hall publico.",
+          },
+        },
+        cdg_t3: {
+          name: "Terminal 3",
+          airlinesHint: "Usada por vuelos low-cost y operaciones charter.",
+          meetPoint: "Exterior de Llegadas en el punto de recogida senalizado.",
+          transferTimeHint:
+            "Aprox. 5-9 min desde salida de terminal hasta encuentro.",
+          tips: {
+            tip1: "Ve a la acera solo despues de recoger todo tu equipaje.",
+            tip2: "Confirma la matricula del vehiculo antes de subir.",
+            tip3: "Si hay mucha gente, usa el punto de referencia acordado.",
+          },
+        },
+        ory_123: {
+          name: "Orly 1-2-3",
+          airlinesHint: "Edificio conectado con circulacion compartida.",
+          meetPoint:
+            "Salida publica de Llegadas junto a zona oficial de recogida.",
+          transferTimeHint:
+            "Aprox. 5-10 min desde puerta al punto de encuentro.",
+          tips: {
+            tip1: "Confirma si llegas por 1, 2 o 3 antes de salir.",
+            tip2: "Las escaleras pueden saturarse en horas punta.",
+            tip3: "Mantén WhatsApp abierto para coordinacion final.",
+          },
+        },
+        ory_4: {
+          name: "Orly 4",
+          airlinesHint: "Hall dedicado con acceso directo a zonas publicas.",
+          meetPoint: "Area publica de Llegadas cerca del punto de informacion.",
+          transferTimeHint:
+            "Aprox. 6-11 min segun puerta y recogida de equipaje.",
+          tips: {
+            tip1: "Sigue senales de Llegadas hasta zona publica.",
+            tip2: "Si viajas con ninos, pide punto de encuentro cercano.",
+            tip3: "Avisa al chofer al terminar aduana y equipaje.",
+          },
+        },
+        bva_t1: {
+          name: "Terminal 1",
+          airlinesHint: "Area principal para muchas operaciones low-cost.",
+          meetPoint: "Exterior de Llegadas en bahia de recogida acordada.",
+          transferTimeHint:
+            "Aprox. 4-8 min desde Llegadas hasta la zona de recogida.",
+          tips: {
+            tip1: "Beauvais puede ser ventoso; prepara abrigo para exterior.",
+            tip2: "Envia mensaje rapido tras recoger equipaje.",
+            tip3: "Espera frente al terminal para identificacion facil.",
+          },
+        },
+        bva_t2: {
+          name: "Terminal 2",
+          airlinesHint: "Operaciones low-cost adicionales segun temporada.",
+          meetPoint:
+            "Salida de Llegadas Terminal 2 junto al carril de recogida.",
+          transferTimeHint:
+            "Aprox. 4-8 min desde Llegadas hasta la zona de recogida.",
+          tips: {
+            tip1: "Confirma numero de terminal en tu recordatorio de reserva.",
+            tip2: "Sigue senalizacion oficial pickup antes de cruzar parking.",
+            tip3: "Con mal tiempo, espera en zona cubierta y escribe al chofer.",
+          },
+        },
+      },
+    },
+  },
   exitPopup: {
     title: "¡Espera! No Te Vayas Aún",
     subtitle: "Obtén 10% de Descuento en Tu Primer Traslado",
