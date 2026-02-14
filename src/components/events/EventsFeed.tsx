@@ -123,7 +123,8 @@ export function EventsFeed({
                   height="400"
                   onError={(e) => {
                     // Fallback to placeholder if image fails to load
-                    e.currentTarget.src = "/images/placeholder-event.jpg";
+                    e.currentTarget.src =
+                      "/images/library/events/event-placeholder-800x600.jpg";
                   }}
                 />
 

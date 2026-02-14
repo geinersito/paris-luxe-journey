@@ -1100,7 +1100,7 @@ const dayTrips = [
     id: 1,
     tripKey: "parisCityHalf",
     image:
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2070",
+      "/images/library/excursions/cards/excursion-paris-half-day-800x600.jpg",
     price: 380,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1120,7 +1120,7 @@ const dayTrips = [
     id: 2,
     tripKey: "parisCityFull",
     image:
-      "https://images.unsplash.com/photo-1511739001486-6bfe10ce785f?q=80&w=2070",
+      "/images/library/excursions/cards/excursion-paris-full-day-800x600.jpg",
     price: 550,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1139,8 +1139,7 @@ const dayTrips = [
   {
     id: 3,
     tripKey: "parisNight",
-    image:
-      "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2070",
+    image: "/images/library/excursions/cards/excursion-paris-night-800x600.jpg",
     price: 350,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1160,7 +1159,7 @@ const dayTrips = [
     id: 4,
     tripKey: "versaillesHalf",
     image:
-      "https://images.unsplash.com/photo-1624698343123-04444a0743ca?q=80&w=2070",
+      "/images/library/excursions/cards/excursion-versailles-half-day-800x600.jpg",
     price: 320,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1180,7 +1179,7 @@ const dayTrips = [
     id: 5,
     tripKey: "versaillesFull",
     image:
-      "https://images.unsplash.com/photo-1624698343123-04444a0743ca?q=80&w=2070",
+      "/images/library/excursions/cards/excursion-versailles-full-day-800x600.jpg",
     price: 480,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1199,8 +1198,7 @@ const dayTrips = [
   {
     id: 6,
     tripKey: "giverny",
-    image:
-      "https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=2070",
+    image: "/images/library/excursions/cards/excursion-giverny-800x600.jpg",
     price: 520,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1214,8 +1212,7 @@ const dayTrips = [
   {
     id: 7,
     tripKey: "champagne",
-    image:
-      "https://images.unsplash.com/photo-1547595628-c61a29f496f0?q=80&w=2070",
+    image: "/images/library/excursions/cards/excursion-champagne-800x600.jpg",
     price: 650,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1235,7 +1232,7 @@ const dayTrips = [
     id: 8,
     tripKey: "loire",
     image:
-      "https://images.unsplash.com/photo-1584563143659-e9e5c0b8e4e0?q=80&w=2070",
+      "/images/library/excursions/cards/excursion-loire-valley-800x600.jpg",
     price: 750,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1389,7 +1386,7 @@ const Excursions = () => {
       <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2073"
+            src="/images/library/excursions/hero/excursions-hero-paris-eiffel-1920x1080.jpg"
             alt="Private Day Trips from Paris"
             className="w-full h-full object-cover"
           />
