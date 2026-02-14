@@ -761,5 +761,9 @@ export interface Translation {
       title: string;
       description: string;
     };
+    airports: {
+      title: string;
+      description: string;
+    };
   };
 }

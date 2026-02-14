@@ -1008,5 +1008,10 @@ export const en: Translation = {
       description:
         "Premium airport transfer service in Paris. Book your private chauffeur for CDG, Orly, or city transfers. Fixed prices from €70, 24/7 availability, luxury vehicles. Book now!",
     },
+    airports: {
+      title: "Paris Airport Transfers | CDG, Orly, Beauvais Terminal Guide",
+      description:
+        "Private airport transfers in Paris with fixed pricing, terminal pickup guidance for CDG, Orly and Beauvais, and 24/7 chauffeur support.",
+    },
   },
 };

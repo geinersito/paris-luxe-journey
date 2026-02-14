@@ -1,10 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 import { Clock3, MapPin, PlaneTakeoff } from "lucide-react";
 import TrustSignals from "@/components/TrustSignals";
 import { Card } from "@/components/ui/card";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { formatParisDate } from "@/lib/datetime/paris";
+import { generateLocalBusinessJsonLd } from "@/lib/seo/json-ld";
+import { getSiteOrigin } from "@/lib/seo/site";
 import {
   AIRPORT_TERMINAL_GUIDE,
   TERMINAL_GUIDE_LAST_UPDATED_ISO,
@@ -23,6 +26,7 @@ const Airports = () => {
   const { t, language, setLanguage } = useLanguage();
   const { lang } = useParams<{ lang?: string }>();
   const [selectedAirport, setSelectedAirport] = useState<AirportCode>("CDG");
+  const siteOrigin = getSiteOrigin();
 
   useEffect(() => {
     if (isSupportedLanguage(lang) && lang !== language) {
@@ -41,6 +45,46 @@ const Airports = () => {
     () => `/booking?service=airport&airport=${selectedAirport.toLowerCase()}`,
     [selectedAirport],
   );
+  const canonicalPath =
+    lang && isSupportedLanguage(lang) && lang !== "en"
+      ? `/${lang}/airports`
+      : "/airports";
+  const canonicalUrl = `${siteOrigin}${canonicalPath}`;
+  const pageTitle = t.seo.airports.title;
+  const pageDescription = t.seo.airports.description;
+
+  const serviceJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: pageTitle,
+    description: pageDescription,
+    serviceType: "Airport Transfer",
+    url: canonicalUrl,
+    inLanguage: lang && isSupportedLanguage(lang) ? lang : language,
+    areaServed: {
+      "@type": "AdministrativeArea",
+      name: "Paris, Ile-de-France",
+    },
+    provider: {
+      "@type": "ProfessionalService",
+      name: "Paris Elite Services",
+      url: siteOrigin,
+      telephone: "+33668251102",
+    },
+  };
+
+  const localBusinessJsonLd = generateLocalBusinessJsonLd({
+    name: "Paris Elite Services",
+    url: siteOrigin,
+    telephone: "+33668251102",
+    description: pageDescription,
+    priceRange: "EUR",
+    address: {
+      addressLocality: "Paris",
+      addressRegion: "Ile-de-France",
+      addressCountry: "FR",
+    },
+  });
 
   const airportLabels: Record<AirportCode, string> = {
     CDG: t.airports.terminalGuide.airports.cdg,
@@ -77,6 +121,32 @@ const Airports = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-cream via-white to-champagne/20">
+      <Helmet>
+        <title>{pageTitle}</title>
+        <meta name="title" content={pageTitle} />
+        <meta name="description" content={pageDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={pageTitle} />
+        <meta property="og:description" content={pageDescription} />
+        <meta property="og:image" content={`${siteOrigin}/og-image.jpg`} />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:title" content={pageTitle} />
+        <meta name="twitter:description" content={pageDescription} />
+        <meta name="twitter:image" content={`${siteOrigin}/og-image.jpg`} />
+
+        <script type="application/ld+json">
+          {JSON.stringify(serviceJsonLd)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(localBusinessJsonLd)}
+        </script>
+      </Helmet>
+
       <section className="section-padding pb-10">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-8">

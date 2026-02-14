@@ -1045,5 +1045,11 @@ export const fr: Translation = {
       description:
         "Service de transfert aéroport premium à Paris. Réservez votre chauffeur privé pour CDG, Orly ou transferts en ville. Prix fixes dès 70€, disponibilité 24/7, véhicules de luxe.",
     },
+    airports: {
+      title:
+        "Transferts aéroports Paris | Guide terminaux CDG, Orly et Beauvais",
+      description:
+        "Transferts privés aéroport à Paris avec tarif fixe, guide pratique des points de rendez-vous à CDG, Orly et Beauvais, et assistance chauffeur 24/7.",
+    },
   },
 };
