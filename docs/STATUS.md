@@ -12,14 +12,15 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `e9eee59`
+- SHA: `ac8448e9`
 - Last updated: `2026-02-14`
 
 ## Ultimos PRs mergeados en main
 
-1. `#92` - SSOT post-merge sync after PR #91 (`e9eee59`)
-2. `#91` - UX A11Y contrast fix for Excursions hero chips (UX-A11Y-EXCURSIONS-HERO-CHIPS-CONTRAST-01) (`b234e65`)
-3. `#89` - UX excursions list compact pass (UX-EXCURSIONS-LIST-COMPACT-01) (`445cf19`)
+1. `#93` - docs(status): sync head after PR #92 (`ac8448e9`)
+2. `#92` - SSOT post-merge sync after PR #91 (`e9eee59`)
+3. `#91` - UX A11Y contrast fix for Excursions hero chips (UX-A11Y-EXCURSIONS-HERO-CHIPS-CONTRAST-01) (`b234e65`)
+4. `#89` - UX excursions list compact pass (UX-EXCURSIONS-LIST-COMPACT-01) (`445cf19`)
 
 ## Ahora en curso
 
