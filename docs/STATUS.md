@@ -14,21 +14,22 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `a0108d6`
+- SHA: `1508245`
 - Last updated: `2026-02-14`
 
 ## Ultimos PRs mergeados en main
 
-1. `#107` - content(airports): add terminal guide section (CONTENT-AIRPORTS-TERMINAL-GUIDE-01) (`a0108d6`)
-2. `#105` - content(trust): add sitewide trust signals block (`97e0777`)
-3. `#104` - docs(ssot): post-merge sync after PR #103 (`b889c96`)
-4. `#103` - feat(excursions): reduce pre-list scroll above fold (`9ae13b0`)
-5. `#102` - docs(ssot): post-merge sync after PR #101 (`431f18b`)
-6. `#101` - content(excursions): unify faq blocks across detail pages (`2539c74`)
-7. `#100` - docs(ssot): post-merge sync after PR #99 (`6e48b9c`)
-8. `#99` - feat(media): add local image library MVP for excursions events and trust (`013a0df`)
-9. `#98` - docs(ssot): post-merge sync after PR #95 (`4799d01`)
-10. `#95` - content(events): refresh feed freshness and source attribution (`09834ef`)
+1. `#109` - UX-AIRPORTS-ADD-BOOKING-CTA-01 (`1508245`)
+2. `#107` - content(airports): add terminal guide section (CONTENT-AIRPORTS-TERMINAL-GUIDE-01) (`a0108d6`)
+3. `#105` - content(trust): add sitewide trust signals block (`97e0777`)
+4. `#104` - docs(ssot): post-merge sync after PR #103 (`b889c96`)
+5. `#103` - feat(excursions): reduce pre-list scroll above fold (`9ae13b0`)
+6. `#102` - docs(ssot): post-merge sync after PR #101 (`431f18b`)
+7. `#101` - content(excursions): unify faq blocks across detail pages (`2539c74`)
+8. `#100` - docs(ssot): post-merge sync after PR #99 (`6e48b9c`)
+9. `#99` - feat(media): add local image library MVP for excursions events and trust (`013a0df`)
+10. `#98` - docs(ssot): post-merge sync after PR #95 (`4799d01`)
+11. `#95` - content(events): refresh feed freshness and source attribution (`09834ef`)
 
 ## Ahora en curso
 
