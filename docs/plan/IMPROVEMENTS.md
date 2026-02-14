@@ -82,7 +82,7 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | ID | Legacy | Priority | Risk | Status | Title | Evidence (PR/Commit) | Notes |
 |---|---|---:|:---:|:---:|---|---|---|
 | SEO-SYSTEM-CONTENT-SSOT-01 | — | P2 | R0 | DONE | Create SEO system docs + agent prompt + backlog items | [#80](https://github.com/geinersito/paris-luxe-journey/pull/80) / `1ea27c5` | Docs-only: `docs/seo/CONTENT_SEO_SYSTEM.md` + `docs/seo/CONTENT_SEO_PROMPT.md`; establishes taxonomy, templates, schema.org, DoD for Blog/Events/Excursions |
-| SEO-BLOG-META-CANONICALS-01 | — | P2 | R0 | DOING | Ensure unique title/meta/canonical across blog posts | PR #pending | Fixed hardcoded canonical URLs in BlogPost.tsx and BlogCategory.tsx; now use getSiteOrigin() helper for multi-domain support |
+| SEO-BLOG-META-CANONICALS-01 | — | P2 | R0 | DONE | Ensure unique title/meta/canonical across blog posts | [#82](https://github.com/geinersito/paris-luxe-journey/pull/82) / `c516aff` | Fixed hardcoded canonical URLs in BlogPost.tsx and BlogCategory.tsx; now use getSiteOrigin() helper for multi-domain support |
 | SEO-EVENTS-SCHEMA-01 | — | P2 | R0 | TODO | Add Event schema.org (JSON-LD) to all event pages | | Implement Event schema with required fields (name, startDate, endDate, location, organizer); validate with Google Rich Results Test |
 | SEO-EXCURSIONS-SCHEMA-01 | — | P2 | R0 | TODO | Add TouristTrip schema.org (JSON-LD) to excursion pages | | Implement TouristTrip or Product schema with itinerary, offers; validate with Google Rich Results Test |
 | SEO-INTERNALLINK-RULES-01 | — | P2 | R0 | TODO | Audit + enforce internal linking rules | | Blog: min 2→Excursions, 1→/booking, 1→Events; Event: min 1→Excursion, 1→/booking; Excursion: min 2→related, 1→/booking |
