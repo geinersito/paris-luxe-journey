@@ -29,7 +29,7 @@
       "eventUrl": "https://artcapital.fr/",
       "sourceName": "Art Capital",
       "sourceUrl": "https://artcapital.fr/",
-      "imageUrl": "https://images.unsplash.com/photo-1545989253-02cc26577f88?w=800&h=600&fit=crop&q=80",
+      "imageUrl": "/images/library/events/art-capital-grand-palais-800x600.jpg",
       "category": "exhibition",
       "isFeatured": true
     },
@@ -60,7 +60,7 @@
       "eventUrl": "https://www.adidasarena.com/",
       "sourceName": "adidas arena",
       "sourceUrl": "https://www.adidasarena.com/",
-      "imageUrl": "https://images.unsplash.com/photo-1542751110-97427bbecf20?w=800&h=600&fit=crop&q=80",
+      "imageUrl": "/images/library/events/six-invitational-paris-800x600.jpg",
       "category": "festival",
       "isFeatured": true
     },
@@ -91,7 +91,7 @@
       "eventUrl": "https://jeudepaume.org/",
       "sourceName": "Jeu de Paume",
       "sourceUrl": "https://jeudepaume.org/",
-      "imageUrl": "https://images.unsplash.com/photo-1501612780327-45045538702b?w=800&h=600&fit=crop&q=80",
+      "imageUrl": "/images/library/events/jeu-de-paume-festival-800x600.jpg",
       "category": "exhibition",
       "isFeatured": false
     },
@@ -122,7 +122,7 @@
       "eventUrl": "https://www.salon-agriculture.com/en/",
       "sourceName": "Salon International de l'Agriculture",
       "sourceUrl": "https://www.salon-agriculture.com/en/",
-      "imageUrl": "https://images.unsplash.com/photo-1457530378978-8bac673b8062?w=800&h=600&fit=crop&q=80",
+      "imageUrl": "/images/library/events/salon-agriculture-2026-800x600.jpg",
       "category": "festival",
       "isFeatured": true
     }
@@ -155,7 +155,7 @@
       "eventUrl": "https://www.salon-agriculture.com/en/",
       "sourceName": "Salon International de l'Agriculture",
       "sourceUrl": "https://www.salon-agriculture.com/en/",
-      "imageUrl": "https://images.unsplash.com/photo-1457530378978-8bac673b8062?w=800&h=600&fit=crop&q=80",
+      "imageUrl": "/images/library/events/salon-agriculture-2026-800x600.jpg",
       "category": "festival",
       "isFeatured": true
     },
@@ -186,7 +186,7 @@
       "eventUrl": "https://jeudepaume.org/",
       "sourceName": "Jeu de Paume",
       "sourceUrl": "https://jeudepaume.org/",
-      "imageUrl": "https://images.unsplash.com/photo-1501612780327-45045538702b?w=800&h=600&fit=crop&q=80",
+      "imageUrl": "/images/library/events/jeu-de-paume-festival-800x600.jpg",
       "category": "exhibition",
       "isFeatured": false
     },
@@ -217,7 +217,7 @@
       "eventUrl": "https://www.l2pconvention.com/",
       "sourceName": "L2P Convention",
       "sourceUrl": "https://www.l2pconvention.com/",
-      "imageUrl": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=600&fit=crop&q=80",
+      "imageUrl": "/images/library/events/l2p-convention-2026-800x600.jpg",
       "category": "festival",
       "isFeatured": true
     },
@@ -248,7 +248,7 @@
       "eventUrl": "https://www.salons-du-tourisme.com/Paris",
       "sourceName": "Salon Mondial du Tourisme",
       "sourceUrl": "https://www.salons-du-tourisme.com/Paris",
-      "imageUrl": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&q=80",
+      "imageUrl": "/images/library/events/paris-world-tourism-fair-2026-800x600.jpg",
       "category": "festival",
       "isFeatured": false
     },
@@ -278,7 +278,7 @@
       "eventUrl": "https://www.ecotrailparis.com/en/",
       "sourceName": "EcoTrail Paris",
       "sourceUrl": "https://www.ecotrailparis.com/en/",
-      "imageUrl": "https://images.unsplash.com/photo-1486218119243-13883505764c?w=800&h=600&fit=crop&q=80",
+      "imageUrl": "/images/library/events/ecotrail-paris-2026-800x600.jpg",
       "category": "festival",
       "isFeatured": false
     },
@@ -309,7 +309,7 @@
       "eventUrl": "https://www.salondudessin.com/en/home",
       "sourceName": "Salon du Dessin",
       "sourceUrl": "https://www.salondudessin.com/en/home",
-      "imageUrl": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=600&fit=crop&q=80",
+      "imageUrl": "/images/library/events/salon-du-dessin-2026-800x600.jpg",
       "category": "exhibition",
       "isFeatured": true
     },
@@ -340,7 +340,7 @@
       "eventUrl": "https://www.festivalmondialdelamagie.com/",
       "sourceName": "Festival Mondial de la Magie",
       "sourceUrl": "https://www.festivalmondialdelamagie.com/",
-      "imageUrl": "https://images.unsplash.com/photo-1501472312651-726afe119ff1?w=800&h=600&fit=crop&q=80",
+      "imageUrl": "/images/library/events/festival-mondial-magie-2026-800x600.jpg",
       "category": "family",
       "isFeatured": false
     }
