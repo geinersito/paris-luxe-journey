@@ -1,14 +1,15 @@
-import React from 'react';
-import { useLanguage } from '@/contexts/LanguageContext';
-import { DestinationHeader } from '@/components/destination/DestinationHeader';
-import { DestinationNavigation } from '@/components/destination/DestinationNavigation';
-import { DestinationContent } from '@/components/destination/DestinationContent';
-import { DestinationSidebar } from '@/components/destination/DestinationSidebar';
-import { TourCard } from '@/components/TourCard';
-import { excursions } from '@/data/excursions';
+import React from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { DestinationHeader } from "@/components/destination/DestinationHeader";
+import { DestinationNavigation } from "@/components/destination/DestinationNavigation";
+import { DestinationContent } from "@/components/destination/DestinationContent";
+import { DestinationSidebar } from "@/components/destination/DestinationSidebar";
+import { TourCard } from "@/components/TourCard";
+import { excursions } from "@/data/excursions";
+import { getExcursionFaqItems } from "@/data/excursions/faq-content";
 
 export default function VersaillesPage() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeSection, setActiveSection] = React.useState("description");
   const [selectedTour, setSelectedTour] = React.useState<string | null>(null);
 
@@ -17,17 +18,19 @@ export default function VersaillesPage() {
 
   // Navigation items
   const navigationItems = [
-    { id: 'description', label: t.versailles.navigation.description },
-    { id: 'tours', label: t.versailles.navigation.tours },
-    { id: 'map', label: t.versailles.navigation.map },
-    { id: 'events', label: t.versailles.navigation.events },
-    { id: 'faq', label: t.versailles.navigation.faq },
+    { id: "description", label: t.versailles.navigation.description },
+    { id: "tours", label: t.versailles.navigation.tours },
+    { id: "map", label: t.versailles.navigation.map },
+    { id: "events", label: t.versailles.navigation.events },
+    { id: "faq", label: t.versailles.navigation.faq },
   ];
 
   // Handle section change
   const handleSectionChange = (sectionId: string) => {
     setActiveSection(sectionId);
   };
+
+  const faqItems = getExcursionFaqItems(language, t.versailles.title);
 
   // Enhanced tours data with more details
   const tours = [
@@ -38,7 +41,12 @@ export default function VersaillesPage() {
       price: 250,
       maxParticipants: 8,
       startTimes: ["09:00", "13:00"],
-      includes: ["Entry tickets", "Guided tour", "Transportation", "Skip-the-line access"],
+      includes: [
+        "Entry tickets",
+        "Guided tour",
+        "Transportation",
+        "Skip-the-line access",
+      ],
       highlights: ["Hall of Mirrors", "Royal Apartments", "Gardens access"],
     },
   ];
@@ -66,9 +74,11 @@ export default function VersaillesPage() {
     ),
     tours: (
       <div>
-        <h3 className="text-2xl font-bold mb-4">{t.versailles.navigation.tours}</h3>
+        <h3 className="text-2xl font-bold mb-4">
+          {t.versailles.navigation.tours}
+        </h3>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {tours.map(tour => (
+          {tours.map((tour) => (
             <TourCard
               key={tour.id}
               title={tour.name}
@@ -83,20 +93,33 @@ export default function VersaillesPage() {
     ),
     map: (
       <div>
-        <h3 className="text-2xl font-bold mb-4">{t.versailles.navigation.map}</h3>
+        <h3 className="text-2xl font-bold mb-4">
+          {t.versailles.navigation.map}
+        </h3>
         <p>Interactive map will be here.</p>
       </div>
     ),
     events: (
       <div>
-        <h3 className="text-2xl font-bold mb-4">{t.versailles.navigation.events}</h3>
+        <h3 className="text-2xl font-bold mb-4">
+          {t.versailles.navigation.events}
+        </h3>
         <p>Upcoming events at Versailles.</p>
       </div>
     ),
     faq: (
       <div>
-        <h3 className="text-2xl font-bold mb-4">{t.versailles.navigation.faq}</h3>
-        <p>Frequently Asked Questions about visiting Versailles.</p>
+        <h3 className="text-2xl font-bold mb-4">
+          {t.versailles.navigation.faq}
+        </h3>
+        <div className="space-y-4">
+          {faqItems.map((item) => (
+            <div key={item.question}>
+              <h5 className="font-semibold mb-2">{item.question}</h5>
+              <p className="text-gray-600">{item.answer}</p>
+            </div>
+          ))}
+        </div>
       </div>
     ),
   };

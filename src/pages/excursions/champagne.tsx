@@ -6,9 +6,10 @@ import { DestinationContent } from "@/components/destination/DestinationContent"
 import { DestinationSidebar } from "@/components/destination/DestinationSidebar";
 import { TourCard } from "@/components/TourCard";
 import { excursions } from "@/data/excursions";
+import { getExcursionFaqItems } from "@/data/excursions/faq-content";
 
 export default function ChampagnePage() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [activeSection, setActiveSection] = React.useState("description");
   const [selectedTour, setSelectedTour] = React.useState<string | null>(null);
 
@@ -26,6 +27,8 @@ export default function ChampagnePage() {
   const handleSectionChange = (sectionId: string) => {
     setActiveSection(sectionId);
   };
+
+  const faqItems = getExcursionFaqItems(language, t.champagne.title);
 
   const content = {
     description: (
@@ -89,51 +92,12 @@ export default function ChampagnePage() {
           {t.champagne.navigation.faq}
         </h3>
         <div className="space-y-4">
-          <div>
-            <h5 className="font-semibold mb-2">
-              What is included in the tour?
-            </h5>
-            <p className="text-gray-600">
-              All tours include private luxury transport, champagne house
-              visits, premium tastings, professional guide, and gourmet lunch.
-              Specific inclusions vary by tour package.
-            </p>
-          </div>
-          <div>
-            <h5 className="font-semibold mb-2">How long is the tour?</h5>
-            <p className="text-gray-600">
-              Tours range from 8 to 10 hours depending on the package selected
-              and traffic conditions.
-            </p>
-          </div>
-          <div>
-            <h5 className="font-semibold mb-2">
-              Which champagne houses will we visit?
-            </h5>
-            <p className="text-gray-600">
-              Visits typically include prestigious houses like Moët & Chandon,
-              Veuve Clicquot, or Dom Pérignon, depending on availability and
-              your preferences.
-            </p>
-          </div>
-          <div>
-            <h5 className="font-semibold mb-2">
-              Do I need to book champagne house visits in advance?
-            </h5>
-            <p className="text-gray-600">
-              We handle all reservations for you. Please book your tour at least
-              48 hours in advance to secure champagne house visits.
-            </p>
-          </div>
-          <div>
-            <h5 className="font-semibold mb-2">
-              What is the cancellation policy?
-            </h5>
-            <p className="text-gray-600">
-              Free cancellation up to 24 hours before the tour. Cancellations
-              within 24 hours are subject to a fee.
-            </p>
-          </div>
+          {faqItems.map((item) => (
+            <div key={item.question}>
+              <h5 className="font-semibold mb-2">{item.question}</h5>
+              <p className="text-gray-600">{item.answer}</p>
+            </div>
+          ))}
         </div>
       </div>
     ),
