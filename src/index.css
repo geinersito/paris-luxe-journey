@@ -41,39 +41,39 @@
    */
 
   /* Base Colors */
-  --background: 40 30% 98%; /* #FDFBF7 - Blanco cálido */
-  --foreground: 220 20% 20%; /* #2B3340 - Texto oscuro */
+  --background: 210 24% 98%; /* #F8FAFC - neutral clean */
+  --foreground: 220 18% 20%; /* #2B3440 - stable dark text */
   --card: 0 0% 100%; /* #FFFFFF - Blanco puro */
   --card-foreground: 220 20% 20%;
   --popover: 0 0% 100%;
   --popover-foreground: 220 20% 20%;
-  --primary: 30 34% 42%; /* #906B47 - Oro champagne (AA-safe) */
+  --primary: 213 52% 39%; /* #2F5E96 - trust blue primary */
   --primary-foreground: 0 0% 100%;
-  --secondary: 220 40% 20%; /* #1F2D42 - Navy (hero cards oscuros) */
+  --secondary: 218 35% 22%; /* #24364D - navy slate */
   --secondary-foreground: 45 30% 96%; /* #F8F6F0 - Texto claro en navy */
-  --muted: 40 20% 95%; /* #F5F3EE - Fondo muted beige */
-  --muted-foreground: 220 12% 42%; /* #5E6778 - Texto muted (AA-safe) */
-  --accent: 40 20% 95%; /* #F5F3EE - Accent beige claro */
+  --muted: 214 23% 94%; /* #EEF2F7 - muted blue-gray */
+  --muted-foreground: 220 13% 40%; /* #586577 - muted text */
+  --accent: 214 23% 94%; /* #EEF2F7 - light accent */
   --accent-foreground: 220 20% 20%;
   --destructive: 0 65% 50%; /* #D42F2F - Rojo para errores */
   --destructive-foreground: 0 0% 100%;
-  --border: 40 15% 88%; /* #E5E1D8 - Bordes beige */
-  --input: 40 15% 92%; /* #EDEBE5 - Input background */
-  --ring: 30 28% 57%; /* #B8956A - Focus ring champagne */
+  --border: 214 18% 86%; /* #D8DFE8 - soft neutral borders */
+  --input: 214 18% 90%; /* #E4E9EF - input background */
+  --ring: 213 52% 45%; /* #3B72B1 - focus ring */
   --radius: 0.5rem;
 
-  /* Premium Design Tokens */
-  --gold: 45 93% 47%; /* #F4C430 - Oro vibrante */
-  --gold-light: 45 100% 65%; /* Oro claro */
-  --gold-dark: 45 80% 35%; /* Oro oscuro */
+  /* Accent Tokens (subtle premium, not dominant) */
+  --gold: 35 45% 52%; /* #B48E5C - warm subtle accent */
+  --gold-light: 35 52% 62%;
+  --gold-dark: 35 40% 42%;
   --navy-deep: 220 45% 15%; /* Navy profundo */
   --navy-light: 220 35% 25%; /* Navy claro */
 
   /* Glow Effects */
-  --gold-glow: 0 0 30px hsl(45 93% 47% / 0.3);
-  --gold-glow-strong: 0 0 40px hsl(45 93% 47% / 0.5);
-  --shadow-luxury: 0 10px 40px -10px hsl(220 40% 20% / 0.2);
-  --shadow-luxury-hover: 0 20px 60px -15px hsl(220 40% 20% / 0.3);
+  --gold-glow: 0 0 18px hsl(213 52% 45% / 0.22);
+  --gold-glow-strong: 0 0 28px hsl(213 52% 45% / 0.34);
+  --shadow-luxury: 0 8px 24px -12px hsl(220 30% 20% / 0.18);
+  --shadow-luxury-hover: 0 14px 32px -14px hsl(220 30% 20% / 0.24);
 
   /* Transitions */
   --transition-luxury: cubic-bezier(0.4, 0, 0.2, 1);
@@ -125,38 +125,38 @@
 
 .dark {
   /* Base Colors */
-  --background: 220 25% 18%; /* #232F3E - Navy oscuro */
-  --foreground: 45 30% 96%; /* #F8F6F0 - Texto claro */
+  --background: 220 26% 16%; /* #1F2A39 - deep slate */
+  --foreground: 210 24% 95%; /* #EFF4FA - light text */
   --card: 220 25% 18%;
   --card-foreground: 45 30% 96%;
   --popover: 220 25% 18%;
   --popover-foreground: 45 30% 96%;
-  --primary: 43 56% 36%; /* #8F7228 - Dorado (AA-safe dark) */
+  --primary: 213 55% 44%; /* #336DAE - trust blue on dark mode */
   --primary-foreground: 0 0% 100%;
-  --secondary: 220 40% 20%; /* #1F2D42 - Navy */
+  --secondary: 220 34% 20%; /* #223349 - navy slate */
   --secondary-foreground: 45 30% 96%;
-  --muted: 220 20% 25%; /* Muted oscuro */
-  --muted-foreground: 220 10% 65%; /* Texto muted claro */
-  --accent: 220 20% 25%;
-  --accent-foreground: 45 30% 96%;
+  --muted: 220 20% 24%; /* Muted dark */
+  --muted-foreground: 215 14% 70%; /* Muted readable text */
+  --accent: 220 20% 24%;
+  --accent-foreground: 210 24% 95%;
   --destructive: 0 65% 50%; /* #D42F2F - Rojo */
   --destructive-foreground: 0 0% 100%;
-  --border: 220 20% 30%; /* Bordes oscuros */
-  --input: 220 20% 25%; /* Input oscuro */
-  --ring: 43 56% 49%; /* Focus ring dorado */
+  --border: 220 18% 30%;
+  --input: 220 18% 24%;
+  --ring: 213 55% 52%;
 
   /* Premium Design Tokens - Dark Mode */
-  --gold: 45 93% 55%; /* Oro más brillante en dark */
-  --gold-light: 45 100% 70%;
-  --gold-dark: 45 80% 40%;
+  --gold: 35 46% 58%; /* Warm subtle accent in dark mode */
+  --gold-light: 35 52% 68%;
+  --gold-dark: 35 40% 46%;
   --navy-deep: 220 50% 10%;
   --navy-light: 220 40% 20%;
 
   /* Glow Effects - Dark Mode */
-  --gold-glow: 0 0 40px hsl(45 93% 55% / 0.4);
-  --gold-glow-strong: 0 0 60px hsl(45 93% 55% / 0.6);
-  --shadow-luxury: 0 10px 40px -10px hsl(0 0% 0% / 0.5);
-  --shadow-luxury-hover: 0 20px 60px -15px hsl(0 0% 0% / 0.7);
+  --gold-glow: 0 0 26px hsl(213 55% 52% / 0.28);
+  --gold-glow-strong: 0 0 36px hsl(213 55% 52% / 0.4);
+  --shadow-luxury: 0 10px 28px -12px hsl(0 0% 0% / 0.45);
+  --shadow-luxury-hover: 0 16px 36px -14px hsl(0 0% 0% / 0.58);
 }
 
 /* Premium Animations */
@@ -226,10 +226,10 @@
 
 @keyframes goldGlow {
   0%, 100% {
-    box-shadow: 0 0 20px hsl(45 93% 47% / 0.3);
+    box-shadow: 0 0 16px hsl(213 52% 45% / 0.22);
   }
   50% {
-    box-shadow: 0 0 40px hsl(45 93% 47% / 0.6);
+    box-shadow: 0 0 28px hsl(213 52% 45% / 0.34);
   }
 }
 
