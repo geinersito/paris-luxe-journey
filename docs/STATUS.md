@@ -12,14 +12,14 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `6bdad32`
+- SHA: `445cf19`
 - Last updated: `2026-02-14`
 
 ## Ultimos PRs mergeados en main
 
-1. `#87` - Register excursion detail routes in router (TECH-EXCURSIONS-ROUTER-HOTFIX-01) (`6bdad32`)
-2. `#85` - Create missing excursion detail pages (CONTENT-EXCURSIONS-PAGES-ENRICH-01) (`7d45077`)
-3. `#83` - Content integrity audit site-wide i18n (CONTENT-AUDIT-SITEWIDE-I18N-01) (`a58416c`)
+1. `#89` - UX excursions list compact pass (UX-EXCURSIONS-LIST-COMPACT-01) (`445cf19`)
+2. `#88` - SSOT post-merge PR87 hotfix annotation (`147e0df`)
+3. `#87` - Register excursion detail routes in router (TECH-EXCURSIONS-ROUTER-HOTFIX-01) (`6bdad32`)
 
 ## Ahora en curso
 
