@@ -78,6 +78,136 @@ export const pt: Translation = {
     allInclusive:
       "✓ Todos os preços incluem pedágios, estacionamento e tempo de espera",
   },
+  airports: {
+    terminalGuide: {
+      title: "Guia de terminais",
+      subtitle:
+        "Pontos de encontro praticos e orientacoes de recolha para CDG, Orly e Beauvais.",
+      lastUpdated: "Ultima atualizacao:",
+      meetPoint: "Ponto de encontro recomendado",
+      tips: "Dicas praticas",
+      transferTimeHint: "Tempo estimado para encontro",
+      disclaimer:
+        "A operacao dos terminais pode mudar. Siga sempre a sinalizacao do aeroporto e sua confirmacao de reserva.",
+      airports: {
+        cdg: "Charles de Gaulle (CDG)",
+        ory: "Paris Orly (ORY)",
+        bva: "Beauvais-Tille (BVA)",
+      },
+      terminals: {
+        cdg_t1: {
+          name: "Terminal 1",
+          airlinesHint: "Frequente para muitas chegadas internacionais.",
+          meetPoint:
+            "Sala publica de chegadas perto do ponto principal de informacao.",
+          transferTimeHint:
+            "Aprox. 8-12 min da porta de chegada ate a area publica.",
+          tips: {
+            tip1: "Partilhe seu status ao sair do controle de passaporte.",
+            tip2: "Siga a sinalizacao de Chegadas e mantenha o telefone ativo.",
+            tip3: "Se a bagagem atrasar, avise o motorista imediatamente.",
+          },
+        },
+        cdg_t2ac: {
+          name: "Terminal 2A-2C",
+          airlinesHint: "Operacao frequente Schengen e internacional.",
+          meetPoint: "Saida de Chegadas mais proxima da sua zona de bagagem.",
+          transferTimeHint:
+            "Aprox. 6-10 min do corredor de chegadas ao encontro.",
+          tips: {
+            tip1: "Confirme a letra exata do terminal por mensagem.",
+            tip2: "Use saidas de Chegadas, nao niveis de Partidas.",
+            tip3: "Espere em area publica junto da sinalizacao pickup.",
+          },
+        },
+        cdg_t2df: {
+          name: "Terminal 2D-2F",
+          airlinesHint: "Areas de alto fluxo com varias frentes de chegada.",
+          meetPoint:
+            "Area publica de chegadas perto da sinalizacao oficial pickup.",
+          transferTimeHint:
+            "Aprox. 8-14 min conforme porta e recolha de bagagem.",
+          tips: {
+            tip1: "Verifique a letra do terminal antes de falar com o motorista.",
+            tip2: "Use elevadores ou escadas ate o nivel de Chegadas.",
+            tip3: "Permaneça em zona publica iluminada e facil de identificar.",
+          },
+        },
+        cdg_t2g: {
+          name: "Terminal 2G",
+          airlinesHint: "Terminal remoto com conexao por shuttle.",
+          meetPoint: "Saida principal publica de chegadas apos o shuttle.",
+          transferTimeHint: "Aprox. 12-18 min incluindo o transporte interno.",
+          tips: {
+            tip1: "Considere tempo extra por causa do shuttle interno.",
+            tip2: "Mantenha dados moveis ativos para atualizacoes em tempo real.",
+            tip3: "Envie mensagem ao se aproximar da area publica.",
+          },
+        },
+        cdg_t3: {
+          name: "Terminal 3",
+          airlinesHint: "Usado por voos low-cost e operacoes charter.",
+          meetPoint: "Exterior de Chegadas no ponto de recolha sinalizado.",
+          transferTimeHint:
+            "Aprox. 5-9 min da saida do terminal ate o encontro.",
+          tips: {
+            tip1: "Vá para a area externa somente apos recolher toda bagagem.",
+            tip2: "Confirme a matricula do veiculo antes de entrar.",
+            tip3: "Com lotacao alta, use o ponto de referencia combinado.",
+          },
+        },
+        ory_123: {
+          name: "Orly 1-2-3",
+          airlinesHint: "Edificio conectado com circulacao compartilhada.",
+          meetPoint:
+            "Saida publica de Chegadas perto da area oficial de recolha.",
+          transferTimeHint: "Aprox. 5-10 min da porta ate o ponto de encontro.",
+          tips: {
+            tip1: "Confirme se sua chegada foi em 1, 2 ou 3 antes de sair.",
+            tip2: "Escadas e corredores podem estar cheios em horario de pico.",
+            tip3: "Mantenha o WhatsApp aberto para coordenacao final.",
+          },
+        },
+        ory_4: {
+          name: "Orly 4",
+          airlinesHint: "Sala dedicada com acesso direto a zonas publicas.",
+          meetPoint: "Area publica de Chegadas perto do ponto de informacao.",
+          transferTimeHint:
+            "Aprox. 6-11 min conforme porta e recolha de bagagem.",
+          tips: {
+            tip1: "Siga as placas de Chegadas ate a area publica.",
+            tip2: "Se viajar com criancas, solicite ponto de encontro proximo.",
+            tip3: "Avise o motorista apos concluir aduana e bagagens.",
+          },
+        },
+        bva_t1: {
+          name: "Terminal 1",
+          airlinesHint: "Area principal para muitas operacoes low-cost.",
+          meetPoint: "Exterior de Chegadas na baia de recolha combinada.",
+          transferTimeHint:
+            "Aprox. 4-8 min das chegadas ate a zona de recolha.",
+          tips: {
+            tip1: "Beauvais pode ter vento forte; tenha agasalho para exterior.",
+            tip2: "Envie mensagem rapida apos recolher bagagem.",
+            tip3: "Permaneça em frente ao terminal para identificacao facil.",
+          },
+        },
+        bva_t2: {
+          name: "Terminal 2",
+          airlinesHint: "Operacoes low-cost adicionais conforme temporada.",
+          meetPoint:
+            "Saida de Chegadas do Terminal 2 junto da faixa de recolha.",
+          transferTimeHint:
+            "Aprox. 4-8 min das chegadas ate a zona de recolha.",
+          tips: {
+            tip1: "Confirme o numero do terminal no lembrete da reserva.",
+            tip2: "Siga a sinalizacao oficial pickup antes de atravessar o parque.",
+            tip3: "Com mau tempo, aguarde em zona coberta e avise o motorista.",
+          },
+        },
+      },
+    },
+  },
   exitPopup: {
     title: "Espere! Não Vá Ainda",
     subtitle: "Ganhe 10% de Desconto no Seu Primeiro Transfer",

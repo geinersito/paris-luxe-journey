@@ -77,6 +77,140 @@ export const fr: Translation = {
     bookNow: "Réserver",
     allInclusive: "✓ Tous les prix incluent péages, parking et temps d'attente",
   },
+  airports: {
+    terminalGuide: {
+      title: "Guide des terminaux",
+      subtitle:
+        "Points de rendez-vous pratiques et conseils de prise en charge pour CDG, Orly et Beauvais.",
+      lastUpdated: "Derniere mise a jour :",
+      meetPoint: "Point de rendez-vous conseille",
+      tips: "Conseils pratiques",
+      transferTimeHint: "Temps estime pour se retrouver",
+      disclaimer:
+        "Les operations des terminaux peuvent evoluer. Suivez toujours la signalisation aeroport et votre confirmation de reservation.",
+      airports: {
+        cdg: "Charles de Gaulle (CDG)",
+        ory: "Paris Orly (ORY)",
+        bva: "Beauvais-Tille (BVA)",
+      },
+      terminals: {
+        cdg_t1: {
+          name: "Terminal 1",
+          airlinesHint:
+            "Souvent utilise pour de nombreuses arrivees internationales.",
+          meetPoint:
+            "Hall public des arrivees pres du point d'information principal.",
+          transferTimeHint:
+            "Environ 8-12 min de la porte d'arrivee au hall public.",
+          tips: {
+            tip1: "Envoyez votre statut apres le controle passeport.",
+            tip2: "Suivez la signalisation Arrivees et gardez votre telephone actif.",
+            tip3: "En cas de retard bagages, informez immediatement votre chauffeur.",
+          },
+        },
+        cdg_t2ac: {
+          name: "Terminal 2A-2C",
+          airlinesHint: "Flux Schengen et international frequents.",
+          meetPoint:
+            "Sortie Arrivees la plus proche de votre zone de livraison bagages.",
+          transferTimeHint:
+            "Environ 6-10 min du couloir d'arrivee au point de rendez-vous.",
+          tips: {
+            tip1: "Confirmez la lettre exacte du terminal dans votre message.",
+            tip2: "Utilisez les sorties Arrivees, pas les niveaux Depart.",
+            tip3: "Attendez dans la zone publique proche des panneaux pickup.",
+          },
+        },
+        cdg_t2df: {
+          name: "Terminal 2D-2F",
+          airlinesHint: "Zones tres frequentees avec plusieurs flux d'arrivee.",
+          meetPoint:
+            "Zone publique des arrivees proche de la signalisation pickup.",
+          transferTimeHint:
+            "Environ 8-14 min selon la porte et la livraison bagages.",
+          tips: {
+            tip1: "Verifiez la lettre du terminal avant de contacter le chauffeur.",
+            tip2: "Prenez escalators/ascenseurs vers le niveau Arrivees.",
+            tip3: "Restez dans une zone publique eclairee et identifiable.",
+          },
+        },
+        cdg_t2g: {
+          name: "Terminal 2G",
+          airlinesHint: "Terminal eloigne avec navette de connexion.",
+          meetPoint: "Sortie principale publique des arrivees apres navette.",
+          transferTimeHint:
+            "Environ 12-18 min en incluant le transfert navette.",
+          tips: {
+            tip1: "Prevoyez un delai supplementaire lie a la navette.",
+            tip2: "Gardez les donnees mobiles actives pour les mises a jour.",
+            tip3: "Envoyez un message quand vous approchez du hall public Arrivees.",
+          },
+        },
+        cdg_t3: {
+          name: "Terminal 3",
+          airlinesHint: "Utilise par des vols low-cost et charters.",
+          meetPoint: "Devant les portes Arrivees, au point pickup indique.",
+          transferTimeHint:
+            "Environ 5-9 min de la sortie terminal au point de rendez-vous.",
+          tips: {
+            tip1: "Sortez cote voirie apres recuperation complete des bagages.",
+            tip2: "Verifiez la plaque du vehicule avant de monter.",
+            tip3: "En cas d'affluence, utilisez le repere partage par message.",
+          },
+        },
+        ory_123: {
+          name: "Orly 1-2-3",
+          airlinesHint: "Batiment connecte avec circulation commune.",
+          meetPoint:
+            "Sortie publique Arrivees proche de la zone officielle pickup.",
+          transferTimeHint:
+            "Environ 5-10 min de la porte au point de rendez-vous.",
+          tips: {
+            tip1: "Verifiez si vous arrivez en 1, 2 ou 3 avant la sortie.",
+            tip2: "Les escalators peuvent etre charges aux heures de pointe.",
+            tip3: "Gardez WhatsApp ouvert pour la coordination finale.",
+          },
+        },
+        ory_4: {
+          name: "Orly 4",
+          airlinesHint: "Hall dedie avec acces direct aux zones publiques.",
+          meetPoint:
+            "Zone publique Arrivees proche du point information terminal.",
+          transferTimeHint:
+            "Environ 6-11 min selon la porte et la livraison bagages.",
+          tips: {
+            tip1: "Suivez la signalisation Arrivees jusqu'a la zone publique.",
+            tip2: "Si vous voyagez en famille, demandez un point proche.",
+            tip3: "Informez le chauffeur apres douane et bagages.",
+          },
+        },
+        bva_t1: {
+          name: "Terminal 1",
+          airlinesHint: "Zone principale pour de nombreux vols low-cost.",
+          meetPoint: "Exterieur Arrivees au point pickup convenu.",
+          transferTimeHint:
+            "Environ 4-8 min entre Arrivees et la zone de prise en charge.",
+          tips: {
+            tip1: "Beauvais peut etre venteux; prevoyez un vetement adapte.",
+            tip2: "Envoyez un message rapide apres recuperation bagages.",
+            tip3: "Restez devant le terminal pour un reperage facile.",
+          },
+        },
+        bva_t2: {
+          name: "Terminal 2",
+          airlinesHint: "Operations low-cost supplementaires selon horaires.",
+          meetPoint: "Sortie Arrivees Terminal 2 pres de la voie pickup.",
+          transferTimeHint:
+            "Environ 4-8 min entre Arrivees et la zone de prise en charge.",
+          tips: {
+            tip1: "Confirmez le numero de terminal sur votre rappel de reservation.",
+            tip2: "Suivez la signalisation officielle pickup avant le parking.",
+            tip3: "En cas de mauvais temps, attendez sous zone couverte.",
+          },
+        },
+      },
+    },
+  },
   exitPopup: {
     title: "Attendez ! Ne Partez Pas Encore",
     subtitle: "Obtenez 10% de Réduction sur Votre Premier Transfert",

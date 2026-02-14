@@ -77,6 +77,126 @@ export const en: Translation = {
     bookNow: "Book Now",
     allInclusive: "✓ All prices include tolls, parking & waiting time",
   },
+  airports: {
+    terminalGuide: {
+      title: "Terminal Guide",
+      subtitle:
+        "Practical meeting points and pickup notes for CDG, Orly, and Beauvais.",
+      lastUpdated: "Last updated:",
+      meetPoint: "Best meet point",
+      tips: "Practical tips",
+      transferTimeHint: "Estimated meeting time",
+      disclaimer:
+        "Terminal operations can change. Always follow airport signage and your booking confirmation.",
+      airports: {
+        cdg: "Charles de Gaulle (CDG)",
+        ory: "Paris Orly (ORY)",
+        bva: "Beauvais-Tille (BVA)",
+      },
+      terminals: {
+        cdg_t1: {
+          name: "Terminal 1",
+          airlinesHint: "Common for many international arrivals.",
+          meetPoint: "Public arrivals hall near the main information point.",
+          transferTimeHint: "Approx. 8-12 min from gate to arrivals.",
+          tips: {
+            tip1: "Share your landing status once you clear passport control.",
+            tip2: "Follow Arrivals signage and keep your phone reachable.",
+            tip3: "If baggage is delayed, inform your driver immediately.",
+          },
+        },
+        cdg_t2ac: {
+          name: "Terminal 2A-2C",
+          airlinesHint: "Frequent Schengen and international operations.",
+          meetPoint: "Arrivals exit closest to your baggage carousel section.",
+          transferTimeHint:
+            "Approx. 6-10 min from arrivals corridor to meet point.",
+          tips: {
+            tip1: "Confirm your exact terminal letter in your booking message.",
+            tip2: "Use designated arrivals exits, not departure levels.",
+            tip3: "Wait in the public area closest to official pickup signs.",
+          },
+        },
+        cdg_t2df: {
+          name: "Terminal 2D-2F",
+          airlinesHint: "High-volume areas with multiple arrival flows.",
+          meetPoint: "Public arrivals area near official pickup signage.",
+          transferTimeHint: "Approx. 8-14 min depending on gate and baggage.",
+          tips: {
+            tip1: "Check terminal letter after landing before messaging driver.",
+            tip2: "Use elevators/escalators to reach arrivals level directly.",
+            tip3: "Stay in well-lit public zones with clear terminal markers.",
+          },
+        },
+        cdg_t2g: {
+          name: "Terminal 2G",
+          airlinesHint: "Remote terminal with shuttle connections.",
+          meetPoint: "Main public arrivals exit after shuttle drop-off.",
+          transferTimeHint: "Approx. 12-18 min including shuttle transfer.",
+          tips: {
+            tip1: "Allow extra time due shuttle transfer from aircraft area.",
+            tip2: "Keep mobile data active for real-time driver updates.",
+            tip3: "Message your driver when approaching public arrivals hall.",
+          },
+        },
+        cdg_t3: {
+          name: "Terminal 3",
+          airlinesHint: "Used by low-cost and charter operations.",
+          meetPoint: "Outside arrivals doors at the signed pickup point.",
+          transferTimeHint: "Approx. 5-9 min from terminal exit to meeting.",
+          tips: {
+            tip1: "Move curbside only after collecting all checked baggage.",
+            tip2: "Confirm vehicle plate before boarding.",
+            tip3: "If crowded, use the agreed landmark shared by message.",
+          },
+        },
+        ory_123: {
+          name: "Orly 1-2-3",
+          airlinesHint: "Connected terminal building with shared circulation.",
+          meetPoint: "Public arrivals exit near official rides pickup area.",
+          transferTimeHint: "Approx. 5-10 min from gate to meeting point.",
+          tips: {
+            tip1: "Verify whether you arrived in 1, 2, or 3 before exit.",
+            tip2: "Escalators can be busy at peak times; allow extra minutes.",
+            tip3: "Keep WhatsApp open for final pickup coordination.",
+          },
+        },
+        ory_4: {
+          name: "Orly 4",
+          airlinesHint: "Dedicated hall with direct access routes.",
+          meetPoint: "Arrivals public area near terminal information desk.",
+          transferTimeHint: "Approx. 6-11 min depending on gate and baggage.",
+          tips: {
+            tip1: "Follow Arrivals signs until you reach public pickup area.",
+            tip2: "If traveling with children, request a nearby meet spot.",
+            tip3: "Inform driver once customs and baggage steps are complete.",
+          },
+        },
+        bva_t1: {
+          name: "Terminal 1",
+          airlinesHint: "Main area for many low-cost operations.",
+          meetPoint: "Outside arrivals at the pre-arranged pickup bay.",
+          transferTimeHint: "Approx. 4-8 min from arrivals to curbside.",
+          tips: {
+            tip1: "Beauvais can be windy; keep outerwear ready for curbside.",
+            tip2: "Send a quick message after baggage collection.",
+            tip3: "Stay near terminal frontage for quick vehicle recognition.",
+          },
+        },
+        bva_t2: {
+          name: "Terminal 2",
+          airlinesHint: "Additional low-cost operations by schedule.",
+          meetPoint: "Terminal 2 arrivals exit near marked pickup lane.",
+          transferTimeHint: "Approx. 4-8 min from arrivals to pickup point.",
+          tips: {
+            tip1: "Confirm terminal number in your booking reminder.",
+            tip2: "Follow official pickup-lane signage before crossing parking.",
+            tip3: "In bad weather, wait in covered zone and message driver.",
+          },
+        },
+      },
+    },
+  },
   exitPopup: {
     title: "Wait! Don't Leave Yet",
     subtitle: "Get 10% OFF Your First Transfer",

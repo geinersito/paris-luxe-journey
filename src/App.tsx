@@ -34,6 +34,7 @@ const BookingDetails = lazy(() => import("./pages/booking/Details"));
 const BookingPayment = lazy(() => import("./pages/booking/Payment"));
 const BookingConfirmation = lazy(() => import("./pages/booking/Confirmation"));
 const DesignPreview = lazy(() => import("./pages/DesignPreview"));
+const AirportsPage = lazy(() => import("./pages/Airports"));
 const CDGAirport = lazy(() => import("./pages/airports/CDG"));
 const OrlyAirport = lazy(() => import("./pages/airports/Orly"));
 const BeauvaisAirport = lazy(() => import("./pages/airports/Beauvais"));
@@ -169,6 +170,22 @@ const router = createBrowserRouter([
             },
           ]
         : []),
+      {
+        path: "airports",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <AirportsPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: ":lang/airports",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <AirportsPage />
+          </Suspense>
+        ),
+      },
       {
         path: "airports/cdg",
         element: (
