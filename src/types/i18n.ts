@@ -236,7 +236,52 @@ export interface Translation {
       excursions: string;
     };
   };
-  versailles: {
+  versailles?: {
+    title: string;
+    description: string;
+    distance: string;
+    duration: string;
+    highlights: string[];
+    whyVisit: string[];
+    navigation: {
+      description: string;
+      tours: string;
+      map: string;
+      events: string;
+      faq: string;
+    };
+  };
+  loire?: {
+    title: string;
+    description: string;
+    distance: string;
+    duration: string;
+    highlights: string[];
+    whyVisit: string[];
+    navigation: {
+      description: string;
+      tours: string;
+      map: string;
+      events: string;
+      faq: string;
+    };
+  };
+  champagne?: {
+    title: string;
+    description: string;
+    distance: string;
+    duration: string;
+    highlights: string[];
+    whyVisit: string[];
+    navigation: {
+      description: string;
+      tours: string;
+      map: string;
+      events: string;
+      faq: string;
+    };
+  };
+  giverny?: {
     title: string;
     description: string;
     distance: string;
