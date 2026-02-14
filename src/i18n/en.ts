@@ -836,6 +836,7 @@ export const en: Translation = {
     bookNow: "Book Now",
     noEvents: "No events available at the moment.",
     updatedOn: "Updated on",
+    sourcesVerified: "Official sources verified",
     featured: "Featured",
     bookRide: "Book a Ride",
     officialDetails: "Official Details",

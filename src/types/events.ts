@@ -1,9 +1,9 @@
 // Events Feed types
 
-import type { LocalizedString, Language } from './blog'
+import type { LocalizedString, Language } from "./blog";
 
 // Re-export for convenience
-export type { LocalizedString, Language } from './blog'
+export type { LocalizedString, Language } from "./blog";
 
 export type EventCategory =
   | "exhibition"
@@ -24,6 +24,7 @@ export interface Event {
   district?: string; // e.g., "8ème", "1er", "La Défense"
   address?: string;
   eventUrl: string; // Official link (required)
+  sourceUrl: string; // Source citation link (required)
   imageUrl?: string;
   category?: EventCategory;
   isFeatured: boolean;

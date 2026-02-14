@@ -857,6 +857,7 @@ export const es: Translation = {
     bookNow: "Reservar Ahora",
     noEvents: "No hay eventos disponibles en este momento.",
     updatedOn: "Actualizado el",
+    sourcesVerified: "Fuentes oficiales verificadas",
     featured: "Destacado",
     bookRide: "Reservar Transfer",
     officialDetails: "Detalles Oficiales",

@@ -29,16 +29,26 @@ export function EventsFeed({
   const { t, i18n } = useTranslation();
   const language = i18n.language as Language;
 
+  const now = new Date();
+  const archiveGracePeriodMs = 7 * 24 * 60 * 60 * 1000;
   const events: Event[] = (
     range === "week" ? eventsFeedData.thisWeek : eventsFeedData.thisMonth
-  ).map((event) => ({
-    ...event,
-    category: event.category as EventCategory,
-  }));
+  )
+    .map((event) => ({
+      ...event,
+      category: event.category as EventCategory,
+    }))
+    .filter((event) => {
+      const eventEnd = new Date(event.endAt ?? event.startAt);
+      return eventEnd.getTime() >= now.getTime() - archiveGracePeriodMs;
+    })
+    .sort(
+      (a, b) => new Date(a.startAt).getTime() - new Date(b.startAt).getTime(),
+    );
   const generatedAt = new Date(eventsFeedData.generatedAt);
-  const now = new Date();
-  const daysSinceUpdate = Math.floor(
-    (now.getTime() - generatedAt.getTime()) / (1000 * 60 * 60 * 24),
+  const daysSinceUpdate = Math.max(
+    0,
+    Math.floor((now.getTime() - generatedAt.getTime()) / (1000 * 60 * 60 * 24)),
   );
 
   // Format date according to language
@@ -203,9 +213,14 @@ export function EventsFeed({
               {/* Source */}
               <p className="text-xs text-gray-500 text-center pt-2 border-t border-primary/10">
                 {t("events.source")}:{" "}
-                <span className="font-medium text-gray-700">
+                <a
+                  href={event.sourceUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-medium text-gray-700 underline-offset-2 hover:underline"
+                >
                   {event.sourceName}
-                </span>
+                </a>
               </p>
             </div>
           </div>
