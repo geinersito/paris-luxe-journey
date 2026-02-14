@@ -78,6 +78,19 @@ export const en: Translation = {
     allInclusive: "✓ All prices include tolls, parking & waiting time",
   },
   airports: {
+    nav: {
+      terminalGuide: "Terminal Guide",
+      whyChooseUs: "Why Choose Us",
+      getPrice: "Get Price",
+    },
+    cta: {
+      title: "Need a fixed airport transfer quote?",
+      subtitle:
+        "Book in under a minute or request an instant WhatsApp quote from our team.",
+      fixedPrice: "Get a Fixed Price",
+      whatsapp: "WhatsApp instant quote",
+      mobileFixedPrice: "Get a Fixed Price",
+    },
     terminalGuide: {
       title: "Terminal Guide",
       subtitle:
