@@ -34,7 +34,7 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 
 ## Ahora en curso
 
-- **SEO-INTERNALLINK-RULES-01** (P2/R0) — Audit + enforce internal linking rules across Blog/Events/Excursions
+- **UX-BRANDING-APPROACHABLE-01** (P1/R0) — Shift perception to professional/trustworthy with subtle premium touches (reduce price intimidation)
 
 ## Siguientes 3 items del plan (priorizados)
 
