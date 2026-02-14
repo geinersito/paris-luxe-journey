@@ -1386,65 +1386,76 @@ const Excursions = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-cream via-white to-champagne">
       {/* Hero Section - Compact & Clear */}
-      <section className="relative h-[400px] flex items-center justify-center">
+      <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?q=80&w=2073"
             alt="Private Day Trips from Paris"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/70" />
         </div>
 
         <div className="relative z-10 w-full max-w-6xl mx-auto px-4 text-center">
-          <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-display font-bold mb-4 leading-tight drop-shadow-2xl">
-            {t.hero.title}
-          </h1>
-          <p className="text-lg md:text-xl text-white/90 mb-6 max-w-3xl mx-auto leading-relaxed">
-            {t.hero.subtitle}
-          </p>
+          <div className="relative mx-auto max-w-4xl px-4 py-6 md:px-6">
+            <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b from-black/55 via-black/25 to-transparent" />
 
-          {/* Trust Badges */}
-          <div className="flex flex-wrap justify-center gap-3 mb-6">
-            <div className="glass-card-premium px-6 py-3 flex items-center gap-2">
-              <Users className="w-5 h-5 text-primary" />
-              <span className="text-white font-medium">{t.hero.badge1}</span>
-            </div>
-            <div className="glass-card-premium px-6 py-3 flex items-center gap-2">
-              <Clock className="w-5 h-5 text-primary" />
-              <span className="text-white font-medium">{t.hero.badge2}</span>
-            </div>
-            <div className="glass-card-premium px-6 py-3 flex items-center gap-2">
-              <Star className="w-5 h-5 text-primary fill-current" />
-              <span className="text-white font-medium">{t.hero.badge3}</span>
-            </div>
-          </div>
+            <div className="relative">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-display font-bold mb-4 leading-tight drop-shadow-2xl">
+                {t.hero.title}
+              </h1>
+              <p className="text-lg md:text-xl text-white/95 mb-6 max-w-3xl mx-auto leading-relaxed">
+                {t.hero.subtitle}
+              </p>
 
-          {/* CTAs */}
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Button
-              className="silk-button h-12 px-8"
-              onClick={() => {
-                const message = encodeURIComponent(
-                  "Hi, I'm interested in booking a private day trip from Paris. Can you help me?",
-                );
-                window.open(
-                  `https://wa.me/33668251102?text=${message}`,
-                  "_blank",
-                );
-              }}
-            >
-              {t.hero.ctaPrimary}
-            </Button>
-            <Button
-              variant="outline"
-              className="button-outline-gold h-12 px-8 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
-              onClick={() => {
-                window.scrollTo({ top: 550, behavior: "smooth" });
-              }}
-            >
-              {t.hero.ctaSecondary}
-            </Button>
+              {/* Trust Badges */}
+              <div className="flex flex-wrap justify-center gap-3 mb-6">
+                <div className="rounded-full border border-black/10 bg-white/90 px-6 py-3 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                  <Users className="w-5 h-5 text-neutral-800" />
+                  <span className="text-neutral-900 font-semibold">
+                    {t.hero.badge1}
+                  </span>
+                </div>
+                <div className="rounded-full border border-black/10 bg-white/90 px-6 py-3 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                  <Clock className="w-5 h-5 text-neutral-800" />
+                  <span className="text-neutral-900 font-semibold">
+                    {t.hero.badge2}
+                  </span>
+                </div>
+                <div className="rounded-full border border-black/10 bg-white/90 px-6 py-3 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                  <Star className="w-5 h-5 text-neutral-800 fill-current" />
+                  <span className="text-neutral-900 font-semibold">
+                    {t.hero.badge3}
+                  </span>
+                </div>
+              </div>
+
+              {/* CTAs */}
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <Button
+                  className="silk-button h-12 px-8"
+                  onClick={() => {
+                    const message = encodeURIComponent(
+                      "Hi, I'm interested in booking a private day trip from Paris. Can you help me?",
+                    );
+                    window.open(
+                      `https://wa.me/33668251102?text=${message}`,
+                      "_blank",
+                    );
+                  }}
+                >
+                  {t.hero.ctaPrimary}
+                </Button>
+                <Button
+                  variant="outline"
+                  className="button-outline-gold h-12 px-8 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
+                  onClick={() => {
+                    window.scrollTo({ top: 550, behavior: "smooth" });
+                  }}
+                >
+                  {t.hero.ctaSecondary}
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
