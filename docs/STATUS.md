@@ -12,26 +12,24 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `c516aff`
+- SHA: `a58416c`
 - Last updated: `2026-02-14`
 
 ## Ultimos PRs mergeados en main
 
-1. `#82` - Fix canonical URLs for multi-domain support (SEO-BLOG-META-CANONICALS-01) (`c516aff`)
-2. `#80` - Create content SEO system + agent prompt (SEO-SYSTEM-CONTENT-SSOT-01) (`1ea27c5`)
-3. `#79` - Add deprecation telemetry to legacy webhooks (OPS-STRIPE-LEGACY-DEPRECATE-01 / PR2) (`d7c8606`)
+1. `#83` - Content integrity audit site-wide i18n (CONTENT-AUDIT-SITEWIDE-I18N-01) (`a58416c`)
+2. `#82` - Fix canonical URLs for multi-domain support (SEO-BLOG-META-CANONICALS-01) (`c516aff`)
+3. `#80` - Create content SEO system + agent prompt (SEO-SYSTEM-CONTENT-SSOT-01) (`1ea27c5`)
 
 ## Ahora en curso
 
 - **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2/R1) — PR2 merged (#79 / `d7c8606`), telemetry enabled — monitoring 48-72h for zero hits before PR3
-- **CONTENT-AUDIT-SITEWIDE-I18N-01** (P2/R0) — PR open (docs-only audit: 10 sections × 4 languages, Top 10 fix targets identified)
 
 ## Siguientes 3 items del plan (priorizados)
 
 1. **CONTENT-EXCURSIONS-PAGES-ENRICH-01** (P0/R1) — Create missing excursion detail pages (Loire, Champagne, Giverny) - 404 fix
 2. **CONTENT-EVENTS-FRESHNESS-01** (P0/R0) — Update stale Events data (2025-01-13) + establish freshness workflow
 3. **MEDIA-IMAGES-LIBRARY-01** (P0/R0) — Replace ~50-80 image placeholders with real/licensed assets (priority: Excursions)
-4. **OPS-STRIPE-LEGACY-DEPRECATE-01 / PR3** (P2/R1) — Remove/410 legacy handlers after 48-72h zero hits
 
 ## Urgent out-of-repo
 
