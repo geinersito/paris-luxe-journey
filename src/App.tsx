@@ -44,6 +44,11 @@ const FAQPage = lazy(() => import("./pages/FAQPage"));
 const PrivacyPage = lazy(() => import("./pages/PrivacyPage"));
 const TermsPage = lazy(() => import("./pages/TermsPage"));
 const NotFoundPage = lazy(() => import("./pages/NotFound"));
+const LoireValleyPage = lazy(() => import("./pages/excursions/loire-valley"));
+const ChampagnePage = lazy(() => import("./pages/excursions/champagne"));
+const GivernyHonfleurPage = lazy(
+  () => import("./pages/excursions/giverny-honfleur"),
+);
 
 // Loading fallback component
 const PageLoader = () => (
@@ -79,6 +84,30 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader />}>
             <Excursions />
+          </Suspense>
+        ),
+      },
+      {
+        path: "excursions/loire-valley",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <LoireValleyPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "excursions/champagne",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <ChampagnePage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "excursions/giverny-honfleur",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <GivernyHonfleurPage />
           </Suspense>
         ),
       },
