@@ -23,13 +23,14 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ahora en curso
 
+- **CONTENT-EXCURSIONS-PAGES-ENRICH-01** (P0/R1) — Creating missing excursion detail pages (Loire, Champagne, Giverny) — PR #85
 - **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2/R1) — PR2 merged (#79 / `d7c8606`), telemetry enabled — monitoring 48-72h for zero hits before PR3
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **CONTENT-EXCURSIONS-PAGES-ENRICH-01** (P0/R1) — Create missing excursion detail pages (Loire, Champagne, Giverny) - 404 fix
-2. **CONTENT-EVENTS-FRESHNESS-01** (P0/R0) — Update stale Events data (2025-01-13) + establish freshness workflow
-3. **MEDIA-IMAGES-LIBRARY-01** (P0/R0) — Replace ~50-80 image placeholders with real/licensed assets (priority: Excursions)
+1. **CONTENT-EVENTS-FRESHNESS-01** (P0/R0) — Update stale Events data (2025-01-13) + establish freshness workflow
+2. **MEDIA-IMAGES-LIBRARY-01** (P0/R0) — Replace ~50-80 image placeholders with real/licensed assets (priority: Excursions)
+3. **CONTENT-EXCURSIONS-FAQ-BLOCKS-01** (P1/R1) — Add detail blocks to Excursion pages (FAQ, Logistics)
 
 ## Urgent out-of-repo
 
