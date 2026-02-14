@@ -1383,7 +1383,7 @@ const Excursions = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-cream via-white to-champagne">
       {/* Hero Section - Compact & Clear */}
-      <section className="relative h-[400px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[340px] md:h-[360px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
             src="/images/library/excursions/hero/excursions-hero-paris-eiffel-1920x1080.jpg"
@@ -1393,43 +1393,43 @@ const Excursions = () => {
         </div>
 
         <div className="relative z-10 w-full max-w-6xl mx-auto px-4 text-center">
-          <div className="relative mx-auto max-w-4xl px-4 py-6 md:px-6">
+          <div className="relative mx-auto max-w-4xl px-4 py-4 md:px-6 md:py-5">
             <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b from-black/55 via-black/25 to-transparent" />
 
             <div className="relative">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-display font-bold mb-4 leading-tight drop-shadow-2xl">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-display font-bold mb-3 leading-tight drop-shadow-2xl">
                 {t.hero.title}
               </h1>
-              <p className="text-lg md:text-xl text-white/95 mb-6 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-base md:text-lg text-white/95 mb-4 max-w-3xl mx-auto leading-relaxed">
                 {t.hero.subtitle}
               </p>
 
               {/* Trust Badges */}
-              <div className="flex flex-wrap justify-center gap-3 mb-6">
-                <div className="rounded-full border border-black/10 bg-white/90 px-6 py-3 shadow-sm backdrop-blur-sm flex items-center gap-2">
+              <div className="flex flex-wrap justify-center gap-2 mb-4">
+                <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
                   <Users className="w-5 h-5 text-neutral-800" />
-                  <span className="text-neutral-900 font-semibold">
+                  <span className="text-neutral-900 text-sm md:text-base font-semibold">
                     {t.hero.badge1}
                   </span>
                 </div>
-                <div className="rounded-full border border-black/10 bg-white/90 px-6 py-3 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
                   <Clock className="w-5 h-5 text-neutral-800" />
-                  <span className="text-neutral-900 font-semibold">
+                  <span className="text-neutral-900 text-sm md:text-base font-semibold">
                     {t.hero.badge2}
                   </span>
                 </div>
-                <div className="rounded-full border border-black/10 bg-white/90 px-6 py-3 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
                   <Star className="w-5 h-5 text-neutral-800 fill-current" />
-                  <span className="text-neutral-900 font-semibold">
+                  <span className="text-neutral-900 text-sm md:text-base font-semibold">
                     {t.hero.badge3}
                   </span>
                 </div>
               </div>
 
               {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <div className="flex flex-col sm:flex-row gap-2.5 justify-center">
                 <Button
-                  className="silk-button h-12 px-8"
+                  className="silk-button h-11 px-7"
                   onClick={() => {
                     const message = encodeURIComponent(
                       "Hi, I'm interested in booking a private day trip from Paris. Can you help me?",
@@ -1444,9 +1444,12 @@ const Excursions = () => {
                 </Button>
                 <Button
                   variant="outline"
-                  className="button-outline-gold h-12 px-8 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
+                  className="button-outline-gold h-11 px-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
                   onClick={() => {
-                    window.scrollTo({ top: 550, behavior: "smooth" });
+                    document.getElementById("excursions-list")?.scrollIntoView({
+                      behavior: "smooth",
+                      block: "start",
+                    });
                   }}
                 >
                   {t.hero.ctaSecondary}
@@ -1458,62 +1461,62 @@ const Excursions = () => {
       </section>
 
       {/* How it Works Section */}
-      <section className="py-16 bg-gradient-to-br from-primary/5 to-white">
+      <section className="py-10 md:py-12 bg-gradient-to-br from-primary/5 to-white">
         <div className="container px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
+          <div className="text-center mb-8 md:mb-10">
+            <h2 className="text-2xl md:text-3xl font-display font-bold text-primary mb-3">
               {t.howItWorks.title}
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
               {t.howItWorks.subtitle}
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-5 md:gap-6">
             {/* Step 1 */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-white">1</span>
+              <div className="w-14 h-14 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-3">
+                <span className="text-xl font-bold text-white">1</span>
               </div>
-              <h3 className="text-xl font-display font-bold text-secondary mb-3">
+              <h3 className="text-lg font-display font-bold text-secondary mb-2">
                 {t.howItWorks.step1Title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
                 {t.howItWorks.step1Text}
               </p>
             </div>
 
             {/* Step 2 */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-white">2</span>
+              <div className="w-14 h-14 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-3">
+                <span className="text-xl font-bold text-white">2</span>
               </div>
-              <h3 className="text-xl font-display font-bold text-secondary mb-3">
+              <h3 className="text-lg font-display font-bold text-secondary mb-2">
                 {t.howItWorks.step2Title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
                 {t.howItWorks.step2Text}
               </p>
             </div>
 
             {/* Step 3 */}
             <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-white">3</span>
+              <div className="w-14 h-14 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-3">
+                <span className="text-xl font-bold text-white">3</span>
               </div>
-              <h3 className="text-xl font-display font-bold text-secondary mb-3">
+              <h3 className="text-lg font-display font-bold text-secondary mb-2">
                 {t.howItWorks.step3Title}
               </h3>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
                 {t.howItWorks.step3Text}
               </p>
             </div>
           </div>
 
           {/* CTA */}
-          <div className="text-center mt-12">
+          <div className="text-center mt-8 md:mt-10">
             <Button
-              className="silk-button h-14 px-10 text-lg"
+              className="silk-button h-12 px-8 text-base"
               onClick={() => {
                 const message = encodeURIComponent(
                   "Hi, I'd like to plan a private day trip from Paris. Can you help me?",
@@ -1530,46 +1533,12 @@ const Excursions = () => {
         </div>
       </section>
 
-      {/* Custom Quote CTA for Agencies */}
-      <section className="py-12 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10">
-        <div className="container px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-          <div className="glass-card-premium p-8 md:p-10 text-center border-2 border-primary/20">
-            <div className="inline-block px-4 py-1.5 bg-primary/10 rounded-full text-sm font-semibold text-primary mb-4">
-              For Travel Agencies & Groups
-            </div>
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-secondary mb-4">
-              {t.customQuote.title}
-            </h2>
-            <p className="text-lg text-gray-600 mb-6 max-w-2xl mx-auto">
-              {t.customQuote.subtitle}
-            </p>
-            <Button
-              className="silk-button h-14 px-10 text-lg"
-              onClick={() => {
-                const message = encodeURIComponent(
-                  `Hi, I'm from a travel agency/group and I'd like a custom quote for:\n\n` +
-                    `- Date: [your date]\n` +
-                    `- Number of passengers: [number]\n` +
-                    `- Preferred language: [language]\n` +
-                    `- Type of tour: [City Tour / Versailles / Night Tour / Other]\n` +
-                    `- Need tickets assistance: [Yes / No]\n\n` +
-                    `Please send me a quote. Thank you!`,
-                );
-                window.open(
-                  `https://wa.me/33668251102?text=${message}`,
-                  "_blank",
-                );
-              }}
-            >
-              {t.customQuote.cta}
-            </Button>
-          </div>
-        </div>
-      </section>
-
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="flex flex-col lg:flex-row gap-8">
+      <div
+        id="excursions-list"
+        className="max-w-7xl mx-auto px-4 py-10 md:py-12"
+      >
+        <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
           {/* Quick Filters Sidebar */}
           <div className="w-full lg:w-64">
             <div className="bg-white rounded-lg p-6 shadow-sm sticky top-4">
@@ -1671,6 +1640,43 @@ const Excursions = () => {
           </div>
         </div>
       </div>
+
+      {/* Custom Quote CTA for Agencies */}
+      <section className="py-10 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10">
+        <div className="container px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+          <div className="glass-card-premium p-6 md:p-8 text-center border-2 border-primary/20">
+            <div className="inline-block px-3 py-1 bg-primary/10 rounded-full text-xs md:text-sm font-semibold text-primary mb-3">
+              For Travel Agencies & Groups
+            </div>
+            <h2 className="text-xl md:text-2xl font-display font-bold text-secondary mb-3">
+              {t.customQuote.title}
+            </h2>
+            <p className="text-base text-gray-600 mb-5 max-w-2xl mx-auto">
+              {t.customQuote.subtitle}
+            </p>
+            <Button
+              className="silk-button h-12 px-8 text-base"
+              onClick={() => {
+                const message = encodeURIComponent(
+                  `Hi, I'm from a travel agency/group and I'd like a custom quote for:\n\n` +
+                    `- Date: [your date]\n` +
+                    `- Number of passengers: [number]\n` +
+                    `- Preferred language: [language]\n` +
+                    `- Type of tour: [City Tour / Versailles / Night Tour / Other]\n` +
+                    `- Need tickets assistance: [Yes / No]\n\n` +
+                    `Please send me a quote. Thank you!`,
+                );
+                window.open(
+                  `https://wa.me/33668251102?text=${message}`,
+                  "_blank",
+                );
+              }}
+            >
+              {t.customQuote.cta}
+            </Button>
+          </div>
+        </div>
+      </section>
 
       {/* FAQ Section - Excursions Specific */}
       <section className="py-16 bg-white">
