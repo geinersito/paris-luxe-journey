@@ -23,7 +23,7 @@ const Navbar = () => {
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -85,10 +85,41 @@ const Navbar = () => {
           window.history.replaceState(null, "", "/#" + href.slice(1));
         }
       }
-    } else {
-      // Regular navigation
-      navigate(href);
+
+      // Close mobile menu
+      setIsOpen(false);
+      return;
     }
+
+    // Handle path + hash navigation (e.g. /airports#terminal-guide)
+    if (href.includes("#")) {
+      const [path, hashFragment] = href.split("#");
+      const hash = `#${hashFragment}`;
+
+      const scrollToHashTarget = () => {
+        const element = document.querySelector(hash);
+        if (element) {
+          scrollToElementWithOffset(element);
+          window.history.replaceState(null, "", `${path}${hash}`);
+        }
+      };
+
+      if (location.pathname === path) {
+        scrollToHashTarget();
+      } else {
+        navigate(`${path}${hash}`);
+        requestAnimationFrame(() =>
+          requestAnimationFrame(() => scrollToHashTarget()),
+        );
+      }
+
+      // Close mobile menu
+      setIsOpen(false);
+      return;
+    }
+
+    // Regular navigation
+    navigate(href);
 
     // Close mobile menu
     setIsOpen(false);
@@ -111,6 +142,11 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const terminalGuideHref =
+    language === "en"
+      ? "/airports#terminal-guide"
+      : `/${language}/airports#terminal-guide`;
+
   const navItems: NavItem[] = [
     { name: t.nav.home, href: "/" },
     {
@@ -127,6 +163,7 @@ const Navbar = () => {
       href: "#",
       hasDropdown: true,
       dropdownItems: [
+        { name: t.airports.nav.terminalGuide, href: terminalGuideHref },
         { name: "CDG (Charles de Gaulle)", href: "/airports/cdg" },
         { name: "Orly (ORY)", href: "/airports/orly" },
         { name: "Beauvais (BVA)", href: "/airports/beauvais" },

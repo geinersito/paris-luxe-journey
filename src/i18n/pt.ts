@@ -79,6 +79,19 @@ export const pt: Translation = {
       "✓ Todos os preços incluem pedágios, estacionamento e tempo de espera",
   },
   airports: {
+    nav: {
+      terminalGuide: "Guia de terminais",
+      whyChooseUs: "Por que nos escolher",
+      getPrice: "Obter preco",
+    },
+    cta: {
+      title: "Precisa de um preco fixo para aeroporto?",
+      subtitle:
+        "Reserve em menos de um minuto ou solicite um orcamento instantaneo no WhatsApp.",
+      fixedPrice: "Obter preco fixo",
+      whatsapp: "WhatsApp orcamento instantaneo",
+      mobileFixedPrice: "Obter preco fixo",
+    },
     terminalGuide: {
       title: "Guia de terminais",
       subtitle:

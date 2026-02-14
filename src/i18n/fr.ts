@@ -78,6 +78,19 @@ export const fr: Translation = {
     allInclusive: "✓ Tous les prix incluent péages, parking et temps d'attente",
   },
   airports: {
+    nav: {
+      terminalGuide: "Guide des terminaux",
+      whyChooseUs: "Pourquoi nous choisir",
+      getPrice: "Obtenir un tarif",
+    },
+    cta: {
+      title: "Besoin d'un tarif aeroport fixe ?",
+      subtitle:
+        "Reservez en moins d'une minute ou demandez un devis instantane sur WhatsApp.",
+      fixedPrice: "Obtenir un tarif fixe",
+      whatsapp: "WhatsApp devis instantane",
+      mobileFixedPrice: "Obtenir un tarif fixe",
+    },
     terminalGuide: {
       title: "Guide des terminaux",
       subtitle:

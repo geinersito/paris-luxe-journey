@@ -170,6 +170,18 @@ export interface Translation {
     allInclusive: string;
   };
   airports: {
+    nav: {
+      terminalGuide: string;
+      whyChooseUs: string;
+      getPrice: string;
+    };
+    cta: {
+      title: string;
+      subtitle: string;
+      fixedPrice: string;
+      whatsapp: string;
+      mobileFixedPrice: string;
+    };
     terminalGuide: {
       title: string;
       subtitle: string;

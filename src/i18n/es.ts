@@ -79,6 +79,19 @@ export const es: Translation = {
       "✓ Todos los precios incluyen peajes, parking y tiempo de espera",
   },
   airports: {
+    nav: {
+      terminalGuide: "Guia de terminales",
+      whyChooseUs: "Por que elegirnos",
+      getPrice: "Obtener precio",
+    },
+    cta: {
+      title: "Necesitas un presupuesto fijo para aeropuerto?",
+      subtitle:
+        "Reserva en menos de un minuto o pide un presupuesto instantaneo por WhatsApp.",
+      fixedPrice: "Obtener precio fijo",
+      whatsapp: "WhatsApp presupuesto instantaneo",
+      mobileFixedPrice: "Obtener precio fijo",
+    },
     terminalGuide: {
       title: "Guia de terminales",
       subtitle:
