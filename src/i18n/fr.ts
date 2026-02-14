@@ -860,6 +860,7 @@ export const fr: Translation = {
     bookNow: "Réserver Maintenant",
     noEvents: "Aucun événement disponible pour le moment.",
     updatedOn: "Mis à jour le",
+    sourcesVerified: "Sources officielles verifiees",
     featured: "En Vedette",
     bookRide: "Réserver un Transfert",
     officialDetails: "Détails Officiels",

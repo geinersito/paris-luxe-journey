@@ -9,6 +9,8 @@ import {
   buildGenericEmailUrl,
 } from "@/lib/eventsPrefill";
 import { getSiteOrigin } from "@/lib/seo/site";
+import { formatParisDate } from "@/lib/datetime/paris";
+import eventsFeedData from "@/data/events/events-feed.json";
 
 export default function Events() {
   const { t, i18n } = useTranslation();
@@ -22,6 +24,7 @@ export default function Events() {
   const pageDescription =
     t("events.pageDescription") ||
     "Discover the best events, concerts, exhibitions and activities happening in Paris this week and month. Book your luxury transfer to any event.";
+  const lastUpdatedLabel = `${t("events.updatedOn")} ${formatParisDate(eventsFeedData.generatedAt)}`;
 
   const webPageJsonLd = {
     "@context": "https://schema.org",
@@ -90,6 +93,10 @@ export default function Events() {
               <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
                 {t("events.heroSubtitle") ||
                   "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style."}
+              </p>
+              <p className="text-sm text-muted-foreground/90 mb-8">
+                {lastUpdatedLabel} ·{" "}
+                {t("events.sourcesVerified") || "Official sources verified"}
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

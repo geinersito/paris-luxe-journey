@@ -686,6 +686,7 @@ export interface Translation {
     bookNow: string;
     noEvents: string;
     updatedOn: string;
+    sourcesVerified: string;
     featured: string;
     bookRide: string;
     officialDetails: string;

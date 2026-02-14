@@ -1,307 +1,348 @@
 {
-  "generatedAt": "2025-01-13T10:00:00Z",
+  "generatedAt": "2026-02-14T18:30:00Z",
   "timezone": "Europe/Paris",
   "thisWeek": [
     {
-      "id": "louvre-renaissance-exhibition",
-      "startAt": "2025-01-13T10:00:00Z",
-      "endAt": "2025-01-19T18:00:00Z",
+      "id": "art-capital-grand-palais-2026",
+      "startAt": "2026-02-13T09:00:00Z",
+      "endAt": "2026-02-15T19:00:00Z",
       "title": {
-        "en": "Renaissance Masterpieces at the Louvre",
-        "es": "Obras Maestras del Renacimiento en el Louvre",
-        "fr": "Chefs-d'œuvre de la Renaissance au Louvre",
-        "pt": "Obras-Primas do Renascimento no Louvre"
+        "en": "Art Capital at Grand Palais",
+        "es": "Art Capital en Grand Palais",
+        "fr": "Art Capital au Grand Palais",
+        "pt": "Art Capital no Grand Palais"
       },
       "description": {
-        "en": "Explore an exceptional collection of Renaissance paintings and sculptures from Italian masters. Daily guided tours available.",
-        "es": "Explora una colección excepcional de pinturas y esculturas renacentistas de maestros italianos. Tours guiados diarios disponibles.",
-        "fr": "Découvrez une collection exceptionnelle de peintures et sculptures de la Renaissance par des maîtres italiens. Visites guidées quotidiennes.",
-        "pt": "Explore uma coleção excepcional de pinturas e esculturas renascentistas de mestres italianos. Tours guiados diários disponíveis."
+        "en": "Major annual art salon gathering independent artists and galleries under the Nave of Grand Palais.",
+        "es": "Gran salon anual de arte que reune artistas independientes y galerias en la Nave del Grand Palais.",
+        "fr": "Grand salon annuel qui reunit artistes independants et galeries sous la Nef du Grand Palais.",
+        "pt": "Grande salao anual de arte com artistas independentes e galerias sob a Nave do Grand Palais."
       },
       "venueName": {
-        "en": "Louvre Museum",
-        "es": "Museo del Louvre",
-        "fr": "Musée du Louvre",
-        "pt": "Museu do Louvre"
+        "en": "Grand Palais",
+        "es": "Grand Palais",
+        "fr": "Grand Palais",
+        "pt": "Grand Palais"
+      },
+      "district": "8eme",
+      "address": "7 Avenue Winston Churchill, 75008 Paris",
+      "eventUrl": "https://artcapital.fr/",
+      "sourceName": "Art Capital",
+      "sourceUrl": "https://artcapital.fr/",
+      "imageUrl": "https://images.unsplash.com/photo-1545989253-02cc26577f88?w=800&h=600&fit=crop&q=80",
+      "category": "exhibition",
+      "isFeatured": true
+    },
+    {
+      "id": "six-invitational-paris-2026",
+      "startAt": "2026-02-13T09:00:00Z",
+      "endAt": "2026-02-15T19:00:00Z",
+      "title": {
+        "en": "Six Invitational Paris 2026",
+        "es": "Six Invitational Paris 2026",
+        "fr": "Six Invitational Paris 2026",
+        "pt": "Six Invitational Paris 2026"
+      },
+      "description": {
+        "en": "International esports championship held at adidas arena with live stage matches and fan activations.",
+        "es": "Campeonato internacional de esports en adidas arena con partidos en vivo y actividades para fans.",
+        "fr": "Championnat international esport a adidas arena avec matchs en direct et activations fans.",
+        "pt": "Campeonato internacional de esports na adidas arena com partidas ao vivo e ativacoes para fas."
+      },
+      "venueName": {
+        "en": "adidas arena",
+        "es": "adidas arena",
+        "fr": "adidas arena",
+        "pt": "adidas arena"
+      },
+      "district": "18eme",
+      "address": "56 Boulevard Ney, 75018 Paris",
+      "eventUrl": "https://www.adidasarena.com/",
+      "sourceName": "adidas arena",
+      "sourceUrl": "https://www.adidasarena.com/",
+      "imageUrl": "https://images.unsplash.com/photo-1542751110-97427bbecf20?w=800&h=600&fit=crop&q=80",
+      "category": "festival",
+      "isFeatured": true
+    },
+    {
+      "id": "jeu-de-paume-festival-2026",
+      "startAt": "2026-02-07T09:00:00Z",
+      "endAt": "2026-03-23T18:00:00Z",
+      "title": {
+        "en": "Jeu de Paume Festival",
+        "es": "Festival Jeu de Paume",
+        "fr": "Festival Jeu de Paume",
+        "pt": "Festival Jeu de Paume"
+      },
+      "description": {
+        "en": "Contemporary image and video program featuring international artists, talks, and curated screenings.",
+        "es": "Programa de imagen y video contemporaneo con artistas internacionales, charlas y proyecciones curadas.",
+        "fr": "Programme image et video contemporaine avec artistes internationaux, rencontres et projections.",
+        "pt": "Programa de imagem e video contemporaneo com artistas internacionais, talks e exibicoes curadas."
+      },
+      "venueName": {
+        "en": "Jeu de Paume",
+        "es": "Jeu de Paume",
+        "fr": "Jeu de Paume",
+        "pt": "Jeu de Paume"
       },
       "district": "1er",
-      "address": "Rue de Rivoli, 75001 Paris",
-      "eventUrl": "https://www.louvre.fr",
-      "imageUrl": "https://images.unsplash.com/photo-1499856871958-5b9627545d1a?w=800&h=600&fit=crop&q=80",
+      "address": "1 Place de la Concorde, 75001 Paris",
+      "eventUrl": "https://jeudepaume.org/",
+      "sourceName": "Jeu de Paume",
+      "sourceUrl": "https://jeudepaume.org/",
+      "imageUrl": "https://images.unsplash.com/photo-1501612780327-45045538702b?w=800&h=600&fit=crop&q=80",
       "category": "exhibition",
-      "isFeatured": true,
-      "sourceName": "Musée du Louvre"
+      "isFeatured": false
     },
     {
-      "id": "opera-garnier-swan-lake",
-      "startAt": "2025-01-15T19:30:00Z",
-      "endAt": "2025-01-15T22:00:00Z",
+      "id": "salon-agriculture-2026",
+      "startAt": "2026-02-21T08:00:00Z",
+      "endAt": "2026-03-01T18:00:00Z",
       "title": {
-        "en": "Swan Lake - Paris Opera Ballet",
-        "es": "El Lago de los Cisnes - Ballet de la Ópera de París",
-        "fr": "Le Lac des Cygnes - Ballet de l'Opéra de Paris",
-        "pt": "O Lago dos Cisnes - Ballet da Ópera de Paris"
+        "en": "Salon International de l'Agriculture",
+        "es": "Salon International de l'Agriculture",
+        "fr": "Salon International de l'Agriculture",
+        "pt": "Salon International de l'Agriculture"
       },
       "description": {
-        "en": "Experience Tchaikovsky's timeless masterpiece performed by the renowned Paris Opera Ballet at the historic Palais Garnier.",
-        "es": "Experimenta la obra maestra atemporal de Tchaikovsky interpretada por el renombrado Ballet de la Ópera de París en el histórico Palais Garnier.",
-        "fr": "Découvrez le chef-d'œuvre intemporel de Tchaïkovski interprété par le célèbre Ballet de l'Opéra de Paris au Palais Garnier.",
-        "pt": "Experimente a obra-prima atemporal de Tchaikovsky apresentada pelo renomado Ballet da Ópera de Paris no histórico Palais Garnier."
+        "en": "France's flagship agriculture fair with regional producers, livestock showcases, and food discovery.",
+        "es": "Feria agricola de referencia en Francia con productores regionales, ganaderia y experiencias gastronomicas.",
+        "fr": "Salon majeur de l'agriculture en France avec producteurs regionaux, elevage et decouverte culinaire.",
+        "pt": "Principal feira agricola da Franca com produtores regionais, pecuaria e descoberta gastronomica."
       },
       "venueName": {
-        "en": "Palais Garnier",
-        "es": "Palais Garnier",
-        "fr": "Palais Garnier",
-        "pt": "Palais Garnier"
+        "en": "Paris Expo Porte de Versailles",
+        "es": "Paris Expo Porte de Versailles",
+        "fr": "Paris Expo Porte de Versailles",
+        "pt": "Paris Expo Porte de Versailles"
       },
-      "district": "9ème",
-      "address": "Place de l'Opéra, 75009 Paris",
-      "eventUrl": "https://www.operadeparis.fr",
-      "imageUrl": "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=800&h=600&fit=crop&q=80",
-      "category": "opera",
-      "isFeatured": true,
-      "sourceName": "Opéra de Paris"
-    },
-    {
-      "id": "grand-palais-immersive-monet",
-      "startAt": "2025-01-14T10:00:00Z",
-      "endAt": "2025-01-19T20:00:00Z",
-      "title": {
-        "en": "Monet Immersive Experience",
-        "es": "Experiencia Inmersiva de Monet",
-        "fr": "Expérience Immersive Monet",
-        "pt": "Experiência Imersiva de Monet"
-      },
-      "description": {
-        "en": "Step into Monet's world with this stunning 360° digital exhibition featuring his most iconic works brought to life.",
-        "es": "Adéntrate en el mundo de Monet con esta impresionante exposición digital de 360° que da vida a sus obras más icónicas.",
-        "fr": "Plongez dans l'univers de Monet avec cette exposition numérique 360° époustouflante mettant en vie ses œuvres les plus emblématiques.",
-        "pt": "Entre no mundo de Monet com esta impressionante exposição digital 360° que dá vida às suas obras mais icônicas."
-      },
-      "venueName": {
-        "en": "Grand Palais Immersif",
-        "es": "Grand Palais Immersif",
-        "fr": "Grand Palais Immersif",
-        "pt": "Grand Palais Immersif"
-      },
-      "district": "8ème",
-      "address": "110 Rue de Lyon, 75012 Paris",
-      "eventUrl": "https://www.grandpalais.fr",
-      "imageUrl": "https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?w=800&h=600&fit=crop&q=80",
-      "category": "exhibition",
-      "isFeatured": false,
-      "sourceName": "Grand Palais"
-    },
-    {
-      "id": "jazz-club-saint-germain",
-      "startAt": "2025-01-17T21:00:00Z",
-      "endAt": "2025-01-17T23:30:00Z",
-      "title": {
-        "en": "Jazz Night at Café de Flore",
-        "es": "Noche de Jazz en Café de Flore",
-        "fr": "Soirée Jazz au Café de Flore",
-        "pt": "Noite de Jazz no Café de Flore"
-      },
-      "description": {
-        "en": "Enjoy live jazz performances in the legendary Saint-Germain-des-Prés district. Intimate setting with world-class musicians.",
-        "es": "Disfruta de actuaciones de jazz en vivo en el legendario distrito de Saint-Germain-des-Prés. Ambiente íntimo con músicos de clase mundial.",
-        "fr": "Profitez de performances de jazz live dans le légendaire quartier de Saint-Germain-des-Prés. Cadre intime avec des musiciens de renommée mondiale.",
-        "pt": "Desfrute de apresentações de jazz ao vivo no lendário distrito de Saint-Germain-des-Prés. Ambiente íntimo com músicos de classe mundial."
-      },
-      "venueName": {
-        "en": "Café de Flore",
-        "es": "Café de Flore",
-        "fr": "Café de Flore",
-        "pt": "Café de Flore"
-      },
-      "district": "6ème",
-      "address": "172 Boulevard Saint-Germain, 75006 Paris",
-      "eventUrl": "https://www.cafedeflore.fr",
-      "category": "concert",
-      "isFeatured": false,
-      "sourceName": "Café de Flore"
+      "district": "15eme",
+      "address": "1 Place de la Porte de Versailles, 75015 Paris",
+      "eventUrl": "https://www.salon-agriculture.com/en/",
+      "sourceName": "Salon International de l'Agriculture",
+      "sourceUrl": "https://www.salon-agriculture.com/en/",
+      "imageUrl": "https://images.unsplash.com/photo-1457530378978-8bac673b8062?w=800&h=600&fit=crop&q=80",
+      "category": "festival",
+      "isFeatured": true
     }
   ],
   "thisMonth": [
     {
-      "id": "louvre-renaissance-exhibition",
-      "startAt": "2025-01-13T10:00:00Z",
-      "endAt": "2025-01-31T18:00:00Z",
+      "id": "salon-agriculture-2026",
+      "startAt": "2026-02-21T08:00:00Z",
+      "endAt": "2026-03-01T18:00:00Z",
       "title": {
-        "en": "Renaissance Masterpieces at the Louvre",
-        "es": "Obras Maestras del Renacimiento en el Louvre",
-        "fr": "Chefs-d'œuvre de la Renaissance au Louvre",
-        "pt": "Obras-Primas do Renascimento no Louvre"
+        "en": "Salon International de l'Agriculture",
+        "es": "Salon International de l'Agriculture",
+        "fr": "Salon International de l'Agriculture",
+        "pt": "Salon International de l'Agriculture"
       },
       "description": {
-        "en": "Explore an exceptional collection of Renaissance paintings and sculptures from Italian masters. Daily guided tours available.",
-        "es": "Explora una colección excepcional de pinturas y esculturas renacentistas de maestros italianos. Tours guiados diarios disponibles.",
-        "fr": "Découvrez une collection exceptionnelle de peintures et sculptures de la Renaissance par des maîtres italiens. Visites guidées quotidiennes.",
-        "pt": "Explore uma coleção excepcional de pinturas e esculturas renascentistas de mestres italianos. Tours guiados diários disponíveis."
+        "en": "France's flagship agriculture fair with regional producers, livestock showcases, and food discovery.",
+        "es": "Feria agricola de referencia en Francia con productores regionales, ganaderia y experiencias gastronomicas.",
+        "fr": "Salon majeur de l'agriculture en France avec producteurs regionaux, elevage et decouverte culinaire.",
+        "pt": "Principal feira agricola da Franca com produtores regionais, pecuaria e descoberta gastronomica."
       },
       "venueName": {
-        "en": "Louvre Museum",
-        "es": "Museo del Louvre",
-        "fr": "Musée du Louvre",
-        "pt": "Museu do Louvre"
+        "en": "Paris Expo Porte de Versailles",
+        "es": "Paris Expo Porte de Versailles",
+        "fr": "Paris Expo Porte de Versailles",
+        "pt": "Paris Expo Porte de Versailles"
+      },
+      "district": "15eme",
+      "address": "1 Place de la Porte de Versailles, 75015 Paris",
+      "eventUrl": "https://www.salon-agriculture.com/en/",
+      "sourceName": "Salon International de l'Agriculture",
+      "sourceUrl": "https://www.salon-agriculture.com/en/",
+      "imageUrl": "https://images.unsplash.com/photo-1457530378978-8bac673b8062?w=800&h=600&fit=crop&q=80",
+      "category": "festival",
+      "isFeatured": true
+    },
+    {
+      "id": "jeu-de-paume-festival-2026",
+      "startAt": "2026-02-07T09:00:00Z",
+      "endAt": "2026-03-23T18:00:00Z",
+      "title": {
+        "en": "Jeu de Paume Festival",
+        "es": "Festival Jeu de Paume",
+        "fr": "Festival Jeu de Paume",
+        "pt": "Festival Jeu de Paume"
+      },
+      "description": {
+        "en": "Contemporary image and video program featuring international artists, talks, and curated screenings.",
+        "es": "Programa de imagen y video contemporaneo con artistas internacionales, charlas y proyecciones curadas.",
+        "fr": "Programme image et video contemporaine avec artistes internationaux, rencontres et projections.",
+        "pt": "Programa de imagem e video contemporaneo com artistas internacionais, talks e exibicoes curadas."
+      },
+      "venueName": {
+        "en": "Jeu de Paume",
+        "es": "Jeu de Paume",
+        "fr": "Jeu de Paume",
+        "pt": "Jeu de Paume"
       },
       "district": "1er",
-      "address": "Rue de Rivoli, 75001 Paris",
-      "eventUrl": "https://www.louvre.fr",
-      "imageUrl": "https://images.unsplash.com/photo-1566127444979-b3d2b654e3a0?w=800&h=600&fit=crop&q=80",
+      "address": "1 Place de la Concorde, 75001 Paris",
+      "eventUrl": "https://jeudepaume.org/",
+      "sourceName": "Jeu de Paume",
+      "sourceUrl": "https://jeudepaume.org/",
+      "imageUrl": "https://images.unsplash.com/photo-1501612780327-45045538702b?w=800&h=600&fit=crop&q=80",
       "category": "exhibition",
-      "isFeatured": true,
-      "sourceName": "Musée du Louvre"
+      "isFeatured": false
     },
     {
-      "id": "paris-fashion-week-winter",
-      "startAt": "2025-01-21T09:00:00Z",
-      "endAt": "2025-01-26T20:00:00Z",
+      "id": "l2p-convention-2026",
+      "startAt": "2026-03-11T09:00:00Z",
+      "endAt": "2026-03-14T18:00:00Z",
       "title": {
-        "en": "Paris Fashion Week - Haute Couture",
-        "es": "Semana de la Moda de París - Alta Costura",
-        "fr": "Fashion Week de Paris - Haute Couture",
-        "pt": "Semana de Moda de Paris - Alta Costura"
+        "en": "L2P Convention",
+        "es": "L2P Convention",
+        "fr": "L2P Convention",
+        "pt": "L2P Convention"
       },
       "description": {
-        "en": "The world's most prestigious fashion event showcasing Spring/Summer collections from top designers. Public exhibitions and events throughout the city.",
-        "es": "El evento de moda más prestigioso del mundo presenta colecciones Primavera/Verano de los mejores diseñadores. Exhibiciones y eventos públicos en toda la ciudad.",
-        "fr": "L'événement de mode le plus prestigieux au monde présentant les collections Printemps/Été des plus grands créateurs. Expositions et événements publics dans toute la ville.",
-        "pt": "O evento de moda mais prestigioso do mundo apresentando coleções Primavera/Verão dos principais estilistas. Exposições e eventos públicos por toda a cidade."
+        "en": "Large pop-culture convention mixing gaming, manga, cosplay, and live performances.",
+        "es": "Convencion de cultura pop con gaming, manga, cosplay y shows en vivo.",
+        "fr": "Convention pop culture melant gaming, manga, cosplay et scenes live.",
+        "pt": "Convencao de cultura pop com gaming, manga, cosplay e shows ao vivo."
       },
       "venueName": {
-        "en": "Various Venues",
-        "es": "Varios Lugares",
-        "fr": "Divers Lieux",
-        "pt": "Vários Locais"
+        "en": "Parc Floral de Paris",
+        "es": "Parc Floral de Paris",
+        "fr": "Parc Floral de Paris",
+        "pt": "Parc Floral de Paris"
       },
-      "district": "8ème",
-      "eventUrl": "https://www.fhcm.paris",
-      "imageUrl": "https://images.unsplash.com/photo-1558769132-cb1aea3c8565?w=800&h=600&fit=crop&q=80",
-      "category": "fashion",
-      "isFeatured": true,
-      "sourceName": "Fédération de la Haute Couture"
-    },
-    {
-      "id": "versailles-night-fountain-show",
-      "startAt": "2025-01-25T20:00:00Z",
-      "endAt": "2025-01-25T22:30:00Z",
-      "title": {
-        "en": "Night Fountain Show at Versailles",
-        "es": "Espectáculo Nocturno de Fuentes en Versalles",
-        "fr": "Grandes Eaux Nocturnes de Versailles",
-        "pt": "Show Noturno de Fontes em Versalhes"
-      },
-      "description": {
-        "en": "Experience the magical gardens of Versailles illuminated at night with synchronized fountains and baroque music. A spectacular evening event.",
-        "es": "Experimenta los mágicos jardines de Versalles iluminados de noche con fuentes sincronizadas y música barroca. Un evento nocturno espectacular.",
-        "fr": "Découvrez les jardins magiques de Versailles illuminés la nuit avec des fontaines synchronisées et de la musique baroque. Une soirée spectaculaire.",
-        "pt": "Experimente os jardins mágicos de Versalhes iluminados à noite com fontes sincronizadas e música barroca. Um evento noturno espetacular."
-      },
-      "venueName": {
-        "en": "Palace of Versailles",
-        "es": "Palacio de Versalles",
-        "fr": "Château de Versailles",
-        "pt": "Palácio de Versalhes"
-      },
-      "district": "Versailles",
-      "address": "Place d'Armes, 78000 Versailles",
-      "eventUrl": "https://www.chateauversailles.fr",
-      "imageUrl": "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=800&h=600&fit=crop&q=80",
+      "district": "12eme",
+      "address": "Route de la Pyramide, 75012 Paris",
+      "eventUrl": "https://www.l2pconvention.com/",
+      "sourceName": "L2P Convention",
+      "sourceUrl": "https://www.l2pconvention.com/",
+      "imageUrl": "https://images.unsplash.com/photo-1511512578047-dfb367046420?w=800&h=600&fit=crop&q=80",
       "category": "festival",
-      "isFeatured": true,
-      "sourceName": "Château de Versailles"
+      "isFeatured": true
     },
     {
-      "id": "musee-orsay-impressionism",
-      "startAt": "2025-01-15T09:30:00Z",
-      "endAt": "2025-01-31T18:00:00Z",
+      "id": "paris-world-tourism-fair-2026",
+      "startAt": "2026-03-12T09:00:00Z",
+      "endAt": "2026-03-15T18:00:00Z",
       "title": {
-        "en": "Impressionism: Light and Color",
-        "es": "Impresionismo: Luz y Color",
-        "fr": "Impressionnisme : Lumière et Couleur",
-        "pt": "Impressionismo: Luz e Cor"
+        "en": "Salon Mondial du Tourisme",
+        "es": "Salon Mondial du Tourisme",
+        "fr": "Salon Mondial du Tourisme",
+        "pt": "Salon Mondial du Tourisme"
       },
       "description": {
-        "en": "A comprehensive exhibition featuring works by Monet, Renoir, Degas, and other impressionist masters. Special evening hours on Thursdays.",
-        "es": "Una exposición completa con obras de Monet, Renoir, Degas y otros maestros impresionistas. Horario nocturno especial los jueves.",
-        "fr": "Une exposition complète présentant des œuvres de Monet, Renoir, Degas et d'autres maîtres impressionnistes. Nocturnes le jeudi.",
-        "pt": "Uma exposição abrangente com obras de Monet, Renoir, Degas e outros mestres impressionistas. Horário noturno especial às quintas-feiras."
+        "en": "Major travel fair with destination boards, experiences, and tourism professionals from France and abroad.",
+        "es": "Gran salon de turismo con oficinas de destino, experiencias y profesionales de Francia y del extranjero.",
+        "fr": "Grand salon du tourisme avec offices de destination, experiences et professionnels en France et a l'international.",
+        "pt": "Grande feira de turismo com destinos, experiencias e profissionais da Franca e do exterior."
       },
       "venueName": {
-        "en": "Musée d'Orsay",
-        "es": "Museo de Orsay",
-        "fr": "Musée d'Orsay",
-        "pt": "Museu d'Orsay"
+        "en": "Paris Expo Porte de Versailles",
+        "es": "Paris Expo Porte de Versailles",
+        "fr": "Paris Expo Porte de Versailles",
+        "pt": "Paris Expo Porte de Versailles"
       },
-      "district": "7ème",
-      "address": "1 Rue de la Légion d'Honneur, 75007 Paris",
-      "eventUrl": "https://www.musee-orsay.fr",
-      "imageUrl": "https://images.unsplash.com/photo-1549887534-1541e9326642?w=800&h=600&fit=crop&q=80",
+      "district": "15eme",
+      "address": "1 Place de la Porte de Versailles, 75015 Paris",
+      "eventUrl": "https://www.salons-du-tourisme.com/Paris",
+      "sourceName": "Salon Mondial du Tourisme",
+      "sourceUrl": "https://www.salons-du-tourisme.com/Paris",
+      "imageUrl": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=800&h=600&fit=crop&q=80",
+      "category": "festival",
+      "isFeatured": false
+    },
+    {
+      "id": "ecotrail-paris-2026",
+      "startAt": "2026-03-21T07:00:00Z",
+      "endAt": "2026-03-22T18:00:00Z",
+      "title": {
+        "en": "EcoTrail Paris",
+        "es": "EcoTrail Paris",
+        "fr": "EcoTrail Paris",
+        "pt": "EcoTrail Paris"
+      },
+      "description": {
+        "en": "Trail-running festival across Greater Paris ending near the Eiffel Tower, with multiple race formats.",
+        "es": "Festival de trail running por el Gran Paris con llegada cerca de la Torre Eiffel y varios formatos.",
+        "fr": "Festival trail dans le Grand Paris avec arrivee proche de la Tour Eiffel et plusieurs formats de course.",
+        "pt": "Festival de trail no Grande Paris com chegada perto da Torre Eiffel e varios formatos de prova."
+      },
+      "venueName": {
+        "en": "Ile-de-France route network",
+        "es": "Circuito Ile-de-France",
+        "fr": "Parcours Ile-de-France",
+        "pt": "Percurso Ile-de-France"
+      },
+      "district": "7eme",
+      "eventUrl": "https://www.ecotrailparis.com/en/",
+      "sourceName": "EcoTrail Paris",
+      "sourceUrl": "https://www.ecotrailparis.com/en/",
+      "imageUrl": "https://images.unsplash.com/photo-1486218119243-13883505764c?w=800&h=600&fit=crop&q=80",
+      "category": "festival",
+      "isFeatured": false
+    },
+    {
+      "id": "salon-du-dessin-2026",
+      "startAt": "2026-03-25T10:00:00Z",
+      "endAt": "2026-03-30T18:00:00Z",
+      "title": {
+        "en": "Salon du Dessin",
+        "es": "Salon du Dessin",
+        "fr": "Salon du Dessin",
+        "pt": "Salon du Dessin"
+      },
+      "description": {
+        "en": "International drawing fair bringing collectors, curators, and galleries to Palais Brongniart.",
+        "es": "Feria internacional de dibujo en Palais Brongniart con coleccionistas, galerias y curadores.",
+        "fr": "Salon international du dessin au Palais Brongniart avec collectionneurs, galeries et conservateurs.",
+        "pt": "Feira internacional de desenho no Palais Brongniart com colecionadores, galerias e curadores."
+      },
+      "venueName": {
+        "en": "Palais Brongniart",
+        "es": "Palais Brongniart",
+        "fr": "Palais Brongniart",
+        "pt": "Palais Brongniart"
+      },
+      "district": "2eme",
+      "address": "16 Place de la Bourse, 75002 Paris",
+      "eventUrl": "https://www.salondudessin.com/en/home",
+      "sourceName": "Salon du Dessin",
+      "sourceUrl": "https://www.salondudessin.com/en/home",
+      "imageUrl": "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&h=600&fit=crop&q=80",
       "category": "exhibition",
-      "isFeatured": false,
-      "sourceName": "Musée d'Orsay"
+      "isFeatured": true
     },
     {
-      "id": "philharmonie-classical-concert",
-      "startAt": "2025-01-22T20:00:00Z",
-      "endAt": "2025-01-22T22:30:00Z",
+      "id": "festival-mondial-magie-2026",
+      "startAt": "2026-03-28T17:00:00Z",
+      "endAt": "2026-03-29T20:00:00Z",
       "title": {
-        "en": "Beethoven Symphony No. 9 - Philharmonie de Paris",
-        "es": "Sinfonía No. 9 de Beethoven - Filarmónica de París",
-        "fr": "Symphonie n°9 de Beethoven - Philharmonie de Paris",
-        "pt": "Sinfonia nº 9 de Beethoven - Filarmônica de Paris"
+        "en": "Festival Mondial de la Magie",
+        "es": "Festival Mondial de la Magie",
+        "fr": "Festival Mondial de la Magie",
+        "pt": "Festival Mondial de la Magie"
       },
       "description": {
-        "en": "The Paris Philharmonic Orchestra performs Beethoven's iconic Ninth Symphony. A must-see for classical music enthusiasts.",
-        "es": "La Orquesta Filarmónica de París interpreta la icónica Novena Sinfonía de Beethoven. Imperdible para los amantes de la música clásica.",
-        "fr": "L'Orchestre Philharmonique de Paris interprète l'emblématique Neuvième Symphonie de Beethoven. Incontournable pour les amateurs de musique classique.",
-        "pt": "A Orquestra Filarmônica de Paris apresenta a icônica Nona Sinfonia de Beethoven. Imperdível para os entusiastas da música clássica."
+        "en": "Family-friendly magic showcase with international illusionists and stage performances.",
+        "es": "Espectaculo familiar de magia con ilusionistas internacionales y actuaciones en escenario.",
+        "fr": "Spectacle familial de magie avec illusionnistes internationaux et performances sur scene.",
+        "pt": "Show familiar de magia com ilusionistas internacionais e apresentacoes no palco."
       },
       "venueName": {
-        "en": "Philharmonie de Paris",
-        "es": "Filarmónica de París",
-        "fr": "Philharmonie de Paris",
-        "pt": "Filarmônica de Paris"
+        "en": "Casino de Paris",
+        "es": "Casino de Paris",
+        "fr": "Casino de Paris",
+        "pt": "Casino de Paris"
       },
-      "district": "19ème",
-      "address": "221 Avenue Jean Jaurès, 75019 Paris",
-      "eventUrl": "https://www.philharmoniedeparis.fr",
-      "imageUrl": "https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=800&h=600&fit=crop&q=80",
-      "category": "concert",
-      "isFeatured": false,
-      "sourceName": "Philharmonie de Paris"
-    },
-    {
-      "id": "centre-pompidou-modern-art",
-      "startAt": "2025-01-10T11:00:00Z",
-      "endAt": "2025-01-31T21:00:00Z",
-      "title": {
-        "en": "Contemporary Art: New Perspectives",
-        "es": "Arte Contemporáneo: Nuevas Perspectivas",
-        "fr": "Art Contemporain : Nouvelles Perspectives",
-        "pt": "Arte Contemporânea: Novas Perspectivas"
-      },
-      "description": {
-        "en": "Discover cutting-edge contemporary art from emerging and established artists. Interactive installations and multimedia exhibits.",
-        "es": "Descubre arte contemporáneo de vanguardia de artistas emergentes y establecidos. Instalaciones interactivas y exhibiciones multimedia.",
-        "fr": "Découvrez l'art contemporain d'avant-garde d'artistes émergents et établis. Installations interactives et expositions multimédias.",
-        "pt": "Descubra arte contemporânea de ponta de artistas emergentes e estabelecidos. Instalações interativas e exposições multimídia."
-      },
-      "venueName": {
-        "en": "Centre Pompidou",
-        "es": "Centro Pompidou",
-        "fr": "Centre Pompidou",
-        "pt": "Centro Pompidou"
-      },
-      "district": "4ème",
-      "address": "Place Georges-Pompidou, 75004 Paris",
-      "eventUrl": "https://www.centrepompidou.fr",
-      "imageUrl": "https://images.unsplash.com/photo-1541961017774-22349e4a1262?w=800&h=600&fit=crop&q=80",
-      "category": "exhibition",
-      "isFeatured": false,
-      "sourceName": "Centre Pompidou"
+      "district": "9eme",
+      "address": "16 Rue de Clichy, 75009 Paris",
+      "eventUrl": "https://www.festivalmondialdelamagie.com/",
+      "sourceName": "Festival Mondial de la Magie",
+      "sourceUrl": "https://www.festivalmondialdelamagie.com/",
+      "imageUrl": "https://images.unsplash.com/photo-1501472312651-726afe119ff1?w=800&h=600&fit=crop&q=80",
+      "category": "family",
+      "isFeatured": false
     }
   ]
 }
-
