@@ -1042,5 +1042,11 @@ export const es: Translation = {
       description:
         "Servicio premium de traslado aeropuerto en París. Reserve su chófer privado para CDG, Orly o traslados urbanos. Precios fijos desde 70€, disponibilidad 24/7, vehículos de lujo.",
     },
+    airports: {
+      title:
+        "Traslados aeropuerto París | Guía terminales CDG, Orly y Beauvais",
+      description:
+        "Traslados privados al aeropuerto en París con precio fijo, guía práctica de recogida en CDG, Orly y Beauvais, y soporte de chófer 24/7.",
+    },
   },
 };

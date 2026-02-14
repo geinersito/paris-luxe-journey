@@ -1035,5 +1035,11 @@ export const pt: Translation = {
       description:
         "Serviço premium de transfer aeroporto em Paris. Reserve seu motorista particular para CDG, Orly ou transfers na cidade. Preços fixos desde 70€, disponibilidade 24/7, veículos de luxo.",
     },
+    airports: {
+      title:
+        "Transfers aeroporto Paris | Guia de terminais CDG, Orly e Beauvais",
+      description:
+        "Transfers privados de aeroporto em Paris com preço fixo, guia prático de encontro em CDG, Orly e Beauvais, e suporte de motorista 24/7.",
+    },
   },
 };
