@@ -14,31 +14,31 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `9ae13b0`
+- SHA: `97e0777`
 - Last updated: `2026-02-14`
 
 ## Ultimos PRs mergeados en main
 
-1. `#103` - feat(excursions): reduce pre-list scroll above fold (`9ae13b0`)
-2. `#102` - docs(ssot): post-merge sync after PR #101 (`431f18b`)
-3. `#101` - content(excursions): unify faq blocks across detail pages (`2539c74`)
-4. `#100` - docs(ssot): post-merge sync after PR #99 (`6e48b9c`)
-5. `#99` - feat(media): add local image library MVP for excursions events and trust (`013a0df`)
-6. `#98` - docs(ssot): post-merge sync after PR #95 (`4799d01`)
-7. `#95` - content(events): refresh feed freshness and source attribution (`09834ef`)
-8. `#97` - docs(status): define stable baseline semantics (`11737de`)
-9. `#96` - docs(status): sync head after PR #94 (`46185a1`)
-10. `#94` - docs(status): sync head after PR #93 (`61f838f`)
+1. `#105` - content(trust): add sitewide trust signals block (`97e0777`)
+2. `#104` - docs(ssot): post-merge sync after PR #103 (`b889c96`)
+3. `#103` - feat(excursions): reduce pre-list scroll above fold (`9ae13b0`)
+4. `#102` - docs(ssot): post-merge sync after PR #101 (`431f18b`)
+5. `#101` - content(excursions): unify faq blocks across detail pages (`2539c74`)
+6. `#100` - docs(ssot): post-merge sync after PR #99 (`6e48b9c`)
+7. `#99` - feat(media): add local image library MVP for excursions events and trust (`013a0df`)
+8. `#98` - docs(ssot): post-merge sync after PR #95 (`4799d01`)
+9. `#95` - content(events): refresh feed freshness and source attribution (`09834ef`)
+10. `#97` - docs(status): define stable baseline semantics (`11737de`)
 
 ## Ahora en curso
 
-- **CONTENT-TRUST-SIGNALS-01** (P1/R0) — Add trust signals (Home + Booking flow)
+- **CONTENT-AIRPORTS-TERMINAL-GUIDE-01** (P1/R0) — Add terminal breakdown + meeting-point guidance on airport pages
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **CONTENT-TRUST-SIGNALS-01** (P1/R0) — Add trust signals (Home + Booking flow)
-2. **CONTENT-AIRPORTS-TERMINAL-GUIDE-01** (P1/R0) — Add terminal breakdown + meeting-point guidance on airport pages
-3. **SEO-INTERNALLINK-RULES-01** (P2/R0) — Audit + enforce internal linking rules across Blog/Events/Excursions
+1. **CONTENT-AIRPORTS-TERMINAL-GUIDE-01** (P1/R0) — Add terminal breakdown + meeting-point guidance on airport pages
+2. **SEO-INTERNALLINK-RULES-01** (P2/R0) — Audit + enforce internal linking rules across Blog/Events/Excursions
+3. **CONTENT-HOURLY-ITINERARIES-01** (P2/R0) — Add sample hourly itineraries (3-5 use cases)
 
 ## Urgent out-of-repo
 
