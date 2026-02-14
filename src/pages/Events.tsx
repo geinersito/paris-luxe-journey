@@ -1,6 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { EventsFeed } from "@/components/events/EventsFeed";
+import TrustSignals from "@/components/TrustSignals";
 import { Sparkles, MessageCircle, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -120,6 +121,13 @@ export default function Events() {
                 </Button>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Trust Signals */}
+        <section className="py-6 md:py-8 bg-white">
+          <div className="container mx-auto px-4">
+            <TrustSignals />
           </div>
         </section>
 

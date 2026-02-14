@@ -128,6 +128,32 @@ export interface Translation {
     insurance: string;
     insuranceDesc: string;
   };
+  trust: {
+    title: string;
+    subtitle: string;
+    items: {
+      licensed: {
+        title: string;
+        body: string;
+      };
+      pricing: {
+        title: string;
+        body: string;
+      };
+      flexibility: {
+        title: string;
+        body: string;
+      };
+      payment: {
+        title: string;
+        body: string;
+      };
+      support: {
+        title: string;
+        body: string;
+      };
+    };
+  };
   routes: {
     title: string;
     subtitle: string;

@@ -10,6 +10,7 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
+import TrustSignals from "@/components/TrustSignals";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Clock, Users, Star, MapPin, Check, X } from "lucide-react";
 
@@ -1538,6 +1539,8 @@ const Excursions = () => {
         id="excursions-list"
         className="max-w-7xl mx-auto px-4 py-10 md:py-12"
       >
+        <TrustSignals className="mb-6 md:mb-8" />
+
         <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
           {/* Quick Filters Sidebar */}
           <div className="w-full lg:w-64">
