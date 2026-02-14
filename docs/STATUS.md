@@ -9,7 +9,9 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 - Gobernanza: `docs/SUPERVISOR.md`
 - Estado operativo: `docs/STATUS.md`
 
-## Main HEAD
+## Main HEAD (Last feature merge baseline)
+
+Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
 - SHA: `61f838f`
@@ -17,11 +19,12 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## Ultimos PRs mergeados en main
 
-1. `#94` - docs(status): sync head after PR #93 (`61f838f`)
-2. `#93` - docs(status): sync head after PR #92 (`ac8448e9`)
-3. `#92` - SSOT post-merge sync after PR #91 (`e9eee59`)
-4. `#91` - UX A11Y contrast fix for Excursions hero chips (UX-A11Y-EXCURSIONS-HERO-CHIPS-CONTRAST-01) (`b234e65`)
-5. `#89` - UX excursions list compact pass (UX-EXCURSIONS-LIST-COMPACT-01) (`445cf19`)
+1. `#96` - docs(status): sync head after PR #94 (`46185a1`)
+2. `#94` - docs(status): sync head after PR #93 (`61f838f`)
+3. `#93` - docs(status): sync head after PR #92 (`ac8448e9`)
+4. `#92` - SSOT post-merge sync after PR #91 (`e9eee59`)
+5. `#91` - UX A11Y contrast fix for Excursions hero chips (UX-A11Y-EXCURSIONS-HERO-CHIPS-CONTRAST-01) (`b234e65`)
+6. `#89` - UX excursions list compact pass (UX-EXCURSIONS-LIST-COMPACT-01) (`445cf19`)
 
 ## Ahora en curso
 
@@ -47,6 +50,6 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 Cada PR debe actualizar este archivo con:
 
-1. `main HEAD` (si cambió por merge reciente),
+1. `main HEAD` baseline (solo cuando cambie el ultimo merge de feature/hotfix, no por PRs docs-only),
 2. "Ahora en curso" (ID activo),
 3. "Siguientes 3 items" (orden de prioridad).
