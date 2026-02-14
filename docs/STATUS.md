@@ -12,7 +12,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Main HEAD
 
 - Branch: `main`
-- SHA: `1ea27c5`
+- SHA: `ff4eb15`
 - Last updated: `2026-02-14`
 
 ## Ultimos PRs mergeados en main
@@ -24,12 +24,13 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Ahora en curso
 
 - **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2/R1) — PR2 merged (#79 / `d7c8606`), telemetry enabled — monitoring 48-72h for zero hits before PR3
+- **SEO-BLOG-META-CANONICALS-01** (P2/R0) — PR open (audit complete; fix implemented: canonical URL consistency using getSiteOrigin())
 
 ## Siguientes 3 items del plan (priorizados)
 
 1. **OPS-STRIPE-LEGACY-DEPRECATE-01 / PR3** (P2/R1) — Remove/410 legacy handlers after 48-72h zero hits
-2. **SEO-BLOG-META-CANONICALS-01** (P2/R0) — Ensure unique title/meta/canonical across blog posts
-3. **SEO-EVENTS-SCHEMA-01** (P2/R0) — Add Event schema.org (JSON-LD) to all event pages
+2. **SEO-EVENTS-SCHEMA-01** (P2/R0) — Add Event schema.org (JSON-LD) to all event pages
+3. **SEO-EXCURSIONS-SCHEMA-01** (P2/R0) — Add TouristTrip schema.org (JSON-LD) to excursion pages
 
 ## Urgent out-of-repo
 
