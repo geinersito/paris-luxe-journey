@@ -14,27 +14,29 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `61f838f`
+- SHA: `09834ef`
 - Last updated: `2026-02-14`
 
 ## Ultimos PRs mergeados en main
 
-1. `#96` - docs(status): sync head after PR #94 (`46185a1`)
-2. `#94` - docs(status): sync head after PR #93 (`61f838f`)
-3. `#93` - docs(status): sync head after PR #92 (`ac8448e9`)
-4. `#92` - SSOT post-merge sync after PR #91 (`e9eee59`)
-5. `#91` - UX A11Y contrast fix for Excursions hero chips (UX-A11Y-EXCURSIONS-HERO-CHIPS-CONTRAST-01) (`b234e65`)
-6. `#89` - UX excursions list compact pass (UX-EXCURSIONS-LIST-COMPACT-01) (`445cf19`)
+1. `#95` - content(events): refresh feed freshness and source attribution (`09834ef`)
+2. `#97` - docs(status): define stable baseline semantics (`11737de`)
+3. `#96` - docs(status): sync head after PR #94 (`46185a1`)
+4. `#94` - docs(status): sync head after PR #93 (`61f838f`)
+5. `#93` - docs(status): sync head after PR #92 (`ac8448e9`)
+6. `#92` - SSOT post-merge sync after PR #91 (`e9eee59`)
+7. `#91` - UX A11Y contrast fix for Excursions hero chips (UX-A11Y-EXCURSIONS-HERO-CHIPS-CONTRAST-01) (`b234e65`)
+8. `#89` - UX excursions list compact pass (UX-EXCURSIONS-LIST-COMPACT-01) (`445cf19`)
 
 ## Ahora en curso
 
-- **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2/R1) — PR2 merged (#79 / `d7c8606`), telemetry enabled — monitoring 48-72h for zero hits before PR3
+- **MEDIA-IMAGES-LIBRARY-01** (P0/R0) — Replace image placeholders with real/licensed assets (priority: Excursions)
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **CONTENT-EVENTS-FRESHNESS-01** (P0/R0) — Update stale Events data (2025-01-13) + establish freshness workflow
-2. **MEDIA-IMAGES-LIBRARY-01** (P0/R0) — Replace ~50-80 image placeholders with real/licensed assets (priority: Excursions)
-3. **CONTENT-EXCURSIONS-FAQ-BLOCKS-01** (P1/R1) — Add detail blocks to Excursion pages (FAQ, Logistics)
+1. **MEDIA-IMAGES-LIBRARY-01** (P0/R0) — Replace ~50-80 image placeholders with real/licensed assets (priority: Excursions)
+2. **CONTENT-EXCURSIONS-FAQ-BLOCKS-01** (P1/R1) — Add detail blocks to Excursion pages (FAQ, Logistics)
+3. **CONTENT-TRUST-SIGNALS-01** (P1/R0) — Add trust signals (Home + Booking flow)
 
 ## Urgent out-of-repo
 
