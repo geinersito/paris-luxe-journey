@@ -9,7 +9,7 @@ Detailed product notes can continue in `docs/PLAN_VIVO_MEJORAS_UI.md`, but execu
 ## Legend
 
 - Priority: `P0` (must), `P1` (high), `P2` (nice)
-- Status: `TODO` / `DOING` / `DONE` / `BLOCKED`
+- Status: `TODO` / `DOING` / `DONE` / `BLOCKED` / `DEFERRED`
 - Risk:
   - `R0` UI-only
   - `R1` flow/state/routing/persistence
@@ -30,7 +30,12 @@ Detailed product notes can continue in `docs/PLAN_VIVO_MEJORAS_UI.md`, but execu
 | NAV-COHERENCE-01 | P1 | R1 | Navigation | Top-nav coherence + dead-page protection | DONE | [#38](https://github.com/geinersito/paris-luxe-journey/pull/38) / `74ec0b5` | Global wildcard fallback + dedicated 404 with CTA |
 | NAV-HOURLY-01 | P1 | R1 | Navigation | Separate `Hourly` intent from `/booking` wizard | DONE | [#40](https://github.com/geinersito/paris-luxe-journey/pull/40) / `c06d6c1` | Intent guard + no sessionStorage mix |
 | UX-HEADER-I18N-01 | P1 | R0 | Header | Keep language dropdown crisp and navbar stable across locales | DONE | [#41](https://github.com/geinersito/paris-luxe-journey/pull/41) / `e40d506` | Compact selector (flag + code) + navbar flex stability |
-| UX-BRANDING-APPROACHABLE-01 | P1 | R0 | Branding/UX | Shift visual perception toward "professional trustworthy" with subtle premium touches (reduce price intimidation) | DOING | [#114](https://github.com/geinersito/paris-luxe-journey/pull/114) / `906a898`, [#116](https://github.com/geinersito/paris-luxe-journey/pull/116) / `afeafbb` | KPI (n>=10 internal review): <=30% "intimidating/expensive", >=70% "clear + trustworthy + accessible". PR1 complete (tokens/vars, merged) and PR2 complete (centralized UI components baseline for Button/Card/Badge/Input). PR3 now pending: page-level visual harmonization and evidence pass (desktop/mobile on Home, Airports, Excursions, Events, Fleet) without broad layout rewrites. DoD: token map + AA contrast checks + before/after desktop/mobile on Home, Airports, Excursions, Events, Fleet. References: `docs/PLAN_CORRECCION_COLORES.md`, `docs/RESUMEN_CORRECCION_COLORES.md`, `docs/PLAN_VIVO_MEJORAS_UI.md`. |
+
+## Deferred items
+
+| ID | Priority | Risk | Area | Description | Status | PR / Commit | Notes / DoD |
+|---|---|---|---|---|---|---|---|
+| UX-BRANDING-APPROACHABLE-01 | P1 | R0 | Branding/UX | Shift visual perception toward "professional trustworthy" with subtle premium touches (reduce price intimidation) | DEFERRED | [#114](https://github.com/geinersito/paris-luxe-journey/pull/114) / `906a898`, [#116](https://github.com/geinersito/paris-luxe-journey/pull/116) / `afeafbb`, [#118](https://github.com/geinersito/paris-luxe-journey/pull/118) / `5b25f7c` | Reverted in #118 for time-to-ship; reverted UI to previous design. Revisit later with a measurement plan (n>=10 review panel + before/after evidence + KPI thresholds) before reactivation. References: `docs/PLAN_CORRECCION_COLORES.md`, `docs/RESUMEN_CORRECCION_COLORES.md`, `docs/PLAN_VIVO_MEJORAS_UI.md`. |
 
 ## Migrated from PLAN_VIVO_MEJORAS_UI.md (legacy backlog)
 
