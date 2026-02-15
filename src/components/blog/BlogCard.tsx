@@ -32,11 +32,7 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
       <Link to={`/blog/${post.category}/${post.slug}`} className="block">
         {/* Cover Image */}
         <div
-          className={`relative overflow-hidden ${
-            featured
-              ? "aspect-[16/9] max-h-[320px] lg:max-h-[360px]"
-              : "aspect-video"
-          }`}
+          className={`relative overflow-hidden ${featured ? "aspect-[16/9] max-h-[320px] lg:max-h-[360px]" : "aspect-video"}`}
         >
           <img
             src={post.image.url}
