@@ -14,31 +14,33 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `87db9ec`
-- Baseline feature: `chore(copy): align footer description to transfers + B2B (PR #129)`
+- SHA: `200b434`
+- Baseline feature: `chore(copy): qa PT wording for home and B2B pages (PR #131)`
 - Last updated: `2026-02-15`
 
 ## Ultimos PRs mergeados en main
 
-1. `#129` - fix(copy): align footer wording with B2C+B2B framing (`87db9ec`)
-2. `#127` - feat(analytics): track B2B page CTAs (agencies/companies) (`30c2cd3`)
-3. `#125` - feat(analytics): GA4 events for CTA, WhatsApp and contact form (`409131a`)
-4. `#123` - feat: B2B pages (/agencias, /empresas) + navbar B2B dropdown (`2d33719`)
-5. `#121` - fix(copy): remove Premium Fleet heading (FleetSection) (`55e0a4f`)
-6. `#120` - feat(copy): home conversion copy via centralized i18n (ES/PT/EN/FR) (`4c6df6b`)
-7. `#119` - docs(ssot): defer UX-BRANDING-APPROACHABLE-01 after UI revert (#118) (`151e8e3`)
-8. `#118` - revert(ui): restore previous design (revert PR1 tokens + PR2 components) (`5b25f7c`)
-9. `#116` - ux(components): baseline buttons/cards/badges/inputs for approachable branding (PR2 UX-BRANDING-APPROACHABLE-01) (`afeafbb`)
-10. `#115` - docs(ssot): mark PR1 tokens done; set PR2 components as next (UX-BRANDING-APPROACHABLE-01) (`49ac97b`)
-11. `#114` - ux(theme): shift tokens to professional trustworthy palette (PR1 UX-BRANDING-APPROACHABLE-01) (`906a898`)
-12. `#113` - docs(ssot): add approachable branding item (UX-BRANDING-APPROACHABLE-01) (`97d7e23`)
-13. `#111` - seo(airports): metadata + canonical + JSON-LD (SEO-AIRPORTS-METADATA-01) (`85fa587`)
-14. `#109` - UX-AIRPORTS-ADD-BOOKING-CTA-01 (`1508245`)
-15. `#107` - content(airports): add terminal guide section (CONTENT-AIRPORTS-TERMINAL-GUIDE-01) (`a0108d6`)
-16. `#105` - content(trust): add sitewide trust signals block (`97e0777`)
+1. `#131` - chore(copy): qa PT wording for home and B2B pages (`200b434`)
+2. `#129` - fix(copy): align footer wording with B2C+B2B framing (`87db9ec`)
+3. `#127` - feat(analytics): track B2B page CTAs (agencies/companies) (`30c2cd3`)
+4. `#125` - feat(analytics): GA4 events for CTA, WhatsApp and contact form (`409131a`)
+5. `#123` - feat: B2B pages (/agencias, /empresas) + navbar B2B dropdown (`2d33719`)
+6. `#121` - fix(copy): remove Premium Fleet heading (FleetSection) (`55e0a4f`)
+7. `#120` - feat(copy): home conversion copy via centralized i18n (ES/PT/EN/FR) (`4c6df6b`)
+8. `#119` - docs(ssot): defer UX-BRANDING-APPROACHABLE-01 after UI revert (#118) (`151e8e3`)
+9. `#118` - revert(ui): restore previous design (revert PR1 tokens + PR2 components) (`5b25f7c`)
+10. `#116` - ux(components): baseline buttons/cards/badges/inputs for approachable branding (PR2 UX-BRANDING-APPROACHABLE-01) (`afeafbb`)
+11. `#115` - docs(ssot): mark PR1 tokens done; set PR2 components as next (UX-BRANDING-APPROACHABLE-01) (`49ac97b`)
+12. `#114` - ux(theme): shift tokens to professional trustworthy palette (PR1 UX-BRANDING-APPROACHABLE-01) (`906a898`)
+13. `#113` - docs(ssot): add approachable branding item (UX-BRANDING-APPROACHABLE-01) (`97d7e23`)
+14. `#111` - seo(airports): metadata + canonical + JSON-LD (SEO-AIRPORTS-METADATA-01) (`85fa587`)
+15. `#109` - UX-AIRPORTS-ADD-BOOKING-CTA-01 (`1508245`)
+16. `#107` - content(airports): add terminal guide section (CONTENT-AIRPORTS-TERMINAL-GUIDE-01) (`a0108d6`)
+17. `#105` - content(trust): add sitewide trust signals block (`97e0777`)
 
 ## Done / Shipped
 
+- **COPY-QA-PT-01** ✅ DONE — PR **#131** — `200b434e1319481e3cce77cec1e0390242e150bb` — PT copy QA for accents/orthography and terminology consistency across Home + B2B sections (copy-only, no functional changes)
 - **FOOTER-COPY-ALIGN-01** ✅ DONE — PR **#129** — `87db9ec3220cd5a5d93785610766ef2cf4ca75ad` — Align footer framing to private transfers + B2B; remove legacy luxury/tours wording (i18n ES/PT/EN/FR)
 - **GA4-EVENTS-01** ✅ DONE — PR **#125** — `409131af` — Home CTAs + WhatsApp + contact `form_start`/`form_submit` via centralized analytics helper
 - **GA4-B2B-CTAS-01** ✅ DONE — PR **#127** — `30c2cd3c` — B2B CTA tracking on `/agencias` and `/empresas` (`cta_click` -> `/contact`)
