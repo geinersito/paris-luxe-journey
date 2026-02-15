@@ -201,7 +201,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed w-full overflow-x-hidden z-nav transition-all duration-500 translate-y-0 ${
+      className={`fixed w-full z-nav transition-all duration-500 translate-y-0 ${
         scrolled
           ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-lg border-b border-primary/10"
           : "bg-white/95 dark:bg-background/90 backdrop-blur-md shadow-sm border-b border-border"
@@ -228,7 +228,7 @@ const Navbar = () => {
           </div>
 
           <div className="hidden md:flex md:items-center flex-1 min-w-0">
-            <div className="flex items-center md:space-x-2 lg:space-x-3 xl:space-x-4 2xl:space-x-5 flex-1 min-w-0 overflow-x-hidden">
+            <div className="flex items-center md:space-x-2 lg:space-x-3 xl:space-x-4 2xl:space-x-5 flex-1 min-w-0">
               {navItems.map((item) =>
                 item.hasDropdown ? (
                   <div key={item.name} className="relative group flex-shrink-0">
