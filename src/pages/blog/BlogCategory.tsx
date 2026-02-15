@@ -8,6 +8,7 @@ import { getSiteOrigin } from "@/lib/seo/site";
 import BlogCard from "@/components/blog/BlogCard";
 import Breadcrumb from "@/components/blog/Breadcrumb";
 import NewsletterCTA from "@/components/blog/NewsletterCTA";
+import BlogSidebar from "@/components/blog/BlogSidebar";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import * as Icons from "lucide-react";
@@ -76,12 +77,12 @@ export default function BlogCategory() {
 
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-primary/10 via-background to-background py-20 md:py-32">
+        <section className="relative bg-gradient-to-br from-primary/10 via-background to-background py-12 md:py-16">
           <div className="container mx-auto px-4">
             {/* Breadcrumb */}
             <Breadcrumb items={breadcrumbItems} />
 
-            <div className="max-w-3xl mx-auto text-center mt-8">
+            <div className="max-w-3xl mx-auto text-center mt-6">
               {/* Category Icon */}
               {IconComponent && (
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6">
@@ -90,12 +91,12 @@ export default function BlogCategory() {
               )}
 
               {/* Category Title */}
-              <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+              <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-5">
                 {categoryMeta.name[currentLang]}
               </h1>
 
               {/* Category Description */}
-              <p className="text-lg md:text-xl text-muted-foreground mb-8">
+              <p className="text-lg md:text-xl text-muted-foreground mb-6">
                 {categoryMeta.description[currentLang]}
               </p>
 
@@ -126,22 +127,32 @@ export default function BlogCategory() {
         </section>
 
         {/* Posts Grid */}
-        <section className="py-16">
+        <section className="py-12 md:py-14">
           <div className="container mx-auto px-4">
-            {filteredPosts.length === 0 ? (
-              <div className="text-center py-16">
-                <p className="text-muted-foreground text-lg">
-                  {t("blog.noArticlesFound") ||
-                    "No articles found. Try a different search term."}
-                </p>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              <div className="lg:col-span-8">
+                {filteredPosts.length === 0 ? (
+                  <div className="text-center py-16">
+                    <p className="text-muted-foreground text-lg">
+                      {t("blog.noArticlesFound") ||
+                        "No articles found. Try a different search term."}
+                    </p>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    {filteredPosts.map((post) => (
+                      <BlogCard key={post.id} post={post} />
+                    ))}
+                  </div>
+                )}
               </div>
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {filteredPosts.map((post) => (
-                  <BlogCard key={post.id} post={post} />
-                ))}
+
+              <div className="lg:col-span-4">
+                <div className="sticky top-24">
+                  <BlogSidebar />
+                </div>
               </div>
-            )}
+            </div>
           </div>
         </section>
 
