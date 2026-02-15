@@ -24,8 +24,10 @@ const FEATURE_ICONS = {
   cleaning: SprayCan,
 } as const;
 
-const FALLBACK_EXTERIOR = "https://images.unsplash.com/photo-1563720360172-67b8f3dce741?auto=format&fit=crop&q=80";
-const FALLBACK_INTERIOR = "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80";
+const FALLBACK_EXTERIOR =
+  "https://images.unsplash.com/photo-1563720360172-67b8f3dce741?auto=format&fit=crop&q=80";
+const FALLBACK_INTERIOR =
+  "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80";
 
 export default function FleetSection() {
   const { t } = useLanguage();
@@ -34,10 +36,12 @@ export default function FleetSection() {
   const [selectedImageType, setSelectedImageType] = React.useState<
     "exterior" | "interior"
   >("exterior");
-  const [imageErrors, setImageErrors] = React.useState<Record<string, boolean>>({});
+  const [imageErrors, setImageErrors] = React.useState<Record<string, boolean>>(
+    {},
+  );
 
   const handleImageError = (vehicleId: string) => {
-    setImageErrors(prev => ({ ...prev, [vehicleId]: true }));
+    setImageErrors((prev) => ({ ...prev, [vehicleId]: true }));
   };
 
   const handleBookNow = () => {
@@ -96,7 +100,10 @@ export default function FleetSection() {
   }
 
   return (
-    <section id="fleet" className="section-padding bg-gradient-to-b from-champagne via-cream to-white">
+    <section
+      id="fleet"
+      className="section-padding bg-gradient-to-b from-champagne via-cream to-white"
+    >
       <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <motion.div
           className="text-center mb-16"
@@ -106,7 +113,7 @@ export default function FleetSection() {
           transition={{ duration: 0.6 }}
         >
           <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
-            Premium Fleet
+            {t.fleet.label}
           </p>
           <h2 className="text-4xl md:text-5xl font-display font-bold text-secondary mb-6">
             {t.fleet.title}
@@ -145,10 +152,12 @@ export default function FleetSection() {
                         key={`${vehicle.id}-${selectedImageType}`}
                         src={
                           imageErrors[vehicle.id]
-                            ? (selectedImageType === "exterior" ? FALLBACK_EXTERIOR : FALLBACK_INTERIOR)
-                            : (selectedImageType === "exterior"
+                            ? selectedImageType === "exterior"
+                              ? FALLBACK_EXTERIOR
+                              : FALLBACK_INTERIOR
+                            : selectedImageType === "exterior"
                               ? vehicle.image_url
-                              : vehicle.interior_image_url)
+                              : vehicle.interior_image_url
                         }
                         alt={`${vehicle.name} - ${selectedImageType}`}
                         className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"

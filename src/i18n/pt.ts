@@ -674,8 +674,9 @@ export const pt: Translation = {
     },
   },
   fleet: {
+    label: "Nossa frota",
     title: "Veículos Disponíveis",
-    subtitle: "Frota premium Mercedes-Benz com menos de 3 anos",
+    subtitle: "Frota Mercedes-Benz moderna e confortavel.",
     exterior: "Exterior",
     interior: "Interior",
     features: "Características incluídas",

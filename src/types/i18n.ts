@@ -222,6 +222,7 @@ export interface Translation {
     };
   };
   fleet: {
+    label: string;
     title: string;
     subtitle: string;
     exterior: string;
