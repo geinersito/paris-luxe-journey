@@ -105,7 +105,7 @@ export default function BlogIndex() {
 
       <div className="min-h-screen bg-background">
         {/* Hero Section - Premium Style */}
-        <section className="relative section-padding bg-gradient-to-b from-champagne via-cream to-white">
+        <section className="relative py-12 md:py-16 bg-gradient-to-b from-champagne via-cream to-white">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
@@ -114,7 +114,7 @@ export default function BlogIndex() {
               <h1 className="text-4xl md:text-6xl font-display font-bold text-secondary mb-6">
                 {t("blog.heroTitle") || "Travel Blog"}
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-gray-600 mb-6 leading-relaxed">
                 {t("blog.heroSubtitle") ||
                   "Expert tips, guides, and insights for your Paris journey"}
               </p>
@@ -137,7 +137,7 @@ export default function BlogIndex() {
         </section>
 
         {/* Category Filter */}
-        <section className="py-8 border-b border-primary/10 bg-white/50 backdrop-blur-sm">
+        <section className="py-6 md:py-7 border-b border-primary/10 bg-white/50 backdrop-blur-sm">
           <div className="container mx-auto px-4">
             <CategoryFilter
               selectedCategory={selectedCategory}
@@ -148,9 +148,9 @@ export default function BlogIndex() {
 
         {/* Featured Post */}
         {selectedCategory === "all" && searchQuery === "" && featuredPost && (
-          <section className="section-padding-sm bg-gradient-to-b from-white to-champagne/30">
+          <section className="py-10 md:py-12 bg-gradient-to-b from-white to-champagne/30">
             <div className="container mx-auto px-4">
-              <div className="text-center mb-12">
+              <div className="text-center mb-8 md:mb-10">
                 <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
                   Featured Story
                 </p>
@@ -166,9 +166,9 @@ export default function BlogIndex() {
         )}
 
         {/* All Posts with Sidebar */}
-        <section className="section-padding bg-gradient-to-b from-champagne/30 via-white to-cream">
+        <section className="py-12 md:py-14 bg-gradient-to-b from-champagne/30 via-white to-cream">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
+            <div className="text-center mb-8 md:mb-10">
               <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
                 Latest Stories
               </p>
@@ -184,7 +184,7 @@ export default function BlogIndex() {
               {/* Main Content */}
               <div className="lg:col-span-8">
                 {filteredPosts.length === 0 ? (
-                  <div className="text-center py-16">
+                  <div className="text-center py-12">
                     <p className="text-muted-foreground text-lg">
                       {t("blog.noArticles") ||
                         "No articles found. Try a different search or category."}
@@ -210,7 +210,7 @@ export default function BlogIndex() {
         </section>
 
         {/* Newsletter CTA */}
-        <section className="section-padding-sm bg-gradient-to-b from-white to-champagne/30">
+        <section className="py-12 md:py-14 bg-gradient-to-b from-white to-champagne/30">
           <div className="container mx-auto px-4">
             <NewsletterCTA />
           </div>
