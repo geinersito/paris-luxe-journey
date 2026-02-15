@@ -10,7 +10,7 @@ export const pt: Translation = {
     excursions: "Excursões",
     events: "Eventos",
     blog: "Blog",
-    agencies: "Agencias",
+    agencies: "Agências",
     companies: "Empresas",
   },
   home: {
@@ -31,8 +31,7 @@ export const pt: Translation = {
       support: "Suporte dedicado por WhatsApp",
       availability: "Disponibilidade 24/7",
     },
-    contactHint:
-      "Na mensagem, informe: Agencia + pais + volume estimado.",
+    contactHint: "Na mensagem, informe: Agencia + pais + volume estimado.",
     cta: "Solicitar tarifas para agencias",
   },
   companies: {
