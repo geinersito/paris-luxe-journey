@@ -5,6 +5,7 @@ import TrustSignals from "@/components/TrustSignals";
 import { Sparkles, MessageCircle, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import {
   buildGenericWhatsAppUrl,
   buildGenericEmailUrl,
@@ -13,10 +14,14 @@ import { getSiteOrigin } from "@/lib/seo/site";
 import { formatParisDate } from "@/lib/datetime/paris";
 import eventsFeedData from "@/data/events/events-feed.json";
 
+type EventsSectionId = "events-week" | "events-month";
+
 export default function Events() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const language = i18n.language;
+  const [activeSection, setActiveSection] =
+    useState<EventsSectionId>("events-week");
 
   const siteOrigin = getSiteOrigin();
   const canonicalUrl = `${siteOrigin}/events`;
@@ -26,6 +31,49 @@ export default function Events() {
     t("events.pageDescription") ||
     "Discover the best events, concerts, exhibitions and activities happening in Paris this week and month. Book your luxury transfer to any event.";
   const lastUpdatedLabel = `${t("events.updatedOn")} ${formatParisDate(eventsFeedData.generatedAt)}`;
+
+  useEffect(() => {
+    const sectionIds: EventsSectionId[] = ["events-week", "events-month"];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleEntries = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+
+        const topEntry = visibleEntries[0];
+        if (!topEntry) return;
+
+        setActiveSection(topEntry.target.id as EventsSectionId);
+      },
+      {
+        root: null,
+        threshold: [0.25, 0.4, 0.55],
+        rootMargin: "-20% 0px -50% 0px",
+      },
+    );
+
+    for (const sectionId of sectionIds) {
+      const element = document.getElementById(sectionId);
+      if (element) observer.observe(element);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToSection = (sectionId: EventsSectionId) => {
+    document.getElementById(sectionId)?.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
+  const sectionButtons: Array<{ id: EventsSectionId; label: string }> = [
+    { id: "events-week", label: t("events.thisWeek") || "This Week in Paris" },
+    {
+      id: "events-month",
+      label: t("events.thisMonth") || "This Month in Paris",
+    },
+  ];
 
   const webPageJsonLd = {
     "@context": "https://schema.org",
@@ -131,33 +179,61 @@ export default function Events() {
           </div>
         </section>
 
-        {/* This Week Section */}
+        {/* Events Listing + Quick Navigation */}
         <section className="section-padding bg-gradient-to-b from-white via-champagne/30 to-cream">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
-                {t("events.comingSoon") || "Coming Soon"}
-              </p>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
-                {t("events.thisWeek") || "This Week in Paris"}
-              </h2>
-            </div>
-            <EventsFeed range="week" variant="full" showHeader={false} />
-          </div>
-        </section>
+            <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)] gap-6 md:gap-8">
+              <aside className="w-full">
+                <div className="bg-white rounded-lg p-6 shadow-sm lg:sticky lg:top-24">
+                  <h3 className="text-lg font-semibold mb-4">
+                    {t("events.liveUpdates") || "Live Updates"}
+                  </h3>
 
-        {/* This Month Section */}
-        <section className="section-padding bg-gradient-to-b from-cream via-champagne/50 to-white">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
-                {t("events.planAhead") || "Plan Ahead"}
-              </p>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
-                {t("events.thisMonth") || "This Month in Paris"}
-              </h2>
+                  <div className="space-y-2">
+                    {sectionButtons.map((section) => (
+                      <button
+                        key={section.id}
+                        type="button"
+                        onClick={() => scrollToSection(section.id)}
+                        className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                          activeSection === section.id
+                            ? "bg-primary text-white font-semibold shadow-md"
+                            : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                        }`}
+                      >
+                        {section.label}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              </aside>
+
+              <div className="space-y-14 md:space-y-16">
+                <article id="events-week" className="scroll-mt-24">
+                  <div className="text-center mb-12">
+                    <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+                      {t("events.comingSoon") || "Coming Soon"}
+                    </p>
+                    <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+                      {t("events.thisWeek") || "This Week in Paris"}
+                    </h2>
+                  </div>
+                  <EventsFeed range="week" variant="full" showHeader={false} />
+                </article>
+
+                <article id="events-month" className="scroll-mt-24">
+                  <div className="text-center mb-12">
+                    <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+                      {t("events.planAhead") || "Plan Ahead"}
+                    </p>
+                    <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+                      {t("events.thisMonth") || "This Month in Paris"}
+                    </h2>
+                  </div>
+                  <EventsFeed range="month" variant="full" showHeader={false} />
+                </article>
+              </div>
             </div>
-            <EventsFeed range="month" variant="full" showHeader={false} />
           </div>
         </section>
 
