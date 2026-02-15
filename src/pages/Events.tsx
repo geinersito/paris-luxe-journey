@@ -127,7 +127,7 @@ export default function Events() {
         <section className="relative pt-12 pb-8 md:pt-16 md:pb-10 lg:pt-20 lg:pb-12 bg-gradient-to-b from-champagne via-cream to-white">
           <div className="container mx-auto px-4">
             {/* Header */}
-            <div className="text-center max-w-4xl mx-auto mb-10 md:mb-12">
+            <div className="text-center max-w-4xl mx-auto mb-8 md:mb-10">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
                 <Sparkles className="w-4 h-4 text-primary" />
                 <span className="text-sm font-medium text-primary">
@@ -173,16 +173,16 @@ export default function Events() {
         </section>
 
         {/* Trust Signals */}
-        <section className="py-6 md:py-8 bg-white">
+        <section className="py-4 md:py-6 bg-white">
           <div className="container mx-auto px-4">
             <TrustSignals />
           </div>
         </section>
 
         {/* Events Listing + Quick Navigation */}
-        <section className="section-padding bg-gradient-to-b from-white via-champagne/30 to-cream">
+        <section className="py-8 md:py-10 lg:py-12 bg-gradient-to-b from-white via-champagne/30 to-cream">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)] gap-6 md:gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)] gap-5 md:gap-6">
               <aside className="w-full">
                 <div className="bg-white rounded-lg p-6 shadow-sm lg:sticky lg:top-24">
                   <h3 className="text-lg font-semibold mb-4">
@@ -208,9 +208,9 @@ export default function Events() {
                 </div>
               </aside>
 
-              <div className="space-y-14 md:space-y-16">
+              <div className="space-y-10 md:space-y-12">
                 <article id="events-week" className="scroll-mt-24">
-                  <div className="text-center mb-12">
+                  <div className="text-center mb-8 md:mb-10">
                     <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
                       {t("events.comingSoon") || "Coming Soon"}
                     </p>
@@ -222,7 +222,7 @@ export default function Events() {
                 </article>
 
                 <article id="events-month" className="scroll-mt-24">
-                  <div className="text-center mb-12">
+                  <div className="text-center mb-8 md:mb-10">
                     <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
                       {t("events.planAhead") || "Plan Ahead"}
                     </p>
@@ -238,7 +238,7 @@ export default function Events() {
         </section>
 
         {/* CTA Section */}
-        <section className="section-padding bg-gradient-to-b from-white to-champagne/30">
+        <section className="py-10 md:py-12 bg-gradient-to-b from-white to-champagne/30">
           <div className="container mx-auto px-4">
             <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 rounded-2xl p-8 md:p-12 text-center max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-4">
