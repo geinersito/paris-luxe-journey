@@ -869,7 +869,7 @@ export const pt: Translation = {
   },
   footer: {
     description:
-      "Serviço de transporte de luxo e tours exclusivos em Paris e arredores.",
+      "Transfers privados em Paris e região. Soluções para agências e empresas.",
     links: {
       title: "Links Rápidos",
       services: "Serviços",

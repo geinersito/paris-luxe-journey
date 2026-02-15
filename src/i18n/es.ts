@@ -797,7 +797,7 @@ export const es: Translation = {
   },
   footer: {
     description:
-      "Servicio de transporte de lujo y tours exclusivos en París y sus alrededores.",
+      "Traslados privados en París y alrededores. Soluciones para agencias y empresas.",
     links: {
       title: "Enlaces Rápidos",
       services: "Servicios",

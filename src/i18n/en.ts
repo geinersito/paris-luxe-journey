@@ -847,7 +847,7 @@ export const en: Translation = {
   },
   footer: {
     description:
-      "Luxury transportation service and exclusive tours in Paris and surroundings.",
+      "Private transfers in Paris and beyond. Solutions for agencies and companies.",
     links: {
       title: "Quick Links",
       services: "Services",
