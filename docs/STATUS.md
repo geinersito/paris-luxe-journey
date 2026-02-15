@@ -14,34 +14,36 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `95aba65`
-- Baseline feature: `chore(copy): coherence sweep for ES/EN/FR B2B wording (PR #135)`
+- SHA: `1d3fd5c`
+- Baseline feature: `fix(events): compact hero spacing to match excursions (PR #137)`
 - Last updated: `2026-02-15`
 
 ## Ultimos PRs mergeados en main
 
-1. `#135` - chore(copy): coherence sweep for ES/EN/FR B2B wording (`95aba65`)
-2. `#133` - feat(analytics): enrich GA4 payload with locale and attribution (`e990e7b`)
-3. `#131` - chore(copy): qa PT wording for home and B2B pages (`200b434`)
-4. `#129` - fix(copy): align footer wording with B2C+B2B framing (`87db9ec`)
-5. `#127` - feat(analytics): track B2B page CTAs (agencies/companies) (`30c2cd3`)
-6. `#125` - feat(analytics): GA4 events for CTA, WhatsApp and contact form (`409131a`)
-7. `#123` - feat: B2B pages (/agencias, /empresas) + navbar B2B dropdown (`2d33719`)
-8. `#121` - fix(copy): remove Premium Fleet heading (FleetSection) (`55e0a4f`)
-9. `#120` - feat(copy): home conversion copy via centralized i18n (ES/PT/EN/FR) (`4c6df6b`)
-10. `#119` - docs(ssot): defer UX-BRANDING-APPROACHABLE-01 after UI revert (#118) (`151e8e3`)
-11. `#118` - revert(ui): restore previous design (revert PR1 tokens + PR2 components) (`5b25f7c`)
-12. `#116` - ux(components): baseline buttons/cards/badges/inputs for approachable branding (PR2 UX-BRANDING-APPROACHABLE-01) (`afeafbb`)
-13. `#115` - docs(ssot): mark PR1 tokens done; set PR2 components as next (UX-BRANDING-APPROACHABLE-01) (`49ac97b`)
-14. `#114` - ux(theme): shift tokens to professional trustworthy palette (PR1 UX-BRANDING-APPROACHABLE-01) (`906a898`)
-15. `#113` - docs(ssot): add approachable branding item (UX-BRANDING-APPROACHABLE-01) (`97d7e23`)
-16. `#111` - seo(airports): metadata + canonical + JSON-LD (SEO-AIRPORTS-METADATA-01) (`85fa587`)
-17. `#109` - UX-AIRPORTS-ADD-BOOKING-CTA-01 (`1508245`)
-18. `#107` - content(airports): add terminal guide section (CONTENT-AIRPORTS-TERMINAL-GUIDE-01) (`a0108d6`)
-19. `#105` - content(trust): add sitewide trust signals block (`97e0777`)
+1. `#137` - fix(events): compact hero spacing to match excursions (`1d3fd5c`)
+2. `#135` - chore(copy): coherence sweep for ES/EN/FR B2B wording (`95aba65`)
+3. `#133` - feat(analytics): enrich GA4 payload with locale and attribution (`e990e7b`)
+4. `#131` - chore(copy): qa PT wording for home and B2B pages (`200b434`)
+5. `#129` - fix(copy): align footer wording with B2C+B2B framing (`87db9ec`)
+6. `#127` - feat(analytics): track B2B page CTAs (agencies/companies) (`30c2cd3`)
+7. `#125` - feat(analytics): GA4 events for CTA, WhatsApp and contact form (`409131a`)
+8. `#123` - feat: B2B pages (/agencias, /empresas) + navbar B2B dropdown (`2d33719`)
+9. `#121` - fix(copy): remove Premium Fleet heading (FleetSection) (`55e0a4f`)
+10. `#120` - feat(copy): home conversion copy via centralized i18n (ES/PT/EN/FR) (`4c6df6b`)
+11. `#119` - docs(ssot): defer UX-BRANDING-APPROACHABLE-01 after UI revert (#118) (`151e8e3`)
+12. `#118` - revert(ui): restore previous design (revert PR1 tokens + PR2 components) (`5b25f7c`)
+13. `#116` - ux(components): baseline buttons/cards/badges/inputs for approachable branding (PR2 UX-BRANDING-APPROACHABLE-01) (`afeafbb`)
+14. `#115` - docs(ssot): mark PR1 tokens done; set PR2 components as next (UX-BRANDING-APPROACHABLE-01) (`49ac97b`)
+15. `#114` - ux(theme): shift tokens to professional trustworthy palette (PR1 UX-BRANDING-APPROACHABLE-01) (`906a898`)
+16. `#113` - docs(ssot): add approachable branding item (UX-BRANDING-APPROACHABLE-01) (`97d7e23`)
+17. `#111` - seo(airports): metadata + canonical + JSON-LD (SEO-AIRPORTS-METADATA-01) (`85fa587`)
+18. `#109` - UX-AIRPORTS-ADD-BOOKING-CTA-01 (`1508245`)
+19. `#107` - content(airports): add terminal guide section (CONTENT-AIRPORTS-TERMINAL-GUIDE-01) (`a0108d6`)
+20. `#105` - content(trust): add sitewide trust signals block (`97e0777`)
 
 ## Done / Shipped
 
+- **EVENTS-HERO-COMPACT-01** ✅ DONE — PR **#137** — `1d3fd5c822c8030c61dd4fc2beb583eb9749d4f3` — Reduce Events hero vertical spacing to compact standard aligned with Excursions (layout-only, no functional changes)
 - **COPY-COHERENCE-ES-EN-FR-01** ✅ DONE — PR **#135** — `95aba65db23db42fcb22a352cd6576cba64de936` — Copy-only coherence sweep for ES/EN/FR in B2B wording (accents, terminology, and non-touristic corporate tone)
 - **GA4-ENRICHMENT-01** ✅ DONE — PR **#133** — `e990e7b80ec832e17dc2fc3d14b49d2b4a87d32b` — Enrich GA4 payload with `locale`, `placement`, `href` and URL `utm_*`; add explicit CTA placement/href in Home, Agencies and Companies
 - **COPY-QA-PT-01** ✅ DONE — PR **#131** — `200b434e1319481e3cce77cec1e0390242e150bb` — PT copy QA for accents/orthography and terminology consistency across Home + B2B sections (copy-only, no functional changes)
