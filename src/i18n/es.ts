@@ -11,13 +11,27 @@ export const es: Translation = {
     events: "Eventos",
     blog: "Blog",
   },
+  home: {
+    b2b: {
+      title: "Para agencias y empresas",
+      desc: "Tarifas B2B, facturacion y soporte dedicado.",
+      cta: "Ver opciones B2B",
+    },
+  },
   hero: {
-    title: "Paris Elite Services",
-    subtitle:
-      "Transfers aeropuerto París ⇄ CDG / Orly desde 70€ (1–3 pasajeros, todo incluido)",
+    title: "Chofer profesional en Paris",
+    subtitle: "Traslados comodos y precios claros",
+    proofline:
+      "Aeropuertos desde 110€ · 24/7 · Meet & Greet · Seguimiento de vuelo",
+    langProof: "Atendemos en espanol",
+    bullet1: "Puntualidad y conductores profesionales",
+    bullet2: "Para negocios, familias y turistas",
+    bullet3: "Reserva rapida, confirmacion inmediata",
+    ctaPrimary: "Cotizar mi traslado ahora",
+    ctaSecondary: "Contactar",
     selectPickup: "Seleccionar…",
     selectDropoff: "Seleccionar…",
-    getInstantQuote: "Obtener precio al instante",
+    getInstantQuote: "Cotizar mi traslado ahora",
     fixedPrice: "Precio fijo",
     freeCancellation: "Cancelación gratuita",
     support247: "Soporte 24/7",
@@ -524,16 +538,18 @@ export const es: Translation = {
     warning: "Advertencia",
   },
   services: {
-    title: "Nuestros Servicios Premium",
-    subtitle: "Experimente el transporte de lujo en su máxima expresión",
-    decorativeSubtitle: "Experimente el transporte de lujo",
-    cta: "Reservar Ahora",
+    title: "Nuestros servicios",
+    subtitle:
+      "Traslados y tours privados con precios claros. Estaciones en Paris desde 70€.",
+    decorativeSubtitle: "Servicio profesional y fiable",
+    cta: "Ver opciones",
     groupDisclaimer: "Para grupos de 8+ pasajeros, por favor contáctenos",
     airport: {
-      title: "Traslados Aeropuerto",
+      title: "Traslados al aeropuerto",
       description:
-        "Transporte sin contratiempos desde y hacia los aeroportos CDG, Orly y Beauvais.",
-      priceFrom: "Desde €70",
+        "CDG · Orly · Beauvais → tu hotel. Desde 110€ con Meet & Greet, seguimiento de vuelo y precio fijo. Precios varian segun aeropuerto, zona y pasajeros.",
+      cta: "Cotizar ahora",
+      priceFrom: "Desde €110",
       features: [
         "Servicio Meet & Greet",
         "Seguimiento de Vuelos",
@@ -543,9 +559,11 @@ export const es: Translation = {
       ],
     },
     chauffeur: {
-      title: "Chófer Privado",
-      description: "Vehículo de lujo con chófer profesional a su disposición.",
-      priceFrom: "Desde €60/hora",
+      title: "Chofer por horas",
+      description:
+        "Traslados en Paris y estaciones desde 70€. Servicio por horas desde 70€/hora.",
+      cta: "Reservar por horas",
+      priceFrom: "Desde €70/hora",
       features: [
         "Reserva por Horas Disponible",
         "Disponibilidad 24/7",
@@ -554,10 +572,10 @@ export const es: Translation = {
       ],
     },
     cityTours: {
-      title: "Tours por la Ciudad",
-      description:
-        "Descubra los lugares más emblemáticos de París con nuestros chóferes profesionales.",
-      priceFrom: "Desde €95",
+      title: "Tours privados",
+      description: "Con o sin guia. A tu medida.",
+      cta: "Ver opciones",
+      priceFrom: "A medida",
       features: [
         "Itinerarios Personalizados",
         "Chóferes Profesionales",

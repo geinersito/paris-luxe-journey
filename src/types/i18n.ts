@@ -11,9 +11,23 @@ export interface Translation {
     events: string;
     blog: string;
   };
+  home: {
+    b2b: {
+      title: string;
+      desc: string;
+      cta: string;
+    };
+  };
   hero: {
     title: string;
     subtitle: string;
+    proofline: string;
+    langProof: string;
+    bullet1: string;
+    bullet2: string;
+    bullet3: string;
+    ctaPrimary: string;
+    ctaSecondary: string;
     selectPickup: string;
     selectDropoff: string;
     getInstantQuote: string;
@@ -275,18 +289,21 @@ export interface Translation {
     airport: {
       title: string;
       description: string;
+      cta: string;
       priceFrom: string;
       features: string[];
     };
     chauffeur: {
       title: string;
       description: string;
+      cta: string;
       priceFrom: string;
       features: string[];
     };
     cityTours: {
       title: string;
       description: string;
+      cta: string;
       priceFrom: string;
       features: string[];
     };
