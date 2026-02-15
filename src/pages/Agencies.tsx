@@ -52,7 +52,9 @@ export default function AgenciesPage() {
                     page: "/agencias",
                     cta_id: "b2b_agencies_primary",
                     cta_label: t.agencies.cta,
+                    placement: "b2b_page_primary",
                     destination: "/contact",
+                    href: "/contact",
                   })
                 }
               >
