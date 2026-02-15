@@ -10,6 +10,8 @@ export const en: Translation = {
     excursions: "Excursions",
     events: "Events",
     blog: "Blog",
+    agencies: "Agencies",
+    companies: "Companies",
   },
   home: {
     b2b: {
@@ -17,6 +19,36 @@ export const en: Translation = {
       desc: "B2B rates, invoicing, and dedicated support.",
       cta: "View B2B options",
     },
+  },
+  agencies: {
+    metaTitle: "For travel agencies | Special rates in Paris",
+    h1: "Work with us as your trusted partner",
+    intro:
+      "We collaborate with agencies in Mexico, Brazil, and Latin America. Professional service, impeccable vehicles, and fast support in Spanish.",
+    bullets: {
+      volume: "Special volume rates",
+      invoicing: "Clear invoicing and reports",
+      support: "Dedicated WhatsApp support",
+      availability: "24/7 availability",
+    },
+    contactHint:
+      "In your message, include: Agency + country + estimated volume.",
+    cta: "Request agency rates",
+  },
+  companies: {
+    metaTitle: "Professional chauffeur services for companies in Paris",
+    h1: "Mobility solutions for your team",
+    intro:
+      "Transfers, events, and corporate rides with punctuality, discretion, and clear invoicing.",
+    bullets: {
+      billing: "Corporate accounts and monthly invoicing",
+      routes: "Transfers for airports, La Defense, stations, and trade fairs",
+      chauffeurs: "Discreet bilingual chauffeurs",
+      support: "24/7 support",
+    },
+    contactHint:
+      "In your message, include: Company + transfers per month + service type.",
+    cta: "Request corporate proposal",
   },
   hero: {
     title: "Professional chauffeur in Paris",

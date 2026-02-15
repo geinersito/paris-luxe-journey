@@ -10,6 +10,8 @@ export const pt: Translation = {
     excursions: "Excursões",
     events: "Eventos",
     blog: "Blog",
+    agencies: "Agências",
+    companies: "Empresas",
   },
   home: {
     b2b: {
@@ -17,6 +19,35 @@ export const pt: Translation = {
       desc: "Tarifas B2B, faturamento e suporte dedicado.",
       cta: "Ver opcoes B2B",
     },
+  },
+  agencies: {
+    metaTitle: "Para agencias de viagens | Tarifas especiais em Paris",
+    h1: "Trabalhamos com voce como parceiro de confianca",
+    intro:
+      "Colaboramos com agencias do Mexico, Brasil e America Latina. Servico profissional, veiculos impecaveis e atendimento rapido em espanhol.",
+    bullets: {
+      volume: "Tarifas especiais por volume",
+      invoicing: "Faturamento claro e relatorios",
+      support: "Suporte dedicado por WhatsApp",
+      availability: "Disponibilidade 24/7",
+    },
+    contactHint: "Na mensagem, informe: Agencia + pais + volume estimado.",
+    cta: "Solicitar tarifas para agencias",
+  },
+  companies: {
+    metaTitle: "Motorista profissional para empresas em Paris",
+    h1: "Solucoes de mobilidade para sua equipe",
+    intro:
+      "Transfers, eventos e deslocamentos corporativos com pontualidade, discricao e faturamento.",
+    bullets: {
+      billing: "Contas corporativas e faturamento mensal",
+      routes: "Transfers para aeroportos, La Defense, estacoes e feiras",
+      chauffeurs: "Motoristas discretos e bilingues",
+      support: "Suporte 24/7",
+    },
+    contactHint:
+      "Na mensagem, informe: Empresa + transfers por mes + tipo de servico.",
+    cta: "Solicitar proposta corporativa",
   },
   hero: {
     title: "Motorista profissional em Paris",

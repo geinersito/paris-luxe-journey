@@ -10,6 +10,8 @@ export const fr: Translation = {
     excursions: "Excursions",
     events: "Événements",
     blog: "Blog",
+    agencies: "Agences",
+    companies: "Entreprises",
   },
   home: {
     b2b: {
@@ -17,6 +19,36 @@ export const fr: Translation = {
       desc: "Tarifs B2B, facturation et support dedie.",
       cta: "Voir les options B2B",
     },
+  },
+  agencies: {
+    metaTitle: "Pour les agences de voyages | Tarifs speciaux a Paris",
+    h1: "Travaillez avec nous comme partenaire de confiance",
+    intro:
+      "Nous collaborons avec des agences du Mexique, du Bresil et d'Amerique latine. Service professionnel, vehicules impeccables et support rapide en espagnol.",
+    bullets: {
+      volume: "Tarifs speciaux selon le volume",
+      invoicing: "Facturation claire et rapports",
+      support: "Support dedie via WhatsApp",
+      availability: "Disponibilite 24/7",
+    },
+    contactHint:
+      "Dans votre message, indiquez : Agence + pays + volume estime.",
+    cta: "Demander des tarifs agences",
+  },
+  companies: {
+    metaTitle: "Chauffeur professionnel pour entreprises a Paris",
+    h1: "Solutions de mobilite pour votre equipe",
+    intro:
+      "Transferts, evenements et trajets corporate avec ponctualite, discretion et facturation.",
+    bullets: {
+      billing: "Comptes corporate et facturation mensuelle",
+      routes: "Transferts aeroports, La Defense, gares et salons",
+      chauffeurs: "Chauffeurs discrets et bilingues",
+      support: "Support 24/7",
+    },
+    contactHint:
+      "Dans votre message, indiquez : Entreprise + transferts par mois + type de service.",
+    cta: "Demander une proposition corporate",
   },
   hero: {
     title: "Chauffeur professionnel a Paris",
