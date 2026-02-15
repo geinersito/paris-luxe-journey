@@ -1,30 +1,43 @@
-import { Link } from 'react-router-dom'
-import { BlogPostMeta } from '@/types/blog'
-import { formatDate, getReadTimeText } from '@/lib/blog-utils'
-import { getCategoryBySlug } from '@/data/blog/categories'
-import { Clock, Calendar, ArrowRight } from 'lucide-react'
-import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card'
-import { useTranslation } from 'react-i18next'
+import { Link } from "react-router-dom";
+import { BlogPostMeta } from "@/types/blog";
+import { formatDate, getReadTimeText } from "@/lib/blog-utils";
+import { getCategoryBySlug } from "@/data/blog/categories";
+import { Clock, Calendar, ArrowRight } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/ui/card";
+import { useTranslation } from "react-i18next";
 
 interface BlogCardProps {
-  post: BlogPostMeta
-  featured?: boolean
+  post: BlogPostMeta;
+  featured?: boolean;
 }
 
 export default function BlogCard({ post, featured = false }: BlogCardProps) {
-  const { i18n } = useTranslation()
-  const currentLang = i18n.language as 'en' | 'fr' | 'es' | 'pt'
+  const { i18n } = useTranslation();
+  const currentLang = i18n.language as "en" | "fr" | "es" | "pt";
 
-  const category = getCategoryBySlug(post.category)
+  const category = getCategoryBySlug(post.category);
 
   return (
-    <Card className={`group overflow-hidden glass-card-premium hover:shadow-luxury-hover transition-all duration-500 border-2 border-primary/20 hover:border-primary/40 hover:-translate-y-2 ${
-      featured ? 'md:col-span-2 md:row-span-2' : ''
-    }`}>
+    <Card
+      className={`group overflow-hidden glass-card-premium hover:shadow-luxury-hover transition-all duration-500 border-2 border-primary/20 hover:border-primary/40 hover:-translate-y-2 ${
+        featured ? "md:col-span-2 md:row-span-2" : ""
+      }`}
+    >
       <Link to={`/blog/${post.category}/${post.slug}`} className="block">
         {/* Cover Image */}
-        <div className="relative overflow-hidden aspect-video">
+        <div
+          className={`relative overflow-hidden ${
+            featured
+              ? "aspect-[16/9] max-h-[320px] lg:max-h-[360px]"
+              : "aspect-video"
+          }`}
+        >
           <img
             src={post.image.url}
             alt={post.image.alt[currentLang]}
@@ -50,17 +63,21 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
         </div>
 
         <CardHeader className="relative">
-          <h3 className={`font-display font-bold text-secondary group-hover:text-primary transition-colors duration-300 ${
-            featured ? 'text-2xl md:text-3xl' : 'text-xl'
-          }`}>
+          <h3
+            className={`font-display font-bold text-secondary group-hover:text-primary transition-colors duration-300 ${
+              featured ? "text-2xl md:text-3xl" : "text-xl"
+            }`}
+          >
             {post.title[currentLang]}
           </h3>
         </CardHeader>
 
         <CardContent>
-          <p className={`text-gray-600 leading-relaxed ${
-            featured ? 'text-base md:text-lg' : 'text-sm'
-          }`}>
+          <p
+            className={`text-gray-600 leading-relaxed ${
+              featured ? "text-base md:text-lg" : "text-sm"
+            }`}
+          >
             {post.description[currentLang]}
           </p>
 
@@ -68,11 +85,15 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
           <div className="flex flex-wrap items-center gap-4 mt-6 text-sm">
             <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-gold-subtle rounded-lg">
               <Calendar className="w-4 h-4 text-primary" />
-              <span className="text-gray-700 font-medium">{formatDate(post.publishedAt, currentLang)}</span>
+              <span className="text-gray-700 font-medium">
+                {formatDate(post.publishedAt, currentLang)}
+              </span>
             </div>
             <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-gold-subtle rounded-lg">
               <Clock className="w-4 h-4 text-primary" />
-              <span className="text-gray-700 font-medium">{getReadTimeText(post.readingTime, currentLang)}</span>
+              <span className="text-gray-700 font-medium">
+                {getReadTimeText(post.readingTime, currentLang)}
+              </span>
             </div>
           </div>
 
@@ -105,6 +126,5 @@ export default function BlogCard({ post, featured = false }: BlogCardProps) {
         </CardFooter>
       </Link>
     </Card>
-  )
+  );
 }
-
