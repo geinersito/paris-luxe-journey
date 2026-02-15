@@ -24,7 +24,7 @@ export const en: Translation = {
     metaTitle: "For travel agencies | Special rates in Paris",
     h1: "Work with us as your trusted partner",
     intro:
-      "We collaborate with agencies in Mexico, Brazil, and Latin America. Professional service, impeccable vehicles, and fast support in Spanish.",
+      "We collaborate with agencies in Mexico, Brazil, and Latin America. Professional service, impeccable vehicles, and responsive support in Spanish.",
     bullets: {
       volume: "Special volume rates",
       invoicing: "Clear invoicing and reports",
@@ -42,13 +42,13 @@ export const en: Translation = {
       "Transfers, events, and corporate rides with punctuality, discretion, and clear invoicing.",
     bullets: {
       billing: "Corporate accounts and monthly invoicing",
-      routes: "Transfers for airports, La Defense, stations, and trade fairs",
+      routes: "Transfers for airports, La Défense, stations, and trade fairs",
       chauffeurs: "Discreet bilingual chauffeurs",
       support: "24/7 support",
     },
     contactHint:
       "In your message, include: Company + transfers per month + service type.",
-    cta: "Request corporate proposal",
+    cta: "Request a corporate proposal",
   },
   hero: {
     title: "Professional chauffeur in Paris",

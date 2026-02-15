@@ -16,39 +16,39 @@ export const fr: Translation = {
   home: {
     b2b: {
       title: "Pour les agences et entreprises",
-      desc: "Tarifs B2B, facturation et support dedie.",
+      desc: "Tarifs B2B, facturation et support dédié.",
       cta: "Voir les options B2B",
     },
   },
   agencies: {
-    metaTitle: "Pour les agences de voyages | Tarifs speciaux a Paris",
+    metaTitle: "Pour les agences de voyages | Tarifs spéciaux à Paris",
     h1: "Travaillez avec nous comme partenaire de confiance",
     intro:
-      "Nous collaborons avec des agences du Mexique, du Bresil et d'Amerique latine. Service professionnel, vehicules impeccables et support rapide en espagnol.",
+      "Nous collaborons avec des agences du Mexique, du Brésil et d'Amérique latine. Service professionnel, véhicules impeccables et support réactif en espagnol.",
     bullets: {
-      volume: "Tarifs speciaux selon le volume",
+      volume: "Tarifs spéciaux selon le volume",
       invoicing: "Facturation claire et rapports",
-      support: "Support dedie via WhatsApp",
-      availability: "Disponibilite 24/7",
+      support: "Support dédié via WhatsApp",
+      availability: "Disponibilité 24/7",
     },
     contactHint:
-      "Dans votre message, indiquez : Agence + pays + volume estime.",
+      "Dans votre message, indiquez : Agence + pays + volume estimé.",
     cta: "Demander des tarifs agences",
   },
   companies: {
-    metaTitle: "Chauffeur professionnel pour entreprises a Paris",
-    h1: "Solutions de mobilite pour votre equipe",
+    metaTitle: "Chauffeur professionnel pour entreprises à Paris",
+    h1: "Solutions de mobilité pour votre équipe",
     intro:
-      "Transferts, evenements et trajets corporate avec ponctualite, discretion et facturation.",
+      "Transferts, événements et trajets d'entreprise avec ponctualité, discrétion et facturation claire.",
     bullets: {
-      billing: "Comptes corporate et facturation mensuelle",
-      routes: "Transferts aeroports, La Defense, gares et salons",
+      billing: "Comptes entreprises et facturation mensuelle",
+      routes: "Transferts aéroports, La Défense, gares et salons",
       chauffeurs: "Chauffeurs discrets et bilingues",
       support: "Support 24/7",
     },
     contactHint:
       "Dans votre message, indiquez : Entreprise + transferts par mois + type de service.",
-    cta: "Demander une proposition corporate",
+    cta: "Demander une proposition entreprise",
   },
   hero: {
     title: "Chauffeur professionnel a Paris",

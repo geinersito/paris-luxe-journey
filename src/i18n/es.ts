@@ -16,33 +16,33 @@ export const es: Translation = {
   home: {
     b2b: {
       title: "Para agencias y empresas",
-      desc: "Tarifas B2B, facturacion y soporte dedicado.",
+      desc: "Tarifas B2B, facturación y soporte dedicado.",
       cta: "Ver opciones B2B",
     },
   },
   agencies: {
-    metaTitle: "Para agencias de viajes | Tarifas especiales Paris",
-    h1: "Trabajamos contigo como partner de confianza",
+    metaTitle: "Para agencias de viajes | Tarifas especiales en Paris",
+    h1: "Trabajamos contigo como socio de confianza",
     intro:
-      "Colaboramos con agencias de Mexico, Brasil y Latinoamerica. Servicio profesional, vehiculos impecables y soporte rapido en espanol.",
+      "Colaboramos con agencias de México, Brasil y Latinoamérica. Servicio profesional, vehículos impecables y soporte ágil en español.",
     bullets: {
       volume: "Tarifas especiales por volumen",
-      invoicing: "Facturacion clara y reportes",
+      invoicing: "Facturación clara y reportes",
       support: "Soporte dedicado por WhatsApp",
       availability: "Disponibilidad 24/7",
     },
-    contactHint: "En el mensaje, indica: Agencia + pais + volumen estimado.",
+    contactHint: "En el mensaje, indica: Agencia + país + volumen estimado.",
     cta: "Solicitar tarifas para agencias",
   },
   companies: {
     metaTitle: "Chofer profesional para empresas en Paris",
     h1: "Soluciones de movilidad para tu equipo",
     intro:
-      "Transfers, eventos y traslados corporativos con puntualidad, discrecion y facturacion.",
+      "Transfers, eventos y traslados corporativos con puntualidad, discreción y facturación clara.",
     bullets: {
-      billing: "Cuentas corporativas y facturacion mensual",
-      routes: "Transfers aeropuertos, La Defense, estaciones y ferias",
-      chauffeurs: "Choferes discretos y bilingues",
+      billing: "Cuentas corporativas y facturación mensual",
+      routes: "Transfers para aeropuertos, La Défense, estaciones y ferias",
+      chauffeurs: "Choferes discretos y bilingües",
       support: "Soporte 24/7",
     },
     contactHint:
