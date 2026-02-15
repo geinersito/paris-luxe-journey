@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
+import { trackEvent } from "@/lib/analytics";
 
 export default function AgenciesPage() {
   const { t } = useLanguage();
@@ -44,7 +45,19 @@ export default function AgenciesPage() {
             </p>
 
             <Button asChild className="silk-button">
-              <Link to="/contact">{t.agencies.cta}</Link>
+              <Link
+                to="/contact"
+                onClick={() =>
+                  trackEvent("cta_click", {
+                    page: "/agencias",
+                    cta_id: "b2b_agencies_primary",
+                    cta_label: t.agencies.cta,
+                    destination: "/contact",
+                  })
+                }
+              >
+                {t.agencies.cta}
+              </Link>
             </Button>
           </div>
         </div>
