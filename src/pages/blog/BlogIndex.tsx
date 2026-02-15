@@ -1,13 +1,17 @@
 import { useState, useMemo } from "react";
+import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { blogPosts, getFeaturedPost } from "@/data/blog/posts.meta";
+import { getCategoryBySlug } from "@/data/blog/categories";
 import BlogCard from "@/components/blog/BlogCard";
 import CategoryFilter from "@/components/blog/CategoryFilter";
 import NewsletterCTA from "@/components/blog/NewsletterCTA";
 import BlogSidebar from "@/components/blog/BlogSidebar";
+import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
+import { Search, Calendar, Clock, ArrowRight } from "lucide-react";
+import { formatDate, getReadTimeText } from "@/lib/blog-utils";
 import { BlogCategory, Language } from "@/types/blog";
 import { getSiteOrigin } from "@/lib/seo/site";
 
@@ -19,6 +23,9 @@ export default function BlogIndex() {
   const [searchQuery, setSearchQuery] = useState("");
 
   const featuredPost = getFeaturedPost();
+  const featuredCategory = featuredPost
+    ? getCategoryBySlug(featuredPost.category)
+    : null;
 
   const siteOrigin = getSiteOrigin();
   const canonicalUrl = `${siteOrigin}/blog`;
@@ -158,8 +165,96 @@ export default function BlogIndex() {
                   {t("blog.featured") || "Featured Article"}
                 </h2>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <BlogCard post={featuredPost} featured />
+              <div className="max-w-5xl mx-auto">
+                <Link
+                  to={`/blog/${featuredPost.category}/${featuredPost.slug}`}
+                  className="group block"
+                >
+                  <article className="overflow-hidden rounded-2xl border-2 border-primary/20 bg-white shadow-sm hover:border-primary/40 hover:shadow-luxury-hover transition-all duration-500">
+                    <div className="grid grid-cols-12">
+                      <div className="col-span-12 lg:col-span-5">
+                        <div className="relative h-full min-h-[250px] md:min-h-[300px] overflow-hidden">
+                          <img
+                            src={featuredPost.image.url}
+                            alt={featuredPost.image.alt[lang]}
+                            className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
+                          <div className="absolute top-4 left-4">
+                            <Badge className="bg-gradient-to-r from-primary to-primary/80 text-white border-0 shadow-lg">
+                              {featuredCategory?.name[lang] ||
+                                featuredPost.category}
+                            </Badge>
+                          </div>
+                          {featuredPost.featured && (
+                            <div className="absolute top-4 right-4">
+                              <Badge className="bg-secondary/90 backdrop-blur-sm text-white border-0 shadow-lg">
+                                ⭐ Featured
+                              </Badge>
+                            </div>
+                          )}
+                        </div>
+                      </div>
+
+                      <div className="col-span-12 lg:col-span-7 p-6 md:p-8 flex flex-col justify-between gap-6">
+                        <div>
+                          <h3 className="text-2xl md:text-3xl font-display font-bold text-secondary group-hover:text-primary transition-colors duration-300">
+                            {featuredPost.title[lang]}
+                          </h3>
+                          <p className="mt-4 text-base md:text-lg text-gray-600 leading-relaxed">
+                            {featuredPost.description[lang]}
+                          </p>
+
+                          <div className="mt-5 flex flex-wrap items-center gap-3 text-sm">
+                            <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-gold-subtle rounded-lg">
+                              <Calendar className="w-4 h-4 text-primary" />
+                              <span className="text-gray-700 font-medium">
+                                {formatDate(featuredPost.publishedAt, lang)}
+                              </span>
+                            </div>
+                            <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-gold-subtle rounded-lg">
+                              <Clock className="w-4 h-4 text-primary" />
+                              <span className="text-gray-700 font-medium">
+                                {getReadTimeText(
+                                  featuredPost.readingTime,
+                                  lang,
+                                )}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div>
+                          <div className="flex items-center gap-3 pt-5 border-t border-primary/10">
+                            <div className="relative">
+                              <img
+                                src={featuredPost.author.avatar}
+                                alt={featuredPost.author.name}
+                                className="w-12 h-12 rounded-full object-cover ring-2 ring-primary/20"
+                              />
+                              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-primary rounded-full border-2 border-white" />
+                            </div>
+                            <div>
+                              <p className="text-sm font-semibold text-secondary">
+                                {featuredPost.author.name}
+                              </p>
+                              <p className="text-xs text-gray-600 font-medium">
+                                {featuredPost.author.role[lang]}
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="mt-4 flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all duration-300">
+                            <span className="font-display">
+                              {t("blog.readMore") || "Read More"}
+                            </span>
+                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </Link>
               </div>
             </div>
           </section>
