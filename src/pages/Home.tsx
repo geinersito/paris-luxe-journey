@@ -69,33 +69,43 @@ export default function Home() {
         page: "home",
         cta_id: "home_hero_primary",
         cta_label: label,
+        placement: "hero_primary",
         destination: "booking_modal",
+        href: "booking_modal",
       });
       return;
     }
 
     if (section?.id === "booking" && label === heroSecondaryLabel) {
+      const href =
+        clickable instanceof HTMLAnchorElement
+          ? clickable.getAttribute("href") || "#contact"
+          : "#contact";
+
       trackEvent("cta_click", {
         page: "home",
         cta_id: "home_hero_secondary",
         cta_label: label,
-        destination:
-          clickable instanceof HTMLAnchorElement
-            ? clickable.getAttribute("href") || "#contact"
-            : "#contact",
+        placement: "hero_secondary",
+        destination: href,
+        href,
       });
       return;
     }
 
     if (section?.id === "b2b" && label === b2bLabel) {
+      const href =
+        clickable instanceof HTMLAnchorElement
+          ? clickable.getAttribute("href") || "#contact"
+          : "#contact";
+
       trackEvent("cta_click", {
         page: "home",
         cta_id: "home_b2b",
         cta_label: label,
-        destination:
-          clickable instanceof HTMLAnchorElement
-            ? clickable.getAttribute("href") || "#contact"
-            : "#contact",
+        placement: "home_b2b",
+        destination: href,
+        href,
       });
     }
   };

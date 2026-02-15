@@ -52,7 +52,9 @@ export default function CompaniesPage() {
                     page: "/empresas",
                     cta_id: "b2b_companies_primary",
                     cta_label: t.companies.cta,
+                    placement: "b2b_page_primary",
                     destination: "/contact",
+                    href: "/contact",
                   })
                 }
               >
