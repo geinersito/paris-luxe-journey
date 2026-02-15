@@ -7,12 +7,21 @@ import { Textarea } from "../ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
+import { trackEvent } from "@/lib/analytics";
+
+const getPageName = () => {
+  if (typeof window === "undefined") return "home";
+  return window.location.pathname === "/"
+    ? "home"
+    : window.location.pathname.replace(/^\//, "");
+};
 
 const ContactSection = () => {
   const { t } = useLanguage();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [showSuccess, setShowSuccess] = useState(false);
+  const [hasStartedForm, setHasStartedForm] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,10 +29,30 @@ const ContactSection = () => {
     message: "",
   });
 
+  const markFormStarted = (event: React.SyntheticEvent<HTMLElement>) => {
+    const target = event.target as HTMLElement | null;
+    if (!target) return;
+
+    const tag = target.tagName;
+    if (tag !== "INPUT" && tag !== "TEXTAREA" && tag !== "SELECT") return;
+    if (hasStartedForm) return;
+
+    setHasStartedForm(true);
+    trackEvent("form_start", {
+      page: getPageName(),
+      form_id: "contact_section",
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setShowSuccess(false);
+    trackEvent("form_submit", {
+      page: getPageName(),
+      form_id: "contact_section",
+      method: "contact_form",
+    });
 
     try {
       // Guardar el mensaje en la base de datos
@@ -63,6 +92,7 @@ const ContactSection = () => {
         phone: "",
         message: "",
       });
+      setHasStartedForm(false);
     } catch (error) {
       console.error("Error sending message:", error);
       toast({
@@ -208,7 +238,12 @@ const ContactSection = () => {
               </Alert>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form
+              onSubmit={handleSubmit}
+              onFocusCapture={markFormStarted}
+              onInputCapture={markFormStarted}
+              className="space-y-6"
+            >
               <div>
                 <label
                   htmlFor="name"
