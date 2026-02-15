@@ -14,27 +14,27 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `85fa587`
-- Last updated: `2026-02-14`
+- SHA: `906a898`
+- Last updated: `2026-02-15`
 
 ## Ultimos PRs mergeados en main
 
-1. `#111` - seo(airports): metadata + canonical + JSON-LD (SEO-AIRPORTS-METADATA-01) (`85fa587`)
-2. `#109` - UX-AIRPORTS-ADD-BOOKING-CTA-01 (`1508245`)
-3. `#107` - content(airports): add terminal guide section (CONTENT-AIRPORTS-TERMINAL-GUIDE-01) (`a0108d6`)
-4. `#105` - content(trust): add sitewide trust signals block (`97e0777`)
-5. `#104` - docs(ssot): post-merge sync after PR #103 (`b889c96`)
-6. `#103` - feat(excursions): reduce pre-list scroll above fold (`9ae13b0`)
-7. `#102` - docs(ssot): post-merge sync after PR #101 (`431f18b`)
-8. `#101` - content(excursions): unify faq blocks across detail pages (`2539c74`)
-9. `#100` - docs(ssot): post-merge sync after PR #99 (`6e48b9c`)
-10. `#99` - feat(media): add local image library MVP for excursions events and trust (`013a0df`)
-11. `#98` - docs(ssot): post-merge sync after PR #95 (`4799d01`)
-12. `#95` - content(events): refresh feed freshness and source attribution (`09834ef`)
+1. `#114` - ux(theme): shift tokens to professional trustworthy palette (PR1 UX-BRANDING-APPROACHABLE-01) (`906a898`)
+2. `#113` - docs(ssot): add approachable branding item (UX-BRANDING-APPROACHABLE-01) (`97d7e23`)
+3. `#111` - seo(airports): metadata + canonical + JSON-LD (SEO-AIRPORTS-METADATA-01) (`85fa587`)
+4. `#109` - UX-AIRPORTS-ADD-BOOKING-CTA-01 (`1508245`)
+5. `#107` - content(airports): add terminal guide section (CONTENT-AIRPORTS-TERMINAL-GUIDE-01) (`a0108d6`)
+6. `#105` - content(trust): add sitewide trust signals block (`97e0777`)
+7. `#104` - docs(ssot): post-merge sync after PR #103 (`b889c96`)
+8. `#103` - feat(excursions): reduce pre-list scroll above fold (`9ae13b0`)
+9. `#102` - docs(ssot): post-merge sync after PR #101 (`431f18b`)
+10. `#101` - content(excursions): unify faq blocks across detail pages (`2539c74`)
+11. `#100` - docs(ssot): post-merge sync after PR #99 (`6e48b9c`)
+12. `#99` - feat(media): add local image library MVP for excursions events and trust (`013a0df`)
 
 ## Ahora en curso
 
-- **UX-BRANDING-APPROACHABLE-01** (P1/R0) — Shift perception to professional/trustworthy with subtle premium touches (reduce price intimidation)
+- **UX-BRANDING-APPROACHABLE-01** (P1/R0) — PR1 DONE (`#114` / `906a898`, tokens-only). PR2 NOW: baseline components (Button/Card/Badge/Input) with strict no-pages scope.
 
 ## Siguientes 3 items del plan (priorizados)
 
