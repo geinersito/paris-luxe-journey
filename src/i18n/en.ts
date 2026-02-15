@@ -718,8 +718,9 @@ export const en: Translation = {
     },
   },
   fleet: {
+    label: "Our fleet",
     title: "Available Vehicles",
-    subtitle: "Premium Mercedes-Benz fleet less than 3 years old",
+    subtitle: "Modern and comfortable Mercedes-Benz fleet.",
     exterior: "Exterior",
     interior: "Interior",
     features: "Included features",
