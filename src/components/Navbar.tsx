@@ -20,16 +20,29 @@ interface NavItem {
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState<string | null>(
+    null,
+  );
   const [scrolled, setScrolled] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const { t, language } = useLanguage();
   const navigate = useNavigate();
   const location = useLocation();
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-  const toggleServicesDropdown = () =>
-    setServicesDropdownOpen(!servicesDropdownOpen);
+  const toggleMenu = () => {
+    if (isOpen) {
+      setMobileDropdownOpen(null);
+    }
+    setIsOpen(!isOpen);
+  };
+  const toggleMobileDropdown = (itemName: string) =>
+    setMobileDropdownOpen((current) =>
+      current === itemName ? null : itemName,
+    );
+  const closeMobileMenu = () => {
+    setIsOpen(false);
+    setMobileDropdownOpen(null);
+  };
 
   // Scroll to top smoothly
   const scrollTopSmooth = () => window.scrollTo({ top: 0, behavior: "smooth" });
@@ -66,7 +79,7 @@ const Navbar = () => {
           requestAnimationFrame(() => scrollTopSmooth()),
         );
       }
-      setIsOpen(false);
+      closeMobileMenu();
       return;
     }
 
@@ -87,7 +100,7 @@ const Navbar = () => {
       }
 
       // Close mobile menu
-      setIsOpen(false);
+      closeMobileMenu();
       return;
     }
 
@@ -114,7 +127,7 @@ const Navbar = () => {
       }
 
       // Close mobile menu
-      setIsOpen(false);
+      closeMobileMenu();
       return;
     }
 
@@ -122,7 +135,7 @@ const Navbar = () => {
     navigate(href);
 
     // Close mobile menu
-    setIsOpen(false);
+    closeMobileMenu();
   };
 
   // Scroll detection for navbar styling and progress bar
@@ -172,6 +185,15 @@ const Navbar = () => {
     { name: t.nav.excursions, href: "/excursions" },
     { name: t.nav.events || "Events", href: "/events" },
     { name: t.nav.blog || "Blog", href: "/blog" },
+    {
+      name: "B2B",
+      href: "#",
+      hasDropdown: true,
+      dropdownItems: [
+        { name: t.nav.agencies, href: "/agencias" },
+        { name: t.nav.companies, href: "/empresas" },
+      ],
+    },
     { name: t.nav.fleet, href: "#fleet" },
     { name: t.nav.about, href: "#about" },
     { name: t.nav.contact, href: "#contact" },
@@ -205,58 +227,54 @@ const Navbar = () => {
             </a>
           </div>
 
-          <div className="hidden md:flex md:items-center md:space-x-3 lg:space-x-4 xl:space-x-6 2xl:space-x-8 flex-1 min-w-0">
-            {navItems.map((item) =>
-              item.hasDropdown ? (
-                <div key={item.name} className="relative group flex-shrink-0">
-                  <button
-                    className="text-secondary group-hover:text-primary transition-colors duration-200 font-medium flex items-center py-2 text-sm xl:text-base whitespace-nowrap"
-                    onMouseEnter={() => setServicesDropdownOpen(true)}
-                  >
-                    {item.name} <ChevronDown className="ml-1 h-4 w-4" />
-                  </button>
-                  <div
-                    className="absolute left-0 top-full pt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200"
-                    onMouseLeave={() => setServicesDropdownOpen(false)}
-                  >
-                    <div className="rounded-md shadow-lg bg-background border border-border overflow-hidden">
-                      {item.dropdownItems.map((dropdownItem) =>
-                        dropdownItem.disabled ? (
-                          <span
-                            key={dropdownItem.name}
-                            className="block px-4 py-2.5 text-sm text-muted-foreground/50 cursor-not-allowed"
-                          >
-                            {dropdownItem.name}{" "}
-                            <span className="text-xs">(Coming Soon)</span>
-                          </span>
-                        ) : (
-                          <a
-                            key={dropdownItem.name}
-                            href={dropdownItem.href}
-                            onClick={(e) =>
-                              handleNavClick(e, dropdownItem.href)
-                            }
-                            className="block px-4 py-2.5 text-sm text-foreground hover:bg-accent hover:text-primary transition-colors duration-200"
-                          >
-                            {dropdownItem.name}
-                          </a>
-                        ),
-                      )}
+          <div className="hidden md:flex md:items-center flex-1 min-w-0">
+            <div className="flex items-center md:space-x-2 lg:space-x-3 xl:space-x-4 2xl:space-x-5 flex-1 min-w-0">
+              {navItems.map((item) =>
+                item.hasDropdown ? (
+                  <div key={item.name} className="relative group flex-shrink-0">
+                    <button className="text-secondary group-hover:text-primary transition-colors duration-200 font-medium flex items-center py-2 text-sm xl:text-base whitespace-nowrap">
+                      {item.name} <ChevronDown className="ml-1 h-4 w-4" />
+                    </button>
+                    <div className="absolute left-0 top-full pt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                      <div className="rounded-md shadow-lg bg-background border border-border overflow-hidden">
+                        {item.dropdownItems.map((dropdownItem) =>
+                          dropdownItem.disabled ? (
+                            <span
+                              key={dropdownItem.name}
+                              className="block px-4 py-2.5 text-sm text-muted-foreground/50 cursor-not-allowed"
+                            >
+                              {dropdownItem.name}{" "}
+                              <span className="text-xs">(Coming Soon)</span>
+                            </span>
+                          ) : (
+                            <a
+                              key={dropdownItem.name}
+                              href={dropdownItem.href}
+                              onClick={(e) =>
+                                handleNavClick(e, dropdownItem.href)
+                              }
+                              className="block px-4 py-2.5 text-sm text-foreground hover:bg-accent hover:text-primary transition-colors duration-200"
+                            >
+                              {dropdownItem.name}
+                            </a>
+                          ),
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              ) : (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={(e) => handleNavClick(e, item.href)}
-                  className="text-secondary hover:text-primary transition-colors duration-200 font-medium text-sm xl:text-base whitespace-nowrap flex-shrink-0"
-                >
-                  {item.name}
-                </a>
-              ),
-            )}
-            <div className="ml-2 lg:ml-3 xl:ml-4 flex-shrink-0 flex-grow-0">
+                ) : (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    onClick={(e) => handleNavClick(e, item.href)}
+                    className="text-secondary hover:text-primary transition-colors duration-200 font-medium text-sm xl:text-base whitespace-nowrap flex-shrink-0"
+                  >
+                    {item.name}
+                  </a>
+                ),
+              )}
+            </div>
+            <div className="ml-2 lg:ml-3 xl:ml-4 shrink-0">
               <LanguageSelector />
             </div>
           </div>
@@ -286,14 +304,14 @@ const Navbar = () => {
                 <div key={item.name}>
                   <button
                     className="flex items-center justify-between w-full px-3 py-2 text-secondary hover:text-primary transition-colors duration-200 rounded-md hover:bg-accent"
-                    onClick={toggleServicesDropdown}
+                    onClick={() => toggleMobileDropdown(item.name)}
                   >
                     {item.name}
                     <ChevronDown
-                      className={`h-4 w-4 transform ${servicesDropdownOpen ? "rotate-180" : ""} transition-transform`}
+                      className={`h-4 w-4 transform ${mobileDropdownOpen === item.name ? "rotate-180" : ""} transition-transform`}
                     />
                   </button>
-                  {servicesDropdownOpen && (
+                  {mobileDropdownOpen === item.name && (
                     <div className="ml-4 mt-1 space-y-1">
                       {item.dropdownItems.map((dropdownItem) =>
                         dropdownItem.disabled ? (

@@ -25,6 +25,8 @@ const HashRedirect = ({ hash }: { hash: string }) => {
 const Home = lazy(() => import("./pages/Home"));
 const Excursions = lazy(() => import("./pages/Excursions"));
 const Events = lazy(() => import("./pages/Events"));
+const AgenciesPage = lazy(() => import("./pages/Agencies"));
+const CompaniesPage = lazy(() => import("./pages/Companies"));
 const BlogIndex = lazy(() => import("./pages/blog/BlogIndex"));
 const BlogCategory = lazy(() => import("./pages/blog/BlogCategory"));
 const BlogPost = lazy(() => import("./pages/blog/BlogPost"));
@@ -117,6 +119,22 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader />}>
             <Events />
+          </Suspense>
+        ),
+      },
+      {
+        path: "agencias",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <AgenciesPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "empresas",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <CompaniesPage />
           </Suspense>
         ),
       },
