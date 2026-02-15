@@ -30,6 +30,8 @@ Detailed product notes can continue in `docs/PLAN_VIVO_MEJORAS_UI.md`, but execu
 | NAV-COHERENCE-01 | P1 | R1 | Navigation | Top-nav coherence + dead-page protection | DONE | [#38](https://github.com/geinersito/paris-luxe-journey/pull/38) / `74ec0b5` | Global wildcard fallback + dedicated 404 with CTA |
 | NAV-HOURLY-01 | P1 | R1 | Navigation | Separate `Hourly` intent from `/booking` wizard | DONE | [#40](https://github.com/geinersito/paris-luxe-journey/pull/40) / `c06d6c1` | Intent guard + no sessionStorage mix |
 | UX-HEADER-I18N-01 | P1 | R0 | Header | Keep language dropdown crisp and navbar stable across locales | DONE | [#41](https://github.com/geinersito/paris-luxe-journey/pull/41) / `e40d506` | Compact selector (flag + code) + navbar flex stability |
+| COPY-HOME-CONVERSION-01 | P0 | R0 | Content/Conversion | Ship-fast Home conversion copy with centralized i18n and coherent pricing anchors | DONE | [#120](https://github.com/geinersito/paris-luxe-journey/pull/120) / `4c6df6b` | Home hero/services/B2B copy moved to ES/PT/EN/FR i18n; pricing rules aligned: airport from 110, hourly from 70/h, tours tailored quote |
+| COPY-FLEET-WORDING-NEUTRAL-01 | P2 | R0 | Content | Remove visible "Premium Fleet" wording in Fleet section (copy-only) | DONE | [#121](https://github.com/geinersito/paris-luxe-journey/pull/121) / `55e0a4f` | Fleet heading/subtitle neutralized via i18n keys (ES/PT/EN/FR), no theme/layout changes |
 
 ## Deferred items
 
