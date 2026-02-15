@@ -76,10 +76,10 @@ export default function Events() {
 
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative section-padding bg-gradient-to-b from-champagne via-cream to-white">
+        <section className="relative pt-12 pb-8 md:pt-16 md:pb-10 lg:pt-20 lg:pb-12 bg-gradient-to-b from-champagne via-cream to-white">
           <div className="container mx-auto px-4">
             {/* Header */}
-            <div className="text-center max-w-4xl mx-auto mb-16">
+            <div className="text-center max-w-4xl mx-auto mb-10 md:mb-12">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
                 <Sparkles className="w-4 h-4 text-primary" />
                 <span className="text-sm font-medium text-primary">
