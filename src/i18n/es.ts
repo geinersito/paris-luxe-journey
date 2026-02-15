@@ -21,7 +21,8 @@ export const es: Translation = {
   hero: {
     title: "Chofer profesional en Paris",
     subtitle: "Traslados comodos y precios claros",
-    proofline: "Desde 120€ aeropuerto · 70€/hora · Mercedes Vito y Clase V",
+    proofline:
+      "Aeropuertos desde 110€ · 24/7 · Meet & Greet · Seguimiento de vuelo",
     langProof: "Atendemos en espanol",
     bullet1: "Puntualidad y conductores profesionales",
     bullet2: "Para negocios, familias y turistas",
@@ -538,16 +539,17 @@ export const es: Translation = {
   },
   services: {
     title: "Nuestros servicios",
-    subtitle: "Traslados y tours privados con precios claros",
+    subtitle:
+      "Traslados y tours privados con precios claros. Estaciones en Paris desde 70€.",
     decorativeSubtitle: "Servicio profesional y fiable",
     cta: "Ver opciones",
     groupDisclaimer: "Para grupos de 8+ pasajeros, por favor contáctenos",
     airport: {
       title: "Traslados al aeropuerto",
       description:
-        "CDG · Orly · Beauvais → tu hotel. Meet & Greet, seguimiento de vuelo y precio fijo.",
+        "CDG · Orly · Beauvais → tu hotel. Desde 110€ con Meet & Greet, seguimiento de vuelo y precio fijo. Precios varian segun aeropuerto, zona y pasajeros.",
       cta: "Cotizar ahora",
-      priceFrom: "Desde €70",
+      priceFrom: "Desde €110",
       features: [
         "Servicio Meet & Greet",
         "Seguimiento de Vuelos",
@@ -559,7 +561,7 @@ export const es: Translation = {
     chauffeur: {
       title: "Chofer por horas",
       description:
-        "Recorre Paris a tu ritmo. Paradas flexibles y servicio puerta a puerta. Desde 70€/hora.",
+        "Traslados en Paris y estaciones desde 70€. Servicio por horas desde 70€/hora.",
       cta: "Reservar por horas",
       priceFrom: "Desde €70/hora",
       features: [
@@ -573,7 +575,7 @@ export const es: Translation = {
       title: "Tours privados",
       description: "Con o sin guia. A tu medida.",
       cta: "Ver opciones",
-      priceFrom: "Desde €95",
+      priceFrom: "A medida",
       features: [
         "Itinerarios Personalizados",
         "Chóferes Profesionales",

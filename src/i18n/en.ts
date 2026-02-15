@@ -22,7 +22,7 @@ export const en: Translation = {
     title: "Professional chauffeur in Paris",
     subtitle: "Comfortable transfers with clear pricing",
     proofline:
-      "From €120 airport transfer · €70/hour · Mercedes Vito and V-Class",
+      "Airport transfers from €110 · 24/7 · Meet & Greet · Flight tracking",
     langProof: "We speak Spanish",
     bullet1: "Punctual service with professional chauffeurs",
     bullet2: "For business trips, families, and tourists",
@@ -515,16 +515,17 @@ export const en: Translation = {
   },
   services: {
     title: "Our services",
-    subtitle: "Reliable transfers and private tours with clear pricing",
+    subtitle:
+      "Reliable transfers and private tours with clear pricing. Paris station transfers from €70.",
     decorativeSubtitle: "Professional and reliable service",
     cta: "View options",
     groupDisclaimer: "For groups of 8+ passengers, please contact us",
     airport: {
       title: "Airport Transfers",
       description:
-        "CDG · Orly · Beauvais -> your hotel. Meet & Greet, flight tracking, and fixed pricing.",
+        "CDG · Orly · Beauvais -> your hotel. From €110 with Meet & Greet, flight tracking, and fixed pricing. Prices vary by airport, area, and passenger count.",
       cta: "Get a quote",
-      priceFrom: "From €70",
+      priceFrom: "From €110",
       features: [
         "Meet & Greet Service",
         "Flight Tracking",
@@ -536,7 +537,7 @@ export const en: Translation = {
     chauffeur: {
       title: "Hourly chauffeur",
       description:
-        "Move around Paris at your pace with flexible stops and door-to-door service. From €70/hour.",
+        "Paris and station transfers from €70. Hourly chauffeur service from €70/hour.",
       cta: "Book by the hour",
       priceFrom: "From €70/hour",
       features: [
@@ -550,7 +551,7 @@ export const en: Translation = {
       title: "Private tours",
       description: "With or without a guide. Tailored to your needs.",
       cta: "View options",
-      priceFrom: "From €95",
+      priceFrom: "Tailored quote",
       features: [
         "Customized Itineraries",
         "Professional Drivers",

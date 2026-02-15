@@ -22,7 +22,7 @@ export const pt: Translation = {
     title: "Motorista profissional em Paris",
     subtitle: "Traslados confortaveis e precos claros",
     proofline:
-      "A partir de €120 aeroporto · €70/hora · Mercedes Vito e Classe V",
+      "Traslados de aeroporto a partir de €110 · 24/7 · Meet & Greet · Monitoramento de voo",
     langProof: "Atendimento em espanhol",
     bullet1: "Pontualidade e motoristas profissionais",
     bullet2: "Para negocios, familias e turistas",
@@ -536,7 +536,8 @@ export const pt: Translation = {
   },
   services: {
     title: "Nossos servicos",
-    subtitle: "Traslados confiaveis e tours privados com preco claro",
+    subtitle:
+      "Traslados confiaveis e tours privados com preco claro. Estacoes e trajetos em Paris a partir de €70.",
     decorativeSubtitle: "Servico profissional e confiavel",
     cta: "Ver opcoes",
     groupDisclaimer:
@@ -544,9 +545,9 @@ export const pt: Translation = {
     airport: {
       title: "Traslados para aeroportos",
       description:
-        "CDG · Orly · Beauvais -> seu hotel. Meet & Greet, monitoramento de voo e preco fixo.",
+        "CDG · Orly · Beauvais -> seu hotel. A partir de €110 com Meet & Greet, monitoramento de voo e preco fixo. Precos variam por aeroporto, zona e numero de passageiros.",
       cta: "Solicitar orcamento",
-      priceFrom: "A partir de €70",
+      priceFrom: "A partir de €110",
       features: [
         "Serviço de Recepção",
         "Rastreamento de Voos",
@@ -558,7 +559,7 @@ export const pt: Translation = {
     chauffeur: {
       title: "Motorista por hora",
       description:
-        "Circule por Paris no seu ritmo, com paradas flexiveis e servico porta a porta. A partir de €70/hora.",
+        "Traslados em Paris e estacoes a partir de €70. Servico por hora a partir de €70/hora.",
       cta: "Reservar por hora",
       priceFrom: "A partir de €70/hora",
       features: [
@@ -572,7 +573,7 @@ export const pt: Translation = {
       title: "Tours privados",
       description: "Com ou sem guia. Sob medida para voce.",
       cta: "Ver opcoes",
-      priceFrom: "A partir de €95",
+      priceFrom: "Sob medida",
       features: [
         "Itinerários Personalizados",
         "Motoristas Profissionais",

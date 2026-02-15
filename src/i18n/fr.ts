@@ -21,7 +21,8 @@ export const fr: Translation = {
   hero: {
     title: "Chauffeur professionnel a Paris",
     subtitle: "Transferts confortables et prix clairs",
-    proofline: "Des 120€ aeroport · 70€/heure · Mercedes Vito et Classe V",
+    proofline:
+      "Transferts aeroport des 110€ · 24/7 · Meet & Greet · Suivi de vol",
     langProof: "Nous parlons espagnol",
     bullet1: "Ponctualite et chauffeurs professionnels",
     bullet2: "Pour affaires, familles et touristes",
@@ -640,7 +641,8 @@ export const fr: Translation = {
   },
   services: {
     title: "Nos services",
-    subtitle: "Transferts fiables et tours prives avec tarifs clairs",
+    subtitle:
+      "Transferts fiables et tours prives avec tarifs clairs. Transferts gares et intra-Paris des 70€.",
     decorativeSubtitle: "Service professionnel et fiable",
     cta: "Voir les options",
     groupDisclaimer:
@@ -648,9 +650,9 @@ export const fr: Translation = {
     airport: {
       title: "Transferts aeroport",
       description:
-        "CDG · Orly · Beauvais -> votre hotel. Meet & Greet, suivi de vol et prix fixe.",
+        "CDG · Orly · Beauvais -> votre hotel. Des 110€ avec Meet & Greet, suivi de vol et prix fixe. Le tarif varie selon aeroport, zone et nombre de passagers.",
       cta: "Obtenir un devis",
-      priceFrom: "À partir de 70€",
+      priceFrom: "À partir de 110€",
       features: [
         "Service d'Accueil",
         "Suivi des Vols",
@@ -662,7 +664,7 @@ export const fr: Translation = {
     chauffeur: {
       title: "Chauffeur a l'heure",
       description:
-        "Parcourez Paris a votre rythme avec arrets flexibles et service porte-a-porte. Des 70€/heure.",
+        "Transferts gares et intra-Paris des 70€. Service chauffeur a l'heure des 70€/heure.",
       cta: "Reserver a l'heure",
       priceFrom: "A partir de 70€/heure",
       features: [
@@ -676,7 +678,7 @@ export const fr: Translation = {
       title: "Tours prives",
       description: "Avec ou sans guide. Adapte a vos besoins.",
       cta: "Voir les options",
-      priceFrom: "À partir de 95€",
+      priceFrom: "Sur devis",
       features: [
         "Itinéraires Personnalisés",
         "Chauffeurs Professionnels",
