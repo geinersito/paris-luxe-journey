@@ -12,6 +12,9 @@ import {
   generateLocalBusinessJsonLd,
 } from "@/lib/seo/json-ld";
 import { getSiteOrigin } from "@/lib/seo/site";
+import { trackEvent } from "@/lib/analytics";
+
+const normalizeLabel = (value: string) => value.replace(/\s+/g, " ").trim();
 
 export default function Home() {
   const { t, language } = useLanguage();
@@ -45,6 +48,57 @@ export default function Home() {
   });
 
   const canonicalUrl = `${siteOrigin}/${language}`;
+
+  const handleCtaClickCapture = (event: React.MouseEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLElement | null;
+    if (!target) return;
+
+    const clickable = target.closest("a, button");
+    if (!clickable) return;
+
+    const label = normalizeLabel(clickable.textContent || "");
+    if (!label) return;
+
+    const section = clickable.closest("section");
+    const heroPrimaryLabel = normalizeLabel(t.hero.ctaPrimary);
+    const heroSecondaryLabel = normalizeLabel(t.hero.ctaSecondary);
+    const b2bLabel = normalizeLabel(t.home.b2b.cta);
+
+    if (section?.id === "booking" && label === heroPrimaryLabel) {
+      trackEvent("cta_click", {
+        page: "home",
+        cta_id: "home_hero_primary",
+        cta_label: label,
+        destination: "booking_modal",
+      });
+      return;
+    }
+
+    if (section?.id === "booking" && label === heroSecondaryLabel) {
+      trackEvent("cta_click", {
+        page: "home",
+        cta_id: "home_hero_secondary",
+        cta_label: label,
+        destination:
+          clickable instanceof HTMLAnchorElement
+            ? clickable.getAttribute("href") || "#contact"
+            : "#contact",
+      });
+      return;
+    }
+
+    if (section?.id === "b2b" && label === b2bLabel) {
+      trackEvent("cta_click", {
+        page: "home",
+        cta_id: "home_b2b",
+        cta_label: label,
+        destination:
+          clickable instanceof HTMLAnchorElement
+            ? clickable.getAttribute("href") || "#contact"
+            : "#contact",
+      });
+    }
+  };
 
   return (
     <>
@@ -80,26 +134,28 @@ export default function Home() {
         </script>
       </Helmet>
 
-      <HeroSection />
-      <PremiumSection />
-      <section id="b2b" className="py-12 bg-white">
-        <div className="container mx-auto px-4 max-w-7xl">
-          <div className="max-w-4xl mx-auto rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/5 to-transparent p-8 text-center shadow-luxury">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-3">
-              {t.home.b2b.title}
-            </h2>
-            <p className="text-base md:text-lg text-gray-700 mb-6">
-              {t.home.b2b.desc}
-            </p>
-            <Button asChild className="silk-button">
-              <a href="#contact">{t.home.b2b.cta}</a>
-            </Button>
+      <div onClickCapture={handleCtaClickCapture}>
+        <HeroSection />
+        <PremiumSection />
+        <section id="b2b" className="py-12 bg-white">
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="max-w-4xl mx-auto rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/5 to-transparent p-8 text-center shadow-luxury">
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-3">
+                {t.home.b2b.title}
+              </h2>
+              <p className="text-base md:text-lg text-gray-700 mb-6">
+                {t.home.b2b.desc}
+              </p>
+              <Button asChild className="silk-button">
+                <a href="#contact">{t.home.b2b.cta}</a>
+              </Button>
+            </div>
           </div>
-        </div>
-      </section>
-      <FleetSection />
-      <TestimonialSection />
-      <ContactSection />
+        </section>
+        <FleetSection />
+        <TestimonialSection />
+        <ContactSection />
+      </div>
     </>
   );
 }
