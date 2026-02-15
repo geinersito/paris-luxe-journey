@@ -14,27 +14,27 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `afeafbb`
+- SHA: `5b25f7c`
 - Last updated: `2026-02-15`
 
 ## Ultimos PRs mergeados en main
 
-1. `#116` - ux(components): baseline buttons/cards/badges/inputs for approachable branding (PR2 UX-BRANDING-APPROACHABLE-01) (`afeafbb`)
-2. `#115` - docs(ssot): mark PR1 tokens done; set PR2 components as next (UX-BRANDING-APPROACHABLE-01) (`49ac97b`)
-3. `#114` - ux(theme): shift tokens to professional trustworthy palette (PR1 UX-BRANDING-APPROACHABLE-01) (`906a898`)
-4. `#113` - docs(ssot): add approachable branding item (UX-BRANDING-APPROACHABLE-01) (`97d7e23`)
-5. `#111` - seo(airports): metadata + canonical + JSON-LD (SEO-AIRPORTS-METADATA-01) (`85fa587`)
-6. `#109` - UX-AIRPORTS-ADD-BOOKING-CTA-01 (`1508245`)
-7. `#107` - content(airports): add terminal guide section (CONTENT-AIRPORTS-TERMINAL-GUIDE-01) (`a0108d6`)
-8. `#105` - content(trust): add sitewide trust signals block (`97e0777`)
-9. `#104` - docs(ssot): post-merge sync after PR #103 (`b889c96`)
-10. `#103` - feat(excursions): reduce pre-list scroll above fold (`9ae13b0`)
-11. `#102` - docs(ssot): post-merge sync after PR #101 (`431f18b`)
-12. `#101` - content(excursions): unify faq blocks across detail pages (`2539c74`)
+1. `#118` - revert(ui): restore previous design (revert PR1 tokens + PR2 components) (`5b25f7c`)
+2. `#116` - ux(components): baseline buttons/cards/badges/inputs for approachable branding (PR2 UX-BRANDING-APPROACHABLE-01) (`afeafbb`)
+3. `#115` - docs(ssot): mark PR1 tokens done; set PR2 components as next (UX-BRANDING-APPROACHABLE-01) (`49ac97b`)
+4. `#114` - ux(theme): shift tokens to professional trustworthy palette (PR1 UX-BRANDING-APPROACHABLE-01) (`906a898`)
+5. `#113` - docs(ssot): add approachable branding item (UX-BRANDING-APPROACHABLE-01) (`97d7e23`)
+6. `#111` - seo(airports): metadata + canonical + JSON-LD (SEO-AIRPORTS-METADATA-01) (`85fa587`)
+7. `#109` - UX-AIRPORTS-ADD-BOOKING-CTA-01 (`1508245`)
+8. `#107` - content(airports): add terminal guide section (CONTENT-AIRPORTS-TERMINAL-GUIDE-01) (`a0108d6`)
+9. `#105` - content(trust): add sitewide trust signals block (`97e0777`)
+10. `#104` - docs(ssot): post-merge sync after PR #103 (`b889c96`)
+11. `#103` - feat(excursions): reduce pre-list scroll above fold (`9ae13b0`)
+12. `#102` - docs(ssot): post-merge sync after PR #101 (`431f18b`)
 
 ## Ahora en curso
 
-- **UX-BRANDING-APPROACHABLE-01** (P1/R0) — PR1 DONE (`#114` / `906a898`) + PR2 DONE (`#116` / `afeafbb`). PR3 NOW: page-level polish/evidence pass on Home/Airports/Fleet/Excursions/Events.
+- **UX-BRANDING-APPROACHABLE-01** (P1/R0) — **DEFERRED** (time-to-ship). PR1 (`#114` / `906a898`) and PR2 (`#116` / `afeafbb`) were reverted by `#118` (`5b25f7c`) to restore the previous design. Revisit later with a measurement plan before reactivation.
 
 ## Siguientes 3 items del plan (priorizados)
 
