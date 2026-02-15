@@ -10,6 +10,8 @@ export const es: Translation = {
     excursions: "Excursiones",
     events: "Eventos",
     blog: "Blog",
+    agencies: "Agencias",
+    companies: "Empresas",
   },
   home: {
     b2b: {
@@ -17,6 +19,35 @@ export const es: Translation = {
       desc: "Tarifas B2B, facturacion y soporte dedicado.",
       cta: "Ver opciones B2B",
     },
+  },
+  agencies: {
+    metaTitle: "Para agencias de viajes | Tarifas especiales Paris",
+    h1: "Trabajamos contigo como partner de confianza",
+    intro:
+      "Colaboramos con agencias de Mexico, Brasil y Latinoamerica. Servicio profesional, vehiculos impecables y soporte rapido en espanol.",
+    bullets: {
+      volume: "Tarifas especiales por volumen",
+      invoicing: "Facturacion clara y reportes",
+      support: "Soporte dedicado por WhatsApp",
+      availability: "Disponibilidad 24/7",
+    },
+    contactHint: "En el mensaje, indica: Agencia + pais + volumen estimado.",
+    cta: "Solicitar tarifas para agencias",
+  },
+  companies: {
+    metaTitle: "Chofer profesional para empresas en Paris",
+    h1: "Soluciones de movilidad para tu equipo",
+    intro:
+      "Transfers, eventos y traslados corporativos con puntualidad, discrecion y facturacion.",
+    bullets: {
+      billing: "Cuentas corporativas y facturacion mensual",
+      routes: "Transfers aeropuertos, La Defense, estaciones y ferias",
+      chauffeurs: "Choferes discretos y bilingues",
+      support: "Soporte 24/7",
+    },
+    contactHint:
+      "En el mensaje, indica: Empresa + transfers por mes + tipo de servicio.",
+    cta: "Solicitar propuesta corporativa",
   },
   hero: {
     title: "Chofer profesional en Paris",

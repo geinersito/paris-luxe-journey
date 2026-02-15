@@ -10,6 +10,8 @@ export interface Translation {
     excursions: string;
     events: string;
     blog: string;
+    agencies: string;
+    companies: string;
   };
   home: {
     b2b: {
@@ -17,6 +19,32 @@ export interface Translation {
       desc: string;
       cta: string;
     };
+  };
+  agencies: {
+    metaTitle: string;
+    h1: string;
+    intro: string;
+    bullets: {
+      volume: string;
+      invoicing: string;
+      support: string;
+      availability: string;
+    };
+    contactHint: string;
+    cta: string;
+  };
+  companies: {
+    metaTitle: string;
+    h1: string;
+    intro: string;
+    bullets: {
+      billing: string;
+      routes: string;
+      chauffeurs: string;
+      support: string;
+    };
+    contactHint: string;
+    cta: string;
   };
   hero: {
     title: string;
