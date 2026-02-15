@@ -11,13 +11,26 @@ export const fr: Translation = {
     events: "Événements",
     blog: "Blog",
   },
+  home: {
+    b2b: {
+      title: "Pour les agences et entreprises",
+      desc: "Tarifs B2B, facturation et support dedie.",
+      cta: "Voir les options B2B",
+    },
+  },
   hero: {
-    title: "Paris Elite Services",
-    subtitle:
-      "Transferts aéroport Paris ⇄ CDG / Orly dès 70€ (1–3 passagers, tout compris)",
+    title: "Chauffeur professionnel a Paris",
+    subtitle: "Transferts confortables et prix clairs",
+    proofline: "Des 120€ aeroport · 70€/heure · Mercedes Vito et Classe V",
+    langProof: "Nous parlons espagnol",
+    bullet1: "Ponctualite et chauffeurs professionnels",
+    bullet2: "Pour affaires, familles et touristes",
+    bullet3: "Reservation rapide, confirmation immediate",
+    ctaPrimary: "Obtenir mon devis maintenant",
+    ctaSecondary: "Nous contacter",
     selectPickup: "Sélectionner…",
     selectDropoff: "Sélectionner…",
-    getInstantQuote: "Obtenir un devis instantané",
+    getInstantQuote: "Obtenir mon devis maintenant",
     fixedPrice: "Prix fixe",
     freeCancellation: "Annulation gratuite",
     support247: "Support 24/7",
@@ -626,16 +639,17 @@ export const fr: Translation = {
     warning: "Avertissement",
   },
   services: {
-    title: "Nos Services Premium",
-    subtitle: "Découvrez le transport de luxe à son meilleur",
-    decorativeSubtitle: "Découvrez le transport de luxe",
-    cta: "Réserver Maintenant",
+    title: "Nos services",
+    subtitle: "Transferts fiables et tours prives avec tarifs clairs",
+    decorativeSubtitle: "Service professionnel et fiable",
+    cta: "Voir les options",
     groupDisclaimer:
       "Pour les groupes de 8+ passagers, veuillez nous contacter",
     airport: {
-      title: "Transferts Aéroport",
+      title: "Transferts aeroport",
       description:
-        "Transport fluide vers et depuis les aéroports CDG, Orly et Beauvais.",
+        "CDG · Orly · Beauvais -> votre hotel. Meet & Greet, suivi de vol et prix fixe.",
+      cta: "Obtenir un devis",
       priceFrom: "À partir de 70€",
       features: [
         "Service d'Accueil",
@@ -646,10 +660,11 @@ export const fr: Translation = {
       ],
     },
     chauffeur: {
-      title: "Chauffeur Privé",
+      title: "Chauffeur a l'heure",
       description:
-        "Véhicule de luxe avec chauffeur professionnel à votre disposition.",
-      priceFrom: "À partir de 60€/heure",
+        "Parcourez Paris a votre rythme avec arrets flexibles et service porte-a-porte. Des 70€/heure.",
+      cta: "Reserver a l'heure",
+      priceFrom: "A partir de 70€/heure",
       features: [
         "Réservation à l'Heure Disponible",
         "Disponibilité 24/7",
@@ -658,9 +673,9 @@ export const fr: Translation = {
       ],
     },
     cityTours: {
-      title: "Visites de la Ville",
-      description:
-        "Découvrez les monuments les plus emblématiques de Paris avec nos chauffeurs professionnels.",
+      title: "Tours prives",
+      description: "Avec ou sans guide. Adapte a vos besoins.",
+      cta: "Voir les options",
       priceFrom: "À partir de 95€",
       features: [
         "Itinéraires Personnalisés",

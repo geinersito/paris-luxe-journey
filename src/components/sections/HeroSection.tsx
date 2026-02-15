@@ -140,7 +140,7 @@ export default function HeroSection() {
                   "0 2px 20px hsl(45 93% 47% / 0.4), 0 4px 40px hsl(45 93% 47% / 0.2)",
               }}
             >
-              Airport Transfers & Hourly Chauffeur
+              {t.hero.title}
             </h1>
 
             <p
@@ -151,8 +151,65 @@ export default function HeroSection() {
                 textShadow: "0 2px 10px rgba(0,0,0,0.5)",
               }}
             >
-              Fixed Price · 24/7 Service · Flight Tracking · Meet & Greet
+              {t.hero.subtitle}
             </p>
+
+            <p
+              className="mt-3 text-sm md:text-base text-white/90 max-w-3xl mx-auto lg:mx-0 animate-fadeInUp"
+              style={{
+                animationDelay: "0.5s",
+                animationFillMode: "both",
+                textShadow: "0 2px 8px rgba(0,0,0,0.45)",
+              }}
+            >
+              {t.hero.proofline}
+            </p>
+
+            <p
+              className="mt-2 text-sm md:text-base font-semibold text-white animate-fadeInUp"
+              style={{
+                animationDelay: "0.55s",
+                animationFillMode: "both",
+                textShadow: "0 2px 8px rgba(0,0,0,0.45)",
+              }}
+            >
+              {t.hero.langProof}
+            </p>
+
+            <ul
+              className="mt-4 flex flex-wrap gap-2 justify-center lg:justify-start animate-fadeInUp"
+              style={{ animationDelay: "0.6s", animationFillMode: "both" }}
+            >
+              {[t.hero.bullet1, t.hero.bullet2, t.hero.bullet3].map(
+                (bullet) => (
+                  <li
+                    key={bullet}
+                    className="text-xs md:text-sm text-white/95 bg-white/15 border border-white/25 rounded-full px-3 py-1.5 backdrop-blur-sm"
+                  >
+                    {bullet}
+                  </li>
+                ),
+              )}
+            </ul>
+
+            <div
+              className="mt-5 flex flex-wrap gap-3 justify-center lg:justify-start animate-fadeInUp"
+              style={{ animationDelay: "0.65s", animationFillMode: "both" }}
+            >
+              <button
+                type="button"
+                onClick={() => setShowBookingModal(true)}
+                className="silk-button px-5 py-2.5 text-sm md:text-base"
+              >
+                {t.hero.ctaPrimary}
+              </button>
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center rounded-xl border border-white/40 bg-white/10 px-5 py-2.5 text-sm md:text-base text-white hover:bg-white/20 transition-colors"
+              >
+                {t.hero.ctaSecondary}
+              </a>
+            </div>
           </div>
 
           {/* Right column — booking widget */}
@@ -228,7 +285,7 @@ export default function HeroSection() {
       )}
 
       <MobileStickyCTA
-        label={t.hero.getInstantQuote}
+        label={t.hero.ctaPrimary || t.hero.getInstantQuote}
         onClick={() => setShowBookingModal(true)}
         isVisible={showStickyCTA}
       />

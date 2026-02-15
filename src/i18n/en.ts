@@ -11,13 +11,27 @@ export const en: Translation = {
     events: "Events",
     blog: "Blog",
   },
+  home: {
+    b2b: {
+      title: "For agencies and companies",
+      desc: "B2B rates, invoicing, and dedicated support.",
+      cta: "View B2B options",
+    },
+  },
   hero: {
-    title: "Paris Elite Services",
-    subtitle:
-      "Airport transfers Paris ⇄ CDG / Orly from €70 (1–3 passengers, all-inclusive)",
+    title: "Professional chauffeur in Paris",
+    subtitle: "Comfortable transfers with clear pricing",
+    proofline:
+      "From €120 airport transfer · €70/hour · Mercedes Vito and V-Class",
+    langProof: "We speak Spanish",
+    bullet1: "Punctual service with professional chauffeurs",
+    bullet2: "For business trips, families, and tourists",
+    bullet3: "Fast booking, immediate confirmation",
+    ctaPrimary: "Get my transfer quote now",
+    ctaSecondary: "Contact us",
     selectPickup: "Select…",
     selectDropoff: "Select…",
-    getInstantQuote: "Get Instant Quote",
+    getInstantQuote: "Get my transfer quote now",
     fixedPrice: "Fixed Price",
     freeCancellation: "Free Cancellation",
     support247: "24/7 Support",
@@ -500,15 +514,16 @@ export const en: Translation = {
     warning: "Warning",
   },
   services: {
-    title: "Our Premium Services",
-    subtitle: "Experience luxury transportation at its finest",
-    decorativeSubtitle: "Experience luxury transportation",
-    cta: "Book Now",
+    title: "Our services",
+    subtitle: "Reliable transfers and private tours with clear pricing",
+    decorativeSubtitle: "Professional and reliable service",
+    cta: "View options",
     groupDisclaimer: "For groups of 8+ passengers, please contact us",
     airport: {
       title: "Airport Transfers",
       description:
-        "Seamless transportation to and from CDG, Orly, and Beauvais airports.",
+        "CDG · Orly · Beauvais -> your hotel. Meet & Greet, flight tracking, and fixed pricing.",
+      cta: "Get a quote",
       priceFrom: "From €70",
       features: [
         "Meet & Greet Service",
@@ -519,10 +534,11 @@ export const en: Translation = {
       ],
     },
     chauffeur: {
-      title: "Private Chauffeur",
+      title: "Hourly chauffeur",
       description:
-        "Luxury vehicle with professional chauffeur at your disposal.",
-      priceFrom: "From €60/hour",
+        "Move around Paris at your pace with flexible stops and door-to-door service. From €70/hour.",
+      cta: "Book by the hour",
+      priceFrom: "From €70/hour",
       features: [
         "Hourly Booking Available",
         "24/7 Availability",
@@ -531,9 +547,9 @@ export const en: Translation = {
       ],
     },
     cityTours: {
-      title: "City Tours",
-      description:
-        "Discover Paris's most iconic landmarks with our professional drivers.",
+      title: "Private tours",
+      description: "With or without a guide. Tailored to your needs.",
+      cta: "View options",
       priceFrom: "From €95",
       features: [
         "Customized Itineraries",

@@ -11,13 +11,27 @@ export const pt: Translation = {
     events: "Eventos",
     blog: "Blog",
   },
+  home: {
+    b2b: {
+      title: "Para agencias e empresas",
+      desc: "Tarifas B2B, faturamento e suporte dedicado.",
+      cta: "Ver opcoes B2B",
+    },
+  },
   hero: {
-    title: "Paris Elite Services",
-    subtitle:
-      "Transfers aeroporto Paris ⇄ CDG / Orly a partir de 70€ (1–3 passageiros, tudo incluído)",
+    title: "Motorista profissional em Paris",
+    subtitle: "Traslados confortaveis e precos claros",
+    proofline:
+      "A partir de €120 aeroporto · €70/hora · Mercedes Vito e Classe V",
+    langProof: "Atendimento em espanhol",
+    bullet1: "Pontualidade e motoristas profissionais",
+    bullet2: "Para negocios, familias e turistas",
+    bullet3: "Reserva rapida, confirmacao imediata",
+    ctaPrimary: "Solicitar orcamento agora",
+    ctaSecondary: "Falar com a equipe",
     selectPickup: "Selecionar…",
     selectDropoff: "Selecionar…",
-    getInstantQuote: "Obter orçamento instantâneo",
+    getInstantQuote: "Solicitar orcamento agora",
     fixedPrice: "Preço fixo",
     freeCancellation: "Cancelamento gratuito",
     support247: "Suporte 24/7",
@@ -521,16 +535,17 @@ export const pt: Translation = {
     warning: "Aviso",
   },
   services: {
-    title: "Nossos Serviços Premium",
-    subtitle: "Experimente o transporte de luxo em sua melhor forma",
-    decorativeSubtitle: "Experimente o transporte de luxo",
-    cta: "Reservar Agora",
+    title: "Nossos servicos",
+    subtitle: "Traslados confiaveis e tours privados com preco claro",
+    decorativeSubtitle: "Servico profissional e confiavel",
+    cta: "Ver opcoes",
     groupDisclaimer:
       "Para grupos de 8+ passageiros, por favor entre em contato",
     airport: {
-      title: "Transfers Aeroporto",
+      title: "Traslados para aeroportos",
       description:
-        "Transporte sem complicações de e para os aeroportos CDG, Orly e Beauvais.",
+        "CDG · Orly · Beauvais -> seu hotel. Meet & Greet, monitoramento de voo e preco fixo.",
+      cta: "Solicitar orcamento",
       priceFrom: "A partir de €70",
       features: [
         "Serviço de Recepção",
@@ -541,10 +556,11 @@ export const pt: Translation = {
       ],
     },
     chauffeur: {
-      title: "Motorista Privado",
+      title: "Motorista por hora",
       description:
-        "Veículo de luxo com motorista profissional à sua disposição.",
-      priceFrom: "A partir de €60/hora",
+        "Circule por Paris no seu ritmo, com paradas flexiveis e servico porta a porta. A partir de €70/hora.",
+      cta: "Reservar por hora",
+      priceFrom: "A partir de €70/hora",
       features: [
         "Reserva por Hora Disponível",
         "Disponibilidade 24/7",
@@ -553,9 +569,9 @@ export const pt: Translation = {
       ],
     },
     cityTours: {
-      title: "Tours pela Cidade",
-      description:
-        "Descubra os pontos turísticos mais icônicos de Paris com nossos motoristas profissionais.",
+      title: "Tours privados",
+      description: "Com ou sem guia. Sob medida para voce.",
+      cta: "Ver opcoes",
       priceFrom: "A partir de €95",
       features: [
         "Itinerários Personalizados",

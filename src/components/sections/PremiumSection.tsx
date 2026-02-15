@@ -21,6 +21,7 @@ const PremiumSection = () => {
       description: t.services.airport.description,
       priceFrom: t.services.airport.priceFrom,
       features: t.services.airport.features,
+      ctaLabel: t.services.airport.cta || t.services.cta,
       cta: () => navigate("/booking"),
       badge: "Most Popular",
     },
@@ -30,6 +31,7 @@ const PremiumSection = () => {
       description: t.services.cityTours.description,
       priceFrom: t.services.cityTours.priceFrom,
       features: t.services.cityTours.features,
+      ctaLabel: t.services.cityTours.cta || t.services.cta,
       cta: () => navigate("/excursions"),
     },
     {
@@ -38,6 +40,7 @@ const PremiumSection = () => {
       description: t.services.chauffeur.description,
       priceFrom: t.services.chauffeur.priceFrom,
       features: t.services.chauffeur.features,
+      ctaLabel: t.services.chauffeur.cta || t.services.cta,
       cta: () => navigate("/booking"),
     },
   ];
@@ -210,7 +213,7 @@ const PremiumSection = () => {
                   onClick={service.cta}
                   className="relative z-10 w-full silk-button"
                 >
-                  {t.services.cta}
+                  {service.ctaLabel}
                 </Button>
               </div>
             </motion.div>
