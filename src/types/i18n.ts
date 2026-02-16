@@ -608,6 +608,8 @@ export interface Translation {
     couponError: string;
     couponRemoved: string;
     couponRemovedDesc: string;
+    moreRoutes: string;
+    moreRoutesMobile: string;
     errors: {
       invalidEmail: string;
       emailDescription: string;

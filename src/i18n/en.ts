@@ -535,6 +535,8 @@ export const en: Translation = {
     couponError: "Failed to validate coupon. Please try again.",
     couponRemoved: "Coupon removed",
     couponRemovedDesc: "The discount has been removed from your booking.",
+    moreRoutes: "Train stations, hotels or more routes? Use full form →",
+    moreRoutesMobile: "More routes →",
   },
   common: {
     back: "Back",

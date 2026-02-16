@@ -661,6 +661,8 @@ export const fr: Translation = {
     couponError: "Échec de la validation du code. Veuillez réessayer.",
     couponRemoved: "Code promo retiré",
     couponRemovedDesc: "La réduction a été retirée de votre réservation.",
+    moreRoutes: "Gares, hôtels ou plus de trajets ? Formulaire complet →",
+    moreRoutesMobile: "Plus de trajets →",
   },
   common: {
     back: "Retour",
