@@ -1059,6 +1059,7 @@ export const pt: Translation = {
     heroSubtitle:
       "Descubra os melhores concertos, exposições, shows e eventos culturais em Paris. Reserve seu transfer de luxo para chegar com estilo.",
     liveUpdates: "Atualizações ao Vivo",
+    navigation: "Navegação",
     comingSoon: "Em Breve",
     planAhead: "Planeje com Antecedência",
     thisWeek: "Esta Semana em Paris",
@@ -1076,6 +1077,10 @@ export const pt: Translation = {
     bookRide: "Reservar Transfer",
     officialDetails: "Detalhes Oficiais",
     source: "Fonte",
+    getQuote: "Pedir Orçamento",
+    whatsappMicrocopy: "Respondemos rápido no WhatsApp",
+    ctaWhatsApp: "Pedir Orçamento pelo WhatsApp",
+    ctaEmail: "Envie-nos um Email",
   },
   seo: {
     home: {

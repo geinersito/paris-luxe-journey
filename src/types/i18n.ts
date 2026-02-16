@@ -785,6 +785,7 @@ export interface Translation {
     heroTitle: string;
     heroSubtitle: string;
     liveUpdates: string;
+    navigation: string;
     comingSoon: string;
     planAhead: string;
     thisWeek: string;
@@ -801,6 +802,10 @@ export interface Translation {
     bookRide: string;
     officialDetails: string;
     source: string;
+    getQuote: string;
+    whatsappMicrocopy: string;
+    ctaWhatsApp: string;
+    ctaEmail: string;
   };
   seo: {
     home: {

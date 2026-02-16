@@ -1033,6 +1033,7 @@ export const en: Translation = {
     heroSubtitle:
       "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style.",
     liveUpdates: "Live Updates",
+    navigation: "Navigation",
     comingSoon: "Coming Soon",
     planAhead: "Plan Ahead",
     thisWeek: "This Week in Paris",
@@ -1050,6 +1051,10 @@ export const en: Translation = {
     bookRide: "Book a Ride",
     officialDetails: "Official Details",
     source: "Source",
+    getQuote: "Get a Quote",
+    whatsappMicrocopy: "We reply fast on WhatsApp",
+    ctaWhatsApp: "Get a Quote on WhatsApp",
+    ctaEmail: "Email Us",
   },
   seo: {
     home: {

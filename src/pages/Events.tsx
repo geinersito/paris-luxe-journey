@@ -124,10 +124,10 @@ export default function Events() {
 
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative pt-12 pb-8 md:pt-16 md:pb-10 lg:pt-20 lg:pb-12 bg-gradient-to-b from-champagne via-cream to-white">
+        <section className="relative pt-8 pb-6 md:pt-10 md:pb-8 bg-gradient-to-b from-champagne via-cream to-white">
           <div className="container mx-auto px-4">
             {/* Header */}
-            <div className="text-center max-w-4xl mx-auto mb-8 md:mb-10">
+            <div className="text-center max-w-4xl mx-auto mb-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
                 <Sparkles className="w-4 h-4 text-primary" />
                 <span className="text-sm font-medium text-primary">
@@ -172,21 +172,14 @@ export default function Events() {
           </div>
         </section>
 
-        {/* Trust Signals */}
-        <section className="py-4 md:py-6 bg-white">
-          <div className="container mx-auto px-4">
-            <TrustSignals />
-          </div>
-        </section>
-
         {/* Events Listing + Quick Navigation */}
-        <section className="py-8 md:py-10 lg:py-12 bg-gradient-to-b from-white via-champagne/30 to-cream">
+        <section className="pt-6 pb-8 md:pt-8 md:pb-10 bg-gradient-to-b from-white via-champagne/30 to-cream">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)] gap-5 md:gap-6">
               <aside className="w-full">
                 <div className="bg-white rounded-lg p-6 shadow-sm lg:sticky lg:top-24">
                   <h3 className="text-lg font-semibold mb-4">
-                    {t("events.liveUpdates") || "Live Updates"}
+                    {t("events.navigation") || "Navigation"}
                   </h3>
 
                   <div className="space-y-2">
@@ -210,7 +203,7 @@ export default function Events() {
 
               <div className="space-y-10 md:space-y-12">
                 <article id="events-week" className="scroll-mt-24">
-                  <div className="text-center mb-8 md:mb-10">
+                  <div className="text-center mb-4 md:mb-6">
                     <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
                       {t("events.comingSoon") || "Coming Soon"}
                     </p>
@@ -222,7 +215,7 @@ export default function Events() {
                 </article>
 
                 <article id="events-month" className="scroll-mt-24">
-                  <div className="text-center mb-8 md:mb-10">
+                  <div className="text-center mb-4 md:mb-6">
                     <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
                       {t("events.planAhead") || "Plan Ahead"}
                     </p>
@@ -234,6 +227,13 @@ export default function Events() {
                 </article>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Trust Signals */}
+        <section className="py-6 md:py-8 bg-white">
+          <div className="container mx-auto px-4">
+            <TrustSignals />
           </div>
         </section>
 

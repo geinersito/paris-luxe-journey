@@ -1066,6 +1066,7 @@ export const es: Translation = {
     heroSubtitle:
       "Descubre los mejores conciertos, exposiciones, espectáculos y eventos culturales en París. Reserva tu transfer de lujo para llegar con estilo.",
     liveUpdates: "Actualizaciones en Vivo",
+    navigation: "Navegación",
     comingSoon: "Próximamente",
     planAhead: "Planifica con Anticipación",
     thisWeek: "Esta Semana en París",
@@ -1083,6 +1084,10 @@ export const es: Translation = {
     bookRide: "Reservar Transfer",
     officialDetails: "Detalles Oficiales",
     source: "Fuente",
+    getQuote: "Pedir Presupuesto",
+    whatsappMicrocopy: "Respondemos rápido por WhatsApp",
+    ctaWhatsApp: "Pedir Presupuesto por WhatsApp",
+    ctaEmail: "Envíanos un Email",
   },
   seo: {
     home: {
