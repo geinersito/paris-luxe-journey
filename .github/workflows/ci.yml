@@ -29,6 +29,9 @@ jobs:
       - name: TypeScript check
         run: npx tsc --noEmit
 
+      - name: Run tests
+        run: npm test
+
       - name: Build
         env:
           # Required by scripts/generate-seo.mjs during build
