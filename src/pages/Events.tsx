@@ -124,10 +124,10 @@ export default function Events() {
 
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative pt-12 pb-8 md:pt-16 md:pb-10 lg:pt-20 lg:pb-12 bg-gradient-to-b from-champagne via-cream to-white">
+        <section className="relative pt-12 pb-4 md:pt-16 md:pb-6 lg:pt-20 bg-gradient-to-b from-champagne via-cream to-white">
           <div className="container mx-auto px-4">
             {/* Header */}
-            <div className="text-center max-w-4xl mx-auto mb-8 md:mb-10">
+            <div className="text-center max-w-4xl mx-auto mb-4 md:mb-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
                 <Sparkles className="w-4 h-4 text-primary" />
                 <span className="text-sm font-medium text-primary">
@@ -152,11 +152,11 @@ export default function Events() {
         </section>
 
         {/* Events Listing + Quick Navigation */}
-        <section className="py-8 md:py-10 bg-gradient-to-b from-white via-champagne/30 to-cream">
+        <section className="pt-4 pb-8 md:pt-6 md:pb-10 bg-gradient-to-b from-white via-champagne/30 to-cream">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)] gap-5 md:gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)] gap-5 md:gap-6 items-start">
               <aside className="w-full">
-                <div className="bg-white rounded-lg p-6 shadow-sm lg:sticky lg:top-24">
+                <div className="bg-white rounded-lg p-6 shadow-sm lg:sticky lg:top-20">
                   <h3 className="text-lg font-semibold mb-4">
                     {t("events.liveUpdates") || "Live Updates"}
                   </h3>
@@ -180,19 +180,19 @@ export default function Events() {
                 </div>
               </aside>
 
-              <div className="space-y-10 md:space-y-12">
+              <div className="space-y-8 md:space-y-10">
                 <article id="events-week" className="scroll-mt-24">
-                  <div className="text-center mb-8 md:mb-10">
-                    <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+                  <div className="text-center mb-6">
+                    <p className="font-accent italic text-xl md:text-2xl text-primary mb-3">
                       {t("events.comingSoon") || "Coming Soon"}
                     </p>
-                    <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+                    <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-4">
                       {t("events.thisWeek") || "This Week in Paris"}
                     </h2>
                   </div>
 
                   {/* Contextual CTAs */}
-                  <div className="flex flex-col items-center gap-3 mb-6 sm:flex-row sm:justify-center">
+                  <div className="flex flex-col items-stretch gap-3 mb-6 sm:flex-row sm:items-center sm:justify-start">
                     <Button size="sm" className="silk-button" asChild>
                       <a
                         href={buildGenericWhatsAppUrl(language)}
@@ -216,8 +216,8 @@ export default function Events() {
                 </article>
 
                 <article id="events-month" className="scroll-mt-24">
-                  <div className="text-center mb-8 md:mb-10">
-                    <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+                  <div className="text-center mb-6">
+                    <p className="font-accent italic text-xl md:text-2xl text-primary mb-3">
                       {t("events.planAhead") || "Plan Ahead"}
                     </p>
                     <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
