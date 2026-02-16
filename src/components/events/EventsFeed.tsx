@@ -168,44 +168,45 @@ export function EventsFeed({
                 {event.description[language]}
               </p>
 
-              {/* Category Badge - Gold Style with High Contrast */}
+              {/* Category Badge - High Contrast */}
               {event.category && (
-                <Badge
-                  className="bg-gradient-to-r from-primary/20 to-primary/15 border border-primary/30 capitalize font-semibold"
-                  style={{ color: "#1F2D42" }}
-                >
+                <Badge className="bg-primary/90 text-white capitalize font-semibold border-0">
                   {event.category}
                 </Badge>
               )}
 
               {/* Action Buttons - Contextual CTAs */}
-              <div className="flex flex-col sm:flex-row gap-3 pt-2">
-                <Button asChild className="flex-1 silk-button">
+              <div className="flex flex-col gap-3 pt-2">
+                <Button asChild className="w-full silk-button">
                   <a
                     href={buildEventWhatsAppUrl(event, language, formatDate)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2"
+                    className="flex items-center justify-center gap-2 text-sm"
                   >
-                    <MessageCircle className="w-4 h-4" />
-                    {t("events.getQuote", { defaultValue: "Get a Quote" })}
+                    <MessageCircle className="w-4 h-4 flex-shrink-0" />
+                    <span className="truncate">
+                      {t("events.getQuote", { defaultValue: "Get a Quote" })}
+                    </span>
                   </a>
                 </Button>
                 <Button
                   asChild
                   variant="outline"
-                  className="flex-1 button-outline-gold"
+                  className="w-full button-outline-gold"
                 >
                   <a
                     href={event.eventUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-2"
+                    className="flex items-center justify-center gap-2 text-sm"
                   >
-                    {t("events.officialDetails", {
-                      defaultValue: "Official Details",
-                    })}
-                    <ExternalLink className="w-4 h-4" />
+                    <span className="truncate">
+                      {t("events.officialDetails", {
+                        defaultValue: "Official Details",
+                      })}
+                    </span>
+                    <ExternalLink className="w-4 h-4 flex-shrink-0" />
                   </a>
                 </Button>
               </div>
