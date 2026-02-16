@@ -327,11 +327,11 @@ export function CompactBookingForm({
       </div>
 
       {/* More Routes Link - Responsive */}
-      <div className="mt-3 text-center lg:text-left">
+      <div className="mt-4 text-center">
         <button
           type="button"
           onClick={handleOpenMore}
-          className="hidden md:inline text-sm text-secondary/70 hover:text-primary underline underline-offset-4 transition-colors duration-300"
+          className="hidden md:inline text-sm font-medium text-primary/80 hover:text-primary underline underline-offset-4 transition-colors duration-300"
         >
           {t.booking.moreRoutes}
         </button>
@@ -339,7 +339,7 @@ export function CompactBookingForm({
         <button
           type="button"
           onClick={handleOpenMore}
-          className="md:hidden text-sm text-secondary/70 hover:text-primary underline underline-offset-4 transition-colors duration-300"
+          className="md:hidden text-sm font-medium text-primary/80 hover:text-primary underline underline-offset-4 transition-colors duration-300"
         >
           {t.booking.moreRoutesMobile}
         </button>
