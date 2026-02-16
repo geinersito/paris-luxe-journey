@@ -118,7 +118,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   BEAUVAIS_PARIS: {
-    partnerFloor: { sedan: 15000, van: 16200 }, // €150 / €162 (target 155/170 - buffer +10)
+    partnerFloor: { sedan: 14500, van: 16000 }, // €145 / €160 (target 155/170 - buffer +10)
     distance: "extra_long",
     description: {
       en: "Beauvais ↔ Paris Center",
