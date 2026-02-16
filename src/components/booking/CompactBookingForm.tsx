@@ -326,22 +326,14 @@ export function CompactBookingForm({
         </span>
       </div>
 
-      {/* More Routes Link - Responsive */}
+      {/* More Routes Link */}
       <div className="mt-4 text-center">
         <button
           type="button"
           onClick={handleOpenMore}
-          className="hidden md:inline text-sm font-medium text-primary/80 hover:text-primary underline underline-offset-4 transition-colors duration-300"
+          className="text-sm font-medium text-primary/80 hover:text-primary underline underline-offset-4 transition-colors duration-300"
         >
           {t.booking.moreRoutes}
-        </button>
-
-        <button
-          type="button"
-          onClick={handleOpenMore}
-          className="md:hidden text-sm font-medium text-primary/80 hover:text-primary underline underline-offset-4 transition-colors duration-300"
-        >
-          {t.booking.moreRoutesMobile}
         </button>
       </div>
     </div>
