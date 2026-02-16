@@ -14,41 +14,45 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `37c38b1`
-- Baseline feature: `fix(i18n): change "Live Updates" to "Updated" in events page (PR #156)`
+- SHA: `601ef9c`
+- Baseline feature: `fix(pricing): align v312 partner floors to locked rates (PR #159)`
 - Last updated: `2026-02-16`
 
 ## Ultimos PRs mergeados en main
 
-1. `#156` - fix(i18n): change "Live Updates" to "Updated" in events page (`37c38b1`)
-2. `#155` - fix(i18n): add missing events translation keys + UX improvements (`dbcb9e1`)
-3. `#154` - fix(events): listing-first layout order + reduced spacing (`2e8b0c7`)
-4. `#142` - fix(blog): clamp hero media and align category page with sidebar layout (`050b179`)
-5. `#141` - fix(events): tighten vertical spacing density on listing sections (`8478715`)
-6. `#139` - feat(events): add quick filters sidebar jump menu (`61ccf5e`)
-4. `#137` - fix(events): compact hero spacing to match excursions (`1d3fd5c`)
-5. `#135` - chore(copy): coherence sweep for ES/EN/FR B2B wording (`95aba65`)
-6. `#133` - feat(analytics): enrich GA4 payload with locale and attribution (`e990e7b`)
-7. `#131` - chore(copy): qa PT wording for home and B2B pages (`200b434`)
-8. `#129` - fix(copy): align footer wording with B2C+B2B framing (`87db9ec`)
-9. `#127` - feat(analytics): track B2B page CTAs (agencies/companies) (`30c2cd3`)
-10. `#125` - feat(analytics): GA4 events for CTA, WhatsApp and contact form (`409131a`)
-11. `#123` - feat: B2B pages (/agencias, /empresas) + navbar B2B dropdown (`2d33719`)
-12. `#121` - fix(copy): remove Premium Fleet heading (FleetSection) (`55e0a4f`)
-13. `#120` - feat(copy): home conversion copy via centralized i18n (ES/PT/EN/FR) (`4c6df6b`)
-14. `#119` - docs(ssot): defer UX-BRANDING-APPROACHABLE-01 after UI revert (#118) (`151e8e3`)
-15. `#118` - revert(ui): restore previous design (revert PR1 tokens + PR2 components) (`5b25f7c`)
-16. `#116` - ux(components): baseline buttons/cards/badges/inputs for approachable branding (PR2 UX-BRANDING-APPROACHABLE-01) (`afeafbb`)
-17. `#115` - docs(ssot): mark PR1 tokens done; set PR2 components as next (UX-BRANDING-APPROACHABLE-01) (`49ac97b`)
-18. `#114` - ux(theme): shift tokens to professional trustworthy palette (PR1 UX-BRANDING-APPROACHABLE-01) (`906a898`)
-19. `#113` - docs(ssot): add approachable branding item (UX-BRANDING-APPROACHABLE-01) (`97d7e23`)
-20. `#111` - seo(airports): metadata + canonical + JSON-LD (SEO-AIRPORTS-METADATA-01) (`85fa587`)
-21. `#109` - UX-AIRPORTS-ADD-BOOKING-CTA-01 (`1508245`)
-22. `#107` - content(airports): add terminal guide section (CONTENT-AIRPORTS-TERMINAL-GUIDE-01) (`a0108d6`)
-23. `#105` - content(trust): add sitewide trust signals block (`97e0777`)
+1. `#159` - fix(pricing): align v312 partner floors to locked rates (2026-02) (`601ef9c`)
+2. `#158` - fix(pricing): update fixed rates + hourly displayRate (2026-02) (`d110106`)
+3. `#156` - fix(i18n): change "Live Updates" to "Updated" in events page (`37c38b1`)
+4. `#155` - fix(i18n): add missing events translation keys + UX improvements (`dbcb9e1`)
+5. `#154` - fix(events): listing-first layout order + reduced spacing (`2e8b0c7`)
+6. `#142` - fix(blog): clamp hero media and align category page with sidebar layout (`050b179`)
+7. `#141` - fix(events): tighten vertical spacing density on listing sections (`8478715`)
+8. `#139` - feat(events): add quick filters sidebar jump menu (`61ccf5e`)
+9. `#137` - fix(events): compact hero spacing to match excursions (`1d3fd5c`)
+10. `#135` - chore(copy): coherence sweep for ES/EN/FR B2B wording (`95aba65`)
+11. `#133` - feat(analytics): enrich GA4 payload with locale and attribution (`e990e7b`)
+12. `#131` - chore(copy): qa PT wording for home and B2B pages (`200b434`)
+13. `#129` - fix(copy): align footer wording with B2C+B2B framing (`87db9ec`)
+14. `#127` - feat(analytics): track B2B page CTAs (agencies/companies) (`30c2cd3`)
+15. `#125` - feat(analytics): GA4 events for CTA, WhatsApp and contact form (`409131a`)
+16. `#123` - feat: B2B pages (/agencias, /empresas) + navbar B2B dropdown (`2d33719`)
+17. `#121` - fix(copy): remove Premium Fleet heading (FleetSection) (`55e0a4f`)
+18. `#120` - feat(copy): home conversion copy via centralized i18n (ES/PT/EN/FR) (`4c6df6b`)
+19. `#119` - docs(ssot): defer UX-BRANDING-APPROACHABLE-01 after UI revert (#118) (`151e8e3`)
+20. `#118` - revert(ui): restore previous design (revert PR1 tokens + PR2 components) (`5b25f7c`)
+21. `#116` - ux(components): baseline buttons/cards/badges/inputs for approachable branding (PR2 UX-BRANDING-APPROACHABLE-01) (`afeafbb`)
+22. `#115` - docs(ssot): mark PR1 tokens done; set PR2 components as next (UX-BRANDING-APPROACHABLE-01) (`49ac97b`)
+23. `#114` - ux(theme): shift tokens to professional trustworthy palette (PR1 UX-BRANDING-APPROACHABLE-01) (`906a898`)
+24. `#113` - docs(ssot): add approachable branding item (UX-BRANDING-APPROACHABLE-01) (`97d7e23`)
+25. `#111` - seo(airports): metadata + canonical + JSON-LD (SEO-AIRPORTS-METADATA-01) (`85fa587`)
+26. `#109` - UX-AIRPORTS-ADD-BOOKING-CTA-01 (`1508245`)
+27. `#107` - content(airports): add terminal guide section (CONTENT-AIRPORTS-TERMINAL-GUIDE-01) (`a0108d6`)
+28. `#105` - content(trust): add sitewide trust signals block (`97e0777`)
 
 ## Done / Shipped
 
+- **PRICING-UPDATE-2026-02-V312** ✅ DONE — PR **#159** — `601ef9c` — Updated all 17 Partner Floor values in V3.1.2 pricing system to produce exact LOCKED prepaid prices (formula: PF = target - FC + PD). Revenue-critical hotfix: fixes €10-20 underpricing per ride across all routes. Changes: CDG 100/130, ORY 90/115, gares unified 80/100, DLP 120/145, VRS 95/120, etc. Gates: type-check + build PASS. No logic/fee changes (FC/PD/buffer intact).
+- **PRICING-UPDATE-2026-02** ✅ DONE — PR **#158** — `d110106` — Updated pricing.ts (shadow/fallback system) with LOCKED rates v2.0: airports +40-50% (CDG 100/130, ORY 90/115), gares unified 80/100, city wait 30min, hourly displayRate 70€ (rate 75€ for calc). Serves as SSOT reference + legacy fallback. Version v1.0 → v2.0.
 - **EVENTS-COPY-ACCURACY-01** ✅ DONE — PR **#156** — `37c38b1` — Changed "Live Updates" to "Updated" pill label in Events hero to avoid over-promising real-time data (feed is JSON-based). Copy-only change across 4 locales (ES/EN/FR/PT)
 - **EVENTS-I18N-KEYS-UX-01** ✅ DONE — PR **#155** — `dbcb9e1` — Added missing `events.*` translation keys (getQuote, whatsappMicrocopy, ctaWhatsApp, ctaEmail, navigation) + safe fallbacks to prevent raw key display. Also fixed button text truncation ("Pedir Presupue..." → full "Pedir Presupuesto") by changing layout to vertical and improved category badge contrast (semi-transparent → solid bg-primary/90)
 - **EVENTS-LISTING-FIRST-01** ✅ DONE — PR **#154** — `2e8b0c7` — Reordered Events page sections to listing-first approach (Hero → Listing → TrustSignals → CTA) and reduced hero padding/margins to display first event cards above-the-fold faster. Sidebar navigation and anchor scroll behavior preserved (layout-only)
