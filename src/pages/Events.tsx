@@ -124,10 +124,10 @@ export default function Events() {
 
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative pt-12 pb-8 md:pt-16 md:pb-10 lg:pt-20 lg:pb-12 bg-gradient-to-b from-champagne via-cream to-white">
+        <section className="relative pt-10 pb-4 md:pt-12 md:pb-6 lg:pt-16 lg:pb-8 bg-gradient-to-b from-champagne via-cream to-white">
           <div className="container mx-auto px-4">
             {/* Header */}
-            <div className="text-center max-w-4xl mx-auto mb-8 md:mb-10">
+            <div className="text-center max-w-4xl mx-auto mb-6 md:mb-8">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
                 <Sparkles className="w-4 h-4 text-primary" />
                 <span className="text-sm font-medium text-primary">
@@ -139,11 +139,11 @@ export default function Events() {
                 {t("events.heroTitle") || "Events in Paris"}
               </h1>
 
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-lg md:text-xl text-muted-foreground mb-6 leading-relaxed">
                 {t("events.heroSubtitle") ||
                   "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style."}
               </p>
-              <p className="text-sm text-muted-foreground/90 mb-8">
+              <p className="text-sm text-muted-foreground/90 mb-6">
                 {lastUpdatedLabel} ·{" "}
                 {t("events.sourcesVerified") || "Official sources verified"}
               </p>
@@ -173,18 +173,18 @@ export default function Events() {
         </section>
 
         {/* Trust Signals */}
-        <section className="py-4 md:py-6 bg-white">
+        <section className="py-3 md:py-4 bg-white">
           <div className="container mx-auto px-4">
             <TrustSignals />
           </div>
         </section>
 
         {/* Events Listing + Quick Navigation */}
-        <section className="py-8 md:py-10 lg:py-12 bg-gradient-to-b from-white via-champagne/30 to-cream">
+        <section className="pt-6 pb-8 md:pt-8 md:pb-10 lg:pt-10 lg:pb-12 bg-gradient-to-b from-white via-champagne/30 to-cream">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)] gap-5 md:gap-6">
               <aside className="w-full">
-                <div className="bg-white rounded-lg p-6 shadow-sm lg:sticky lg:top-24">
+                <div className="bg-white rounded-lg p-6 shadow-sm lg:sticky lg:top-20">
                   <h3 className="text-lg font-semibold mb-4">
                     {t("events.liveUpdates") || "Live Updates"}
                   </h3>
@@ -208,9 +208,9 @@ export default function Events() {
                 </div>
               </aside>
 
-              <div className="space-y-10 md:space-y-12">
+              <div className="space-y-8 md:space-y-10">
                 <article id="events-week" className="scroll-mt-24">
-                  <div className="text-center mb-8 md:mb-10">
+                  <div className="text-center mb-6 md:mb-8">
                     <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
                       {t("events.comingSoon") || "Coming Soon"}
                     </p>
@@ -222,7 +222,7 @@ export default function Events() {
                 </article>
 
                 <article id="events-month" className="scroll-mt-24">
-                  <div className="text-center mb-8 md:mb-10">
+                  <div className="text-center mb-6 md:mb-8">
                     <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
                       {t("events.planAhead") || "Plan Ahead"}
                     </p>
