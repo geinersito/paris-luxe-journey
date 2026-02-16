@@ -172,15 +172,8 @@ export default function Events() {
           </div>
         </section>
 
-        {/* Trust Signals */}
-        <section className="py-4 md:py-6 bg-white">
-          <div className="container mx-auto px-4">
-            <TrustSignals />
-          </div>
-        </section>
-
         {/* Events Listing + Quick Navigation */}
-        <section className="py-8 md:py-10 lg:py-12 bg-gradient-to-b from-white via-champagne/30 to-cream">
+        <section className="py-8 md:py-10 bg-gradient-to-b from-white via-champagne/30 to-cream">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)] gap-5 md:gap-6">
               <aside className="w-full">
@@ -234,6 +227,13 @@ export default function Events() {
                 </article>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Trust Signals */}
+        <section className="py-4 md:py-6 bg-white">
+          <div className="container mx-auto px-4">
+            <TrustSignals />
           </div>
         </section>
 
