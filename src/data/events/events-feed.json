@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-02-14T18:30:00Z",
+  "generatedAt": "2026-02-16T20:30:00Z",
   "timezone": "Europe/Paris",
   "thisWeek": [
     {
       "id": "art-capital-grand-palais-2026",
       "startAt": "2026-02-13T09:00:00Z",
-      "endAt": "2026-02-15T19:00:00Z",
+      "endAt": "2026-02-18T19:00:00Z",
       "title": {
         "en": "Art Capital at Grand Palais",
         "es": "Art Capital en Grand Palais",
@@ -35,8 +35,8 @@
     },
     {
       "id": "six-invitational-paris-2026",
-      "startAt": "2026-02-13T09:00:00Z",
-      "endAt": "2026-02-15T19:00:00Z",
+      "startAt": "2026-02-08T09:00:00Z",
+      "endAt": "2026-02-22T19:00:00Z",
       "title": {
         "en": "Six Invitational Paris 2026",
         "es": "Six Invitational Paris 2026",
@@ -69,10 +69,10 @@
       "startAt": "2026-02-07T09:00:00Z",
       "endAt": "2026-03-23T18:00:00Z",
       "title": {
-        "en": "Jeu de Paume Festival",
-        "es": "Festival Jeu de Paume",
-        "fr": "Festival Jeu de Paume",
-        "pt": "Festival Jeu de Paume"
+        "en": "Jeu de Paume Winter Season",
+        "es": "Temporada de Invierno – Jeu de Paume",
+        "fr": "Saison d'hiver – Jeu de Paume",
+        "pt": "Temporada de Inverno – Jeu de Paume"
       },
       "description": {
         "en": "Contemporary image and video program featuring international artists, talks, and curated screenings.",
@@ -164,10 +164,10 @@
       "startAt": "2026-02-07T09:00:00Z",
       "endAt": "2026-03-23T18:00:00Z",
       "title": {
-        "en": "Jeu de Paume Festival",
-        "es": "Festival Jeu de Paume",
-        "fr": "Festival Jeu de Paume",
-        "pt": "Festival Jeu de Paume"
+        "en": "Jeu de Paume Winter Season",
+        "es": "Temporada de Invierno – Jeu de Paume",
+        "fr": "Saison d'hiver – Jeu de Paume",
+        "pt": "Temporada de Inverno – Jeu de Paume"
       },
       "description": {
         "en": "Contemporary image and video program featuring international artists, talks, and curated screenings.",
