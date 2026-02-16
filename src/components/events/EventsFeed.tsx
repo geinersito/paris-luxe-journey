@@ -51,6 +51,14 @@ export function EventsFeed({
     Math.floor((now.getTime() - generatedAt.getTime()) / (1000 * 60 * 60 * 24)),
   );
 
+  // Locale map for date formatting
+  const localeMap = {
+    en: "en-US",
+    es: "es-ES",
+    fr: "fr-FR",
+    pt: "pt-PT",
+  };
+
   // Format date according to language
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = {
@@ -61,14 +69,48 @@ export function EventsFeed({
       minute: "2-digit",
     };
 
-    const localeMap = {
-      en: "en-US",
-      es: "es-ES",
-      fr: "fr-FR",
-      pt: "pt-PT",
-    };
-
     return formatParisDateWithLocale(dateString, localeMap[language], options);
+  };
+
+  // Date range helpers
+  const formatDayMonth = (iso: string) =>
+    formatParisDateWithLocale(iso, localeMap[language], {
+      month: "short",
+      day: "numeric",
+    });
+
+  const formatTime = (iso: string) =>
+    formatParisDateWithLocale(iso, localeMap[language], {
+      hour: "2-digit",
+      minute: "2-digit",
+    });
+
+  const formatDateRange = (startAt: string, endAt?: string | null) => {
+    if (!endAt) {
+      // Single point-in-time
+      return formatDate(startAt);
+    }
+
+    const startDay = formatParisDateWithLocale(startAt, "en-CA", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    });
+    const endDay = formatParisDateWithLocale(endAt, "en-CA", {
+      year: "numeric",
+      month: "2-digit",
+      day: "2-digit",
+    });
+
+    if (startDay === endDay) {
+      // Same day: show time range
+      return `${formatDayMonth(startAt)} · ${formatTime(startAt)}–${formatTime(endAt)}`;
+    }
+
+    const delText = { en: "From", es: "Del", fr: "Du", pt: "De" } as const;
+    const alText = { en: "to", es: "al", fr: "au", pt: "a" } as const;
+
+    return `${delText[language]} ${formatDayMonth(startAt)} ${alText[language]} ${formatDayMonth(endAt)}`;
   };
 
   if (!events || events.length === 0) {
@@ -146,7 +188,7 @@ export function EventsFeed({
               <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-gold-subtle rounded-lg w-fit mb-3">
                 <Calendar className="w-4 h-4 text-primary" />
                 <span className="text-sm text-gray-700 font-medium">
-                  {formatDate(event.startAt)}
+                  {formatDateRange(event.startAt, event.endAt)}
                 </span>
               </div>
 
