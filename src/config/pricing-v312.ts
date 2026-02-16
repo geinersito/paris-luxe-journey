@@ -85,7 +85,7 @@ export const PRICING_CONSTANTS = {
  */
 export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   CDG_PARIS: {
-    partnerFloor: { sedan: 8000, van: 10400 }, // €80 / €104
+    partnerFloor: { sedan: 9500, van: 12200 }, // €95 / €122 (target 100/130)
     distance: "medium",
     description: {
       en: "CDG ↔ Paris Center",
@@ -96,7 +96,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   ORLY_PARIS: {
-    partnerFloor: { sedan: 7500, van: 9800 }, // €75 / €98
+    partnerFloor: { sedan: 8500, van: 10700 }, // €85 / €107 (target 90/115)
     distance: "medium",
     description: {
       en: "Orly ↔ Paris Center",
@@ -107,7 +107,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   LEBOURGET_PARIS: {
-    partnerFloor: { sedan: 7700, van: 9900 }, // €77 / €99
+    partnerFloor: { sedan: 10000, van: 12200 }, // €100 / €122 (target 105/130)
     distance: "long",
     description: {
       en: "Le Bourget ↔ Paris Center",
@@ -118,7 +118,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   BEAUVAIS_PARIS: {
-    partnerFloor: { sedan: 13000, van: 16900 }, // €130 / €169
+    partnerFloor: { sedan: 15000, van: 16200 }, // €150 / €162 (target 155/170 - buffer +10)
     distance: "extra_long",
     description: {
       en: "Beauvais ↔ Paris Center",
@@ -129,7 +129,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   CDG_ORLY: {
-    partnerFloor: { sedan: 10500, van: 13500 }, // €105 / €135
+    partnerFloor: { sedan: 12500, van: 14700 }, // €125 / €147 (target 130/155)
     distance: "medium",
     description: {
       en: "CDG ↔ Orly",
@@ -140,7 +140,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   CDG_LEBOURGET: {
-    partnerFloor: { sedan: 7700, van: 9900 }, // €77 / €99
+    partnerFloor: { sedan: 10500, van: 12200 }, // €105 / €122 (target 110/130)
     distance: "long",
     description: {
       en: "CDG ↔ Le Bourget",
@@ -151,7 +151,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   ORLY_LEBOURGET: {
-    partnerFloor: { sedan: 8500, van: 11000 }, // €85 / €110
+    partnerFloor: { sedan: 11500, van: 13700 }, // €115 / €137 (target 120/145)
     distance: "medium",
     description: {
       en: "Orly ↔ Le Bourget",
@@ -162,7 +162,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   GAREDUNORD_PARIS: {
-    partnerFloor: { sedan: 6000, van: 7200 }, // €60 / €72
+    partnerFloor: { sedan: 7500, van: 9200 }, // €75 / €92 (target 80/100 - gares unified)
     distance: "short",
     description: {
       en: "Gare du Nord ↔ Paris Center",
@@ -173,7 +173,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   GARELYON_PARIS: {
-    partnerFloor: { sedan: 6000, van: 7800 }, // €60 / €78
+    partnerFloor: { sedan: 7500, van: 9200 }, // €75 / €92 (target 80/100 - gares unified)
     distance: "short",
     description: {
       en: "Gare de Lyon ↔ Paris Center",
@@ -184,7 +184,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   GAREST_PARIS: {
-    partnerFloor: { sedan: 6000, van: 7200 }, // €60 / €72
+    partnerFloor: { sedan: 7500, van: 9200 }, // €75 / €92 (target 80/100 - gares unified)
     distance: "short",
     description: {
       en: "Gare de l'Est ↔ Paris Center",
@@ -195,7 +195,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   GAREMONTPARNASSE_PARIS: {
-    partnerFloor: { sedan: 6000, van: 7800 }, // €60 / €78
+    partnerFloor: { sedan: 7500, van: 9200 }, // €75 / €92 (target 80/100 - gares unified)
     distance: "short",
     description: {
       en: "Gare Montparnasse ↔ Paris Center",
@@ -206,7 +206,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   GARELAZARE_PARIS: {
-    partnerFloor: { sedan: 6000, van: 7800 }, // €60 / €78
+    partnerFloor: { sedan: 7500, van: 9200 }, // €75 / €92 (target 80/100 - gares unified)
     distance: "short",
     description: {
       en: "Gare Saint-Lazare ↔ Paris Center",
@@ -217,7 +217,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   DISNEY_PARIS: {
-    partnerFloor: { sedan: 7500, van: 10400 }, // €75 / €104
+    partnerFloor: { sedan: 11500, van: 13700 }, // €115 / €137 (target 120/145)
     distance: "medium",
     description: {
       en: "Disneyland ↔ Paris Center",
@@ -228,7 +228,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   VERSAILLES_PARIS: {
-    partnerFloor: { sedan: 7500, van: 9800 }, // €75 / €98
+    partnerFloor: { sedan: 9000, van: 11200 }, // €90 / €112 (target 95/120)
     distance: "medium",
     description: {
       en: "Versailles ↔ Paris Center",
@@ -239,7 +239,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   CDG_DISNEY: {
-    partnerFloor: { sedan: 7500, van: 10400 }, // €75 / €104
+    partnerFloor: { sedan: 12000, van: 14200 }, // €120 / €142 (target 125/150)
     distance: "medium",
     description: {
       en: "CDG → Disneyland",
@@ -250,7 +250,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   CDG_VERSAILLES: {
-    partnerFloor: { sedan: 8000, van: 10400 }, // €80 / €104
+    partnerFloor: { sedan: 10500, van: 12700 }, // €105 / €127 (target 110/135)
     distance: "medium",
     description: {
       en: "CDG → Versailles",
@@ -261,7 +261,7 @@ export const ROUTES_V312: Record<RouteKey, RouteConfig> = {
   },
 
   ORLY_DISNEY: {
-    partnerFloor: { sedan: 9000, van: 11700 }, // €90 / €117
+    partnerFloor: { sedan: 11000, van: 13200 }, // €110 / €132 (target 115/140)
     distance: "medium",
     description: {
       en: "Orly → Disneyland",
