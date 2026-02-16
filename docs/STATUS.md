@@ -14,15 +14,18 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `050b179`
-- Baseline feature: `fix(blog): clamp hero media and align category page with sidebar layout (PR #142)`
-- Last updated: `2026-02-15`
+- SHA: `37c38b1`
+- Baseline feature: `fix(i18n): change "Live Updates" to "Updated" in events page (PR #156)`
+- Last updated: `2026-02-16`
 
 ## Ultimos PRs mergeados en main
 
-1. `#142` - fix(blog): clamp hero media and align category page with sidebar layout (`050b179`)
-2. `#141` - fix(events): tighten vertical spacing density on listing sections (`8478715`)
-3. `#139` - feat(events): add quick filters sidebar jump menu (`61ccf5e`)
+1. `#156` - fix(i18n): change "Live Updates" to "Updated" in events page (`37c38b1`)
+2. `#155` - fix(i18n): add missing events translation keys + UX improvements (`dbcb9e1`)
+3. `#154` - fix(events): listing-first layout order + reduced spacing (`2e8b0c7`)
+4. `#142` - fix(blog): clamp hero media and align category page with sidebar layout (`050b179`)
+5. `#141` - fix(events): tighten vertical spacing density on listing sections (`8478715`)
+6. `#139` - feat(events): add quick filters sidebar jump menu (`61ccf5e`)
 4. `#137` - fix(events): compact hero spacing to match excursions (`1d3fd5c`)
 5. `#135` - chore(copy): coherence sweep for ES/EN/FR B2B wording (`95aba65`)
 6. `#133` - feat(analytics): enrich GA4 payload with locale and attribution (`e990e7b`)
@@ -46,6 +49,9 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 
 ## Done / Shipped
 
+- **EVENTS-COPY-ACCURACY-01** ✅ DONE — PR **#156** — `37c38b1` — Changed "Live Updates" to "Updated" pill label in Events hero to avoid over-promising real-time data (feed is JSON-based). Copy-only change across 4 locales (ES/EN/FR/PT)
+- **EVENTS-I18N-KEYS-UX-01** ✅ DONE — PR **#155** — `dbcb9e1` — Added missing `events.*` translation keys (getQuote, whatsappMicrocopy, ctaWhatsApp, ctaEmail, navigation) + safe fallbacks to prevent raw key display. Also fixed button text truncation ("Pedir Presupue..." → full "Pedir Presupuesto") by changing layout to vertical and improved category badge contrast (semi-transparent → solid bg-primary/90)
+- **EVENTS-LISTING-FIRST-01** ✅ DONE — PR **#154** — `2e8b0c7` — Reordered Events page sections to listing-first approach (Hero → Listing → TrustSignals → CTA) and reduced hero padding/margins to display first event cards above-the-fold faster. Sidebar navigation and anchor scroll behavior preserved (layout-only)
 - **BLOG-HERO-SIDEBAR-CONSISTENCY-01** ✅ DONE — PR **#142** — `050b179edd3fbba0b2fc4982c8cdcdf2efc8d2bb` — Clamp blog post hero media height (aspect ratio + max height) and align blog category layout to desktop 8/4 with sticky sidebar for visual family consistency with Events/Excursions (layout-only)
 - **EVENTS-SPACE-DENSITY-01** ✅ DONE — PR **#141** — `8478715bd40245ac3a013f6a3f862ff9a5e0b005` — Reduce vertical spacing across Events page sections (trust/listings/CTA rhythm, inter-block gaps, and heading margins) while preserving sidebar behavior and event feed logic (layout-only)
 - **EVENTS-QUICK-FILTERS-SIDEBAR-01** ✅ DONE — PR **#139** — `61ccf5eca98beef1318c2d21dd2fe4cd1ce06225` — Add Excursions-style quick-filters sidebar on Events page with anchor jump navigation (`events-week`, `events-month`) and active section highlight via `IntersectionObserver` (layout/navigation-only)
