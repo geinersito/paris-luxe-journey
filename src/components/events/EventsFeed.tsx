@@ -188,7 +188,7 @@ export function EventsFeed({
                     className="flex items-center justify-center gap-2"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    {t("events.getQuote") || "Get a Quote"}
+                    {t("events.getQuote", { defaultValue: "Get a Quote" })}
                   </a>
                 </Button>
                 <Button
@@ -202,18 +202,22 @@ export function EventsFeed({
                     rel="noopener noreferrer"
                     className="flex items-center justify-center gap-2"
                   >
-                    {t("events.officialDetails")}
+                    {t("events.officialDetails", {
+                      defaultValue: "Official Details",
+                    })}
                     <ExternalLink className="w-4 h-4" />
                   </a>
                 </Button>
               </div>
               <p className="text-xs text-primary/70 text-center">
-                {t("events.whatsappMicrocopy") || "We reply fast on WhatsApp"}
+                {t("events.whatsappMicrocopy", {
+                  defaultValue: "We reply fast on WhatsApp",
+                })}
               </p>
 
               {/* Source */}
               <p className="text-xs text-gray-500 text-center pt-2 border-t border-primary/10">
-                {t("events.source")}:{" "}
+                {t("events.source", { defaultValue: "Source" })}:{" "}
                 <a
                   href={event.sourceUrl}
                   target="_blank"
