@@ -5,7 +5,7 @@
     {
       "id": "art-capital-grand-palais-2026",
       "startAt": "2026-02-13T09:00:00Z",
-      "endAt": "2026-02-18T19:00:00Z",
+      "endAt": "2026-02-15T19:00:00Z",
       "title": {
         "en": "Art Capital at Grand Palais",
         "es": "Art Capital en Grand Palais",
@@ -35,8 +35,8 @@
     },
     {
       "id": "six-invitational-paris-2026",
-      "startAt": "2026-02-08T09:00:00Z",
-      "endAt": "2026-02-22T19:00:00Z",
+      "startAt": "2026-02-13T09:00:00Z",
+      "endAt": "2026-02-15T19:00:00Z",
       "title": {
         "en": "Six Invitational Paris 2026",
         "es": "Six Invitational Paris 2026",
