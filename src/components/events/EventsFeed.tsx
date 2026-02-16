@@ -122,7 +122,7 @@ export function EventsFeed({
   }
 
   return (
-    <div className="space-y-12">
+    <div className="space-y-8">
       {/* Header - Premium Style */}
       {showHeader && (
         <div className="text-center">
@@ -139,7 +139,7 @@ export function EventsFeed({
 
       {/* Events Grid */}
       <div
-        className={`grid gap-8 ${variant === "full" ? "md:grid-cols-2 lg:grid-cols-3" : "md:grid-cols-2"}`}
+        className={`grid gap-6 ${variant === "full" ? "md:grid-cols-2 lg:grid-cols-3" : "md:grid-cols-2"}`}
       >
         {events.map((event) => (
           <div
