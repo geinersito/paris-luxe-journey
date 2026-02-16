@@ -143,31 +143,10 @@ export default function Events() {
                 {t("events.heroSubtitle") ||
                   "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style."}
               </p>
-              <p className="text-sm text-muted-foreground/90 mb-8">
+              <p className="text-sm text-muted-foreground/90">
                 {lastUpdatedLabel} ·{" "}
                 {t("events.sourcesVerified") || "Official sources verified"}
               </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="silk-button" asChild>
-                  <a
-                    href={buildGenericWhatsAppUrl(language)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    {t("events.bookTransfer") || "Get a Ride Quote"}
-                  </a>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={() => navigate("/blog")}
-                  className="button-outline-gold"
-                >
-                  {t("events.readGuides") || "Read Travel Guides"}
-                </Button>
-              </div>
             </div>
           </div>
         </section>
@@ -211,6 +190,28 @@ export default function Events() {
                       {t("events.thisWeek") || "This Week in Paris"}
                     </h2>
                   </div>
+
+                  {/* Contextual CTAs */}
+                  <div className="flex flex-col items-center gap-3 mb-6 sm:flex-row sm:justify-center">
+                    <Button size="sm" className="silk-button" asChild>
+                      <a
+                        href={buildGenericWhatsAppUrl(language)}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <MessageCircle className="w-4 h-4 mr-2" />
+                        {t("events.bookTransfer") || "Reservar transfer"}
+                      </a>
+                    </Button>
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      onClick={() => navigate("/blog")}
+                    >
+                      {t("events.readGuides") || "Guías relacionadas"} →
+                    </Button>
+                  </div>
+
                   <EventsFeed range="week" variant="full" showHeader={false} />
                 </article>
 
