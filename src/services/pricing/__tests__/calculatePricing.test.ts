@@ -21,14 +21,14 @@ describe("Pricing Calculator V3.1.2", () => {
       const result = calculatePricing("CDG_PARIS", "sedan", true);
 
       expect(result).not.toBeNull();
-      expect(result?.prepaid_price).toBe(8500); // €85.00
-      expect(result?.flexible_price).toBe(9000); // €90.00
+      expect(result?.prepaid_price).toBe(10000); // €100.00 (LOCKED target)
+      expect(result?.flexible_price).toBe(10500); // €105.00
       expect(result?.hold_amount).toBe(3000); // €30.00
       expect(result?.payment_modes_enabled.prepaid).toBe(true);
       expect(result?.payment_modes_enabled.flexible).toBe(true);
 
       // Verificar datos internos
-      expect(result?._internal?.partner_floor).toBe(8000); // €80.00
+      expect(result?._internal?.partner_floor).toBe(9500); // €95.00
       expect(result?._internal?.flexible_commission).toBe(1000); // €10.00
       expect(result?._internal?.prepaid_discount).toBe(500); // €5.00
     });
@@ -37,12 +37,12 @@ describe("Pricing Calculator V3.1.2", () => {
       const result = calculatePricing("CDG_PARIS", "van", true);
 
       expect(result).not.toBeNull();
-      expect(result?.prepaid_price).toBe(11200); // €112.00 (PF 104 + FC 13 - PD 5)
-      expect(result?.flexible_price).toBe(11700); // €117.00 (PF 104 + FC 13)
+      expect(result?.prepaid_price).toBe(13000); // €130.00 (LOCKED target)
+      expect(result?.flexible_price).toBe(13500); // €135.00
       expect(result?.hold_amount).toBe(3000); // €30.00
 
       // Verificar datos internos
-      expect(result?._internal?.partner_floor).toBe(10400); // €104.00
+      expect(result?._internal?.partner_floor).toBe(12200); // €122.00
       expect(result?._internal?.flexible_commission).toBe(1300); // €13.00
     });
   });
@@ -52,23 +52,23 @@ describe("Pricing Calculator V3.1.2", () => {
       const result = calculatePricing("ORLY_PARIS", "sedan", true);
 
       expect(result).not.toBeNull();
-      expect(result?.prepaid_price).toBe(8000); // €80.00
-      expect(result?.flexible_price).toBe(8500); // €85.00
+      expect(result?.prepaid_price).toBe(9000); // €90.00 (LOCKED target)
+      expect(result?.flexible_price).toBe(9500); // €95.00
       expect(result?.hold_amount).toBe(3000); // €30.00
 
       // Verificar datos internos
-      expect(result?._internal?.partner_floor).toBe(7500); // €75.00
+      expect(result?._internal?.partner_floor).toBe(8500); // €85.00
     });
 
     it("should calculate correct prices for van", () => {
       const result = calculatePricing("ORLY_PARIS", "van", true);
 
       expect(result).not.toBeNull();
-      expect(result?.prepaid_price).toBe(10600); // €106.00
-      expect(result?.flexible_price).toBe(11100); // €111.00
+      expect(result?.prepaid_price).toBe(11500); // €115.00 (LOCKED target)
+      expect(result?.flexible_price).toBe(12000); // €120.00
 
       // Verificar datos internos
-      expect(result?._internal?.partner_floor).toBe(9800); // €98.00
+      expect(result?._internal?.partner_floor).toBe(10700); // €107.00
     });
   });
 
@@ -77,12 +77,12 @@ describe("Pricing Calculator V3.1.2", () => {
       const result = calculatePricing("GAREDUNORD_PARIS", "sedan", true);
 
       expect(result).not.toBeNull();
-      expect(result?.prepaid_price).toBe(6500); // €65.00
-      expect(result?.flexible_price).toBe(7000); // €70.00
+      expect(result?.prepaid_price).toBe(8000); // €80.00 (LOCKED target - gares unified)
+      expect(result?.flexible_price).toBe(8500); // €85.00
       expect(result?.hold_amount).toBe(1500); // €15.00 (short distance)
 
       // Verificar datos internos
-      expect(result?._internal?.partner_floor).toBe(6000); // €60.00
+      expect(result?._internal?.partner_floor).toBe(7500); // €75.00
     });
   });
 
@@ -91,26 +91,26 @@ describe("Pricing Calculator V3.1.2", () => {
       const result = calculatePricing("BEAUVAIS_PARIS", "sedan", true);
 
       expect(result).not.toBeNull();
-      expect(result?.prepaid_price).toBe(14000); // €140.00 (PF + buffer)
+      expect(result?.prepaid_price).toBe(15500); // €155.00 (LOCKED target - PF + buffer)
       expect(result?.flexible_price).toBe(0); // No flexible
       expect(result?.hold_amount).toBe(0); // No hold
       expect(result?.payment_modes_enabled.prepaid).toBe(true);
       expect(result?.payment_modes_enabled.flexible).toBe(false);
 
       // Verificar datos internos
-      expect(result?._internal?.partner_floor).toBe(13000); // €130.00
+      expect(result?._internal?.partner_floor).toBe(14500); // €145.00
     });
 
     it("should be prepaid-only for van", () => {
       const result = calculatePricing("BEAUVAIS_PARIS", "van", true);
 
       expect(result).not.toBeNull();
-      expect(result?.prepaid_price).toBe(17900); // €179.00 (PF + buffer)
+      expect(result?.prepaid_price).toBe(17000); // €170.00 (LOCKED target - PF + buffer)
       expect(result?.flexible_price).toBe(0); // No flexible
       expect(result?.payment_modes_enabled.flexible).toBe(false);
 
       // Verificar datos internos
-      expect(result?._internal?.partner_floor).toBe(16900); // €169.00
+      expect(result?._internal?.partner_floor).toBe(16000); // €160.00
     });
   });
 
