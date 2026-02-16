@@ -156,8 +156,8 @@ export default function Events() {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)] gap-5 md:gap-6 items-start">
               <aside className="w-full">
-                <div className="bg-white rounded-lg p-6 shadow-sm lg:sticky lg:top-20">
-                  <h3 className="text-lg font-semibold mb-4">
+                <div className="rounded-2xl border border-black/5 bg-white/60 backdrop-blur shadow-sm p-4 space-y-4 lg:sticky lg:top-20">
+                  <h3 className="text-xs font-semibold tracking-wide text-muted-foreground uppercase border-b border-black/5 pb-3">
                     {t("events.liveUpdates") || "Live Updates"}
                   </h3>
 
@@ -167,10 +167,10 @@ export default function Events() {
                         key={section.id}
                         type="button"
                         onClick={() => scrollToSection(section.id)}
-                        className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                        className={`w-full text-left px-3 py-2.5 rounded-xl text-sm transition-all duration-200 ${
                           activeSection === section.id
-                            ? "bg-primary text-white font-semibold shadow-md"
-                            : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                            ? "bg-primary/10 text-foreground font-semibold border border-primary/30"
+                            : "bg-white border border-black/10 text-foreground/80 hover:bg-black/5 hover:text-foreground"
                         }`}
                       >
                         {section.label}
@@ -182,41 +182,44 @@ export default function Events() {
 
               <div className="space-y-8 md:space-y-10">
                 <article id="events-week" className="scroll-mt-24">
-                  <div className="text-center mb-6">
-                    <p className="font-accent italic text-xl md:text-2xl text-primary mb-3">
-                      {t("events.comingSoon") || "Coming Soon"}
-                    </p>
-                    <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-4">
-                      {t("events.thisWeek") || "This Week in Paris"}
-                    </h2>
-                  </div>
+                  <div className="mb-6 space-y-4">
+                    <div className="text-center md:text-left">
+                      <p className="font-accent italic text-xl md:text-2xl text-primary mb-3">
+                        {t("events.comingSoon") || "Coming Soon"}
+                      </p>
+                      <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+                        {t("events.thisWeek") || "This Week in Paris"}
+                      </h2>
+                    </div>
 
-                  {/* Contextual CTAs */}
-                  <div className="flex flex-col items-stretch gap-3 mb-6 sm:flex-row sm:items-center sm:justify-start">
-                    <Button size="sm" className="silk-button" asChild>
-                      <a
-                        href={buildGenericWhatsAppUrl(language)}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                    {/* Contextual CTAs */}
+                    <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-center md:justify-start">
+                      <Button size="sm" className="silk-button" asChild>
+                        <a
+                          href={buildGenericWhatsAppUrl(language)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <MessageCircle className="w-4 h-4 mr-2" />
+                          {t("events.bookTransfer") || "Reservar transfer"}
+                        </a>
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => navigate("/blog")}
+                        className="button-outline-gold"
                       >
-                        <MessageCircle className="w-4 h-4 mr-2" />
-                        {t("events.bookTransfer") || "Reservar transfer"}
-                      </a>
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      onClick={() => navigate("/blog")}
-                    >
-                      {t("events.readGuides") || "Guías relacionadas"} →
-                    </Button>
+                        {t("events.readGuides") || "Guías relacionadas"} →
+                      </Button>
+                    </div>
                   </div>
 
                   <EventsFeed range="week" variant="full" showHeader={false} />
                 </article>
 
                 <article id="events-month" className="scroll-mt-24">
-                  <div className="text-center mb-6">
+                  <div className="text-center md:text-left mb-6">
                     <p className="font-accent italic text-xl md:text-2xl text-primary mb-3">
                       {t("events.planAhead") || "Plan Ahead"}
                     </p>
