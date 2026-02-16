@@ -1065,7 +1065,7 @@ export const es: Translation = {
     heroTitle: "Eventos en París",
     heroSubtitle:
       "Descubre los mejores conciertos, exposiciones, espectáculos y eventos culturales en París. Reserva tu transfer de lujo para llegar con estilo.",
-    liveUpdates: "Actualizaciones en Vivo",
+    liveUpdates: "Actualizado",
     navigation: "Navegación",
     comingSoon: "Próximamente",
     planAhead: "Planifica con Anticipación",

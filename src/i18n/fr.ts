@@ -1070,7 +1070,7 @@ export const fr: Translation = {
     heroTitle: "Événements à Paris",
     heroSubtitle:
       "Découvrez les meilleurs concerts, expositions, spectacles et événements culturels à Paris. Réservez votre transfert de luxe pour arriver avec style.",
-    liveUpdates: "Mises à Jour en Direct",
+    liveUpdates: "Actualisé",
     navigation: "Navigation",
     comingSoon: "Bientôt",
     planAhead: "Planifiez à l'Avance",

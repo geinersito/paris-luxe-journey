@@ -1032,7 +1032,7 @@ export const en: Translation = {
     heroTitle: "Events in Paris",
     heroSubtitle:
       "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style.",
-    liveUpdates: "Live Updates",
+    liveUpdates: "Updated",
     navigation: "Navigation",
     comingSoon: "Coming Soon",
     planAhead: "Plan Ahead",
