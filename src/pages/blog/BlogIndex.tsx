@@ -144,7 +144,7 @@ export default function BlogIndex() {
         </section>
 
         {/* Category Filter */}
-        <section className="py-8 border-b border-primary/10 bg-white/50 backdrop-blur-sm">
+        <section className="py-6 border-b border-primary/10 bg-white/50 backdrop-blur-sm">
           <div className="container mx-auto px-4">
             <CategoryFilter
               selectedCategory={selectedCategory}
@@ -157,7 +157,7 @@ export default function BlogIndex() {
         {selectedCategory === "all" && searchQuery === "" && featuredPost && (
           <section className="section-padding-sm bg-gradient-to-b from-white to-champagne/30">
             <div className="container mx-auto px-4">
-              <div className="text-center mb-12">
+              <div className="text-center mb-8">
                 <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
                   Featured Story
                 </p>
@@ -261,9 +261,9 @@ export default function BlogIndex() {
         )}
 
         {/* All Posts with Sidebar */}
-        <section className="section-padding bg-gradient-to-b from-champagne/30 via-white to-cream">
+        <section className="py-8 md:py-10 bg-gradient-to-b from-champagne/30 via-white to-cream">
           <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
+            <div className="text-center mb-8">
               <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
                 Latest Stories
               </p>
@@ -275,7 +275,7 @@ export default function BlogIndex() {
             </div>
 
             {/* Grid with Sidebar */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
               {/* Main Content */}
               <div className="lg:col-span-8">
                 {filteredPosts.length === 0 ? (
