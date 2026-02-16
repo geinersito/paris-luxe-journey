@@ -558,6 +558,9 @@ export const es: Translation = {
     couponError: "Error al validar el cupón. Por favor intenta de nuevo.",
     couponRemoved: "Cupón eliminado",
     couponRemovedDesc: "El descuento ha sido eliminado de tu reserva.",
+    moreRoutes:
+      "¿Estaciones, hoteles o más rutas? Usa el formulario completo →",
+    moreRoutesMobile: "Más rutas →",
   },
   common: {
     back: "Volver",

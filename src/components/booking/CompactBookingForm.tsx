@@ -126,6 +126,10 @@ export function CompactBookingForm({
     onOpenFullForm({ pickup, dropoff, passengers });
   };
 
+  const handleOpenMore = () => {
+    onOpenFullForm({ pickup, dropoff, passengers });
+  };
+
   return (
     <div className="glass-card-premium p-5 md:p-7 w-full shadow-luxury hover:shadow-luxury-hover transition-all duration-500">
       <div className="flex flex-col lg:flex-row gap-4 items-end">
@@ -320,6 +324,17 @@ export function CompactBookingForm({
           </svg>
           <span className="tracking-wide">{t.hero.support247}</span>
         </span>
+      </div>
+
+      {/* More Routes Link */}
+      <div className="mt-4 text-center">
+        <button
+          type="button"
+          onClick={handleOpenMore}
+          className="text-sm font-medium text-primary/80 hover:text-primary underline underline-offset-4 transition-colors duration-300"
+        >
+          {t.booking.moreRoutes}
+        </button>
       </div>
     </div>
   );
