@@ -124,10 +124,10 @@ export default function Events() {
 
       <div className="min-h-screen bg-background">
         {/* Hero Section */}
-        <section className="relative pt-12 pb-8 md:pt-16 md:pb-10 lg:pt-20 lg:pb-12 bg-gradient-to-b from-champagne via-cream to-white">
+        <section className="relative pt-12 pb-4 md:pt-16 md:pb-6 lg:pt-20 bg-gradient-to-b from-champagne via-cream to-white">
           <div className="container mx-auto px-4">
             {/* Header */}
-            <div className="text-center max-w-4xl mx-auto mb-8 md:mb-10">
+            <div className="text-center max-w-4xl mx-auto mb-4 md:mb-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
                 <Sparkles className="w-4 h-4 text-primary" />
                 <span className="text-sm font-medium text-primary">
@@ -143,49 +143,21 @@ export default function Events() {
                 {t("events.heroSubtitle") ||
                   "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style."}
               </p>
-              <p className="text-sm text-muted-foreground/90 mb-8">
+              <p className="text-sm text-muted-foreground/90">
                 {lastUpdatedLabel} ·{" "}
                 {t("events.sourcesVerified") || "Official sources verified"}
               </p>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="silk-button" asChild>
-                  <a
-                    href={buildGenericWhatsAppUrl(language)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    {t("events.bookTransfer") || "Get a Ride Quote"}
-                  </a>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={() => navigate("/blog")}
-                  className="button-outline-gold"
-                >
-                  {t("events.readGuides") || "Read Travel Guides"}
-                </Button>
-              </div>
             </div>
           </div>
         </section>
 
-        {/* Trust Signals */}
-        <section className="py-4 md:py-6 bg-white">
-          <div className="container mx-auto px-4">
-            <TrustSignals />
-          </div>
-        </section>
-
         {/* Events Listing + Quick Navigation */}
-        <section className="py-8 md:py-10 lg:py-12 bg-gradient-to-b from-white via-champagne/30 to-cream">
+        <section className="pt-4 pb-8 md:pt-6 md:pb-10 bg-gradient-to-b from-white via-champagne/30 to-cream">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)] gap-5 md:gap-6">
+            <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)] gap-5 md:gap-6 items-start">
               <aside className="w-full">
-                <div className="bg-white rounded-lg p-6 shadow-sm lg:sticky lg:top-24">
-                  <h3 className="text-lg font-semibold mb-4">
+                <div className="rounded-2xl border border-black/5 bg-white/60 backdrop-blur shadow-sm p-4 space-y-4 lg:sticky lg:top-20">
+                  <h3 className="text-xs font-semibold tracking-wide text-muted-foreground uppercase border-b border-black/5 pb-3">
                     {t("events.liveUpdates") || "Live Updates"}
                   </h3>
 
@@ -195,10 +167,10 @@ export default function Events() {
                         key={section.id}
                         type="button"
                         onClick={() => scrollToSection(section.id)}
-                        className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                        className={`w-full text-left px-3 py-2.5 rounded-xl text-sm transition-all duration-200 ${
                           activeSection === section.id
-                            ? "bg-primary text-white font-semibold shadow-md"
-                            : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                            ? "bg-primary/10 text-foreground font-semibold border border-primary/30"
+                            : "bg-white border border-black/10 text-foreground/80 hover:bg-black/5 hover:text-foreground"
                         }`}
                       >
                         {section.label}
@@ -208,22 +180,47 @@ export default function Events() {
                 </div>
               </aside>
 
-              <div className="space-y-10 md:space-y-12">
+              <div className="space-y-8 md:space-y-10">
                 <article id="events-week" className="scroll-mt-24">
-                  <div className="text-center mb-8 md:mb-10">
-                    <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
-                      {t("events.comingSoon") || "Coming Soon"}
-                    </p>
-                    <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
-                      {t("events.thisWeek") || "This Week in Paris"}
-                    </h2>
+                  <div className="mb-6 space-y-4">
+                    <div className="text-center md:text-left">
+                      <p className="font-accent italic text-xl md:text-2xl text-primary mb-3">
+                        {t("events.comingSoon") || "Coming Soon"}
+                      </p>
+                      <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+                        {t("events.thisWeek") || "This Week in Paris"}
+                      </h2>
+                    </div>
+
+                    {/* Contextual CTAs */}
+                    <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-center md:justify-start">
+                      <Button size="sm" className="silk-button" asChild>
+                        <a
+                          href={buildGenericWhatsAppUrl(language)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          <MessageCircle className="w-4 h-4 mr-2" />
+                          {t("events.bookTransfer") || "Reservar transfer"}
+                        </a>
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        onClick={() => navigate("/blog")}
+                        className="button-outline-gold"
+                      >
+                        {t("events.readGuides") || "Guías relacionadas"} →
+                      </Button>
+                    </div>
                   </div>
+
                   <EventsFeed range="week" variant="full" showHeader={false} />
                 </article>
 
                 <article id="events-month" className="scroll-mt-24">
-                  <div className="text-center mb-8 md:mb-10">
-                    <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+                  <div className="text-center md:text-left mb-6">
+                    <p className="font-accent italic text-xl md:text-2xl text-primary mb-3">
                       {t("events.planAhead") || "Plan Ahead"}
                     </p>
                     <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
@@ -234,6 +231,13 @@ export default function Events() {
                 </article>
               </div>
             </div>
+          </div>
+        </section>
+
+        {/* Trust Signals */}
+        <section className="py-4 md:py-6 bg-white">
+          <div className="container mx-auto px-4">
+            <TrustSignals />
           </div>
         </section>
 
