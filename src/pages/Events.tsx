@@ -123,27 +123,27 @@ export default function Events() {
       </Helmet>
 
       <div className="min-h-screen bg-background">
-        {/* Hero Section */}
-        <section className="relative pt-12 pb-8 md:pt-16 md:pb-10 lg:pt-20 lg:pb-12 bg-gradient-to-b from-champagne via-cream to-white">
+        {/* Hero Section - Compact */}
+        <section className="relative py-8 md:py-10 bg-gradient-to-b from-champagne via-cream to-white">
           <div className="container mx-auto px-4">
             {/* Header */}
-            <div className="text-center max-w-4xl mx-auto mb-8 md:mb-10">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
+            <div className="text-center max-w-4xl mx-auto mb-6">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-4">
                 <Sparkles className="w-4 h-4 text-primary" />
                 <span className="text-sm font-medium text-primary">
                   {t("events.liveUpdates") || "Live Updates"}
                 </span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-secondary mb-6">
+              <h1 className="text-3xl md:text-5xl font-display font-bold text-secondary mb-4">
                 {t("events.heroTitle") || "Events in Paris"}
               </h1>
 
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
+              <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
                 {t("events.heroSubtitle") ||
                   "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style."}
               </p>
-              <p className="text-sm text-muted-foreground/90 mb-8">
+              <p className="text-sm text-muted-foreground/90 mb-6">
                 {lastUpdatedLabel} ·{" "}
                 {t("events.sourcesVerified") || "Official sources verified"}
               </p>
