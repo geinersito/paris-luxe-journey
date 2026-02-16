@@ -14,38 +14,40 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `050b179`
-- Baseline feature: `fix(blog): clamp hero media and align category page with sidebar layout (PR #142)`
-- Last updated: `2026-02-15`
+- SHA: `9139c60`
+- Baseline feature: `fix(blog): featured hero-card layout (PR #145)`
+- Last updated: `2026-02-16`
 
 ## Ultimos PRs mergeados en main
 
-1. `#142` - fix(blog): clamp hero media and align category page with sidebar layout (`050b179`)
-2. `#141` - fix(events): tighten vertical spacing density on listing sections (`8478715`)
-3. `#139` - feat(events): add quick filters sidebar jump menu (`61ccf5e`)
-4. `#137` - fix(events): compact hero spacing to match excursions (`1d3fd5c`)
-5. `#135` - chore(copy): coherence sweep for ES/EN/FR B2B wording (`95aba65`)
-6. `#133` - feat(analytics): enrich GA4 payload with locale and attribution (`e990e7b`)
-7. `#131` - chore(copy): qa PT wording for home and B2B pages (`200b434`)
-8. `#129` - fix(copy): align footer wording with B2C+B2B framing (`87db9ec`)
-9. `#127` - feat(analytics): track B2B page CTAs (agencies/companies) (`30c2cd3`)
-10. `#125` - feat(analytics): GA4 events for CTA, WhatsApp and contact form (`409131a`)
-11. `#123` - feat: B2B pages (/agencias, /empresas) + navbar B2B dropdown (`2d33719`)
-12. `#121` - fix(copy): remove Premium Fleet heading (FleetSection) (`55e0a4f`)
-13. `#120` - feat(copy): home conversion copy via centralized i18n (ES/PT/EN/FR) (`4c6df6b`)
-14. `#119` - docs(ssot): defer UX-BRANDING-APPROACHABLE-01 after UI revert (#118) (`151e8e3`)
-15. `#118` - revert(ui): restore previous design (revert PR1 tokens + PR2 components) (`5b25f7c`)
-16. `#116` - ux(components): baseline buttons/cards/badges/inputs for approachable branding (PR2 UX-BRANDING-APPROACHABLE-01) (`afeafbb`)
-17. `#115` - docs(ssot): mark PR1 tokens done; set PR2 components as next (UX-BRANDING-APPROACHABLE-01) (`49ac97b`)
-18. `#114` - ux(theme): shift tokens to professional trustworthy palette (PR1 UX-BRANDING-APPROACHABLE-01) (`906a898`)
-19. `#113` - docs(ssot): add approachable branding item (UX-BRANDING-APPROACHABLE-01) (`97d7e23`)
-20. `#111` - seo(airports): metadata + canonical + JSON-LD (SEO-AIRPORTS-METADATA-01) (`85fa587`)
-21. `#109` - UX-AIRPORTS-ADD-BOOKING-CTA-01 (`1508245`)
-22. `#107` - content(airports): add terminal guide section (CONTENT-AIRPORTS-TERMINAL-GUIDE-01) (`a0108d6`)
-23. `#105` - content(trust): add sitewide trust signals block (`97e0777`)
+1. `#145` - fix(blog): featured hero-card layout (`9139c60`)
+2. `#142` - fix(blog): clamp hero media and align category page with sidebar layout (`050b179`)
+3. `#141` - fix(events): tighten vertical spacing density on listing sections (`8478715`)
+4. `#139` - feat(events): add quick filters sidebar jump menu (`61ccf5e`)
+5. `#137` - fix(events): compact hero spacing to match excursions (`1d3fd5c`)
+6. `#135` - chore(copy): coherence sweep for ES/EN/FR B2B wording (`95aba65`)
+7. `#133` - feat(analytics): enrich GA4 payload with locale and attribution (`e990e7b`)
+8. `#131` - chore(copy): qa PT wording for home and B2B pages (`200b434`)
+9. `#129` - fix(copy): align footer wording with B2C+B2B framing (`87db9ec`)
+10. `#127` - feat(analytics): track B2B page CTAs (agencies/companies) (`30c2cd3`)
+11. `#125` - feat(analytics): GA4 events for CTA, WhatsApp and contact form (`409131a`)
+12. `#123` - feat: B2B pages (/agencias, /empresas) + navbar B2B dropdown (`2d33719`)
+13. `#121` - fix(copy): remove Premium Fleet heading (FleetSection) (`55e0a4f`)
+14. `#120` - feat(copy): home conversion copy via centralized i18n (ES/PT/EN/FR) (`4c6df6b`)
+15. `#119` - docs(ssot): defer UX-BRANDING-APPROACHABLE-01 after UI revert (#118) (`151e8e3`)
+16. `#118` - revert(ui): restore previous design (revert PR1 tokens + PR2 components) (`5b25f7c`)
+17. `#116` - ux(components): baseline buttons/cards/badges/inputs for approachable branding (PR2 UX-BRANDING-APPROACHABLE-01) (`afeafbb`)
+18. `#115` - docs(ssot): mark PR1 tokens done; set PR2 components as next (UX-BRANDING-APPROACHABLE-01) (`49ac97b`)
+19. `#114` - ux(theme): shift tokens to professional trustworthy palette (PR1 UX-BRANDING-APPROACHABLE-01) (`906a898`)
+20. `#113` - docs(ssot): add approachable branding item (UX-BRANDING-APPROACHABLE-01) (`97d7e23`)
+21. `#111` - seo(airports): metadata + canonical + JSON-LD (SEO-AIRPORTS-METADATA-01) (`85fa587`)
+22. `#109` - UX-AIRPORTS-ADD-BOOKING-CTA-01 (`1508245`)
+23. `#107` - content(airports): add terminal guide section (CONTENT-AIRPORTS-TERMINAL-GUIDE-01) (`a0108d6`)
+24. `#105` - content(trust): add sitewide trust signals block (`97e0777`)
 
 ## Done / Shipped
 
+- **BLOG-FEATURED-HERO-CARD-01** ✅ DONE — PR **#145** — `9139c60111898c0e4652d91ca41a7f2e242920a0` — Blog featured "hero-card" horizontal (layout-only): 12-col grid with media left (lg:col-span-5, controlled height), content right (lg:col-span-7, title/excerpt/meta + CTA); eliminates awkward empty column; maintains family UI with Events/Excursions
 - **BLOG-HERO-SIDEBAR-CONSISTENCY-01** ✅ DONE — PR **#142** — `050b179edd3fbba0b2fc4982c8cdcdf2efc8d2bb` — Clamp blog post hero media height (aspect ratio + max height) and align blog category layout to desktop 8/4 with sticky sidebar for visual family consistency with Events/Excursions (layout-only)
 - **EVENTS-SPACE-DENSITY-01** ✅ DONE — PR **#141** — `8478715bd40245ac3a013f6a3f862ff9a5e0b005` — Reduce vertical spacing across Events page sections (trust/listings/CTA rhythm, inter-block gaps, and heading margins) while preserving sidebar behavior and event feed logic (layout-only)
 - **EVENTS-QUICK-FILTERS-SIDEBAR-01** ✅ DONE — PR **#139** — `61ccf5eca98beef1318c2d21dd2fe4cd1ce06225` — Add Excursions-style quick-filters sidebar on Events page with anchor jump navigation (`events-week`, `events-month`) and active section highlight via `IntersectionObserver` (layout/navigation-only)
