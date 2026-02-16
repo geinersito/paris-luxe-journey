@@ -1,5 +1,5 @@
 // src/config/pricing.ts
-// Versión PROD v1.0 - Paris Elite Services
+// Versión PROD v2.0 - Paris Elite Services (Pricing Update 2026-02)
 
 export const ROUTES = {
   "cdg-paris": "CDG ↔ París Centro",
@@ -23,23 +23,23 @@ export const ROUTES = {
 
 export const PRICING = {
   standard: {
-    "cdg-paris": { "1-3": 70, "4-7": 90 },
-    "orly-paris": { "1-3": 60, "4-7": 78 },
-    "lebourget-paris": { "1-3": 77, "4-7": 99 },
-    "beauvais-paris": { "1-3": 130, "4-7": 150 },
-    "cdg-orly": { "1-3": 105, "4-7": 135 },
-    "cdg-lebourget": { "1-3": 77, "4-7": 99 },
-    "orly-lebourget": { "1-3": 85, "4-7": 110 },
-    "garedunord-paris": { "1-3": 55, "4-7": 72 },
-    "garelyon-paris": { "1-3": 60, "4-7": 78 },
-    "garest-paris": { "1-3": 55, "4-7": 72 },
-    "garemontparnasse-paris": { "1-3": 60, "4-7": 78 },
-    "garelazare-paris": { "1-3": 60, "4-7": 78 },
-    "disney-paris": { "1-3": 95, "4-7": 120 },
-    "versailles-paris": { "1-3": 75, "4-7": 98 },
-    "cdg-disney": { "1-3": 95, "4-7": 120 },
-    "cdg-versailles": { "1-3": 80, "4-7": 104 },
-    "orly-disney": { "1-3": 90, "4-7": 117 },
+    "cdg-paris": { "1-3": 100, "4-7": 130 },
+    "orly-paris": { "1-3": 90, "4-7": 115 },
+    "lebourget-paris": { "1-3": 105, "4-7": 130 },
+    "beauvais-paris": { "1-3": 155, "4-7": 170 },
+    "cdg-orly": { "1-3": 130, "4-7": 155 },
+    "cdg-lebourget": { "1-3": 110, "4-7": 130 },
+    "orly-lebourget": { "1-3": 120, "4-7": 145 },
+    "garedunord-paris": { "1-3": 80, "4-7": 100 },
+    "garelyon-paris": { "1-3": 80, "4-7": 100 },
+    "garest-paris": { "1-3": 80, "4-7": 100 },
+    "garemontparnasse-paris": { "1-3": 80, "4-7": 100 },
+    "garelazare-paris": { "1-3": 80, "4-7": 100 },
+    "disney-paris": { "1-3": 120, "4-7": 145 },
+    "versailles-paris": { "1-3": 95, "4-7": 120 },
+    "cdg-disney": { "1-3": 125, "4-7": 150 },
+    "cdg-versailles": { "1-3": 110, "4-7": 135 },
+    "orly-disney": { "1-3": 115, "4-7": 140 },
   },
   surcharges: {
     night: 0.2, // +20% (MANUAL en V1)
@@ -48,9 +48,9 @@ export const PRICING = {
   },
   waitTimePolicy: {
     airport: { freeMinutes: 60, extraFee: 15 },
-    city: { freeMinutes: 15, extraFee: 15 },
+    city: { freeMinutes: 30, extraFee: 15 },
   },
-  hourly: { rate: 75, minimum: 3 },
+  hourly: { rate: 75, displayRate: 70, minimum: 3 },
   cancelPolicy: {
     fullRefundHours: 24,
     partialRefundHours: 12,
