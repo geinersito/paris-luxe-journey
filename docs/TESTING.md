@@ -101,6 +101,21 @@ beforeEach(() => {
 
 ---
 
+## Webhook secrets (critical go-live config)
+
+Two webhook Edge Functions exist — each reads a **different** secret:
+
+| Function | Supabase secret name | Covers |
+|----------|---------------------|--------|
+| `stripe-webhooks` | `STRIPE_WEBHOOK_SECRET` | `payment_intent.*` (prepaid only) |
+| `stripe-webhooks-v312` | **`STRIPE_WEBHOOK_SECRET_V312`** | prepaid + flexible + hold (all modes) |
+
+**For production:** register only `stripe-webhooks-v312` in Stripe LIVE dashboard and set its `whsec_...` as `STRIPE_WEBHOOK_SECRET_V312` in Supabase secrets.
+
+If `STRIPE_WEBHOOK_SECRET_V312` is missing, the function now returns `500` with `{ code: "CONFIG_ERROR", missing: "STRIPE_WEBHOOK_SECRET_V312" }` (not a silent 400).
+
+---
+
 ## Pricing guardrail (anti-regression)
 
 `src/__tests__/pricing-v312-locked-guardrail.test.ts` — **do not modify expected values** without a pricing decision sign-off. This file is the SSOT for locked V3.1.2 prices.

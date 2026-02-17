@@ -51,13 +51,28 @@ serve(async (req) => {
     console.log('[stripe-webhooks-v312] Webhook recibido');
 
     // 1. Configurar clientes
-    const stripeKey = Deno.env.get('STRIPE_SECRET_KEY')!;
-    const webhookSecret = Deno.env.get('STRIPE_WEBHOOK_SECRET_V312')!;
-    const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
-    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const stripeKey = Deno.env.get('STRIPE_SECRET_KEY');
+    const webhookSecret = Deno.env.get('STRIPE_WEBHOOK_SECRET_V312');
+    const supabaseUrl = Deno.env.get('SUPABASE_URL');
+    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
 
-    if (!stripeKey || !webhookSecret || !supabaseUrl || !supabaseKey) {
-      throw new Error('Missing required environment variables');
+    // Explicit per-variable guardrails — 500 (not 400) so ops can distinguish
+    // config errors from bad requests during go-live smoke tests.
+    if (!stripeKey) {
+      console.error('[stripe-webhooks-v312] FATAL: STRIPE_SECRET_KEY not set');
+      return new Response(JSON.stringify({ ok: false, code: 'CONFIG_ERROR', missing: 'STRIPE_SECRET_KEY' }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+    }
+    if (!webhookSecret) {
+      console.error('[stripe-webhooks-v312] FATAL: STRIPE_WEBHOOK_SECRET_V312 not set — live endpoint requires this secret (NOT STRIPE_WEBHOOK_SECRET)');
+      return new Response(JSON.stringify({ ok: false, code: 'CONFIG_ERROR', missing: 'STRIPE_WEBHOOK_SECRET_V312' }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+    }
+    if (!supabaseUrl) {
+      console.error('[stripe-webhooks-v312] FATAL: SUPABASE_URL not set');
+      return new Response(JSON.stringify({ ok: false, code: 'CONFIG_ERROR', missing: 'SUPABASE_URL' }), { status: 500, headers: { 'Content-Type': 'application/json' } });
+    }
+    if (!supabaseKey) {
+      console.error('[stripe-webhooks-v312] FATAL: SUPABASE_SERVICE_ROLE_KEY not set');
+      return new Response(JSON.stringify({ ok: false, code: 'CONFIG_ERROR', missing: 'SUPABASE_SERVICE_ROLE_KEY' }), { status: 500, headers: { 'Content-Type': 'application/json' } });
     }
 
     const stripe = new Stripe(stripeKey, {
