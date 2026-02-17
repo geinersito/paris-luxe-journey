@@ -167,6 +167,15 @@ serve(async (req) => {
     // Remove it from payload even if frontend mistakenly sends it
     delete bookingData.vehicle_id;
 
+    // Compute service_end_datetime: pickup_datetime + 2h (conservative service window).
+    // Required NOT NULL after migration 20260226130000. The DB also has a DEFAULT of
+    // now() + 2h as a belt-and-suspenders guard, but setting it explicitly here ensures
+    // the value reflects the actual pickup time.
+    const pickupMs = bookingData.pickup_datetime
+      ? new Date(bookingData.pickup_datetime).getTime()
+      : Date.now();
+    const serviceEndDatetime = new Date(pickupMs + 2 * 60 * 60 * 1000).toISOString();
+
     // 3. Crear la reserva con retry
     console.log('[create-booking-payment] Creando reserva');
     let booking;
@@ -177,7 +186,8 @@ serve(async (req) => {
             .from('bookings')
             .insert([{
               ...bookingData,
-              status: 'pending'
+              status: 'pending',
+              service_end_datetime: serviceEndDatetime,
             }])
             .select()
             .single();
