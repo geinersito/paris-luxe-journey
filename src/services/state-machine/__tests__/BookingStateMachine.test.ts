@@ -40,18 +40,18 @@ describe("BookingStateMachine", () => {
       expect(result.to_state).toBe("driver_assigned");
     });
 
-    it("should allow valid transition: driver_assigned -> hold_pending", () => {
-      const result = executeTransition("driver_assigned", "HOLD_CREATED");
+    it("should allow valid transition: driver_assigned -> in_progress (SERVICE_STARTED)", () => {
+      const result = executeTransition("driver_assigned", "SERVICE_STARTED");
 
       expect(result.success).toBe(true);
-      expect(result.to_state).toBe("hold_pending");
+      expect(result.to_state).toBe("in_progress");
     });
 
-    it("should allow valid transition: hold_pending -> hold_confirmed", () => {
-      const result = executeTransition("hold_pending", "HOLD_CONFIRMED");
+    it("should allow cancellation from driver_assigned", () => {
+      const result = executeTransition("driver_assigned", "CANCEL_REQUESTED");
 
       expect(result.success).toBe(true);
-      expect(result.to_state).toBe("hold_confirmed");
+      expect(result.to_state).toBe("cancelled");
     });
 
     it("should allow valid transition: hold_confirmed -> in_progress", () => {

@@ -10,10 +10,11 @@ import { useToast } from "@/hooks/use-toast";
 vi.mock("@/contexts/LanguageContext", () => ({
   useLanguage: vi.fn(() => ({
     t: {
-      common: { error: "Error" },
+      common: { error: "Error", warning: "Warning" },
       booking: {
         errors: {
           selectLocations: "Please select locations",
+          priceStale: "Price has expired",
           priceExpired: "Price has expired",
         },
       },
@@ -134,9 +135,9 @@ describe("RequireBookingData", () => {
     expect(screen.queryByTestId("protected-content")).not.toBeInTheDocument();
     expect(screen.getByTestId("booking-page")).toBeInTheDocument();
     expect(mockToast).toHaveBeenCalledWith({
-      title: "Error",
+      title: "Warning",
       description: "Price has expired",
-      variant: "warning",
+      variant: "destructive",
     });
   });
 });
