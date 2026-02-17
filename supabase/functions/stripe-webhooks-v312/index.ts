@@ -98,7 +98,7 @@ serve(async (req) => {
       throw new Error(`Webhook signature verification failed: ${err instanceof Error ? err.message : 'Unknown'}`);
     }
 
-    console.log('[stripe-webhooks-v312] Evento verificado:', event.type, event.id);
+    console.log('[stripe-webhooks-v312] Evento verificado:', event.type, event.id, 'livemode=', event.livemode);
 
     // DEPRECATION WARNING
     console.warn('[DEPRECATED_WEBHOOK_HIT]', JSON.stringify({
