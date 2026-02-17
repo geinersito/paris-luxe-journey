@@ -27,7 +27,7 @@ const FALLBACK_VEHICLES: Vehicle[] = [
     luggage_capacity: 2,
     base_price: 0,
     image_url:
-      "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1559167628-9394a8576f33?w=800&h=600&fit=crop&q=80",
     interior_image_url:
       "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&h=600&fit=crop&q=80",
     features: ["wifi", "water", "airConditioning", "leatherSeats", "cleaning"],
@@ -43,7 +43,7 @@ const FALLBACK_VEHICLES: Vehicle[] = [
     luggage_capacity: 7,
     base_price: 0,
     image_url:
-      "https://images.unsplash.com/photo-1527786356703-4b100091cd2c?w=800&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1578557904035-f68542b3770e?w=800&h=600&fit=crop&q=80",
     interior_image_url:
       "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800&h=600&fit=crop&q=80",
     features: ["wifi", "water", "airConditioning", "leatherSeats", "cleaning"],
