@@ -3,11 +3,22 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 import Stripe from 'https://esm.sh/stripe@13.10.0'
 
-const corsHeaders = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
-  'Access-Control-Max-Age': '86400',
+const ALLOWED_ORIGINS = [
+  'https://eliteparistransfer.com',
+  'https://www.eliteparistransfer.com',
+  'http://localhost:8082',
+];
+
+function getCorsHeaders(req: Request): Record<string, string> {
+  const origin = req.headers.get('Origin') ?? '';
+  const allowedOrigin = ALLOWED_ORIGINS.includes(origin) ? origin : ALLOWED_ORIGINS[0];
+  return {
+    'Access-Control-Allow-Origin': allowedOrigin,
+    'Access-Control-Allow-Methods': 'POST, OPTIONS',
+    'Access-Control-Allow-Headers': 'authorization, x-client-info, apikey, content-type',
+    'Access-Control-Max-Age': '86400',
+    'Vary': 'Origin',
+  };
 }
 
 type RetryDecision = {
@@ -85,7 +96,7 @@ async function retryWithBackoff<T>(
   }
 }
 
-function errorResponse(err: unknown, fallbackStatus = 500) {
+function errorResponse(err: unknown, fallbackStatus = 500, corsHeaders: Record<string, string> = {}) {
   const anyErr = err as any;
   const decision = anyErr?.__retryDecision as RetryDecision | undefined;
 
@@ -123,6 +134,8 @@ interface BookingData {
 }
 
 serve(async (req) => {
+  const corsHeaders = getCorsHeaders(req);
+
   if (req.method === 'OPTIONS') {
     return new Response(null, { headers: corsHeaders, status: 204 });
   }
@@ -178,7 +191,7 @@ serve(async (req) => {
         { label: 'insert_booking', maxAttempts: 3, baseDelayMs: 250 }
       );
     } catch (err) {
-      return errorResponse(err, 409);
+      return errorResponse(err, 409, corsHeaders);
     }
 
     // 4. Buscar o crear cliente en Stripe
@@ -231,7 +244,7 @@ serve(async (req) => {
         { label: 'stripe_create_payment_intent', maxAttempts: 3, baseDelayMs: 250 }
       );
     } catch (err) {
-      return errorResponse(err, 502);
+      return errorResponse(err, 502, corsHeaders);
     }
 
     // 6. Crear registro de pago con retry
@@ -263,7 +276,7 @@ serve(async (req) => {
         { label: 'insert_payment_record', maxAttempts: 3, baseDelayMs: 250 }
       );
     } catch (err) {
-      return errorResponse(err, 409);
+      return errorResponse(err, 409, corsHeaders);
     }
 
     // 7. Actualizar la reserva con el ID del pago
@@ -299,10 +312,10 @@ serve(async (req) => {
     
     // DB conflicts should be 409, not 500
     if (code === "23505" || code === "23P01" || code === "23503" || code === "23514") {
-      return errorResponse(error, 409);
+      return errorResponse(error, 409, corsHeaders);
     }
-    
+
     // Otherwise fallback to 500 for unexpected errors
-    return errorResponse(error, 500);
+    return errorResponse(error, 500, corsHeaders);
   }
 });
