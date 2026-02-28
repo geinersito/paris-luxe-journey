@@ -8,6 +8,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 - Plan narrativo detallado: `docs/PLAN_VIVO_MEJORAS_UI.md`
 - Gobernanza: `docs/SUPERVISOR.md`
 - Estado operativo: `docs/STATUS.md`
+- Environments (Supabase A/B map, mirror): `docs/ops/ENVIRONMENTS.md` (SSOT in `paris-dispatcher`)
 
 ## Main HEAD (Last feature merge baseline)
 
