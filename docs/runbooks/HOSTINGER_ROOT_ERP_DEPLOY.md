@@ -47,6 +47,20 @@ So `/api/*` is currently not a real backend on the domain root.
 
 ---
 
+## Environment Allocation (2 Supabase Projects)
+
+When limited to two Supabase projects:
+
+- **Project A (production)**: `paris-dispatcher` + `paris-luxe-journey` live data
+- **Project B (beta/staging)**: closed beta ERP on `beta-erp.eliteparistransfer.com`
+- Keep unrelated apps outside these two projects until capacity changes
+
+Rule:
+
+- Never run beta builds against Project A by mistake.
+
+---
+
 ## Final .htaccess (Root, booking)
 
 Path: `public_html/.htaccess`
@@ -111,7 +125,44 @@ Expected behavior:
 
 Vite bakes env at build time. Correct env must exist before `npm run build`.
 
-### paris-luxe-journey
+### `paris-dispatcher` (A/B split)
+
+Recommended files:
+
+- `.env.production` -> Supabase **Project A** (real production)
+- `.env.staging` -> Supabase **Project B** (closed beta)
+
+Minimum variables:
+
+`.env.production`
+
+```env
+VITE_SUPABASE_URL=https://<PROJECT_A>.supabase.co
+VITE_SUPABASE_ANON_KEY=<ANON_KEY_A>
+VITE_ENV=production
+```
+
+`.env.staging`
+
+```env
+VITE_SUPABASE_URL=https://<PROJECT_B>.supabase.co
+VITE_SUPABASE_ANON_KEY=<ANON_KEY_B>
+VITE_ENV=staging
+```
+
+Optional:
+
+```env
+VITE_APP_BASE_URL=https://erp.eliteparistransfer.com
+VITE_BETA_BASE_URL=https://beta-erp.eliteparistransfer.com
+```
+
+Build commands:
+
+- Production (`erp.`): `npm ci && npm run build`
+- Staging (`beta-erp.`): `npm ci && npm run build -- --mode staging`
+
+### `paris-luxe-journey`
 
 Required:
 
@@ -122,16 +173,12 @@ Optional (still public if present, do not put secrets):
 
 - `VITE_PUBLIC_SITE_URL`
 
-### paris-dispatcher
+Quick anti-error check before upload:
 
-Required:
-
-- `VITE_SUPABASE_URL`
-- `VITE_SUPABASE_ANON_KEY`
-
-Optional:
-
-- `VITE_INVOICING_DATASOURCE`
+1. Inspect `dist/assets/*.js` and search `supabase.co`.
+2. Confirm expected project ref appears:
+   - beta build must reference **Project B**
+   - prod build must reference **Project A**
 
 ---
 
@@ -152,8 +199,15 @@ Auth > URL Configuration:
 - Redirect URLs:
   - `https://eliteparistransfer.com/*`
   - `https://erp.eliteparistransfer.com/*`
+  - `https://beta-erp.eliteparistransfer.com/*` (closed beta)
   - `http://localhost:8082/*` (luxe local)
   - `http://localhost:8080/*` (dispatcher local)
+
+For Supabase **Project B** (beta):
+
+- disable public signups
+- use invite-only users
+- include beta domain in redirects
 
 ---
 
@@ -254,3 +308,4 @@ Before enabling BookingFlow V312 in production:
 
 - 2026-02-28: Initial consolidated runbook created (root + ERP + B2 + PWA + security guardrails).
 - 2026-02-28: Added Hostinger cache purge note and optional security headers section.
+- 2026-02-28: Added A/B environment split (2-project constraint), staging build mode, and beta auth settings.
