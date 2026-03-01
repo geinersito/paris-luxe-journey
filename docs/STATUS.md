@@ -9,6 +9,14 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 - Gobernanza: `docs/SUPERVISOR.md`
 - Estado operativo: `docs/STATUS.md`
 - Environments (Supabase A/B map, mirror): `docs/ops/ENVIRONMENTS.md` (SSOT in `paris-dispatcher`)
+- Deploy runbooks canonical (Hostinger + beta tester): `docs/runbooks/HOSTINGER_ROOT_ERP_DEPLOY.md`, `docs/runbooks/BETA_TESTER_QUICKSTART.md`
+
+## OPS Locks
+
+- OPS - Hostinger deploy runbooks canonicalized (LOCKED ✅)
+  - Canonical source now lives in `paris-luxe-journey/docs/runbooks/`.
+  - Dispatcher mirror docs must reference these files only.
+  - Scope includes root booking, ERP prod, ERP beta, and focus-flow domain routing.
 
 ## Main HEAD (Last feature merge baseline)
 
@@ -17,7 +25,7 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 - Branch: `main`
 - SHA: `601ef9c`
 - Baseline feature: `fix(pricing): align v312 partner floors to locked rates (PR #159)`
-- Last updated: `2026-02-16`
+- Last updated: `2026-03-01`
 
 ## Ultimos PRs mergeados en main
 
