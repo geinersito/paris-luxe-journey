@@ -74,7 +74,7 @@ npm run build
 
 ```bash
 npm ci
-npm run build -- --mode staging
+node scripts/build-env.cjs vite build --mode staging
 ```
 
 ### Focus Flow (focus-flow)
