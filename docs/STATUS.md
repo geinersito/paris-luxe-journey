@@ -13,10 +13,14 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## OPS Locks
 
-- OPS - Hostinger deploy runbooks canonicalized (LOCKED ✅)
-  - Canonical source now lives in `paris-luxe-journey/docs/runbooks/`.
-  - Dispatcher mirror docs must reference these files only.
-  - Scope includes root booking, ERP prod, ERP beta, and focus-flow domain routing.
+## OPS — Hostinger deploy runbooks canonicalized (LOCKED ✅)
+
+**main@bdda7bc**
+
+- Added canonical runbooks:
+  - `docs/runbooks/HOSTINGER_ROOT_ERP_DEPLOY.md`
+  - `docs/runbooks/BETA_TESTER_QUICKSTART.md`
+- Dispatcher mirrors must point to these canonical documents.
 
 ## Main HEAD (Last feature merge baseline)
 
