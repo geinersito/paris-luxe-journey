@@ -7,7 +7,6 @@ import { getCategoryBySlug } from "@/data/blog/categories";
 import BlogCard from "@/components/blog/BlogCard";
 import CategoryFilter from "@/components/blog/CategoryFilter";
 import NewsletterCTA from "@/components/blog/NewsletterCTA";
-import BlogSidebar from "@/components/blog/BlogSidebar";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Search, Calendar, Clock, ArrowRight } from "lucide-react";
@@ -143,19 +142,12 @@ export default function BlogIndex() {
           </div>
         </section>
 
-        {/* Category Filter */}
-        <section className="py-8 border-b border-primary/10 bg-white/50 backdrop-blur-sm">
-          <div className="container mx-auto px-4">
-            <CategoryFilter
-              selectedCategory={selectedCategory}
-              onCategoryChange={setSelectedCategory}
-            />
-          </div>
-        </section>
-
         {/* Featured Post */}
         {selectedCategory === "all" && searchQuery === "" && featuredPost && (
-          <section className="section-padding-sm bg-gradient-to-b from-white to-champagne/30">
+          <section
+            id="blog-featured"
+            className="section-padding-sm bg-gradient-to-b from-white to-champagne/30"
+          >
             <div className="container mx-auto px-4">
               <div className="text-center mb-12">
                 <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
@@ -260,8 +252,11 @@ export default function BlogIndex() {
           </section>
         )}
 
-        {/* All Posts with Sidebar */}
-        <section className="section-padding bg-gradient-to-b from-champagne/30 via-white to-cream">
+        {/* All Posts with Left Sidebar */}
+        <section
+          id="blog-all"
+          className="section-padding bg-gradient-to-b from-champagne/30 via-white to-cream"
+        >
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
@@ -274,10 +269,47 @@ export default function BlogIndex() {
               </h2>
             </div>
 
-            {/* Grid with Sidebar */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* Grid with LEFT Sidebar */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
+              {/* Left Sidebar */}
+              <div className="col-span-12 lg:col-span-3">
+                <div className="lg:sticky lg:top-24 space-y-6">
+                  {/* On This Page - Desktop Only */}
+                  <div className="hidden lg:block">
+                    <h3 className="text-sm font-semibold text-secondary uppercase tracking-wide mb-4">
+                      {t("blog.onThisPage") || "On This Page"}
+                    </h3>
+                    <nav className="space-y-2">
+                      <a
+                        href="#blog-featured"
+                        className="block text-sm text-gray-600 hover:text-primary transition-colors duration-200"
+                      >
+                        {t("blog.featured") || "Featured Article"}
+                      </a>
+                      <a
+                        href="#blog-all"
+                        className="block text-sm text-gray-600 hover:text-primary transition-colors duration-200"
+                      >
+                        {t("blog.allArticles") || "All Articles"}
+                      </a>
+                    </nav>
+                  </div>
+
+                  {/* Category Filter */}
+                  <div>
+                    <h3 className="text-sm font-semibold text-secondary uppercase tracking-wide mb-4 lg:block hidden">
+                      {t("blog.categories") || "Categories"}
+                    </h3>
+                    <CategoryFilter
+                      selectedCategory={selectedCategory}
+                      onCategoryChange={setSelectedCategory}
+                    />
+                  </div>
+                </div>
+              </div>
+
               {/* Main Content */}
-              <div className="lg:col-span-8">
+              <div className="col-span-12 lg:col-span-9">
                 {filteredPosts.length === 0 ? (
                   <div className="text-center py-16">
                     <p className="text-muted-foreground text-lg">
@@ -292,13 +324,6 @@ export default function BlogIndex() {
                     ))}
                   </div>
                 )}
-              </div>
-
-              {/* Sidebar */}
-              <div className="lg:col-span-4">
-                <div className="sticky top-24">
-                  <BlogSidebar />
-                </div>
               </div>
             </div>
           </div>
