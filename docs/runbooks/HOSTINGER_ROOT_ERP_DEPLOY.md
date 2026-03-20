@@ -158,6 +158,25 @@ Expected:
   - focus production domain wildcard
   - focus localhost port wildcard (if used)
 
+## Pre-Deploy: Validate dist/ Is Complete (CRITICAL)
+
+Before uploading, verify the build output is real — `npm run build` exits 0
+even if Vite finds no entry point and produces only `index.html`.
+
+A valid build must contain:
+- `dist/index.html`
+- `dist/assets/*.js` (multiple JS chunks)
+- `dist/assets/*.css`
+
+Quick check:
+```bash
+ls dist/assets/ | grep -c "\.js"   # must be > 10
+```
+
+If `dist/assets/` is empty or missing: the build is broken. Do NOT deploy.
+Known cause: `index.html` entry point not a static `<script type="module" src="...">`.
+See commit `6572389` (2026-03-19) for the fix.
+
 ## Build Stamp Sanity Check (Dispatcher)
 
 After deploy of ERP prod or beta:
@@ -207,5 +226,6 @@ After upload:
 
 ## Change Log
 
+- 2026-03-19: Added pre-deploy dist/ validation guardrail (incident: broken build from dynamic entry point).
 - 2026-03-01: Canonicalized root/erp/beta/focus deployment runbook.
 - 2026-03-01: Added Project A/B/focus mapping, auth redirects, and build stamp sanity checks.
