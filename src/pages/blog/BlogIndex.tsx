@@ -7,7 +7,6 @@ import { getCategoryBySlug } from "@/data/blog/categories";
 import BlogCard from "@/components/blog/BlogCard";
 import CategoryFilter from "@/components/blog/CategoryFilter";
 import NewsletterCTA from "@/components/blog/NewsletterCTA";
-import BlogSidebar from "@/components/blog/BlogSidebar";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Search, Calendar, Clock, ArrowRight } from "lucide-react";
@@ -111,17 +110,17 @@ export default function BlogIndex() {
       </Helmet>
 
       <div className="min-h-screen bg-background">
-        {/* Hero Section - Premium Style */}
-        <section className="relative section-padding bg-gradient-to-b from-champagne via-cream to-white">
+        {/* Hero Section - Compact */}
+        <section className="relative py-8 md:py-10 bg-gradient-to-b from-champagne via-cream to-white">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+              <p className="font-accent italic text-lg md:text-xl text-primary mb-3">
                 Discover Paris
               </p>
-              <h1 className="text-4xl md:text-6xl font-display font-bold text-secondary mb-6">
+              <h1 className="text-3xl md:text-5xl font-display font-bold text-secondary mb-4">
                 {t("blog.heroTitle") || "Travel Blog"}
               </h1>
-              <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+              <p className="text-base md:text-lg text-gray-600 mb-6 leading-relaxed">
                 {t("blog.heroSubtitle") ||
                   "Expert tips, guides, and insights for your Paris journey"}
               </p>
@@ -143,29 +142,43 @@ export default function BlogIndex() {
           </div>
         </section>
 
-        {/* Category Filter */}
-        <section className="py-8 border-b border-primary/10 bg-white/50 backdrop-blur-sm">
+        {/* Main Content with Left Sidebar */}
+        <section className="py-8 md:py-10 bg-gradient-to-b from-white to-champagne/30">
           <div className="container mx-auto px-4">
-            <CategoryFilter
-              selectedCategory={selectedCategory}
-              onCategoryChange={setSelectedCategory}
-            />
-          </div>
-        </section>
-
-        {/* Featured Post */}
-        {selectedCategory === "all" && searchQuery === "" && featuredPost && (
-          <section className="section-padding-sm bg-gradient-to-b from-white to-champagne/30">
-            <div className="container mx-auto px-4">
-              <div className="text-center mb-12">
-                <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
-                  Featured Story
-                </p>
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
-                  {t("blog.featured") || "Featured Article"}
-                </h2>
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 md:gap-6">
+              {/* Left Sidebar */}
+              <div className="col-span-12 lg:col-span-3">
+                <div className="lg:sticky lg:top-24">
+                  <div className="rounded-2xl border border-black/5 bg-white/60 backdrop-blur shadow-sm p-4">
+                    {/* Category Filter */}
+                    <div>
+                      <p className="text-xs font-semibold tracking-wide text-muted-foreground uppercase mb-3 lg:block hidden">
+                        Categories
+                      </p>
+                      <CategoryFilter
+                        variant="sidebar"
+                        selectedCategory={selectedCategory}
+                        onCategoryChange={setSelectedCategory}
+                      />
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className="max-w-5xl mx-auto">
+
+              {/* Main Content Area */}
+              <div className="col-span-12 lg:col-span-9">
+                {/* Featured Post */}
+                {selectedCategory === "all" && searchQuery === "" && featuredPost && (
+                  <section id="blog-featured" className="mb-8 md:mb-10">
+                    <div className="text-center mb-8">
+                      <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+                        Featured Story
+                      </p>
+                      <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+                        {t("blog.featured") || "Featured Article"}
+                      </h2>
+                    </div>
+                    <div>
                 <Link
                   to={`/blog/${featuredPost.category}/${featuredPost.slug}`}
                   className="group block"
@@ -253,52 +266,40 @@ export default function BlogIndex() {
                         </div>
                       </div>
                     </div>
-                  </article>
-                </Link>
-              </div>
-            </div>
-          </section>
-        )}
-
-        {/* All Posts with Sidebar */}
-        <section className="section-padding bg-gradient-to-b from-champagne/30 via-white to-cream">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-12">
-              <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
-                Latest Stories
-              </p>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
-                {selectedCategory === "all"
-                  ? t("blog.allArticles") || "All Articles"
-                  : t("blog.categoryArticles") || "Articles"}
-              </h2>
-            </div>
-
-            {/* Grid with Sidebar */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              {/* Main Content */}
-              <div className="lg:col-span-8">
-                {filteredPosts.length === 0 ? (
-                  <div className="text-center py-16">
-                    <p className="text-muted-foreground text-lg">
-                      {t("blog.noArticles") ||
-                        "No articles found. Try a different search or category."}
-                    </p>
-                  </div>
-                ) : (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    {filteredPosts.map((post) => (
-                      <BlogCard key={post.id} post={post} />
-                    ))}
-                  </div>
-                )}
-              </div>
-
-              {/* Sidebar */}
-              <div className="lg:col-span-4">
-                <div className="sticky top-24">
-                  <BlogSidebar />
+                    </article>
+                  </Link>
                 </div>
+                  </section>
+                )}
+
+                {/* All Articles */}
+                <section id="blog-all">
+                  <div className="text-center mb-8">
+                    <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+                      Latest Stories
+                    </p>
+                    <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+                      {selectedCategory === "all"
+                        ? t("blog.allArticles") || "All Articles"
+                        : t("blog.categoryArticles") || "Articles"}
+                    </h2>
+                  </div>
+
+                  {filteredPosts.length === 0 ? (
+                    <div className="text-center py-16">
+                      <p className="text-muted-foreground text-lg">
+                        {t("blog.noArticles") ||
+                          "No articles found. Try a different search or category."}
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {filteredPosts.map((post) => (
+                        <BlogCard key={post.id} post={post} />
+                      ))}
+                    </div>
+                  )}
+                </section>
               </div>
             </div>
           </div>
