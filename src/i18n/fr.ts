@@ -1109,4 +1109,122 @@ export const fr: Translation = {
         "Transferts privés aéroport à Paris avec tarif fixe, guide pratique des points de rendez-vous à CDG, Orly et Beauvais, et assistance chauffeur 24/7.",
     },
   },
+  parisFashion: {
+    meta: {
+      title: "Guide mode à Paris : comment la vivre avec style",
+      description:
+        "Quartiers, boutiques, concept stores et Fashion Week. Le guide essentiel pour les amateurs de mode qui visitent Paris.",
+    },
+    badge: "Guide éditorial",
+    hero: {
+      eyebrow: "Paris & Mode",
+      title: "Mode à Paris : le guide pour la vivre vraiment",
+      subtitle:
+        "Quartiers, boutiques, semaine de la mode et conseils pratiques pour les voyageurs qui ont le style dans le sang.",
+    },
+    forWho: {
+      title: "À qui s'adresse ce guide",
+      intro:
+        "Ce guide est fait pour ceux qui viennent à Paris avec la mode en tête — pas seulement comme décor, mais comme destination.",
+      profile1: {
+        label: "Voyageurs passionnés de mode",
+        desc: "Vous voulez aller au-delà du Louvre et des macarons. La mode fait partie de votre raison de voyager.",
+      },
+      profile2: {
+        label: "Acheteurs spécialisés",
+        desc: "Vous cherchez des pièces introuvables chez vous : créateurs français, vintage authentique, éditions limitées.",
+      },
+      profile3: {
+        label: "Agences avec clients exigeants",
+        desc: "Vous organisez des expériences pour des voyageurs qui veulent mode, luxe et culture intégrés dans leur agenda parisien.",
+      },
+      profile4: {
+        label: "Visiteurs de la Fashion Week",
+        desc: "Vous venez pendant une semaine de défilés et souhaitez savoir comment vous déplacer, quoi voir et profiter au maximum de la ville.",
+      },
+    },
+    districts: {
+      title: "Les meilleurs quartiers mode de Paris",
+      intro:
+        "Paris n'a pas un seul centre de la mode. Elle en a plusieurs, chacun avec sa propre énergie.",
+      marais: {
+        name: "Le Marais (3e et 4e)",
+        desc: "Le quartier le plus créatif de la capitale. Concept stores, créateurs indépendants, marques internationales et une atmosphère urbaine qui mêle art et mode sans effort. L'axe Rue des Francs-Bourgeois est incontournable.",
+      },
+      saintGermain: {
+        name: "Saint-Germain-des-Prés (6e)",
+        desc: "Élégance intellectuelle. Boutiques de créateurs français établis, galeries intégrées à des espaces mode et un rythme plus calme que le Marais. Idéal pour des achats réfléchis.",
+      },
+      montaigne: {
+        name: "Avenue Montaigne (8e)",
+        desc: "Haute couture à l'état pur. Dior, Chanel, Louis Vuitton, Valentino. Pour ceux qui veulent l'expérience du luxe parisien sans détour.",
+      },
+      faubourg: {
+        name: "Rue du Faubourg Saint-Honoré (8e)",
+        desc: "Parallèle à Montaigne dans l'esprit. Hermès, Balenciaga, Gucci. Une rue qui conserve son caractère exclusif depuis des décennies.",
+      },
+      pigalle: {
+        name: "South Pigalle / Oberkampf (9e–11e)",
+        desc: "La scène mode alternative et émergente de Paris. Marques locales, sneaker culture, streetwear de qualité. L'antidote aux grands boulevards du luxe.",
+      },
+    },
+    prioritize: {
+      title: "Quoi prioriser selon votre style",
+      intro:
+        "Tout ne se trouve pas dans le même quartier ni dans le même registre.",
+      luxury: {
+        title: "Haute couture et luxe établi",
+        desc: "Montaigne, Faubourg Saint-Honoré. Prenez rendez-vous chez Dior ou Chanel si vous souhaitez une expérience de shopping personnalisée. Certaines maisons proposent le private shopping pour les clients internationaux.",
+      },
+      conceptStores: {
+        title: "Concept stores et retail éditorial",
+        desc: "Colette a fermé, mais son esprit perdure dans des lieux comme Merci (Le Marais), The Broken Arm (3e) ou Kiliwatch. Édition limitée, sélection curatée, la boutique comme proposition culturelle.",
+      },
+      vintage: {
+        title: "Vintage et seconde main de qualité",
+        desc: "Paris possède le meilleur marché vintage d'Europe. À trouver à la Porte de Vanves (week-end), les marchés des Batignolles et les boutiques spécialisées du Marais comme Kilo Shop ou Episode.",
+      },
+      emerging: {
+        title: "Créateurs émergents",
+        desc: "Les Galeries Lafayette Champs-Élysées consacrent un espace aux nouveaux créateurs français. Explorez aussi les expositions temporaires pendant la Fashion Week et les showrooms ouverts dans le 11e.",
+      },
+    },
+    fashionWeek: {
+      title: "Si vous venez pendant la Fashion Week",
+      eyebrow: "Fashion Week",
+      intro:
+        "Paris accueille quatre Fashion Weeks par an. Janvier–février pour la Haute Couture et le menswear. Septembre–octobre pour le prêt-à-porter. La ville change : événements, showrooms, pop-ups et une énergie particulière dans les quartiers clés.",
+      tip1: "N'espérez pas assister aux grands défilés sans accréditation. Vous pouvez participer à des événements parallèles, expositions et présentations ouvertes au public.",
+      tip2: "Le Palais Royal, le Carrousel du Louvre et le Grand Palais sont des sites habituels. Consultez le calendrier officiel de la Fédération de la Haute Couture et de la Mode.",
+      tip3: "Les hôtels et restaurants du 8e affichent complet rapidement. Réservez plusieurs semaines à l'avance si vous venez pendant ces dates.",
+      tip4: "La circulation au centre de Paris pendant la Fashion Week est imprévisible. Un transfert privé avec chauffeur est la solution qui vous garantit d'arriver à l'heure à chaque rendez-vous.",
+    },
+    practical: {
+      title: "Conseils pratiques",
+      hours: {
+        title: "Horaires",
+        desc: "Les boutiques parisiennes ouvrent généralement de 10h à 19h du lundi au samedi. Beaucoup ferment le dimanche ou ouvrent tard. Les grands magasins (Galeries Lafayette, Le Bon Marché) ont des horaires élargis et certains dimanches ouverts.",
+      },
+      transport: {
+        title: "Se déplacer",
+        desc: "Entre le Marais, Saint-Germain et les Grands Boulevards, vous pouvez vous déplacer à pied. Pour Montaigne et le Faubourg, le métro (ligne 9) ou un transfert privé sont les meilleures options. Le VTC est pratique si vous avez des achats encombrants.",
+      },
+      rhythm: {
+        title: "Rythme de la journée",
+        desc: "Le déjeuner est le pire moment pour les petites boutiques : certaines ferment entre 12h30 et 14h. Du mardi au vendredi après-midi, c'est le moment le plus calme pour faire ses achats sans bousculade.",
+      },
+      weather: {
+        title: "Météo et chaussures",
+        desc: "Paris est une ville où l'on marche, mais ses pavés ne pardonnent pas les chaussures inadaptées. Si votre journée inclut plusieurs boutiques et peut-être un marché, combinez confort et élégance. En automne et en hiver, une bonne veste est indispensable.",
+      },
+    },
+    cta: {
+      title: "Besoin d'un transfert privé pour votre journée mode à Paris ?",
+      subtitle:
+        "Nous pouvons organiser votre déplacement entre boutiques, maisons et événements. Ponctualité et discrétion incluses.",
+      bookTransfer: "Demander un transfert privé",
+      planning: "Renseigner sur la planification sur mesure",
+      whatsapp: "Écrire sur WhatsApp",
+    },
+  },
 };
