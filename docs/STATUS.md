@@ -83,6 +83,7 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 
 ## Ahora en curso
 
+- **PR-EV-INGEST-01A** (P1/R1) — **DRAFT** — DB schema content_event ingest pipeline (5 tablas: sources/ingest_runs/raw/normalized/published). Remote dry-run passed. Local full replay gate BLOCKED by SUPABASE-SHARED-REPLAY-DEBT-01. Not authorized for db push --yes yet. Not a fix for /events public page.
 - **UX-BRANDING-APPROACHABLE-01** (P1/R0) — **DEFERRED** (time-to-ship). PR1 (`#114` / `906a898`) and PR2 (`#116` / `afeafbb`) were reverted by `#118` (`5b25f7c`) to restore the previous design. Follow-up copy-only improvements shipped in `#120` (`4c6df6b`) and `#121` (`55e0a4f`) without reactivating the full branding redesign. Revisit later with a measurement plan before reactivation.
 
 ## Siguientes 3 items del plan (priorizados)
