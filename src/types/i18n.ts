@@ -826,6 +826,22 @@ export interface Translation {
     whatsappMicrocopy: string;
     ctaWhatsApp: string;
     ctaEmail: string;
+    fallbackTitle: string;
+    fallbackSubtitle: string;
+    fallbackCatFashion: string;
+    fallbackCatFashionDesc: string;
+    fallbackCatExhibitions: string;
+    fallbackCatExhibitionsDesc: string;
+    fallbackCatConcerts: string;
+    fallbackCatConcertsDesc: string;
+    fallbackCatSports: string;
+    fallbackCatSportsDesc: string;
+    fallbackCatBusiness: string;
+    fallbackCatBusinessDesc: string;
+    fallbackCta: string;
+    fallbackCtaAlt: string;
+    fallbackDisclaimer: string;
+    stalePill: string;
   };
   seo: {
     home: {

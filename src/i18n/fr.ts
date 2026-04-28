@@ -1115,6 +1115,29 @@ export const fr: Translation = {
     whatsappMicrocopy: "Nous répondons vite sur WhatsApp",
     ctaWhatsApp: "Demander un Devis sur WhatsApp",
     ctaEmail: "Nous Écrire",
+    fallbackTitle: "Service de Chauffeur Privé pour Événements à Paris",
+    fallbackSubtitle:
+      "Organisez votre transport de luxe pour tout événement à Paris — défilés de mode, expositions, concerts, événements sportifs et conférences.",
+    fallbackCatFashion: "Défilés de Mode & Événements de Luxe",
+    fallbackCatFashionDesc:
+      "Arrivez avec élégance aux Fashion Week, showrooms privés et présentations exclusives.",
+    fallbackCatExhibitions: "Expositions & Salons d'Art",
+    fallbackCatExhibitionsDesc:
+      "Service porte-à-porte pour les expositions de musées, vernissages et visites de salons d'art à Paris.",
+    fallbackCatConcerts: "Concerts & Spectacles",
+    fallbackCatConcertsDesc:
+      "Transferts premium pour les concerts, opéras, théâtres et spectacles vivants.",
+    fallbackCatSports: "Événements Sportifs",
+    fallbackCatSportsDesc:
+      "Transferts privés pour Roland-Garros, le Stade de France et les grands événements sportifs.",
+    fallbackCatBusiness: "Conférences & Dîners Privés",
+    fallbackCatBusinessDesc:
+      "Transport discret et ponctuel pour les conférences d'affaires, galas et engagements du soir.",
+    fallbackCta: "Demander un Transfert",
+    fallbackCtaAlt: "Obtenir un Devis Chauffeur",
+    fallbackDisclaimer:
+      "Nous proposons un transport avec chauffeur vers les événements — pas de billets d'événement.",
+    stalePill: "Transport Événementiel",
   },
   seo: {
     home: {

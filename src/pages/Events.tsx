@@ -1,11 +1,12 @@
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
 import { EventsFeed } from "@/components/events/EventsFeed";
+import { EventsTransportFallback } from "@/components/events/EventsTransportFallback";
 import TrustSignals from "@/components/TrustSignals";
-import { Sparkles, MessageCircle, Mail } from "lucide-react";
+import { Sparkles, MessageCircle, Mail, Car } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import {
   buildGenericWhatsAppUrl,
   buildGenericEmailUrl,
@@ -13,6 +14,20 @@ import {
 import { getSiteOrigin } from "@/lib/seo/site";
 import { formatParisDate } from "@/lib/datetime/paris";
 import eventsFeedData from "@/data/events/events-feed.json";
+import type { Event, EventCategory } from "@/types/events";
+
+function isFeedStale(): boolean {
+  const now = new Date();
+  const graceMs = 7 * 24 * 60 * 60 * 1000;
+  const allEvents = [
+    ...eventsFeedData.thisWeek,
+    ...eventsFeedData.thisMonth,
+  ].map((e) => ({ ...e, category: e.category as EventCategory }));
+  return allEvents.every((e) => {
+    const end = new Date(e.endAt ?? e.startAt);
+    return end.getTime() < now.getTime() - graceMs;
+  });
+}
 
 type EventsSectionId = "events-week" | "events-month";
 
@@ -23,6 +38,7 @@ export default function Events() {
   const [activeSection, setActiveSection] =
     useState<EventsSectionId>("events-week");
 
+  const feedIsStale = useMemo(() => isFeedStale(), []);
   const siteOrigin = getSiteOrigin();
   const canonicalUrl = `${siteOrigin}/events`;
   const pageTitle =
@@ -129,9 +145,15 @@ export default function Events() {
             {/* Header */}
             <div className="text-center max-w-4xl mx-auto mb-6">
               <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
-                <Sparkles className="w-4 h-4 text-primary" />
+                {feedIsStale ? (
+                  <Car className="w-4 h-4 text-primary" />
+                ) : (
+                  <Sparkles className="w-4 h-4 text-primary" />
+                )}
                 <span className="text-sm font-medium text-primary">
-                  {t("events.liveUpdates") || "Live Updates"}
+                  {feedIsStale
+                    ? t("events.stalePill") || "Event Transport"
+                    : t("events.liveUpdates") || "Live Updates"}
                 </span>
               </div>
 
@@ -140,13 +162,18 @@ export default function Events() {
               </h1>
 
               <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-                {t("events.heroSubtitle") ||
-                  "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style."}
+                {feedIsStale
+                  ? t("events.fallbackSubtitle") ||
+                    "Plan luxury transport for any event in Paris — fashion shows, exhibitions, concerts, sports fixtures, and business conferences."
+                  : t("events.heroSubtitle") ||
+                    "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style."}
               </p>
-              <p className="text-sm text-muted-foreground/90 mb-8">
-                {lastUpdatedLabel} ·{" "}
-                {t("events.sourcesVerified") || "Official sources verified"}
-              </p>
+              {!feedIsStale && (
+                <p className="text-sm text-muted-foreground/90 mb-8">
+                  {lastUpdatedLabel} ·{" "}
+                  {t("events.sourcesVerified") || "Official sources verified"}
+                </p>
+              )}
 
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="silk-button" asChild>
@@ -175,58 +202,70 @@ export default function Events() {
         {/* Events Listing + Quick Navigation */}
         <section className="pt-6 pb-8 md:pt-8 md:pb-10 bg-gradient-to-b from-white via-champagne/30 to-cream">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)] gap-5 md:gap-6">
-              <aside className="w-full">
-                <div className="bg-white rounded-lg p-6 shadow-sm lg:sticky lg:top-24">
-                  <h3 className="text-lg font-semibold mb-4">
-                    {t("events.navigation") || "Navigation"}
-                  </h3>
+            {feedIsStale ? (
+              <EventsTransportFallback />
+            ) : (
+              <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)] gap-5 md:gap-6">
+                <aside className="w-full">
+                  <div className="bg-white rounded-lg p-6 shadow-sm lg:sticky lg:top-24">
+                    <h3 className="text-lg font-semibold mb-4">
+                      {t("events.navigation") || "Navigation"}
+                    </h3>
 
-                  <div className="space-y-2">
-                    {sectionButtons.map((section) => (
-                      <button
-                        key={section.id}
-                        type="button"
-                        onClick={() => scrollToSection(section.id)}
-                        className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                          activeSection === section.id
-                            ? "bg-primary text-white font-semibold shadow-md"
-                            : "bg-gray-50 text-gray-700 hover:bg-gray-100"
-                        }`}
-                      >
-                        {section.label}
-                      </button>
-                    ))}
+                    <div className="space-y-2">
+                      {sectionButtons.map((section) => (
+                        <button
+                          key={section.id}
+                          type="button"
+                          onClick={() => scrollToSection(section.id)}
+                          className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                            activeSection === section.id
+                              ? "bg-primary text-white font-semibold shadow-md"
+                              : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                          }`}
+                        >
+                          {section.label}
+                        </button>
+                      ))}
+                    </div>
                   </div>
+                </aside>
+
+                <div className="space-y-10 md:space-y-12">
+                  <article id="events-week" className="scroll-mt-24">
+                    <div className="text-center mb-4 md:mb-6">
+                      <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+                        {t("events.comingSoon") || "Coming Soon"}
+                      </p>
+                      <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+                        {t("events.thisWeek") || "This Week in Paris"}
+                      </h2>
+                    </div>
+                    <EventsFeed
+                      range="week"
+                      variant="full"
+                      showHeader={false}
+                    />
+                  </article>
+
+                  <article id="events-month" className="scroll-mt-24">
+                    <div className="text-center mb-4 md:mb-6">
+                      <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+                        {t("events.planAhead") || "Plan Ahead"}
+                      </p>
+                      <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+                        {t("events.thisMonth") || "This Month in Paris"}
+                      </h2>
+                    </div>
+                    <EventsFeed
+                      range="month"
+                      variant="full"
+                      showHeader={false}
+                    />
+                  </article>
                 </div>
-              </aside>
-
-              <div className="space-y-10 md:space-y-12">
-                <article id="events-week" className="scroll-mt-24">
-                  <div className="text-center mb-4 md:mb-6">
-                    <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
-                      {t("events.comingSoon") || "Coming Soon"}
-                    </p>
-                    <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
-                      {t("events.thisWeek") || "This Week in Paris"}
-                    </h2>
-                  </div>
-                  <EventsFeed range="week" variant="full" showHeader={false} />
-                </article>
-
-                <article id="events-month" className="scroll-mt-24">
-                  <div className="text-center mb-4 md:mb-6">
-                    <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
-                      {t("events.planAhead") || "Plan Ahead"}
-                    </p>
-                    <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
-                      {t("events.thisMonth") || "This Month in Paris"}
-                    </h2>
-                  </div>
-                  <EventsFeed range="month" variant="full" showHeader={false} />
-                </article>
               </div>
-            </div>
+            )}
           </div>
         </section>
 

@@ -1078,6 +1078,29 @@ export const en: Translation = {
     whatsappMicrocopy: "We reply fast on WhatsApp",
     ctaWhatsApp: "Get a Quote on WhatsApp",
     ctaEmail: "Email Us",
+    fallbackTitle: "Private Chauffeur Service for Paris Events",
+    fallbackSubtitle:
+      "Plan luxury transport for any event in Paris — fashion shows, exhibitions, concerts, sports fixtures, and business conferences.",
+    fallbackCatFashion: "Fashion Shows & Luxury Events",
+    fallbackCatFashionDesc:
+      "Arrive in style at Fashion Week, private showrooms, and exclusive brand presentations.",
+    fallbackCatExhibitions: "Exhibitions & Art Fairs",
+    fallbackCatExhibitionsDesc:
+      "Door-to-door service for museum exhibitions, gallery openings, and art fair visits across Paris.",
+    fallbackCatConcerts: "Concerts & Performances",
+    fallbackCatConcertsDesc:
+      "Premium transfers to concerts, opera, theatre, and live performances.",
+    fallbackCatSports: "Sports Fixtures",
+    fallbackCatSportsDesc:
+      "Private transfers to Roland-Garros, the Stade de France, and major sporting events.",
+    fallbackCatBusiness: "Conferences & Private Dinners",
+    fallbackCatBusinessDesc:
+      "Discreet, punctual transport for business events, galas, and private evening engagements.",
+    fallbackCta: "Request Event Transfer",
+    fallbackCtaAlt: "Get Chauffeur Quote",
+    fallbackDisclaimer:
+      "We provide chauffeured transport to events — not event tickets.",
+    stalePill: "Event Transport",
   },
   seo: {
     home: {
