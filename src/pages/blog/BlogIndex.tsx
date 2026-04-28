@@ -45,7 +45,7 @@ export default function BlogIndex() {
       inLanguage: lang,
       isPartOf: {
         "@type": "WebSite",
-        name: "Paris Luxe Journey",
+        name: "Paris Elite Services",
         url: siteOrigin,
       },
       mainEntity: {

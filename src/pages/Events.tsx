@@ -100,7 +100,7 @@ export default function Events() {
     inLanguage: language,
     isPartOf: {
       "@type": "WebSite",
-      name: "Paris Luxe Journey",
+      name: "Paris Elite Services",
       url: siteOrigin,
     },
   };
