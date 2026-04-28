@@ -90,9 +90,9 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **PLJ-UI-001** (P1/R0) — ParisFashion page + route + App.tsx (smoke visual obligatorio)
-2. **PLJ-DB-001** (P1/R1) — Migration replay-safety patches (tras smoke UI completo)
-3. **PLJ-DB-002** (P1/R2) — Counterparty ledger foundation (tras PLJ-DB-001 + DBA sign-off)
+1. **PLJ-DB-001** (P1/R1) — Migration replay-safety patches (staging primero — HOLD hasta audit clientfiche01a)
+2. **PLJ-DB-002** (P1/R2) — Counterparty ledger foundation (tras PLJ-DB-001 + DBA sign-off)
+3. **PLJ-OPS-002** (P2/R0) — supabase/.temp gitignore hygiene
 
 ## Urgent out-of-repo
 
