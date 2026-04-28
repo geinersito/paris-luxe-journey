@@ -90,9 +90,9 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **PLJ-ASSETS-001** (P1/R0) — Favicon + PWA icon refresh (sin deps, R0, fast-lane)
-2. **PLJ-TRANS-001** (P1/R0) — i18n types + ParisFashion copy (desbloquea PLJ-COMP-001 + PLJ-UI-001)
-3. **PLJ-OPS-001** (P1/R0) — Staging build script fix + CLI bump (paralelo a TRANS-001)
+1. **PLJ-TRANS-001** (P1/R0) — i18n types + ParisFashion copy (desbloquea PLJ-COMP-001 + PLJ-UI-001)
+2. **PLJ-OPS-001** (P1/R0) — Staging build script fix + CLI bump (paralelo a TRANS-001)
+3. **PLJ-COMP-001** (P1/R0) — Testimonial refactor + address Vanves (tras PLJ-TRANS-001)
 
 ## Urgent out-of-repo
 
