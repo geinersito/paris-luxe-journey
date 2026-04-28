@@ -109,6 +109,33 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | PLJ-DB-003 | P2 | R1 | DB | clientfiche01a: add IF NOT EXISTS guards to dispatch_clients profile fields migration | BLOCKED | — | BLOCKED: Category B ERP contaminated (dispatch_clients). Cross-repo sign-off + ownership decision required. |
 | PLJ-EV-INGEST-01A-DEPLOY-GATE | P1 | R2 | DB/Ops | Supervised deploy gate for PR-EV-INGEST-01A: migration + Edge Function + OpenAgenda ingest | BLOCKED | — | R2 — requires: (1) migration idempotency/replay-safety review, (2) remote schema check before db push, (3) secrets audit: no service_role/OpenAgenda/HMAC key in VITE_*, (4) dry-run or staging-first, (5) rollback notes, (6) post-deploy smoke plan. No deploy until all 6 gates pass. |
 
+## Publication Readiness — P0/P1 Blockers (Chrome Visual Audit 2026-04-28)
+
+Source: `docs/audits/PUBLICATION_AUDIT_2026_04_28.md`
+Deploy status: **HOLD** — 6 P0 blockers active.
+
+### P0 — Must fix before any public deploy
+
+| ID | Priority | Risk | Area | Description | Status | PR / Commit | Deploy impact |
+|---|---|---|---|---|---|---|---|
+| PUB-P0-001 | P0 | R0 | i18n/Blog | Blog module raw i18n keys: `blog.pageTitle` renders in `<title>`, `blog.readMore` renders in featured card, blog 404 page shows all strings as raw keys | TODO | — | BLOCKER — Google indexes `blog.pageTitle`; trust destruction on blog entry point |
+| PUB-P0-002 | P0 | R0 | Navigation | Nav anchors `#fleet`, `#about`, `#contact` are page-relative — broken on every sub-page. Fix: absolutize to `/#fleet`, `/#about`, `/#contact` or equivalent | TODO | — | BLOCKER — 3 nav links silently fail on every airport, excursion, booking, guide page |
+| PUB-P0-003 | P0 | R0–R1 | Mobile/CSS | Hero text clipped at 390px viewport + hamburger menu button invisible at mobile breakpoints. R0 if CSS-only; R1 if mobile menu state/behavior changes | TODO | — | BLOCKER — Mobile nav inaccessible; hero text garbled on majority-of-traffic viewport |
+| PUB-P0-004 | P0 | R0 | Events/Content | Events page empty shell: feed stale (generatedAt 2026-02-16, all events past), no fallback content. Must become transport-oriented and publishable without OpenAgenda runtime | TODO | — | BLOCKER — `/events` provides zero value to any visitor; dead page on commercial route |
+| PUB-P0-005 | P0 | R1 | Routing | Excursion detail 404s: `/excursions/giverny`, `/excursions/champagne`, `/excursions/loire-valley`. "View Details" buttons are dead ends. Fix: create static detail pages or redirect to quote form | TODO | — | BLOCKER — Core commercial pages 404; "View Details" UX broken |
+| PUB-P0-006 | P0 | R0 | SEO/Brand | Home JSON-LD `Organization` + `LocalBusiness` use `name: "Paris Luxe Journey"` while visible brand is "Paris Elite Services". Google reads different entity than displayed. Also: Events page `<title>` says "Paris Luxe Journey" | TODO | — | BLOCKER for SEO indexing — brand entity mismatch at crawl time |
+
+### P1 — Should fix before deploy
+
+| ID | Priority | Risk | Area | Description | Status | PR / Commit | Deploy impact |
+|---|---|---|---|---|---|---|---|
+| PUB-P1-001 | P1 | R0 | Copy/Positioning | "We speak Spanish" bold text in EN hero — signals LatAm-market origin, dilutes premium international positioning | TODO | — | SHOULD-FIX — Trust + premium positioning gap |
+| PUB-P1-002 | P1 | R0 | Copy/Trust | Stats animate from 0 on cold load; "estimated" qualifier visible in rating stat; "Internal directional indicators." visible below testimonials | TODO | — | SHOULD-FIX — Appears fabricated on slow connections; undermines trust |
+| PUB-P1-003 | P1 | R0 | Copy | Footer copyright "2025 Paris Elite Services" — stale from deploy day | TODO | — | SHOULD-FIX — Immediately signals neglect |
+| PUB-P1-004 | P1 | R0 | Copy/Assets | Hourly page: "Mise à Disposition" French label on EN page + Fiat 500 image instead of Mercedes fleet vehicle | TODO | — | SHOULD-FIX — Language inconsistency + brand image mismatch |
+| PUB-P1-005 | P1 | R1 | UX/Performance | Booking form cold-load spinner 2–3 seconds (white screen before form renders) | TODO | — | SHOULD-FIX — Trust regression for premium service; may touch loading/state behavior |
+| PUB-P1-006 | P1 | R0 | Navigation/SEO | B2B nav slugs `/agencias` and `/empresas` visible on hover to EN/international audience — reveals LatAm origin | TODO | — | SHOULD-FIX — International clients see Spanish-market URL pattern |
+
 ### Content SEO System
 
 | ID | Legacy | Priority | Risk | Status | Title | Evidence (PR/Commit) | Notes |
