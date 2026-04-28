@@ -13,6 +13,26 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## OPS Locks
 
+## DEPLOY STATUS — 2026-04-28
+
+**Status: HOLD**
+**Reason: 6 P0 publication blockers — Chrome visual audit 2026-04-28**
+**Source: `docs/audits/PUBLICATION_AUDIT_2026_04_28.md`**
+
+Active P0 blockers (must fix before any public deploy):
+- PUB-P0-001: Blog i18n raw keys (`blog.pageTitle` in `<title>`, `blog.readMore`, blog 404 strings)
+- PUB-P0-002: Nav anchors `#fleet`/`#about`/`#contact` broken on all sub-pages
+- PUB-P0-003: Mobile hero text clipping + hamburger menu invisible at 390px
+- PUB-P0-004: Events page empty shell — stale feed (Feb 2026), no fallback content
+- PUB-P0-005: Excursion detail 404s — `/excursions/giverny`, `/champagne`, `/loire-valley`
+- PUB-P0-006: Home JSON-LD brand mismatch — "Paris Luxe Journey" vs visible "Paris Elite Services"
+
+Runtime hold (separate from publication blockers):
+- EV ingest DB: NOT applied (PLJ-EV-INGEST-01A-DEPLOY-GATE R2 required)
+- Edge Function: NOT deployed
+- Payment/checkout: NOT activated
+- Target after P0 fixes: content-only + quote-request deploy (no DB/functions)
+
 ## GOVERNANCE INCIDENT — 2026-04-28
 
 **PR #176 branch-rescue included EV ingest scope (not reverted)**
@@ -94,15 +114,21 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 
 ## Ahora en curso
 
+- **PUB-P0-001** (P0/R0) — **TODO** — Blog i18n raw keys: `blog.pageTitle`, `blog.readMore`, 404 strings. First fix PR.
 - **PR-EV-INGEST-01A** (P1/R1) — **MERGED-CODE / DEPLOY-HOLD** — Code + migration on main (`bd48d89`) via PR #176. DB NOT applied. Function NOT deployed. Runtime NOT active. Next action: PLJ-EV-INGEST-01A-DEPLOY-GATE (R2) — see IMPROVEMENTS.md.
 - **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2/R0→R1) — **DOING** — PR1 ✅ PR2 ✅ telemetry activo; waiting 48–72h no-hit window para PR3 removal.
 - **UX-BRANDING-APPROACHABLE-01** (P1/R0) — **DEFERRED** — Reverted en #118. Revisit con measurement plan antes de reactivar.
 
-## Siguientes 3 items del plan (priorizados)
+## Siguientes items (priorizados por publication blockers)
 
-1. **PLJ-EV-INGEST-01A-DEPLOY-GATE** (P1/R2) — BLOCKED: 6 gates required (migration idempotency review, remote schema check, secrets audit, dry-run, rollback notes, post-deploy smoke). No deploy until all pass.
-2. **PLJ-DB-001** (P1/R1) — BLOCKED: cross-repo governance sign-off (dispatch_* namespace). Ver docs/db-governance/PLJ-DB-001-CROSSREPO-AUDIT.md
-3. **PLJ-DB-002** (P1/R2) — BLOCKED: depends on PLJ-DB-001 sign-off + R2 DBA review
+1. **PUB-P0-001** (P0/R0) — TODO: Blog i18n raw keys
+2. **PUB-P0-002** (P0/R0) — TODO: Nav anchors absolutize
+3. **PUB-P0-003** (P0/R0–R1) — TODO: Mobile hero clipping + hamburger
+4. **PUB-P0-004** (P0/R0) — TODO: Events page fallback + feed refresh
+5. **PUB-P0-005** (P0/R1) — TODO: Excursion detail 404s
+6. **PLJ-EV-INGEST-01A-DEPLOY-GATE** (P1/R2) — BLOCKED: 6 gates required. No deploy until all pass.
+7. **PLJ-DB-001** (P1/R1) — BLOCKED: dispatch_* cross-repo sign-off → paris-dispatcher
+8. **PLJ-DB-002** (P1/R2) — BLOCKED: depends on PLJ-DB-001 + R2 DBA review
 
 ## Urgent out-of-repo
 
