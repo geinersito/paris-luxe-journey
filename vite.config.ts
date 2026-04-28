@@ -64,65 +64,58 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // Core React libraries - always needed
-          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+          // Supabase
+          if (id.includes('@supabase')) return 'supabase';
+
+          // Payment
+          if (id.includes('@stripe')) return 'payment';
+
+          // Charts
+          if (id.includes('recharts')) return 'charts';
+
+          // Maps
+          if (id.includes('@react-google-maps') || id.includes('mapbox-gl') || id.includes('@mapbox')) return 'maps';
+
+          // Date utilities (pure JS, no React)
+          if (id.includes('node_modules/date-fns')) return 'date-utils';
+
+          // i18n core (pure JS — react-i18next is caught by the react block below)
+          if (id.includes('node_modules/i18next')) return 'i18n';
+
+          // Form validators (pure JS)
+          if (id.includes('@hookform') || id.includes('node_modules/zod')) return 'forms';
+
+          // React ecosystem — all packages that import React must share this chunk.
+          // Prevents circular vendor-misc↔vendor-react createContext crash.
+          // Broad node_modules/react match covers: react, react-dom, react-router-dom,
+          // react-i18next, react-hook-form, react-day-picker, react-helmet-async, etc.
+          // @remix-run: react-router-dom peer dep.
+          // @floating-ui: Radix UI peer dep, imports React.
+          // @tanstack/react-*: uses createContext, path doesn't match node_modules/react.
+          // next-themes, sonner, lucide-react, framer-motion, @radix-ui, cmdk, vaul,
+          // embla-carousel, input-otp all call React.createContext — must not land in vendor-misc.
+          if (
+            id.includes('node_modules/react') ||
+            id.includes('node_modules/scheduler') ||        // react-dom peer dep
+            id.includes('node_modules/prop-types') ||       // React companion, imports react-is
+            id.includes('node_modules/hoist-non-react-statics') ||
+            id.includes('@remix-run') ||
+            id.includes('@radix-ui') ||
+            id.includes('@floating-ui') ||
+            id.includes('@tanstack/') ||
+            id.includes('node_modules/next-themes') ||
+            id.includes('node_modules/sonner') ||
+            id.includes('node_modules/lucide-react') ||
+            id.includes('node_modules/framer-motion') ||
+            id.includes('node_modules/cmdk') ||
+            id.includes('node_modules/vaul') ||
+            id.includes('node_modules/embla-carousel') ||
+            id.includes('node_modules/input-otp')
+          ) {
             return 'vendor-react';
           }
 
-          // Router - needed early
-          if (id.includes('node_modules/react-router-dom')) {
-            return 'vendor-router';
-          }
-
-          // Supabase - needed for data fetching
-          if (id.includes('@supabase')) {
-            return 'supabase';
-          }
-
-          // Heavy animation library - lazy load
-          if (id.includes('framer-motion')) {
-            return 'animations';
-          }
-
-          // Maps libraries - only for booking/excursions pages
-          if (id.includes('@react-google-maps') || id.includes('mapbox-gl') || id.includes('@mapbox')) {
-            return 'maps';
-          }
-
-          // Payment libraries - only for payment page
-          if (id.includes('@stripe')) {
-            return 'payment';
-          }
-
-          // Charts - only for admin/analytics
-          if (id.includes('recharts')) {
-            return 'charts';
-          }
-
-          // Form libraries
-          if (id.includes('react-hook-form') || id.includes('@hookform') || id.includes('zod')) {
-            return 'forms';
-          }
-
-          // Radix UI components
-          if (id.includes('@radix-ui')) {
-            return 'ui-radix';
-          }
-
-          // i18n libraries
-          if (id.includes('i18next') || id.includes('react-i18next')) {
-            return 'i18n';
-          }
-
-          // Date utilities
-          if (id.includes('date-fns')) {
-            return 'date-utils';
-          }
-
-          // Other vendor libraries
-          if (id.includes('node_modules')) {
-            return 'vendor-misc';
-          }
+          // Remaining node_modules — let Rollup auto-chunk to avoid any further circulars
         },
         chunkFileNames: 'assets/[name]-[hash].js',
         entryFileNames: 'assets/[name]-[hash].js',
