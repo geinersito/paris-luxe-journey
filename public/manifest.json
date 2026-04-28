@@ -1,11 +1,11 @@
 {
-  "name": "Paris Luxe Journey",
-  "short_name": "Paris Luxe",
-  "description": "Luxury transportation and premium tours in Paris",
+  "name": "Paris Elite Services",
+  "short_name": "Paris Elite",
+  "description": "Private chauffeur, airport transfers and premium transport services in Paris",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#ffffff",
-  "theme_color": "#000000",
+  "theme_color": "#0B2545",
   "icons": [
     {
       "src": "/manifest-icon-192.maskable.png",
