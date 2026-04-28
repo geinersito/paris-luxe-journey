@@ -1040,6 +1040,26 @@ export const es: Translation = {
     freeCancellation: "Cancelación gratuita hasta 24h",
     flightMonitoring: "Monitoreo de vuelo incluido",
     premiumVehicles: "Vehículos premium (Mercedes, BMW)",
+    pageTitle: "Blog de Viajes | Paris Elite Services",
+    pageDescription:
+      "Consejos expertos, guías e información para visitar París. Transfers al aeropuerto, excursiones y servicio de chofer de lujo.",
+    readMore: "Leer Más",
+    article: "artículo",
+    articles: "artículos",
+    searchInCategory: "Buscar en esta categoría...",
+    notFound: {
+      title: "404 - Artículo No Encontrado | Blog",
+      heading: "Artículo No Encontrado",
+      description: "El artículo que buscas no existe o ha sido movido.",
+      backToBlog: "Volver al Blog",
+      backToHome: "Volver al Inicio",
+      suggestedTitle: "Puede que te Interese",
+      suggestedDescription: "Echa un vistazo a estos artículos populares",
+      helpTitle: "¿Necesitas Ayuda?",
+      helpDescription:
+        "Si necesitas ayuda para encontrar algo, no dudes en contactarnos.",
+      contactUs: "Contáctanos",
+    },
     sidebar: {
       quickQuote: "Presupuesto Rápido",
       quickQuoteDesc: "Obtén un precio instantáneo para tu transfer",

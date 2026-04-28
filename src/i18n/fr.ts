@@ -1043,6 +1043,27 @@ export const fr: Translation = {
     freeCancellation: "Annulation gratuite jusqu'à 24h",
     flightMonitoring: "Suivi de vol inclus",
     premiumVehicles: "Véhicules premium (Mercedes, BMW)",
+    pageTitle: "Blog de Voyage | Paris Elite Services",
+    pageDescription:
+      "Conseils d'experts, guides et informations pour visiter Paris. Transferts aéroport, excursions et service de chauffeur de luxe.",
+    readMore: "Lire la Suite",
+    article: "article",
+    articles: "articles",
+    searchInCategory: "Rechercher dans cette catégorie...",
+    notFound: {
+      title: "404 - Article Introuvable | Blog",
+      heading: "Article Introuvable",
+      description:
+        "L'article que vous recherchez n'existe pas ou a été déplacé.",
+      backToBlog: "Retour au Blog",
+      backToHome: "Retour à l'Accueil",
+      suggestedTitle: "Vous Pourriez Être Intéressé Par",
+      suggestedDescription: "Découvrez ces articles populaires à la place",
+      helpTitle: "Besoin d'Aide ?",
+      helpDescription:
+        "Si vous avez besoin d'aide pour trouver quelque chose, n'hésitez pas à nous contacter.",
+      contactUs: "Nous Contacter",
+    },
     sidebar: {
       quickQuote: "Devis Rapide",
       quickQuoteDesc: "Obtenez un prix instantané pour votre transfert",
