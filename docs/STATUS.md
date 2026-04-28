@@ -13,26 +13,47 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## OPS Locks
 
-## DEPLOY STATUS — 2026-04-28
+## DEPLOY STATUS — 2026-04-29
 
-**Status: HOLD**
-**Reason: 6 P0 publication blockers — Chrome visual audit 2026-04-28**
-**Source: `docs/audits/PUBLICATION_AUDIT_2026_04_28.md`**
+**Status: HOLD — R0 sprint required**
+**Reason: Strategic model not implemented. Events page has zero content. Homepage does not surface events/excursions.**
+**Sprint plan: `docs/plan/CTO_PUBLICATION_SPRINT_2026_04_29.md`**
+**Audit source: `docs/audits/STRATEGIC_REDESIGN_AUDIT_2026_04_29.md`**
 
-Active P0 blockers (must fix before any public deploy):
-- ~~PUB-P0-001~~: ✅ DONE — PR #179 `dbe3ef7`
-- ~~PUB-P0-002~~: ✅ DONE — PR #180 `62c6fad`
-- PUB-P0-003: Mobile hero text clipping + hamburger menu invisible at 390px
-- PUB-P0-003: Mobile hero text clipping + hamburger menu invisible at 390px
-- PUB-P0-004: Events page empty shell — stale feed (Feb 2026), no fallback content
-- PUB-P0-005: Excursion detail 404s — `/excursions/giverny`, `/champagne`, `/loire-valley`
-- PUB-P0-006: Home JSON-LD brand mismatch — "Paris Luxe Journey" vs visible "Paris Elite Services"
+### Technical blockers — ALL RESOLVED ✅
+- ~~PUB-P0-001~~: ✅ DONE — PR #179 `dbe3ef7` — i18n blog keys
+- ~~PUB-P0-002~~: ✅ DONE — PR #180 `62c6fad` — nav anchor absolutize
+- ~~PUB-P0-003~~: ✅ DONE — PR #181 `c7a1039` — mobile hero clipping
+- ~~PUB-P0-004~~: ✅ DONE — PR #182 `e00e8fb` — events transport fallback
+- ~~PUB-P0-005~~: ✅ DONE — PR #183 `756fdcc` — versailles route + excursion links
+- ~~PUB-P0-006~~: ✅ DONE — PR #184 `39b7909` — home JSON-LD brand fix
+- ~~PUB-BUNDLE-001~~: ✅ DONE — PR #186 `e154c08` — production circular chunk crash fixed
+- ~~PUB-P1-BRAND-META-001~~: ✅ DONE — PR #185 `f5f7943` — brand strings + PWA manifest → Paris Elite Services
 
-Runtime hold (separate from publication blockers):
+**main HEAD: `f5f7943` — technically clean, CI green, Chrome production preview 6/6 routes OK**
+
+### Strategic blockers — R0 sprint (open)
+
+Active deploy gates from `docs/plan/CTO_PUBLICATION_SPRINT_2026_04_29.md`:
+
+| ID | Blocker | Severity |
+|---|---|---|
+| R0-05 | Events page: `events-feed.json` 71 days stale, all events past — need 6–8 fresh cards (May–Jul 2026) | Critical |
+| R0-06 | Homepage: no Events surface (3 cards + link) | Critical |
+| R0-07 | Homepage: no Excursions preview (3 cards + link) | Critical |
+| R0-01 | Homepage: hero copy still transport-SPA framing — must update to Option C | Critical |
+| R0-02 | Homepage: zero-stats block ("0+ Clientes / 0.0 Valoración") still live — actively damages trust | High |
+| R0-03 | Mobile nav hamburger not functioning at 390px | Critical |
+| R0-04 | Mobile: booking widget in hero at 390px — both elements illegible | Critical |
+| R0-08–10 | Excursion detail pages: broken images + empty Highlights/Why Visit + wrong product framing | Critical |
+| R0-11 | Blog CTA: Fiat 500 image — destroys luxury perception | High |
+| R0-12 | Airport CTAs: "Get a Fixed Price" in English on Spanish pages | Medium |
+
+Runtime hold (unchanged — separate from publication):
 - EV ingest DB: NOT applied (PLJ-EV-INGEST-01A-DEPLOY-GATE R2 required)
 - Edge Function: NOT deployed
 - Payment/checkout: NOT activated
-- Target after P0 fixes: content-only + quote-request deploy (no DB/functions)
+- Deploy target: content-only + quote-request (no DB/functions/payment)
 
 ## GOVERNANCE INCIDENT — 2026-04-28
 
