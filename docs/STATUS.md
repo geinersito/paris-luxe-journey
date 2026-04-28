@@ -21,7 +21,8 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 Active P0 blockers (must fix before any public deploy):
 - ~~PUB-P0-001~~: ✅ DONE — PR #179 `dbe3ef7`
-- PUB-P0-002: Nav anchors `#fleet`/`#about`/`#contact` broken on all sub-pages
+- ~~PUB-P0-002~~: ✅ DONE — PR #180 `62c6fad`
+- PUB-P0-003: Mobile hero text clipping + hamburger menu invisible at 390px
 - PUB-P0-003: Mobile hero text clipping + hamburger menu invisible at 390px
 - PUB-P0-004: Events page empty shell — stale feed (Feb 2026), no fallback content
 - PUB-P0-005: Excursion detail 404s — `/excursions/giverny`, `/champagne`, `/loire-valley`
@@ -57,14 +58,15 @@ Runtime hold (separate from publication blockers):
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `dbe3ef7`
-- Baseline feature: `fix(i18n): add missing blog keys — pageTitle, readMore, notFound.* (PUB-P0-001) (PR #179)`
+- SHA: `62c6fad`
+- Baseline feature: `fix(nav): absolutize fleet/about/contact anchors to /#hash (PUB-P0-002) (PR #180)`
 - Last updated: `2026-04-28`
 
 ## Ultimos PRs mergeados en main
 
-1. `#179` - fix(i18n): add missing blog keys — pageTitle, readMore, notFound.* (2026-04-28) (`dbe3ef7`) ✅ PUB-P0-001 DONE
-2. `#176` - chore: close booking UI/i18n/assets cleanup without DB changes (2026-04-28) (`bd48d89`) ⚠️ GOVERNANCE NOTE: included EV ingest scope — see GOVERNANCE INCIDENT above
+1. `#180` - fix(nav): absolutize fleet/about/contact anchors to /#hash (2026-04-28) (`62c6fad`) ✅ PUB-P0-002 DONE
+2. `#179` - fix(i18n): add missing blog keys — pageTitle, readMore, notFound.* (2026-04-28) (`dbe3ef7`) ✅ PUB-P0-001 DONE
+3. `#176` - chore: close booking UI/i18n/assets cleanup without DB changes (2026-04-28) (`bd48d89`) ⚠️ GOVERNANCE NOTE: included EV ingest scope — see GOVERNANCE INCIDENT above
 2. `#159` - fix(pricing): align v312 partner floors to locked rates (2026-02) (`601ef9c`)
 2. `#158` - fix(pricing): update fixed rates + hourly displayRate (2026-02) (`d110106`)
 3. `#156` - fix(i18n): change "Live Updates" to "Updated" in events page (`37c38b1`)
@@ -96,6 +98,7 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 
 ## Done / Shipped
 
+- **PUB-P0-002** ✅ DONE — PR **#180** — `62c6fad` — Absolutized nav anchors `#fleet`, `#about`, `#contact` → `/#fleet`, `/#about`, `/#contact` in Navbar.tsx. Relative hrefs resolved to current sub-page path on `/events`, `/airports/*`, `/excursions`. 1 file, 3-line change. Gates: type-check + build + smoke (4/4) PASS.
 - **PUB-P0-001** ✅ DONE — PR **#179** — `dbe3ef7` — Added 16 missing blog i18n keys (`blog.pageTitle`, `blog.readMore`, `blog.notFound.*`, `blog.article/articles/searchInCategory/pageDescription`) across EN/ES/FR/PT + `Translation` type. Fixes raw key display in blog `<title>`, article cards, and 404 page. Gates: type-check + build + smoke PASS.
 - **PRICING-UPDATE-2026-02-V312** ✅ DONE — PR **#159** — `601ef9c` — Updated all 17 Partner Floor values in V3.1.2 pricing system to produce exact LOCKED prepaid prices (formula: PF = target - FC + PD). Revenue-critical hotfix: fixes €10-20 underpricing per ride across all routes. Changes: CDG 100/130, ORY 90/115, gares unified 80/100, DLP 120/145, VRS 95/120, etc. Gates: type-check + build PASS. No logic/fee changes (FC/PD/buffer intact).
 - **PRICING-UPDATE-2026-02** ✅ DONE — PR **#158** — `d110106` — Updated pricing.ts (shadow/fallback system) with LOCKED rates v2.0: airports +40-50% (CDG 100/130, ORY 90/115), gares unified 80/100, city wait 30min, hourly displayRate 70€ (rate 75€ for calc). Serves as SSOT reference + legacy fallback. Version v1.0 → v2.0.
@@ -116,15 +119,15 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 
 ## Ahora en curso
 
-- **PUB-P0-002** (P0/R0) — **TODO** — Nav anchors `#fleet`/`#about`/`#contact` broken on sub-pages → absolutize to `/#fleet`, `/#about`, `/#contact`.
+- **PUB-P0-003** (P0/R0–R1) — **TODO** — Mobile hero text clipping + hamburger menu invisible at 390px.
 - **PR-EV-INGEST-01A** (P1/R1) — **MERGED-CODE / DEPLOY-HOLD** — Code + migration on main (`bd48d89`) via PR #176. DB NOT applied. Function NOT deployed. Runtime NOT active. Next action: PLJ-EV-INGEST-01A-DEPLOY-GATE (R2) — see IMPROVEMENTS.md.
 - **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2/R0→R1) — **DOING** — PR1 ✅ PR2 ✅ telemetry activo; waiting 48–72h no-hit window para PR3 removal.
 - **UX-BRANDING-APPROACHABLE-01** (P1/R0) — **DEFERRED** — Reverted en #118. Revisit con measurement plan antes de reactivar.
 
 ## Siguientes items (priorizados por publication blockers)
 
-1. **PUB-P0-002** (P0/R0) — TODO: Nav anchors absolutize
-2. **PUB-P0-003** (P0/R0–R1) — TODO: Mobile hero clipping + hamburger
+1. **PUB-P0-003** (P0/R0–R1) — TODO: Mobile hero clipping + hamburger
+2. **PUB-P0-004** (P0/R0) — TODO: Events page fallback + feed refresh
 3. **PUB-P0-004** (P0/R0) — TODO: Events page fallback + feed refresh
 4. **PUB-P0-005** (P0/R1) — TODO: Excursion detail 404s
 5. **PUB-P0-006** (P0/R0) — TODO: Home JSON-LD brand mismatch
