@@ -24,7 +24,7 @@ export default function Home() {
 
   // Generate JSON-LD structured data
   const organizationJsonLd = generateOrganizationJsonLd({
-    name: "Paris Luxe Journey",
+    name: "Paris Elite Services",
     url: siteOrigin,
     logoUrl: `${siteOrigin}/logo.png`,
     description: t.seo.home.description,
@@ -35,7 +35,7 @@ export default function Home() {
   });
 
   const localBusinessJsonLd = generateLocalBusinessJsonLd({
-    name: "Paris Luxe Journey",
+    name: "Paris Elite Services",
     url: siteOrigin,
     telephone: "+33668251102",
     description: t.seo.home.description,

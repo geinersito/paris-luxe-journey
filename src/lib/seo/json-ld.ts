@@ -87,10 +87,10 @@ export function generateArticleJsonLd(
     },
     publisher: {
       "@type": "Organization",
-      name: "Paris Luxe Journey",
+      name: "Paris Elite Services",
       logo: {
         "@type": "ImageObject",
-        url: "https://parisluxejourney.com/logo.png",
+        url: "https://eliteparistransfer.com/logo.png",
       },
     },
     mainEntityOfPage: {
@@ -128,15 +128,16 @@ export function generateWebsiteJsonLd(): JsonLdWebsite {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Paris Luxe Journey",
-    url: "https://parisluxejourney.com",
-    description: "Premium airport transfer and travel services in Paris",
+    name: "Paris Elite Services",
+    url: "https://eliteparistransfer.com",
+    description:
+      "Premium airport transfer and private chauffeur services in Paris",
     potentialAction: {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
         urlTemplate:
-          "https://parisluxejourney.com/blog?search={search_term_string}",
+          "https://eliteparistransfer.com/blog?search={search_term_string}",
       },
       "query-input": "required name=search_term_string",
     },
