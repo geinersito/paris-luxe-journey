@@ -83,14 +83,16 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 
 ## Ahora en curso
 
-- **PR-EV-INGEST-01A** (P1/R1) — **DRAFT** — DB schema content_event ingest pipeline (5 tablas: sources/ingest_runs/raw/normalized/published). Remote dry-run passed. Local full replay gate BLOCKED by SUPABASE-SHARED-REPLAY-DEBT-01. Not authorized for db push --yes yet. Not a fix for /events public page.
-- **UX-BRANDING-APPROACHABLE-01** (P1/R0) — **DEFERRED** (time-to-ship). PR1 (`#114` / `906a898`) and PR2 (`#116` / `afeafbb`) were reverted by `#118` (`5b25f7c`) to restore the previous design. Follow-up copy-only improvements shipped in `#120` (`4c6df6b`) and `#121` (`55e0a4f`) without reactivating the full branding redesign. Revisit later with a measurement plan before reactivation.
+- **PLJ-SSOT-001** (P0/R0) — **DOING** — Añadir plan items batch feat/ev-ingest-01b a IMPROVEMENTS.md + actualizar STATUS.md. Desbloqueante para todos los PLJ-* PRs (§1.1 trazabilidad).
+- **PR-EV-INGEST-01A** (P1/R1) — **BLOCKED** — DB schema content_event ingest pipeline (5 tablas: sources/ingest_runs/raw/normalized/published). Remote dry-run passed. Local full replay gate BLOCKED por SUPABASE-SHARED-REPLAY-DEBT-01. Not authorized for db push --yes yet.
+- **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2/R0→R1) — **DOING** — PR1 ✅ PR2 ✅ telemetry activo; waiting 48–72h no-hit window para PR3 removal.
+- **UX-BRANDING-APPROACHABLE-01** (P1/R0) — **DEFERRED** — Reverted en #118. Revisit con measurement plan antes de reactivar.
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **SEO-INTERNALLINK-RULES-01** (P2/R0) — Audit + enforce internal linking rules across Blog/Events/Excursions
-2. **CONTENT-HOURLY-ITINERARIES-01** (P2/R0) — Add sample hourly itineraries (3-5 use cases)
-3. **CONTENT-FAQ-VISUAL-AIDS-01** (P2/R0) — Add visual aids to FAQ/Legal pages
+1. **PLJ-ASSETS-001** (P1/R0) — Favicon + PWA icon refresh (sin deps, R0, fast-lane)
+2. **PLJ-TRANS-001** (P1/R0) — i18n types + ParisFashion copy (desbloquea PLJ-COMP-001 + PLJ-UI-001)
+3. **PLJ-OPS-001** (P1/R0) — Staging build script fix + CLI bump (paralelo a TRANS-001)
 
 ## Urgent out-of-repo
 
