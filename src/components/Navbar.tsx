@@ -194,9 +194,9 @@ const Navbar = () => {
         { name: t.nav.companies, href: "/empresas" },
       ],
     },
-    { name: t.nav.fleet, href: "#fleet" },
-    { name: t.nav.about, href: "#about" },
-    { name: t.nav.contact, href: "#contact" },
+    { name: t.nav.fleet, href: "/#fleet" },
+    { name: t.nav.about, href: "/#about" },
+    { name: t.nav.contact, href: "/#contact" },
   ];
 
   return (
