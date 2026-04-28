@@ -33,3 +33,12 @@ baseline-*.txt
 type-check-*.txt
 commit-msg.txt
 supabase/functions/create-booking-payment/config.toml
+
+# Supabase local CLI state (environment-specific, not project config)
+supabase/.temp/linked-project.json
+
+# Local deployment artifacts
+elite-root-deploy-*.zip
+
+# Smoke test screenshots (transient CI/QA artifacts)
+docs/smoke/

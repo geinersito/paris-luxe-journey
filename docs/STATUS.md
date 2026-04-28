@@ -90,7 +90,7 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **PLJ-OPS-002** (P2/R0) — gitignore: supabase/.temp/linked-project.json + deploy zips + smoke screenshots
+1. **PLJ-OPS-002** (P2/R0) — DONE — gitignore: linked-project.json + deploy zips + docs/smoke/
 2. **PLJ-DB-001** (P1/R1) — BLOCKED: cross-repo governance sign-off (dispatch_* namespace). Ver docs/db-governance/PLJ-DB-001-CROSSREPO-AUDIT.md
 3. **PLJ-DB-002** (P1/R2) — BLOCKED: depends on PLJ-DB-001 sign-off + R2 DBA review
 
