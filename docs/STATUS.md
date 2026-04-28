@@ -13,6 +13,16 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## OPS Locks
 
+## GOVERNANCE INCIDENT — 2026-04-28
+
+**PR #176 branch-rescue included EV ingest scope (not reverted)**
+
+- Files on main: `supabase/migrations/20260420110000_content_event_ingest_openagenda_01a.sql` + `supabase/functions/sync-events-openagenda/` + `supabase/functions/_shared/erpIngest.ts`
+- Root cause: these files were already committed on `feat/ev-ingest-01b` before the cleanup session; base diff against main captured them.
+- Production impact: **NONE** — DB migration NOT applied, Edge Function NOT deployed, runtime NOT active.
+- Decision: Accept (no revert). Transform to controlled state: code in main, runtime BLOCKED pending PLJ-EV-INGEST-01A-DEPLOY-GATE (R2).
+- **DO NOT run**: `supabase db push`, `supabase functions deploy`, any OpenAgenda sync.
+
 ## OPS — Hostinger deploy runbooks canonicalized (LOCKED ✅)
 
 **main@bdda7bc**
@@ -27,13 +37,14 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `601ef9c`
-- Baseline feature: `fix(pricing): align v312 partner floors to locked rates (PR #159)`
-- Last updated: `2026-03-01`
+- SHA: `bd48d89`
+- Baseline feature: `chore: close booking UI/i18n/assets cleanup without DB changes (PR #176)`
+- Last updated: `2026-04-28`
 
 ## Ultimos PRs mergeados en main
 
-1. `#159` - fix(pricing): align v312 partner floors to locked rates (2026-02) (`601ef9c`)
+1. `#176` - chore: close booking UI/i18n/assets cleanup without DB changes (2026-04-28) (`bd48d89`) ⚠️ GOVERNANCE NOTE: included EV ingest scope — see GOVERNANCE INCIDENT above
+2. `#159` - fix(pricing): align v312 partner floors to locked rates (2026-02) (`601ef9c`)
 2. `#158` - fix(pricing): update fixed rates + hourly displayRate (2026-02) (`d110106`)
 3. `#156` - fix(i18n): change "Live Updates" to "Updated" in events page (`37c38b1`)
 4. `#155` - fix(i18n): add missing events translation keys + UX improvements (`dbcb9e1`)
@@ -83,14 +94,13 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 
 ## Ahora en curso
 
-- **PLJ-SSOT-001** (P0/R0) — **DONE** `9cc23b8` — Plan items batch feat/ev-ingest-01b registrados.
-- **PR-EV-INGEST-01A** (P1/R1) — **BLOCKED** — DB schema content_event ingest pipeline (5 tablas: sources/ingest_runs/raw/normalized/published). Remote dry-run passed. Local full replay gate BLOCKED por SUPABASE-SHARED-REPLAY-DEBT-01. Not authorized for db push --yes yet.
+- **PR-EV-INGEST-01A** (P1/R1) — **MERGED-CODE / DEPLOY-HOLD** — Code + migration on main (`bd48d89`) via PR #176. DB NOT applied. Function NOT deployed. Runtime NOT active. Next action: PLJ-EV-INGEST-01A-DEPLOY-GATE (R2) — see IMPROVEMENTS.md.
 - **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2/R0→R1) — **DOING** — PR1 ✅ PR2 ✅ telemetry activo; waiting 48–72h no-hit window para PR3 removal.
 - **UX-BRANDING-APPROACHABLE-01** (P1/R0) — **DEFERRED** — Reverted en #118. Revisit con measurement plan antes de reactivar.
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **PLJ-OPS-002** (P2/R0) — DONE — gitignore: linked-project.json + deploy zips + docs/smoke/
+1. **PLJ-EV-INGEST-01A-DEPLOY-GATE** (P1/R2) — BLOCKED: 6 gates required (migration idempotency review, remote schema check, secrets audit, dry-run, rollback notes, post-deploy smoke). No deploy until all pass.
 2. **PLJ-DB-001** (P1/R1) — BLOCKED: cross-repo governance sign-off (dispatch_* namespace). Ver docs/db-governance/PLJ-DB-001-CROSSREPO-AUDIT.md
 3. **PLJ-DB-002** (P1/R2) — BLOCKED: depends on PLJ-DB-001 sign-off + R2 DBA review
 
