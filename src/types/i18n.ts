@@ -762,6 +762,24 @@ export interface Translation {
     freeCancellation: string;
     flightMonitoring: string;
     premiumVehicles: string;
+    pageTitle: string;
+    pageDescription: string;
+    readMore: string;
+    article: string;
+    articles: string;
+    searchInCategory: string;
+    notFound: {
+      title: string;
+      heading: string;
+      description: string;
+      backToBlog: string;
+      backToHome: string;
+      suggestedTitle: string;
+      suggestedDescription: string;
+      helpTitle: string;
+      helpDescription: string;
+      contactUs: string;
+    };
     sidebar: {
       quickQuote: string;
       quickQuoteDesc: string;
