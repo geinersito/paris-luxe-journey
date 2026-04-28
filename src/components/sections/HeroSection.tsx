@@ -125,14 +125,14 @@ export default function HeroSection() {
         <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
           {/* Left column — headline + subtitle */}
           <div
-            className={`lg:col-span-6 text-center lg:text-left transition-all duration-1000 ${
+            className={`lg:col-span-6 min-w-0 text-center lg:text-left transition-all duration-1000 ${
               isImageLoaded
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-8"
             }`}
           >
             <h1
-              className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-4 leading-tight text-white text-shadow-gold animate-fadeInUp"
+              className="break-words text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-4 leading-tight text-white text-shadow-gold animate-fadeInUp"
               style={{
                 animationDelay: "0.2s",
                 animationFillMode: "both",
@@ -215,7 +215,7 @@ export default function HeroSection() {
           {/* Right column — booking widget */}
           <div
             ref={widgetRef}
-            className="lg:col-span-6 animate-scaleIn"
+            className="lg:col-span-6 min-w-0 animate-scaleIn"
             style={{ animationDelay: "0.6s", animationFillMode: "both" }}
           >
             <CompactBookingForm
