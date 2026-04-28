@@ -30,7 +30,7 @@ export default function BlogIndex() {
   const siteOrigin = getSiteOrigin();
   const canonicalUrl = `${siteOrigin}/blog`;
   const lang = (i18n.language || "en") as Language;
-  const pageTitle = t("blog.pageTitle") || "Travel Blog | Paris Luxe Journey";
+  const pageTitle = t("blog.pageTitle") || "Travel Blog | Paris Elite Services";
   const pageDescription =
     t("blog.pageDescription") ||
     "Expert travel tips, guides, and insights for visiting Paris and France. Airport transfers, day trips, luxury travel advice and more.";

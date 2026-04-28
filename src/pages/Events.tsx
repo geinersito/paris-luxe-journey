@@ -42,7 +42,7 @@ export default function Events() {
   const siteOrigin = getSiteOrigin();
   const canonicalUrl = `${siteOrigin}/events`;
   const pageTitle =
-    t("events.pageTitle") || "Events in Paris | Paris Luxe Journey";
+    t("events.pageTitle") || "Events in Paris | Paris Elite Services";
   const pageDescription =
     t("events.pageDescription") ||
     "Discover the best events, concerts, exhibitions and activities happening in Paris this week and month. Book your luxury transfer to any event.";
