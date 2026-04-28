@@ -1104,6 +1104,29 @@ export const pt: Translation = {
     whatsappMicrocopy: "Respondemos rápido no WhatsApp",
     ctaWhatsApp: "Pedir Orçamento pelo WhatsApp",
     ctaEmail: "Envie-nos um Email",
+    fallbackTitle: "Serviço de Motorista Privado para Eventos em Paris",
+    fallbackSubtitle:
+      "Planeje transporte de luxo para qualquer evento em Paris — desfiles de moda, exposições, concertos, eventos esportivos e conferências.",
+    fallbackCatFashion: "Desfiles de Moda & Eventos de Luxo",
+    fallbackCatFashionDesc:
+      "Chegue com estilo na Fashion Week, showrooms privados e apresentações exclusivas.",
+    fallbackCatExhibitions: "Exposições & Feiras de Arte",
+    fallbackCatExhibitionsDesc:
+      "Serviço porta-a-porta para exposições de museus, aberturas de galerias e visitas a feiras de arte em Paris.",
+    fallbackCatConcerts: "Concertos & Espetáculos",
+    fallbackCatConcertsDesc:
+      "Transferências premium para concertos, ópera, teatro e espetáculos ao vivo.",
+    fallbackCatSports: "Eventos Esportivos",
+    fallbackCatSportsDesc:
+      "Transferências privadas para Roland-Garros, o Stade de France e grandes eventos esportivos.",
+    fallbackCatBusiness: "Conferências & Jantares Privados",
+    fallbackCatBusinessDesc:
+      "Transporte discreto e pontual para conferências de negócios, galás e compromissos noturnos.",
+    fallbackCta: "Solicitar Transfer para Evento",
+    fallbackCtaAlt: "Obter Cotação de Motorista",
+    fallbackDisclaimer:
+      "Oferecemos transporte com motorista para eventos — não vendemos ingressos.",
+    stalePill: "Transporte para Eventos",
   },
   seo: {
     home: {

@@ -1111,6 +1111,29 @@ export const es: Translation = {
     whatsappMicrocopy: "Respondemos rápido por WhatsApp",
     ctaWhatsApp: "Pedir Presupuesto por WhatsApp",
     ctaEmail: "Envíanos un Email",
+    fallbackTitle: "Servicio de Chófer Privado para Eventos en París",
+    fallbackSubtitle:
+      "Planifique transporte de lujo para cualquier evento en París — desfiles de moda, exposiciones, conciertos, eventos deportivos y conferencias.",
+    fallbackCatFashion: "Desfiles de Moda & Eventos de Lujo",
+    fallbackCatFashionDesc:
+      "Llegue con estilo a la Fashion Week, showrooms privados y presentaciones exclusivas.",
+    fallbackCatExhibitions: "Exposiciones & Ferias de Arte",
+    fallbackCatExhibitionsDesc:
+      "Servicio puerta a puerta para exposiciones de museos, inauguraciones y visitas a ferias de arte en París.",
+    fallbackCatConcerts: "Conciertos & Espectáculos",
+    fallbackCatConcertsDesc:
+      "Traslados premium a conciertos, ópera, teatro y espectáculos en vivo.",
+    fallbackCatSports: "Eventos Deportivos",
+    fallbackCatSportsDesc:
+      "Traslados privados a Roland-Garros, el Stade de France y grandes eventos deportivos.",
+    fallbackCatBusiness: "Conferencias & Cenas Privadas",
+    fallbackCatBusinessDesc:
+      "Transporte discreto y puntual para conferencias de negocios, galas y compromisos nocturnos.",
+    fallbackCta: "Solicitar Transfer a Evento",
+    fallbackCtaAlt: "Obtener Cotización de Chófer",
+    fallbackDisclaimer:
+      "Ofrecemos transporte con chófer hacia eventos — no vendemos entradas.",
+    stalePill: "Transporte a Eventos",
   },
   seo: {
     home: {
