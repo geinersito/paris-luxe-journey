@@ -1297,6 +1297,8 @@ const Excursions = () => {
       loire: "/excursions/loire-valley",
       champagne: "/excursions/champagne",
       giverny: "/excursions/giverny-honfleur",
+      versaillesHalf: "/excursions/versailles",
+      versaillesFull: "/excursions/versailles",
     };
     const detailRoute = detailRouteMap[trip.tripKey];
 

@@ -53,6 +53,7 @@ const ChampagnePage = lazy(() => import("./pages/excursions/champagne"));
 const GivernyHonfleurPage = lazy(
   () => import("./pages/excursions/giverny-honfleur"),
 );
+const VersaillesPage = lazy(() => import("./pages/excursions/versailles"));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -112,6 +113,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<PageLoader />}>
             <GivernyHonfleurPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: "excursions/versailles",
+        element: (
+          <Suspense fallback={<PageLoader />}>
+            <VersaillesPage />
           </Suspense>
         ),
       },
