@@ -37,8 +37,9 @@ export default function TermsPage() {
                 1. Acceptance of Terms
               </h2>
               <p className="text-gray-700 leading-relaxed">
-                By accessing and using Paris Elite Services, you accept and agree to be bound by these Terms and Conditions. 
-                If you do not agree to these terms, please do not use our services.
+                By accessing and using Paris Elite Services, you accept and
+                agree to be bound by these Terms and Conditions. If you do not
+                agree to these terms, please do not use our services.
               </p>
             </div>
 
@@ -52,18 +53,28 @@ export default function TermsPage() {
                   </h2>
                   <div className="space-y-4 text-gray-700">
                     <div>
-                      <h3 className="font-semibold text-lg text-secondary mb-2">Booking Process</h3>
+                      <h3 className="font-semibold text-lg text-secondary mb-2">
+                        Booking Process
+                      </h3>
                       <ul className="list-disc list-inside space-y-2 ml-4">
-                        <li>All bookings must be made through our website or authorized channels</li>
+                        <li>
+                          All bookings must be made through our website or
+                          authorized channels
+                        </li>
                         <li>Confirmation is sent via email within 24 hours</li>
                         <li>Prices are quoted in Euros (€) and include VAT</li>
                         <li>Payment is required at the time of booking</li>
                       </ul>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg text-secondary mb-2">Payment Methods</h3>
+                      <h3 className="font-semibold text-lg text-secondary mb-2">
+                        Payment Methods
+                      </h3>
                       <ul className="list-disc list-inside space-y-2 ml-4">
-                        <li>Credit/Debit cards (Visa, Mastercard, American Express)</li>
+                        <li>
+                          Credit/Debit cards (Visa, Mastercard, American
+                          Express)
+                        </li>
                         <li>Secure payment processing via Stripe</li>
                         <li>100% online payment required for confirmation</li>
                       </ul>
@@ -87,21 +98,30 @@ export default function TermsPage() {
                         <CheckCircle className="w-5 h-5 text-green-600" />
                         Full Refund
                       </h3>
-                      <p>Cancellations made <strong>24+ hours</strong> before pickup time</p>
+                      <p>
+                        Cancellations made <strong>24+ hours</strong> before
+                        pickup time
+                      </p>
                     </div>
                     <div className="bg-white p-4 rounded-lg border border-amber-200">
                       <h3 className="font-semibold text-lg text-secondary mb-2 flex items-center gap-2">
                         <AlertCircle className="w-5 h-5 text-amber-600" />
                         50% Refund
                       </h3>
-                      <p>Cancellations made <strong>12-24 hours</strong> before pickup time</p>
+                      <p>
+                        Cancellations made <strong>12-24 hours</strong> before
+                        pickup time
+                      </p>
                     </div>
                     <div className="bg-white p-4 rounded-lg border border-amber-200">
                       <h3 className="font-semibold text-lg text-secondary mb-2 flex items-center gap-2">
                         <XCircle className="w-5 h-5 text-red-600" />
                         No Refund
                       </h3>
-                      <p>Cancellations made <strong>less than 12 hours</strong> before pickup time or no-shows</p>
+                      <p>
+                        Cancellations made <strong>less than 12 hours</strong>{" "}
+                        before pickup time or no-shows
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -115,23 +135,43 @@ export default function TermsPage() {
               </h2>
               <div className="space-y-4 text-gray-700">
                 <div>
-                  <h3 className="font-semibold text-lg text-secondary mb-2">Waiting Time</h3>
+                  <h3 className="font-semibold text-lg text-secondary mb-2">
+                    Waiting Time
+                  </h3>
                   <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li><strong>Airport pickups:</strong> 60 minutes free waiting time from actual landing</li>
-                    <li><strong>City pickups:</strong> 15 minutes free waiting time</li>
-                    <li><strong>Additional waiting:</strong> €15 per 15 minutes</li>
+                    <li>
+                      <strong>Airport pickups:</strong> 60 minutes free waiting
+                      time from actual landing
+                    </li>
+                    <li>
+                      <strong>City pickups:</strong> 15 minutes free waiting
+                      time
+                    </li>
+                    <li>
+                      <strong>Additional waiting:</strong> €15 per 15 minutes
+                    </li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-secondary mb-2">Luggage</h3>
+                  <h3 className="font-semibold text-lg text-secondary mb-2">
+                    Luggage
+                  </h3>
                   <ul className="list-disc list-inside space-y-2 ml-4">
-                    <li>Standard luggage included (1 suitcase + 1 carry-on per passenger)</li>
+                    <li>
+                      Standard luggage included (1 suitcase + 1 carry-on per
+                      passenger)
+                    </li>
                     <li>Extra large items: €15 per item</li>
-                    <li>Special items (skis, golf clubs, etc.): Please notify in advance</li>
+                    <li>
+                      Special items (skis, golf clubs, etc.): Please notify in
+                      advance
+                    </li>
                   </ul>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-lg text-secondary mb-2">Flight Delays</h3>
+                  <h3 className="font-semibold text-lg text-secondary mb-2">
+                    Flight Delays
+                  </h3>
                   <ul className="list-disc list-inside space-y-2 ml-4">
                     <li>We monitor all flights in real-time</li>
                     <li>No extra charge for flight delays</li>
@@ -149,7 +189,10 @@ export default function TermsPage() {
               <ul className="list-disc list-inside space-y-2 ml-4 text-gray-700">
                 <li>All vehicles are fully insured and licensed</li>
                 <li>Professional chauffeurs with valid licenses</li>
-                <li>We are not liable for delays caused by traffic, weather, or force majeure</li>
+                <li>
+                  We are not liable for delays caused by traffic, weather, or
+                  force majeure
+                </li>
                 <li>Lost items: Please report within 24 hours</li>
               </ul>
             </div>
@@ -163,10 +206,18 @@ export default function TermsPage() {
                 For questions about these Terms & Conditions, please contact us:
               </p>
               <div className="space-y-2 text-gray-700">
-                <p><strong>Email:</strong> info@eliteparistransfer.com</p>
-                <p><strong>Phone:</strong> +33 6 68 25 11 02 (24/7)</p>
-                <p><strong>WhatsApp:</strong> +33 6 68 25 11 02</p>
-                <p><strong>Address:</strong> 151 Avenue des Champs-Élysées, 75008 Paris, France</p>
+                <p>
+                  <strong>Email:</strong> info@eliteparistransfer.com
+                </p>
+                <p>
+                  <strong>Phone:</strong> +33 6 68 25 11 02 (24/7)
+                </p>
+                <p>
+                  <strong>WhatsApp:</strong> +33 6 68 25 11 02
+                </p>
+                <p>
+                  <strong>Address:</strong> Vanves (92170), Ile-de-France
+                </p>
               </div>
             </div>
           </div>
@@ -175,4 +226,3 @@ export default function TermsPage() {
     </div>
   );
 }
-
