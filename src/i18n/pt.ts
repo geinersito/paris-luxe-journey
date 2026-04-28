@@ -1075,7 +1075,7 @@ export const pt: Translation = {
     },
   },
   events: {
-    pageTitle: "Eventos em Paris | Paris Luxe Journey",
+    pageTitle: "Eventos em Paris | Paris Elite Services",
     pageDescription:
       "Descubra os melhores eventos, concertos, exposições e atividades em Paris esta semana e este mês. Reserve seu transfer de luxo para qualquer evento.",
     heroTitle: "Eventos em Paris",
