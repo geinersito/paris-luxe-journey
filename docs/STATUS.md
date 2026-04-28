@@ -90,9 +90,9 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **PLJ-OPS-001** (P1/R0) — Staging build script fix + CLI bump
-2. **PLJ-COMP-001** (P1/R0) — Testimonial refactor + address Vanves (desbloqueado por TRANS-001)
-3. **PLJ-UI-001** (P1/R0) — ParisFashion page + route (desbloqueado por TRANS-001)
+1. **PLJ-COMP-001** (P1/R0) — Testimonial refactor + address Vanves (desbloqueado)
+2. **PLJ-UI-001** (P1/R0) — ParisFashion page + route (desbloqueado)
+3. **PLJ-DB-001** (P1/R1) — Migration replay-safety patches (tras smoke UI)
 
 ## Urgent out-of-repo
 
