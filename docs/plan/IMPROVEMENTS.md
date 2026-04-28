@@ -104,8 +104,9 @@ Items below were previously tracked in the narrative plan and are now reconciled
 | PLJ-OPS-002 | P2 | R0 | Ops | Add supabase/.temp/ to .gitignore (linked-project.json contains local env ref, should not be tracked) | TODO | — | .gitignore only; no runtime changes |
 | PLJ-COMP-001 | P1 | R0 | UI | TestimonialSection i18n-driven refactor (stats: 4.9→4.8 / 100%→98%), TestimonialCard simplify, ContactSection address → Vanves 92170, Privacy+Terms address update | DONE | `e103e85` | Visual: testimonials + contact render; no console errors. Requires PLJ-TRANS-001 |
 | PLJ-UI-001 | P1 | R0 | UI | ParisFashion editorial guide page (src/pages/guides/ParisFashion.tsx) + lazy route in App.tsx | DONE | `ac0830b` | Page loads in all 4 locales; route lazy-loads; no broken keys. Smoke A/B/C/D PASS |
-| PLJ-DB-001 | P1 | R1 | DB | Migration replay-safety patches: 6 existing migrations wrapped in DO $$ IF EXISTS guards (20260100 base + 5× counterparty ledger migrations) | TODO | — | Run in staging first; migrations idempotent; no rollback needed; no destructive ops |
-| PLJ-DB-002 | P1 | R2 | DB | Counterparty ledger foundation schema 20260119050000: new tables + RLS + trigger dispatch_block_posted_mutations + indexes | TODO | — | Requires PLJ-DB-001 merged; DBA sign-off; RLS verified; trigger tested; staging window 2–4h |
+| PLJ-DB-001 | P1 | R1 | DB | Migration replay-safety patches: 6 existing migrations wrapped in DO $$ IF EXISTS guards (20260100 base + 5× counterparty ledger migrations) | BLOCKED | — | BLOCKED: all 6 touch dispatch_* namespace (ERP). Cross-repo sign-off required. See docs/db-governance/PLJ-DB-001-CROSSREPO-AUDIT.md |
+| PLJ-DB-002 | P1 | R2 | DB | Counterparty ledger foundation schema 20260119050000: new tables + RLS + trigger dispatch_block_posted_mutations + indexes | BLOCKED | — | BLOCKED: depends on PLJ-DB-001 governance resolution. R2 + DBA sign-off required. |
+| PLJ-DB-003 | P2 | R1 | DB | clientfiche01a: add IF NOT EXISTS guards to dispatch_clients profile fields migration | BLOCKED | — | BLOCKED: Category B ERP contaminated (dispatch_clients). Cross-repo sign-off + ownership decision required. |
 
 ### Content SEO System
 

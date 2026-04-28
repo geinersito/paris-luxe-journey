@@ -83,16 +83,16 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 
 ## Ahora en curso
 
-- **PLJ-SSOT-001** (P0/R0) — **DOING** — Añadir plan items batch feat/ev-ingest-01b a IMPROVEMENTS.md + actualizar STATUS.md. Desbloqueante para todos los PLJ-* PRs (§1.1 trazabilidad).
+- **PLJ-SSOT-001** (P0/R0) — **DONE** `9cc23b8` — Plan items batch feat/ev-ingest-01b registrados.
 - **PR-EV-INGEST-01A** (P1/R1) — **BLOCKED** — DB schema content_event ingest pipeline (5 tablas: sources/ingest_runs/raw/normalized/published). Remote dry-run passed. Local full replay gate BLOCKED por SUPABASE-SHARED-REPLAY-DEBT-01. Not authorized for db push --yes yet.
 - **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2/R0→R1) — **DOING** — PR1 ✅ PR2 ✅ telemetry activo; waiting 48–72h no-hit window para PR3 removal.
 - **UX-BRANDING-APPROACHABLE-01** (P1/R0) — **DEFERRED** — Reverted en #118. Revisit con measurement plan antes de reactivar.
 
 ## Siguientes 3 items del plan (priorizados)
 
-1. **PLJ-DB-001** (P1/R1) — Migration replay-safety patches (staging primero — HOLD hasta audit clientfiche01a)
-2. **PLJ-DB-002** (P1/R2) — Counterparty ledger foundation (tras PLJ-DB-001 + DBA sign-off)
-3. **PLJ-OPS-002** (P2/R0) — supabase/.temp gitignore hygiene
+1. **PLJ-OPS-002** (P2/R0) — gitignore: supabase/.temp/linked-project.json + deploy zips + smoke screenshots
+2. **PLJ-DB-001** (P1/R1) — BLOCKED: cross-repo governance sign-off (dispatch_* namespace). Ver docs/db-governance/PLJ-DB-001-CROSSREPO-AUDIT.md
+3. **PLJ-DB-002** (P1/R2) — BLOCKED: depends on PLJ-DB-001 sign-off + R2 DBA review
 
 ## Urgent out-of-repo
 
