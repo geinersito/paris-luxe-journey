@@ -40,9 +40,10 @@ export default function PrivacyPage() {
                     1. Introduction
                   </h2>
                   <p className="text-gray-700 leading-relaxed">
-                    Paris Elite Services ("we", "our", or "us") is committed to protecting your privacy. 
-                    This Privacy Policy explains how we collect, use, disclose, and safeguard your information 
-                    when you use our premium transportation services.
+                    Paris Elite Services ("we", "our", or "us") is committed to
+                    protecting your privacy. This Privacy Policy explains how we
+                    collect, use, disclose, and safeguard your information when
+                    you use our premium transportation services.
                   </p>
                 </div>
               </div>
@@ -58,16 +59,22 @@ export default function PrivacyPage() {
                   </h2>
                   <div className="space-y-4 text-gray-700">
                     <div>
-                      <h3 className="font-semibold text-lg text-secondary mb-2">Personal Information</h3>
+                      <h3 className="font-semibold text-lg text-secondary mb-2">
+                        Personal Information
+                      </h3>
                       <ul className="list-disc list-inside space-y-2 ml-4">
                         <li>Name and contact details (email, phone number)</li>
                         <li>Pickup and drop-off locations</li>
-                        <li>Payment information (processed securely via Stripe)</li>
+                        <li>
+                          Payment information (processed securely via Stripe)
+                        </li>
                         <li>Travel preferences and special requests</li>
                       </ul>
                     </div>
                     <div>
-                      <h3 className="font-semibold text-lg text-secondary mb-2">Automatically Collected Information</h3>
+                      <h3 className="font-semibold text-lg text-secondary mb-2">
+                        Automatically Collected Information
+                      </h3>
                       <ul className="list-disc list-inside space-y-2 ml-4">
                         <li>IP address and browser type</li>
                         <li>Device information</li>
@@ -94,7 +101,9 @@ export default function PrivacyPage() {
                     <li>To communicate with you about your reservations</li>
                     <li>To improve our services and customer experience</li>
                     <li>To comply with legal obligations</li>
-                    <li>To send promotional communications (with your consent)</li>
+                    <li>
+                      To send promotional communications (with your consent)
+                    </li>
                   </ul>
                 </div>
               </div>
@@ -106,12 +115,15 @@ export default function PrivacyPage() {
                 4. Data Security
               </h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                We implement appropriate technical and organizational security measures to protect your personal 
-                information against unauthorized access, alteration, disclosure, or destruction.
+                We implement appropriate technical and organizational security
+                measures to protect your personal information against
+                unauthorized access, alteration, disclosure, or destruction.
               </p>
               <ul className="list-disc list-inside space-y-2 ml-4 text-gray-700">
                 <li>SSL/TLS encryption for data transmission</li>
-                <li>Secure payment processing via Stripe (PCI DSS compliant)</li>
+                <li>
+                  Secure payment processing via Stripe (PCI DSS compliant)
+                </li>
                 <li>Regular security audits and updates</li>
                 <li>Access controls and authentication</li>
               </ul>
@@ -123,15 +135,34 @@ export default function PrivacyPage() {
                 5. Your Rights (GDPR)
               </h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                Under the General Data Protection Regulation (GDPR), you have the following rights:
+                Under the General Data Protection Regulation (GDPR), you have
+                the following rights:
               </p>
               <ul className="list-disc list-inside space-y-2 ml-4 text-gray-700">
-                <li><strong>Right to Access:</strong> Request a copy of your personal data</li>
-                <li><strong>Right to Rectification:</strong> Correct inaccurate or incomplete data</li>
-                <li><strong>Right to Erasure:</strong> Request deletion of your data</li>
-                <li><strong>Right to Restriction:</strong> Limit how we use your data</li>
-                <li><strong>Right to Data Portability:</strong> Receive your data in a structured format</li>
-                <li><strong>Right to Object:</strong> Object to processing of your data</li>
+                <li>
+                  <strong>Right to Access:</strong> Request a copy of your
+                  personal data
+                </li>
+                <li>
+                  <strong>Right to Rectification:</strong> Correct inaccurate or
+                  incomplete data
+                </li>
+                <li>
+                  <strong>Right to Erasure:</strong> Request deletion of your
+                  data
+                </li>
+                <li>
+                  <strong>Right to Restriction:</strong> Limit how we use your
+                  data
+                </li>
+                <li>
+                  <strong>Right to Data Portability:</strong> Receive your data
+                  in a structured format
+                </li>
+                <li>
+                  <strong>Right to Object:</strong> Object to processing of your
+                  data
+                </li>
               </ul>
             </div>
 
@@ -141,12 +172,19 @@ export default function PrivacyPage() {
                 6. Contact Us
               </h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                If you have any questions about this Privacy Policy or wish to exercise your rights, please contact us:
+                If you have any questions about this Privacy Policy or wish to
+                exercise your rights, please contact us:
               </p>
               <div className="space-y-2 text-gray-700">
-                <p><strong>Email:</strong> privacy@eliteparistransfer.com</p>
-                <p><strong>Phone:</strong> +33 6 68 25 11 02</p>
-                <p><strong>Address:</strong> 151 Avenue des Champs-Élysées, 75008 Paris, France</p>
+                <p>
+                  <strong>Email:</strong> privacy@eliteparistransfer.com
+                </p>
+                <p>
+                  <strong>Phone:</strong> +33 6 68 25 11 02
+                </p>
+                <p>
+                  <strong>Address:</strong> Vanves (92170), Ile-de-France
+                </p>
               </div>
             </div>
           </div>
@@ -155,4 +193,3 @@ export default function PrivacyPage() {
     </div>
   );
 }
-

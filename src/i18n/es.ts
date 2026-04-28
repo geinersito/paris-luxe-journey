@@ -631,9 +631,9 @@ export const es: Translation = {
   about: {
     title: "Sobre Paris Elite Services",
     subtitle: "Excelencia en Transporte Privado en París",
-    years: "40 años de experiencia",
+    years: "Años de experiencia en París",
     description:
-      "Durante 40 años, hemos encarnado la excelencia en el transporte privado en París. Nuestra experiencia se ha forjado atendiendo a una exigente clientela internacional, desde traslados al aeropuerto hasta excursiones culturales.",
+      "Ofrecemos transporte privado en París e Île-de-France para clientes corporativos y viajeros internacionales, con enfoque en puntualidad, discreción y servicio personalizado.",
     commitment: {
       title: "Nuestro Compromiso",
       items: [
@@ -666,7 +666,7 @@ export const es: Translation = {
     subtitle: "Póngase en contacto con nosotros",
     phone: "Teléfono",
     email: "Correo Electrónico",
-    address: "123 Avenue des Champs-Élysées, Paris",
+    address: "Vanves (92170), Île-de-France",
     name: "Nombre",
     message: "Mensaje",
     namePlaceholder: "Ingrese su nombre",
@@ -1095,7 +1095,7 @@ export const es: Translation = {
   seo: {
     home: {
       title:
-        "Traslados de Lujo París | Servicio VTC Aeropuerto CDG, Orly | Desde 70€",
+        "Paris Elite Services | Traslados privados y VTC aeropuerto en París",
       description:
         "Servicio premium de traslado aeropuerto en París. Reserve su chófer privado para CDG, Orly o traslados urbanos. Precios fijos desde 70€, disponibilidad 24/7, vehículos de lujo.",
     },
@@ -1104,6 +1104,123 @@ export const es: Translation = {
         "Traslados aeropuerto París | Guía terminales CDG, Orly y Beauvais",
       description:
         "Traslados privados al aeropuerto en París con precio fijo, guía práctica de recogida en CDG, Orly y Beauvais, y soporte de chófer 24/7.",
+    },
+  },
+  parisFashion: {
+    meta: {
+      title: "París y la moda: guía completa para vivirla con estilo",
+      description:
+        "Barrios de moda, boutiques, Fashion Week y consejos prácticos. La guía definitiva para los amantes del estilo en París.",
+    },
+    badge: "Guía editorial",
+    hero: {
+      eyebrow: "París & Moda",
+      title: "París y la moda: guía para vivirla de verdad",
+      subtitle:
+        "Barrios, boutiques, semana de la moda y consejos prácticos para los amantes del estilo.",
+    },
+    forWho: {
+      title: "Para quién es esta guía",
+      intro:
+        "Esta guía está hecha para quienes van a París con la moda en mente, no solo como decorado, sino como destino.",
+      profile1: {
+        label: "Viajeros fashionistas",
+        desc: "Quieres ir más allá del Louvre y los macarons. La moda es parte de tu razón de viajar.",
+      },
+      profile2: {
+        label: "Compradores especializados",
+        desc: "Buscas piezas que no encuentras en casa: diseñadores franceses, vintage auténtico, ediciones limitadas.",
+      },
+      profile3: {
+        label: "Agencias con clientes exigentes",
+        desc: "Organizas experiencias para viajeros que quieren moda, lujo y cultura integrados en su agenda parisina.",
+      },
+      profile4: {
+        label: "Visitantes de Fashion Week",
+        desc: "Vienes durante una semana de desfiles y quieres saber cómo moverte, qué ver y cómo aprovechar la ciudad al máximo.",
+      },
+    },
+    districts: {
+      title: "Los mejores barrios de moda en París",
+      intro:
+        "París no tiene un solo centro de la moda. Tiene varios, cada uno con su energía.",
+      marais: {
+        name: "Le Marais (3e y 4e)",
+        desc: "El barrio más creativo de la ciudad. Concept stores, diseñadores independientes, marcas internacionales y un ambiente urbano que mezcla arte y moda sin esfuerzo. El eje Rue des Francs-Bourgeois es esencial.",
+      },
+      saintGermain: {
+        name: "Saint-Germain-des-Prés (6e)",
+        desc: "Elegancia intelectual. Boutiques de diseñadores franceses establecidos, galerías integradas con tiendas de moda y un ritmo más tranquilo que el Marais. Perfecto para compras reflexivas.",
+      },
+      montaigne: {
+        name: "Avenue Montaigne (8e)",
+        desc: "Alta costura en estado puro. Aquí están Dior, Chanel, Louis Vuitton, Valentino. Para quienes buscan la experiencia del lujo parisino sin rodeos.",
+      },
+      faubourg: {
+        name: "Rue du Faubourg Saint-Honoré (8e)",
+        desc: "Paralela a Montaigne en espíritu. Hermès, Balenciaga, Gucci. Una calle que mantiene su carácter exclusivo desde hace décadas.",
+      },
+      pigalle: {
+        name: "South Pigalle / Oberkampf (9e–11e)",
+        desc: "La moda alternativa y emergente de París. Marcas locales, sneaker culture, streetwear de calidad. El antídoto a los grandes bulevares del lujo.",
+      },
+    },
+    prioritize: {
+      title: "Qué priorizar según tu estilo",
+      intro: "No todo está en el mismo barrio ni en el mismo registro.",
+      luxury: {
+        title: "Alta costura y lujo consolidado",
+        desc: "Montaigne, Faubourg Saint-Honoré. Reserva cita en Dior o Chanel si buscas una experiencia de compra personal. Algunos maisons ofrecen private shopping para clientes internacionales.",
+      },
+      conceptStores: {
+        title: "Concept stores y retail editorial",
+        desc: "Colette cerró, pero su espíritu sigue en lugares como Merci (Le Marais), The Broken Arm (3e) o Kiliwatch. Edición limitada, selección curada, la tienda como propuesta cultural.",
+      },
+      vintage: {
+        title: "Vintage y segunda mano de calidad",
+        desc: "París tiene el mejor mercado de vintage europeo. Búscalo en Porte de Vanves (fin de semana), les marchés des Batignolles y tiendas especializadas en el Marais como Kilo Shop o Episode.",
+      },
+      emerging: {
+        title: "Diseñadores emergentes",
+        desc: "Galeries Lafayette Champs-Élysées dedica espacio a nuevos diseñadores franceses. También vale explorar exposiciones durante la Fashion Week y showrooms en el 11e.",
+      },
+    },
+    fashionWeek: {
+      title: "Si vienes durante la Fashion Week",
+      eyebrow: "Semana de la Moda",
+      intro:
+        "París tiene cuatro Fashion Weeks al año. Enero–febrero para Haute Couture y menswear. Septiembre–octubre para el prêt-à-porter. La ciudad cambia: eventos, showrooms, pop-ups y una energía particular en los barrios clave.",
+      tip1: "No esperes ver los desfiles principales sin acreditación. Sí puedes asistir a eventos paralelos, exposiciones y presentaciones abiertas al público.",
+      tip2: "El Palais Royal, el Carrousel du Louvre y el Grand Palais son sedes habituales. Revisa el calendario oficial de la Fédération de la Haute Couture et de la Mode.",
+      tip3: "Los hoteles y restaurantes del 8e se llenan rápido. Reserva con semanas de anticipación si vienes en esas fechas.",
+      tip4: "El tráfico en el centro de París durante la Fashion Week es impredecible. Un transfer privado con chofer es la opción que te garantiza llegar a tiempo a cada cita.",
+    },
+    practical: {
+      title: "Consejos prácticos",
+      hours: {
+        title: "Horarios",
+        desc: "Las boutiques en París suelen abrir de 10:00 a 19:00 de lunes a sábado. Muchas cierran los domingos o abren tarde. Los grandes almacenes (Galeries Lafayette, Le Bon Marché) tienen horarios extendidos y algunos domingos abiertos.",
+      },
+      transport: {
+        title: "Desplazamientos",
+        desc: "Entre el Marais, Saint-Germain y los Grands Boulevards puedes moverte a pie. Para Montaigne y Faubourg, el metro (línea 9) o un transfer privado son las mejores opciones. El VTC es práctico si llevas compras voluminosas.",
+      },
+      rhythm: {
+        title: "Ritmo del día",
+        desc: "El mediodía es el peor momento para las boutiques más pequeñas: algunas cierran entre 12:30 y 14:00. La tarde de martes a viernes es el momento más tranquilo para una experiencia de compra sin aglomeraciones.",
+      },
+      weather: {
+        title: "Clima y calzado",
+        desc: "París es una ciudad para caminar, pero sus adoquines no perdonan el calzado inadecuado. Si tu jornada incluye varias boutiques y quizás un mercado, combina comodidad con estilo. En otoño e invierno, una bonne veste es imprescindible.",
+      },
+    },
+    cta: {
+      title: "¿Necesitas un transfer privado para tu jornada de moda?",
+      subtitle:
+        "Podemos organizarte el desplazamiento entre boutiques, maisons y eventos. Puntualidad y discreción incluidas.",
+      bookTransfer: "Solicitar transfer privado",
+      planning: "Consultar planificación a medida",
+      whatsapp: "Escribir por WhatsApp",
     },
   },
 };

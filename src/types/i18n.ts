@@ -819,4 +819,57 @@ export interface Translation {
       description: string;
     };
   };
+  parisFashion: {
+    meta: { title: string; description: string };
+    badge: string;
+    hero: { eyebrow: string; title: string; subtitle: string };
+    forWho: {
+      title: string;
+      intro: string;
+      profile1: { label: string; desc: string };
+      profile2: { label: string; desc: string };
+      profile3: { label: string; desc: string };
+      profile4: { label: string; desc: string };
+    };
+    districts: {
+      title: string;
+      intro: string;
+      marais: { name: string; desc: string };
+      saintGermain: { name: string; desc: string };
+      montaigne: { name: string; desc: string };
+      faubourg: { name: string; desc: string };
+      pigalle: { name: string; desc: string };
+    };
+    prioritize: {
+      title: string;
+      intro: string;
+      luxury: { title: string; desc: string };
+      conceptStores: { title: string; desc: string };
+      vintage: { title: string; desc: string };
+      emerging: { title: string; desc: string };
+    };
+    fashionWeek: {
+      title: string;
+      eyebrow: string;
+      intro: string;
+      tip1: string;
+      tip2: string;
+      tip3: string;
+      tip4: string;
+    };
+    practical: {
+      title: string;
+      hours: { title: string; desc: string };
+      transport: { title: string; desc: string };
+      rhythm: { title: string; desc: string };
+      weather: { title: string; desc: string };
+    };
+    cta: {
+      title: string;
+      subtitle: string;
+      bookTransfer: string;
+      planning: string;
+      whatsapp: string;
+    };
+  };
 }

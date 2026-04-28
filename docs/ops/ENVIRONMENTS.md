@@ -67,7 +67,7 @@ Optional:
 - PROD build:
   - `npm run build` (uses production defaults)
 - STAGING build:
-  - `npm run build -- --mode staging`
+  - `node scripts/build-env.cjs vite build --mode staging`
 
 ## Guardrails (security)
 - Never put secrets in `VITE_*` variables.
