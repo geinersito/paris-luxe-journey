@@ -154,27 +154,31 @@ export default function HeroSection() {
               {t.hero.subtitle}
             </p>
 
-            <p
-              className="mt-3 text-sm md:text-base text-white/90 max-w-3xl mx-auto lg:mx-0 animate-fadeInUp"
-              style={{
-                animationDelay: "0.5s",
-                animationFillMode: "both",
-                textShadow: "0 2px 8px rgba(0,0,0,0.45)",
-              }}
-            >
-              {t.hero.proofline}
-            </p>
+            {t.hero.proofline && (
+              <p
+                className="mt-3 text-sm md:text-base text-white/90 max-w-3xl mx-auto lg:mx-0 animate-fadeInUp"
+                style={{
+                  animationDelay: "0.5s",
+                  animationFillMode: "both",
+                  textShadow: "0 2px 8px rgba(0,0,0,0.45)",
+                }}
+              >
+                {t.hero.proofline}
+              </p>
+            )}
 
-            <p
-              className="mt-2 text-sm md:text-base font-semibold text-white animate-fadeInUp"
-              style={{
-                animationDelay: "0.55s",
-                animationFillMode: "both",
-                textShadow: "0 2px 8px rgba(0,0,0,0.45)",
-              }}
-            >
-              {t.hero.langProof}
-            </p>
+            {t.hero.langProof && (
+              <p
+                className="mt-2 text-sm md:text-base font-semibold text-white animate-fadeInUp"
+                style={{
+                  animationDelay: "0.55s",
+                  animationFillMode: "both",
+                  textShadow: "0 2px 8px rgba(0,0,0,0.45)",
+                }}
+              >
+                {t.hero.langProof}
+              </p>
+            )}
 
             <ul
               className="mt-4 flex flex-wrap gap-2 justify-center lg:justify-start animate-fadeInUp"
@@ -204,7 +208,7 @@ export default function HeroSection() {
                 {t.hero.ctaPrimary}
               </button>
               <a
-                href="#contact"
+                href="/events"
                 className="inline-flex items-center justify-center rounded-xl border border-white/40 bg-white/10 px-5 py-2.5 text-sm md:text-base text-white hover:bg-white/20 transition-colors"
               >
                 {t.hero.ctaSecondary}
@@ -212,10 +216,10 @@ export default function HeroSection() {
             </div>
           </div>
 
-          {/* Right column — booking widget */}
+          {/* Right column — booking widget (hidden on mobile, visible md+) */}
           <div
             ref={widgetRef}
-            className="lg:col-span-6 min-w-0 animate-scaleIn"
+            className="hidden md:block lg:col-span-6 min-w-0 animate-scaleIn"
             style={{ animationDelay: "0.6s", animationFillMode: "both" }}
           >
             <CompactBookingForm

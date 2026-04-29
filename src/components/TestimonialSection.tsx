@@ -1,7 +1,6 @@
 import TestimonialCard from "./TestimonialCard";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { motion } from "framer-motion";
-import { AnimatedCounter } from "./ui/AnimatedCounter";
 import type { Language } from "@/types/i18n";
 
 const TestimonialSection = () => {
@@ -18,13 +17,6 @@ const TestimonialSection = () => {
     eyebrow: string;
     title: string;
     description: string;
-    stats: {
-      satisfied: string;
-      avgRating: string;
-      punctuality: string;
-      support: string;
-      note: string;
-    };
     testimonials: Testimonial[];
   };
 
@@ -34,13 +26,6 @@ const TestimonialSection = () => {
       title: "Opiniones de Nuestros Clientes",
       description:
         "Comentarios de clientes corporativos y viajeros frecuentes que usan nuestro servicio en París.",
-      stats: {
-        satisfied: "Clientes atendidos",
-        avgRating: "Valoración media (estimada)",
-        punctuality: "Objetivo de puntualidad",
-        support: "Soporte cliente",
-        note: "Indicadores internos orientativos.",
-      },
       testimonials: [
         {
           name: "L.M.",
@@ -70,13 +55,6 @@ const TestimonialSection = () => {
       title: "Ce Que Disent Nos Clients",
       description:
         "Retours de voyageurs fréquents et d'équipes corporate qui nous confient leurs transferts à Paris.",
-      stats: {
-        satisfied: "Clients accompagnés",
-        avgRating: "Note moyenne (estimée)",
-        punctuality: "Objectif de ponctualité",
-        support: "Support client",
-        note: "Indicateurs internes à titre indicatif.",
-      },
       testimonials: [
         {
           name: "L.M.",
@@ -106,13 +84,6 @@ const TestimonialSection = () => {
       title: "What Our Clients Say",
       description:
         "Feedback from frequent travelers and corporate teams who rely on us for premium transfers in Paris.",
-      stats: {
-        satisfied: "Clients served",
-        avgRating: "Average rating (estimated)",
-        punctuality: "On-time target",
-        support: "Client support",
-        note: "Internal directional indicators.",
-      },
       testimonials: [
         {
           name: "L.M.",
@@ -142,13 +113,6 @@ const TestimonialSection = () => {
       title: "O Que Dizem Nossos Clientes",
       description:
         "Comentários de viajantes frequentes e clientes corporativos que usam nossos traslados em Paris.",
-      stats: {
-        satisfied: "Clientes atendidos",
-        avgRating: "Avaliação média (estimada)",
-        punctuality: "Meta de pontualidade",
-        support: "Suporte ao cliente",
-        note: "Indicadores internos de referência.",
-      },
       testimonials: [
         {
           name: "L.M.",
@@ -238,59 +202,28 @@ const TestimonialSection = () => {
           ))}
         </motion.div>
 
-        {/* Stats Bar with Animated Counters */}
+        {/* Trust strip */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 max-w-4xl mx-auto"
+          className="mt-16 flex flex-wrap justify-center gap-3"
         >
-          <div className="text-center">
-            <AnimatedCounter
-              end={500}
-              suffix="+"
-              className="text-4xl md:text-5xl font-display font-bold text-primary mb-2"
-              duration={2500}
-            />
-            <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              {sectionContent.stats.satisfied}
-            </div>
-          </div>
-          <div className="text-center">
-            <AnimatedCounter
-              end={4.8}
-              decimals={1}
-              className="text-4xl md:text-5xl font-display font-bold text-primary mb-2"
-              duration={2500}
-            />
-            <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              {sectionContent.stats.avgRating}
-            </div>
-          </div>
-          <div className="text-center">
-            <AnimatedCounter
-              end={98}
-              suffix="%"
-              className="text-4xl md:text-5xl font-display font-bold text-primary mb-2"
-              duration={2500}
-            />
-            <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              {sectionContent.stats.punctuality}
-            </div>
-          </div>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-display font-bold text-primary mb-2">
-              24/7
-            </div>
-            <div className="text-sm font-medium text-gray-600 dark:text-gray-400">
-              {sectionContent.stats.support}
-            </div>
-          </div>
+          {[
+            "✓ Licensed VTC",
+            "✓ Fixed Prices",
+            "✓ Available 24/7",
+            "✓ English · Español · Français",
+          ].map((pill) => (
+            <span
+              key={pill}
+              className="px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-sm font-medium text-secondary"
+            >
+              {pill}
+            </span>
+          ))}
         </motion.div>
-        <p className="mt-4 text-center text-xs text-gray-500 dark:text-gray-400">
-          {sectionContent.stats.note}
-        </p>
       </div>
     </section>
   );
