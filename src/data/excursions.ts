@@ -1,4 +1,4 @@
-import { ExcursionType, DurationType } from '@/types/excursions';
+import { ExcursionType, DurationType } from "@/types/excursions";
 
 export interface Excursion {
   id: string;
@@ -24,134 +24,182 @@ export const excursions: Excursion[] = [
   {
     id: "loire-valley",
     title: "Loire Valley Castles",
-    description: "Discover the magnificent Renaissance châteaux of the Loire Valley with private access",
-    image: "/images/loire-valley.jpg",
+    description:
+      "Explore the fairytale châteaux of the Loire Valley on a private day trip from Paris with your dedicated chauffeur.",
+    image:
+      "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?auto=format&fit=crop&w=1200&q=80",
     duration: "10-12h",
     durationType: "full-day",
     type: "luxury",
     price: 490,
     link: "/excursions/loire-valley",
     highlights: [
-      "Visit to Château de Chambord",
-      "Château de Chenonceau exploration",
-      "Wine tasting at a local vineyard",
-      "Gourmet lunch at a historic location"
+      "Château de Chambord — Renaissance masterpiece",
+      "Château de Chenonceau — spanning the River Cher",
+      "Scenic Loire Valley countryside",
+      "Flexible itinerary with suggested stops",
     ],
     tours: [
       {
         id: "loire-classic",
-        name: "Classic Loire Valley Tour",
+        name: "Private Day Trip — Loire Valley",
         duration: "10 hours",
         price: 490,
-        includes: ["Castle entries", "Expert guide", "Luxury transport", "Lunch"]
+        includes: [
+          "Private chauffeur transport",
+          "Flexible itinerary",
+          "Waiting time included",
+          "Tickets and meals not included",
+        ],
       },
       {
         id: "loire-helicopter",
-        name: "Loire Valley by Helicopter",
+        name: "Loire Valley Premium Day",
         duration: "8 hours",
         price: 2900,
-        includes: ["Helicopter flight", "VIP castle access", "Champagne tasting", "Michelin-star lunch"]
-      }
-    ]
+        includes: [
+          "Partner helicopter transfer",
+          "Suggested château itinerary",
+          "Champagne welcome",
+          "Michelin-star lunch — bookable on request",
+        ],
+      },
+    ],
   },
   {
     id: "champagne",
     title: "Champagne Region",
-    description: "Experience the finest champagne houses with exclusive tastings and cellar tours",
-    image: "/images/champagne.jpg",
+    description:
+      "Discover the prestigious Champagne houses of Épernay and Reims on a private chauffeured day trip from Paris.",
+    image:
+      "https://images.unsplash.com/photo-1528823872057-9c018a7a7553?auto=format&fit=crop&w=1200&q=80",
     duration: "8h",
     durationType: "full-day",
     type: "luxury",
     price: 420,
     link: "/excursions/champagne",
     highlights: [
-      "Visit to prestigious champagne houses",
-      "Private cellar tours",
-      "Multiple champagne tastings",
-      "Gourmet lunch in Épernay"
+      "Avenue de Champagne, Épernay",
+      "Grande Maisons — Moët, Taittinger, Ruinart",
+      "UNESCO-listed Champagne cellars",
+      "Rolling hillside vineyards of Côte des Blancs",
     ],
     tours: [
       {
         id: "champagne-classic",
-        name: "Champagne Excellence Tour",
+        name: "Private Day Trip — Champagne",
         duration: "8 hours",
         price: 420,
-        includes: ["House visits", "Premium tastings", "Luxury transport", "Lunch"]
+        includes: [
+          "Private chauffeur transport",
+          "Suggested house visits",
+          "Flexible schedule",
+          "Meals not included",
+        ],
       },
       {
         id: "champagne-private",
-        name: "Bespoke Champagne Experience",
+        name: "Champagne Premium Day",
         duration: "10 hours",
         price: 950,
-        includes: ["Private house tours", "Rare vintage tastings", "Meeting with cellar masters", "Michelin-star lunch"]
-      }
-    ]
+        includes: [
+          "Private chauffeur, full day",
+          "Suggested private house visits",
+          "Rare vintage tastings — on request",
+          "Michelin-star lunch — bookable on request",
+        ],
+      },
+    ],
   },
   {
     id: "versailles-palace",
     title: "Palace of Versailles",
-    description: "Experience the grandeur of French royalty with exclusive access to the Palace of Versailles",
-    image: "/images/versailles.jpg",
+    description:
+      "Discover the grandeur of the Palace of Versailles on a private day trip from Paris with your dedicated chauffeur.",
+    image:
+      "https://images.unsplash.com/photo-1460574283810-2aab119d8511?auto=format&fit=crop&w=1200&q=80",
     duration: "8h",
     durationType: "full-day",
     type: "luxury",
     price: 590,
     link: "/excursions/versailles",
     highlights: [
-      "Private early morning access to Hall of Mirrors",
-      "Royal Apartments guided tour",
-      "Marie Antoinette's Estate visit",
-      "Private gardens tour with fountain show",
-      "Gourmet lunch at Ore - Ducasse au Château de Versailles"
+      "Hall of Mirrors and Royal Apartments",
+      "Marie Antoinette's Estate",
+      "Grand Gardens and Grand Canal",
+      "Flexible itinerary at your pace",
+      "Door-to-door private transport",
     ],
     tours: [
       {
         id: "versailles-classic",
-        name: "Royal Versailles Experience",
+        name: "Private Day Trip — Versailles",
         duration: "8 hours",
         price: 590,
-        includes: ["Skip-the-line access", "Expert historian guide", "Luxury transport", "Gourmet lunch"]
+        includes: [
+          "Private chauffeur transport",
+          "Flexible itinerary",
+          "Waiting time included",
+          "Tickets and meals not included",
+        ],
       },
       {
         id: "versailles-exclusive",
-        name: "Ultimate Versailles Private Tour",
+        name: "Versailles Premium Day",
         duration: "10 hours",
         price: 1900,
-        includes: ["Private early access", "Behind-the-scenes areas", "Royal dinner experience", "Luxury transport"]
-      }
-    ]
+        includes: [
+          "Private chauffeur, full day",
+          "Flexible schedule",
+          "Dinner reservation assistance",
+          "Tickets and guides not included",
+        ],
+      },
+    ],
   },
   {
     id: "giverny-honfleur",
-    title: "Giverny & Honfleur Private Tour",
-    description: "Discover Monet's inspiration and the charm of Normandy's coast",
-    image: "/images/giverny.jpg",
+    title: "Giverny & Honfleur",
+    description:
+      "Visit Monet's iconic gardens in Giverny and the charming port of Honfleur on a private day trip with your chauffeur.",
+    image:
+      "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=80",
     duration: "10h",
     durationType: "full-day",
     type: "luxury",
     price: 680,
     link: "/excursions/giverny-honfleur",
     highlights: [
-      "Private visit to Monet's house and gardens",
-      "Exclusive painting workshop",
-      "Honfleur harbor exploration",
-      "Seafood lunch at La Ferme Saint Siméon"
+      "Monet's house and water lily garden, Giverny",
+      "Honfleur old harbour and Vieux Bassin",
+      "Normandy countryside",
+      "Flexible stops at your request",
     ],
     tours: [
       {
         id: "giverny-classic",
-        name: "Impressionist Journey",
+        name: "Private Day Trip — Giverny & Honfleur",
         duration: "10 hours",
         price: 680,
-        includes: ["Private garden access", "Art historian guide", "Luxury transport", "Gourmet lunch"]
+        includes: [
+          "Private chauffeur transport",
+          "Flexible itinerary",
+          "Waiting time included",
+          "Tickets and meals not included",
+        ],
       },
       {
         id: "giverny-art",
-        name: "Artist's Experience",
+        name: "Giverny & Honfleur Premium Day",
         duration: "12 hours",
         price: 1200,
-        includes: ["Private painting session", "Museum curator tour", "Art materials", "Michelin-star lunch"]
-      }
-    ]
-  }
+        includes: [
+          "Private chauffeur, full day",
+          "Painting session — bookable on request",
+          "Museum visit — bookable on request",
+          "Michelin-star lunch — bookable on request",
+        ],
+      },
+    ],
+  },
 ];

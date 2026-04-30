@@ -21,7 +21,7 @@ const faqBuilders: Record<Language, ExcursionFaqBuilder> = {
     {
       question: "Are tickets and reservations included in the quote?",
       answer:
-        "Entry tickets and timed reservations can be pre-arranged on request. Your quote clearly states what is included and what is optional.",
+        "Attraction admission and timed reservations can be pre-arranged on request. Your quote clearly states what is included and what is optional.",
     },
     {
       question: "Can we customize stops or adjust the itinerary?",

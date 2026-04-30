@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React from "react";
 
 export interface DestinationHeaderProps {
   title: string;
@@ -9,11 +8,24 @@ export interface DestinationHeaderProps {
   currentPath: string;
 }
 
-export function DestinationHeader({ title, image, distance, duration, currentPath }: DestinationHeaderProps) {
+export function DestinationHeader({
+  title,
+  image,
+  distance,
+  duration,
+  currentPath,
+}: DestinationHeaderProps) {
   return (
     <header className="relative h-[60vh] min-h-[400px] w-full">
-      <div className="absolute inset-0">
-        <img src={image} alt={title} className="w-full h-full object-cover" />
+      <div className="absolute inset-0 bg-gradient-to-br from-secondary to-primary/80">
+        <img
+          src={image}
+          alt={title}
+          className="w-full h-full object-cover"
+          onError={(e) => {
+            e.currentTarget.style.display = "none";
+          }}
+        />
         <div className="absolute inset-0 bg-black/50" />
       </div>
       <div className="absolute inset-0 flex items-center justify-center text-white">

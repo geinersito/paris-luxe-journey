@@ -843,11 +843,21 @@ export const fr: Translation = {
   },
   loire: {
     title: "Châteaux de la Loire",
-    description: "",
-    distance: "",
-    duration: "",
-    highlights: [],
-    whyVisit: [],
+    description:
+      "Explorez les châteaux féeriques de la Loire lors d'une excursion privée au départ de Paris avec votre chauffeur dédié.",
+    distance: "170 km de Paris",
+    duration: "10–12 heures",
+    highlights: [
+      "Château de Chambord — chef-d'œuvre de la Renaissance",
+      "Château de Chenonceau — enjambant le Cher",
+      "Paysages de la vallée de la Loire",
+      "Itinéraire flexible selon vos souhaits",
+    ],
+    whyVisit: [
+      "Vallée classée au patrimoine mondial de l'UNESCO",
+      "Plus grande concentration de châteaux royaux en France",
+      "Votre chauffeur vous attend à chaque étape",
+    ],
     navigation: {
       description: "Vue d'ensemble",
       tours: "Nos Visites",
@@ -858,11 +868,21 @@ export const fr: Translation = {
   },
   champagne: {
     title: "Région Champagne",
-    description: "",
-    distance: "",
-    duration: "",
-    highlights: [],
-    whyVisit: [],
+    description:
+      "Découvrez les grandes maisons de Champagne d'Épernay et de Reims lors d'une excursion privée en chauffeur au départ de Paris.",
+    distance: "145 km de Paris",
+    duration: "8 heures",
+    highlights: [
+      "Avenue de Champagne à Épernay",
+      "Grandes Maisons — Moët, Taittinger, Ruinart",
+      "Caves de Champagne classées à l'UNESCO",
+      "Vignobles de la Côte des Blancs",
+    ],
+    whyVisit: [
+      "Berceau des plus grands vins pétillants du monde",
+      "Caves inscrites au patrimoine mondial de l'UNESCO",
+      "Transport privé — votre programme, votre rythme",
+    ],
     navigation: {
       description: "Vue d'ensemble",
       tours: "Nos Visites",
@@ -873,11 +893,21 @@ export const fr: Translation = {
   },
   giverny: {
     title: "Giverny & Honfleur",
-    description: "",
-    distance: "",
-    duration: "",
-    highlights: [],
-    whyVisit: [],
+    description:
+      "Visitez les jardins iconiques de Monet à Giverny et le charmant port de Honfleur lors d'une excursion privée en chauffeur.",
+    distance: "80–200 km de Paris",
+    duration: "10 heures",
+    highlights: [
+      "Maison et jardin aux nénuphars de Monet, Giverny",
+      "Vieux port de Honfleur et le Vieux Bassin",
+      "Campagne normande",
+      "Arrêts flexibles selon vos envies",
+    ],
+    whyVisit: [
+      "Les jardins de Monet, berceau de l'Impressionnisme",
+      "Honfleur, l'un des ports les plus pittoresques de France",
+      "Votre chauffeur adapte l'itinéraire à votre rythme",
+    ],
     navigation: {
       description: "Vue d'ensemble",
       tours: "Nos Visites",

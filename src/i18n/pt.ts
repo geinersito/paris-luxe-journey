@@ -757,11 +757,21 @@ export const pt: Translation = {
   },
   loire: {
     title: "Castelos do Vale do Loire",
-    description: "",
-    distance: "",
-    duration: "",
-    highlights: [],
-    whyVisit: [],
+    description:
+      "Explore os castelos de conto de fadas do Vale do Loire numa excursão privada a partir de Paris com o seu motorista dedicado.",
+    distance: "170 km de Paris",
+    duration: "10–12 horas",
+    highlights: [
+      "Château de Chambord — obra-prima da Renascença",
+      "Château de Chenonceau — sobre o rio Cher",
+      "Paisagem do Vale do Loire",
+      "Itinerário flexível com paragens sugeridas",
+    ],
+    whyVisit: [
+      "Vale classificado como Património Mundial da UNESCO",
+      "Maior concentração de castelos reais em França",
+      "O seu motorista aguarda em cada paragem",
+    ],
     navigation: {
       description: "Visão Geral",
       tours: "Nossos Tours",
@@ -772,11 +782,21 @@ export const pt: Translation = {
   },
   champagne: {
     title: "Região de Champagne",
-    description: "",
-    distance: "",
-    duration: "",
-    highlights: [],
-    whyVisit: [],
+    description:
+      "Descubra as prestigiosas maisons de Champagne em Épernay e Reims numa excursão privada com motorista a partir de Paris.",
+    distance: "145 km de Paris",
+    duration: "8 horas",
+    highlights: [
+      "Avenida de Champagne em Épernay",
+      "Grandes Maisons — Moët, Taittinger, Ruinart",
+      "Caves de Champagne inscritas na UNESCO",
+      "Vinhas da Côte des Blancs",
+    ],
+    whyVisit: [
+      "Berço dos melhores espumantes do mundo",
+      "Caves inscritas no Património Mundial da UNESCO",
+      "Transporte privado — o seu horário, o seu ritmo",
+    ],
     navigation: {
       description: "Visão Geral",
       tours: "Nossos Tours",
@@ -787,11 +807,21 @@ export const pt: Translation = {
   },
   giverny: {
     title: "Giverny e Honfleur",
-    description: "",
-    distance: "",
-    duration: "",
-    highlights: [],
-    whyVisit: [],
+    description:
+      "Visite os jardins icónicos de Monet em Giverny e o pitoresco porto de Honfleur numa excursão privada com motorista.",
+    distance: "80–200 km de Paris",
+    duration: "10 horas",
+    highlights: [
+      "Casa e jardim dos nenúfares de Monet, Giverny",
+      "Porto antigo de Honfleur e o Vieux Bassin",
+      "Campo normando",
+      "Paragens flexíveis a pedido",
+    ],
+    whyVisit: [
+      "Os jardins de Monet, berço do Impressionismo",
+      "Honfleur, um dos portos mais pitorescos de França",
+      "O seu motorista adapta o itinerário ao seu ritmo",
+    ],
     navigation: {
       description: "Visão Geral",
       tours: "Nossos Tours",
