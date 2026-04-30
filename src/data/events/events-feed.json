@@ -1,115 +1,53 @@
 {
-  "generatedAt": "2026-02-16T20:30:00Z",
+  "generatedAt": "2026-04-29T12:00:00Z",
   "timezone": "Europe/Paris",
   "thisWeek": [
     {
-      "id": "art-capital-grand-palais-2026",
-      "startAt": "2026-02-13T09:00:00Z",
-      "endAt": "2026-02-15T19:00:00Z",
+      "id": "roland-garros-2026",
+      "startAt": "2026-05-18T09:00:00Z",
+      "endAt": "2026-06-07T21:00:00Z",
       "title": {
-        "en": "Art Capital at Grand Palais",
-        "es": "Art Capital en Grand Palais",
-        "fr": "Art Capital au Grand Palais",
-        "pt": "Art Capital no Grand Palais"
+        "en": "Roland-Garros 2026 — French Open",
+        "es": "Roland-Garros 2026 — Abierto de Francia",
+        "fr": "Roland-Garros 2026 — Open de France",
+        "pt": "Roland-Garros 2026 — Aberto da França"
       },
       "description": {
-        "en": "Major annual art salon gathering independent artists and galleries under the Nave of Grand Palais.",
-        "es": "Gran salon anual de arte que reune artistas independientes y galerias en la Nave del Grand Palais.",
-        "fr": "Grand salon annuel qui reunit artistes independants et galeries sous la Nef du Grand Palais.",
-        "pt": "Grande salao anual de arte com artistas independentes e galerias sob a Nave do Grand Palais."
+        "en": "Three weeks of world-class tennis on the iconic clay courts of Paris. The French Open draws VIP guests, corporate hospitality groups and international visitors requiring seamless arrival and departure from the stade. Transport only — we do not sell event tickets.",
+        "es": "Tres semanas de tenis de primer nivel en las míticas pistas de arcilla de París. El Roland-Garros reúne a invitados VIP, grupos de hospitalidad corporativa y visitantes internacionales que necesitan llegadas y salidas impecables al estadio. Solo transporte — no vendemos entradas al evento.",
+        "fr": "Trois semaines de tennis de haut niveau sur les courts en terre battue iconiques de Paris. Roland-Garros accueille des invités VIP, des groupes corporate et des visiteurs internationaux exigeant des arrivées et départs impeccables. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "Três semanas de tênis de alto nível nas icônicas quadras de saibro de Paris. O French Open reúne convidados VIP, grupos de hospitalidade corporativa e visitantes internacionais que precisam de chegadas e partidas impecáveis ao estádio. Apenas transporte — não vendemos ingressos para o evento."
       },
       "venueName": {
-        "en": "Grand Palais",
-        "es": "Grand Palais",
-        "fr": "Grand Palais",
-        "pt": "Grand Palais"
+        "en": "Stade Roland-Garros",
+        "es": "Stade Roland-Garros",
+        "fr": "Stade Roland-Garros",
+        "pt": "Stade Roland-Garros"
       },
-      "district": "8eme",
-      "address": "7 Avenue Winston Churchill, 75008 Paris",
-      "eventUrl": "https://artcapital.fr/",
-      "sourceName": "Art Capital",
-      "sourceUrl": "https://artcapital.fr/",
-      "imageUrl": "/images/library/events/art-capital-grand-palais-800x600.jpg",
-      "category": "exhibition",
-      "isFeatured": true
-    },
-    {
-      "id": "six-invitational-paris-2026",
-      "startAt": "2026-02-13T09:00:00Z",
-      "endAt": "2026-02-15T19:00:00Z",
-      "title": {
-        "en": "Six Invitational Paris 2026",
-        "es": "Six Invitational Paris 2026",
-        "fr": "Six Invitational Paris 2026",
-        "pt": "Six Invitational Paris 2026"
-      },
-      "description": {
-        "en": "International esports championship held at adidas arena with live stage matches and fan activations.",
-        "es": "Campeonato internacional de esports en adidas arena con partidos en vivo y actividades para fans.",
-        "fr": "Championnat international esport a adidas arena avec matchs en direct et activations fans.",
-        "pt": "Campeonato internacional de esports na adidas arena com partidas ao vivo e ativacoes para fas."
-      },
-      "venueName": {
-        "en": "adidas arena",
-        "es": "adidas arena",
-        "fr": "adidas arena",
-        "pt": "adidas arena"
-      },
-      "district": "18eme",
-      "address": "56 Boulevard Ney, 75018 Paris",
-      "eventUrl": "https://www.adidasarena.com/",
-      "sourceName": "adidas arena",
-      "sourceUrl": "https://www.adidasarena.com/",
-      "imageUrl": "/images/library/events/six-invitational-paris-800x600.jpg",
+      "district": "16eme",
+      "address": "2 Avenue Gordon Bennett, 75016 Paris",
+      "eventUrl": "https://www.rolandgarros.com/en-us/",
+      "sourceName": "Roland-Garros",
+      "sourceUrl": "https://www.rolandgarros.com/en-us/",
+      "imageUrl": "/images/library/events/roland-garros-2026-800x600.jpg",
       "category": "festival",
       "isFeatured": true
     },
     {
-      "id": "jeu-de-paume-festival-2026",
-      "startAt": "2026-02-07T09:00:00Z",
-      "endAt": "2026-03-23T18:00:00Z",
+      "id": "vivatech-2026",
+      "startAt": "2026-06-17T09:00:00Z",
+      "endAt": "2026-06-20T19:00:00Z",
       "title": {
-        "en": "Jeu de Paume Winter Season",
-        "es": "Temporada de Invierno – Jeu de Paume",
-        "fr": "Saison d'hiver – Jeu de Paume",
-        "pt": "Temporada de Inverno – Jeu de Paume"
+        "en": "VivaTech 2026",
+        "es": "VivaTech 2026",
+        "fr": "VivaTech 2026",
+        "pt": "VivaTech 2026"
       },
       "description": {
-        "en": "Contemporary image and video program featuring international artists, talks, and curated screenings.",
-        "es": "Programa de imagen y video contemporaneo con artistas internacionales, charlas y proyecciones curadas.",
-        "fr": "Programme image et video contemporaine avec artistes internationaux, rencontres et projections.",
-        "pt": "Programa de imagem e video contemporaneo com artistas internacionais, talks e exibicoes curadas."
-      },
-      "venueName": {
-        "en": "Jeu de Paume",
-        "es": "Jeu de Paume",
-        "fr": "Jeu de Paume",
-        "pt": "Jeu de Paume"
-      },
-      "district": "1er",
-      "address": "1 Place de la Concorde, 75001 Paris",
-      "eventUrl": "https://jeudepaume.org/",
-      "sourceName": "Jeu de Paume",
-      "sourceUrl": "https://jeudepaume.org/",
-      "imageUrl": "/images/library/events/jeu-de-paume-festival-800x600.jpg",
-      "category": "exhibition",
-      "isFeatured": false
-    },
-    {
-      "id": "salon-agriculture-2026",
-      "startAt": "2026-02-21T08:00:00Z",
-      "endAt": "2026-03-01T18:00:00Z",
-      "title": {
-        "en": "Salon International de l'Agriculture",
-        "es": "Salon International de l'Agriculture",
-        "fr": "Salon International de l'Agriculture",
-        "pt": "Salon International de l'Agriculture"
-      },
-      "description": {
-        "en": "France's flagship agriculture fair with regional producers, livestock showcases, and food discovery.",
-        "es": "Feria agricola de referencia en Francia con productores regionales, ganaderia y experiencias gastronomicas.",
-        "fr": "Salon majeur de l'agriculture en France avec producteurs regionaux, elevage et decouverte culinaire.",
-        "pt": "Principal feira agricola da Franca com produtores regionais, pecuaria e descoberta gastronomica."
+        "en": "Europe's leading startup and technology summit brings together C-suite executives, investors and press from over 150 countries. Paris Expo Porte de Versailles is easily reached by private transfer from any Paris hotel or airport. Transport only — we do not sell event tickets.",
+        "es": "La principal cumbre tecnológica de Europa reúne a directivos, inversores y medios de más de 150 países. El recinto de Porte de Versailles es de fácil acceso mediante transfer privado desde cualquier hotel o aeropuerto de París. Solo transporte — no vendemos entradas al evento.",
+        "fr": "Le sommet technologique leader en Europe réunit dirigeants, investisseurs et médias de plus de 150 pays. Le Parc des Expositions de Porte de Versailles est facilement accessible en transfert privé depuis tout hôtel ou aéroport parisien. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "A principal cúpula tecnológica da Europa reúne executivos, investidores e imprensa de mais de 150 países. O espaço de Porte de Versailles é facilmente acessível por transfer privado de qualquer hotel ou aeroporto de Paris. Apenas transporte — não vendemos ingressos para o evento."
       },
       "venueName": {
         "en": "Paris Expo Porte de Versailles",
@@ -119,30 +57,91 @@
       },
       "district": "15eme",
       "address": "1 Place de la Porte de Versailles, 75015 Paris",
-      "eventUrl": "https://www.salon-agriculture.com/en/",
-      "sourceName": "Salon International de l'Agriculture",
-      "sourceUrl": "https://www.salon-agriculture.com/en/",
-      "imageUrl": "/images/library/events/salon-agriculture-2026-800x600.jpg",
+      "eventUrl": "https://vivatechnology.com/",
+      "sourceName": "TechUp Connect",
+      "sourceUrl": "https://connect.tech-up.org/en_GB/event/vivatech-2026-11/page/intro-vt",
+      "imageUrl": "/images/library/events/vivatech-2026-800x600.jpg",
       "category": "festival",
-      "isFeatured": true
+      "isFeatured": false
+    },
+    {
+      "id": "fete-musique-paris-2026",
+      "startAt": "2026-06-21T18:00:00Z",
+      "endAt": "2026-06-22T02:00:00Z",
+      "title": {
+        "en": "Fête de la Musique 2026",
+        "es": "Fête de la Musique 2026",
+        "fr": "Fête de la Musique 2026",
+        "pt": "Fête de la Musique 2026"
+      },
+      "description": {
+        "en": "Every year on June 21st, thousands of free concerts fill Paris streets, courtyards and squares from dusk to midnight. Public transport reaches capacity — private transfers remain the most reliable way to move between venues or return home safely.",
+        "es": "Cada 21 de junio, miles de conciertos gratuitos llenan las calles, patios y plazas de París desde el anochecer hasta medianoche. El transporte público colapsa — el transfer privado es la forma más fiable de moverse entre escenarios o regresar a casa.",
+        "fr": "Chaque 21 juin, des milliers de concerts gratuits envahissent les rues, cours et places de Paris du soir jusqu'à minuit. Les transports en commun sont saturés — le transfert privé reste le moyen le plus fiable pour se déplacer entre les scènes ou rentrer sereinement.",
+        "pt": "A cada 21 de junho, milhares de concertos gratuitos enchem as ruas, pátios e praças de Paris do entardecer à meia-noite. O transporte público fica lotado — o transfer privado é a forma mais confiável de se mover entre os palcos ou regressar em segurança."
+      },
+      "venueName": {
+        "en": "Paris – Citywide",
+        "es": "París – Toda la ciudad",
+        "fr": "Paris – Toute la ville",
+        "pt": "Paris – Toda a cidade"
+      },
+      "district": "Paris intra-muros",
+      "eventUrl": "https://www.sortiraparis.com/actualites/fete-de-la-musique/guides/53382-fete-de-la-musique-2026-a-paris-et-en-ile-de-france",
+      "sourceName": "Sortir à Paris",
+      "sourceUrl": "https://www.sortiraparis.com/actualites/fete-de-la-musique/guides/53382-fete-de-la-musique-2026-a-paris-et-en-ile-de-france",
+      "imageUrl": "/images/library/events/fete-musique-2026-800x600.jpg",
+      "category": "concert",
+      "isFeatured": false
     }
   ],
   "thisMonth": [
     {
-      "id": "salon-agriculture-2026",
-      "startAt": "2026-02-21T08:00:00Z",
-      "endAt": "2026-03-01T18:00:00Z",
+      "id": "roland-garros-2026",
+      "startAt": "2026-05-18T09:00:00Z",
+      "endAt": "2026-06-07T21:00:00Z",
       "title": {
-        "en": "Salon International de l'Agriculture",
-        "es": "Salon International de l'Agriculture",
-        "fr": "Salon International de l'Agriculture",
-        "pt": "Salon International de l'Agriculture"
+        "en": "Roland-Garros 2026 — French Open",
+        "es": "Roland-Garros 2026 — Abierto de Francia",
+        "fr": "Roland-Garros 2026 — Open de France",
+        "pt": "Roland-Garros 2026 — Aberto da França"
       },
       "description": {
-        "en": "France's flagship agriculture fair with regional producers, livestock showcases, and food discovery.",
-        "es": "Feria agricola de referencia en Francia con productores regionales, ganaderia y experiencias gastronomicas.",
-        "fr": "Salon majeur de l'agriculture en France avec producteurs regionaux, elevage et decouverte culinaire.",
-        "pt": "Principal feira agricola da Franca com produtores regionais, pecuaria e descoberta gastronomica."
+        "en": "Three weeks of world-class tennis on the iconic clay courts of Paris. The French Open draws VIP guests, corporate hospitality groups and international visitors requiring seamless arrival and departure from the stade. Transport only — we do not sell event tickets.",
+        "es": "Tres semanas de tenis de primer nivel en las míticas pistas de arcilla de París. El Roland-Garros reúne a invitados VIP, grupos de hospitalidad corporativa y visitantes internacionales que necesitan llegadas y salidas impecables al estadio. Solo transporte — no vendemos entradas al evento.",
+        "fr": "Trois semaines de tennis de haut niveau sur les courts en terre battue iconiques de Paris. Roland-Garros accueille des invités VIP, des groupes corporate et des visiteurs internationaux exigeant des arrivées et départs impeccables. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "Três semanas de tênis de alto nível nas icônicas quadras de saibro de Paris. O French Open reúne convidados VIP, grupos de hospitalidade corporativa e visitantes internacionais que precisam de chegadas e partidas impecáveis ao estádio. Apenas transporte — não vendemos ingressos para o evento."
+      },
+      "venueName": {
+        "en": "Stade Roland-Garros",
+        "es": "Stade Roland-Garros",
+        "fr": "Stade Roland-Garros",
+        "pt": "Stade Roland-Garros"
+      },
+      "district": "16eme",
+      "address": "2 Avenue Gordon Bennett, 75016 Paris",
+      "eventUrl": "https://www.rolandgarros.com/en-us/",
+      "sourceName": "Roland-Garros",
+      "sourceUrl": "https://www.rolandgarros.com/en-us/",
+      "imageUrl": "/images/library/events/roland-garros-2026-800x600.jpg",
+      "category": "festival",
+      "isFeatured": true
+    },
+    {
+      "id": "vivatech-2026",
+      "startAt": "2026-06-17T09:00:00Z",
+      "endAt": "2026-06-20T19:00:00Z",
+      "title": {
+        "en": "VivaTech 2026",
+        "es": "VivaTech 2026",
+        "fr": "VivaTech 2026",
+        "pt": "VivaTech 2026"
+      },
+      "description": {
+        "en": "Europe's leading startup and technology summit brings together C-suite executives, investors and press from over 150 countries. Paris Expo Porte de Versailles is easily reached by private transfer from any Paris hotel or airport. Transport only — we do not sell event tickets.",
+        "es": "La principal cumbre tecnológica de Europa reúne a directivos, inversores y medios de más de 150 países. El recinto de Porte de Versailles es de fácil acceso mediante transfer privado desde cualquier hotel o aeropuerto de París. Solo transporte — no vendemos entradas al evento.",
+        "fr": "Le sommet technologique leader en Europe réunit dirigeants, investisseurs et médias de plus de 150 pays. Le Parc des Expositions de Porte de Versailles est facilement accessible en transfert privé depuis tout hôtel ou aéroport parisien. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "A principal cúpula tecnológica da Europa reúne executivos, investidores e imprensa de mais de 150 países. O espaço de Porte de Versailles é facilmente acessível por transfer privado de qualquer hotel ou aeroporto de Paris. Apenas transporte — não vendemos ingressos para o evento."
       },
       "venueName": {
         "en": "Paris Expo Porte de Versailles",
@@ -152,197 +151,133 @@
       },
       "district": "15eme",
       "address": "1 Place de la Porte de Versailles, 75015 Paris",
-      "eventUrl": "https://www.salon-agriculture.com/en/",
-      "sourceName": "Salon International de l'Agriculture",
-      "sourceUrl": "https://www.salon-agriculture.com/en/",
-      "imageUrl": "/images/library/events/salon-agriculture-2026-800x600.jpg",
+      "eventUrl": "https://vivatechnology.com/",
+      "sourceName": "TechUp Connect",
+      "sourceUrl": "https://connect.tech-up.org/en_GB/event/vivatech-2026-11/page/intro-vt",
+      "imageUrl": "/images/library/events/vivatech-2026-800x600.jpg",
       "category": "festival",
+      "isFeatured": false
+    },
+    {
+      "id": "fete-musique-paris-2026",
+      "startAt": "2026-06-21T18:00:00Z",
+      "endAt": "2026-06-22T02:00:00Z",
+      "title": {
+        "en": "Fête de la Musique 2026",
+        "es": "Fête de la Musique 2026",
+        "fr": "Fête de la Musique 2026",
+        "pt": "Fête de la Musique 2026"
+      },
+      "description": {
+        "en": "Every year on June 21st, thousands of free concerts fill Paris streets, courtyards and squares from dusk to midnight. Public transport reaches capacity — private transfers remain the most reliable way to move between venues or return home safely.",
+        "es": "Cada 21 de junio, miles de conciertos gratuitos llenan las calles, patios y plazas de París desde el anochecer hasta medianoche. El transporte público colapsa — el transfer privado es la forma más fiable de moverse entre escenarios o regresar a casa.",
+        "fr": "Chaque 21 juin, des milliers de concerts gratuits envahissent les rues, cours et places de Paris du soir jusqu'à minuit. Les transports en commun sont saturés — le transfert privé reste le moyen le plus fiable pour se déplacer entre les scènes ou rentrer sereinement.",
+        "pt": "A cada 21 de junho, milhares de concertos gratuitos enchem as ruas, pátios e praças de Paris do entardecer à meia-noite. O transporte público fica lotado — o transfer privado é a forma mais confiável de se mover entre os palcos ou regressar em segurança."
+      },
+      "venueName": {
+        "en": "Paris – Citywide",
+        "es": "París – Toda la ciudad",
+        "fr": "Paris – Toute la ville",
+        "pt": "Paris – Toda a cidade"
+      },
+      "district": "Paris intra-muros",
+      "eventUrl": "https://www.sortiraparis.com/actualites/fete-de-la-musique/guides/53382-fete-de-la-musique-2026-a-paris-et-en-ile-de-france",
+      "sourceName": "Sortir à Paris",
+      "sourceUrl": "https://www.sortiraparis.com/actualites/fete-de-la-musique/guides/53382-fete-de-la-musique-2026-a-paris-et-en-ile-de-france",
+      "imageUrl": "/images/library/events/fete-musique-2026-800x600.jpg",
+      "category": "concert",
+      "isFeatured": false
+    },
+    {
+      "id": "paris-plages-2026",
+      "startAt": "2026-07-04T11:00:00Z",
+      "endAt": "2026-08-30T22:00:00Z",
+      "title": {
+        "en": "Paris Plages 2026 (provisional dates)",
+        "es": "Paris Plages 2026 (fechas provisionales)",
+        "fr": "Paris Plages 2026 (dates prévisionnelles)",
+        "pt": "Paris Plages 2026 (datas provisórias)"
+      },
+      "description": {
+        "en": "Paris transforms its Seine riverbanks and city canals into temporary beaches each summer — a popular destination for families, visitors and groups. Dates are provisional per Ville de Paris. A private transfer is the easiest way to reach Parc Rives de Seine or Bassin de la Villette with children and luggage.",
+        "es": "París transforma las orillas del Sena y los canales de la ciudad en playas temporales cada verano — un destino muy popular para familias, visitantes y grupos. Fechas provisionales según la Mairie de Paris. Un transfer privado es la manera más cómoda de llegar al Parc Rives de Seine o al Bassin de la Villette con niños y equipaje.",
+        "fr": "Paris transforme chaque été les bords de Seine et les canaux de la ville en plages éphémères — une destination prisée des familles, visiteurs et groupes. Dates prévisionnelles selon la Ville de Paris. Le transfert privé est la solution la plus pratique pour rejoindre le Parc Rives de Seine ou le Bassin de la Villette avec enfants et bagages.",
+        "pt": "Paris transforma as margens do Sena e os canais da cidade em praias temporárias a cada verão — um destino popular para famílias, visitantes e grupos. Datas provisórias segundo a Ville de Paris. Um transfer privado é a forma mais cômoda de chegar ao Parc Rives de Seine ou ao Bassin de la Villette com crianças e bagagem."
+      },
+      "venueName": {
+        "en": "Parc Rives de Seine · Bassin de la Villette",
+        "es": "Parc Rives de Seine · Bassin de la Villette",
+        "fr": "Parc Rives de Seine · Bassin de la Villette",
+        "pt": "Parc Rives de Seine · Bassin de la Villette"
+      },
+      "district": "4eme / 10eme / 19eme",
+      "eventUrl": "https://www.paris.fr/pages/paris-plages-2026-appel-a-propositions-pour-l-exploitation-de-stands-de-petite-restauration-35038",
+      "sourceName": "Ville de Paris",
+      "sourceUrl": "https://www.paris.fr/pages/paris-plages-2026-appel-a-propositions-pour-l-exploitation-de-stands-de-petite-restauration-35038",
+      "imageUrl": "/images/library/events/paris-plages-2026-800x600.jpg",
+      "category": "festival",
+      "isFeatured": false
+    },
+    {
+      "id": "paris-haute-couture-fw-2026",
+      "startAt": "2026-07-06T09:00:00Z",
+      "endAt": "2026-07-09T21:00:00Z",
+      "title": {
+        "en": "Paris Haute Couture — Fall/Winter 2026-27",
+        "es": "Semana de la Alta Costura de París — Otoño/Invierno 2026-27",
+        "fr": "Défilés Haute Couture Paris — Automne/Hiver 2026-27",
+        "pt": "Alta Costura de Paris — Outono/Inverno 2026-27"
+      },
+      "description": {
+        "en": "The world's most prestigious fashion calendar returns with haute couture presentations across Paris's most iconic venues. Discreet door-to-door private transfers are essential for navigating multiple shows and press appointments in a single day. Transport only — we do not sell event tickets or press credentials.",
+        "es": "El calendario de moda más prestigioso del mundo regresa con presentaciones de alta costura en los espacios más emblemáticos de París. Los transfers privados puerta a puerta son imprescindibles para asistir a múltiples desfiles y compromisos de prensa en un solo día. Solo transporte — no vendemos entradas ni acreditaciones de prensa.",
+        "fr": "Le calendrier de mode le plus prestigieux au monde revient avec des présentations haute couture dans les lieux les plus emblématiques de Paris. Le transfert privé porte-à-porte est indispensable pour enchaîner plusieurs défilés et rendez-vous presse en une seule journée. Transport uniquement — nous ne vendons pas de billets ni d'accréditations.",
+        "pt": "O calendário de moda mais prestigioso do mundo regressa com apresentações de alta costura nos espaços mais icônicos de Paris. Os transfers privados porta-a-porta são essenciais para participar de vários desfiles e compromissos de imprensa num único dia. Apenas transporte — não vendemos ingressos nem credenciais de imprensa."
+      },
+      "venueName": {
+        "en": "Paris (FHCM venues)",
+        "es": "París (espacios FHCM)",
+        "fr": "Paris (lieux FHCM)",
+        "pt": "Paris (espaços FHCM)"
+      },
+      "district": "Paris",
+      "eventUrl": "https://www.fhcm.paris/en/upcoming-seasons-and-previous-editions",
+      "sourceName": "Fédération de la Haute Couture et de la Mode",
+      "sourceUrl": "https://www.fhcm.paris/en/upcoming-seasons-and-previous-editions",
+      "imageUrl": "/images/library/events/haute-couture-fw-2026-800x600.jpg",
+      "category": "fashion",
       "isFeatured": true
     },
     {
-      "id": "jeu-de-paume-festival-2026",
-      "startAt": "2026-02-07T09:00:00Z",
-      "endAt": "2026-03-23T18:00:00Z",
+      "id": "bastille-day-2026",
+      "startAt": "2026-07-14T09:00:00Z",
+      "endAt": "2026-07-14T23:30:00Z",
       "title": {
-        "en": "Jeu de Paume Winter Season",
-        "es": "Temporada de Invierno – Jeu de Paume",
-        "fr": "Saison d'hiver – Jeu de Paume",
-        "pt": "Temporada de Inverno – Jeu de Paume"
+        "en": "Bastille Day 2026 — French National Day",
+        "es": "14 de Julio 2026 — Fiesta Nacional de Francia",
+        "fr": "14 Juillet 2026 — Fête Nationale",
+        "pt": "14 de Julho 2026 — Dia Nacional da França"
       },
       "description": {
-        "en": "Contemporary image and video program featuring international artists, talks, and curated screenings.",
-        "es": "Programa de imagen y video contemporaneo con artistas internacionales, charlas y proyecciones curadas.",
-        "fr": "Programme image et video contemporaine avec artistes internationaux, rencontres et projections.",
-        "pt": "Programa de imagem e video contemporaneo com artistas internacionais, talks e exibicoes curadas."
+        "en": "France's national day combines the military parade on the Champs-Élysées with the evening fireworks over the Eiffel Tower. Road closures across central Paris make a private chauffeur the most reliable option for arrival and departure. Note: our service does not provide access to restricted zones.",
+        "es": "El Día Nacional de Francia combina el desfile militar en los Campos Elíseos con los fuegos artificiales nocturnos sobre la Torre Eiffel. Los cortes de tráfico en el centro de París hacen del chófer privado la opción más fiable para llegar y salir. Nota: nuestro servicio no proporciona acceso a zonas restringidas.",
+        "fr": "La fête nationale française associe le défilé militaire sur les Champs-Élysées aux feux d'artifice du soir depuis la Tour Eiffel. Les fermetures de routes dans le centre de Paris font du chauffeur privé l'option la plus fiable pour arriver et repartir. Note : notre service ne donne pas accès aux zones réglementées.",
+        "pt": "O Dia Nacional da França combina o desfile militar nos Champs-Élysées com os fogos de artifício da Torre Eiffel à noite. Os bloqueios de tráfego no centro de Paris tornam o chauffeur privado a opção mais confiável para chegar e partir. Nota: nosso serviço não fornece acesso a zonas restritas."
       },
       "venueName": {
-        "en": "Jeu de Paume",
-        "es": "Jeu de Paume",
-        "fr": "Jeu de Paume",
-        "pt": "Jeu de Paume"
+        "en": "Champs-Élysées / Eiffel Tower",
+        "es": "Campos Elíseos / Torre Eiffel",
+        "fr": "Champs-Élysées / Tour Eiffel",
+        "pt": "Champs-Élysées / Torre Eiffel"
       },
-      "district": "1er",
-      "address": "1 Place de la Concorde, 75001 Paris",
-      "eventUrl": "https://jeudepaume.org/",
-      "sourceName": "Jeu de Paume",
-      "sourceUrl": "https://jeudepaume.org/",
-      "imageUrl": "/images/library/events/jeu-de-paume-festival-800x600.jpg",
-      "category": "exhibition",
-      "isFeatured": false
-    },
-    {
-      "id": "l2p-convention-2026",
-      "startAt": "2026-03-11T09:00:00Z",
-      "endAt": "2026-03-14T18:00:00Z",
-      "title": {
-        "en": "L2P Convention",
-        "es": "L2P Convention",
-        "fr": "L2P Convention",
-        "pt": "L2P Convention"
-      },
-      "description": {
-        "en": "Large pop-culture convention mixing gaming, manga, cosplay, and live performances.",
-        "es": "Convencion de cultura pop con gaming, manga, cosplay y shows en vivo.",
-        "fr": "Convention pop culture melant gaming, manga, cosplay et scenes live.",
-        "pt": "Convencao de cultura pop com gaming, manga, cosplay e shows ao vivo."
-      },
-      "venueName": {
-        "en": "Parc Floral de Paris",
-        "es": "Parc Floral de Paris",
-        "fr": "Parc Floral de Paris",
-        "pt": "Parc Floral de Paris"
-      },
-      "district": "12eme",
-      "address": "Route de la Pyramide, 75012 Paris",
-      "eventUrl": "https://www.l2pconvention.com/",
-      "sourceName": "L2P Convention",
-      "sourceUrl": "https://www.l2pconvention.com/",
-      "imageUrl": "/images/library/events/l2p-convention-2026-800x600.jpg",
+      "district": "8eme / Champ-de-Mars",
+      "address": "Avenue des Champs-Élysées, 75008 Paris",
+      "eventUrl": "https://www.paris.fr/",
+      "sourceName": "Ville de Paris",
+      "sourceUrl": "https://www.paris.fr/",
+      "imageUrl": "/images/library/events/bastille-day-2026-800x600.jpg",
       "category": "festival",
       "isFeatured": true
-    },
-    {
-      "id": "paris-world-tourism-fair-2026",
-      "startAt": "2026-03-12T09:00:00Z",
-      "endAt": "2026-03-15T18:00:00Z",
-      "title": {
-        "en": "Salon Mondial du Tourisme",
-        "es": "Salon Mondial du Tourisme",
-        "fr": "Salon Mondial du Tourisme",
-        "pt": "Salon Mondial du Tourisme"
-      },
-      "description": {
-        "en": "Major travel fair with destination boards, experiences, and tourism professionals from France and abroad.",
-        "es": "Gran salon de turismo con oficinas de destino, experiencias y profesionales de Francia y del extranjero.",
-        "fr": "Grand salon du tourisme avec offices de destination, experiences et professionnels en France et a l'international.",
-        "pt": "Grande feira de turismo com destinos, experiencias e profissionais da Franca e do exterior."
-      },
-      "venueName": {
-        "en": "Paris Expo Porte de Versailles",
-        "es": "Paris Expo Porte de Versailles",
-        "fr": "Paris Expo Porte de Versailles",
-        "pt": "Paris Expo Porte de Versailles"
-      },
-      "district": "15eme",
-      "address": "1 Place de la Porte de Versailles, 75015 Paris",
-      "eventUrl": "https://www.salons-du-tourisme.com/Paris",
-      "sourceName": "Salon Mondial du Tourisme",
-      "sourceUrl": "https://www.salons-du-tourisme.com/Paris",
-      "imageUrl": "/images/library/events/paris-world-tourism-fair-2026-800x600.jpg",
-      "category": "festival",
-      "isFeatured": false
-    },
-    {
-      "id": "ecotrail-paris-2026",
-      "startAt": "2026-03-21T07:00:00Z",
-      "endAt": "2026-03-22T18:00:00Z",
-      "title": {
-        "en": "EcoTrail Paris",
-        "es": "EcoTrail Paris",
-        "fr": "EcoTrail Paris",
-        "pt": "EcoTrail Paris"
-      },
-      "description": {
-        "en": "Trail-running festival across Greater Paris ending near the Eiffel Tower, with multiple race formats.",
-        "es": "Festival de trail running por el Gran Paris con llegada cerca de la Torre Eiffel y varios formatos.",
-        "fr": "Festival trail dans le Grand Paris avec arrivee proche de la Tour Eiffel et plusieurs formats de course.",
-        "pt": "Festival de trail no Grande Paris com chegada perto da Torre Eiffel e varios formatos de prova."
-      },
-      "venueName": {
-        "en": "Ile-de-France route network",
-        "es": "Circuito Ile-de-France",
-        "fr": "Parcours Ile-de-France",
-        "pt": "Percurso Ile-de-France"
-      },
-      "district": "7eme",
-      "eventUrl": "https://www.ecotrailparis.com/en/",
-      "sourceName": "EcoTrail Paris",
-      "sourceUrl": "https://www.ecotrailparis.com/en/",
-      "imageUrl": "/images/library/events/ecotrail-paris-2026-800x600.jpg",
-      "category": "festival",
-      "isFeatured": false
-    },
-    {
-      "id": "salon-du-dessin-2026",
-      "startAt": "2026-03-25T10:00:00Z",
-      "endAt": "2026-03-30T18:00:00Z",
-      "title": {
-        "en": "Salon du Dessin",
-        "es": "Salon du Dessin",
-        "fr": "Salon du Dessin",
-        "pt": "Salon du Dessin"
-      },
-      "description": {
-        "en": "International drawing fair bringing collectors, curators, and galleries to Palais Brongniart.",
-        "es": "Feria internacional de dibujo en Palais Brongniart con coleccionistas, galerias y curadores.",
-        "fr": "Salon international du dessin au Palais Brongniart avec collectionneurs, galeries et conservateurs.",
-        "pt": "Feira internacional de desenho no Palais Brongniart com colecionadores, galerias e curadores."
-      },
-      "venueName": {
-        "en": "Palais Brongniart",
-        "es": "Palais Brongniart",
-        "fr": "Palais Brongniart",
-        "pt": "Palais Brongniart"
-      },
-      "district": "2eme",
-      "address": "16 Place de la Bourse, 75002 Paris",
-      "eventUrl": "https://www.salondudessin.com/en/home",
-      "sourceName": "Salon du Dessin",
-      "sourceUrl": "https://www.salondudessin.com/en/home",
-      "imageUrl": "/images/library/events/salon-du-dessin-2026-800x600.jpg",
-      "category": "exhibition",
-      "isFeatured": true
-    },
-    {
-      "id": "festival-mondial-magie-2026",
-      "startAt": "2026-03-28T17:00:00Z",
-      "endAt": "2026-03-29T20:00:00Z",
-      "title": {
-        "en": "Festival Mondial de la Magie",
-        "es": "Festival Mondial de la Magie",
-        "fr": "Festival Mondial de la Magie",
-        "pt": "Festival Mondial de la Magie"
-      },
-      "description": {
-        "en": "Family-friendly magic showcase with international illusionists and stage performances.",
-        "es": "Espectaculo familiar de magia con ilusionistas internacionales y actuaciones en escenario.",
-        "fr": "Spectacle familial de magie avec illusionnistes internationaux et performances sur scene.",
-        "pt": "Show familiar de magia com ilusionistas internacionais e apresentacoes no palco."
-      },
-      "venueName": {
-        "en": "Casino de Paris",
-        "es": "Casino de Paris",
-        "fr": "Casino de Paris",
-        "pt": "Casino de Paris"
-      },
-      "district": "9eme",
-      "address": "16 Rue de Clichy, 75009 Paris",
-      "eventUrl": "https://www.festivalmondialdelamagie.com/",
-      "sourceName": "Festival Mondial de la Magie",
-      "sourceUrl": "https://www.festivalmondialdelamagie.com/",
-      "imageUrl": "/images/library/events/festival-mondial-magie-2026-800x600.jpg",
-      "category": "family",
-      "isFeatured": false
     }
   ]
 }
