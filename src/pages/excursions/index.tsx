@@ -1,91 +1,70 @@
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
+import { useLanguage } from "@/contexts/LanguageContext";
 import { ExcursionCard } from "@/components/excursions/ExcursionCard";
-import { Input } from "@/components/ui/input";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-
-const excursions = [
-  {
-    id: "versailles",
-    title: "Versailles",
-    description: "Explore el magnífico Palacio de Versalles, sus jardines y el Trianón",
-    image: "https://images.unsplash.com/photo-1460574283810-2aab119d8511",
-    duration: "8h",
-    price: 299,
-    link: "/excursions/versailles"
-  },
-  // Más excursiones aquí...
-];
+import { excursions } from "@/data/excursions";
 
 export default function ExcursionsPage() {
-  const { t } = useTranslation();
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedDuration, setSelectedDuration] = useState("");
-  const [selectedType, setSelectedType] = useState("");
+  const { t } = useLanguage();
+
+  const getLocalizedData = (id: string) => {
+    switch (id) {
+      case "versailles-palace":
+        return {
+          title: t.versailles.title,
+          description: t.versailles.description,
+          duration: t.versailles.duration,
+        };
+      case "loire-valley":
+        return {
+          title: t.loire.title,
+          description: t.loire.description,
+          duration: t.loire.duration,
+        };
+      case "champagne":
+        return {
+          title: t.champagne.title,
+          description: t.champagne.description,
+          duration: t.champagne.duration,
+        };
+      case "giverny-honfleur":
+        return {
+          title: t.giverny.title,
+          description: t.giverny.description,
+          duration: t.giverny.duration,
+        };
+      default:
+        return null;
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background">
       <main className="container mx-auto px-4 py-8">
         <div className="space-y-8">
-          {/* Filtros */}
-          <div className="flex flex-col md:flex-row gap-4">
-            <Input
-              type="text"
-              placeholder={t('excursions.search.placeholder')}
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="md:w-1/3"
-            />
-            
-            <Select
-              value={selectedDuration}
-              onValueChange={setSelectedDuration}
-            >
-              <SelectTrigger className="md:w-1/4">
-                <SelectValue placeholder={t('excursions.search.duration')} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="half-day">{t('excursions.filters.duration.halfDay')}</SelectItem>
-                <SelectItem value="full-day">{t('excursions.filters.duration.fullDay')}</SelectItem>
-                <SelectItem value="multi-day">{t('excursions.filters.duration.multiDay')}</SelectItem>
-              </SelectContent>
-            </Select>
-
-            <Select
-              value={selectedType}
-              onValueChange={setSelectedType}
-            >
-              <SelectTrigger className="md:w-1/4">
-                <SelectValue placeholder={t('excursions.search.type')} />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="private">{t('excursions.filters.type.private')}</SelectItem>
-                <SelectItem value="group">{t('excursions.filters.type.group')}</SelectItem>
-                <SelectItem value="luxury">{t('excursions.filters.type.luxury')}</SelectItem>
-              </SelectContent>
-            </Select>
+          <div className="text-center">
+            <h1 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-3">
+              {t.services.dayTrips.title}
+            </h1>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              {t.services.dayTrips.description}
+            </p>
           </div>
 
-          {/* Grid de excursiones */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {excursions.map((excursion) => (
-              <ExcursionCard
-                key={excursion.id}
-                id={excursion.id}
-                title={excursion.title}
-                description={excursion.description}
-                image={excursion.image}
-                duration={excursion.duration}
-                price={excursion.price}
-                link={excursion.link}
-              />
-            ))}
+            {excursions.map((excursion) => {
+              const loc = getLocalizedData(excursion.id);
+              return (
+                <ExcursionCard
+                  key={excursion.id}
+                  id={excursion.id}
+                  title={loc?.title ?? excursion.title}
+                  description={loc?.description ?? excursion.description}
+                  image={excursion.image}
+                  duration={loc?.duration ?? excursion.duration}
+                  price={excursion.price}
+                  link={excursion.link}
+                />
+              );
+            })}
           </div>
         </div>
       </main>

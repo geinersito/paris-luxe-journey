@@ -32,20 +32,19 @@ export default function VersaillesPage() {
 
   const faqItems = getExcursionFaqItems(language, t.versailles.title);
 
-  // Enhanced tours data with more details
   const tours = [
     {
       id: "versailles-tour-1",
-      name: "Guided Tour of Versailles Palace",
-      duration: "4 hours",
-      price: 250,
+      name: "Private Chauffeur to Versailles",
+      duration: "8 hours",
+      price: 590,
       maxParticipants: 8,
-      startTimes: ["09:00", "13:00"],
+      startTimes: ["09:00", "10:00"],
       includes: [
-        "Entry tickets",
-        "Guided tour",
-        "Transportation",
-        "Skip-the-line access",
+        "Door-to-door private transport",
+        "Flexible schedule",
+        "Waiting time included",
+        "Tickets and guides not included",
       ],
       highlights: ["Hall of Mirrors", "Royal Apartments", "Gardens access"],
     },
@@ -82,7 +81,7 @@ export default function VersaillesPage() {
             <TourCard
               key={tour.id}
               title={tour.name}
-              description={`${t.versailles.title} - ${tour.duration}`}
+              description={`${t.versailles.title} — ${tour.duration}`}
               duration={tour.duration}
               price={tour.price}
               includes={tour.includes}

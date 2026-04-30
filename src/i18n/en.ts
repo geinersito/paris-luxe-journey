@@ -636,11 +636,21 @@ export const en: Translation = {
   },
   loire: {
     title: "Loire Valley Castles",
-    description: "",
-    distance: "",
-    duration: "",
-    highlights: [],
-    whyVisit: [],
+    description:
+      "Explore the fairytale châteaux of the Loire Valley on a private day trip from Paris with your dedicated chauffeur.",
+    distance: "170 km from Paris",
+    duration: "10–12 hours",
+    highlights: [
+      "Château de Chambord — Renaissance masterpiece",
+      "Château de Chenonceau — spanning the River Cher",
+      "Scenic Loire Valley countryside",
+      "Flexible itinerary with suggested stops",
+    ],
+    whyVisit: [
+      "UNESCO World Heritage Valley",
+      "France's largest concentration of royal châteaux",
+      "Your chauffeur waits at every stop",
+    ],
     navigation: {
       description: "Overview",
       tours: "Our Tours",
@@ -651,11 +661,21 @@ export const en: Translation = {
   },
   champagne: {
     title: "Champagne Region",
-    description: "",
-    distance: "",
-    duration: "",
-    highlights: [],
-    whyVisit: [],
+    description:
+      "Discover the prestigious Champagne houses of Épernay and Reims on a private chauffeured day trip from Paris.",
+    distance: "145 km from Paris",
+    duration: "8 hours",
+    highlights: [
+      "Avenue de Champagne, Épernay",
+      "Grande Maisons — Moët, Taittinger, Ruinart",
+      "UNESCO-listed Champagne cellars",
+      "Rolling hillside vineyards of Côte des Blancs",
+    ],
+    whyVisit: [
+      "Birthplace of the world's finest sparkling wines",
+      "Cellars listed as UNESCO World Heritage",
+      "Private transport — your schedule, your pace",
+    ],
     navigation: {
       description: "Overview",
       tours: "Our Tours",
@@ -666,11 +686,21 @@ export const en: Translation = {
   },
   giverny: {
     title: "Giverny & Honfleur",
-    description: "",
-    distance: "",
-    duration: "",
-    highlights: [],
-    whyVisit: [],
+    description:
+      "Visit Monet's iconic gardens in Giverny and the charming port of Honfleur on a private day trip with your chauffeur.",
+    distance: "80–200 km from Paris",
+    duration: "10 hours",
+    highlights: [
+      "Monet's house and water lily garden, Giverny",
+      "Honfleur old harbour and Vieux Bassin",
+      "Normandy countryside",
+      "Flexible stops at your request",
+    ],
+    whyVisit: [
+      "Monet's gardens — birthplace of Impressionism",
+      "Honfleur — one of France's most picturesque ports",
+      "Your chauffeur adapts the itinerary to your pace",
+    ],
     navigation: {
       description: "Overview",
       tours: "Our Tours",
