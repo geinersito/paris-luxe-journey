@@ -19,6 +19,16 @@ export interface Translation {
       desc: string;
       cta: string;
     };
+    events: {
+      title: string;
+      seeAll: string;
+      fallback: string;
+    };
+    excursions: {
+      title: string;
+      seeAll: string;
+      from: string;
+    };
   };
   agencies: {
     metaTitle: string;

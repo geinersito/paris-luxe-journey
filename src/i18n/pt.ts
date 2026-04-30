@@ -19,6 +19,17 @@ export const pt: Translation = {
       desc: "Tarifas B2B, faturamento e suporte dedicado.",
       cta: "Ver opções B2B",
     },
+    events: {
+      title: "Próximos eventos em Paris",
+      seeAll: "Ver todos os eventos →",
+      fallback:
+        "Vai a um evento em Paris? Contacte-nos para o seu transfer privado.",
+    },
+    excursions: {
+      title: "Excursões a partir de Paris",
+      seeAll: "Explorar todas as excursões →",
+      from: "a partir de",
+    },
   },
   agencies: {
     metaTitle: "Para agências de viagens | Tarifas especiais em Paris",

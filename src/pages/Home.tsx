@@ -1,6 +1,8 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import HeroSection from "@/components/sections/HeroSection";
+import HomeEventsSection from "@/components/sections/HomeEventsSection";
+import HomeExcursionsSection from "@/components/sections/HomeExcursionsSection";
 import FleetSection from "@/components/sections/FleetSection";
 import ContactSection from "@/components/sections/ContactSection";
 import PremiumSection from "@/components/sections/PremiumSection";
@@ -146,6 +148,8 @@ export default function Home() {
 
       <div onClickCapture={handleCtaClickCapture}>
         <HeroSection />
+        <HomeEventsSection />
+        <HomeExcursionsSection />
         <PremiumSection />
         <section id="b2b" className="py-12 bg-white">
           <div className="container mx-auto px-4 max-w-7xl">
