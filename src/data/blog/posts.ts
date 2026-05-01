@@ -99,7 +99,7 @@ For most travelers, especially those arriving after a long flight, a **private c
 
 While public transport might save money, the convenience and peace of mind of a private transfer is worth the investment, especially after a long international flight.
 
-Ready to book your transfer? [Contact us on WhatsApp](https://wa.me/33123456789) for instant confirmation.`,
+Ready to book your transfer? [Contact us on WhatsApp](https://wa.me/33668251102) for instant confirmation.`,
     category: "airport-transfers",
     tags: ["CDG Airport", "Paris Transfer", "Airport Guide", "Travel Tips"],
     author: getAuthor("pierre-dubois"),
@@ -213,7 +213,7 @@ The Palace of Versailles is one of the most magnificent royal residences in the 
 
 ## Book Your Versailles Trip
 
-Ready to experience Versailles in luxury and comfort? [Contact us on WhatsApp](https://wa.me/33123456789) for availability and booking.`,
+Ready to experience Versailles in luxury and comfort? [Contact us on WhatsApp](https://wa.me/33668251102) for availability and booking.`,
     category: "day-trips",
     tags: ["Versailles", "Day Trips", "Private Chauffeur", "Palace"],
     author: getAuthor("marie-laurent"),
@@ -350,7 +350,7 @@ For peace of mind and guaranteed fair pricing, book a private transfer in advanc
 **Orly to Paris:** €55-65
 **Beauvais to Paris:** €140-160
 
-[Book your safe, reliable transfer on WhatsApp](https://wa.me/33123456789)`,
+[Book your safe, reliable transfer on WhatsApp](https://wa.me/33668251102)`,
     category: "travel-tips",
     tags: ["Safety", "Taxi Scams", "Airport Transfer", "Travel Tips"],
     author: getAuthor("pierre-dubois"),

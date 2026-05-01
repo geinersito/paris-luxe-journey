@@ -1,7 +1,7 @@
 import type { Event, Language } from "@/types/events";
 
 const WHATSAPP_NUMBER = "33668251102";
-const EMAIL_ADDRESS = "contact@paris-elite-services.com";
+const EMAIL_ADDRESS = "info@eliteparistransfer.com";
 
 interface PrefillTemplates {
   greeting: string;
