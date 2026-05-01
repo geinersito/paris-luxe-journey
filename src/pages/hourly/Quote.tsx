@@ -20,12 +20,12 @@ export default function HourlyQuote() {
     const message = encodeURIComponent(
       "Hello, I'm interested in hourly chauffeur service (mise à disposition) in Paris. Could you provide a quote?",
     );
-    window.open(`https://wa.me/33123456789?text=${message}`, "_blank");
+    window.open(`https://wa.me/33668251102?text=${message}`, "_blank");
   };
 
   const handleEmailContact = () => {
     window.location.href =
-      "mailto:contact@parisluxejourney.com?subject=Hourly Service Quote Request";
+      "mailto:info@eliteparistransfer.com?subject=Hourly Service Quote Request";
   };
 
   if (intent !== "hourly") {
