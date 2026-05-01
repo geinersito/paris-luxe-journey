@@ -23,7 +23,7 @@ export const useBookingForm = () => {
     dropoff: "",
     date: "",
     time: "",
-    passengers: "", // Debe ser string para coincidir con BookingFormData
+    passengers: "1", // Debe ser string para coincidir con BookingFormData
     vehicleType: "",
     vehicle_id: "",
     flight_number: "",
