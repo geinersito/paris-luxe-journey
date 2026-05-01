@@ -122,12 +122,12 @@ export const blogPosts: BlogPostMeta[] = [
     readingTime: 7,
     featured: false,
     image: {
-      url: "/images/blog/vtc-taxi-uber-comparison.jpg",
+      url: "https://images.unsplash.com/photo-1700955984409-efb78de42d3c?auto=format&fit=crop&w=1200&h=630&q=80",
       alt: {
-        en: "Comparison of VTC, taxi and Uber vehicles in Paris",
-        es: "Comparación de vehículos VTC, taxi y Uber en París",
-        fr: "Comparaison des véhicules VTC, taxi et Uber à Paris",
-        pt: "Comparação de veículos VTC, táxi e Uber em Paris",
+        en: "Paris street traffic illustrating private transport options",
+        es: "Tráfico en una calle de París que ilustra opciones de transporte privado",
+        fr: "Circulation dans une rue parisienne illustrant les options de transport privé",
+        pt: "Tráfego em uma rua de Paris ilustrando opções de transporte privado",
       },
     },
     tags: [
@@ -181,7 +181,7 @@ export const blogPosts: BlogPostMeta[] = [
     readingTime: 6,
     featured: false,
     image: {
-      url: "/images/blog/airport-transfer-cost.jpg",
+      url: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&h=630&fit=crop",
       alt: {
         en: "Calculator and money showing airport transfer costs",
         es: "Calculadora y dinero mostrando costos de traslado de aeropuerto",

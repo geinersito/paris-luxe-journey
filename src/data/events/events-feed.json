@@ -29,7 +29,7 @@
       "eventUrl": "https://www.rolandgarros.com/en-us/",
       "sourceName": "Roland-Garros",
       "sourceUrl": "https://www.rolandgarros.com/en-us/",
-      "imageUrl": "/images/library/events/roland-garros-2026-800x600.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1750856698142-d84955b0abf7?auto=format&fit=crop&w=1200&q=80",
       "category": "festival",
       "isFeatured": true
     },
@@ -60,7 +60,7 @@
       "eventUrl": "https://vivatechnology.com/",
       "sourceName": "TechUp Connect",
       "sourceUrl": "https://connect.tech-up.org/en_GB/event/vivatech-2026-11/page/intro-vt",
-      "imageUrl": "/images/library/events/vivatech-2026-800x600.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1762968269894-1d7e1ce8894e?auto=format&fit=crop&w=1200&q=80",
       "category": "festival",
       "isFeatured": false
     },
@@ -90,7 +90,7 @@
       "eventUrl": "https://www.sortiraparis.com/actualites/fete-de-la-musique/guides/53382-fete-de-la-musique-2026-a-paris-et-en-ile-de-france",
       "sourceName": "Sortir à Paris",
       "sourceUrl": "https://www.sortiraparis.com/actualites/fete-de-la-musique/guides/53382-fete-de-la-musique-2026-a-paris-et-en-ile-de-france",
-      "imageUrl": "/images/library/events/fete-musique-2026-800x600.jpg",
+      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
       "category": "concert",
       "isFeatured": false
     }
@@ -123,7 +123,7 @@
       "eventUrl": "https://www.rolandgarros.com/en-us/",
       "sourceName": "Roland-Garros",
       "sourceUrl": "https://www.rolandgarros.com/en-us/",
-      "imageUrl": "/images/library/events/roland-garros-2026-800x600.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1750856698142-d84955b0abf7?auto=format&fit=crop&w=1200&q=80",
       "category": "festival",
       "isFeatured": true
     },
@@ -154,7 +154,7 @@
       "eventUrl": "https://vivatechnology.com/",
       "sourceName": "TechUp Connect",
       "sourceUrl": "https://connect.tech-up.org/en_GB/event/vivatech-2026-11/page/intro-vt",
-      "imageUrl": "/images/library/events/vivatech-2026-800x600.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1762968269894-1d7e1ce8894e?auto=format&fit=crop&w=1200&q=80",
       "category": "festival",
       "isFeatured": false
     },
@@ -184,7 +184,7 @@
       "eventUrl": "https://www.sortiraparis.com/actualites/fete-de-la-musique/guides/53382-fete-de-la-musique-2026-a-paris-et-en-ile-de-france",
       "sourceName": "Sortir à Paris",
       "sourceUrl": "https://www.sortiraparis.com/actualites/fete-de-la-musique/guides/53382-fete-de-la-musique-2026-a-paris-et-en-ile-de-france",
-      "imageUrl": "/images/library/events/fete-musique-2026-800x600.jpg",
+      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
       "category": "concert",
       "isFeatured": false
     },
@@ -214,7 +214,7 @@
       "eventUrl": "https://www.paris.fr/pages/paris-plages-2026-appel-a-propositions-pour-l-exploitation-de-stands-de-petite-restauration-35038",
       "sourceName": "Ville de Paris",
       "sourceUrl": "https://www.paris.fr/pages/paris-plages-2026-appel-a-propositions-pour-l-exploitation-de-stands-de-petite-restauration-35038",
-      "imageUrl": "/images/library/events/paris-plages-2026-800x600.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1768577087534-22b60661ca06?auto=format&fit=crop&w=1200&q=80",
       "category": "festival",
       "isFeatured": false
     },
@@ -244,7 +244,7 @@
       "eventUrl": "https://www.fhcm.paris/en/upcoming-seasons-and-previous-editions",
       "sourceName": "Fédération de la Haute Couture et de la Mode",
       "sourceUrl": "https://www.fhcm.paris/en/upcoming-seasons-and-previous-editions",
-      "imageUrl": "/images/library/events/haute-couture-fw-2026-800x600.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1762430815439-1b34775ef278?auto=format&fit=crop&w=1200&q=80",
       "category": "fashion",
       "isFeatured": true
     },
@@ -275,7 +275,7 @@
       "eventUrl": "https://www.paris.fr/",
       "sourceName": "Ville de Paris",
       "sourceUrl": "https://www.paris.fr/",
-      "imageUrl": "/images/library/events/bastille-day-2026-800x600.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1721005248725-d96343a0bbe4?auto=format&fit=crop&w=1200&q=80",
       "category": "festival",
       "isFeatured": true
     }

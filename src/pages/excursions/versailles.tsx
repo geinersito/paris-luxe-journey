@@ -127,7 +127,7 @@ export default function VersaillesPage() {
     <div className="min-h-screen bg-background">
       <DestinationHeader
         title={t.versailles.title}
-        image="/images/versailles.jpg"
+        image="https://images.unsplash.com/photo-1773472224690-2d80ee8ac1f3?auto=format&fit=crop&w=1920&q=80"
         distance={t.versailles.distance}
         duration={t.versailles.duration}
         currentPath="/excursions/versailles"
