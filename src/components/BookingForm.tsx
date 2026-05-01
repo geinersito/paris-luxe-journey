@@ -14,7 +14,7 @@ import { useEffect, useState, useMemo, useCallback, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { BookingFormProps } from "@/types/components";
 import { useBooking } from "@/contexts/BookingContext";
-import { MessageCircle } from "lucide-react";
+import { MessageCircle, Shield, CheckCircle, Clock } from "lucide-react";
 import { saveBookingSession } from "@/lib/bookingSession";
 import { getLocationFallbacks } from "@/lib/locations/fallbacks";
 
@@ -517,7 +517,21 @@ const BookingForm = ({
           : t.booking.submitButton || "Voir Votre Prix Fixe"}
       </Button>
 
-      <p className="mt-4 px-4 text-sm text-center text-muted-foreground">
+      <div className="flex flex-wrap items-center justify-center gap-4 mt-4 text-xs text-muted-foreground">
+        <span className="flex items-center gap-1">
+          <Shield className="w-3 h-3" />
+          {t.trustBar.licensed}
+        </span>
+        <span className="flex items-center gap-1">
+          <CheckCircle className="w-3 h-3" />
+          {t.trustBar.securePayment}
+        </span>
+        <span className="flex items-center gap-1">
+          <Clock className="w-3 h-3" />
+          {t.trustBar.available}
+        </span>
+      </div>
+      <p className="mt-2 px-4 text-sm text-center text-muted-foreground">
         {t.booking.noPaymentRequired ||
           "Aucun paiement requis - l'étape suivante affiche votre prix final"}
       </p>

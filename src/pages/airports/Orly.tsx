@@ -2,12 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { Plane, Clock, Shield, MapPin, CheckCircle, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ORLY_IMAGE =
   "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80";
 
 export default function OrlyAirport() {
   const navigate = useNavigate();
+  const { t } = useLanguage();
 
   return (
     <div className="min-h-screen">
@@ -50,7 +52,7 @@ export default function OrlyAirport() {
                 onClick={() => navigate("/booking")}
                 className="bg-secondary hover:bg-secondary/90 text-white px-8 py-6 text-lg font-semibold shadow-xl"
               >
-                Get a Fixed Price
+                {t.airports.cta.fixedPrice}
               </Button>
             </div>
 
