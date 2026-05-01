@@ -71,7 +71,8 @@ export const excursions: Excursion[] = [
     title: "Champagne Region",
     description:
       "Discover the prestigious Champagne houses of Épernay and Reims on a private chauffeured day trip from Paris.",
-    image: "/images/library/excursions/cards/excursion-champagne-800x600.jpg",
+    image:
+      "https://images.unsplash.com/photo-1528823872057-9c018a7a7553?auto=format&fit=crop&w=1200&q=80",
     duration: "8h",
     durationType: "full-day",
     type: "luxury",

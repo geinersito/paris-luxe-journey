@@ -181,7 +181,7 @@ export const blogPosts: BlogPostMeta[] = [
     readingTime: 6,
     featured: false,
     image: {
-      url: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&h=630&fit=crop",
+      url: "/images/blog/airport-transfer-cost.jpg",
       alt: {
         en: "Calculator and money showing airport transfer costs",
         es: "Calculadora y dinero mostrando costos de traslado de aeropuerto",
