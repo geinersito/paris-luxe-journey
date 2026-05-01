@@ -1160,7 +1160,7 @@ const dayTrips = [
     id: 4,
     tripKey: "versaillesHalf",
     image:
-      "/images/library/excursions/cards/excursion-versailles-half-day-800x600.jpg",
+      "https://images.unsplash.com/photo-1773472224690-2d80ee8ac1f3?auto=format&fit=crop&w=1200&q=80",
     price: 320,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1180,7 +1180,7 @@ const dayTrips = [
     id: 5,
     tripKey: "versaillesFull",
     image:
-      "/images/library/excursions/cards/excursion-versailles-full-day-800x600.jpg",
+      "https://images.unsplash.com/photo-1773472224690-2d80ee8ac1f3?auto=format&fit=crop&w=1200&q=80",
     price: 480,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1199,7 +1199,8 @@ const dayTrips = [
   {
     id: 6,
     tripKey: "giverny",
-    image: "/images/library/excursions/cards/excursion-giverny-800x600.jpg",
+    image:
+      "https://images.unsplash.com/photo-1758027709220-036dd3e46805?auto=format&fit=crop&w=1200&q=80",
     price: 520,
     pricePerVehicle: true,
     maxPassengers: 7,
@@ -1233,7 +1234,7 @@ const dayTrips = [
     id: 8,
     tripKey: "loire",
     image:
-      "/images/library/excursions/cards/excursion-loire-valley-800x600.jpg",
+      "https://images.unsplash.com/photo-1571301092535-61a418b457dd?auto=format&fit=crop&w=1200&q=80",
     price: 750,
     pricePerVehicle: true,
     maxPassengers: 7,

@@ -15,6 +15,48 @@ export interface Vehicle {
   features: string[];
 }
 
+const FLEET_IMAGE_OVERRIDES = [
+  {
+    match: ["tesla", "model y"],
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/2020s_Tesla_Model_Y.jpg/1280px-2020s_Tesla_Model_Y.jpg",
+  },
+  {
+    match: ["volkswagen", "multivan"],
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Volkswagen_T7_Multivan_IMG_8317.jpg/1280px-Volkswagen_T7_Multivan_IMG_8317.jpg",
+  },
+  {
+    match: ["eqv"],
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Mercedes-Benz_EQV_300_IMG_4871.jpg/1280px-Mercedes-Benz_EQV_300_IMG_4871.jpg",
+  },
+  {
+    match: ["electric", "v-class"],
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Mercedes-Benz_EQV_300_IMG_4871.jpg/1280px-Mercedes-Benz_EQV_300_IMG_4871.jpg",
+  },
+] as const;
+
+const normalizeVehicleImages = (vehicle: Vehicle): Vehicle => {
+  const fingerprint =
+    `${vehicle.name} ${vehicle.type} ${vehicle.description}`.toLowerCase();
+  const override = FLEET_IMAGE_OVERRIDES.find(({ match }) =>
+    match.every((token) => fingerprint.includes(token)),
+  );
+
+  if (!override) {
+    return vehicle;
+  }
+
+  return {
+    ...vehicle,
+    image_url: override.imageUrl,
+    // Use same verified exterior photo for R0 until real interior shots exist.
+    interior_image_url: override.imageUrl,
+  };
+};
+
 const FALLBACK_VEHICLES: Vehicle[] = [
   {
     id: "d290f1ee-6c54-4b01-90e6-d701748f0851",
@@ -76,19 +118,21 @@ export const useVehicles = () => {
 
         // Map database fields to Vehicle interface
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        return data.map((v: any) => ({
-          id: v.id,
-          name: v.name || "",
-          type: v.type || "",
-          description: v.description || "",
-          technical_specs: v.technical_specs || "",
-          passenger_capacity: v.passenger_capacity || 0,
-          luggage_capacity: v.luggage_capacity || 0,
-          base_price: v.base_price || 0,
-          image_url: v.image_url || "",
-          interior_image_url: v.interior_image_url || "",
-          features: v.features || [],
-        }));
+        return data.map((v: any) =>
+          normalizeVehicleImages({
+            id: v.id,
+            name: v.name || "",
+            type: v.type || "",
+            description: v.description || "",
+            technical_specs: v.technical_specs || "",
+            passenger_capacity: v.passenger_capacity || 0,
+            luggage_capacity: v.luggage_capacity || 0,
+            base_price: v.base_price || 0,
+            image_url: v.image_url || "",
+            interior_image_url: v.interior_image_url || "",
+            features: v.features || [],
+          }),
+        );
       } catch (err) {
         console.error("Error fetching vehicles, using fallback:", err);
         return FALLBACK_VEHICLES;

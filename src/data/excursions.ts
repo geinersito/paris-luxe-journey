@@ -27,7 +27,7 @@ export const excursions: Excursion[] = [
     description:
       "Explore the fairytale châteaux of the Loire Valley on a private day trip from Paris with your dedicated chauffeur.",
     image:
-      "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1571301092535-61a418b457dd?auto=format&fit=crop&w=1200&q=80",
     duration: "10-12h",
     durationType: "full-day",
     type: "luxury",
@@ -71,8 +71,7 @@ export const excursions: Excursion[] = [
     title: "Champagne Region",
     description:
       "Discover the prestigious Champagne houses of Épernay and Reims on a private chauffeured day trip from Paris.",
-    image:
-      "https://images.unsplash.com/photo-1528823872057-9c018a7a7553?auto=format&fit=crop&w=1200&q=80",
+    image: "/images/library/excursions/cards/excursion-champagne-800x600.jpg",
     duration: "8h",
     durationType: "full-day",
     type: "luxury",
@@ -117,7 +116,7 @@ export const excursions: Excursion[] = [
     description:
       "Discover the grandeur of the Palace of Versailles on a private day trip from Paris with your dedicated chauffeur.",
     image:
-      "https://images.unsplash.com/photo-1460574283810-2aab119d8511?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1773472224690-2d80ee8ac1f3?auto=format&fit=crop&w=1200&q=80",
     duration: "8h",
     durationType: "full-day",
     type: "luxury",
@@ -163,7 +162,7 @@ export const excursions: Excursion[] = [
     description:
       "Visit Monet's iconic gardens in Giverny and the charming port of Honfleur on a private day trip with your chauffeur.",
     image:
-      "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1758027709220-036dd3e46805?auto=format&fit=crop&w=1200&q=80",
     duration: "10h",
     durationType: "full-day",
     type: "luxury",

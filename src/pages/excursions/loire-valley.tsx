@@ -99,7 +99,7 @@ export default function LoireValleyPage() {
     <div className="min-h-screen bg-background">
       <DestinationHeader
         title={t.loire.title}
-        image="/images/loire-valley.jpg"
+        image="https://images.unsplash.com/photo-1571301092535-61a418b457dd?auto=format&fit=crop&w=1920&q=80"
         distance={t.loire.distance}
         duration={t.loire.duration}
         currentPath="/excursions/loire-valley"

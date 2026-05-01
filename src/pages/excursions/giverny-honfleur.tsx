@@ -103,7 +103,7 @@ export default function GivernyHonfleurPage() {
     <div className="min-h-screen bg-background">
       <DestinationHeader
         title={t.giverny.title}
-        image="/images/giverny.jpg"
+        image="https://images.unsplash.com/photo-1758027709220-036dd3e46805?auto=format&fit=crop&w=1920&q=80"
         distance={t.giverny.distance}
         duration={t.giverny.duration}
         currentPath="/excursions/giverny-honfleur"
