@@ -25,7 +25,8 @@ export function EventsFeed({
   range,
   variant = "full",
   showHeader = true,
-}: EventsFeedProps) {
+  excludeIds = [],
+}: EventsFeedProps & { excludeIds?: string[] }) {
   const { t, i18n } = useTranslation();
   const language = i18n.language as Language;
 
@@ -44,7 +45,8 @@ export function EventsFeed({
     })
     .sort(
       (a, b) => new Date(a.startAt).getTime() - new Date(b.startAt).getTime(),
-    );
+    )
+    .filter((event) => !excludeIds.includes(event.id));
   const generatedAt = new Date(eventsFeedData.generatedAt);
   const daysSinceUpdate = Math.max(
     0,
@@ -54,15 +56,17 @@ export function EventsFeed({
   // Format date according to language
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = {
-      weekday: "short",
-      month: "short",
+      weekday: "long",
       day: "numeric",
+      month: "long",
+      year: "numeric",
       hour: "2-digit",
       minute: "2-digit",
+      hour12: false,
     };
 
     const localeMap = {
-      en: "en-US",
+      en: "en-GB",
       es: "es-ES",
       fr: "fr-FR",
       pt: "pt-PT",
@@ -217,7 +221,7 @@ export function EventsFeed({
               </p>
 
               {/* Source */}
-              <p className="text-xs text-gray-500 text-center pt-2 border-t border-primary/10">
+              <p className="text-sm text-gray-600 text-center pt-2 border-t border-primary/10">
                 {t("events.source", { defaultValue: "Source" })}:{" "}
                 <a
                   href={event.sourceUrl}
