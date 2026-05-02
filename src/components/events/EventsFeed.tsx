@@ -99,9 +99,15 @@ export function EventsFeed({
         </div>
       )}
 
-      {/* Events Grid */}
+      {/* Events Grid — single-card uses full width to avoid isolated narrow card */}
       <div
-        className={`grid gap-8 ${variant === "full" ? "md:grid-cols-2 lg:grid-cols-3" : "md:grid-cols-2"}`}
+        className={`grid gap-8 ${
+          variant === "full"
+            ? events.length === 1
+              ? "grid-cols-1 max-w-xl mx-auto"
+              : "md:grid-cols-2 lg:grid-cols-3"
+            : "md:grid-cols-2"
+        }`}
       >
         {events.map((event) => (
           <div
@@ -220,16 +226,17 @@ export function EventsFeed({
                 })}
               </p>
 
-              {/* Source */}
-              <p className="text-sm text-gray-600 text-center pt-2 border-t border-primary/10">
-                {t("events.source", { defaultValue: "Source" })}:{" "}
+              {/* Source — premium verified attribution */}
+              <p className="text-xs text-muted-foreground/80 text-center pt-2 border-t border-primary/10">
                 <a
                   href={event.sourceUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-medium text-gray-700 underline-offset-2 hover:underline"
+                  className="inline-flex items-center gap-1 hover:text-primary transition-colors"
                 >
-                  {event.sourceName}
+                  <span className="text-primary font-semibold">✓</span>
+                  <span className="font-medium">{event.sourceName}</span>
+                  <ExternalLink className="w-3 h-3 opacity-60" />
                 </a>
               </p>
             </div>

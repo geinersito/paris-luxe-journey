@@ -3,10 +3,17 @@ import { useTranslation } from "react-i18next";
 import { EventsFeed } from "@/components/events/EventsFeed";
 import { EventsTransportFallback } from "@/components/events/EventsTransportFallback";
 import TrustSignals from "@/components/TrustSignals";
-import { Sparkles, MessageCircle, Mail, Car } from "lucide-react";
+import {
+  Sparkles,
+  MessageCircle,
+  Mail,
+  Car,
+  BadgeCheck,
+  ShieldCheck,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState, useMemo } from "react";
+import { useMemo } from "react";
 import {
   buildGenericWhatsAppUrl,
   buildGenericEmailUrl,
@@ -29,14 +36,10 @@ function isFeedStale(): boolean {
   });
 }
 
-type EventsSectionId = "events-week" | "events-month";
-
 export default function Events() {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
   const language = i18n.language;
-  const [activeSection, setActiveSection] =
-    useState<EventsSectionId>("events-week");
 
   const feedIsStale = useMemo(() => isFeedStale(), []);
 
@@ -74,49 +77,6 @@ export default function Events() {
     t("events.pageDescription") ||
     "Discover the best events, concerts, exhibitions and activities happening in Paris this week and month. Book your luxury transfer to any event.";
   const lastUpdatedLabel = `${t("events.updatedOn")} ${formatParisDate(eventsFeedData.generatedAt)}`;
-
-  useEffect(() => {
-    const sectionIds: EventsSectionId[] = ["events-week", "events-month"];
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visibleEntries = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
-
-        const topEntry = visibleEntries[0];
-        if (!topEntry) return;
-
-        setActiveSection(topEntry.target.id as EventsSectionId);
-      },
-      {
-        root: null,
-        threshold: [0.25, 0.4, 0.55],
-        rootMargin: "-20% 0px -50% 0px",
-      },
-    );
-
-    for (const sectionId of sectionIds) {
-      const element = document.getElementById(sectionId);
-      if (element) observer.observe(element);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const scrollToSection = (sectionId: EventsSectionId) => {
-    document.getElementById(sectionId)?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
-  const sectionButtons: Array<{ id: EventsSectionId; label: string }> = [
-    { id: "events-week", label: t("events.thisWeek") || "This Week in Paris" },
-    {
-      id: "events-month",
-      label: t("events.thisMonth") || "This Month in Paris",
-    },
-  ];
 
   const webPageJsonLd = {
     "@context": "https://schema.org",
@@ -166,61 +126,102 @@ export default function Events() {
       </Helmet>
 
       <div className="min-h-screen bg-background">
-        {/* Hero Section */}
-        <section className="relative pt-8 pb-6 md:pt-10 md:pb-8 bg-gradient-to-b from-champagne via-cream to-white">
-          <div className="container mx-auto px-4">
-            {/* Header */}
-            <div className="text-center max-w-4xl mx-auto mb-6">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 rounded-full mb-6">
-                {feedIsStale ? (
-                  <Car className="w-4 h-4 text-primary" />
-                ) : (
-                  <Sparkles className="w-4 h-4 text-primary" />
-                )}
-                <span className="text-sm font-medium text-primary">
+        {/* Hero Section — photographic, matching /excursions design pattern */}
+        <section className="relative h-[340px] md:h-[360px] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src="/images/library/excursions/hero/excursions-hero-paris-eiffel-1920x1080.jpg"
+              alt="Events in Paris"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          <div className="relative z-10 w-full max-w-6xl mx-auto px-4 text-center">
+            <div className="relative mx-auto max-w-4xl px-4 py-4 md:px-6 md:py-5">
+              <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b from-black/55 via-black/25 to-transparent" />
+
+              <div className="relative">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/15 backdrop-blur-sm rounded-full mb-4">
+                  {feedIsStale ? (
+                    <Car className="w-4 h-4 text-white" />
+                  ) : (
+                    <Sparkles className="w-4 h-4 text-white" />
+                  )}
+                  <span className="text-sm font-medium text-white">
+                    {feedIsStale
+                      ? t("events.stalePill") || "Event Transport"
+                      : t("events.liveUpdates") || "Live Updates"}
+                  </span>
+                </div>
+
+                <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-display font-bold mb-3 leading-tight drop-shadow-2xl">
+                  {t("events.heroTitle") || "Events in Paris"}
+                </h1>
+
+                <p className="text-base md:text-lg text-white/95 mb-3 max-w-3xl mx-auto leading-relaxed">
                   {feedIsStale
-                    ? t("events.stalePill") || "Event Transport"
-                    : t("events.liveUpdates") || "Live Updates"}
-                </span>
-              </div>
-
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-secondary mb-6">
-                {t("events.heroTitle") || "Events in Paris"}
-              </h1>
-
-              <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
-                {feedIsStale
-                  ? t("events.fallbackSubtitle") ||
-                    "Plan luxury transport for any event in Paris — fashion shows, exhibitions, concerts, sports fixtures, and business conferences."
-                  : t("events.heroSubtitle") ||
-                    "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style."}
-              </p>
-              {!feedIsStale && (
-                <p className="text-sm text-muted-foreground/90 mb-8">
-                  {lastUpdatedLabel} ·{" "}
-                  {t("events.sourcesVerified") || "Official sources verified"}
+                    ? t("events.fallbackSubtitle") ||
+                      "Plan luxury transport for any event in Paris — fashion shows, exhibitions, concerts, sports fixtures, and business conferences."
+                    : t("events.heroSubtitle") ||
+                      "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style."}
                 </p>
-              )}
 
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="silk-button" asChild>
-                  <a
-                    href={buildGenericWhatsAppUrl(language)}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                {!feedIsStale && (
+                  <p className="text-xs text-white/75 mb-3">
+                    {lastUpdatedLabel} ·{" "}
+                    {t("events.sourcesVerified") || "Official sources verified"}
+                  </p>
+                )}
+
+                {/* Trust chips — matching /excursions pill pattern */}
+                <div className="flex flex-wrap justify-center gap-2 mb-4">
+                  <div className="rounded-full border border-black/10 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                    <BadgeCheck className="w-4 h-4 text-neutral-800" />
+                    <span className="text-neutral-900 text-sm font-semibold">
+                      {t("events.chipChauffeur", {
+                        defaultValue: "Licensed Chauffeur",
+                      })}
+                    </span>
+                  </div>
+                  <div className="rounded-full border border-black/10 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 text-neutral-800" />
+                    <span className="text-neutral-900 text-sm font-semibold">
+                      {t("events.chipVerified", {
+                        defaultValue: "Official Sources Verified",
+                      })}
+                    </span>
+                  </div>
+                  <div className="rounded-full border border-black/10 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                    <MessageCircle className="w-4 h-4 text-neutral-800" />
+                    <span className="text-neutral-900 text-sm font-semibold">
+                      {t("events.chipWhatsapp", {
+                        defaultValue: "WhatsApp Support",
+                      })}
+                    </span>
+                  </div>
+                </div>
+
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row gap-2.5 justify-center">
+                  <Button size="lg" className="silk-button" asChild>
+                    <a
+                      href={buildGenericWhatsAppUrl(language)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <MessageCircle className="w-5 h-5 mr-2" />
+                      {t("events.bookTransfer") || "Get a Ride Quote"}
+                    </a>
+                  </Button>
+                  <Button
+                    size="lg"
+                    variant="outline"
+                    onClick={() => navigate("/blog")}
+                    className="button-outline-gold h-11 px-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
                   >
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    {t("events.bookTransfer") || "Get a Ride Quote"}
-                  </a>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  onClick={() => navigate("/blog")}
-                  className="button-outline-gold"
-                >
-                  {t("events.readGuides") || "Read Travel Guides"}
-                </Button>
+                    {t("events.readGuides") || "Read Travel Guides"}
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
@@ -241,88 +242,69 @@ export default function Events() {
           </section>
         )}
 
-        {/* Events Listing + Quick Navigation */}
+        {/* Trust Signals — before listing, matching /excursions page rhythm */}
+        {!feedIsStale && (
+          <section className="py-6 md:py-8 bg-white">
+            <div className="container mx-auto px-4">
+              <TrustSignals />
+            </div>
+          </section>
+        )}
+
+        {/* Events Listing — full-width, no sidebar */}
         <section className="pt-6 pb-8 md:pt-8 md:pb-10 bg-gradient-to-b from-white via-champagne/30 to-cream">
           <div className="container mx-auto px-4">
             {feedIsStale ? (
               <EventsTransportFallback />
             ) : (
-              <div className="grid grid-cols-1 lg:grid-cols-[220px_minmax(0,1fr)] gap-5 md:gap-6">
-                <aside className="w-full">
-                  <div className="bg-white rounded-lg p-6 shadow-sm lg:sticky lg:top-24">
-                    <h3 className="text-lg font-semibold mb-4">
-                      Browse Events
-                    </h3>
-
-                    <div className="space-y-2">
-                      {sectionButtons.map((section) => (
-                        <button
-                          key={section.id}
-                          type="button"
-                          onClick={() => scrollToSection(section.id)}
-                          className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                            activeSection === section.id
-                              ? "bg-primary text-white font-semibold shadow-md"
-                              : "bg-gray-50 text-gray-700 hover:bg-gray-100"
-                          }`}
-                        >
-                          {section.label}
-                        </button>
-                      ))}
-                    </div>
+              <div className="space-y-10 md:space-y-12">
+                <article id="events-week" className="scroll-mt-24">
+                  <div className="text-center mb-4 md:mb-6">
+                    <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+                      {t("events.thisWeek") || "This Week in Paris"}
+                    </h2>
                   </div>
-                </aside>
-
-                <div className="space-y-10 md:space-y-12">
-                  <article id="events-week" className="scroll-mt-24">
-                    <div className="text-center mb-4 md:mb-6">
-                      <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
-                        {t("events.thisWeek") || "This Week in Paris"}
-                      </h2>
-                    </div>
-                    {hasWeekEvents ? (
-                      <EventsFeed
-                        range="week"
-                        variant="full"
-                        showHeader={false}
-                        excludeIds={weekExcludeIds}
-                      />
-                    ) : (
-                      <p className="text-center text-muted-foreground py-8 italic text-base">
-                        No major events this week — see this month&apos;s
-                        calendar below.
-                      </p>
-                    )}
-                  </article>
-
-                  <article id="events-month" className="scroll-mt-24">
-                    <div className="text-center mb-4 md:mb-6">
-                      <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
-                        {t("events.planAhead") || "Plan Ahead"}
-                      </p>
-                      <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
-                        {t("events.thisMonth") || "This Month in Paris"}
-                      </h2>
-                    </div>
+                  {hasWeekEvents ? (
                     <EventsFeed
-                      range="month"
+                      range="week"
                       variant="full"
                       showHeader={false}
-                      excludeIds={weekQualifiedIds}
+                      excludeIds={weekExcludeIds}
                     />
-                  </article>
-                </div>
+                  ) : (
+                    <p className="text-center text-muted-foreground py-8 italic text-base">
+                      No major events this week — see this month&apos;s calendar
+                      below.
+                    </p>
+                  )}
+                </article>
+
+                <article id="events-month" className="scroll-mt-24">
+                  <div className="text-center mb-4 md:mb-6">
+                    <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+                      {t("events.thisMonth") || "This Month in Paris"}
+                    </h2>
+                  </div>
+                  <EventsFeed
+                    range="month"
+                    variant="full"
+                    showHeader={false}
+                    excludeIds={weekQualifiedIds}
+                  />
+                </article>
               </div>
             )}
           </div>
         </section>
 
-        {/* Trust Signals */}
-        <section className="py-6 md:py-8 bg-white">
-          <div className="container mx-auto px-4">
-            <TrustSignals />
-          </div>
-        </section>
+        {/* Trust Signals for stale/fallback state */}
+        {feedIsStale && (
+          <section className="py-6 md:py-8 bg-white">
+            <div className="container mx-auto px-4">
+              <TrustSignals />
+            </div>
+          </section>
+        )}
 
         {/* CTA Section */}
         <section className="py-10 md:py-12 bg-gradient-to-b from-white to-champagne/30">
