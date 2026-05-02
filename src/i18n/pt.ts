@@ -1122,6 +1122,8 @@ export const pt: Translation = {
     heroTitle: "Eventos em Paris",
     heroSubtitle:
       "Descubra os melhores concertos, exposições, shows e eventos culturais em Paris. Reserve seu transfer de luxo para chegar com estilo.",
+    editorialIntro:
+      "Todos os meses, selecionamos os grandes eventos de Paris para viajantes que querem planear a visita com confiança, desde desporto internacional e moda até aos grandes momentos culturais da cidade. Cada evento inclui detalhes oficiais e um pedido direto de transfer privado para organizar a sua chegada sem atritos.",
     liveUpdates: "Atualizado",
     navigation: "Navegação",
     comingSoon: "Em Breve",
