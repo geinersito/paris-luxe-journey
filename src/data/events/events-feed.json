@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-29T12:00:00Z",
+  "generatedAt": "2026-05-01T12:00:00Z",
   "timezone": "Europe/Paris",
   "thisWeek": [
     {
@@ -93,6 +93,128 @@
       "imageUrl": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=80",
       "category": "concert",
       "isFeatured": false
+    },
+    {
+      "id": "hilma-af-klint-2026",
+      "startAt": "2026-05-06T08:00:00Z",
+      "endAt": "2026-08-30T18:00:00Z",
+      "title": {
+        "en": "Hilma af Klint — Les Peintures du Temple",
+        "es": "Hilma af Klint — Les Peintures du Temple",
+        "fr": "Hilma af Klint — Les Peintures du Temple",
+        "pt": "Hilma af Klint — Les Peintures du Temple"
+      },
+      "description": {
+        "en": "France's first-ever retrospective of Hilma af Klint at the Grand Palais is the defining cultural event of Paris summer 2026. The Galeries nationales are easily reached by private transfer from any Paris hotel or airport, avoiding long queues at the entrance. Transport only — we do not sell museum tickets.",
+        "es": "La primera retrospectiva de Hilma af Klint en Francia en el Grand Palais es el gran evento cultural del verano parisino 2026. Las Galeries nationales son de fácil acceso mediante transfer privado desde cualquier hotel o aeropuerto de París, evitando las largas colas de entrada. Solo transporte — no vendemos entradas de museo.",
+        "fr": "La première rétrospective française de Hilma af Klint au Grand Palais est l'événement culturel majeur de l'été parisien 2026. Les Galeries nationales sont facilement accessibles en transfert privé depuis tout hôtel ou aéroport parisien — en évitant les longues files d'attente. Transport uniquement — nous ne vendons pas de billets de musée.",
+        "pt": "A primeira retrospectiva de Hilma af Klint em França no Grand Palais é o grande evento cultural do verão parisiense 2026. As Galeries nationales são facilmente acessíveis por transfer privado de qualquer hotel ou aeroporto de Paris — evitando as longas filas na entrada. Apenas transporte — não vendemos ingressos de museu."
+      },
+      "venueName": {
+        "en": "Grand Palais — Galeries nationales",
+        "es": "Grand Palais — Galerías nacionales",
+        "fr": "Grand Palais — Galeries nationales",
+        "pt": "Grand Palais — Galerias nacionais"
+      },
+      "district": "8eme",
+      "address": "3 Avenue du Général Eisenhower, 75008 Paris",
+      "eventUrl": "https://www.grandpalais.fr/fr/programme/hilma-af-klint",
+      "sourceName": "Grand Palais",
+      "sourceUrl": "https://www.grandpalais.fr/fr/programme/hilma-af-klint",
+      "imageUrl": "https://images.unsplash.com/photo-1541367777708-7905fe3296c0?auto=format&fit=crop&w=1200&q=80",
+      "category": "exhibition",
+      "isFeatured": true
+    },
+    {
+      "id": "nuit-blanche-2026",
+      "startAt": "2026-06-06T19:00:00Z",
+      "endAt": "2026-06-07T06:00:00Z",
+      "title": {
+        "en": "Nuit Blanche 2026 — 25th Edition",
+        "es": "Nuit Blanche 2026 — 25ª Edición",
+        "fr": "Nuit Blanche 2026 — 25e Édition",
+        "pt": "Nuit Blanche 2026 — 25ª Edição"
+      },
+      "description": {
+        "en": "On the night of 6–7 June, Paris transforms into an open-air contemporary art festival from sunset to dawn across all arrondissements. Road closures and saturated public transport make a private transfer the most comfortable way to navigate the installations across the city. Transport only — we do not sell event tickets.",
+        "es": "En la noche del 6 al 7 de junio, París se convierte en un festival de arte contemporáneo al aire libre de puesta de sol hasta el amanecer en todos los barrios. Los cortes de tráfico y el transporte público saturado hacen del transfer privado la forma más cómoda de recorrer las instalaciones por toda la ciudad. Solo transporte — no vendemos entradas al evento.",
+        "fr": "Dans la nuit du 6 au 7 juin, Paris se transforme en festival d'art contemporain en plein air du coucher du soleil jusqu'à l'aube dans tous les arrondissements. Les fermetures de routes et les transports en commun saturés font du transfert privé le moyen le plus confortable pour naviguer entre les installations. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "Na noite de 6 para 7 de junho, Paris transforma-se num festival de arte contemporânea ao ar livre do pôr do sol até ao amanhecer em todos os bairros. Os bloqueios de tráfego e o transporte público saturado tornam o transfer privado a forma mais confortável de percorrer as instalações pela cidade. Apenas transporte — não vendemos ingressos para o evento."
+      },
+      "venueName": {
+        "en": "Paris – Citywide",
+        "es": "París – Toda la ciudad",
+        "fr": "Paris – Toute la ville",
+        "pt": "Paris – Toda a cidade"
+      },
+      "district": "Paris intra-muros",
+      "eventUrl": "https://parisjetaime.com/evenement/nuit-blanche-paris-a994",
+      "sourceName": "Paris Je T'aime",
+      "sourceUrl": "https://parisjetaime.com/evenement/nuit-blanche-paris-a994",
+      "imageUrl": "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?auto=format&fit=crop&w=1200&q=80",
+      "category": "festival",
+      "isFeatured": false
+    },
+    {
+      "id": "menswear-fashion-week-ss27",
+      "startAt": "2026-06-23T09:00:00Z",
+      "endAt": "2026-06-28T21:00:00Z",
+      "title": {
+        "en": "Paris Menswear Fashion Week — SS 2027",
+        "es": "Semana de la Moda Masculina de París — PV 2027",
+        "fr": "Semaine de la Mode Masculine Paris — PE 2027",
+        "pt": "Semana da Moda Masculina de Paris — PV 2027"
+      },
+      "description": {
+        "en": "Paris Menswear Fashion Week presents Spring/Summer 2027 collections from Louis Vuitton, Dior Men, Hermès and 35+ houses over 6 days. Show-to-show transfers, airport connections and late-night returns — a private chauffeur is the standard for fashion industry professionals. Transport only — we do not sell event tickets or press credentials.",
+        "es": "La Semana de la Moda Masculina de París presenta las colecciones Primavera/Verano 2027 de Louis Vuitton, Dior Men, Hermès y más de 35 marcas en 6 días. Transfers de desfile en desfile, conexiones aeropuerto y regresos nocturnos — el chófer privado es el estándar para los profesionales del sector. Solo transporte — no vendemos entradas ni acreditaciones de prensa.",
+        "fr": "La Semaine de la Mode Masculine de Paris présente les collections Printemps/Été 2027 de Louis Vuitton, Dior Men, Hermès et plus de 35 maisons en 6 jours. Transferts défilé-à-défilé, connexions aéroport et retours tardifs — le chauffeur privé est la norme pour les professionnels du secteur. Transport uniquement — nous ne vendons pas de billets ni d'accréditations presse.",
+        "pt": "A Semana da Moda Masculina de Paris apresenta as coleções Primavera/Verão 2027 de Louis Vuitton, Dior Men, Hermès e mais de 35 marcas em 6 dias. Transfers de desfile em desfile, conexões aeroporto e regressos noturnos — o chauffeur privado é o padrão para os profissionais do setor. Apenas transporte — não vendemos ingressos nem credenciais de imprensa."
+      },
+      "venueName": {
+        "en": "Paris (FHCM venues)",
+        "es": "París (espacios FHCM)",
+        "fr": "Paris (lieux FHCM)",
+        "pt": "Paris (espaços FHCM)"
+      },
+      "district": "Paris",
+      "eventUrl": "https://www.fhcm.paris/en/paris-fashion-week",
+      "sourceName": "Fédération de la Haute Couture et de la Mode",
+      "sourceUrl": "https://www.fhcm.paris/en/paris-fashion-week",
+      "imageUrl": "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1200&q=80",
+      "category": "fashion",
+      "isFeatured": false
+    },
+    {
+      "id": "grandes-eaux-nocturnes-2026",
+      "startAt": "2026-06-06T21:00:00Z",
+      "endAt": "2026-09-19T23:59:00Z",
+      "title": {
+        "en": "Grandes Eaux Nocturnes — Versailles 2026",
+        "es": "Grandes Eaux Nocturnes — Versalles 2026",
+        "fr": "Grandes Eaux Nocturnes — Versailles 2026",
+        "pt": "Grandes Eaux Nocturnes — Versalhes 2026"
+      },
+      "description": {
+        "en": "Every Saturday evening from June to September, the gardens of Versailles come alive with illuminated fountains, baroque music and a fireworks finale over the Grand Canal. Regular public transport stops before midnight — a private return transfer from Versailles to Paris is the most reliable option for late-night guests. Transport only — we do not sell event tickets.",
+        "es": "Cada sábado por la noche de junio a septiembre, los jardines de Versalles cobran vida con fuentes iluminadas, música barroca y fuegos artificiales sobre el Gran Canal. El transporte público regular termina antes de medianoche — un transfer privado de regreso desde Versalles a París es la opción más fiable para los visitantes nocturnos. Solo transporte — no vendemos entradas al evento.",
+        "fr": "Chaque samedi soir de juin à septembre, les jardins de Versailles s'illuminent avec fontaines en fête, musique baroque et feu d'artifice sur le Grand Canal. Les transports en commun réguliers s'arrêtent avant minuit — un transfert privé de retour de Versailles vers Paris est l'option la plus fiable pour les visiteurs en soirée. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "Todas as noites de sábado de junho a setembro, os jardins de Versalhes ganham vida com fontes iluminadas, música barroca e fogos de artifício sobre o Grande Canal. O transporte público regular termina antes da meia-noite — um transfer privado de regresso de Versalhes a Paris é a opção mais fiável para os visitantes noturnos. Apenas transporte — não vendemos ingressos para o evento."
+      },
+      "venueName": {
+        "en": "Gardens of the Palace of Versailles",
+        "es": "Jardines del Palacio de Versalles",
+        "fr": "Jardins du Château de Versailles",
+        "pt": "Jardins do Palácio de Versalhes"
+      },
+      "district": "Versailles",
+      "address": "Place d'Armes, 78000 Versailles",
+      "eventUrl": "https://www.chateauversailles-spectacles.fr/evenement/les-grandes-eaux-nocturnes-2026/",
+      "sourceName": "Château de Versailles Spectacles",
+      "sourceUrl": "https://www.chateauversailles-spectacles.fr/evenement/les-grandes-eaux-nocturnes-2026/",
+      "imageUrl": "https://images.unsplash.com/photo-1569949380661-6c3f4a4faf89?auto=format&fit=crop&w=1200&q=80",
+      "category": "festival",
+      "isFeatured": true
     }
   ],
   "thisMonth": [
@@ -278,6 +400,220 @@
       "imageUrl": "https://images.unsplash.com/photo-1721005248725-d96343a0bbe4?auto=format&fit=crop&w=1200&q=80",
       "category": "festival",
       "isFeatured": true
+    },
+    {
+      "id": "hilma-af-klint-2026",
+      "startAt": "2026-05-06T08:00:00Z",
+      "endAt": "2026-08-30T18:00:00Z",
+      "title": {
+        "en": "Hilma af Klint — Les Peintures du Temple",
+        "es": "Hilma af Klint — Les Peintures du Temple",
+        "fr": "Hilma af Klint — Les Peintures du Temple",
+        "pt": "Hilma af Klint — Les Peintures du Temple"
+      },
+      "description": {
+        "en": "France's first-ever retrospective of Hilma af Klint at the Grand Palais is the defining cultural event of Paris summer 2026. The Galeries nationales are easily reached by private transfer from any Paris hotel or airport, avoiding long queues at the entrance. Transport only — we do not sell museum tickets.",
+        "es": "La primera retrospectiva de Hilma af Klint en Francia en el Grand Palais es el gran evento cultural del verano parisino 2026. Las Galeries nationales son de fácil acceso mediante transfer privado desde cualquier hotel o aeropuerto de París, evitando las largas colas de entrada. Solo transporte — no vendemos entradas de museo.",
+        "fr": "La première rétrospective française de Hilma af Klint au Grand Palais est l'événement culturel majeur de l'été parisien 2026. Les Galeries nationales sont facilement accessibles en transfert privé depuis tout hôtel ou aéroport parisien — en évitant les longues files d'attente. Transport uniquement — nous ne vendons pas de billets de musée.",
+        "pt": "A primeira retrospectiva de Hilma af Klint em França no Grand Palais é o grande evento cultural do verão parisiense 2026. As Galeries nationales são facilmente acessíveis por transfer privado de qualquer hotel ou aeroporto de Paris — evitando as longas filas na entrada. Apenas transporte — não vendemos ingressos de museu."
+      },
+      "venueName": {
+        "en": "Grand Palais — Galeries nationales",
+        "es": "Grand Palais — Galerías nacionales",
+        "fr": "Grand Palais — Galeries nationales",
+        "pt": "Grand Palais — Galerias nacionais"
+      },
+      "district": "8eme",
+      "address": "3 Avenue du Général Eisenhower, 75008 Paris",
+      "eventUrl": "https://www.grandpalais.fr/fr/programme/hilma-af-klint",
+      "sourceName": "Grand Palais",
+      "sourceUrl": "https://www.grandpalais.fr/fr/programme/hilma-af-klint",
+      "imageUrl": "https://images.unsplash.com/photo-1541367777708-7905fe3296c0?auto=format&fit=crop&w=1200&q=80",
+      "category": "exhibition",
+      "isFeatured": true
+    },
+    {
+      "id": "nuit-blanche-2026",
+      "startAt": "2026-06-06T19:00:00Z",
+      "endAt": "2026-06-07T06:00:00Z",
+      "title": {
+        "en": "Nuit Blanche 2026 — 25th Edition",
+        "es": "Nuit Blanche 2026 — 25ª Edición",
+        "fr": "Nuit Blanche 2026 — 25e Édition",
+        "pt": "Nuit Blanche 2026 — 25ª Edição"
+      },
+      "description": {
+        "en": "On the night of 6–7 June, Paris transforms into an open-air contemporary art festival from sunset to dawn across all arrondissements. Road closures and saturated public transport make a private transfer the most comfortable way to navigate the installations across the city. Transport only — we do not sell event tickets.",
+        "es": "En la noche del 6 al 7 de junio, París se convierte en un festival de arte contemporáneo al aire libre de puesta de sol hasta el amanecer en todos los barrios. Los cortes de tráfico y el transporte público saturado hacen del transfer privado la forma más cómoda de recorrer las instalaciones por toda la ciudad. Solo transporte — no vendemos entradas al evento.",
+        "fr": "Dans la nuit du 6 au 7 juin, Paris se transforme en festival d'art contemporain en plein air du coucher du soleil jusqu'à l'aube dans tous les arrondissements. Les fermetures de routes et les transports en commun saturés font du transfert privé le moyen le plus confortable pour naviguer entre les installations. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "Na noite de 6 para 7 de junho, Paris transforma-se num festival de arte contemporânea ao ar livre do pôr do sol até ao amanhecer em todos os bairros. Os bloqueios de tráfego e o transporte público saturado tornam o transfer privado a forma mais confortável de percorrer as instalações pela cidade. Apenas transporte — não vendemos ingressos para o evento."
+      },
+      "venueName": {
+        "en": "Paris – Citywide",
+        "es": "París – Toda la ciudad",
+        "fr": "Paris – Toute la ville",
+        "pt": "Paris – Toda a cidade"
+      },
+      "district": "Paris intra-muros",
+      "eventUrl": "https://parisjetaime.com/evenement/nuit-blanche-paris-a994",
+      "sourceName": "Paris Je T'aime",
+      "sourceUrl": "https://parisjetaime.com/evenement/nuit-blanche-paris-a994",
+      "imageUrl": "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?auto=format&fit=crop&w=1200&q=80",
+      "category": "festival",
+      "isFeatured": false
+    },
+    {
+      "id": "menswear-fashion-week-ss27",
+      "startAt": "2026-06-23T09:00:00Z",
+      "endAt": "2026-06-28T21:00:00Z",
+      "title": {
+        "en": "Paris Menswear Fashion Week — SS 2027",
+        "es": "Semana de la Moda Masculina de París — PV 2027",
+        "fr": "Semaine de la Mode Masculine Paris — PE 2027",
+        "pt": "Semana da Moda Masculina de Paris — PV 2027"
+      },
+      "description": {
+        "en": "Paris Menswear Fashion Week presents Spring/Summer 2027 collections from Louis Vuitton, Dior Men, Hermès and 35+ houses over 6 days. Show-to-show transfers, airport connections and late-night returns — a private chauffeur is the standard for fashion industry professionals. Transport only — we do not sell event tickets or press credentials.",
+        "es": "La Semana de la Moda Masculina de París presenta las colecciones Primavera/Verano 2027 de Louis Vuitton, Dior Men, Hermès y más de 35 marcas en 6 días. Transfers de desfile en desfile, conexiones aeropuerto y regresos nocturnos — el chófer privado es el estándar para los profesionales del sector. Solo transporte — no vendemos entradas ni acreditaciones de prensa.",
+        "fr": "La Semaine de la Mode Masculine de Paris présente les collections Printemps/Été 2027 de Louis Vuitton, Dior Men, Hermès et plus de 35 maisons en 6 jours. Transferts défilé-à-défilé, connexions aéroport et retours tardifs — le chauffeur privé est la norme pour les professionnels du secteur. Transport uniquement — nous ne vendons pas de billets ni d'accréditations presse.",
+        "pt": "A Semana da Moda Masculina de Paris apresenta as coleções Primavera/Verão 2027 de Louis Vuitton, Dior Men, Hermès e mais de 35 marcas em 6 dias. Transfers de desfile em desfile, conexões aeroporto e regressos noturnos — o chauffeur privado é o padrão para os profissionais do setor. Apenas transporte — não vendemos ingressos nem credenciais de imprensa."
+      },
+      "venueName": {
+        "en": "Paris (FHCM venues)",
+        "es": "París (espacios FHCM)",
+        "fr": "Paris (lieux FHCM)",
+        "pt": "Paris (espaços FHCM)"
+      },
+      "district": "Paris",
+      "eventUrl": "https://www.fhcm.paris/en/paris-fashion-week",
+      "sourceName": "Fédération de la Haute Couture et de la Mode",
+      "sourceUrl": "https://www.fhcm.paris/en/paris-fashion-week",
+      "imageUrl": "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&w=1200&q=80",
+      "category": "fashion",
+      "isFeatured": false
+    },
+    {
+      "id": "grandes-eaux-nocturnes-2026",
+      "startAt": "2026-06-06T21:00:00Z",
+      "endAt": "2026-09-19T23:59:00Z",
+      "title": {
+        "en": "Grandes Eaux Nocturnes — Versailles 2026",
+        "es": "Grandes Eaux Nocturnes — Versalles 2026",
+        "fr": "Grandes Eaux Nocturnes — Versailles 2026",
+        "pt": "Grandes Eaux Nocturnes — Versalhes 2026"
+      },
+      "description": {
+        "en": "Every Saturday evening from June to September, the gardens of Versailles come alive with illuminated fountains, baroque music and a fireworks finale over the Grand Canal. Regular public transport stops before midnight — a private return transfer from Versailles to Paris is the most reliable option for late-night guests. Transport only — we do not sell event tickets.",
+        "es": "Cada sábado por la noche de junio a septiembre, los jardines de Versalles cobran vida con fuentes iluminadas, música barroca y fuegos artificiales sobre el Gran Canal. El transporte público regular termina antes de medianoche — un transfer privado de regreso desde Versalles a París es la opción más fiable para los visitantes nocturnos. Solo transporte — no vendemos entradas al evento.",
+        "fr": "Chaque samedi soir de juin à septembre, les jardins de Versailles s'illuminent avec fontaines en fête, musique baroque et feu d'artifice sur le Grand Canal. Les transports en commun réguliers s'arrêtent avant minuit — un transfert privé de retour de Versailles vers Paris est l'option la plus fiable pour les visiteurs en soirée. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "Todas as noites de sábado de junho a setembro, os jardins de Versalhes ganham vida com fontes iluminadas, música barroca e fogos de artifício sobre o Grande Canal. O transporte público regular termina antes da meia-noite — um transfer privado de regresso de Versalhes a Paris é a opção mais fiável para os visitantes noturnos. Apenas transporte — não vendemos ingressos para o evento."
+      },
+      "venueName": {
+        "en": "Gardens of the Palace of Versailles",
+        "es": "Jardines del Palacio de Versalles",
+        "fr": "Jardins du Château de Versailles",
+        "pt": "Jardins do Palácio de Versalhes"
+      },
+      "district": "Versailles",
+      "address": "Place d'Armes, 78000 Versailles",
+      "eventUrl": "https://www.chateauversailles-spectacles.fr/evenement/les-grandes-eaux-nocturnes-2026/",
+      "sourceName": "Château de Versailles Spectacles",
+      "sourceUrl": "https://www.chateauversailles-spectacles.fr/evenement/les-grandes-eaux-nocturnes-2026/",
+      "imageUrl": "https://images.unsplash.com/photo-1569949380661-6c3f4a4faf89?auto=format&fit=crop&w=1200&q=80",
+      "category": "festival",
+      "isFeatured": true
+    },
+    {
+      "id": "womenswear-fashion-week-ss27",
+      "startAt": "2026-09-28T09:00:00Z",
+      "endAt": "2026-10-06T21:00:00Z",
+      "title": {
+        "en": "Paris Womenswear Fashion Week — SS 2027",
+        "es": "Semana de la Moda Femenina de París — PV 2027",
+        "fr": "Semaine de la Mode Féminine Paris — PE 2027",
+        "pt": "Semana da Moda Feminina de Paris — PV 2027"
+      },
+      "description": {
+        "en": "The year's most media-saturated Paris Fashion Week presents Spring/Summer 2027 womenswear from Dior, Chanel, Saint Laurent and 100+ houses over 9 days. Late September is the busiest premium week of the year — door-to-door private transfers are essential for navigating simultaneous shows across the city. Transport only — we do not sell event tickets or press credentials.",
+        "es": "La Semana de la Moda Femenina de París más mediática del año presenta las colecciones Primavera/Verano 2027 de Dior, Chanel, Saint Laurent y más de 100 marcas en 9 días. Finales de septiembre es la semana premium más intensa del año — los transfers privados puerta a puerta son imprescindibles para asistir a desfiles simultáneos en toda la ciudad. Solo transporte — no vendemos entradas ni acreditaciones de prensa.",
+        "fr": "La semaine de la mode féminine la plus médiatisée de Paris présente les collections Printemps/Été 2027 de Dior, Chanel, Saint Laurent et plus de 100 maisons en 9 jours. Fin septembre est la semaine premium la plus chargée de l'année — les transferts privés porte-à-porte sont indispensables pour enchaîner les défilés simultanés à travers la ville. Transport uniquement — nous ne vendons pas de billets ni d'accréditations presse.",
+        "pt": "A Semana da Moda Feminina de Paris mais mediatizada do ano apresenta as coleções Primavera/Verão 2027 de Dior, Chanel, Saint Laurent e mais de 100 marcas em 9 dias. Final de setembro é a semana premium mais intensa do ano — os transfers privados porta-a-porta são essenciais para assistir a desfiles simultâneos pela cidade. Apenas transporte — não vendemos ingressos nem credenciais de imprensa."
+      },
+      "venueName": {
+        "en": "Paris (FHCM venues)",
+        "es": "París (espacios FHCM)",
+        "fr": "Paris (lieux FHCM)",
+        "pt": "Paris (espaços FHCM)"
+      },
+      "district": "Paris",
+      "eventUrl": "https://www.fhcm.paris/en/paris-fashion-week",
+      "sourceName": "Fédération de la Haute Couture et de la Mode",
+      "sourceUrl": "https://www.fhcm.paris/en/paris-fashion-week",
+      "imageUrl": "https://images.unsplash.com/photo-1469334031218-e382a71b716b?auto=format&fit=crop&w=1200&q=80",
+      "category": "fashion",
+      "isFeatured": true
+    },
+    {
+      "id": "art-basel-paris-2026",
+      "startAt": "2026-10-20T09:00:00Z",
+      "endAt": "2026-10-25T19:00:00Z",
+      "title": {
+        "en": "Art Basel Paris 2026",
+        "es": "Art Basel París 2026",
+        "fr": "Art Basel Paris 2026",
+        "pt": "Art Basel Paris 2026"
+      },
+      "description": {
+        "en": "Art Basel Paris brings 200+ galleries from 40+ countries under the Grand Palais glass roof for the year's most important contemporary art event. VIP previews, gallery-to-gallery circuits across satellite venues, and late dinners — a private chauffeur is the standard for collectors attending the fair. Transport only — we do not sell event tickets or gallery access.",
+        "es": "Art Basel París reúne a más de 200 galerías de más de 40 países bajo la cúpula de vidrio del Grand Palais para el evento de arte contemporáneo más importante del año. Previews VIP, circuitos entre galerías y cenas tardías — el chófer privado es el estándar para los coleccionistas que asisten a la feria. Solo transporte — no vendemos entradas ni acceso a galerías.",
+        "fr": "Art Basel Paris réunit plus de 200 galeries de plus de 40 pays sous la verrière du Grand Palais pour le rendez-vous d'art contemporain le plus important de l'année. Previews VIP, circuits galerie-à-galerie sur les sites satellites et dîners tardifs — le chauffeur privé est la norme pour les collectionneurs participant à la foire. Transport uniquement — nous ne vendons pas de billets ni d'accès aux galeries.",
+        "pt": "A Art Basel Paris reúne mais de 200 galerias de mais de 40 países sob o telhado de vidro do Grand Palais para o evento de arte contemporânea mais importante do ano. Pré-visualizações VIP, circuitos de galeria em galeria pelos venues satélite e jantares noturnos — o chauffeur privado é o padrão para colecionadores presentes na feira. Apenas transporte — não vendemos ingressos nem acesso a galerias."
+      },
+      "venueName": {
+        "en": "Grand Palais",
+        "es": "Grand Palais",
+        "fr": "Grand Palais",
+        "pt": "Grand Palais"
+      },
+      "district": "8eme",
+      "address": "3 Avenue du Général Eisenhower, 75008 Paris",
+      "eventUrl": "https://www.artbasel.com/paris",
+      "sourceName": "Art Basel",
+      "sourceUrl": "https://www.artbasel.com/paris",
+      "imageUrl": "https://images.unsplash.com/photo-1578321272176-b7bbc0679853?auto=format&fit=crop&w=1200&q=80",
+      "category": "exhibition",
+      "isFeatured": true
+    },
+    {
+      "id": "paris-photo-2026",
+      "startAt": "2026-11-12T10:00:00Z",
+      "endAt": "2026-11-15T19:00:00Z",
+      "title": {
+        "en": "Paris Photo 2026 — 29th Edition",
+        "es": "Paris Photo 2026 — 29ª Edición",
+        "fr": "Paris Photo 2026 — 29e Édition",
+        "pt": "Paris Photo 2026 — 29ª Edição"
+      },
+      "description": {
+        "en": "The world's largest photography fair celebrates its 29th edition at the Grand Palais, with 230+ galleries and publishers from 33 countries. A private transfer from hotel to Grand Palais avoids taxi queues and ensures punctual arrival for VIP openings and collector appointments. Transport only — we do not sell event tickets.",
+        "es": "La feria de fotografía más grande del mundo celebra su 29ª edición en el Grand Palais, con más de 230 galerías y editoriales de 33 países. Un transfer privado del hotel al Grand Palais evita las colas de taxi y garantiza una llegada puntual a las inauguraciones VIP y citas de coleccionistas. Solo transporte — no vendemos entradas al evento.",
+        "fr": "La plus grande foire de photographie au monde fête sa 29e édition au Grand Palais, avec 230+ galeries et éditeurs de 33 pays. Un transfert privé hôtel-Grand Palais évite les files de taxi et garantit une arrivée ponctuelle aux vernissages VIP et rendez-vous collectionneurs. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "A maior feira de fotografia do mundo celebra a sua 29ª edição no Grand Palais, com mais de 230 galerias e editoras de 33 países. Um transfer privado hotel-Grand Palais evita as filas de táxi e garante uma chegada pontual às inaugurações VIP e encontros de colecionadores. Apenas transporte — não vendemos ingressos para o evento."
+      },
+      "venueName": {
+        "en": "Grand Palais",
+        "es": "Grand Palais",
+        "fr": "Grand Palais",
+        "pt": "Grand Palais"
+      },
+      "district": "8eme",
+      "address": "3 Avenue du Général Eisenhower, 75008 Paris",
+      "eventUrl": "https://www.parisphoto.com/en-gb.html",
+      "sourceName": "Paris Photo",
+      "sourceUrl": "https://www.parisphoto.com/en-gb.html",
+      "imageUrl": "https://images.unsplash.com/photo-1514510979989-798d7524cd74?auto=format&fit=crop&w=1200&q=80",
+      "category": "exhibition",
+      "isFeatured": false
     }
   ]
 }
