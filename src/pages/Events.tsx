@@ -126,8 +126,8 @@ export default function Events() {
       </Helmet>
 
       <div className="min-h-screen bg-background">
-        {/* Hero Section — photographic, matching /excursions design pattern */}
-        <section className="relative h-[340px] md:h-[360px] flex items-center justify-center overflow-hidden">
+        {/* Hero Section — wider banner treatment to reduce boxed/card feeling */}
+        <section className="relative min-h-[380px] md:min-h-[420px] flex items-center justify-center overflow-hidden">
           <div className="absolute inset-0">
             <img
               src="/images/library/excursions/hero/excursions-hero-paris-eiffel-1920x1080.jpg"
@@ -135,94 +135,91 @@ export default function Events() {
               className="w-full h-full object-cover"
             />
           </div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/45" />
 
-          <div className="relative z-10 w-full max-w-6xl mx-auto px-4 text-center">
-            <div className="relative mx-auto max-w-4xl px-4 py-4 md:px-6 md:py-5">
-              <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b from-black/55 via-black/25 to-transparent" />
+          <div className="relative z-10 w-full max-w-7xl mx-auto px-4 text-center">
+            <div className="mx-auto max-w-5xl px-2 md:px-4">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/15 backdrop-blur-sm rounded-full mb-5">
+                {feedIsStale ? (
+                  <Car className="w-4 h-4 text-white" />
+                ) : (
+                  <Sparkles className="w-4 h-4 text-white" />
+                )}
+                <span className="text-sm font-medium text-white">
+                  {feedIsStale
+                    ? t("events.stalePill") || "Event Transport"
+                    : t("events.liveUpdates") || "Live Updates"}
+                </span>
+              </div>
 
-              <div className="relative">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-white/15 backdrop-blur-sm rounded-full mb-4">
-                  {feedIsStale ? (
-                    <Car className="w-4 h-4 text-white" />
-                  ) : (
-                    <Sparkles className="w-4 h-4 text-white" />
-                  )}
-                  <span className="text-sm font-medium text-white">
-                    {feedIsStale
-                      ? t("events.stalePill") || "Event Transport"
-                      : t("events.liveUpdates") || "Live Updates"}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-display font-bold mb-4 leading-tight drop-shadow-2xl">
+                {t("events.heroTitle") || "Events in Paris"}
+              </h1>
+
+              <p className="text-base md:text-lg text-white/95 mb-5 max-w-4xl mx-auto leading-relaxed">
+                {feedIsStale
+                  ? t("events.fallbackSubtitle") ||
+                    "Plan luxury transport for any event in Paris — fashion shows, exhibitions, concerts, sports fixtures, and business conferences."
+                  : t("events.heroSubtitle") ||
+                    "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style."}
+              </p>
+
+              {/* Trust chips — keep strong horizontal rhythm before CTAs */}
+              <div className="flex flex-wrap justify-center gap-2.5 mb-5">
+                <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                  <BadgeCheck className="w-4 h-4 text-neutral-800" />
+                  <span className="text-neutral-900 text-sm md:text-base font-semibold">
+                    {t("events.chipChauffeur", {
+                      defaultValue: "Licensed Chauffeur",
+                    })}
                   </span>
                 </div>
-
-                <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-display font-bold mb-3 leading-tight drop-shadow-2xl">
-                  {t("events.heroTitle") || "Events in Paris"}
-                </h1>
-
-                <p className="text-base md:text-lg text-white/95 mb-3 max-w-3xl mx-auto leading-relaxed">
-                  {feedIsStale
-                    ? t("events.fallbackSubtitle") ||
-                      "Plan luxury transport for any event in Paris — fashion shows, exhibitions, concerts, sports fixtures, and business conferences."
-                    : t("events.heroSubtitle") ||
-                      "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style."}
-                </p>
-
-                {!feedIsStale && (
-                  <p className="text-xs text-white/75 mb-3">
-                    {lastUpdatedLabel} ·{" "}
-                    {t("events.sourcesVerified") || "Official sources verified"}
-                  </p>
-                )}
-
-                {/* Trust chips — matching /excursions pill pattern */}
-                <div className="flex flex-wrap justify-center gap-2 mb-4">
-                  <div className="rounded-full border border-black/10 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-sm flex items-center gap-2">
-                    <BadgeCheck className="w-4 h-4 text-neutral-800" />
-                    <span className="text-neutral-900 text-sm font-semibold">
-                      {t("events.chipChauffeur", {
-                        defaultValue: "Licensed Chauffeur",
-                      })}
-                    </span>
-                  </div>
-                  <div className="rounded-full border border-black/10 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-sm flex items-center gap-2">
-                    <ShieldCheck className="w-4 h-4 text-neutral-800" />
-                    <span className="text-neutral-900 text-sm font-semibold">
-                      {t("events.chipVerified", {
-                        defaultValue: "Official Sources Verified",
-                      })}
-                    </span>
-                  </div>
-                  <div className="rounded-full border border-black/10 bg-white/90 px-4 py-2 shadow-sm backdrop-blur-sm flex items-center gap-2">
-                    <MessageCircle className="w-4 h-4 text-neutral-800" />
-                    <span className="text-neutral-900 text-sm font-semibold">
-                      {t("events.chipWhatsapp", {
-                        defaultValue: "WhatsApp Support",
-                      })}
-                    </span>
-                  </div>
+                <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 text-neutral-800" />
+                  <span className="text-neutral-900 text-sm md:text-base font-semibold">
+                    {t("events.chipVerified", {
+                      defaultValue: "Official Sources Verified",
+                    })}
+                  </span>
                 </div>
-
-                {/* CTAs */}
-                <div className="flex flex-col sm:flex-row gap-2.5 justify-center">
-                  <Button size="lg" className="silk-button" asChild>
-                    <a
-                      href={buildGenericWhatsAppUrl(language)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <MessageCircle className="w-5 h-5 mr-2" />
-                      {t("events.bookTransfer") || "Get a Ride Quote"}
-                    </a>
-                  </Button>
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    onClick={() => navigate("/blog")}
-                    className="button-outline-gold h-11 px-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
-                  >
-                    {t("events.readGuides") || "Read Travel Guides"}
-                  </Button>
+                <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                  <MessageCircle className="w-4 h-4 text-neutral-800" />
+                  <span className="text-neutral-900 text-sm md:text-base font-semibold">
+                    {t("events.chipWhatsapp", {
+                      defaultValue: "WhatsApp Support",
+                    })}
+                  </span>
                 </div>
               </div>
+
+              <div className="flex flex-col sm:flex-row gap-2.5 justify-center">
+                <Button size="lg" className="silk-button" asChild>
+                  <a
+                    href={buildGenericWhatsAppUrl(language)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MessageCircle className="w-5 h-5 mr-2" />
+                    {t("events.bookTransfer") || "Get a Ride Quote"}
+                  </a>
+                </Button>
+                <Button
+                  size="lg"
+                  variant="outline"
+                  onClick={() => navigate("/blog")}
+                  className="button-outline-gold h-11 px-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
+                >
+                  {t("events.readGuides") || "Read Travel Guides"}
+                </Button>
+              </div>
+
+              {!feedIsStale && (
+                <p className="mt-4 text-xs text-white/70">
+                  {lastUpdatedLabel} ·{" "}
+                  {t("events.sourcesVerified") || "Official sources verified"}
+                </p>
+              )}
             </div>
           </div>
         </section>
