@@ -1133,6 +1133,8 @@ export const fr: Translation = {
     heroTitle: "Événements à Paris",
     heroSubtitle:
       "Découvrez les meilleurs concerts, expositions, spectacles et événements culturels à Paris. Réservez votre transfert de luxe pour arriver avec style.",
+    editorialIntro:
+      "Chaque mois, nous sélectionnons les grands événements parisiens pour les voyageurs qui veulent organiser leur visite avec confiance, du sport international et de la mode aux grands rendez-vous culturels de la ville. Chaque fiche inclut les détails officiels et une demande directe de transfert privé pour préparer votre arrivée sans friction.",
     liveUpdates: "Actualisé",
     navigation: "Navigation",
     comingSoon: "Bientôt",

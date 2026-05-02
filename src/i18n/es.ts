@@ -1129,6 +1129,8 @@ export const es: Translation = {
     heroTitle: "Eventos en París",
     heroSubtitle:
       "Descubre los mejores conciertos, exposiciones, espectáculos y eventos culturales en París. Reserva tu transfer de lujo para llegar con estilo.",
+    editorialIntro:
+      "Cada mes seleccionamos los grandes eventos de París para viajeros que quieren planificar su visita con confianza: desde deporte internacional y moda hasta momentos culturales de la ciudad. Cada evento incluye detalles oficiales y una solicitud directa de traslado privado para organizar tu llegada sin fricción.",
     liveUpdates: "Actualizado",
     navigation: "Navegación",
     comingSoon: "Próximamente",

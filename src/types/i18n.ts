@@ -814,6 +814,7 @@ export interface Translation {
     pageDescription: string;
     heroTitle: string;
     heroSubtitle: string;
+    editorialIntro: string;
     liveUpdates: string;
     navigation: string;
     comingSoon: string;

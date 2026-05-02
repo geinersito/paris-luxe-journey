@@ -153,7 +153,7 @@ export default function Events() {
                 </span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-6xl text-white font-display font-bold mb-4 leading-tight drop-shadow-2xl">
+              <h1 className="text-4xl md:text-5xl lg:text-5xl text-white font-display font-bold mb-4 leading-tight drop-shadow-2xl">
                 {t("events.heroTitle") || "Events in Paris"}
               </h1>
 
@@ -229,11 +229,8 @@ export default function Events() {
           <section className="py-5 bg-white border-b border-primary/10">
             <div className="container mx-auto px-4">
               <p className="max-w-3xl mx-auto text-center text-base text-muted-foreground leading-relaxed">
-                Each month, we curate major Paris events for travellers who want
-                to plan their visit with confidence — from international sport
-                and fashion to city-wide cultural moments. Every listing
-                includes official details and a direct chauffeur quote request,
-                so you can organise your arrival without friction.
+                {t("events.editorialIntro") ||
+                  "Each month, we curate major Paris events for travellers who want to plan their visit with confidence — from international sport and fashion to city-wide cultural moments. Every listing includes official details and a direct chauffeur quote request, so you can organise your arrival without friction."}
               </p>
             </div>
           </section>
@@ -241,11 +238,11 @@ export default function Events() {
 
         {/* Trust Signals — before listing, matching /excursions page rhythm */}
         {!feedIsStale && (
-          <section className="py-6 md:py-8 bg-white">
+          <div className="py-6 md:py-8 bg-white">
             <div className="container mx-auto px-4">
               <TrustSignals />
             </div>
-          </section>
+          </div>
         )}
 
         {/* Events Listing — full-width, no sidebar */}
@@ -296,11 +293,11 @@ export default function Events() {
 
         {/* Trust Signals for stale/fallback state */}
         {feedIsStale && (
-          <section className="py-6 md:py-8 bg-white">
+          <div className="py-6 md:py-8 bg-white">
             <div className="container mx-auto px-4">
               <TrustSignals />
             </div>
-          </section>
+          </div>
         )}
 
         {/* CTA Section */}

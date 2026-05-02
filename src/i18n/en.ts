@@ -1096,6 +1096,8 @@ export const en: Translation = {
     heroTitle: "Events in Paris",
     heroSubtitle:
       "Discover the best concerts, exhibitions, shows and cultural events happening in Paris. Book your luxury transfer to arrive in style.",
+    editorialIntro:
+      "Each month, we curate major Paris events for travellers who want to plan their visit with confidence — from international sport and fashion to city-wide cultural moments. Every listing includes official details and a direct chauffeur quote request, so you can organise your arrival without friction.",
     liveUpdates: "Updated",
     navigation: "Navigation",
     comingSoon: "Coming Soon",
