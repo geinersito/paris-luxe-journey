@@ -39,6 +39,33 @@ export default function Events() {
     useState<EventsSectionId>("events-week");
 
   const feedIsStale = useMemo(() => isFeedStale(), []);
+
+  const weekThreshold = useMemo(() => {
+    const d = new Date();
+    d.setDate(d.getDate() + 7);
+    return d;
+  }, []);
+
+  const allWeekEventIds = useMemo(
+    () => eventsFeedData.thisWeek.map((e) => e.id),
+    [],
+  );
+
+  const weekQualifiedIds = useMemo(
+    () =>
+      eventsFeedData.thisWeek
+        .filter((e) => new Date(e.startAt) <= weekThreshold)
+        .map((e) => e.id),
+    [weekThreshold],
+  );
+
+  const weekExcludeIds = useMemo(
+    () => allWeekEventIds.filter((id) => !weekQualifiedIds.includes(id)),
+    [allWeekEventIds, weekQualifiedIds],
+  );
+
+  const hasWeekEvents = weekQualifiedIds.length > 0;
+
   const siteOrigin = getSiteOrigin();
   const canonicalUrl = `${siteOrigin}/events`;
   const pageTitle =
@@ -199,6 +226,21 @@ export default function Events() {
           </div>
         </section>
 
+        {/* Editorial Intro */}
+        {!feedIsStale && (
+          <section className="py-5 bg-white border-b border-primary/10">
+            <div className="container mx-auto px-4">
+              <p className="max-w-3xl mx-auto text-center text-base text-muted-foreground leading-relaxed">
+                Each month, we curate major Paris events for travellers who want
+                to plan their visit with confidence — from international sport
+                and fashion to city-wide cultural moments. Every listing
+                includes official details and a direct chauffeur quote request,
+                so you can organise your arrival without friction.
+              </p>
+            </div>
+          </section>
+        )}
+
         {/* Events Listing + Quick Navigation */}
         <section className="pt-6 pb-8 md:pt-8 md:pb-10 bg-gradient-to-b from-white via-champagne/30 to-cream">
           <div className="container mx-auto px-4">
@@ -209,7 +251,7 @@ export default function Events() {
                 <aside className="w-full">
                   <div className="bg-white rounded-lg p-6 shadow-sm lg:sticky lg:top-24">
                     <h3 className="text-lg font-semibold mb-4">
-                      {t("events.navigation") || "Navigation"}
+                      Browse Events
                     </h3>
 
                     <div className="space-y-2">
@@ -234,18 +276,23 @@ export default function Events() {
                 <div className="space-y-10 md:space-y-12">
                   <article id="events-week" className="scroll-mt-24">
                     <div className="text-center mb-4 md:mb-6">
-                      <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
-                        {t("events.comingSoon") || "Coming Soon"}
-                      </p>
                       <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
                         {t("events.thisWeek") || "This Week in Paris"}
                       </h2>
                     </div>
-                    <EventsFeed
-                      range="week"
-                      variant="full"
-                      showHeader={false}
-                    />
+                    {hasWeekEvents ? (
+                      <EventsFeed
+                        range="week"
+                        variant="full"
+                        showHeader={false}
+                        excludeIds={weekExcludeIds}
+                      />
+                    ) : (
+                      <p className="text-center text-muted-foreground py-8 italic text-base">
+                        No major events this week — see this month&apos;s
+                        calendar below.
+                      </p>
+                    )}
                   </article>
 
                   <article id="events-month" className="scroll-mt-24">
@@ -261,6 +308,7 @@ export default function Events() {
                       range="month"
                       variant="full"
                       showHeader={false}
+                      excludeIds={weekQualifiedIds}
                     />
                   </article>
                 </div>

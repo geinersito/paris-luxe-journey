@@ -58,8 +58,8 @@
       "district": "15eme",
       "address": "1 Place de la Porte de Versailles, 75015 Paris",
       "eventUrl": "https://vivatechnology.com/",
-      "sourceName": "TechUp Connect",
-      "sourceUrl": "https://connect.tech-up.org/en_GB/event/vivatech-2026-11/page/intro-vt",
+      "sourceName": "VivaTech",
+      "sourceUrl": "https://vivatechnology.com/",
       "imageUrl": "https://images.unsplash.com/photo-1762968269894-1d7e1ce8894e?auto=format&fit=crop&w=1200&q=80",
       "category": "festival",
       "isFeatured": false
@@ -90,7 +90,7 @@
       "eventUrl": "https://www.sortiraparis.com/actualites/fete-de-la-musique/guides/53382-fete-de-la-musique-2026-a-paris-et-en-ile-de-france",
       "sourceName": "Sortir à Paris",
       "sourceUrl": "https://www.sortiraparis.com/actualites/fete-de-la-musique/guides/53382-fete-de-la-musique-2026-a-paris-et-en-ile-de-france",
-      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=80",
       "category": "concert",
       "isFeatured": false
     }
@@ -152,8 +152,8 @@
       "district": "15eme",
       "address": "1 Place de la Porte de Versailles, 75015 Paris",
       "eventUrl": "https://vivatechnology.com/",
-      "sourceName": "TechUp Connect",
-      "sourceUrl": "https://connect.tech-up.org/en_GB/event/vivatech-2026-11/page/intro-vt",
+      "sourceName": "VivaTech",
+      "sourceUrl": "https://vivatechnology.com/",
       "imageUrl": "https://images.unsplash.com/photo-1762968269894-1d7e1ce8894e?auto=format&fit=crop&w=1200&q=80",
       "category": "festival",
       "isFeatured": false
@@ -184,7 +184,7 @@
       "eventUrl": "https://www.sortiraparis.com/actualites/fete-de-la-musique/guides/53382-fete-de-la-musique-2026-a-paris-et-en-ile-de-france",
       "sourceName": "Sortir à Paris",
       "sourceUrl": "https://www.sortiraparis.com/actualites/fete-de-la-musique/guides/53382-fete-de-la-musique-2026-a-paris-et-en-ile-de-france",
-      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "imageUrl": "https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?auto=format&fit=crop&w=1200&q=80",
       "category": "concert",
       "isFeatured": false
     },
@@ -193,10 +193,10 @@
       "startAt": "2026-07-04T11:00:00Z",
       "endAt": "2026-08-30T22:00:00Z",
       "title": {
-        "en": "Paris Plages 2026 (provisional dates)",
-        "es": "Paris Plages 2026 (fechas provisionales)",
-        "fr": "Paris Plages 2026 (dates prévisionnelles)",
-        "pt": "Paris Plages 2026 (datas provisórias)"
+        "en": "Paris Plages 2026",
+        "es": "Paris Plages 2026",
+        "fr": "Paris Plages 2026",
+        "pt": "Paris Plages 2026"
       },
       "description": {
         "en": "Paris transforms its Seine riverbanks and city canals into temporary beaches each summer — a popular destination for families, visitors and groups. Dates are provisional per Ville de Paris. A private transfer is the easiest way to reach Parc Rives de Seine or Bassin de la Villette with children and luggage.",
@@ -272,9 +272,9 @@
       },
       "district": "8eme / Champ-de-Mars",
       "address": "Avenue des Champs-Élysées, 75008 Paris",
-      "eventUrl": "https://www.paris.fr/",
+      "eventUrl": "https://www.paris.fr/pages/le-14-juillet-a-paris-4637",
       "sourceName": "Ville de Paris",
-      "sourceUrl": "https://www.paris.fr/",
+      "sourceUrl": "https://www.paris.fr/pages/le-14-juillet-a-paris-4637",
       "imageUrl": "https://images.unsplash.com/photo-1721005248725-d96343a0bbe4?auto=format&fit=crop&w=1200&q=80",
       "category": "festival",
       "isFeatured": true
