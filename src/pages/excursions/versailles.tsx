@@ -35,7 +35,7 @@ export default function VersaillesPage() {
   const tours = [
     {
       id: "versailles-tour-1",
-      name: "Private Chauffeur to Versailles",
+      name: t.versailles.tourName,
       duration: "8 hours",
       price: 590,
       maxParticipants: 8,

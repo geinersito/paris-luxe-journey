@@ -829,6 +829,7 @@ export const fr: Translation = {
       "Le Château de Versailles, site du patrimoine mondial de l'UNESCO",
     distance: "23 km de Paris",
     duration: "4-12 heures",
+    tourName: "Chauffeur Privé pour Versailles",
     highlights: ["Galerie des Glaces", "Jardins Royaux", "Grands Appartements"],
     whyVisit: [
       "Site du patrimoine mondial de l'UNESCO",
@@ -1127,6 +1128,9 @@ export const fr: Translation = {
       privacy:
         "Nous respectons votre vie privée. Désabonnez-vous à tout moment.",
     },
+    shareArticle: "Partager cet article",
+    copyLink: "Copier le lien",
+    ctaBody: "Prix fixes, sans frais cachés et véhicules haut de gamme.",
   },
   events: {
     pageTitle: "Événements à Paris | Paris Elite Services",

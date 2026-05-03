@@ -622,6 +622,7 @@ export const en: Translation = {
     description: "The Palace of Versailles, a UNESCO World Heritage site",
     distance: "23 km from Paris",
     duration: "4-12 hours",
+    tourName: "Private Chauffeur to Versailles",
     highlights: ["Hall of Mirrors", "Royal Gardens", "Grand Apartments"],
     whyVisit: [
       "UNESCO World Heritage Site",
@@ -1090,6 +1091,9 @@ export const en: Translation = {
       subscribe: "Subscribe",
       privacy: "We respect your privacy. Unsubscribe at any time.",
     },
+    shareArticle: "Share this article",
+    copyLink: "Copy Link",
+    ctaBody: "Fixed prices, no hidden fees, and premium vehicles.",
   },
   events: {
     pageTitle: "Events in Paris | Paris Elite Services",

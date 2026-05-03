@@ -743,6 +743,7 @@ export const pt: Translation = {
     description: "O Palácio de Versalhes, patrimônio mundial da UNESCO",
     distance: "23 km de Paris",
     duration: "4-12 horas",
+    tourName: "Motorista Privado para Versalhes",
     highlights: ["Galeria dos Espelhos", "Jardins Reais", "Aposentos Reais"],
     whyVisit: [
       "Patrimônio Mundial da UNESCO",
@@ -1116,6 +1117,9 @@ export const pt: Translation = {
       privacy:
         "Respeitamos sua privacidade. Cancele a inscrição a qualquer momento.",
     },
+    shareArticle: "Compartilhar este artigo",
+    copyLink: "Copiar Link",
+    ctaBody: "Preços fixos, sem taxas ocultas e veículos premium.",
   },
   events: {
     pageTitle: "Eventos em Paris | Paris Elite Services",

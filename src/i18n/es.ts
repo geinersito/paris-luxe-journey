@@ -745,6 +745,7 @@ export const es: Translation = {
     description: "El Palacio de Versalles, patrimonio mundial de la UNESCO",
     distance: "23 km desde París",
     duration: "4-12 horas",
+    tourName: "Chófer Privado a Versalles",
     highlights: [
       "Galería de los Espejos",
       "Jardines Reales",
@@ -1123,6 +1124,9 @@ export const es: Translation = {
       privacy:
         "Respetamos tu privacidad. Cancela tu suscripción en cualquier momento.",
     },
+    shareArticle: "Compartir este artículo",
+    copyLink: "Copiar enlace",
+    ctaBody: "Precios fijos, sin cargos ocultos y vehículos de primera clase.",
   },
   events: {
     pageTitle: "Eventos en París | Paris Elite Services",
