@@ -66,6 +66,8 @@ export interface Translation {
     bullet3: string;
     ctaPrimary: string;
     ctaSecondary: string;
+    labelPickup: string;
+    labelDropoff: string;
     selectPickup: string;
     selectDropoff: string;
     getInstantQuote: string;
