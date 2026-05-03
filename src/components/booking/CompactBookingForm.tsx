@@ -134,7 +134,7 @@ export function CompactBookingForm({
     <div className="glass-card-premium p-5 md:p-7 w-full shadow-luxury hover:shadow-luxury-hover transition-all duration-500 overflow-hidden">
       <div className="flex flex-col lg:flex-row gap-4 items-end">
         {/* Pickup Location */}
-        <div className="flex-1 min-w-[120px] w-full">
+        <div className="flex-1 w-full">
           <label className="block text-xs font-bold text-secondary mb-2 flex items-center gap-1.5 uppercase tracking-wide whitespace-nowrap">
             <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
             {t.hero.labelPickup}
@@ -176,7 +176,7 @@ export function CompactBookingForm({
         </div>
 
         {/* Dropoff Location */}
-        <div className="flex-1 min-w-[120px] w-full">
+        <div className="flex-1 w-full">
           <label className="block text-xs font-bold text-secondary mb-2 flex items-center gap-1.5 uppercase tracking-wide whitespace-nowrap">
             <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
             {t.hero.labelDropoff}

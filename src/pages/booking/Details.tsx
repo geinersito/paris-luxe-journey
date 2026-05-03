@@ -30,7 +30,26 @@ interface PassengerInfo {
 const BookingDetails = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+
+  const formatDisplayDate = (date?: string) => {
+    if (!date) return "";
+    const parsed = new Date(`${date}T00:00:00`);
+    if (Number.isNaN(parsed.getTime())) return date;
+    const locale =
+      language === "fr"
+        ? "fr-FR"
+        : language === "pt"
+          ? "pt-PT"
+          : language === "en"
+            ? "en-GB"
+            : "es-ES";
+    return parsed.toLocaleDateString(locale, {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    });
+  };
   const location = useLocation();
   const { user } = useAuth();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -366,7 +385,7 @@ const BookingDetails = () => {
                   {bookingData?.date && (
                     <div className="flex items-center gap-2">
                       <Calendar className="w-4 h-4 text-primary shrink-0" />
-                      <span>{bookingData.date}</span>
+                      <span>{formatDisplayDate(bookingData.date)}</span>
                     </div>
                   )}
                   {bookingData?.time && (
@@ -380,7 +399,9 @@ const BookingDetails = () => {
                       <Users className="w-4 h-4 text-primary shrink-0" />
                       <span>
                         {bookingData.passengers}{" "}
-                        {t.booking.success?.passenger || "pax"}
+                        {Number(bookingData.passengers) === 1
+                          ? t.booking.success.passenger
+                          : t.booking.success.passengers.toLowerCase()}
                       </span>
                     </div>
                   )}
