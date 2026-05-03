@@ -166,6 +166,68 @@ export const blogPosts: BlogPostMeta[] = [
     },
   },
   {
+    id: "12",
+    slug: "paris-airport-to-disneyland-transfer-guide-families",
+    title: {
+      en: "Paris Airport to Disneyland Transfer Guide for Families",
+      es: "Guía de Transfer del Aeropuerto de París a Disneyland para Familias",
+      fr: "Guide de Transfert de l'Aéroport de Paris à Disneyland pour les Familles",
+      pt: "Transfer do Aeroporto de Paris para a Disneyland: guia para famílias brasileiras",
+    },
+    description: {
+      en: "A practical guide for families traveling from CDG or Orly to Disneyland Paris with children, luggage, and strollers. Compare train, taxi, app, and private transfer options.",
+      es: "Guía práctica para familias que viajan desde CDG u Orly a Disneyland París con niños, equipaje y cochecito. Compara tren, taxi, apps y transfer privado.",
+      fr: "Guide pratique pour les familles voyageant de CDG ou Orly à Disneyland Paris avec enfants, bagages et poussette. Comparez train, taxi, applis et transfert privé.",
+      pt: "Guia prático para famílias brasileiras saindo de CDG ou Orly para a Disneyland Paris com crianças, malas e carrinho. Compare trem, táxi, aplicativo e transfer privado.",
+    },
+    category: "transport",
+    author: createAuthor("Pierre Dubois", true),
+    publishedAt: "2026-05-03T13:00:00Z",
+    updatedAt: "2026-05-03T13:00:00Z",
+    readingTime: 10,
+    featured: false,
+    image: {
+      url: "https://images.unsplash.com/photo-1516550893923-42d28e5677af?w=1200&h=630&fit=crop",
+      alt: {
+        en: "Family travel with luggage on the way to Disneyland Paris",
+        es: "Viaje familiar con equipaje rumbo a Disneyland París",
+        fr: "Voyage en famille avec bagages vers Disneyland Paris",
+        pt: "Viagem em família com malas a caminho da Disneyland Paris",
+      },
+    },
+    tags: [
+      "disneyland paris transfer",
+      "cdg disneyland",
+      "orly disneyland",
+      "family airport transfer",
+      "private chauffeur paris",
+      "brazilian families paris",
+    ],
+    ctaVariant: "airportTransfer",
+    seo: {
+      metaTitle: {
+        en: "Paris Airport to Disneyland Transfer 2026 | Family Guide",
+        es: "Transfer Aeropuerto de París a Disneyland 2026 | Guía para Familias",
+        fr: "Transfert Aéroport de Paris à Disneyland 2026 | Guide Famille",
+        pt: "Transfer Aeroporto Paris para Disneyland 2026 | Guia para Famílias",
+      },
+      metaDescription: {
+        en: "How families should plan transfers from CDG or Orly to Disneyland Paris: luggage, children, strollers, transport choices, and when private transfer is the easiest option.",
+        es: "Cómo deben planificar las familias el traslado desde CDG u Orly a Disneyland París: equipaje, niños, cochecito, opciones de transporte y cuándo el transfer privado es la opción más simple.",
+        fr: "Comment les familles doivent planifier leur transfert de CDG ou Orly vers Disneyland Paris : bagages, enfants, poussette, options de transport et quand le transfert privé est la solution la plus simple.",
+        pt: "Como famílias devem planejar o transfer de CDG ou Orly para a Disneyland Paris: malas, crianças, carrinho, opções de transporte e quando o transfer privado facilita mais.",
+      },
+      keywords: [
+        "disneyland paris transfer",
+        "cdg to disneyland paris",
+        "orly to disneyland paris",
+        "family airport transfer paris",
+        "private transfer disneyland paris",
+        "brazilian families disneyland paris",
+      ],
+    },
+  },
+  {
     id: "2",
     slug: "vtc-vs-taxi-vs-uber-paris",
     title: {
