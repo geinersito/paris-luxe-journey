@@ -1,96 +1,292 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { DestinationHeader } from "@/components/destination/DestinationHeader";
 import { DestinationNavigation } from "@/components/destination/DestinationNavigation";
 import { DestinationContent } from "@/components/destination/DestinationContent";
 import { DestinationSidebar } from "@/components/destination/DestinationSidebar";
-import { TourCard } from "@/components/TourCard";
-import { excursions } from "@/data/excursions";
-import { getExcursionFaqItems } from "@/data/excursions/faq-content";
+import { Button } from "@/components/ui/button";
+import { loireGuideContent } from "@/data/excursions/loire-guide";
 
 export default function LoireValleyPage() {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = React.useState("description");
-  const [selectedTour, setSelectedTour] = React.useState<string | null>(null);
 
-  const loireData = t.loire;
-  const excursionData = excursions.find((e) => e.id === "loire-valley");
+  const guide = loireGuideContent[language];
 
   const navigationItems = [
-    { id: "description", label: t.loire.navigation.description },
-    { id: "tours", label: t.loire.navigation.tours },
-    { id: "map", label: t.loire.navigation.map },
-    { id: "events", label: t.loire.navigation.events },
-    { id: "faq", label: t.loire.navigation.faq },
+    { id: "description", label: guide.navigation.description },
+    { id: "tours", label: guide.navigation.tours },
+    { id: "map", label: guide.navigation.map },
+    { id: "events", label: guide.navigation.events },
+    { id: "faq", label: guide.navigation.faq },
   ];
 
   const handleSectionChange = (sectionId: string) => {
     setActiveSection(sectionId);
   };
 
-  const faqItems = getExcursionFaqItems(language, t.loire.title);
+  const renderCta = (title: string, body: string, buttonLabel: string) => (
+    <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-6 md:p-8 my-8">
+      <h4 className="text-2xl font-bold text-foreground mb-3">{title}</h4>
+      <p className="text-muted-foreground mb-5">{body}</p>
+      <Button onClick={() => navigate("/booking")} size="lg">
+        {buttonLabel}
+      </Button>
+    </div>
+  );
+
+  const sidebarTours = (
+    <div className="space-y-4">
+      <div className="rounded-2xl border border-border bg-card p-5 shadow-sm">
+        <h3 className="text-xl font-bold mb-2">{guide.sidebar.title}</h3>
+        <p className="text-sm text-muted-foreground">{guide.sidebar.note}</p>
+      </div>
+
+      {guide.sidebar.cards.map((card) => (
+        <div
+          key={card.title}
+          className="rounded-2xl border border-border bg-card p-5 shadow-sm"
+        >
+          <div className="flex items-start justify-between gap-4 mb-3">
+            <div>
+              <h4 className="text-lg font-bold text-foreground">
+                {card.title}
+              </h4>
+              <p className="text-sm text-muted-foreground">{card.duration}</p>
+            </div>
+            <span className="text-base font-semibold text-primary">
+              {card.priceLabel}
+            </span>
+          </div>
+          <p className="text-sm text-muted-foreground mb-4">
+            {card.description}
+          </p>
+          <ul className="space-y-2 mb-4">
+            {card.includes.map((item) => (
+              <li
+                key={item}
+                className="text-sm text-muted-foreground flex gap-2"
+              >
+                <span className="text-primary">•</span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <Button className="w-full" onClick={() => navigate("/booking")}>
+            {card.button}
+          </Button>
+        </div>
+      ))}
+    </div>
+  );
 
   const content = {
     description: (
-      <div>
-        <h3 className="text-2xl font-bold mb-4">{loireData.title}</h3>
-        <p className="mb-4">{loireData.description}</p>
-        <h4 className="text-xl font-semibold mb-2">Highlights:</h4>
-        <ul className="list-disc list-inside mb-4">
-          {loireData.highlights.map((highlight, index) => (
-            <li key={index}>{highlight}</li>
-          ))}
-        </ul>
-        <div className="mt-6">
-          <h4 className="text-xl font-semibold mb-2">Why Visit:</h4>
-          <ul className="list-disc list-inside mb-4">
-            {loireData.whyVisit.map((reason, index) => (
-              <li key={index}>{reason}</li>
+      <div className="space-y-8">
+        <section>
+          <h2 className="text-3xl font-bold mb-4">{guide.overviewTitle}</h2>
+          <p className="text-muted-foreground leading-7 mb-6">{guide.intro}</p>
+          <h3 className="text-2xl font-semibold mb-4">{guide.whyVisitTitle}</h3>
+          <ul className="space-y-3">
+            {guide.whyVisitPoints.map((reason) => (
+              <li
+                key={reason}
+                className="rounded-xl bg-muted/40 px-4 py-3 text-muted-foreground leading-7"
+              >
+                {reason}
+              </li>
             ))}
           </ul>
-        </div>
+        </section>
+
+        <section>
+          <h3 className="text-2xl font-semibold mb-4">
+            {guide.regionChoiceTitle}
+          </h3>
+          <p className="text-muted-foreground leading-7 mb-5">
+            {guide.regionChoiceIntro}
+          </p>
+          <div className="grid gap-4 md:grid-cols-3">
+            {guide.regionChoices.map((choice) => (
+              <div
+                key={choice.title}
+                className="rounded-2xl border border-border bg-card p-5 shadow-sm"
+              >
+                <h4 className="text-lg font-semibold mb-2">{choice.title}</h4>
+                <p className="text-sm text-muted-foreground leading-6">
+                  {choice.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <h3 className="text-2xl font-semibold mb-4">
+            {guide.firstStopsTitle}
+          </h3>
+          <p className="text-muted-foreground leading-7 mb-5">
+            {guide.firstStopsIntro}
+          </p>
+          <div className="grid gap-4 md:grid-cols-3">
+            {guide.firstStops.map((stop) => (
+              <div
+                key={stop.title}
+                className="rounded-2xl border border-border bg-card p-5 shadow-sm"
+              >
+                <h4 className="text-lg font-semibold mb-2">{stop.title}</h4>
+                <p className="text-sm text-muted-foreground leading-6">
+                  {stop.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section>
+          <h3 className="text-2xl font-semibold mb-4">
+            {guide.itineraryTitle}
+          </h3>
+          <p className="text-muted-foreground leading-7 mb-5">
+            {guide.itineraryIntro}
+          </p>
+          <ol className="space-y-3">
+            {guide.itinerarySteps.map((step, index) => (
+              <li
+                key={step}
+                className="rounded-xl border border-border bg-card px-4 py-4 shadow-sm"
+              >
+                <span className="font-semibold text-primary mr-2">
+                  {index + 1}.
+                </span>
+                <span className="text-muted-foreground leading-7">{step}</span>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        {renderCta(guide.midCta.title, guide.midCta.body, guide.midCta.button)}
       </div>
     ),
     tours: (
-      <div>
-        <h3 className="text-2xl font-bold mb-4">{t.loire.navigation.tours}</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-          {excursionData?.tours.map((tour) => (
-            <TourCard
-              key={tour.id}
-              title={tour.name}
-              description={`${t.loire.title} - ${tour.duration}`}
-              duration={tour.duration}
-              price={tour.price}
-              includes={tour.includes}
-            />
-          ))}
-        </div>
+      <div className="space-y-8">
+        <section>
+          <h2 className="text-3xl font-bold mb-4">{guide.visitOptionsTitle}</h2>
+          <p className="text-muted-foreground leading-7 mb-6">
+            {guide.visitOptionsIntro}
+          </p>
+          <div className="grid gap-5 md:grid-cols-2">
+            <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+              <h3 className="text-xl font-semibold mb-3">
+                {guide.halfDayTitle}
+              </h3>
+              <p className="text-muted-foreground leading-7">
+                {guide.halfDayBody}
+              </p>
+            </div>
+            <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+              <h3 className="text-xl font-semibold mb-3">
+                {guide.fullDayTitle}
+              </h3>
+              <p className="text-muted-foreground leading-7">
+                {guide.fullDayBody}
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <h3 className="text-2xl font-semibold mb-4">
+            {guide.chauffeurTitle}
+          </h3>
+          <p className="text-muted-foreground leading-7 mb-5">
+            {guide.chauffeurIntro}
+          </p>
+          <ul className="space-y-3">
+            {guide.chauffeurPoints.map((point) => (
+              <li
+                key={point}
+                className="rounded-xl bg-muted/40 px-4 py-3 text-muted-foreground leading-7"
+              >
+                {point}
+              </li>
+            ))}
+          </ul>
+        </section>
       </div>
     ),
     map: (
-      <div>
-        <h3 className="text-2xl font-bold mb-4">{t.loire.navigation.map}</h3>
-        <p>Interactive map will be here.</p>
+      <div className="space-y-6">
+        <section>
+          <h2 className="text-3xl font-bold mb-4">{guide.gettingThereTitle}</h2>
+          <p className="text-muted-foreground leading-7 mb-6">
+            {guide.gettingThereIntro}
+          </p>
+          <div className="grid gap-4 md:grid-cols-3">
+            {guide.gettingThereOptions.map((option) => (
+              <div
+                key={option.title}
+                className="rounded-2xl border border-border bg-card p-5 shadow-sm"
+              >
+                <h3 className="text-lg font-semibold mb-2">{option.title}</h3>
+                <p className="text-sm text-muted-foreground leading-6">
+                  {option.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     ),
     events: (
-      <div>
-        <h3 className="text-2xl font-bold mb-4">{t.loire.navigation.events}</h3>
-        <p>Upcoming events in Loire Valley.</p>
+      <div className="space-y-6">
+        <section>
+          <h2 className="text-3xl font-bold mb-4">{guide.practicalTitle}</h2>
+          <p className="text-muted-foreground leading-7 mb-6">
+            {guide.practicalIntro}
+          </p>
+          <div className="space-y-4">
+            {guide.practicalTips.map((tip) => (
+              <div
+                key={tip.title}
+                className="rounded-2xl border border-border bg-card p-5 shadow-sm"
+              >
+                <h3 className="text-lg font-semibold mb-2">{tip.title}</h3>
+                <p className="text-sm text-muted-foreground leading-6">
+                  {tip.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
       </div>
     ),
     faq: (
-      <div>
-        <h3 className="text-2xl font-bold mb-4">{t.loire.navigation.faq}</h3>
-        <div className="space-y-4">
-          {faqItems.map((item) => (
-            <div key={item.question}>
-              <h5 className="font-semibold mb-2">{item.question}</h5>
-              <p className="text-gray-600">{item.answer}</p>
-            </div>
-          ))}
-        </div>
+      <div className="space-y-8">
+        <section>
+          <h2 className="text-3xl font-bold mb-4">{guide.faqTitle}</h2>
+          <div className="space-y-4">
+            {guide.faqItems.map((item) => (
+              <div
+                key={item.question}
+                className="rounded-2xl border border-border bg-card p-5 shadow-sm"
+              >
+                <h3 className="text-lg font-semibold mb-2">{item.question}</h3>
+                <p className="text-sm text-muted-foreground leading-6">
+                  {item.answer}
+                </p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {renderCta(
+          guide.finalCta.title,
+          guide.finalCta.body,
+          guide.finalCta.button,
+        )}
       </div>
     ),
   };
@@ -98,16 +294,16 @@ export default function LoireValleyPage() {
   return (
     <div className="min-h-screen bg-background">
       <DestinationHeader
-        title={t.loire.title}
+        title={guide.title}
         image="https://images.unsplash.com/photo-1571301092535-61a418b457dd?auto=format&fit=crop&w=1920&q=80"
-        distance={t.loire.distance}
-        duration={t.loire.duration}
+        distance={guide.distance}
+        duration={guide.duration}
         currentPath="/excursions/loire-valley"
       />
 
       <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8 grid grid-cols-12 gap-8">
         <div className="col-span-12 lg:col-span-3">
-          <DestinationSidebar tours={content.tours}>
+          <DestinationSidebar tours={sidebarTours}>
             <DestinationNavigation
               items={navigationItems}
               activeSection={activeSection}
