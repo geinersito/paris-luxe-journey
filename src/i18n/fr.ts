@@ -66,7 +66,7 @@ export const fr: Translation = {
     subtitle:
       "Événements, excursions et escapades privées avec votre chauffeur VTC agréé. Prix fixe, 24/7, sans surprises.",
     proofline: "",
-    langProof: "Français · Español · English",
+    langProof: "Français · Español · English · Português",
     bullet1: "Chauffeur VTC agréé",
     bullet2: "Prix fixe, sans surprises",
     bullet3: "Disponible 24/7",

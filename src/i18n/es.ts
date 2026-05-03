@@ -65,7 +65,7 @@ export const es: Translation = {
     subtitle:
       "Eventos, excursiones y escapadas privadas con tu propio chófer homologado. Precio fijo, 24/7, sin sorpresas.",
     proofline: "",
-    langProof: "Español · English · Français",
+    langProof: "Español · English · Français · Português",
     bullet1: "Chófer VTC homologado",
     bullet2: "Precio fijo, sin sorpresas",
     bullet3: "Disponible 24/7",

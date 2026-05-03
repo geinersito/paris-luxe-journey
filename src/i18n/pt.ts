@@ -65,7 +65,7 @@ export const pt: Translation = {
     subtitle:
       "Eventos, excursões e passeios privados com o seu próprio chauffeur licenciado. Preço fixo, 24/7, sem surpresas.",
     proofline: "",
-    langProof: "Português · Español · English",
+    langProof: "Português · Español · English · Français",
     bullet1: "Chauffeur VTC licenciado",
     bullet2: "Preço fixo, sem surpresas",
     bullet3: "Disponível 24/7",
@@ -1183,8 +1183,8 @@ export const pt: Translation = {
     officialDetails: "Detalhes Oficiais",
     source: "Fonte",
     getQuote: "Pedir Orçamento",
-    whatsappMicrocopy: "Respondemos rápido no WhatsApp",
-    ctaWhatsApp: "Pedir Orçamento pelo WhatsApp",
+    whatsappMicrocopy: "Atendimento em português. Respondemos rapidamente.",
+    ctaWhatsApp: "Fale pelo WhatsApp 🇧🇷",
     ctaEmail: "Envie-nos um Email",
     fallbackTitle: "Serviço de Motorista Privado para Eventos em Paris",
     fallbackSubtitle:
