@@ -121,7 +121,7 @@ export const excursions: Excursion[] = [
     duration: "8h",
     durationType: "full-day",
     type: "luxury",
-    price: 590,
+    price: 320,
     link: "/excursions/versailles",
     highlights: [
       "Hall of Mirrors and Royal Apartments",
@@ -135,7 +135,7 @@ export const excursions: Excursion[] = [
         id: "versailles-classic",
         name: "Private Day Trip — Versailles",
         duration: "8 hours",
-        price: 590,
+        price: 320,
         includes: [
           "Private chauffeur transport",
           "Flexible itinerary",

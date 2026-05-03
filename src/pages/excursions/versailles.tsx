@@ -37,7 +37,7 @@ export default function VersaillesPage() {
       id: "versailles-tour-1",
       name: t.versailles.tourName,
       duration: "8 hours",
-      price: 590,
+      price: 320,
       maxParticipants: 8,
       startTimes: ["09:00", "10:00"],
       includes: [

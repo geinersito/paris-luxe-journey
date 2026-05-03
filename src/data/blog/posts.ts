@@ -203,7 +203,7 @@ The Palace of Versailles is one of the most magnificent royal residences in the 
 ## Pricing
 
 **Private Chauffeur Service:**
-- Half-Day (4 hours): €280
+- Half-Day (4 hours): €320
 - Full-Day (8 hours): €480
 
 **Not Included:**
