@@ -49,7 +49,7 @@ export default function Home() {
     },
   });
 
-  const canonicalUrl = `${siteOrigin}/${language}`;
+  const canonicalUrl = siteOrigin;
 
   const handleCtaClickCapture = (event: React.MouseEvent<HTMLDivElement>) => {
     const target = event.target as HTMLElement | null;
