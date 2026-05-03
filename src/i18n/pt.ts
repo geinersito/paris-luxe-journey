@@ -1120,6 +1120,39 @@ export const pt: Translation = {
     shareArticle: "Compartilhar este artigo",
     copyLink: "Copiar Link",
     ctaBody: "Preços fixos, sem taxas ocultas e veículos premium.",
+    cta: {
+      generic: {
+        heading: "Pronto para reservar seu transfer?",
+        body: "Preços fixos, sem taxas ocultas e veículos premium para sua viagem em Paris.",
+        button: "Reservar agora",
+      },
+      airportTransfer: {
+        heading: "Prefere um transfer do aeroporto com preço fixo?",
+        body: "Reserve um motorista privado de ou para CDG, Orly ou Beauvais com orçamento claro antes da viagem.",
+        button: "Reservar transfer",
+      },
+      transportComparison: {
+        heading:
+          "Quer o conforto de um motorista privado depois de comparar as opções?",
+        body: "Escolha preço fixo, motorista profissional e recolha direta em vez de decidir entre táxi, app ou trem.",
+        button: "Pedir orçamento",
+      },
+      cityGuide: {
+        heading: "Vai fazer várias paradas em Paris?",
+        body: "Simplifique seu itinerário com um motorista privado e uma única reserva para seus deslocamentos pela cidade.",
+        button: "Planejar trajeto",
+      },
+      eventLogistics: {
+        heading: "Vai a um evento em Paris?",
+        body: "Chegue no horário com um motorista privado para estádios, desfiles, concertos e retorno noturno.",
+        button: "Reservar transfer",
+      },
+      excursion: {
+        heading: "Planeja uma excursão privada saindo de Paris?",
+        body: "Viaje com conforto em uma excursão com motorista e um orçamento fixo adaptado ao seu horário.",
+        button: "Planejar excursão",
+      },
+    },
   },
   events: {
     pageTitle: "Eventos em Paris | Paris Elite Services",

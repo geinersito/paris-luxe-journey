@@ -76,6 +76,7 @@ export const blogPosts: BlogPostMeta[] = [
       "roissybus",
       "paris transport",
     ],
+    ctaVariant: "airportTransfer",
     seo: {
       metaTitle: {
         en: "CDG to Paris Transport Guide 2025 | All Options Compared",
@@ -137,6 +138,7 @@ export const blogPosts: BlogPostMeta[] = [
       "vtc paris",
       "taxi regulations",
     ],
+    ctaVariant: "transportComparison",
     seo: {
       metaTitle: {
         en: "VTC vs Taxi vs Uber Paris 2025 | Complete Comparison Guide",
@@ -196,6 +198,7 @@ export const blogPosts: BlogPostMeta[] = [
       "beauvais airport",
       "paris transfer fees",
     ],
+    ctaVariant: "airportTransfer",
     seo: {
       metaTitle: {
         en: "Paris Airport Transfer Cost 2025 | CDG, Orly, Beauvais Prices",
@@ -258,6 +261,7 @@ export const blogPosts: BlogPostMeta[] = [
       "paris attractions",
       "paris travel tips",
     ],
+    ctaVariant: "cityGuide",
     seo: {
       metaTitle: {
         en: "Complete Paris Guide 2025 | First-Time Visitor's Essential Guide",
@@ -319,6 +323,7 @@ export const blogPosts: BlogPostMeta[] = [
       "montmartre",
       "paris planning",
     ],
+    ctaVariant: "cityGuide",
     seo: {
       metaTitle: {
         en: "Perfect 3-Day Paris Itinerary 2025 | Complete Day-by-Day Guide",

@@ -215,7 +215,7 @@ export default function BlogPost() {
               <ShareButtons title={post.title[currentLang]} />
 
               {/* Final CTA */}
-              <FinalCTA />
+              <FinalCTA variant={post.ctaVariant ?? "generic"} />
 
               {/* Related Posts */}
               <RelatedPosts currentPostId={post.id} category={post.category} />

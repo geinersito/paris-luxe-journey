@@ -4,6 +4,14 @@ export type Language = "en" | "es" | "fr" | "pt";
 
 export type BlogCategory = "transport" | "guides" | "tips" | "culture";
 
+export type CtaVariant =
+  | "airportTransfer"
+  | "transportComparison"
+  | "cityGuide"
+  | "eventLogistics"
+  | "excursion"
+  | "generic";
+
 export interface LocalizedString {
   en: string;
   es: string;
@@ -34,6 +42,7 @@ export interface BlogPostMeta {
     alt: LocalizedString;
   };
   tags: string[];
+  ctaVariant?: CtaVariant;
   seo: {
     metaTitle: LocalizedString;
     metaDescription: LocalizedString;

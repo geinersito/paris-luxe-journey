@@ -1131,6 +1131,39 @@ export const fr: Translation = {
     shareArticle: "Partager cet article",
     copyLink: "Copier le lien",
     ctaBody: "Prix fixes, sans frais cachés et véhicules haut de gamme.",
+    cta: {
+      generic: {
+        heading: "Prêt à réserver votre transfert ?",
+        body: "Prix fixes, sans frais cachés et véhicules premium pour votre trajet à Paris.",
+        button: "Réserver maintenant",
+      },
+      airportTransfer: {
+        heading: "Vous préférez un transfert aéroport à prix fixe ?",
+        body: "Réservez un chauffeur privé depuis ou vers CDG, Orly ou Beauvais avec un devis clair avant le départ.",
+        button: "Réserver transfert",
+      },
+      transportComparison: {
+        heading:
+          "Vous voulez le confort d'un chauffeur privé après avoir comparé les options ?",
+        body: "Choisissez un prix fixe, un chauffeur professionnel et une prise en charge directe au lieu d'hésiter entre taxi, application ou train.",
+        button: "Obtenir un devis",
+      },
+      cityGuide: {
+        heading: "Vous prévoyez plusieurs arrêts à Paris ?",
+        body: "Simplifiez votre itinéraire avec un chauffeur privé et une seule réservation pour vos déplacements dans la ville.",
+        button: "Planifier trajet",
+      },
+      eventLogistics: {
+        heading: "Vous allez à un événement à Paris ?",
+        body: "Arrivez à l'heure avec un chauffeur privé pour stades, défilés, concerts et retours tardifs.",
+        button: "Réserver transfert",
+      },
+      excursion: {
+        heading: "Vous préparez une excursion privée depuis Paris ?",
+        body: "Voyagez confortablement avec une excursion avec chauffeur et un devis fixe adapté à votre planning.",
+        button: "Planifier excursion",
+      },
+    },
   },
   events: {
     pageTitle: "Événements à Paris | Paris Elite Services",

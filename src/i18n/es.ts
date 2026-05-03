@@ -1127,6 +1127,39 @@ export const es: Translation = {
     shareArticle: "Compartir este artículo",
     copyLink: "Copiar enlace",
     ctaBody: "Precios fijos, sin cargos ocultos y vehículos de primera clase.",
+    cta: {
+      generic: {
+        heading: "¿Listo para reservar tu transfer?",
+        body: "Precios fijos, sin cargos ocultos y vehículos premium para tu viaje a París.",
+        button: "Reservar ahora",
+      },
+      airportTransfer: {
+        heading: "¿Prefieres un traslado al aeropuerto con precio fijo?",
+        body: "Reserva un chófer privado desde o hacia CDG, Orly o Beauvais con presupuesto claro antes de viajar.",
+        button: "Reservar traslado",
+      },
+      transportComparison: {
+        heading:
+          "¿Quieres la comodidad de un chófer privado después de comparar opciones?",
+        body: "Elige precio fijo, conductor profesional y recogida directa en lugar de improvisar entre taxi, app o tren.",
+        button: "Obtener presupuesto",
+      },
+      cityGuide: {
+        heading: "¿Planeas varias paradas en París?",
+        body: "Simplifica tu itinerario con un chófer privado y una sola reserva para tus desplazamientos por la ciudad.",
+        button: "Planificar trayecto",
+      },
+      eventLogistics: {
+        heading: "¿Vas a un evento en París?",
+        body: "Llega puntual con un chófer privado para estadios, desfiles, conciertos y regreso nocturno.",
+        button: "Reservar traslado",
+      },
+      excursion: {
+        heading: "¿Planeas una excursión privada desde París?",
+        body: "Viaja con comodidad en una excursión con chófer y un presupuesto fijo adaptado a tu horario.",
+        button: "Planificar excursión",
+      },
+    },
   },
   events: {
     pageTitle: "Eventos en París | Paris Elite Services",
