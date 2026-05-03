@@ -107,7 +107,7 @@ export default function ChampagnePage() {
     <div className="min-h-screen bg-background">
       <DestinationHeader
         title={t.champagne.title}
-        image="/images/champagne.jpg"
+        image="https://images.unsplash.com/photo-1528823872057-9c018a7a7553?auto=format&fit=crop&w=1920&q=80"
         distance={t.champagne.distance}
         duration={t.champagne.duration}
         currentPath="/excursions/champagne"
