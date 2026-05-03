@@ -131,13 +131,13 @@ export function CompactBookingForm({
   };
 
   return (
-    <div className="glass-card-premium p-5 md:p-7 w-full shadow-luxury hover:shadow-luxury-hover transition-all duration-500">
+    <div className="glass-card-premium p-5 md:p-7 w-full shadow-luxury hover:shadow-luxury-hover transition-all duration-500 overflow-hidden">
       <div className="flex flex-col lg:flex-row gap-4 items-end">
         {/* Pickup Location */}
-        <div className="flex-1 w-full">
-          <label className="block text-xs font-bold text-secondary mb-2 flex items-center gap-1.5 uppercase tracking-wide">
-            <MapPin className="w-3.5 h-3.5 text-primary" />
-            {t.booking.pickup}
+        <div className="flex-1 min-w-[120px] w-full">
+          <label className="block text-xs font-bold text-secondary mb-2 flex items-center gap-1.5 uppercase tracking-wide whitespace-nowrap">
+            <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+            {t.hero.labelPickup}
           </label>
           <div className="relative">
             <select
@@ -176,10 +176,10 @@ export function CompactBookingForm({
         </div>
 
         {/* Dropoff Location */}
-        <div className="flex-1 w-full">
-          <label className="block text-xs font-bold text-secondary mb-2 flex items-center gap-1.5 uppercase tracking-wide">
-            <MapPin className="w-3.5 h-3.5 text-primary" />
-            {t.booking.dropoff}
+        <div className="flex-1 min-w-[120px] w-full">
+          <label className="block text-xs font-bold text-secondary mb-2 flex items-center gap-1.5 uppercase tracking-wide whitespace-nowrap">
+            <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+            {t.hero.labelDropoff}
           </label>
           <div className="relative">
             <select
@@ -219,8 +219,8 @@ export function CompactBookingForm({
 
         {/* Passengers */}
         <div className="w-full lg:w-40">
-          <label className="block text-xs font-bold text-secondary mb-2 flex items-center gap-1.5 uppercase tracking-wide">
-            <Users className="w-3.5 h-3.5 text-primary" />
+          <label className="block text-xs font-bold text-secondary mb-2 flex items-center gap-1.5 uppercase tracking-wide whitespace-nowrap">
+            <Users className="w-3.5 h-3.5 text-primary flex-shrink-0" />
             {t.booking.passengers}
           </label>
           <div className="relative">
@@ -254,11 +254,11 @@ export function CompactBookingForm({
         </div>
 
         {/* CTA Button - Premium Gold Gradient */}
-        <div className="w-full lg:w-auto lg:pt-[1.625rem]">
+        <div className="w-full lg:w-auto lg:pt-[1.625rem] shrink-0">
           <Button
             onClick={handleQuickBook}
             disabled={!canQuickBook}
-            className="silk-button w-full lg:w-auto px-4 py-3 text-sm font-bold text-center group shadow-gold-glow hover:shadow-gold-glow-strong min-h-[48px]"
+            className="silk-button w-full lg:w-auto max-w-full px-4 py-3 text-sm font-bold text-center group shadow-gold-glow hover:shadow-gold-glow-strong min-h-[48px]"
           >
             <span className="inline-flex items-center justify-center gap-2 flex-wrap leading-tight">
               <span>{t.hero.getInstantQuote}</span>
