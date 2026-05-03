@@ -1094,6 +1094,38 @@ export const en: Translation = {
     shareArticle: "Share this article",
     copyLink: "Copy Link",
     ctaBody: "Fixed prices, no hidden fees, and premium vehicles.",
+    cta: {
+      generic: {
+        heading: "Ready to book your transfer?",
+        body: "Fixed prices, no hidden fees, and premium vehicles for your Paris journey.",
+        button: "Book now",
+      },
+      airportTransfer: {
+        heading: "Prefer a fixed-price airport transfer?",
+        body: "Book a private chauffeur to or from CDG, Orly, or Beauvais with a clear quote before you travel.",
+        button: "Book airport transfer",
+      },
+      transportComparison: {
+        heading: "Want private chauffeur comfort after comparing your options?",
+        body: "Choose fixed pricing, professional drivers, and direct pickup instead of guessing between taxi, app, or train.",
+        button: "Get my quote",
+      },
+      cityGuide: {
+        heading: "Planning several stops in Paris?",
+        body: "Keep your itinerary simple with a private chauffeur and one booking route for transfers across the city.",
+        button: "Plan my ride",
+      },
+      eventLogistics: {
+        heading: "Going to an event in Paris?",
+        body: "Arrive on schedule with a private chauffeur for stadiums, fashion venues, concerts, and late-night return trips.",
+        button: "Book event transfer",
+      },
+      excursion: {
+        heading: "Planning a private day trip from Paris?",
+        body: "Travel in comfort with a chauffeur-driven excursion and a fixed quote tailored to your schedule.",
+        button: "Plan day trip transfer",
+      },
+    },
   },
   events: {
     pageTitle: "Events in Paris | Paris Elite Services",

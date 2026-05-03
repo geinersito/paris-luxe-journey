@@ -814,6 +814,14 @@ export interface Translation {
     shareArticle: string;
     copyLink: string;
     ctaBody: string;
+    cta: {
+      generic: { heading: string; body: string; button: string };
+      airportTransfer: { heading: string; body: string; button: string };
+      transportComparison: { heading: string; body: string; button: string };
+      cityGuide: { heading: string; body: string; button: string };
+      eventLogistics: { heading: string; body: string; button: string };
+      excursion: { heading: string; body: string; button: string };
+    };
   };
   events: {
     pageTitle: string;
