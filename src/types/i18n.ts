@@ -363,6 +363,7 @@ export interface Translation {
     description: string;
     distance: string;
     duration: string;
+    tourName: string;
     highlights: string[];
     whyVisit: string[];
     navigation: {
@@ -810,6 +811,9 @@ export interface Translation {
       subscribe: string;
       privacy: string;
     };
+    shareArticle: string;
+    copyLink: string;
+    ctaBody: string;
   };
   events: {
     pageTitle: string;

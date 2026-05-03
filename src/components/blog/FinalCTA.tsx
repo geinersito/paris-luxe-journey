@@ -24,11 +24,7 @@ export default function FinalCTA() {
             <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
               {t("blog.readyToBook") || "Ready to Book Your Transfer?"}
             </h2>
-            <p className="text-muted-foreground mb-6">
-              Experience hassle-free airport transfers with our professional
-              chauffeur service. Fixed prices, no hidden fees, and premium
-              vehicles.
-            </p>
+            <p className="text-muted-foreground mb-6">{t("blog.ctaBody")}</p>
 
             {/* Benefits List */}
             <ul className="space-y-3 mb-6">
