@@ -32,10 +32,20 @@ const FALLBACK_EXTERIOR =
   "https://images.unsplash.com/photo-1563720360172-67b8f3dce741?auto=format&fit=crop&q=80";
 const FALLBACK_INTERIOR =
   "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80";
+
+const LOCAL_SEDAN_EXT =
+  "/images/library/fleet/mercedes-sclass-maybach-paris-prestige-sedan-1200x800.jpg";
+const LOCAL_SEDAN_INT =
+  "/images/library/fleet/mercedes-sclass-maybach-paris-prestige-card-800x600.jpg";
+const LOCAL_VAN_EXT =
+  "/images/library/fleet/mercedes-vclass-paris-luxury-exterior-1200x800.jpg";
+const LOCAL_VAN_INT =
+  "/images/library/fleet/mercedes-vclass-paris-luxury-card-800x600.jpg";
+
 const GROUP_IMAGE =
   "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&q=80";
 const VIP_IMAGE =
-  "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80";
+  "/images/library/fleet/mercedes-gclass-paris-vip-exterior-01.jpg";
 
 type FleetCard = {
   id: string;
@@ -474,9 +484,7 @@ export default function FleetSection() {
     {
       ...copy.cards.sedan,
       imageUrl:
-        selectedImageType === "exterior"
-          ? sedanVehicle?.image_url || FALLBACK_EXTERIOR
-          : sedanVehicle?.interior_image_url || FALLBACK_INTERIOR,
+        selectedImageType === "exterior" ? LOCAL_SEDAN_EXT : LOCAL_SEDAN_INT,
       examples: sedanVehicle
         ? `${sedanVehicle.name} or equivalent`
         : "Mercedes Classe S, Tesla Model Y or equivalent",
@@ -484,9 +492,7 @@ export default function FleetSection() {
     {
       ...copy.cards.van,
       imageUrl:
-        selectedImageType === "exterior"
-          ? vanVehicle?.image_url || FALLBACK_EXTERIOR
-          : vanVehicle?.interior_image_url || FALLBACK_INTERIOR,
+        selectedImageType === "exterior" ? LOCAL_VAN_EXT : LOCAL_VAN_INT,
       examples: vanVehicle
         ? `${vanVehicle.name} or equivalent`
         : "Mercedes V-Class, EQV or equivalent",
