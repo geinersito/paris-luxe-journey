@@ -160,6 +160,13 @@ const Navbar = () => {
       ? "/airports#terminal-guide"
       : `/${language}/airports#terminal-guide`;
 
+  const airportNavLabels = {
+    en: "Airports",
+    fr: "Aéroports",
+    es: "Aeropuertos",
+    pt: "Aeroportos",
+  } as const;
+
   const navItems: NavItem[] = [
     { name: t.nav.home, href: "/" },
     {
@@ -172,7 +179,7 @@ const Navbar = () => {
       ],
     },
     {
-      name: "Airports",
+      name: airportNavLabels[language],
       href: "#",
       hasDropdown: true,
       dropdownItems: [

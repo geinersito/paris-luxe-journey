@@ -17,6 +17,7 @@ import { useBooking } from "@/contexts/BookingContext";
 import { MessageCircle, Shield, CheckCircle, Clock } from "lucide-react";
 import { saveBookingSession } from "@/lib/bookingSession";
 import { getLocationFallbacks } from "@/lib/locations/fallbacks";
+import { Language } from "@/types/i18n";
 
 interface Location {
   id: string;
@@ -29,6 +30,13 @@ interface Location {
   code: string;
 }
 
+const GROUP_QUOTE_MESSAGES: Record<Language, string> = {
+  en: "Hello, I need a quote for a group transfer (8+ passengers).\n\nPlease contact me to discuss details.",
+  fr: "Bonjour, j'ai besoin d'un devis pour un transfert de groupe (8+ passagers).\n\nMerci de me contacter pour en discuter.",
+  es: "Hola, necesito un presupuesto para un traslado de grupo (8+ pasajeros).\n\nPor favor, contáctenme para comentar los detalles.",
+  pt: "Olá, preciso de uma cotação para um transfer de grupo (8+ passageiros).\n\nPor favor, entrem em contato para alinharmos os detalhes.",
+};
+
 const BookingForm = ({
   tourId,
   tourName,
@@ -37,7 +45,7 @@ const BookingForm = ({
   compact = false,
   initialData,
 }: BookingFormProps) => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const { toast } = useToast();
   const navigate = useNavigate();
   const [locations, setLocations] = useState<Location[]>([]);
@@ -214,6 +222,13 @@ const BookingForm = ({
   const showPickupDropoffSameError =
     (hasTriedSubmit || validationState.hasLocations) &&
     !validationState.hasDifferentLocations;
+
+  const groupTransferCopy = t.booking.groupTransfer || t.booking.groupNotice;
+
+  const handleOpenGroupQuote = useCallback(() => {
+    const msg = encodeURIComponent(GROUP_QUOTE_MESSAGES[language]);
+    window.open(`https://wa.me/33668251102?text=${msg}`, "_blank");
+  }, [language]);
 
   const handleFormSubmit = useCallback(
     async (e: React.FormEvent) => {
@@ -448,9 +463,9 @@ const BookingForm = ({
           <div className="p-3 bg-secondary/10 border border-secondary/20 rounded-lg">
             <p className="text-sm text-muted-foreground mb-2">
               <strong>
-                {t.booking.groupNotice?.title || "Groups of 8+ passengers"}:
+                {groupTransferCopy?.title || "Groups of 8+ passengers"}:
               </strong>{" "}
-              {t.booking.groupNotice?.description ||
+              {groupTransferCopy?.description ||
                 "For groups of 8 or more passengers, please contact us via WhatsApp for a personalized quote."}
             </p>
             <Button
@@ -458,10 +473,10 @@ const BookingForm = ({
               variant="outline"
               size="sm"
               className="w-full"
-              onClick={() => window.open("https://wa.me/33668251102", "_blank")}
+              onClick={handleOpenGroupQuote}
             >
               <MessageCircle className="w-4 h-4 mr-2" />
-              {t.booking.groupNotice?.cta || "Contact via WhatsApp"}
+              {groupTransferCopy?.cta || "Contact via WhatsApp"}
             </Button>
           </div>
 
@@ -524,7 +539,7 @@ const BookingForm = ({
         </span>
         <span className="flex items-center gap-1">
           <CheckCircle className="w-3 h-3" />
-          {t.trustBar.securePayment}
+          {t.trustBar.insurance}
         </span>
         <span className="flex items-center gap-1">
           <Clock className="w-3 h-3" />

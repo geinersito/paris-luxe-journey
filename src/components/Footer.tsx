@@ -1,11 +1,18 @@
-import { Facebook, Instagram, Twitter, Mail, Phone, MapPin } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Twitter,
+  Mail,
+  Phone,
+  MapPin,
+} from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
-  
+
   return (
     <footer className="bg-gradient-dark text-white relative overflow-hidden">
       {/* Decorative overlay */}
@@ -14,7 +21,6 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
         {/* Main Grid - 4 Columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-
           {/* Column 1: Company Info */}
           <div className="space-y-6">
             <div>
@@ -22,7 +28,8 @@ const Footer = () => {
                 Paris Elite Services
               </h3>
               <p className="text-sm text-gray-300 leading-relaxed">
-                {t?.footer?.description || "Luxury transport service and exclusive tours in Paris and surroundings."}
+                {t?.footer?.description ||
+                  "Luxury transport service and exclusive tours in Paris and surroundings."}
               </p>
             </div>
             {/* Social Media Icons - Enhanced */}
@@ -81,37 +88,55 @@ const Footer = () => {
             </h4>
             <ul className="space-y-3">
               <li>
-                <a href="#services" className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1">
+                <a
+                  href="#services"
+                  className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1"
+                >
                   <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors duration-300" />
                   {t?.footer?.links?.services || "Services"}
                 </a>
               </li>
               <li>
-                <a href="#fleet" className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1">
+                <a
+                  href="#fleet"
+                  className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1"
+                >
                   <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors duration-300" />
                   {t?.footer?.links?.fleet || "Fleet"}
                 </a>
               </li>
               <li>
-                <a href="#about" className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1">
+                <a
+                  href="#about"
+                  className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1"
+                >
                   <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors duration-300" />
                   {t?.footer?.links?.about || "About Us"}
                 </a>
               </li>
               <li>
-                <Link to="/guides/avoid-fake-taxis" className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1">
+                <Link
+                  to="/guides/avoid-fake-taxis"
+                  className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1"
+                >
                   <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors duration-300" />
                   {t?.footer?.links?.travelGuides || "Travel Guides"}
                 </Link>
               </li>
               <li>
-                <Link to="/excursions" className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1">
+                <Link
+                  to="/excursions"
+                  className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1"
+                >
                   <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors duration-300" />
-                  Excursions
+                  {t?.nav?.excursions || "Excursions"}
                 </Link>
               </li>
               <li>
-                <Link to="/faq" className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1">
+                <Link
+                  to="/faq"
+                  className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1"
+                >
                   <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors duration-300" />
                   {t?.footer?.links?.faq || "FAQ"}
                 </Link>
@@ -127,17 +152,24 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start space-x-3">
                 <Phone className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-gray-300">{t?.contact?.phone || "+33 668 251 102"}</span>
+                <span className="text-sm text-gray-300">
+                  {t?.contact?.phone || "+33 668 251 102"}
+                </span>
               </li>
               <li className="flex items-start space-x-3">
                 <Mail className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                <a href="mailto:info@eliteparistransfer.com" className="text-sm text-gray-300 hover:text-primary transition-colors">
+                <a
+                  href="mailto:info@eliteparistransfer.com"
+                  className="text-sm text-gray-300 hover:text-primary transition-colors"
+                >
                   info@eliteparistransfer.com
                 </a>
               </li>
               <li className="flex items-start space-x-3">
                 <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-gray-300">{t?.contact?.address || "75008 Paris, France"}</span>
+                <span className="text-sm text-gray-300">
+                  {t?.contact?.address || "75008 Paris, France"}
+                </span>
               </li>
             </ul>
           </div>
@@ -149,9 +181,13 @@ const Footer = () => {
             </h4>
             <div className="space-y-3">
               <div className="text-sm text-gray-300">
-                <p className="font-semibold text-white mb-2">24/7 Service</p>
-                <p>Available every day</p>
-                <p>All year round</p>
+                <p className="font-semibold text-white mb-2">
+                  {t?.footer?.schedule?.title || "Opening Hours"}
+                </p>
+                <p>
+                  {t?.footer?.schedule?.description ||
+                    "Service available 24 hours, 7 days a week"}
+                </p>
               </div>
             </div>
           </div>
@@ -162,14 +198,21 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-gray-400 flex items-center gap-2">
               <span className="text-primary">©</span>
-              {t?.footer?.copyright || `${currentYear} Paris Elite Services. All rights reserved.`}
+              {t?.footer?.copyright ||
+                `${currentYear} Paris Elite Services. All rights reserved.`}
             </p>
             <div className="flex items-center gap-6 text-sm text-gray-400">
-              <Link to="/privacy" className="hover:text-primary transition-colors duration-300 hover:underline underline-offset-4">
+              <Link
+                to="/privacy"
+                className="hover:text-primary transition-colors duration-300 hover:underline underline-offset-4"
+              >
                 {t?.footer?.links?.privacy || "Privacy Policy"}
               </Link>
               <span className="text-gray-600">•</span>
-              <Link to="/terms" className="hover:text-primary transition-colors duration-300 hover:underline underline-offset-4">
+              <Link
+                to="/terms"
+                className="hover:text-primary transition-colors duration-300 hover:underline underline-offset-4"
+              >
                 {t?.footer?.links?.terms || "Terms of Service"}
               </Link>
             </div>
@@ -178,10 +221,22 @@ const Footer = () => {
           {/* Trust Badge */}
           <div className="mt-6 text-center">
             <p className="text-xs text-gray-500 flex items-center justify-center gap-2">
-              <svg className="w-4 h-4 text-primary" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+              <svg
+                className="w-4 h-4 text-primary"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                  clipRule="evenodd"
+                />
               </svg>
-              <span>Licensed VTC Service • Fully Insured • SSL Secured Payments</span>
+              <span>
+                {t?.trustBar?.licensed || "Licensed & Insured"} •{" "}
+                {t?.trustBar?.insurance || "Full Insurance"} •{" "}
+                {t?.trustBar?.available || "Available 24/7"}
+              </span>
             </p>
           </div>
         </div>

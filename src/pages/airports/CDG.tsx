@@ -10,13 +10,53 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { airportsTranslations } from "@/i18n/airports";
 
 const CDG_IMAGE =
   "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80";
 
 export default function CDGAirport() {
   const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const cdg = airportsTranslations[language].cdg;
+  const premiumBadge = {
+    en: "Premium airport transfers",
+    fr: "Transferts aeroport premium",
+    es: "Transfers premium al aeropuerto",
+    pt: "Transfers premium para aeroporto",
+  }[language];
+  const whyChooseItems = [
+    {
+      icon: <Plane className="w-8 h-8" />,
+      title: cdg.whyChoose.benefits.allTerminals.title,
+      description: cdg.whyChoose.benefits.allTerminals.description,
+    },
+    {
+      icon: <Clock className="w-8 h-8" />,
+      title: cdg.whyChoose.benefits.flightTracking.title,
+      description: cdg.whyChoose.benefits.flightTracking.description,
+    },
+    {
+      icon: <Shield className="w-8 h-8" />,
+      title: cdg.whyChoose.benefits.meetGreet.title,
+      description: cdg.whyChoose.benefits.meetGreet.description,
+    },
+    {
+      icon: <MapPin className="w-8 h-8" />,
+      title: cdg.whyChoose.benefits.directRoutes.title,
+      description: cdg.whyChoose.benefits.directRoutes.description,
+    },
+    {
+      icon: <Star className="w-8 h-8" />,
+      title: cdg.whyChoose.benefits.premiumVehicles.title,
+      description: cdg.whyChoose.benefits.premiumVehicles.description,
+    },
+    {
+      icon: <Globe className="w-8 h-8" />,
+      title: cdg.whyChoose.benefits.fixedPricing.title,
+      description: cdg.whyChoose.benefits.fixedPricing.description,
+    },
+  ];
 
   return (
     <div className="min-h-screen">
@@ -24,7 +64,7 @@ export default function CDGAirport() {
       <section className="relative min-h-[600px] flex items-center justify-center py-24 overflow-hidden">
         <img
           src={CDG_IMAGE}
-          alt="Paris CDG Airport Transfer"
+          alt={cdg.title}
           className="absolute inset-0 w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-black/70 to-primary-dark/90" />
@@ -33,26 +73,22 @@ export default function CDGAirport() {
           <div className="max-w-4xl mx-auto text-center text-white">
             <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/20">
               <Plane className="w-5 h-5 text-primary-200" />
-              <span className="text-sm font-medium">
-                Paris Charles de Gaulle Airport
-              </span>
+              <span className="text-sm font-medium">{cdg.badge}</span>
             </div>
 
             <p className="font-accent italic text-xl md:text-2xl text-primary-200 mb-4">
-              Premium Airport Transfer
+              {premiumBadge}
             </p>
 
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight">
-              CDG Airport Transfers
+              {cdg.title}
               <span className="block text-primary-200 mt-2 text-2xl md:text-3xl">
-                Fixed Price • Professional Drivers • 24/7
+                {cdg.subtitle}
               </span>
             </h1>
 
             <p className="text-xl text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Professional chauffeur service from Paris Charles de Gaulle
-              Airport to anywhere in Paris. Flight monitoring included, no
-              hidden fees.
+              {cdg.description}
             </p>
 
             {/* CTA */}
@@ -70,19 +106,27 @@ export default function CDGAirport() {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
               <div className="flex flex-col items-center gap-2 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
                 <Clock className="w-6 h-6 text-primary-200" />
-                <span className="text-sm font-medium">Flight Tracking</span>
+                <span className="text-sm font-medium">
+                  {cdg.trustBadges.flightTracking}
+                </span>
               </div>
               <div className="flex flex-col items-center gap-2 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
                 <Shield className="w-6 h-6 text-primary-200" />
-                <span className="text-sm font-medium">Meet & Greet</span>
+                <span className="text-sm font-medium">
+                  {cdg.trustBadges.meetGreet}
+                </span>
               </div>
               <div className="flex flex-col items-center gap-2 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
                 <MapPin className="w-6 h-6 text-primary-200" />
-                <span className="text-sm font-medium">All Terminals</span>
+                <span className="text-sm font-medium">
+                  {cdg.whyChoose.benefits.allTerminals.title}
+                </span>
               </div>
               <div className="flex flex-col items-center gap-2 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
                 <CheckCircle className="w-6 h-6 text-primary-200" />
-                <span className="text-sm font-medium">24/7 Available</span>
+                <span className="text-sm font-medium">
+                  {cdg.trustBadges.available247}
+                </span>
               </div>
             </div>
           </div>
@@ -94,60 +138,36 @@ export default function CDGAirport() {
         <div className="container px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
           <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-lg border border-primary/10">
             <h2 className="text-2xl md:text-3xl font-display font-bold text-primary mb-6">
-              About Paris Charles de Gaulle Airport (CDG)
+              {cdg.about.title}
             </h2>
             <div className="prose prose-lg max-w-none text-muted-foreground">
-              <p className="mb-4 leading-relaxed">
-                <strong className="text-secondary">
-                  Paris Charles de Gaulle Airport (CDG)
-                </strong>{" "}
-                is the largest international airport in France and the
-                second-busiest in Europe. Located 25 kilometers northeast of
-                Paris, CDG is the primary hub for Air France and serves as a
-                major gateway for international travelers visiting Paris and
-                connecting throughout Europe.
-              </p>
-              <p className="mb-4 leading-relaxed">
-                The airport operates from{" "}
-                <strong className="text-secondary">three main terminals</strong>{" "}
-                (Terminal 1, 2, and 3), with Terminal 2 being the largest and
-                divided into multiple sub-terminals (2A through 2G). CDG handles
-                over 76 million passengers annually, offering connections to
-                virtually every continent.
-              </p>
-              <p className="leading-relaxed">
-                As France's premier international airport, CDG provides access
-                to central Paris, La Défense business district, Disneyland
-                Paris, and the entire Île-de-France region. Our private transfer
-                service offers a comfortable, direct journey with fixed pricing,
-                real-time flight monitoring, and professional chauffeurs
-                familiar with all terminals and the most efficient routes to
-                your destination.
-              </p>
+              <p className="mb-4 leading-relaxed">{cdg.about.paragraph1}</p>
+              <p className="mb-4 leading-relaxed">{cdg.about.paragraph2}</p>
+              <p className="leading-relaxed">{cdg.about.paragraph3}</p>
             </div>
             <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-primary/10">
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary">25 km</div>
                 <div className="text-sm text-muted-foreground">
-                  From Paris Center
+                  {cdg.about.stats.fromParis}
                 </div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary">76M+</div>
                 <div className="text-sm text-muted-foreground">
-                  Passengers/Year
+                  {cdg.about.stats.passengers}
                 </div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-primary">3</div>
                 <div className="text-sm text-muted-foreground">
-                  Main Terminals
+                  {cdg.about.stats.terminals}
                 </div>
               </div>
               <div className="text-center">
-                <div className="text-2xl font-bold text-primary">45-60min</div>
+                <div className="text-2xl font-bold text-primary">320+</div>
                 <div className="text-sm text-muted-foreground">
-                  To Paris Center
+                  {cdg.about.stats.destinations}
                 </div>
               </div>
             </div>
@@ -160,53 +180,15 @@ export default function CDGAirport() {
         <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
-              Why Choose Paris Elite for CDG Transfers?
+              {cdg.whyChoose.title}
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Specialized airport transfer service with extensive experience at
-              Paris CDG
+              {cdg.whyChoose.subtitle}
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Plane className="w-8 h-8" />,
-                title: "All Terminals & Gates",
-                description:
-                  "We serve all CDG terminals (1, 2A-2G, 3) with expertise in the complex layout",
-              },
-              {
-                icon: <Clock className="w-8 h-8" />,
-                title: "Real-Time Flight Tracking",
-                description:
-                  "We monitor your flight status and adjust pickup time automatically. No extra charge for delays",
-              },
-              {
-                icon: <Shield className="w-8 h-8" />,
-                title: "Personalized Meet & Greet",
-                description:
-                  "Your chauffeur meets you at arrivals with a name sign, ready to assist",
-              },
-              {
-                icon: <MapPin className="w-8 h-8" />,
-                title: "Optimized Routes",
-                description:
-                  "Fastest routes to central Paris, business districts, or any destination in the region",
-              },
-              {
-                icon: <Star className="w-8 h-8" />,
-                title: "Premium Fleet",
-                description:
-                  "Mercedes E-Class, S-Class, and luxury minivans for groups and families",
-              },
-              {
-                icon: <Globe className="w-8 h-8" />,
-                title: "Multilingual Drivers",
-                description:
-                  "Professional chauffeurs speaking English, French, and other languages",
-              },
-            ].map((benefit, idx) => (
+            {whyChooseItems.map((benefit, idx) => (
               <div
                 key={idx}
                 className="bg-white rounded-xl p-6 shadow-sm border border-primary/5 hover:shadow-md transition-shadow"
@@ -232,9 +214,9 @@ export default function CDGAirport() {
             <Button
               size="lg"
               onClick={() => navigate("/booking")}
-              className="bg-secondary hover:bg-secondary/90 text-white px-8 py-4 text-lg font-semibold shadow-lg"
+              className="w-full sm:w-auto h-auto min-h-12 whitespace-normal bg-secondary px-6 py-4 text-center text-lg font-semibold text-white shadow-lg hover:bg-secondary/90 sm:px-8"
             >
-              Book Your CDG Transfer Now
+              {cdg.pricing.bookNow}
             </Button>
           </div>
         </div>
