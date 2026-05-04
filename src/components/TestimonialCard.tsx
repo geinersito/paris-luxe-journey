@@ -1,4 +1,3 @@
-import { Star } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface TestimonialCardProps {
@@ -42,17 +41,6 @@ const TestimonialCard = ({
         className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
         style={{ boxShadow: "inset 0 0 60px hsl(45 93% 47% / 0.08)" }}
       />
-
-      {/* Stars - Larger and more prominent */}
-      <div className="flex gap-1 mb-6 relative z-10">
-        {Array.from({ length: rating }).map((_, i) => (
-          <Star
-            key={i}
-            className="h-6 w-6 fill-primary text-primary drop-shadow-sm group-hover:scale-110 transition-transform duration-300"
-            style={{ transitionDelay: `${i * 50}ms` }}
-          />
-        ))}
-      </div>
 
       {/* Content - Better typography */}
       <p className="text-gray-700 dark:text-gray-300 leading-relaxed flex-grow mb-8 text-base relative z-10">
