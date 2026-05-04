@@ -8,24 +8,25 @@ export function HashScroll() {
     if (!location.hash) return;
 
     const id = location.hash.slice(1);
+    let attempts = 0;
 
-    // Use requestAnimationFrame for SPA-safe scroll after DOM paint
-    requestAnimationFrame(() => {
+    const scrollToElement = () => {
       const element = document.getElementById(id);
-      if (!element) return;
+      if (!element) {
+        // Element not in DOM yet (lazy load or HMR re-mount) — retry up to 1s
+        if (++attempts < 10) setTimeout(scrollToElement, 100);
+        return;
+      }
 
-      // Get navbar height for proper offset
       const navbar = document.querySelector("nav");
       const headerOffset = navbar?.getBoundingClientRect().height ?? 80;
-      const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition =
-        elementPosition + window.scrollY - headerOffset - 8;
+        element.getBoundingClientRect().top + window.scrollY - headerOffset - 8;
 
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: "smooth",
-      });
-    });
+      window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+    };
+
+    requestAnimationFrame(scrollToElement);
   }, [location.hash, location.pathname]);
 
   return null;
