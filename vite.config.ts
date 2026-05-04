@@ -85,34 +85,61 @@ export default defineConfig(({ mode }) => ({
           // Form validators (pure JS)
           if (id.includes('@hookform') || id.includes('node_modules/zod')) return 'forms';
 
-          // React ecosystem — all packages that import React must share this chunk.
-          // Prevents circular vendor-misc↔vendor-react createContext crash.
-          // Broad node_modules/react match covers: react, react-dom, react-router-dom,
-          // react-i18next, react-hook-form, react-day-picker, react-helmet-async, etc.
-          // @remix-run: react-router-dom peer dep.
-          // @floating-ui: Radix UI peer dep, imports React.
-          // @tanstack/react-*: uses createContext, path doesn't match node_modules/react.
-          // next-themes, sonner, lucide-react, framer-motion, @radix-ui, cmdk, vaul,
-          // embla-carousel, input-otp all call React.createContext — must not land in vendor-misc.
+          // Keep React core in one base chunk.
+          // Other React ecosystem chunks may depend on this chunk,
+          // but React core must not depend back on them.
           if (
-            id.includes('node_modules/react') ||
-            id.includes('node_modules/scheduler') ||        // react-dom peer dep
-            id.includes('node_modules/prop-types') ||       // React companion, imports react-is
-            id.includes('node_modules/hoist-non-react-statics') ||
-            id.includes('@remix-run') ||
+            id.includes('node_modules/react/') ||
+            id.includes('node_modules/react-dom/') ||
+            id.includes('node_modules/scheduler/') ||
+            id.includes('node_modules/prop-types/') ||
+            id.includes('node_modules/hoist-non-react-statics/')
+          ) {
+            return 'vendor-react';
+          }
+
+          // Router stack — isolated from UI libs to keep chunk graph acyclic.
+          if (
+            id.includes('node_modules/react-router/') ||
+            id.includes('node_modules/react-router-dom/') ||
+            id.includes('@remix-run/')
+          ) {
+            return 'router';
+          }
+
+          // UI ecosystem that depends on React core.
+          if (
             id.includes('@radix-ui') ||
             id.includes('@floating-ui') ||
-            id.includes('@tanstack/') ||
             id.includes('node_modules/next-themes') ||
             id.includes('node_modules/sonner') ||
             id.includes('node_modules/lucide-react') ||
-            id.includes('node_modules/framer-motion') ||
             id.includes('node_modules/cmdk') ||
             id.includes('node_modules/vaul') ||
             id.includes('node_modules/embla-carousel') ||
             id.includes('node_modules/input-otp')
           ) {
-            return 'vendor-react';
+            return 'ui-react';
+          }
+
+          // Animation library — large enough to isolate safely.
+          if (id.includes('node_modules/framer-motion')) {
+            return 'motion';
+          }
+
+          // React state/query layer.
+          if (id.includes('@tanstack/')) {
+            return 'query';
+          }
+
+          // React form/view helpers that are not part of React core.
+          if (
+            id.includes('node_modules/react-hook-form/') ||
+            id.includes('node_modules/react-day-picker/') ||
+            id.includes('node_modules/react-helmet-async/') ||
+            id.includes('node_modules/react-i18next/')
+          ) {
+            return 'react-libs';
           }
 
           // Remaining node_modules — let Rollup auto-chunk to avoid any further circulars
