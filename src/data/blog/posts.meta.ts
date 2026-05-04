@@ -228,6 +228,68 @@ export const blogPosts: BlogPostMeta[] = [
     },
   },
   {
+    id: "13",
+    slug: "paris-airport-scams-safety-guide-brazilian-travelers",
+    title: {
+      en: "Paris Airport Taxi Scams: Safety Guide for Brazilian Travelers",
+      es: "Golpes de Taxi en Aeropuertos de París: Guía de Seguridad para Viajeros Brasileños",
+      fr: "Arnaques de Taxi aux Aéroports de Paris : Guide Sécurité pour Voyageurs Brésiliens",
+      pt: "Golpes no aeroporto de Paris: como brasileiros podem se proteger",
+    },
+    description: {
+      en: "A calm, practical safety guide for Brazilian travelers arriving at CDG, Orly, or Beauvais. Learn how to avoid confusion, identify safer transport options, and choose fixed-price transfers when they make sense.",
+      es: "Guía serena y práctica para viajeros brasileños que llegan a CDG, Orly o Beauvais. Aprende a evitar confusión, identificar opciones de transporte más seguras y elegir transfers a precio fijo cuando convenga.",
+      fr: "Guide calme et pratique pour les voyageurs brésiliens arrivant à CDG, Orly ou Beauvais. Apprenez à éviter la confusion, à identifier des options de transport plus sûres et à choisir un transfert à prix fixe quand cela a du sens.",
+      pt: "Guia prático e sem alarmismo para brasileiros chegando a CDG, Orly ou Beauvais. Entenda como evitar confusão, reconhecer opções mais seguras e quando vale escolher um transfer com preço fixo.",
+    },
+    category: "transport",
+    author: createAuthor("Pierre Dubois", true),
+    publishedAt: "2026-05-03T17:00:00Z",
+    updatedAt: "2026-05-03T17:00:00Z",
+    readingTime: 10,
+    featured: false,
+    image: {
+      url: "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&h=630&fit=crop",
+      alt: {
+        en: "Airport arrival hall and transport signage in Paris",
+        es: "Hall de llegadas y señalización de transporte en París",
+        fr: "Hall des arrivées et signalétique transport à Paris",
+        pt: "Área de chegadas e sinalização de transporte em Paris",
+      },
+    },
+    tags: [
+      "paris airport safety",
+      "fake taxi paris",
+      "cdg safety",
+      "orly safety",
+      "beauvais airport safety",
+      "private transfer paris",
+    ],
+    ctaVariant: "airportTransfer",
+    seo: {
+      metaTitle: {
+        en: "Paris Airport Taxi Scams 2026 | Safety Guide for Brazilian Travelers",
+        es: "Golpes de Taxi en Aeropuertos de París 2026 | Guía de Seguridad",
+        fr: "Arnaques Taxi Aéroports de Paris 2026 | Guide Sécurité",
+        pt: "Golpes no Aeroporto de Paris 2026 | Guia para Brasileiros",
+      },
+      metaDescription: {
+        en: "How Brazilian travelers can stay safer at CDG, Orly, and Beauvais: unofficial approaches, vague pricing, pickup confusion, and when fixed-price private transfer helps.",
+        es: "Cómo los viajeros brasileños pueden estar más seguros en CDG, Orly y Beauvais: abordajes informales, precios vagos, confusión de recogida y cuándo ayuda un transfer privado a precio fijo.",
+        fr: "Comment les voyageurs brésiliens peuvent être plus sereins à CDG, Orly et Beauvais : approches non officielles, prix flous, confusion de prise en charge et quand un transfert privé à prix fixe aide.",
+        pt: "Como brasileiros podem chegar com mais segurança em CDG, Orly e Beauvais: abordagens improvisadas, preços vagos, confusão no embarque e quando um transfer privado com preço fixo ajuda.",
+      },
+      keywords: [
+        "paris airport safety",
+        "fake taxi paris airport",
+        "cdg taxi scam",
+        "orly airport taxi",
+        "beauvais airport safety",
+        "private transfer paris airport",
+      ],
+    },
+  },
+  {
     id: "2",
     slug: "vtc-vs-taxi-vs-uber-paris",
     title: {
