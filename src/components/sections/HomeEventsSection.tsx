@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import { Calendar, MapPin, MessageCircle } from "lucide-react";
+import { Calendar, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import eventsFeedData from "@/data/events/events-feed.json";
 import type { Event, EventCategory, Language } from "@/types/events";
-import { buildEventWhatsAppUrl } from "@/lib/eventsPrefill";
 
 export default function HomeEventsSection() {
   const { t, language } = useLanguage();
@@ -99,19 +98,12 @@ export default function HomeEventsSection() {
                     )}
 
                     <Button asChild className="w-full silk-button text-sm">
-                      <a
-                        href={buildEventWhatsAppUrl(
-                          event,
-                          language,
-                          formatDate,
-                        )}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                      <Link
+                        to="/booking"
                         className="flex items-center justify-center gap-2"
                       >
-                        <MessageCircle className="w-4 h-4 flex-shrink-0" />
                         <span>{t.hero.ctaPrimary}</span>
-                      </a>
+                      </Link>
                     </Button>
                   </div>
                 </div>
