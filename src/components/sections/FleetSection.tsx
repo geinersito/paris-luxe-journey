@@ -120,11 +120,12 @@ const FLEET_COPY: Record<
       },
       groups: {
         id: "groups",
-        title: "Groups & Minibus on request",
+        title: "Groups & minibus · Personalized service",
         capacity: "8-19+ passengers",
-        luggage: "Subject to availability and configuration",
+        luggage: "According to group size and vehicle configuration",
         summary: "For large families, events, seminars and private excursions.",
-        availabilityNote: "Subject to availability and configuration.",
+        availabilityNote:
+          "Arranged according to group size and vehicle configuration.",
         imageUrl: GROUP_IMAGE,
         features: [
           {
@@ -133,7 +134,8 @@ const FLEET_COPY: Record<
           },
           {
             icon: "availability",
-            label: "Shared only on request, never auto-confirmed",
+            label:
+              "Coordinated according to itinerary, passenger count and vehicle configuration.",
           },
           {
             icon: "cleaning",
@@ -144,12 +146,13 @@ const FLEET_COPY: Record<
       },
       vip: {
         id: "vip",
-        title: "Prestige / VIP on request",
+        title: "Prestige / VIP · Exclusive service",
         capacity: "Executive service",
         luggage: "Premium models or equivalent",
         summary:
           "Executive arrivals, luxury shopping, protocol, 5-star hotels and events.",
-        availabilityNote: "Subject to availability.",
+        availabilityNote:
+          "Arranged per service profile and vehicle configuration.",
         imageUrl: VIP_IMAGE,
         features: [
           { icon: "vip", label: "Prestige-level presentation and discretion" },
@@ -159,7 +162,8 @@ const FLEET_COPY: Record<
           },
           {
             icon: "availability",
-            label: "On request only, depending on availability",
+            label:
+              "Premium arrangements confirmed according to service profile and vehicle configuration.",
           },
         ],
         ctaLabel: "Request a VIP quote",
@@ -207,12 +211,13 @@ const FLEET_COPY: Record<
       },
       groups: {
         id: "groups",
-        title: "Groupes & Minibus sur demande",
+        title: "Groupes et minibus · Service personnalisé",
         capacity: "8-19+ passagers",
-        luggage: "Selon disponibilité et configuration",
+        luggage: "Selon le groupe et la configuration du véhicule",
         summary:
           "Pour familles nombreuses, événements, séminaires et excursions privées.",
-        availabilityNote: "Selon disponibilité et configuration.",
+        availabilityNote:
+          "Coordonné selon le groupe et la configuration du véhicule.",
         imageUrl: GROUP_IMAGE,
         features: [
           {
@@ -221,7 +226,8 @@ const FLEET_COPY: Record<
           },
           {
             icon: "availability",
-            label: "Uniquement sur demande, jamais auto-confirmé",
+            label:
+              "Coordonné selon l'itinéraire, le nombre de passagers et la configuration du véhicule.",
           },
           {
             icon: "cleaning",
@@ -232,12 +238,13 @@ const FLEET_COPY: Record<
       },
       vip: {
         id: "vip",
-        title: "Prestige / VIP sur demande",
+        title: "Prestige / VIP · Service exclusif",
         capacity: "Service executive",
         luggage: "Modèles premium ou équivalent",
         summary:
           "Arrivées executive, shopping de luxe, protocole, hôtels 5 étoiles et événements.",
-        availabilityNote: "Selon disponibilité.",
+        availabilityNote:
+          "Selon le profil du service et la configuration du véhicule.",
         imageUrl: VIP_IMAGE,
         features: [
           { icon: "vip", label: "Présentation prestige et discrétion" },
@@ -247,7 +254,8 @@ const FLEET_COPY: Record<
           },
           {
             icon: "availability",
-            label: "Sur demande uniquement, selon disponibilité",
+            label:
+              "Prestations premium confirmées selon le profil du service et la configuration du véhicule.",
           },
         ],
         ctaLabel: "Demander un devis VIP",
@@ -298,12 +306,13 @@ const FLEET_COPY: Record<
       },
       groups: {
         id: "groups",
-        title: "Grupos y minibús bajo solicitud",
+        title: "Grupos y minibús · Servicio personalizado",
         capacity: "8-19+ pasajeros",
-        luggage: "Según disponibilidad y configuración",
+        luggage: "Según el grupo y la configuración del vehículo",
         summary:
           "Para familias numerosas, eventos, seminarios y excursiones privadas.",
-        availabilityNote: "Según disponibilidad y configuración.",
+        availabilityNote:
+          "Coordinado según el grupo y la configuración del vehículo.",
         imageUrl: GROUP_IMAGE,
         features: [
           {
@@ -312,7 +321,8 @@ const FLEET_COPY: Record<
           },
           {
             icon: "availability",
-            label: "Solo bajo solicitud, nunca auto-confirmado",
+            label:
+              "Coordinado según el itinerario, el número de pasajeros y la configuración del vehículo.",
           },
           {
             icon: "cleaning",
@@ -324,12 +334,13 @@ const FLEET_COPY: Record<
       },
       vip: {
         id: "vip",
-        title: "Prestige / VIP bajo solicitud",
+        title: "Prestige / VIP · Servicio exclusivo",
         capacity: "Servicio ejecutivo",
         luggage: "Modelos premium o equivalente",
         summary:
           "Llegadas ejecutivas, compras de lujo, protocolo, hoteles 5 estrellas y eventos.",
-        availabilityNote: "Según disponibilidad.",
+        availabilityNote:
+          "Según el perfil del servicio y la configuración del vehículo.",
         imageUrl: VIP_IMAGE,
         features: [
           { icon: "vip", label: "Presentación premium y discreción" },
@@ -339,7 +350,8 @@ const FLEET_COPY: Record<
           },
           {
             icon: "availability",
-            label: "Bajo solicitud, sujeto a disponibilidad",
+            label:
+              "Servicios premium confirmados según el perfil del servicio y la configuración del vehículo.",
           },
         ],
         ctaLabel: "Solicitar cotización VIP",
@@ -390,12 +402,13 @@ const FLEET_COPY: Record<
       },
       groups: {
         id: "groups",
-        title: "Grupos e micro-ônibus sob consulta",
+        title: "Grupos e micro-ônibus · Serviço personalizado",
         capacity: "8-19+ passageiros",
-        luggage: "Conforme disponibilidade e configuração",
+        luggage: "Conforme o grupo e a configuração do veículo",
         summary:
           "Para famílias grandes, eventos, seminários e excursões privadas.",
-        availabilityNote: "Conforme disponibilidade e configuração.",
+        availabilityNote:
+          "Coordenado conforme o grupo e a configuração do veículo.",
         imageUrl: GROUP_IMAGE,
         features: [
           {
@@ -404,7 +417,8 @@ const FLEET_COPY: Record<
           },
           {
             icon: "availability",
-            label: "Somente sob consulta, nunca auto-confirmado",
+            label:
+              "Coordenado conforme o itinerário, número de passageiros e configuração do veículo.",
           },
           {
             icon: "cleaning",
@@ -415,12 +429,13 @@ const FLEET_COPY: Record<
       },
       vip: {
         id: "vip",
-        title: "Prestige / VIP sob consulta",
+        title: "Prestige / VIP · Serviço exclusivo",
         capacity: "Serviço executivo",
         luggage: "Modelos premium ou equivalente",
         summary:
           "Chegadas executivas, compras de luxo, protocolo, hotéis 5 estrelas e eventos.",
-        availabilityNote: "Conforme disponibilidade.",
+        availabilityNote:
+          "Conforme o perfil do serviço e a configuração do veículo.",
         imageUrl: VIP_IMAGE,
         features: [
           { icon: "vip", label: "Apresentação premium e discrição" },
@@ -430,7 +445,8 @@ const FLEET_COPY: Record<
           },
           {
             icon: "availability",
-            label: "Sob consulta, sujeito à disponibilidade",
+            label:
+              "Serviços premium confirmados conforme o perfil do serviço e a configuração do veículo.",
           },
         ],
         ctaLabel: "Solicitar cotação VIP",
