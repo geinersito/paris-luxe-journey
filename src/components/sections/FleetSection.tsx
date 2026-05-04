@@ -43,7 +43,7 @@ const LOCAL_VAN_INT =
   "/images/library/fleet/mercedes-vclass-paris-luxury-card-800x600.jpg";
 
 const GROUP_IMAGE =
-  "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&q=80";
+  "/images/library/fleet/mercedes-sprinter-paris-groups-exterior-01.jpg";
 const VIP_IMAGE =
   "/images/library/fleet/mercedes-gclass-paris-vip-exterior-01.jpg";
 
