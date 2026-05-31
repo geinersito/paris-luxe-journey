@@ -79,16 +79,15 @@ Runtime hold (unchanged — separate from publication):
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `<SHA-PR-R0-11b>`
-- Baseline feature: `fix(images): Fiat500 Unsplash ID → premium Mercedes across Hourly/FleetSection/useVehicles (PR-R0-11b)`
-- Last updated: `2026-05-30`
+- SHA: `3b7ae2d`
+- Baseline feature: `feat(launch): WA contextual, ES redirects, excursion SEO, events filter (#226)`
+- Last updated: `2026-05-31`
 
 ## Ultimos PRs mergeados en main
 
-1. `#XXX` - feat(wa): WA contextual Excursions — 6 occurrences → helpers (2026-05-30) (`8545e36`) ✅ PR-02b DONE
-2. `#XXX` - feat(wa): WA contextual airports CDG/ORY/BVA + FloatingWA + Footer (2026-05-30) (`<SHA>`) ✅ PR-02a DONE
-3. `#XXX` - fix(routes): add ES legacy redirects /b2b + /aeropuertos/* (2026-05-30) (`<SHA>`) ✅ PR-01-ROUTES-ES DONE
-2. `#180` - fix(nav): absolutize fleet/about/contact anchors to /#hash (2026-04-28) (`62c6fad`) ✅ PUB-P0-002 DONE
+1. `#226` - feat(launch): WA contextual, ES redirects, excursion SEO, events filter (2026-05-31) (`3b7ae2d`) ✅ LAUNCH SPRINT DONE
+2. `#225` - fix(launch): cache headers, event CTA, broken images, remove unverified stars (2026-05-30) (`8545e36`) ✅
+3. `#180` - fix(nav): absolutize fleet/about/contact anchors to /#hash (2026-04-28) (`62c6fad`) ✅ PUB-P0-002 DONE
 2. `#179` - fix(i18n): add missing blog keys — pageTitle, readMore, notFound.* (2026-04-28) (`dbe3ef7`) ✅ PUB-P0-001 DONE
 3. `#176` - chore: close booking UI/i18n/assets cleanup without DB changes (2026-04-28) (`bd48d89`) ⚠️ GOVERNANCE NOTE: included EV ingest scope — see GOVERNANCE INCIDENT above
 2. `#159` - fix(pricing): align v312 partner floors to locked rates (2026-02) (`601ef9c`)
