@@ -217,6 +217,37 @@
       "isFeatured": true
     },
     {
+      "id": "nan-goldin-2026",
+      "startAt": "2026-03-18T10:00:00Z",
+      "endAt": "2026-06-21T20:00:00Z",
+      "title": {
+        "en": "Nan Goldin: This Will Not End Well — Grand Palais",
+        "es": "Nan Goldin: This Will Not End Well — Grand Palais",
+        "fr": "Nan Goldin : This Will Not End Well — Grand Palais",
+        "pt": "Nan Goldin: This Will Not End Well — Grand Palais"
+      },
+      "description": {
+        "en": "The first major retrospective of Nan Goldin in France — over 700 photographs, slideshows and videos spanning fifty years of work at the Grand Palais and Chapelle Saint-Louis-de-la-Salpêtrière. Closing June 21. A private transfer to the Grand Palais avoids last-minute queues for this sell-out show. Transport only — we do not sell museum tickets.",
+        "es": "La primera gran retrospectiva de Nan Goldin en Francia — más de 700 fotografías, diaporamas y vídeos de cincuenta años de trabajo en el Grand Palais y la Chapelle Saint-Louis-de-la-Salpêtrière. Cierra el 21 de junio. El transfer privado al Grand Palais evita las colas de última hora para esta exposición agotada. Solo transporte — no vendemos entradas de museo.",
+        "fr": "La première grande rétrospective de Nan Goldin en France — plus de 700 photographies, diaporamas et vidéos couvrant cinquante ans de travail au Grand Palais et à la Chapelle Saint-Louis-de-la-Salpêtrière. Fermeture le 21 juin. Un transfert privé vers le Grand Palais évite les files de dernière minute pour cette exposition à guichets fermés. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "A primeira grande retrospectiva de Nan Goldin em França — mais de 700 fotografias, diaporamas e vídeos de cinquenta anos de trabalho no Grand Palais e na Chapelle Saint-Louis-de-la-Salpêtrière. Encerra a 21 de junho. Um transfer privado para o Grand Palais evita as filas de última hora para esta exposição esgotada. Apenas transporte — não vendemos ingressos de museu."
+      },
+      "venueName": {
+        "en": "Grand Palais / Chapelle Saint-Louis-de-la-Salpêtrière",
+        "es": "Grand Palais / Chapelle Saint-Louis-de-la-Salpêtrière",
+        "fr": "Grand Palais / Chapelle Saint-Louis-de-la-Salpêtrière",
+        "pt": "Grand Palais / Chapelle Saint-Louis-de-la-Salpêtrière"
+      },
+      "district": "8eme / 13eme",
+      "address": "3 Avenue du Général Eisenhower, 75008 Paris",
+      "eventUrl": "https://www.grandpalais.fr/en/program/nan-goldin-will-not-end-well",
+      "sourceName": "Grand Palais",
+      "sourceUrl": "https://www.grandpalais.fr/en/program/nan-goldin-will-not-end-well",
+      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "category": "exhibition",
+      "isFeatured": true
+    },
+    {
       "id": "matisse-grand-palais-2026",
       "startAt": "2026-03-24T10:00:00Z",
       "endAt": "2026-07-26T20:00:00Z",
@@ -707,6 +738,37 @@
       "imageUrl": "https://images.unsplash.com/photo-1514510979989-798d7524cd74?auto=format&fit=crop&w=1200&q=80",
       "category": "exhibition",
       "isFeatured": false
+    },
+    {
+      "id": "nan-goldin-2026",
+      "startAt": "2026-03-18T10:00:00Z",
+      "endAt": "2026-06-21T20:00:00Z",
+      "title": {
+        "en": "Nan Goldin: This Will Not End Well — Grand Palais",
+        "es": "Nan Goldin: This Will Not End Well — Grand Palais",
+        "fr": "Nan Goldin : This Will Not End Well — Grand Palais",
+        "pt": "Nan Goldin: This Will Not End Well — Grand Palais"
+      },
+      "description": {
+        "en": "The first major retrospective of Nan Goldin in France — over 700 photographs, slideshows and videos spanning fifty years of work at the Grand Palais and Chapelle Saint-Louis-de-la-Salpêtrière. Closing June 21. A private transfer to the Grand Palais avoids last-minute queues for this sell-out show. Transport only — we do not sell museum tickets.",
+        "es": "La primera gran retrospectiva de Nan Goldin en Francia — más de 700 fotografías, diaporamas y vídeos de cincuenta años de trabajo en el Grand Palais y la Chapelle Saint-Louis-de-la-Salpêtrière. Cierra el 21 de junio. El transfer privado al Grand Palais evita las colas de última hora para esta exposición agotada. Solo transporte — no vendemos entradas de museo.",
+        "fr": "La première grande rétrospective de Nan Goldin en France — plus de 700 photographies, diaporamas et vidéos couvrant cinquante ans de travail au Grand Palais et à la Chapelle Saint-Louis-de-la-Salpêtrière. Fermeture le 21 juin. Un transfert privé vers le Grand Palais évite les files de dernière minute pour cette exposition à guichets fermés. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "A primeira grande retrospectiva de Nan Goldin em França — mais de 700 fotografias, diaporamas e vídeos de cinquenta anos de trabalho no Grand Palais e na Chapelle Saint-Louis-de-la-Salpêtrière. Encerra a 21 de junho. Um transfer privado para o Grand Palais evita as filas de última hora para esta exposição esgotada. Apenas transporte — não vendemos ingressos de museu."
+      },
+      "venueName": {
+        "en": "Grand Palais / Chapelle Saint-Louis-de-la-Salpêtrière",
+        "es": "Grand Palais / Chapelle Saint-Louis-de-la-Salpêtrière",
+        "fr": "Grand Palais / Chapelle Saint-Louis-de-la-Salpêtrière",
+        "pt": "Grand Palais / Chapelle Saint-Louis-de-la-Salpêtrière"
+      },
+      "district": "8eme / 13eme",
+      "address": "3 Avenue du Général Eisenhower, 75008 Paris",
+      "eventUrl": "https://www.grandpalais.fr/en/program/nan-goldin-will-not-end-well",
+      "sourceName": "Grand Palais",
+      "sourceUrl": "https://www.grandpalais.fr/en/program/nan-goldin-will-not-end-well",
+      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "category": "exhibition",
+      "isFeatured": true
     },
     {
       "id": "matisse-grand-palais-2026",
