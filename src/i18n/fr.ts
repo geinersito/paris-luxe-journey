@@ -1330,6 +1330,7 @@ export const fr: Translation = {
         a: "Berline (1–3 passagers), berline de luxe (1–3 passagers) et van (jusqu'à 7 passagers). Véhicules groupe et VIP disponibles sur demande.",
       },
     },
+    heroCtaVersailles: "Excursion à Versailles",
     ctaTitle: "Prêt à Réserver ?",
     ctaDescription:
       "Indiquez-nous votre date, durée et itinéraire. Nous confirmons la disponibilité et vous envoyons un devis ferme.",

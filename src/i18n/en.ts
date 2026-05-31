@@ -1292,6 +1292,7 @@ export const en: Translation = {
         a: "Sedan (1–3 passengers), luxury sedan (1–3 passengers), and van (up to 7 passengers). Group and VIP vehicles are available on request.",
       },
     },
+    heroCtaVersailles: "Versailles Day Trip",
     ctaTitle: "Ready to Book?",
     ctaDescription:
       "Tell us your date, duration, and itinerary. We will confirm availability and send a fixed quote.",

@@ -1326,6 +1326,7 @@ export const es: Translation = {
         a: "Berlina (1–3 pasajeros), berlina de lujo (1–3 pasajeros) y furgoneta (hasta 7 pasajeros). Vehículos para grupos y VIP disponibles bajo solicitud.",
       },
     },
+    heroCtaVersailles: "Excursión a Versalles",
     ctaTitle: "¿Listo para Reservar?",
     ctaDescription:
       "Indícanos fecha, duración e itinerario. Confirmamos disponibilidad y enviamos cotización fija.",

@@ -929,6 +929,7 @@ export interface Translation {
       versaillesDay: { q: string; a: string };
       vehicleType: { q: string; a: string };
     };
+    heroCtaVersailles: string;
     ctaTitle: string;
     ctaDescription: string;
     ctaWhatsAppFull: string;

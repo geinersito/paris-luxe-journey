@@ -150,7 +150,9 @@ export default function HourlyService() {
                   className="button-outline-gold h-11 px-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
                   asChild
                 >
-                  <Link to="/excursions/versailles">Versailles Day Trip</Link>
+                  <Link to="/excursions/versailles">
+                    {t("hourly.heroCtaVersailles")}
+                  </Link>
                 </Button>
               </div>
             </div>

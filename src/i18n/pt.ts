@@ -1319,6 +1319,7 @@ export const pt: Translation = {
         a: "Berlina (1–3 passageiros), berlina de luxo (1–3 passageiros) e minivan (até 7 passageiros). Veículos para grupos e VIP disponíveis sob consulta.",
       },
     },
+    heroCtaVersailles: "Excursão a Versalhes",
     ctaTitle: "Pronto para Reservar?",
     ctaDescription:
       "Diga-nos a data, duração e itinerário. Confirmamos disponibilidade e enviamos orçamento fixo.",

@@ -1,17 +1,25 @@
 import React from "react";
+import { useLocation } from "react-router-dom";
 import { trackEvent } from "@/lib/analytics";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { buildGenericWhatsAppUrl } from "@/lib/eventsPrefill";
+import {
+  buildGenericWhatsAppUrl,
+  buildHourlyWhatsAppUrl,
+} from "@/lib/eventsPrefill";
 
 const FloatingWhatsApp: React.FC = () => {
   const { language, t } = useLanguage();
+  const { pathname } = useLocation();
   const labels = {
     en: "WhatsApp instant quote",
     fr: "WhatsApp devis instantané",
     es: "WhatsApp presupuesto instantáneo",
     pt: "WhatsApp orçamento instantâneo",
   } as const;
-  const destination = buildGenericWhatsAppUrl(language);
+  const destination =
+    pathname === "/hourly"
+      ? buildHourlyWhatsAppUrl(language)
+      : buildGenericWhatsAppUrl(language);
 
   const handleClick = () => {
     trackEvent("whatsapp_click", {
