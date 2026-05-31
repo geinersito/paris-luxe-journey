@@ -892,6 +892,48 @@ export interface Translation {
     };
     recentlyEnded: string;
   };
+  hourly: {
+    pageTitle: string;
+    pageDescription: string;
+    badge: string;
+    heroTitle: string;
+    heroSubtitle: string;
+    ctaQuote: string;
+    ctaWhatsApp: string;
+    trustFlexible: string;
+    trustProfessional: string;
+    trustAsDirected: string;
+    trustAvailability: string;
+    useCasesTitle: string;
+    useCasesSubtitle: string;
+    useCases: {
+      meetings: { title: string; description: string; duration: string };
+      shopping: { title: string; description: string; duration: string };
+      cityTour: { title: string; description: string; duration: string };
+      versailles: { title: string; description: string; duration: string };
+      multiEvent: { title: string; description: string; duration: string };
+    };
+    pricingTitle: string;
+    pricingSubtitle: string;
+    pricingFrom: string;
+    pricingMinimum: string;
+    pricingNote: string;
+    pricingCta: string;
+    pricingCtaAlt: string;
+    faqTitle: string;
+    faqSubtitle: string;
+    faqs: {
+      minHours: { q: string; a: string };
+      whatsIncluded: { q: string; a: string };
+      multipleStops: { q: string; a: string };
+      versaillesDay: { q: string; a: string };
+      vehicleType: { q: string; a: string };
+    };
+    ctaTitle: string;
+    ctaDescription: string;
+    ctaWhatsAppFull: string;
+    ctaEmail: string;
+  };
   seo: {
     home: {
       title: string;

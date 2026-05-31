@@ -1209,6 +1209,95 @@ export const en: Translation = {
     },
     recentlyEnded: "Recently Ended",
   },
+  hourly: {
+    pageTitle:
+      "Hourly Chauffeur Service Paris | From €75/hour | Paris Elite Services",
+    pageDescription:
+      "Professional chauffeur by the hour in Paris. Meetings, shopping, city tours, Versailles day trips, multi-venue events. From €75/hour, minimum 3 hours. Final quote required.",
+    badge: "Mise à Disposition",
+    heroTitle: "Chauffeur by the Hour",
+    heroSubtitle:
+      "Professional chauffeur at your disposal for meetings, shopping, tours, and flexible itineraries in Paris and Île-de-France.",
+    ctaQuote: "Request a Quote",
+    ctaWhatsApp: "WhatsApp Us",
+    trustFlexible: "Flexible Hours",
+    trustProfessional: "Professional",
+    trustAsDirected: "As-Directed",
+    trustAvailability: "On Request",
+    useCasesTitle: "When Hourly Service Makes Sense",
+    useCasesSubtitle:
+      "Five scenarios where a chauffeur at your disposal is the right choice.",
+    useCases: {
+      meetings: {
+        title: "Business Meetings",
+        description:
+          "Back-to-back meetings across central Paris. Your chauffeur waits between appointments so you move without delay.",
+        duration: "Typical: 3–4 hours",
+      },
+      shopping: {
+        title: "Premium Shopping",
+        description:
+          "Faubourg Saint-Honoré, Le Marais, Saint-Germain. Packages loaded, chauffeur on standby between boutiques.",
+        duration: "Typical: 3–5 hours",
+      },
+      cityTour: {
+        title: "Paris City Tour",
+        description:
+          "Personalised route covering the landmarks that matter to you. No fixed schedule, no group timing.",
+        duration: "Typical: 3–4 hours",
+      },
+      versailles: {
+        title: "Versailles Day Trip",
+        description:
+          "Door-to-door from Paris. Chauffeur waits at the palace while you visit at your own pace, then drives you back.",
+        duration: "Typical: 5–6 hours",
+      },
+      multiEvent: {
+        title: "Multi-Venue Events",
+        description:
+          "Fashion shows, art openings, evening programmes with multiple stops. One booking covers the full schedule.",
+        duration: "Typical: 4–6 hours",
+      },
+    },
+    pricingTitle: "Indicative Pricing",
+    pricingSubtitle:
+      "Transparent starting point. Final quote required before confirmation.",
+    pricingFrom: "From €75/hour",
+    pricingMinimum: "Minimum booking: 3 hours",
+    pricingNote:
+      "Final price depends on itinerary, vehicle category, timing and availability. Quote required before confirmation.",
+    pricingCta: "Get a Quote on WhatsApp",
+    pricingCtaAlt: "Email Us",
+    faqTitle: "Frequently Asked Questions",
+    faqSubtitle: "How hourly chauffeur service works in practice.",
+    faqs: {
+      minHours: {
+        q: "What is the minimum booking?",
+        a: "The minimum booking is 3 hours. This applies to sedan, luxury sedan, and van categories.",
+      },
+      whatsIncluded: {
+        q: "What is included in the hourly rate?",
+        a: "Chauffeur, vehicle, waiting time, and standard Île-de-France driving. Tolls, parking, and out-of-region distances may be added to the final quote.",
+      },
+      multipleStops: {
+        q: "Can I add stops during the booking?",
+        a: "Yes. Hourly service is designed for flexible itineraries. You can change your route or add stops at any point during your booking.",
+      },
+      versaillesDay: {
+        q: "Is hourly service suitable for a Versailles day trip?",
+        a: "Yes. A typical Versailles round trip takes 5–6 hours. Your chauffeur drives you from Paris, waits at the palace, and returns you to your hotel or destination.",
+      },
+      vehicleType: {
+        q: "Which vehicle categories are available for hourly service?",
+        a: "Sedan (1–3 passengers), luxury sedan (1–3 passengers), and van (up to 7 passengers). Group and VIP vehicles are available on request.",
+      },
+    },
+    ctaTitle: "Ready to Book?",
+    ctaDescription:
+      "Tell us your date, duration, and itinerary. We will confirm availability and send a fixed quote.",
+    ctaWhatsAppFull: "Get a Quote on WhatsApp",
+    ctaEmail: "Email Us",
+  },
   seo: {
     home: {
       title:

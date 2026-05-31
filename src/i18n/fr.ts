@@ -1247,6 +1247,95 @@ export const fr: Translation = {
     },
     recentlyEnded: "Événements Récents",
   },
+  hourly: {
+    pageTitle:
+      "Chauffeur à Disposition Paris | À partir de 75 €/h | Paris Elite Services",
+    pageDescription:
+      "Chauffeur professionnel à l'heure à Paris. Réunions, shopping, circuit touristique, excursion Versailles, événements multi-lieux. À partir de 75 €/h, minimum 3 heures. Devis obligatoire.",
+    badge: "Mise à Disposition",
+    heroTitle: "Chauffeur à Votre Disposition",
+    heroSubtitle:
+      "Chauffeur professionnel pour réunions, shopping, circuits et itinéraires flexibles à Paris et en Île-de-France.",
+    ctaQuote: "Demander un Devis",
+    ctaWhatsApp: "Nous Contacter sur WhatsApp",
+    trustFlexible: "Horaires Flexibles",
+    trustProfessional: "Professionnel",
+    trustAsDirected: "À Votre Rythme",
+    trustAvailability: "Sur Demande",
+    useCasesTitle: "Quand Opter pour la Mise à Disposition",
+    useCasesSubtitle:
+      "Cinq situations où un chauffeur à votre disposition est le bon choix.",
+    useCases: {
+      meetings: {
+        title: "Réunions d'Affaires",
+        description:
+          "Plusieurs rendez-vous consécutifs dans Paris. Votre chauffeur attend entre les réunions pour que vous vous déplaciez sans délai.",
+        duration: "Durée type : 3–4 heures",
+      },
+      shopping: {
+        title: "Shopping Premium",
+        description:
+          "Faubourg Saint-Honoré, Le Marais, Saint-Germain. Bagages chargés, chauffeur disponible entre les boutiques.",
+        duration: "Durée type : 3–5 heures",
+      },
+      cityTour: {
+        title: "Circuit Paris",
+        description:
+          "Itinéraire personnalisé sur les sites qui vous intéressent. Sans horaire fixe ni groupe.",
+        duration: "Durée type : 3–4 heures",
+      },
+      versailles: {
+        title: "Excursion à Versailles",
+        description:
+          "Aller-retour depuis Paris porte-à-porte. Le chauffeur attend au château pendant votre visite et vous raccompagne.",
+        duration: "Durée type : 5–6 heures",
+      },
+      multiEvent: {
+        title: "Événements Multi-Lieux",
+        description:
+          "Défilés, vernissages, programmes en soirée avec plusieurs étapes. Une seule réservation couvre tout le programme.",
+        duration: "Durée type : 4–6 heures",
+      },
+    },
+    pricingTitle: "Tarifs Indicatifs",
+    pricingSubtitle:
+      "Point de départ transparent. Devis définitif obligatoire avant confirmation.",
+    pricingFrom: "À partir de 75 €/heure",
+    pricingMinimum: "Réservation minimum : 3 heures",
+    pricingNote:
+      "Le prix final dépend de l'itinéraire, de la catégorie de véhicule, des horaires et de la disponibilité. Devis obligatoire avant confirmation.",
+    pricingCta: "Obtenir un Devis sur WhatsApp",
+    pricingCtaAlt: "Nous Écrire par Email",
+    faqTitle: "Questions Fréquentes",
+    faqSubtitle: "Comment fonctionne la mise à disposition en pratique.",
+    faqs: {
+      minHours: {
+        q: "Quelle est la durée minimale de réservation ?",
+        a: "La réservation minimale est de 3 heures, pour les catégories berline, berline de luxe et van.",
+      },
+      whatsIncluded: {
+        q: "Que comprend le tarif horaire ?",
+        a: "Le chauffeur, le véhicule, le temps d'attente et les déplacements standards en Île-de-France. Les péages, le stationnement et les distances hors région peuvent s'ajouter au devis final.",
+      },
+      multipleStops: {
+        q: "Puis-je ajouter des arrêts en cours de prestation ?",
+        a: "Oui. La mise à disposition est conçue pour les itinéraires flexibles. Vous pouvez modifier le parcours ou ajouter des arrêts à tout moment.",
+      },
+      versaillesDay: {
+        q: "La mise à disposition convient-elle pour une excursion à Versailles ?",
+        a: "Oui. Un aller-retour typique Versailles dure 5 à 6 heures. Le chauffeur vous amène depuis Paris, attend au château et vous ramène à votre hôtel ou destination.",
+      },
+      vehicleType: {
+        q: "Quelles catégories de véhicules sont disponibles en mise à disposition ?",
+        a: "Berline (1–3 passagers), berline de luxe (1–3 passagers) et van (jusqu'à 7 passagers). Véhicules groupe et VIP disponibles sur demande.",
+      },
+    },
+    ctaTitle: "Prêt à Réserver ?",
+    ctaDescription:
+      "Indiquez-nous votre date, durée et itinéraire. Nous confirmons la disponibilité et vous envoyons un devis ferme.",
+    ctaWhatsAppFull: "Obtenir un Devis sur WhatsApp",
+    ctaEmail: "Nous Écrire par Email",
+  },
   seo: {
     home: {
       title:

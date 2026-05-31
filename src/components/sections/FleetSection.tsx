@@ -265,7 +265,7 @@ const FLEET_COPY: Record<
   es: {
     title: "Elige la flota según capacidad y nivel de servicio",
     subtitle:
-      "Empieza por pasajeros, maletas y contexto del trayecto. Los modelos reales siguen como prueba, mientras que grupos y VIP quedan bajo solicitud.",
+      "Empieza por el número de pasajeros, equipaje y tipo de servicio. Los vehículos mostrados son ejemplos reales; grupos y VIP se gestionan bajo solicitud.",
     toggleHint: "Haz clic para cambiar",
     cards: {
       sedan: {

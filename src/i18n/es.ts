@@ -1243,6 +1243,95 @@ export const es: Translation = {
     },
     recentlyEnded: "Eventos Recientes",
   },
+  hourly: {
+    pageTitle:
+      "Chófer por Horas en París | Desde 75 €/hora | Paris Elite Services",
+    pageDescription:
+      "Chófer profesional por horas en París. Reuniones, compras, circuitos turísticos, excursión a Versalles, eventos en varios lugares. Desde 75 €/hora, mínimo 3 horas. Cotización obligatoria.",
+    badge: "Disposición por Horas",
+    heroTitle: "Chófer a Tu Disposición",
+    heroSubtitle:
+      "Chófer profesional para reuniones, compras, tours y recorridos flexibles en París e Île-de-France.",
+    ctaQuote: "Solicitar Cotización",
+    ctaWhatsApp: "Escríbenos por WhatsApp",
+    trustFlexible: "Horario Flexible",
+    trustProfessional: "Profesional",
+    trustAsDirected: "A Tu Ritmo",
+    trustAvailability: "Bajo Solicitud",
+    useCasesTitle: "Cuándo Usar el Servicio por Horas",
+    useCasesSubtitle:
+      "Cinco situaciones en las que un chófer a tu disposición es la opción correcta.",
+    useCases: {
+      meetings: {
+        title: "Reuniones de Negocios",
+        description:
+          "Varias reuniones seguidas en el centro de París. Tu chófer espera entre citas para que te muevas sin contratiempos.",
+        duration: "Habitual: 3–4 horas",
+      },
+      shopping: {
+        title: "Compras Premium",
+        description:
+          "Faubourg Saint-Honoré, Le Marais, Saint-Germain. Equipaje cargado, chófer disponible entre boutiques.",
+        duration: "Habitual: 3–5 horas",
+      },
+      cityTour: {
+        title: "Circuito por París",
+        description:
+          "Recorrido personalizado por los lugares que te interesan. Sin horarios fijos ni grupos.",
+        duration: "Habitual: 3–4 horas",
+      },
+      versailles: {
+        title: "Excursión a Versalles",
+        description:
+          "Ida y vuelta desde París puerta a puerta. El chófer espera en el palacio mientras visitas a tu ritmo y te regresa después.",
+        duration: "Habitual: 5–6 horas",
+      },
+      multiEvent: {
+        title: "Eventos en Varios Lugares",
+        description:
+          "Desfiles, inauguraciones, programas nocturnos con varias paradas. Una reserva cubre todo el programa.",
+        duration: "Habitual: 4–6 horas",
+      },
+    },
+    pricingTitle: "Precios Orientativos",
+    pricingSubtitle:
+      "Punto de partida transparente. Cotización definitiva obligatoria antes de confirmar.",
+    pricingFrom: "Desde 75 €/hora",
+    pricingMinimum: "Reserva mínima: 3 horas",
+    pricingNote:
+      "El precio final depende del itinerario, la categoría de vehículo, el horario y la disponibilidad. Cotización obligatoria antes de confirmar.",
+    pricingCta: "Cotizar por WhatsApp",
+    pricingCtaAlt: "Escríbenos por Email",
+    faqTitle: "Preguntas Frecuentes",
+    faqSubtitle: "Cómo funciona el servicio por horas en la práctica.",
+    faqs: {
+      minHours: {
+        q: "¿Cuál es la reserva mínima?",
+        a: "La reserva mínima es de 3 horas. Aplica para berlina estándar, berlina de lujo y furgoneta.",
+      },
+      whatsIncluded: {
+        q: "¿Qué incluye el precio por hora?",
+        a: "Chófer, vehículo, tiempo de espera y desplazamientos estándar en Île-de-France. Los peajes, aparcamiento y distancias fuera de la región pueden sumarse a la cotización final.",
+      },
+      multipleStops: {
+        q: "¿Puedo añadir paradas durante el servicio?",
+        a: "Sí. El servicio por horas está diseñado para itinerarios flexibles. Puedes cambiar el recorrido o añadir paradas en cualquier momento.",
+      },
+      versaillesDay: {
+        q: "¿Es adecuado para una excursión a Versalles?",
+        a: "Sí. Un recorrido típico ida y vuelta a Versalles dura entre 5 y 6 horas. El chófer te lleva desde París, espera en el palacio y te regresa a tu hotel o destino.",
+      },
+      vehicleType: {
+        q: "¿Qué categorías de vehículo están disponibles?",
+        a: "Berlina (1–3 pasajeros), berlina de lujo (1–3 pasajeros) y furgoneta (hasta 7 pasajeros). Vehículos para grupos y VIP disponibles bajo solicitud.",
+      },
+    },
+    ctaTitle: "¿Listo para Reservar?",
+    ctaDescription:
+      "Indícanos fecha, duración e itinerario. Confirmamos disponibilidad y enviamos cotización fija.",
+    ctaWhatsAppFull: "Cotizar por WhatsApp",
+    ctaEmail: "Escríbenos por Email",
+  },
   seo: {
     home: {
       title:

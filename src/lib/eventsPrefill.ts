@@ -165,6 +165,17 @@ export function buildGuideWhatsAppUrl(language: string): string {
   return buildGenericWhatsAppUrl(language);
 }
 
+export function buildHourlyWhatsAppUrl(language: string): string {
+  const messages: Record<string, string> = {
+    en: "Hello, I'd like a quote for hourly chauffeur service (mise à disposition) in Paris. Could you confirm availability, vehicle category and price for my itinerary?",
+    es: "Hola, me gustaría un presupuesto para servicio de chófer por horas en París. ¿Pueden confirmar disponibilidad, categoría de vehículo y precio para mi itinerario?",
+    fr: "Bonjour, je souhaite un devis pour une mise à disposition à Paris. Pourriez-vous confirmer la disponibilité, la catégorie de véhicule et le tarif pour mon itinéraire ?",
+    pt: "Olá, gostaria de um orçamento para serviço de motorista por horas em Paris. Podem confirmar disponibilidade, categoria do veículo e preço para o meu itinerário?",
+  };
+  const text = encodeURIComponent(messages[language] ?? messages.en);
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+}
+
 export function buildBlogWhatsAppUrl(language: string): string {
   const messages: Record<string, string> = {
     en: "Hello, I'd like a quote for a private transfer in Paris. Can you confirm availability and price?",

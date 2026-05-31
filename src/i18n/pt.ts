@@ -1236,6 +1236,95 @@ export const pt: Translation = {
     },
     recentlyEnded: "Eventos Recentes",
   },
+  hourly: {
+    pageTitle:
+      "Motorista por Hora em Paris | A partir de 75 €/h | Paris Elite Services",
+    pageDescription:
+      "Motorista profissional por hora em Paris. Reuniões, compras, passeio pela cidade, excursão a Versalhes, eventos em múltiplos locais. A partir de 75 €/h, mínimo 3 horas. Orçamento obrigatório.",
+    badge: "Serviço por Hora",
+    heroTitle: "Motorista à Sua Disposição",
+    heroSubtitle:
+      "Motorista profissional para reuniões, compras, passeios e itinerários flexíveis em Paris e Île-de-France.",
+    ctaQuote: "Solicitar Orçamento",
+    ctaWhatsApp: "WhatsApp",
+    trustFlexible: "Horário Flexível",
+    trustProfessional: "Profissional",
+    trustAsDirected: "Ao Seu Ritmo",
+    trustAvailability: "Sob Consulta",
+    useCasesTitle: "Quando Usar o Serviço por Hora",
+    useCasesSubtitle:
+      "Cinco situações em que um motorista à sua disposição é a escolha certa.",
+    useCases: {
+      meetings: {
+        title: "Reuniões de Negócios",
+        description:
+          "Várias reuniões seguidas no centro de Paris. O motorista aguarda entre compromissos para que se desloque sem atrasos.",
+        duration: "Típico: 3–4 horas",
+      },
+      shopping: {
+        title: "Compras Premium",
+        description:
+          "Faubourg Saint-Honoré, Le Marais, Saint-Germain. Bagagem carregada, motorista disponível entre as boutiques.",
+        duration: "Típico: 3–5 horas",
+      },
+      cityTour: {
+        title: "Passeio por Paris",
+        description:
+          "Roteiro personalizado pelos pontos de interesse. Sem horário fixo nem grupos.",
+        duration: "Típico: 3–4 horas",
+      },
+      versailles: {
+        title: "Excursão a Versalhes",
+        description:
+          "Ida e volta de Paris de porta a porta. O motorista aguarda no palácio enquanto visita ao seu ritmo e leva-o de volta.",
+        duration: "Típico: 5–6 horas",
+      },
+      multiEvent: {
+        title: "Eventos em Múltiplos Locais",
+        description:
+          "Desfiles, vernissages, programas noturnos com várias paragens. Uma reserva cobre todo o programa.",
+        duration: "Típico: 4–6 horas",
+      },
+    },
+    pricingTitle: "Preços Indicativos",
+    pricingSubtitle:
+      "Ponto de partida transparente. Orçamento definitivo obrigatório antes da confirmação.",
+    pricingFrom: "A partir de 75 €/hora",
+    pricingMinimum: "Reserva mínima: 3 horas",
+    pricingNote:
+      "O preço final depende do itinerário, categoria do veículo, horário e disponibilidade. Orçamento obrigatório antes da confirmação.",
+    pricingCta: "Orçamento pelo WhatsApp",
+    pricingCtaAlt: "Enviar Email",
+    faqTitle: "Perguntas Frequentes",
+    faqSubtitle: "Como funciona o serviço por hora na prática.",
+    faqs: {
+      minHours: {
+        q: "Qual é a reserva mínima?",
+        a: "A reserva mínima é de 3 horas, para as categorias berlina, berlina de luxo e minivan.",
+      },
+      whatsIncluded: {
+        q: "O que está incluído no preço por hora?",
+        a: "Motorista, veículo, tempo de espera e deslocamentos padrão na Île-de-France. Portagens, estacionamento e distâncias fora da região podem ser adicionados ao orçamento final.",
+      },
+      multipleStops: {
+        q: "Posso adicionar paragens durante o serviço?",
+        a: "Sim. O serviço por hora é concebido para itinerários flexíveis. Pode alterar o percurso ou adicionar paragens a qualquer momento.",
+      },
+      versaillesDay: {
+        q: "O serviço é adequado para uma excursão a Versalhes?",
+        a: "Sim. Uma viagem típica de ida e volta a Versalhes dura entre 5 e 6 horas. O motorista leva-o de Paris, aguarda no palácio e leva-o de volta ao hotel ou destino.",
+      },
+      vehicleType: {
+        q: "Quais as categorias de veículos disponíveis para o serviço por hora?",
+        a: "Berlina (1–3 passageiros), berlina de luxo (1–3 passageiros) e minivan (até 7 passageiros). Veículos para grupos e VIP disponíveis sob consulta.",
+      },
+    },
+    ctaTitle: "Pronto para Reservar?",
+    ctaDescription:
+      "Diga-nos a data, duração e itinerário. Confirmamos disponibilidade e enviamos orçamento fixo.",
+    ctaWhatsAppFull: "Orçamento pelo WhatsApp",
+    ctaEmail: "Enviar Email",
+  },
   seo: {
     home: {
       title:
