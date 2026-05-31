@@ -26,7 +26,7 @@ interface BookingRequestPayload {
 }
 
 const TELEGRAM_BOT_TOKEN = Deno.env.get("TELEGRAM_BOT_TOKEN") ?? "";
-const TELEGRAM_CHAT_ID = Deno.env.get("TELEGRAM_ALLOWED_CHAT_ID") ?? "";
+const TELEGRAM_CHAT_ID = Deno.env.get("TELEGRAM_CHAT_ID") ?? "";
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "";
 const SUPABASE_SERVICE_ROLE_KEY =
   Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
