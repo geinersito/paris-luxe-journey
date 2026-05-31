@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet-async";
-import { useNavigate } from "react-router-dom";
+import { buildGenericWhatsAppUrl } from "@/lib/eventsPrefill";
 import {
   MapPin,
   Clock,
@@ -26,8 +26,7 @@ const PRACTICAL_ICONS = [Clock, Train, Sparkles, CloudRain] as const;
 const PRACTICAL_KEYS = ["hours", "transport", "rhythm", "weather"] as const;
 
 export default function ParisFashion() {
-  const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const g = t.parisFashion;
 
   return (
@@ -249,7 +248,9 @@ export default function ParisFashion() {
             <Button
               size="lg"
               className="bg-primary hover:bg-primary/90 text-secondary font-semibold text-base px-7"
-              onClick={() => navigate("/booking")}
+              onClick={() =>
+                window.open(buildGenericWhatsAppUrl(language), "_blank")
+              }
             >
               {g.cta.bookTransfer}
             </Button>

@@ -1,11 +1,15 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useNavigate } from "react-router-dom";
+import {
+  buildAirportWhatsAppUrl,
+  buildGenericWhatsAppUrl,
+} from "@/lib/eventsPrefill";
 import { motion } from "framer-motion";
 import { Plane, Landmark, Car } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const PremiumSection = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const navigate = useNavigate();
 
   const fadeIn = {
@@ -22,7 +26,11 @@ const PremiumSection = () => {
       priceFrom: t.services.airport.priceFrom,
       features: t.services.airport.features,
       ctaLabel: t.services.airport.cta || t.services.cta,
-      cta: () => navigate("/booking"),
+      cta: () =>
+        window.open(
+          buildAirportWhatsAppUrl("CDG / Orly / Beauvais", language),
+          "_blank",
+        ),
     },
     {
       icon: Landmark,
@@ -40,7 +48,7 @@ const PremiumSection = () => {
       priceFrom: t.services.chauffeur.priceFrom,
       features: t.services.chauffeur.features,
       ctaLabel: t.services.chauffeur.cta || t.services.cta,
-      cta: () => navigate("/booking"),
+      cta: () => window.open(buildGenericWhatsAppUrl(language), "_blank"),
     },
   ];
 

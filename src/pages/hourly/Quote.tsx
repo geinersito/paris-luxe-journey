@@ -119,13 +119,14 @@ export default function HourlyQuote() {
 
         <div className="mt-8 text-center text-sm text-muted-foreground">
           <p>
-            For immediate point-to-point transfers, please use our{" "}
-            <button
-              onClick={() => navigate("/booking")}
+            For immediate point-to-point transfers,{" "}
+            <a
+              href="/airports/cdg"
               className="text-primary hover:underline font-medium"
             >
-              standard booking form
-            </button>
+              see airport transfer options
+            </a>
+            .
           </p>
         </div>
       </div>

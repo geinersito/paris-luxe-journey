@@ -46,12 +46,22 @@ export default function BlogSidebar({
       price: 70,
       href: "/airports/orly",
     },
-    { from: "CDG Airport", to: "Disneyland", price: 105, href: "/booking" },
-    { from: "Paris Center", to: "Versailles", price: 85, href: "/booking" },
+    {
+      from: "CDG Airport",
+      to: "Disneyland",
+      price: 105,
+      href: "/airports/cdg",
+    },
+    {
+      from: "Paris Center",
+      to: "Versailles",
+      price: 85,
+      href: "/excursions/versailles",
+    },
   ];
 
   const handleQuickQuote = () => {
-    navigate("/booking");
+    window.open(buildBlogWhatsAppUrl(i18n.language), "_blank");
   };
 
   const handleWhatsApp = () => {

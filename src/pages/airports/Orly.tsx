@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { Plane, Clock, Shield, MapPin, CheckCircle, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -9,7 +8,6 @@ const ORLY_IMAGE =
   "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80";
 
 export default function OrlyAirport() {
-  const navigate = useNavigate();
   const { t, language } = useLanguage();
 
   return (
@@ -50,7 +48,15 @@ export default function OrlyAirport() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button
                 size="lg"
-                onClick={() => navigate("/booking")}
+                onClick={() =>
+                  window.open(
+                    buildAirportWhatsAppUrl(
+                      t.airports.terminalGuide.airports.ory,
+                      language,
+                    ),
+                    "_blank",
+                  )
+                }
                 className="bg-secondary hover:bg-secondary/90 text-white px-8 py-6 text-lg font-semibold shadow-xl"
               >
                 {t.airports.cta.fixedPrice}
@@ -224,7 +230,15 @@ export default function OrlyAirport() {
           <div className="mt-12 text-center">
             <Button
               size="lg"
-              onClick={() => navigate("/booking")}
+              onClick={() =>
+                window.open(
+                  buildAirportWhatsAppUrl(
+                    t.airports.terminalGuide.airports.ory,
+                    language,
+                  ),
+                  "_blank",
+                )
+              }
               className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg font-semibold shadow-xl"
             >
               Book Your Transfer Now

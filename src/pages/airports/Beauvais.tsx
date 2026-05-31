@@ -1,5 +1,4 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import {
   Plane,
   Clock,
@@ -17,7 +16,6 @@ const BEAUVAIS_IMAGE =
   "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80";
 
 export default function BeauvaisAirport() {
-  const navigate = useNavigate();
   const { t, language } = useLanguage();
 
   return (
@@ -61,7 +59,15 @@ export default function BeauvaisAirport() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button
                 size="lg"
-                onClick={() => navigate("/booking")}
+                onClick={() =>
+                  window.open(
+                    buildAirportWhatsAppUrl(
+                      t.airports.terminalGuide.airports.bva,
+                      language,
+                    ),
+                    "_blank",
+                  )
+                }
                 className="bg-secondary hover:bg-secondary/90 text-white px-8 py-6 text-lg font-semibold shadow-xl"
               >
                 {t.airports.cta.fixedPrice}
@@ -238,7 +244,15 @@ export default function BeauvaisAirport() {
           <div className="mt-12 text-center">
             <Button
               size="lg"
-              onClick={() => navigate("/booking")}
+              onClick={() =>
+                window.open(
+                  buildAirportWhatsAppUrl(
+                    t.airports.terminalGuide.airports.bva,
+                    language,
+                  ),
+                  "_blank",
+                )
+              }
               className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg font-semibold shadow-xl"
             >
               Book Your Transfer Now

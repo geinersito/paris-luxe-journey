@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { buildGenericWhatsAppUrl } from "@/lib/eventsPrefill";
 
 export default function NotFound() {
   const navigate = useNavigate();
@@ -14,17 +15,17 @@ export default function NotFound() {
           Page not found
         </h1>
         <p className="mt-3 text-muted-foreground">
-          The page you requested is not available. You can continue to booking
-          or go back to the home page.
+          The page you requested is not available. Contact us via WhatsApp for
+          an instant quote, or go back to the home page.
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center">
           <Button
             type="button"
-            onClick={() => navigate("/booking")}
+            onClick={() => window.open(buildGenericWhatsAppUrl("en"), "_blank")}
             className="w-full sm:w-auto"
           >
-            Go to Booking
+            Get a Quote
           </Button>
           <Button
             type="button"

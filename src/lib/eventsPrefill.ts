@@ -20,9 +20,9 @@ const templates: Record<string, PrefillTemplates> = {
     venueLabel: "Venue",
     linkLabel: "Event link",
     closing: "Could you confirm availability and price?",
-    genericSubject: "Event Transfer Quote",
+    genericSubject: "Private Transfer Quote — Paris",
     genericBody:
-      "Hi, I'm looking for a luxury transfer to an event in Paris. Could you help me with a quote?",
+      "Hello, I'd like to request a private transfer in Paris. Could you confirm availability and send me a quote?",
   },
   es: {
     greeting: "Hola, me gustaría un presupuesto para ir a",
@@ -30,9 +30,9 @@ const templates: Record<string, PrefillTemplates> = {
     venueLabel: "Lugar",
     linkLabel: "Enlace del evento",
     closing: "¿Podrían confirmar disponibilidad y precio?",
-    genericSubject: "Presupuesto Traslado Evento",
+    genericSubject: "Presupuesto Traslado Privado — París",
     genericBody:
-      "Hola, busco un traslado de lujo a un evento en París. ¿Podrían ayudarme con un presupuesto?",
+      "Hola, me gustaría solicitar un traslado privado en París. ¿Podrían confirmar disponibilidad y enviarme un presupuesto?",
   },
   fr: {
     greeting: "Bonjour, je souhaite un devis pour me rendre à",
@@ -40,9 +40,9 @@ const templates: Record<string, PrefillTemplates> = {
     venueLabel: "Lieu",
     linkLabel: "Lien de l'événement",
     closing: "Pourriez-vous confirmer la disponibilité et le tarif ?",
-    genericSubject: "Devis Transfert Événement",
+    genericSubject: "Devis Transfert Privé — Paris",
     genericBody:
-      "Bonjour, je cherche un transfert de luxe pour un événement à Paris. Pourriez-vous m'aider avec un devis ?",
+      "Bonjour, je souhaite réserver un transfert privé à Paris. Pourriez-vous confirmer la disponibilité et m'envoyer un devis ?",
   },
   pt: {
     greeting: "Olá, gostaria de um orçamento para ir a",
@@ -50,9 +50,9 @@ const templates: Record<string, PrefillTemplates> = {
     venueLabel: "Local",
     linkLabel: "Link do evento",
     closing: "Poderiam confirmar disponibilidade e preço?",
-    genericSubject: "Orçamento Transferência Evento",
+    genericSubject: "Orçamento Transfer Privado — Paris",
     genericBody:
-      "Olá, procuro uma transferência de luxo para um evento em Paris. Poderiam me ajudar com um orçamento?",
+      "Olá, gostaria de solicitar um transfer privado em Paris. Podem confirmar disponibilidade e enviar-me um orçamento?",
   },
 };
 

@@ -17,7 +17,7 @@ import { useVehicles } from "@/hooks/useVehicles";
 import { Skeleton } from "@/components/ui/skeleton";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useNavigate } from "react-router-dom";
+import { buildGenericWhatsAppUrl } from "@/lib/eventsPrefill";
 import type { Language } from "@/types/i18n";
 
 const FEATURE_ICONS = {
@@ -457,7 +457,6 @@ const FLEET_COPY: Record<
 
 export default function FleetSection() {
   const { t, language } = useLanguage();
-  const navigate = useNavigate();
   const { data: vehicles, isLoading } = useVehicles();
   const [selectedImageType, setSelectedImageType] = React.useState<
     "exterior" | "interior"
@@ -471,14 +470,7 @@ export default function FleetSection() {
   };
 
   const handleBookNow = () => {
-    // Scroll suave al formulario de booking en la página principal
-    const bookingSection = document.getElementById("booking");
-    if (bookingSection) {
-      bookingSection.scrollIntoView({ behavior: "smooth", block: "start" });
-    } else {
-      // Si no estamos en la página principal, navegar a ella
-      navigate("/#booking");
-    }
+    window.open(buildGenericWhatsAppUrl(language), "_blank");
   };
 
   const fadeIn = {

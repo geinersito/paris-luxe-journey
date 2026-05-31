@@ -1,6 +1,6 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { buildExcursionWhatsAppUrl } from "@/lib/eventsPrefill";
 import { DestinationHeader } from "@/components/destination/DestinationHeader";
 import { DestinationNavigation } from "@/components/destination/DestinationNavigation";
 import { DestinationContent } from "@/components/destination/DestinationContent";
@@ -12,7 +12,6 @@ import { getSiteOrigin } from "@/lib/seo/site";
 
 export default function ChampagnePage() {
   const { language } = useLanguage();
-  const navigate = useNavigate();
   const [activeSection, setActiveSection] = React.useState("description");
 
   const guide = champagneGuideContent[language];
@@ -109,7 +108,15 @@ export default function ChampagnePage() {
     <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-6 md:p-8 my-8">
       <h4 className="text-2xl font-bold text-foreground mb-3">{title}</h4>
       <p className="text-muted-foreground mb-5">{body}</p>
-      <Button onClick={() => navigate("/booking")} size="lg">
+      <Button
+        onClick={() =>
+          window.open(
+            buildExcursionWhatsAppUrl("Champagne", language),
+            "_blank",
+          )
+        }
+        size="lg"
+      >
         {buttonLabel}
       </Button>
     </div>
@@ -152,7 +159,15 @@ export default function ChampagnePage() {
               </li>
             ))}
           </ul>
-          <Button className="w-full" onClick={() => navigate("/booking")}>
+          <Button
+            className="w-full"
+            onClick={() =>
+              window.open(
+                buildExcursionWhatsAppUrl("Champagne", language),
+                "_blank",
+              )
+            }
+          >
             {card.button}
           </Button>
         </div>

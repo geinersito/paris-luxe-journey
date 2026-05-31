@@ -2,9 +2,10 @@ import BookingForm from "@/components/BookingForm";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
+import { buildGenericWhatsAppUrl } from "@/lib/eventsPrefill";
 
 const BookingPage = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const intent = searchParams.get("intent");
@@ -29,7 +30,9 @@ const BookingPage = () => {
         tourId="default"
         tourName="Standard Transfer"
         basePrice={0}
-        onSubmit={async () => {}}
+        onSubmit={async () => {
+          window.open(buildGenericWhatsAppUrl(language), "_blank");
+        }}
       />
     </div>
   );

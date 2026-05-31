@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { buildBlogWhatsAppUrl } from "@/lib/eventsPrefill";
 import { Button } from "@/components/ui/button";
 import { Check } from "lucide-react";
 import type { CtaVariant } from "@/types/blog";
@@ -9,8 +9,7 @@ interface FinalCTAProps {
 }
 
 export default function FinalCTA({ variant = "generic" }: FinalCTAProps) {
-  const { t } = useTranslation();
-  const navigate = useNavigate();
+  const { t, i18n } = useTranslation();
 
   const benefits = [
     t("blog.professionalService") || "Professional chauffeur service",
@@ -47,7 +46,9 @@ export default function FinalCTA({ variant = "generic" }: FinalCTAProps) {
 
           <Button
             size="lg"
-            onClick={() => navigate("/booking")}
+            onClick={() =>
+              window.open(buildBlogWhatsAppUrl(i18n.language), "_blank")
+            }
             className="w-full md:w-auto"
           >
             {ctaButton}
