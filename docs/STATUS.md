@@ -79,13 +79,19 @@ Runtime hold (unchanged — separate from publication):
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `3b7ae2d`
-- Baseline feature: `feat(launch): WA contextual, ES redirects, excursion SEO, events filter (#226)`
+- SHA: `7f0a007`
+- Baseline feature: `FUNNEL-CTA-REWIRE-01 — replace /booking navigates with contextual WA prefill`
 - Last updated: `2026-05-31`
 
 ## Ultimos PRs mergeados en main
 
-1. `#226` - feat(launch): WA contextual, ES redirects, excursion SEO, events filter (2026-05-31) (`3b7ae2d`) ✅ LAUNCH SPRINT DONE
+1. `7f0a007` FUNNEL-CTA-REWIRE-01 — replace /booking navigates with contextual WA prefill (2026-05-31) ✅
+2. `4600b90` fix(hourly): contextual WA prefill on /hourly + i18n hero button (2026-05-31) ✅ CONTENT-HOURLY-CTA-POLISH-01
+3. `601a279` feat(hourly): CONTENT-HOURLY-ITINERARIES-01 — full page rewrite + i18n (2026-05-31) ✅
+4. `86793ea` chore(webhooks): OPS-STRIPE-LEGACY-DEPRECATE-01 PR3 — delete legacy handlers (2026-05-31) ✅
+5. `ce2ba56` fix(blog): correct cross-link paths — add missing /transport/ segment (2026-05-31) ✅
+6. `3dcc22e` feat(blog): SEO-INTERNALLINK-RULES-01 — internal links EN articles (2026-05-31) ✅
+7. `#226` - feat(launch): WA contextual, ES redirects, excursion SEO, events filter (2026-05-31) (`3b7ae2d`) ✅ LAUNCH SPRINT DONE
 2. `#225` - fix(launch): cache headers, event CTA, broken images, remove unverified stars (2026-05-30) (`8545e36`) ✅
 3. `#180` - fix(nav): absolutize fleet/about/contact anchors to /#hash (2026-04-28) (`62c6fad`) ✅ PUB-P0-002 DONE
 2. `#179` - fix(i18n): add missing blog keys — pageTitle, readMore, notFound.* (2026-04-28) (`dbe3ef7`) ✅ PUB-P0-001 DONE
