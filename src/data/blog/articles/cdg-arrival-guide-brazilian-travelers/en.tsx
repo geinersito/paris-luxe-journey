@@ -98,7 +98,7 @@ export default function Article() {
         uses the marked taxi line. If something feels rushed or unclear, stop,
         verify your terminal, and confirm your next step before moving on. See
         our{" "}
-        <a href="/blog/paris-airport-scams-safety-guide-brazilian-travelers">
+        <a href="/blog/transport/paris-airport-scams-safety-guide-brazilian-travelers">
           airport safety guide
         </a>{" "}
         for a detailed breakdown.

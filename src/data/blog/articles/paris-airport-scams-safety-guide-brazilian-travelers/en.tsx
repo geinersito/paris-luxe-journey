@@ -29,7 +29,7 @@ export default function Article() {
         <a href="/airports/cdg">private transfers</a> are usually the clearest
         channels. For a full breakdown of all transport options from CDG, see
         our{" "}
-        <a href="/blog/cdg-to-paris-transport-options">
+        <a href="/blog/transport/cdg-to-paris-transport-options">
           CDG to Paris transport guide
         </a>
         . The key is to avoid making rushed decisions inside the terminal when
