@@ -43,9 +43,9 @@ export default function Article() {
       </p>
 
       <p>
-        A private transfer is often the easiest option for families with
-        children, strollers, and multiple suitcases because it reduces steps and
-        uncertainty between airport and hotel.
+        A <a href="/airports/cdg">private transfer</a> is often the easiest
+        option for families with children, strollers, and multiple suitcases
+        because it reduces steps and uncertainty between airport and hotel.
       </p>
 
       <h2>Traveling with children changes the equation</h2>
@@ -67,8 +67,11 @@ export default function Article() {
       <p>
         Families heading from CDG or Orly to Disneyland Paris usually benefit
         from a transport plan that favors comfort, clarity, and fewer moving
-        parts. Prefer a smoother arrival? Request your private airport to Disney
-        hotel transfer and begin the trip with less stress.
+        parts. Prefer a smoother arrival?{" "}
+        <a href="/airports/cdg">
+          Request your private airport to Disney hotel transfer
+        </a>{" "}
+        and begin the trip with less stress.
       </p>
     </article>
   );

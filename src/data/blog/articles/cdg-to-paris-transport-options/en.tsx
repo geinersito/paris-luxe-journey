@@ -207,7 +207,10 @@ export default function Article() {
 
       <h3>Pros</h3>
       <ul>
-        <li>Driver meets you at arrivals with name sign</li>
+        <li>
+          <a href="/airports/cdg">Driver meets you at arrivals</a> with name
+          sign
+        </li>
         <li>Flight monitoring included (no extra charge for delays)</li>
         <li>Fixed price guaranteed</li>
         <li>Professional, English-speaking drivers</li>
@@ -302,14 +305,18 @@ export default function Article() {
       <p>
         Getting from CDG to Paris doesn't have to be stressful. While the RER B
         is the cheapest option, it's not always the most practical, especially
-        with luggage or after a long flight. For most travelers, a private VTC
-        transfer offers the best balance of comfort, reliability, and value -
-        especially when traveling with others.
+        with luggage or after a long flight. For most travelers, a{" "}
+        <a href="/airports/cdg">private VTC transfer</a> offers the best balance
+        of comfort, reliability, and value — especially when traveling with
+        others.
       </p>
 
       <p>
         Whatever you choose, book in advance when possible to avoid long queues
-        and ensure availability. Safe travels!
+        and ensure availability. If you're planning day trips during your stay,
+        we also offer{" "}
+        <a href="/excursions">full-day excursions with a private chauffeur</a>{" "}
+        to Versailles, Champagne, and beyond. Safe travels!
       </p>
     </article>
   );

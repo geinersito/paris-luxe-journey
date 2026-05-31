@@ -25,26 +25,32 @@ export default function Article() {
       <h2>Safer options</h2>
 
       <p>
-        Official taxi ranks, known ride-hailing apps, and pre-booked private
-        transfers are usually the clearest channels. The key is to avoid making
-        rushed decisions inside the terminal when you are tired and still
-        orienting yourself.
+        Official taxi ranks, known ride-hailing apps, and pre-booked{" "}
+        <a href="/airports/cdg">private transfers</a> are usually the clearest
+        channels. For a full breakdown of all transport options from CDG, see
+        our{" "}
+        <a href="/blog/cdg-to-paris-transport-options">
+          CDG to Paris transport guide
+        </a>
+        . The key is to avoid making rushed decisions inside the terminal when
+        you are tired and still orienting yourself.
       </p>
 
       <h2>When private transfer helps</h2>
 
       <p>
-        A private transfer is often most useful for first-time visitors,
-        families, travelers with luggage, late arrivals, and business trips
-        where fixed pricing and a planned pickup reduce confusion.
+        A <a href="/airports/cdg">private transfer</a> is often most useful for
+        first-time visitors, families, travelers with luggage, late arrivals,
+        and business trips where fixed pricing and a planned pickup reduce
+        confusion.
       </p>
 
       <h2>Conclusion</h2>
 
       <p>
         The goal is not fear, but clarity. Prefer a fixed price and identified
-        driver? Request your private transfer and start your Paris arrival with
-        less uncertainty.
+        driver? <a href="/airports/cdg">Request your private transfer</a> and
+        start your Paris arrival with less uncertainty.
       </p>
     </article>
   );

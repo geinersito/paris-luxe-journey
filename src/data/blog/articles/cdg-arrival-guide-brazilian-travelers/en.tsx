@@ -83,11 +83,11 @@ export default function Article() {
 
       <h3>Private transfer / chauffeur</h3>
       <p>
-        A pre-booked private transfer is often the simplest option for travelers
-        who want a clear meeting process, a fixed booking in place before
-        landing, and direct door-to-door transport to the hotel. It is
-        especially useful for first-time visitors, families, late arrivals,
-        business trips, and anyone carrying significant luggage.
+        A pre-booked <a href="/airports/cdg">private transfer</a> is often the
+        simplest option for travelers who want a clear meeting process, a fixed
+        booking in place before landing, and direct door-to-door transport to
+        the hotel. It is especially useful for first-time visitors, families,
+        late arrivals, business trips, and anyone carrying significant luggage.
       </p>
 
       <h2>How to avoid fake taxis and confusion</h2>
@@ -96,7 +96,12 @@ export default function Article() {
         Ignore informal ride offers inside the terminal. A legitimate private
         transfer follows a pre-arranged meeting process, while an official taxi
         uses the marked taxi line. If something feels rushed or unclear, stop,
-        verify your terminal, and confirm your next step before moving on.
+        verify your terminal, and confirm your next step before moving on. See
+        our{" "}
+        <a href="/blog/paris-airport-scams-safety-guide-brazilian-travelers">
+          airport safety guide
+        </a>{" "}
+        for a detailed breakdown.
       </p>
 
       <h2>When private transfer makes most sense</h2>
@@ -129,7 +134,8 @@ export default function Article() {
       </p>
 
       <p>
-        Prefer a smoother arrival? Request your private CDG to hotel transfer
+        Prefer a smoother arrival?{" "}
+        <a href="/airports/cdg">Request your private CDG to hotel transfer</a>{" "}
         and start your Paris trip with less friction from the first minute.
       </p>
     </article>

@@ -211,9 +211,9 @@ export default function Article() {
       </p>
 
       <p>
-        Book your VTC transfer in advance to ensure availability and lock in
-        your fixed price - no surprises, no stress, just a smooth start to your
-        Paris adventure.
+        <a href="/airports/cdg">Book your VTC transfer</a> in advance to ensure
+        availability and lock in your fixed price — no surprises, no stress,
+        just a smooth start to your Paris adventure.
       </p>
     </article>
   );
