@@ -79,14 +79,16 @@ Runtime hold (unchanged — separate from publication):
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `017e1c1`
-- Baseline feature: `docs: CONTENT-HOURLY-CTA-POLISH-01 — register sprint commits in STATUS + IMPROVEMENTS`
+- SHA: `8401f64` → pending: `BOOKING-REQUEST-INTAKE-01`
+- Baseline feature: `docs: CONTENT-HOURLY-CTA-POLISH-01`
 - Last updated: `2026-05-31`
 
 ## Ultimos PRs mergeados en main
 
-1. `017e1c1` docs: CONTENT-HOURLY-CTA-POLISH-01 — register sprint commits in STATUS + IMPROVEMENTS (2026-05-31) ✅
-2. `7f0a007` FUNNEL-CTA-REWIRE-01 — replace /booking navigates with contextual WA prefill (2026-05-31) ✅
+1. `PENDING` BOOKING-REQUEST-INTAKE-01 — bridge table + edge function + /booking/pending (2026-05-31) 🔨
+2. `8401f64` docs(ssot): correct HEAD SHA in STATUS.md (2026-05-31) ✅
+3. `017e1c1` docs: CONTENT-HOURLY-CTA-POLISH-01 — register sprint commits in STATUS + IMPROVEMENTS (2026-05-31) ✅
+4. `7f0a007` FUNNEL-CTA-REWIRE-01 — replace /booking navigates with contextual WA prefill (2026-05-31) ✅
 2. `4600b90` fix(hourly): contextual WA prefill on /hourly + i18n hero button (2026-05-31) ✅ CONTENT-HOURLY-CTA-POLISH-01
 3. `601a279` feat(hourly): CONTENT-HOURLY-ITINERARIES-01 — full page rewrite + i18n (2026-05-31) ✅
 4. `86793ea` chore(webhooks): OPS-STRIPE-LEGACY-DEPRECATE-01 PR3 — delete legacy handlers (2026-05-31) ✅

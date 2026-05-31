@@ -33,6 +33,7 @@ const BlogCategory = lazy(() => import("./pages/blog/BlogCategory"));
 const BlogPost = lazy(() => import("./pages/blog/BlogPost"));
 const BlogNotFound = lazy(() => import("./pages/blog/NotFound"));
 const BookingPage = lazy(() => import("./pages/booking"));
+const BookingPending = lazy(() => import("./pages/booking/Pending"));
 const BookingDetails = lazy(() => import("./pages/booking/Details"));
 const BookingPayment = lazy(() => import("./pages/booking/Payment"));
 const BookingConfirmation = lazy(() => import("./pages/booking/Confirmation"));
@@ -308,6 +309,14 @@ const router = createBrowserRouter([
             element: (
               <Suspense fallback={<PageLoader />}>
                 <BookingPage />
+              </Suspense>
+            ),
+          },
+          {
+            path: "pending",
+            element: (
+              <Suspense fallback={<PageLoader />}>
+                <BookingPending />
               </Suspense>
             ),
           },

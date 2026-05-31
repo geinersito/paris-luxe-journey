@@ -320,23 +320,23 @@ const BookingForm = ({
           }
         }
 
-        // Navegar directamente sin setTimeout (anti-pattern eliminado)
-        try {
-          navigate("/booking/details", {
-            state: navigationState,
-          });
-
-          // Llamar al onSubmit prop si existe (para compatibilidad)
-          if (typeof onSubmit === "function") {
-            onSubmit(bookingDataWithSurcharge);
+        // When onSubmit prop is provided, delegate entirely — caller controls navigation.
+        // Without onSubmit, proceed through internal Stripe wizard (/booking/details).
+        if (typeof onSubmit === "function") {
+          await onSubmit(bookingDataWithSurcharge);
+        } else {
+          try {
+            navigate("/booking/details", {
+              state: navigationState,
+            });
+          } catch (navError) {
+            console.error("[BookingForm] Navigation error:", navError);
+            toast({
+              title: t.common.error,
+              description: t.booking.errors.bookingCreationError,
+              variant: "destructive",
+            });
           }
-        } catch (navError) {
-          console.error("[BookingForm] Navigation error:", navError);
-          toast({
-            title: t.common.error,
-            description: t.booking.errors.bookingCreationError,
-            variant: "destructive",
-          });
         }
       } catch (error) {
         toast({
