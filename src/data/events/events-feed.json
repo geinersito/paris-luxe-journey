@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-01T12:00:00Z",
+  "generatedAt": "2026-05-31T09:00:00Z",
   "timezone": "Europe/Paris",
   "thisWeek": [
     {
@@ -215,6 +215,99 @@
       "imageUrl": "https://images.unsplash.com/photo-1569949380661-6c3f4a4faf89?auto=format&fit=crop&w=1200&q=80",
       "category": "festival",
       "isFeatured": true
+    },
+    {
+      "id": "matisse-grand-palais-2026",
+      "startAt": "2026-03-24T10:00:00Z",
+      "endAt": "2026-07-26T20:00:00Z",
+      "title": {
+        "en": "Matisse 1941–1954 — Grand Palais",
+        "es": "Matisse 1941–1954 — Grand Palais",
+        "fr": "Matisse 1941–1954 — Grand Palais",
+        "pt": "Matisse 1941–1954 — Grand Palais"
+      },
+      "description": {
+        "en": "A landmark retrospective of Matisse's final creative decade — the years of the famous cut-outs — at the Grand Palais Galeries nationales. Peak summer queues make a private transfer from hotel to door far more practical than navigating Paris public transport with art-world crowds. Transport only — we do not sell museum tickets.",
+        "es": "Una retrospectiva fundamental sobre la última década creativa de Matisse — los años de los recortes — en las Galeries nationales del Grand Palais. Las colas del verano hacen del transfer privado hotel-puerta la opción mucho más práctica que el transporte público en temporada alta. Solo transporte — no vendemos entradas de museo.",
+        "fr": "Une rétrospective majeure sur la dernière décennie créative de Matisse — les années des papiers découpés — aux Galeries nationales du Grand Palais. Les files d'attente estivales rendent un transfert privé hôtel-entrée bien plus pratique que les transports en commun bondés. Transport uniquement — nous ne vendons pas de billets de musée.",
+        "pt": "Uma retrospectiva fundamental da última década criativa de Matisse — os anos dos recortes — nas Galeries nationales do Grand Palais. As filas do verão tornam um transfer privado hotel-porta muito mais prático do que os transportes públicos lotados. Apenas transporte — não vendemos ingressos de museu."
+      },
+      "venueName": {
+        "en": "Grand Palais — Galeries nationales",
+        "es": "Grand Palais — Galeries nationales",
+        "fr": "Grand Palais — Galeries nationales",
+        "pt": "Grand Palais — Galeries nationales"
+      },
+      "district": "8eme",
+      "address": "3 Avenue du Général Eisenhower, 75008 Paris",
+      "eventUrl": "https://www.grandpalais.fr/en/program/matisse-1941-1954",
+      "sourceName": "Grand Palais",
+      "sourceUrl": "https://www.grandpalais.fr/en/program/matisse-1941-1954",
+      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "category": "exhibition",
+      "isFeatured": true
+    },
+    {
+      "id": "we-love-green-2026",
+      "startAt": "2026-06-05T12:00:00Z",
+      "endAt": "2026-06-07T23:59:00Z",
+      "title": {
+        "en": "We Love Green 2026",
+        "es": "We Love Green 2026",
+        "fr": "We Love Green 2026",
+        "pt": "We Love Green 2026"
+      },
+      "description": {
+        "en": "Paris's leading eco-conscious music festival returns to the Bois de Vincennes for three days of electronic, pop and world music. The site is not served by direct metro — a private transfer door-to-door is the most comfortable option for guests arriving from central Paris hotels or CDG/Orly. Transport only — we do not sell event tickets.",
+        "es": "El principal festival de música ecológico de París regresa al Bois de Vincennes durante tres días de música electrónica, pop y world music. El recinto no está servido directamente por metro — el transfer privado puerta a puerta es la opción más cómoda para llegar desde los hoteles del centro de París o CDG/Orly. Solo transporte — no vendemos entradas al evento.",
+        "fr": "Le festival de musique éco-responsable phare de Paris revient au Bois de Vincennes pour trois jours d'électro, de pop et de musiques du monde. Le site n'est pas desservi directement par le métro — un transfert privé porte-à-porte est l'option la plus confortable depuis les hôtels du centre de Paris ou CDG/Orly. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "O principal festival de música eco-consciente de Paris regressa ao Bois de Vincennes para três dias de música electrónica, pop e world music. O local não tem ligação directa de metro — um transfer privado porta-a-porta é a opção mais confortável a partir dos hotéis do centro de Paris ou CDG/Orly. Apenas transporte — não vendemos ingressos."
+      },
+      "venueName": {
+        "en": "Bois de Vincennes",
+        "es": "Bois de Vincennes",
+        "fr": "Bois de Vincennes",
+        "pt": "Bois de Vincennes"
+      },
+      "district": "12eme",
+      "address": "Bois de Vincennes, 75012 Paris",
+      "eventUrl": "https://welovegreen.fr/",
+      "sourceName": "We Love Green",
+      "sourceUrl": "https://welovegreen.fr/",
+      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "category": "festival",
+      "isFeatured": false
+    },
+    {
+      "id": "leandro-erlich-2026",
+      "startAt": "2026-06-02T10:00:00Z",
+      "endAt": "2026-09-06T20:00:00Z",
+      "title": {
+        "en": "Leandro Erlich — Grand Palais",
+        "es": "Leandro Erlich — Grand Palais",
+        "fr": "Leandro Erlich — Grand Palais",
+        "pt": "Leandro Erlich — Grand Palais"
+      },
+      "description": {
+        "en": "Argentine artist Leandro Erlich transforms the Grand Palais Galleries 9 & 10 with his signature large-scale immersive installations — architecture, perception and optical illusions on a monumental scale. A private transfer to the Grand Palais is the smoothest way to arrive for ticketed time slots. Transport only — we do not sell museum tickets.",
+        "es": "El artista argentino Leandro Erlich transforma las Galerías 9 y 10 del Grand Palais con sus inconfundibles instalaciones inmersivas a gran escala — arquitectura, percepción e ilusiones ópticas a escala monumental. El transfer privado al Grand Palais es la forma más cómoda de llegar para una entrada con hora asignada. Solo transporte — no vendemos entradas de museo.",
+        "fr": "L'artiste argentin Leandro Erlich transforme les Galeries 9 & 10 du Grand Palais avec ses installations immersives à grande échelle — architecture, perception et illusions d'optique à l'échelle monumentale. Un transfert privé vers le Grand Palais est le moyen le plus fluide d'arriver pour un créneau horaire réservé. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "O artista argentino Leandro Erlich transforma as Galerias 9 & 10 do Grand Palais com as suas icónicas instalações imersivas em grande escala — arquitectura, percepção e ilusões de óptica à escala monumental. Um transfer privado para o Grand Palais é a forma mais suave de chegar para um horário marcado. Apenas transporte — não vendemos ingressos de museu."
+      },
+      "venueName": {
+        "en": "Grand Palais — Galleries 9 & 10",
+        "es": "Grand Palais — Galerías 9 y 10",
+        "fr": "Grand Palais — Galeries 9 & 10",
+        "pt": "Grand Palais — Galerias 9 e 10"
+      },
+      "district": "8eme",
+      "address": "3 Avenue du Général Eisenhower, 75008 Paris",
+      "eventUrl": "https://www.grandpalais.fr/en/program/leandro-erlich",
+      "sourceName": "Grand Palais",
+      "sourceUrl": "https://www.grandpalais.fr/en/program/leandro-erlich",
+      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "category": "exhibition",
+      "isFeatured": false
     }
   ],
   "thisMonth": [
@@ -613,6 +706,192 @@
       "sourceUrl": "https://www.parisphoto.com/en-gb.html",
       "imageUrl": "https://images.unsplash.com/photo-1514510979989-798d7524cd74?auto=format&fit=crop&w=1200&q=80",
       "category": "exhibition",
+      "isFeatured": false
+    },
+    {
+      "id": "matisse-grand-palais-2026",
+      "startAt": "2026-03-24T10:00:00Z",
+      "endAt": "2026-07-26T20:00:00Z",
+      "title": {
+        "en": "Matisse 1941–1954 — Grand Palais",
+        "es": "Matisse 1941–1954 — Grand Palais",
+        "fr": "Matisse 1941–1954 — Grand Palais",
+        "pt": "Matisse 1941–1954 — Grand Palais"
+      },
+      "description": {
+        "en": "A landmark retrospective of Matisse's final creative decade — the years of the famous cut-outs — at the Grand Palais Galeries nationales. Peak summer queues make a private transfer from hotel to door far more practical than navigating Paris public transport with art-world crowds. Transport only — we do not sell museum tickets.",
+        "es": "Una retrospectiva fundamental sobre la última década creativa de Matisse — los años de los recortes — en las Galeries nationales del Grand Palais. Las colas del verano hacen del transfer privado hotel-puerta la opción mucho más práctica que el transporte público en temporada alta. Solo transporte — no vendemos entradas de museo.",
+        "fr": "Une rétrospective majeure sur la dernière décennie créative de Matisse — les années des papiers découpés — aux Galeries nationales du Grand Palais. Les files d'attente estivales rendent un transfert privé hôtel-entrée bien plus pratique que les transports en commun bondés. Transport uniquement — nous ne vendons pas de billets de musée.",
+        "pt": "Uma retrospectiva fundamental da última década criativa de Matisse — os anos dos recortes — nas Galeries nationales do Grand Palais. As filas do verão tornam um transfer privado hotel-porta muito mais prático do que os transportes públicos lotados. Apenas transporte — não vendemos ingressos de museu."
+      },
+      "venueName": {
+        "en": "Grand Palais — Galeries nationales",
+        "es": "Grand Palais — Galeries nationales",
+        "fr": "Grand Palais — Galeries nationales",
+        "pt": "Grand Palais — Galeries nationales"
+      },
+      "district": "8eme",
+      "address": "3 Avenue du Général Eisenhower, 75008 Paris",
+      "eventUrl": "https://www.grandpalais.fr/en/program/matisse-1941-1954",
+      "sourceName": "Grand Palais",
+      "sourceUrl": "https://www.grandpalais.fr/en/program/matisse-1941-1954",
+      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "category": "exhibition",
+      "isFeatured": true
+    },
+    {
+      "id": "we-love-green-2026",
+      "startAt": "2026-06-05T12:00:00Z",
+      "endAt": "2026-06-07T23:59:00Z",
+      "title": {
+        "en": "We Love Green 2026",
+        "es": "We Love Green 2026",
+        "fr": "We Love Green 2026",
+        "pt": "We Love Green 2026"
+      },
+      "description": {
+        "en": "Paris's leading eco-conscious music festival returns to the Bois de Vincennes for three days of electronic, pop and world music. The site is not served by direct metro — a private transfer door-to-door is the most comfortable option for guests arriving from central Paris hotels or CDG/Orly. Transport only — we do not sell event tickets.",
+        "es": "El principal festival de música ecológico de París regresa al Bois de Vincennes durante tres días de música electrónica, pop y world music. El recinto no está servido directamente por metro — el transfer privado puerta a puerta es la opción más cómoda para llegar desde los hoteles del centro de París o CDG/Orly. Solo transporte — no vendemos entradas al evento.",
+        "fr": "Le festival de musique éco-responsable phare de Paris revient au Bois de Vincennes pour trois jours d'électro, de pop et de musiques du monde. Le site n'est pas desservi directement par le métro — un transfert privé porte-à-porte est l'option la plus confortable depuis les hôtels du centre de Paris ou CDG/Orly. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "O principal festival de música eco-consciente de Paris regressa ao Bois de Vincennes para três dias de música electrónica, pop e world music. O local não tem ligação directa de metro — um transfer privado porta-a-porta é a opção mais confortável a partir dos hotéis do centro de Paris ou CDG/Orly. Apenas transporte — não vendemos ingressos."
+      },
+      "venueName": {
+        "en": "Bois de Vincennes",
+        "es": "Bois de Vincennes",
+        "fr": "Bois de Vincennes",
+        "pt": "Bois de Vincennes"
+      },
+      "district": "12eme",
+      "address": "Bois de Vincennes, 75012 Paris",
+      "eventUrl": "https://welovegreen.fr/",
+      "sourceName": "We Love Green",
+      "sourceUrl": "https://welovegreen.fr/",
+      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "category": "festival",
+      "isFeatured": false
+    },
+    {
+      "id": "leandro-erlich-2026",
+      "startAt": "2026-06-02T10:00:00Z",
+      "endAt": "2026-09-06T20:00:00Z",
+      "title": {
+        "en": "Leandro Erlich — Grand Palais",
+        "es": "Leandro Erlich — Grand Palais",
+        "fr": "Leandro Erlich — Grand Palais",
+        "pt": "Leandro Erlich — Grand Palais"
+      },
+      "description": {
+        "en": "Argentine artist Leandro Erlich transforms the Grand Palais Galleries 9 & 10 with his signature large-scale immersive installations — architecture, perception and optical illusions on a monumental scale. A private transfer to the Grand Palais is the smoothest way to arrive for ticketed time slots. Transport only — we do not sell museum tickets.",
+        "es": "El artista argentino Leandro Erlich transforma las Galerías 9 y 10 del Grand Palais con sus inconfundibles instalaciones inmersivas a gran escala — arquitectura, percepción e ilusiones ópticas a escala monumental. El transfer privado al Grand Palais es la forma más cómoda de llegar para una entrada con hora asignada. Solo transporte — no vendemos entradas de museo.",
+        "fr": "L'artiste argentin Leandro Erlich transforme les Galeries 9 & 10 du Grand Palais avec ses installations immersives à grande échelle — architecture, perception et illusions d'optique à l'échelle monumentale. Un transfert privé vers le Grand Palais est le moyen le plus fluide d'arriver pour un créneau horaire réservé. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "O artista argentino Leandro Erlich transforma as Galerias 9 & 10 do Grand Palais com as suas icónicas instalações imersivas em grande escala — arquitectura, percepção e ilusões de óptica à escala monumental. Um transfer privado para o Grand Palais é a forma mais suave de chegar para um horário marcado. Apenas transporte — não vendemos ingressos de museu."
+      },
+      "venueName": {
+        "en": "Grand Palais — Galleries 9 & 10",
+        "es": "Grand Palais — Galerías 9 y 10",
+        "fr": "Grand Palais — Galeries 9 & 10",
+        "pt": "Grand Palais — Galerias 9 e 10"
+      },
+      "district": "8eme",
+      "address": "3 Avenue du Général Eisenhower, 75008 Paris",
+      "eventUrl": "https://www.grandpalais.fr/en/program/leandro-erlich",
+      "sourceName": "Grand Palais",
+      "sourceUrl": "https://www.grandpalais.fr/en/program/leandro-erlich",
+      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "category": "exhibition",
+      "isFeatured": false
+    },
+    {
+      "id": "seine-de-fete-2026",
+      "startAt": "2026-06-13T18:00:00Z",
+      "endAt": "2026-06-14T23:59:00Z",
+      "title": {
+        "en": "Seine de Fête 2026",
+        "es": "Seine de Fête 2026",
+        "fr": "Seine de Fête 2026",
+        "pt": "Seine de Fête 2026"
+      },
+      "description": {
+        "en": "La Seine Musicale's open-air summer festival on the Île Seguin brings together live concerts, DJ sets and cultural events across the island venue. Boulogne-Billancourt is easily reached by private transfer from central Paris in under 20 minutes — far quicker than the RER B route. Transport only — we do not sell event tickets.",
+        "es": "El festival estival al aire libre de La Seine Musicale en la Île Seguin reúne conciertos en vivo, sesiones de DJ y eventos culturales en el espacio insular. Boulogne-Billancourt se alcanza en transfer privado desde el centro de París en menos de 20 minutos — mucho más rápido que el RER B. Solo transporte — no vendemos entradas al evento.",
+        "fr": "Le festival estival en plein air de La Seine Musicale sur l'Île Seguin réunit concerts live, DJ sets et événements culturels sur le site insulaire. Boulogne-Billancourt se rejoint en transfert privé depuis le centre de Paris en moins de 20 minutes — bien plus rapide que le RER. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "O festival de verão ao ar livre da La Seine Musicale na Île Seguin reúne concertos ao vivo, DJ sets e eventos culturais no espaço insular. Boulogne-Billancourt é facilmente alcançada por transfer privado do centro de Paris em menos de 20 minutos. Apenas transporte — não vendemos ingressos."
+      },
+      "venueName": {
+        "en": "La Seine Musicale — Île Seguin",
+        "es": "La Seine Musicale — Île Seguin",
+        "fr": "La Seine Musicale — Île Seguin",
+        "pt": "La Seine Musicale — Île Seguin"
+      },
+      "district": "Boulogne-Billancourt",
+      "address": "Île Seguin, 92100 Boulogne-Billancourt",
+      "eventUrl": "https://www.laseinemusicale.com/",
+      "sourceName": "La Seine Musicale",
+      "sourceUrl": "https://www.laseinemusicale.com/",
+      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "category": "concert",
+      "isFeatured": false
+    },
+    {
+      "id": "laure-prouvost-2026",
+      "startAt": "2026-06-10T10:00:00Z",
+      "endAt": "2026-07-26T20:00:00Z",
+      "title": {
+        "en": "Laure Prouvost — Nous, frissons d'étoiles",
+        "es": "Laure Prouvost — Nous, frissons d'étoiles",
+        "fr": "Laure Prouvost — Nous, frissons d'étoiles",
+        "pt": "Laure Prouvost — Nous, frissons d'étoiles"
+      },
+      "description": {
+        "en": "Turner Prize-winning French artist Laure Prouvost presents a major new commission in the Grand Palais North Nave — an immersive multimedia environment exploring collective memory and sensory experience. The Grand Palais is conveniently reached by private transfer from any Paris arrondissement. Transport only — we do not sell museum tickets.",
+        "es": "La artista francesa galardonada con el Turner Prize Laure Prouvost presenta una gran obra de encargo en la Nave Norte del Grand Palais — un entorno multimedia inmersivo que explora la memoria colectiva y la experiencia sensorial. El Grand Palais es fácilmente accesible en transfer privado desde cualquier arrondissement de París. Solo transporte — no vendemos entradas de museo.",
+        "fr": "L'artiste française lauréate du Turner Prize Laure Prouvost présente une grande nouvelle commande dans la Nef Nord du Grand Palais — un environnement multimédia immersif explorant la mémoire collective et l'expérience sensorielle. Le Grand Palais est facilement accessible en transfert privé depuis tout arrondissement parisien. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "A artista francesa premiada com o Turner Prize Laure Prouvost apresenta uma grande encomenda nova na Nave Norte do Grand Palais — um ambiente multimédia imersivo que explora a memória colectiva e a experiência sensorial. O Grand Palais é facilmente acessível por transfer privado de qualquer arrondissement de Paris. Apenas transporte — não vendemos ingressos de museu."
+      },
+      "venueName": {
+        "en": "Grand Palais — North Nave",
+        "es": "Grand Palais — Nave Norte",
+        "fr": "Grand Palais — Nef Nord",
+        "pt": "Grand Palais — Nave Norte"
+      },
+      "district": "8eme",
+      "address": "3 Avenue du Général Eisenhower, 75008 Paris",
+      "eventUrl": "https://www.grandpalais.fr/en/program/laure-prouvost-we-felt-star-dying",
+      "sourceName": "Grand Palais",
+      "sourceUrl": "https://www.grandpalais.fr/en/program/laure-prouvost-we-felt-star-dying",
+      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "category": "exhibition",
+      "isFeatured": false
+    },
+    {
+      "id": "solidays-2026",
+      "startAt": "2026-06-26T12:00:00Z",
+      "endAt": "2026-06-28T23:59:00Z",
+      "title": {
+        "en": "Solidays 2026",
+        "es": "Solidays 2026",
+        "fr": "Solidays 2026",
+        "pt": "Solidays 2026"
+      },
+      "description": {
+        "en": "Solidays is France's largest solidarity music festival — three days of concerts at the Hippodrome Paris-Longchamp raising funds for the fight against AIDS. The Hippodrome is at the edge of the Bois de Boulogne, far from the RER — a private transfer from central Paris hotels, CDG or Orly is the most direct option. Transport only — we do not sell event tickets.",
+        "es": "Solidays es el mayor festival de música solidario de Francia — tres días de conciertos en el Hipódromo Paris-Longchamp con fines benéficos contra el SIDA. El Hipódromo está en el extremo del Bois de Boulogne, lejos del RER — el transfer privado desde los hoteles del centro de París, CDG u Orly es la opción más directa. Solo transporte — no vendemos entradas al evento.",
+        "fr": "Solidays est le plus grand festival de musique solidaire de France — trois jours de concerts à l'Hippodrome Paris-Longchamp au profit de la lutte contre le SIDA. L'Hippodrome est en bordure du Bois de Boulogne, loin du RER — un transfert privé depuis les hôtels du centre, CDG ou Orly est l'option la plus directe. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "O Solidays é o maior festival de música solidária de França — três dias de concertos no Hipódromo Paris-Longchamp a favor da luta contra a SIDA. O Hipódromo fica na orla do Bois de Boulogne, longe do RER — um transfer privado desde hotéis do centro, CDG ou Orly é a opção mais directa. Apenas transporte — não vendemos ingressos."
+      },
+      "venueName": {
+        "en": "Hippodrome Paris-Longchamp",
+        "es": "Hipódromo Paris-Longchamp",
+        "fr": "Hippodrome Paris-Longchamp",
+        "pt": "Hipódromo Paris-Longchamp"
+      },
+      "district": "16eme",
+      "address": "2 Route des Tribunes, 75016 Paris",
+      "eventUrl": "https://www.solidays.org/",
+      "sourceName": "Solidays",
+      "sourceUrl": "https://www.solidays.org/",
+      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "category": "festival",
       "isFeatured": false
     }
   ]
