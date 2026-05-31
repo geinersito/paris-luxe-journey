@@ -12,8 +12,8 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
-import { useMemo } from "react";
+import { Link } from "react-router-dom";
+import { useMemo, useState } from "react";
 import {
   buildGenericWhatsAppUrl,
   buildGenericEmailUrl,
@@ -38,10 +38,10 @@ function isFeedStale(): boolean {
 
 export default function Events() {
   const { t, i18n } = useTranslation();
-  const navigate = useNavigate();
   const language = i18n.language;
 
   const feedIsStale = useMemo(() => isFeedStale(), []);
+  const [activeCategory, setActiveCategory] = useState<string>("all");
 
   const weekThreshold = useMemo(() => {
     const d = new Date();
@@ -92,6 +92,63 @@ export default function Events() {
     },
   };
 
+  const uniqueEvents = useMemo(() => {
+    const seen = new Set<string>();
+    return [...eventsFeedData.thisWeek, ...eventsFeedData.thisMonth]
+      .filter((e) => {
+        if (seen.has(e.id)) return false;
+        seen.add(e.id);
+        return true;
+      })
+      .map((e) => ({ ...e, category: e.category as EventCategory }));
+  }, []);
+
+  const activeCategories = useMemo(() => {
+    const cats = new Set(
+      uniqueEvents
+        .map((e) => e.category)
+        .filter((c): c is EventCategory => !!c),
+    );
+    return ["all", ...cats];
+  }, [uniqueEvents]);
+
+  const eventsListJsonLd = useMemo(
+    () => ({
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      name: pageTitle,
+      itemListElement: uniqueEvents.map((event, index) => ({
+        "@type": "ListItem",
+        position: index + 1,
+        item: {
+          "@type": "Event",
+          name: event.title.en,
+          description: event.description.en.substring(0, 300),
+          startDate: event.startAt,
+          ...(event.endAt && { endDate: event.endAt }),
+          eventStatus: "https://schema.org/EventScheduled",
+          eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+          url: event.eventUrl,
+          ...(event.venueName || event.address
+            ? {
+                location: {
+                  "@type": "Place",
+                  name: event.venueName?.en ?? "",
+                  ...(event.address && { address: event.address }),
+                },
+              }
+            : {}),
+          organizer: {
+            "@type": "Organization",
+            name: event.sourceName,
+            url: event.sourceUrl,
+          },
+        },
+      })),
+    }),
+    [uniqueEvents, pageTitle],
+  );
+
   return (
     <>
       <Helmet>
@@ -122,6 +179,9 @@ export default function Events() {
         {/* JSON-LD */}
         <script type="application/ld+json">
           {JSON.stringify(webPageJsonLd)}
+        </script>
+        <script type="application/ld+json">
+          {JSON.stringify(eventsListJsonLd)}
         </script>
       </Helmet>
 
@@ -207,10 +267,12 @@ export default function Events() {
                 <Button
                   size="lg"
                   variant="outline"
-                  onClick={() => navigate("/blog")}
                   className="button-outline-gold h-11 px-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
+                  asChild
                 >
-                  {t("events.readGuides") || "Read Travel Guides"}
+                  <Link to="/blog">
+                    {t("events.readGuides") || "Read Travel Guides"}
+                  </Link>
                 </Button>
               </div>
 
@@ -251,42 +313,67 @@ export default function Events() {
             {feedIsStale ? (
               <EventsTransportFallback />
             ) : (
-              <div className="space-y-10 md:space-y-12">
-                <article id="events-week" className="scroll-mt-24">
-                  <div className="text-center mb-4 md:mb-6">
-                    <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
-                      {t("events.thisWeek") || "This Week in Paris"}
-                    </h2>
-                  </div>
-                  {hasWeekEvents ? (
+              <>
+                {/* Category filter pills */}
+                <div className="flex flex-wrap gap-2 justify-center mb-8">
+                  {activeCategories.map((cat) => (
+                    <button
+                      key={cat}
+                      role="tab"
+                      aria-selected={activeCategory === cat}
+                      onClick={() => setActiveCategory(cat)}
+                      className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                        activeCategory === cat
+                          ? "bg-primary text-white shadow-sm"
+                          : "bg-white border border-primary/20 text-gray-700 hover:border-primary/40"
+                      }`}
+                    >
+                      {cat === "all"
+                        ? t("events.categories.all", { defaultValue: "All" })
+                        : t(`events.categories.${cat}`, { defaultValue: cat })}
+                    </button>
+                  ))}
+                </div>
+
+                <div className="space-y-10 md:space-y-12">
+                  <article id="events-week" className="scroll-mt-24">
+                    <div className="text-center mb-4 md:mb-6">
+                      <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+                        {t("events.thisWeek") || "This Week in Paris"}
+                      </h2>
+                    </div>
+                    {hasWeekEvents ? (
+                      <EventsFeed
+                        range="week"
+                        variant="full"
+                        showHeader={false}
+                        excludeIds={weekExcludeIds}
+                        categoryFilter={activeCategory}
+                      />
+                    ) : (
+                      <p className="text-center text-muted-foreground py-8 italic text-base">
+                        No major events this week — see this month&apos;s
+                        calendar below.
+                      </p>
+                    )}
+                  </article>
+
+                  <article id="events-month" className="scroll-mt-24">
+                    <div className="text-center mb-4 md:mb-6">
+                      <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+                        {t("events.thisMonth") || "This Month in Paris"}
+                      </h2>
+                    </div>
                     <EventsFeed
-                      range="week"
+                      range="month"
                       variant="full"
                       showHeader={false}
-                      excludeIds={weekExcludeIds}
+                      excludeIds={weekQualifiedIds}
+                      categoryFilter={activeCategory}
                     />
-                  ) : (
-                    <p className="text-center text-muted-foreground py-8 italic text-base">
-                      No major events this week — see this month&apos;s calendar
-                      below.
-                    </p>
-                  )}
-                </article>
-
-                <article id="events-month" className="scroll-mt-24">
-                  <div className="text-center mb-4 md:mb-6">
-                    <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
-                      {t("events.thisMonth") || "This Month in Paris"}
-                    </h2>
-                  </div>
-                  <EventsFeed
-                    range="month"
-                    variant="full"
-                    showHeader={false}
-                    excludeIds={weekQualifiedIds}
-                  />
-                </article>
-              </div>
+                  </article>
+                </div>
+              </>
             )}
           </div>
         </section>

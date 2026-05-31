@@ -912,7 +912,7 @@ export const en: Translation = {
     payment: {
       title: "Accepted Payment Methods",
     },
-    copyright: " 2025 Paris Elite Services. All rights reserved.",
+    copyright: " Paris Elite Services. All rights reserved.",
   },
   avoidFakeTaxis: {
     badge: "Safety Guide",
@@ -1050,7 +1050,9 @@ export const en: Translation = {
     professionalService: "Professional chauffeur service",
     freeCancellation: "Free cancellation up to 24h",
     flightMonitoring: "Flight monitoring included",
-    premiumVehicles: "Premium vehicles (Mercedes, BMW)",
+    premiumVehicles: "Premium vehicles (Mercedes and equivalent)",
+    heroEyebrow: "Discover Paris",
+    featuredEyebrow: "Featured Story",
     pageTitle: "Travel Blog | Paris Elite Services",
     pageDescription:
       "Expert travel tips, guides and insights for visiting Paris. Airport transfers, excursions and luxury chauffeur services.",
@@ -1077,12 +1079,25 @@ export const en: Translation = {
       quickQuoteDesc: "Get an instant price for your transfer",
       calculatePrice: "Calculate Price",
       whatsapp: "WhatsApp Quote",
+      waTextAirport:
+        "Hello, I'm planning a trip from a Paris airport. Can you confirm availability and price for a private transfer?",
       popularRoutes: "Popular Routes",
       fixedPrices: "Fixed prices • No hidden fees",
       available247: "Available 24/7",
       flightTracking: "Flight tracking included",
       freeCancellation: "Free cancellation 24h",
       premiumVehicles: "Premium vehicles",
+    },
+    excursionUpsell: {
+      heading: "Already sorted your transfer? Add an excursion",
+      subheading: "Same private chauffeur — on the day you choose",
+      cta: "See all excursions →",
+      waButton: "Ask via WhatsApp",
+      waText:
+        "Hello, I just read about airport transfers. Could you help me with a private excursion from Paris?",
+      versailles: "Versailles — 45 km",
+      champagne: "Champagne — 145 km",
+      loireValley: "Loire Valley — 200 km",
     },
     newsletter: {
       title: "Get Travel Tips & Exclusive Offers",
@@ -1182,6 +1197,17 @@ export const en: Translation = {
     fallbackDisclaimer:
       "We provide chauffeured transport to events — not event tickets.",
     stalePill: "Event Transport",
+    categories: {
+      all: "All",
+      exhibition: "Exhibition",
+      fashion: "Fashion",
+      festival: "Festival",
+      concert: "Concert",
+      opera: "Opera",
+      museum: "Museum",
+      family: "Family",
+    },
+    recentlyEnded: "Recently Ended",
   },
   seo: {
     home: {

@@ -38,16 +38,16 @@ Active deploy gates from `docs/plan/CTO_PUBLICATION_SPRINT_2026_04_29.md`:
 
 | ID | Blocker | Severity |
 |---|---|---|
-| R0-05 | Events page: `events-feed.json` 71 days stale, all events past — need 6–8 fresh cards (May–Jul 2026) | Critical |
-| R0-06 | Homepage: no Events surface (3 cards + link) | Critical |
-| R0-07 | Homepage: no Excursions preview (3 cards + link) | Critical |
-| R0-01 | Homepage: hero copy still transport-SPA framing — must update to Option C | Critical |
-| R0-02 | Homepage: zero-stats block ("0+ Clientes / 0.0 Valoración") still live — actively damages trust | High |
-| R0-03 | Mobile nav hamburger not functioning at 390px | Critical |
-| R0-04 | Mobile: booking widget in hero at 390px — both elements illegible | Critical |
-| R0-08–10 | Excursion detail pages: broken images + empty Highlights/Why Visit + wrong product framing | Critical |
-| R0-11 | Blog CTA: Fiat 500 image — destroys luxury perception | High |
-| R0-12 | Airport CTAs: "Get a Fixed Price" in English on Spanish pages | Medium |
+| ~~R0-05~~ | ~~Events feed stale~~ | ✅ RESOLVED — verified live 2026-05-30, feed has 10+ events May–Oct 2026 |
+| ~~R0-06~~ | ~~Homepage: no Events surface~~ | ✅ RESOLVED — verified live 2026-05-30, 3 cards + See all events → present |
+| ~~R0-07~~ | ~~Homepage: no Excursions preview~~ | ✅ RESOLVED — verified live 2026-05-30, 3 cards + Explore all excursions → present |
+| ~~R0-01~~ | ~~Homepage: hero copy transport-SPA framing~~ | ✅ RESOLVED — verified live 2026-05-30, editorial/events/excursions framing active |
+| ~~R0-02~~ | ~~Homepage: zero-stats block~~ | ✅ RESOLVED — verified live 2026-05-30, real testimonials (L.M./D.R./I.G.) — no fake stats |
+| ~~R0-03~~ | ~~Mobile nav hamburger not functioning at 390px~~ | ✅ RESOLVED — verified live 2026-05-30, hamburger visible + functional at 390px |
+| ~~R0-04~~ | ~~Mobile: booking widget in hero at 390px — both elements illegible~~ | ✅ RESOLVED — booking widget correctly hidden md:block in mobile, hero legible |
+| ~~R0-08–10~~ | ~~Excursion detail pages~~ | ✅ RESOLVED — verified live 2026-05-30 |
+| ~~R0-11~~ | ~~Blog CTA: Fiat 500~~ | ✅ RESOLVED PR-R0-11 + PR-R0-11b. All 4 occurrences of `1549317661` replaced. 0 remaining. |
+| ~~R0-12~~ | ~~Airport CTAs English on ES~~ | ✅ RESOLVED — verified live 2026-05-30 |
 
 Runtime hold (unchanged — separate from publication):
 - EV ingest DB: NOT applied (PLJ-EV-INGEST-01A-DEPLOY-GATE R2 required)
@@ -79,13 +79,16 @@ Runtime hold (unchanged — separate from publication):
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `62c6fad`
-- Baseline feature: `fix(nav): absolutize fleet/about/contact anchors to /#hash (PUB-P0-002) (PR #180)`
-- Last updated: `2026-04-28`
+- SHA: `<SHA-PR-R0-11b>`
+- Baseline feature: `fix(images): Fiat500 Unsplash ID → premium Mercedes across Hourly/FleetSection/useVehicles (PR-R0-11b)`
+- Last updated: `2026-05-30`
 
 ## Ultimos PRs mergeados en main
 
-1. `#180` - fix(nav): absolutize fleet/about/contact anchors to /#hash (2026-04-28) (`62c6fad`) ✅ PUB-P0-002 DONE
+1. `#XXX` - feat(wa): WA contextual Excursions — 6 occurrences → helpers (2026-05-30) (`8545e36`) ✅ PR-02b DONE
+2. `#XXX` - feat(wa): WA contextual airports CDG/ORY/BVA + FloatingWA + Footer (2026-05-30) (`<SHA>`) ✅ PR-02a DONE
+3. `#XXX` - fix(routes): add ES legacy redirects /b2b + /aeropuertos/* (2026-05-30) (`<SHA>`) ✅ PR-01-ROUTES-ES DONE
+2. `#180` - fix(nav): absolutize fleet/about/contact anchors to /#hash (2026-04-28) (`62c6fad`) ✅ PUB-P0-002 DONE
 2. `#179` - fix(i18n): add missing blog keys — pageTitle, readMore, notFound.* (2026-04-28) (`dbe3ef7`) ✅ PUB-P0-001 DONE
 3. `#176` - chore: close booking UI/i18n/assets cleanup without DB changes (2026-04-28) (`bd48d89`) ⚠️ GOVERNANCE NOTE: included EV ingest scope — see GOVERNANCE INCIDENT above
 2. `#159` - fix(pricing): align v312 partner floors to locked rates (2026-02) (`601ef9c`)
@@ -119,6 +122,17 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 
 ## Done / Shipped
 
+- **R0-01** ✅ RESOLVED — verified live 2026-05-30 — Hero copy editorial/events/excursions framing active. No PR needed.
+- **R0-02** ✅ RESOLVED — verified live 2026-05-30 — Zero-stats block gone, real testimonials (L.M./D.R./I.G.) active. No PR needed.
+- **R0-05** ✅ RESOLVED — verified live 2026-05-30 — Events feed has 10+ events May–Oct 2026. No PR needed.
+- **R0-06** ✅ RESOLVED — verified live 2026-05-30 — Homepage Events 3-card grid + "See all events →" active. No PR needed.
+- **R0-07** ✅ RESOLVED — verified live 2026-05-30 — Homepage Excursions 3-card grid + "Explore all excursions →" active. No PR needed.
+- **PR-R0-11b** ✅ DONE — Hourly.tsx + FleetSection.tsx + useVehicles.tsx — `1549317661` (Fiat 500) → `1571607388263` (Mercedes interior) + `1563720223185` (Mercedes exterior). 0 occurrences remaining. Smoke: hero img confirmed, 0 old IDs on homepage. R0.
+- **WA-CONTEXTUAL-02b** ✅ DONE — PR-02b — `8545e36` — Excursions.tsx 6 CTAs → buildExcursionWhatsAppUrl/buildGenericWhatsAppUrl. 0 hardcoded wa.me en CTAs activos. R0.
+- **WA-CONTEXTUAL-02a** ✅ DONE — PR-02a — Airports CDG/ORY/BVA + FloatingWhatsApp + Footer → helpers contextual multilingual. eventsPrefill.ts +3 helpers. R0.
+- **PR-01-ROUTES-ES** ✅ DONE — ES legacy redirects /b2b + /aeropuertos/*. R0.
+- **R0-03** ✅ RESOLVED — verified live 2026-05-30 — Mobile hamburger functional at 390px. No PR needed.
+- **R0-04** ✅ RESOLVED — verified live 2026-05-30 — Mobile hero legible, booking widget hidden md:block. No PR needed.
 - **PUB-P0-002** ✅ DONE — PR **#180** — `62c6fad` — Absolutized nav anchors `#fleet`, `#about`, `#contact` → `/#fleet`, `/#about`, `/#contact` in Navbar.tsx. Relative hrefs resolved to current sub-page path on `/events`, `/airports/*`, `/excursions`. 1 file, 3-line change. Gates: type-check + build + smoke (4/4) PASS.
 - **PUB-P0-001** ✅ DONE — PR **#179** — `dbe3ef7` — Added 16 missing blog i18n keys (`blog.pageTitle`, `blog.readMore`, `blog.notFound.*`, `blog.article/articles/searchInCategory/pageDescription`) across EN/ES/FR/PT + `Translation` type. Fixes raw key display in blog `<title>`, article cards, and 404 page. Gates: type-check + build + smoke PASS.
 - **PRICING-UPDATE-2026-02-V312** ✅ DONE — PR **#159** — `601ef9c` — Updated all 17 Partner Floor values in V3.1.2 pricing system to produce exact LOCKED prepaid prices (formula: PF = target - FC + PD). Revenue-critical hotfix: fixes €10-20 underpricing per ride across all routes. Changes: CDG 100/130, ORY 90/115, gares unified 80/100, DLP 120/145, VRS 95/120, etc. Gates: type-check + build PASS. No logic/fee changes (FC/PD/buffer intact).
@@ -140,21 +154,21 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 
 ## Ahora en curso
 
-- **PUB-P0-003** (P0/R0–R1) — **TODO** — Mobile hero text clipping + hamburger menu invisible at 390px.
+- **R0-SPRINT** (P0/R0) — **DONE ✅** — 10/10 blockers resolved. Sitio publicable. No hay blocker de publicación activo.
+- **SEO-EXCURSIONS-DETAIL-01** (P1/R0) — **DONE ✅** — canonical + meta title/description + OG + 3×JSON-LD (BreadcrumbList + TouristTrip + FAQPage) en versailles/champagne/loire-valley. Helmet data-rh ✅. 3 archivos. TSC ✅ Build ✅ (40s). Smoke: 3/3 páginas con ld+json válido, canonical correcto, BMW 0.
+- **PR-02c** (P2/R0) — **DONE ✅** — WA editoriales: BlogSidebar.tsx hardcoded EN → buildBlogWhatsAppUrl(i18n.language). FAQPage.tsx bare wa.me → helper con mensaje. BlogIndex.tsx eyebrows hardcoded → i18n keys. BMW eliminado de premiumVehicles en 7 archivos i18n (es/en/fr/pt .ts + es/en/fr .json). Smoke: 0 BMW, eyebrow FR "Découvrir Paris" ✅, FAQ WA con mensaje prefill ✅. TSC ✅ Build ✅.
 - **PR-EV-INGEST-01A** (P1/R1) — **MERGED-CODE / DEPLOY-HOLD** — Code + migration on main (`bd48d89`) via PR #176. DB NOT applied. Function NOT deployed. Runtime NOT active. Next action: PLJ-EV-INGEST-01A-DEPLOY-GATE (R2) — see IMPROVEMENTS.md.
 - **OPS-STRIPE-LEGACY-DEPRECATE-01** (P2/R0→R1) — **DOING** — PR1 ✅ PR2 ✅ telemetry activo; waiting 48–72h no-hit window para PR3 removal.
 - **UX-BRANDING-APPROACHABLE-01** (P1/R0) — **DEFERRED** — Reverted en #118. Revisit con measurement plan antes de reactivar.
 
-## Siguientes items (priorizados por publication blockers)
+## Siguientes items (post-publicación, priorizados por revenue)
 
-1. **PUB-P0-003** (P0/R0–R1) — TODO: Mobile hero clipping + hamburger
-2. **PUB-P0-004** (P0/R0) — TODO: Events page fallback + feed refresh
-3. **PUB-P0-004** (P0/R0) — TODO: Events page fallback + feed refresh
-4. **PUB-P0-005** (P0/R1) — TODO: Excursion detail 404s
-5. **PUB-P0-006** (P0/R0) — TODO: Home JSON-LD brand mismatch
-6. **PLJ-EV-INGEST-01A-DEPLOY-GATE** (P1/R2) — BLOCKED: 6 gates required. No deploy until all pass.
-7. **PLJ-DB-001** (P1/R1) — BLOCKED: dispatch_* cross-repo sign-off → paris-dispatcher
-8. **PLJ-DB-002** (P1/R2) — BLOCKED: depends on PLJ-DB-001 + R2 DBA review
+1. ~~**SEO-EXCURSIONS-DETAIL-01**~~ ✅ DONE — ver "Ahora en curso"
+2. ~~**PR-02c**~~ ✅ DONE — ver "Ahora en curso"
+2. **SEO-EXCURSIONS-DETAIL-01** (P1/R0) — Excursion detail pages: JSON-LD + canonical + meta por destino
+3. **CONTENT-BLOG-CTA-UPSELL-01** (P1/R0) — Añadir CTA excursiones en artículos de aeropuerto (ticket medio)
+4. **PLJ-EV-INGEST-01A-DEPLOY-GATE** (P1/R2) — BLOCKED: 6 gates required. No deploy until all pass.
+5. **PLJ-DB-001** (P1/R1) — BLOCKED: dispatch_* cross-repo sign-off → paris-dispatcher
 
 ## Urgent out-of-repo
 

@@ -12,6 +12,10 @@ import {
 } from "@/components/ui/select";
 import TrustSignals from "@/components/TrustSignals";
 import { useLanguage } from "@/contexts/LanguageContext";
+import {
+  buildExcursionWhatsAppUrl,
+  buildGenericWhatsAppUrl,
+} from "@/lib/eventsPrefill";
 import { Clock, Users, Star, MapPin, Check, X } from "lucide-react";
 
 // Traducciones COMPLETAS
@@ -1288,11 +1292,9 @@ const Excursions = () => {
   const currentTrips = filteredTrips;
 
   // Day Trip Card - Compact Overview Version
-  const DayTripCard = ({ trip, t }) => {
+  const DayTripCard = ({ trip, t, language: lang }) => {
     const tripData = t.trips[trip.tripKey];
-    const whatsappMessage = encodeURIComponent(
-      `Hi, I'm interested in the ${tripData.title} on [date] for [X] passengers. Can you confirm availability and price?`,
-    );
+    const whatsappUrl = buildExcursionWhatsAppUrl(tripData.title, lang);
 
     const detailRouteMap = {
       loire: "/excursions/loire-valley",
@@ -1367,12 +1369,7 @@ const Excursions = () => {
                 <Button
                   size="sm"
                   className="silk-button"
-                  onClick={() =>
-                    window.open(
-                      `https://wa.me/33668251102?text=${whatsappMessage}`,
-                      "_blank",
-                    )
-                  }
+                  onClick={() => window.open(whatsappUrl, "_blank")}
                 >
                   {t.card.requestQuote}
                 </Button>
@@ -1434,15 +1431,9 @@ const Excursions = () => {
               <div className="flex flex-col sm:flex-row gap-2.5 justify-center">
                 <Button
                   className="silk-button h-11 px-7"
-                  onClick={() => {
-                    const message = encodeURIComponent(
-                      "Hi, I'm interested in booking a private day trip from Paris. Can you help me?",
-                    );
-                    window.open(
-                      `https://wa.me/33668251102?text=${message}`,
-                      "_blank",
-                    );
-                  }}
+                  onClick={() =>
+                    window.open(buildGenericWhatsAppUrl(language), "_blank")
+                  }
                 >
                   {t.hero.ctaPrimary}
                 </Button>
@@ -1521,15 +1512,9 @@ const Excursions = () => {
           <div className="text-center mt-8 md:mt-10">
             <Button
               className="silk-button h-12 px-8 text-base"
-              onClick={() => {
-                const message = encodeURIComponent(
-                  "Hi, I'd like to plan a private day trip from Paris. Can you help me?",
-                );
-                window.open(
-                  `https://wa.me/33668251102?text=${message}`,
-                  "_blank",
-                );
-              }}
+              onClick={() =>
+                window.open(buildGenericWhatsAppUrl(language), "_blank")
+              }
             >
               {t.howItWorks.cta}
             </Button>
@@ -1623,15 +1608,9 @@ const Excursions = () => {
                 </p>
                 <Button
                   className="silk-button"
-                  onClick={() => {
-                    const message = encodeURIComponent(
-                      "Hi, I'd like to plan a custom day trip from Paris. Can you help me?",
-                    );
-                    window.open(
-                      `https://wa.me/33668251102?text=${message}`,
-                      "_blank",
-                    );
-                  }}
+                  onClick={() =>
+                    window.open(buildGenericWhatsAppUrl(language), "_blank")
+                  }
                 >
                   {t.filters.contactWhatsApp}
                 </Button>
@@ -1639,7 +1618,12 @@ const Excursions = () => {
             ) : (
               <div className="space-y-6">
                 {currentTrips.map((trip) => (
-                  <DayTripCard key={trip.id} trip={trip} t={t} />
+                  <DayTripCard
+                    key={trip.id}
+                    trip={trip}
+                    t={t}
+                    language={language}
+                  />
                 ))}
               </div>
             )}
@@ -1662,21 +1646,12 @@ const Excursions = () => {
             </p>
             <Button
               className="silk-button h-12 px-8 text-base"
-              onClick={() => {
-                const message = encodeURIComponent(
-                  `Hi, I'm from a travel agency/group and I'd like a custom quote for:\n\n` +
-                    `- Date: [your date]\n` +
-                    `- Number of passengers: [number]\n` +
-                    `- Preferred language: [language]\n` +
-                    `- Type of tour: [City Tour / Versailles / Night Tour / Other]\n` +
-                    `- Need tickets assistance: [Yes / No]\n\n` +
-                    `Please send me a quote. Thank you!`,
-                );
+              onClick={() =>
                 window.open(
-                  `https://wa.me/33668251102?text=${message}`,
+                  buildExcursionWhatsAppUrl("a custom private tour", language),
                   "_blank",
-                );
-              }}
+                )
+              }
             >
               {t.customQuote.cta}
             </Button>
@@ -1733,15 +1708,9 @@ const Excursions = () => {
             <p className="text-gray-600 mb-6">{t.faq.stillQuestions}</p>
             <Button
               className="silk-button h-14 px-10 text-lg"
-              onClick={() => {
-                const message = encodeURIComponent(
-                  "Hi, I have a question about your private day trips from Paris.",
-                );
-                window.open(
-                  `https://wa.me/33668251102?text=${message}`,
-                  "_blank",
-                );
-              }}
+              onClick={() =>
+                window.open(buildGenericWhatsAppUrl(language), "_blank")
+              }
             >
               {t.faq.ctaFaq}
             </Button>

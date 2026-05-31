@@ -31,7 +31,7 @@ const FEATURE_ICONS = {
 const FALLBACK_EXTERIOR =
   "https://images.unsplash.com/photo-1563720360172-67b8f3dce741?auto=format&fit=crop&q=80";
 const FALLBACK_INTERIOR =
-  "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80";
+  "https://images.unsplash.com/photo-1571607388263-1044f9ea01bc?auto=format&fit=crop&q=80";
 
 const LOCAL_SEDAN_EXT =
   "/images/library/fleet/mercedes-sclass-maybach-paris-prestige-sedan-1200x800.jpg";

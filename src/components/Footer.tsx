@@ -8,9 +8,10 @@ import {
 } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Link } from "react-router-dom";
+import { buildGenericWhatsAppUrl } from "@/lib/eventsPrefill";
 
 const Footer = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -62,7 +63,7 @@ const Footer = () => {
                 <Twitter className="h-5 w-5 text-primary group-hover:text-white transition-colors duration-300" />
               </a>
               <a
-                href="https://wa.me/33668251102"
+                href={buildGenericWhatsAppUrl(language)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group w-11 h-11 rounded-full bg-primary/10 hover:bg-gradient-gold flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-gold-glow"
@@ -198,8 +199,9 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-sm text-gray-400 flex items-center gap-2">
               <span className="text-primary">©</span>
+              {currentYear}
               {t?.footer?.copyright ||
-                `${currentYear} Paris Elite Services. All rights reserved.`}
+                " Paris Elite Services. All rights reserved."}
             </p>
             <div className="flex items-center gap-6 text-sm text-gray-400">
               <Link

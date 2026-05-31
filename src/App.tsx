@@ -2,6 +2,7 @@ import {
   RouterProvider,
   createBrowserRouter,
   useNavigate,
+  Navigate,
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { lazy, Suspense, useEffect } from "react";
@@ -346,6 +347,22 @@ const router = createBrowserRouter([
       { path: "about", element: <HashRedirect hash="about" /> },
       { path: "contact", element: <HashRedirect hash="contact" /> },
       { path: "fleet", element: <HashRedirect hash="fleet" /> },
+
+      // Legacy Spanish routes → canonical English routes (PR-01-ROUTES-ES)
+      { path: "b2b", element: <Navigate to="/agencias" replace /> },
+      {
+        path: "aeropuertos/cdg",
+        element: <Navigate to="/airports/cdg" replace />,
+      },
+      {
+        path: "aeropuertos/ory",
+        element: <Navigate to="/airports/orly" replace />,
+      },
+      {
+        path: "aeropuertos/bva",
+        element: <Navigate to="/airports/beauvais" replace />,
+      },
+
       {
         path: "*",
         element: (

@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { airportsTranslations } from "@/i18n/airports";
+import { buildAirportWhatsAppUrl } from "@/lib/eventsPrefill";
 
 const CDG_IMAGE =
   "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80";
@@ -100,6 +101,17 @@ export default function CDGAirport() {
               >
                 {t.airports.cta.fixedPrice}
               </Button>
+              <a
+                href={buildAirportWhatsAppUrl(
+                  t.airports.terminalGuide.airports.cdg,
+                  language,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-md border border-white/40 bg-white/10 backdrop-blur-sm px-8 py-6 text-lg font-semibold text-white hover:bg-white/20"
+              >
+                {t.airports.cta.whatsapp}
+              </a>
             </div>
 
             {/* Trust Badges */}

@@ -205,6 +205,25 @@ Three webhook handlers coexist, two table families are referenced, and v312 sche
 | **Schema official?** | ✅ Yes — standard migrations | ⚠️ **NO** — `supabase/migrations/_local_orphaned/20251214_v312_payment_system.sql` |
 | **Runbooks test?** | ❌ Not directly | ✅ `TESTING_E2E_V312.md`, `RUNBOOK_DEPLOYMENT_V312.md` |
 
+## R0 Publication Sprint — DONE (2026-05-30)
+
+| ID | Priority | Risk | Area | Description | Status | PR / SHA | Notes |
+|---|---|---|---|---|---|---|---|
+| PR-R0-11 | P0 | R0 | Assets/Trust | Blog FinalCTA: Fiat500 hero → Mercedes premium | DONE | PR-R0-11 / `<SHA>` | FinalCTA.tsx L60-61. Blog trust restaurado. |
+| PR-R0-11b | P0 | R0 | Assets/Trust | Fiat500 eliminado de Hourly.tsx hero + useVehicles.tsx interior + FleetSection.tsx fallback | DONE | PR-R0-11b / `<SHA-R0-11b>` | 3 archivos, grep 0 residuales. /hourly VIP coherente. PUBLICATION UNBLOCKED. |
+| PR-02c | P2 | R0 | WA/i18n | WA editoriales blog: BlogSidebar + FAQPage + BlogIndex eyebrows. BMW → "Mercedes y equivalente" (7 i18n files). | DONE | PR-02c | buildBlogWhatsAppUrl multilingual. Smoke ✅. |
+| SEO-EXCURSIONS-DETAIL-01 | P1 | R0 | SEO | canonical + meta + OG + JSON-LD (BreadcrumbList+TouristTrip+FAQPage) en /excursions/versailles + /champagne + /loire-valley | DONE | SEO-01 | 3 archivos. data-rh ✅. 9 bloques ld+json válidos. TSC+Build ✅. |
+
+**R0 Sprint final status: 10/10 blockers RESOLVED. Sitio publicable.**
+
+## WA Contextual Sprint — DONE (2026-05-30)
+
+| ID | Priority | Risk | Area | Description | Status | PR / SHA | Notes |
+|---|---|---|---|---|---|---|---|
+| WA-CONTEXTUAL-01 | P1 | R0 | CTA/Copy | ES legacy redirects /b2b + /aeropuertos/* | DONE | PR-01 / `<SHA>` | 0 broken routes |
+| WA-CONTEXTUAL-02a | P1 | R0 | CTA/WA | WA contextual airports CDG/ORY/BVA + FloatingWA + Footer | DONE | PR-02a / `<SHA>` | helpers in eventsPrefill.ts |
+| WA-CONTEXTUAL-02b | P1 | R0 | CTA/WA | WA contextual Excursions — 6 occurrences | DONE | PR-02b / `8545e36` | Excursions.tsx 6 CTAs → buildExcursionWhatsAppUrl/buildGenericWhatsAppUrl. 0 hardcoded wa.me en CTAs activos. |
+
 ### Go/No-Go Checklist
 
 Before declaring a canonical stack, ALL must be ✅:

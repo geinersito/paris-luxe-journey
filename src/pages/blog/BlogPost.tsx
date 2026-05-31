@@ -20,6 +20,7 @@ import AuthorBox from "@/components/blog/AuthorBox";
 import ShareButtons from "@/components/blog/ShareButtons";
 import Breadcrumb from "@/components/blog/Breadcrumb";
 import InlineBookingCTA from "@/components/blog/InlineBookingCTA";
+import ExcursionUpsellCTA from "@/components/blog/ExcursionUpsellCTA";
 import FinalCTA from "@/components/blog/FinalCTA";
 import { Skeleton } from "@/components/ui/skeleton";
 import type { BlogPostMeta } from "@/types/blog";
@@ -113,6 +114,14 @@ export default function BlogPost() {
 
   const categoryMeta = getCategoryBySlug(category!);
   const siteOrigin = getSiteOrigin();
+
+  const airportFromSlug = (s: string): "cdg" | "orly" | "beauvais" | null => {
+    if (s.includes("cdg")) return "cdg";
+    if (s.includes("orly")) return "orly";
+    if (s.includes("beauvais")) return "beauvais";
+    return post.ctaVariant === "airportTransfer" ? "cdg" : null;
+  };
+  const excursionAirport = airportFromSlug(slug!);
   const currentUrl = `${siteOrigin}/blog/${category}/${slug}`;
 
   const breadcrumbItems = [
@@ -204,6 +213,9 @@ export default function BlogPost() {
               <BlogContent>
                 <ArticleComponent />
               </BlogContent>
+
+              {/* Excursion upsell for airport/transport articles */}
+              <ExcursionUpsellCTA airport={excursionAirport} />
 
               {/* Inline Booking CTA */}
               <InlineBookingCTA />

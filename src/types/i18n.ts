@@ -759,6 +759,8 @@ export interface Translation {
     subtitle: string;
     heroTitle: string;
     heroSubtitle: string;
+    heroEyebrow: string;
+    featuredEyebrow: string;
     searchPlaceholder: string;
     featured: string;
     allArticles: string;
@@ -798,12 +800,23 @@ export interface Translation {
       quickQuoteDesc: string;
       calculatePrice: string;
       whatsapp: string;
+      waTextAirport: string;
       popularRoutes: string;
       fixedPrices: string;
       available247: string;
       flightTracking: string;
       freeCancellation: string;
       premiumVehicles: string;
+    };
+    excursionUpsell: {
+      heading: string;
+      subheading: string;
+      cta: string;
+      waButton: string;
+      waText: string;
+      versailles: string;
+      champagne: string;
+      loireValley: string;
     };
     newsletter: {
       title: string;
@@ -867,6 +880,17 @@ export interface Translation {
     fallbackCtaAlt: string;
     fallbackDisclaimer: string;
     stalePill: string;
+    categories: {
+      all: string;
+      exhibition: string;
+      fashion: string;
+      festival: string;
+      concert: string;
+      opera: string;
+      museum: string;
+      family: string;
+    };
+    recentlyEnded: string;
   };
   seo: {
     home: {

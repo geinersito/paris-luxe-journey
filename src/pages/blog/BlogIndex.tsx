@@ -116,7 +116,7 @@ export default function BlogIndex() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
               <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
-                Discover Paris
+                {t("blog.heroEyebrow") || "Descubrir París"}
               </p>
               <h1 className="text-4xl md:text-6xl font-display font-bold text-secondary mb-6">
                 {t("blog.heroTitle") || "Travel Blog"}
@@ -159,7 +159,7 @@ export default function BlogIndex() {
             <div className="container mx-auto px-4">
               <div className="text-center mb-12">
                 <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
-                  Featured Story
+                  {t("blog.featuredEyebrow") || "Artículo Destacado"}
                 </p>
                 <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
                   {t("blog.featured") || "Featured Article"}

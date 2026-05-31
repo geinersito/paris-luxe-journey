@@ -3,7 +3,7 @@ import { Clock, MapPin, Shield, Star, CheckCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const HOURLY_IMAGE =
-  "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&q=80";
+  "https://images.unsplash.com/photo-1563720223185-11003d516935?auto=format&fit=crop&q=80";
 
 export default function HourlyService() {
   const navigate = useNavigate();

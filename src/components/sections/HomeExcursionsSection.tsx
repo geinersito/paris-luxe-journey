@@ -3,11 +3,22 @@ import { Clock, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { excursions } from "@/data/excursions";
+import { versaillesGuideContent } from "@/data/excursions/versailles-guide";
+import { champagneGuideContent } from "@/data/excursions/champagne-guide";
+import { loireGuideContent } from "@/data/excursions/loire-guide";
+import type { Language } from "@/types/i18n";
 
 const FEATURED_IDS = ["versailles-palace", "champagne", "loire-valley"];
 
 export default function HomeExcursionsSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const lang = language as Language;
+
+  const guideLocale: Record<string, { title: string; intro: string }> = {
+    "versailles-palace": versaillesGuideContent[lang],
+    champagne: champagneGuideContent[lang],
+    "loire-valley": loireGuideContent[lang],
+  };
 
   const featured = FEATURED_IDS.map((id) =>
     excursions.find((e) => e.id === id),
@@ -46,11 +57,11 @@ export default function HomeExcursionsSection() {
 
               <div className="p-5 flex flex-col flex-1">
                 <h3 className="font-display font-bold text-secondary text-lg mb-2">
-                  {excursion.title}
+                  {guideLocale[excursion.id]?.title ?? excursion.title}
                 </h3>
 
                 <p className="text-sm text-gray-600 line-clamp-2 mb-3 flex-1">
-                  {excursion.description}
+                  {guideLocale[excursion.id]?.intro ?? excursion.description}
                 </p>
 
                 <div className="flex items-center justify-between mb-4">

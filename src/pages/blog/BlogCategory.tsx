@@ -149,7 +149,7 @@ export default function BlogCategory() {
 
               <div className="lg:col-span-4">
                 <div className="sticky top-24">
-                  <BlogSidebar />
+                  <BlogSidebar showExcursions={category === "transport"} />
                 </div>
               </div>
             </div>

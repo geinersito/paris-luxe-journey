@@ -71,7 +71,7 @@ const FALLBACK_VEHICLES: Vehicle[] = [
     image_url:
       "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&h=600&fit=crop&q=80",
     interior_image_url:
-      "https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=800&h=600&fit=crop&q=80",
+      "https://images.unsplash.com/photo-1571607388263-1044f9ea01bc?w=800&h=600&fit=crop&q=80",
     features: ["wifi", "water", "airConditioning", "leatherSeats", "cleaning"],
   },
   {

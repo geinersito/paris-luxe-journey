@@ -2,28 +2,34 @@ export default function Article() {
   return (
     <article>
       <p>
-        Planejando sua transferência do aeroporto em Paris e confuso sobre reservar um VTC, pegar um táxi ou usar Uber?
-        Neste guia completo, compararemos as três principais opções de transporte em Paris para ajudá-lo a tomar a melhor decisão.
+        Planejando sua transferência do aeroporto em Paris e confuso sobre
+        reservar um VTC, pegar um táxi ou usar Uber? Neste guia completo,
+        compararemos as três principais opções de transporte em Paris para
+        ajudá-lo a tomar a melhor decisão.
       </p>
 
       <h2>O que é VTC?</h2>
       <p>
-        VTC significa "Voiture de Transport avec Chauffeur" (Veículo de Transporte com Motorista). É um serviço
-        de motorista privado licenciado na França, similar aos serviços executivos de carros.
+        VTC significa "Voiture de Transport avec Chauffeur" (Veículo de
+        Transporte com Motorista). É um serviço de motorista privado licenciado
+        na França, similar aos serviços executivos de carros.
       </p>
 
       <h3>Características do VTC:</h3>
       <ul>
         <li>Serviço pré-reservado com preços fixos garantidos</li>
         <li>Motoristas profissionais licenciados</li>
-        <li>Veículos premium (Mercedes, BMW)</li>
+        <li>Veículos premium (Mercedes e equivalente)</li>
         <li>Serviço de recepção no aeroporto com placa</li>
         <li>Monitoramento de voo incluído sem custo extra</li>
         <li>Sem preços dinâmicos ou surpresas</li>
       </ul>
 
       <h2>Táxis de Paris</h2>
-      <p>Os táxis tradicionais de Paris são regulamentados e têm tarifas fixas dos aeroportos.</p>
+      <p>
+        Os táxis tradicionais de Paris são regulamentados e têm tarifas fixas
+        dos aeroportos.
+      </p>
 
       <h3>Características dos Táxis:</h3>
       <ul>
@@ -103,10 +109,12 @@ export default function Article() {
 
       <h2>Conclusão</h2>
       <p>
-        Para a maioria dos viajantes, especialmente famílias e grupos, um VTC privado oferece o melhor
-        custo-benefício geral. O preço fixo garantido, serviço profissional, monitoramento de voo e veículos
-        premium fazem com que a modesta diferença de preço valha a pena para uma experiência sem estresse.
+        Para a maioria dos viajantes, especialmente famílias e grupos, um VTC
+        privado oferece o melhor custo-benefício geral. O preço fixo garantido,
+        serviço profissional, monitoramento de voo e veículos premium fazem com
+        que a modesta diferença de preço valha a pena para uma experiência sem
+        estresse.
       </p>
     </article>
-  )
+  );
 }

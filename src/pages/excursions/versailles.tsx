@@ -7,6 +7,8 @@ import { DestinationContent } from "@/components/destination/DestinationContent"
 import { DestinationSidebar } from "@/components/destination/DestinationSidebar";
 import { Button } from "@/components/ui/button";
 import { versaillesGuideContent } from "@/data/excursions/versailles-guide";
+import { Helmet } from "react-helmet-async";
+import { getSiteOrigin } from "@/lib/seo/site";
 
 export default function VersaillesPage() {
   const { t, language } = useLanguage();
@@ -14,6 +16,82 @@ export default function VersaillesPage() {
   const [activeSection, setActiveSection] = React.useState("description");
 
   const guide = versaillesGuideContent[language];
+
+  const siteOrigin = getSiteOrigin();
+  const canonicalUrl = `${siteOrigin}/excursions/versailles`;
+  const metaSuffix: Record<string, string> = {
+    en: "| Private Day Trip from Paris | Paris Elite Services",
+    es: "| Excursión Privada desde París | Paris Elite Services",
+    fr: "| Excursion Privée depuis Paris | Paris Elite Services",
+    pt: "| Excursão Privada de Paris | Paris Elite Services",
+  };
+  const metaTitle = `${guide.title} ${metaSuffix[language] ?? metaSuffix.en}`;
+  const metaDescription =
+    guide.intro.length > 157
+      ? `${guide.intro.substring(0, 157)}...`
+      : guide.intro;
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteOrigin },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Excursions",
+        item: `${siteOrigin}/excursions`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: guide.title,
+        item: canonicalUrl,
+      },
+    ],
+  };
+  const tripJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "@id": canonicalUrl,
+    url: canonicalUrl,
+    name: `Private ${guide.title} Day Trip from Paris`,
+    description: guide.intro.substring(0, 200),
+    provider: {
+      "@type": "LocalBusiness",
+      name: "Paris Elite Services",
+      url: siteOrigin,
+      sameAs: [
+        "https://www.facebook.com/pariseliteservices",
+        "https://www.instagram.com/pariseliteservices",
+        "https://twitter.com/pariselite",
+      ],
+    },
+    itinerary: {
+      "@type": "ItemList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          item: { "@type": "City", name: "Paris" },
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          item: { "@type": "TouristAttraction", name: guide.title },
+        },
+      ],
+    },
+  };
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    url: canonicalUrl,
+    mainEntity: guide.faqItems.map((item) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: { "@type": "Answer", text: item.answer },
+    })),
+  };
 
   const navigationItems = [
     { id: "description", label: guide.navigation.description },
@@ -270,30 +348,49 @@ export default function VersaillesPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
-      <DestinationHeader
-        title={guide.title}
-        image="https://images.unsplash.com/photo-1773472224690-2d80ee8ac1f3?auto=format&fit=crop&w=1920&q=80"
-        distance={guide.distance}
-        duration={guide.duration}
-        currentPath="/excursions/versailles"
-      />
+    <>
+      <Helmet>
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDescription} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={metaTitle} />
+        <meta property="og:description" content={metaDescription} />
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbJsonLd)}
+        </script>
+        <script type="application/ld+json">{JSON.stringify(tripJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+      </Helmet>
+      <div className="min-h-screen bg-background">
+        <DestinationHeader
+          title={guide.title}
+          image="https://images.unsplash.com/photo-1773472224690-2d80ee8ac1f3?auto=format&fit=crop&w=1920&q=80"
+          distance={guide.distance}
+          duration={guide.duration}
+          currentPath="/excursions/versailles"
+        />
 
-      <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8 grid grid-cols-12 gap-8">
-        <div className="col-span-12 lg:col-span-3">
-          <DestinationSidebar tours={sidebarTours}>
-            <DestinationNavigation
-              items={navigationItems}
+        <div className="container mx-auto py-8 px-4 sm:px-6 lg:px-8 grid grid-cols-12 gap-8">
+          <div className="col-span-12 lg:col-span-3">
+            <DestinationSidebar tours={sidebarTours}>
+              <DestinationNavigation
+                items={navigationItems}
+                activeSection={activeSection}
+                onSectionChange={handleSectionChange}
+              />
+            </DestinationSidebar>
+          </div>
+
+          <div className="col-span-12 lg:col-span-9">
+            <DestinationContent
               activeSection={activeSection}
-              onSectionChange={handleSectionChange}
+              content={content}
             />
-          </DestinationSidebar>
-        </div>
-
-        <div className="col-span-12 lg:col-span-9">
-          <DestinationContent activeSection={activeSection} content={content} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

@@ -2,41 +2,62 @@ export default function Article() {
   return (
     <article>
       <p>
-        ¿Llegas al Aeropuerto Charles de Gaulle (CDG) y te preguntas cómo llegar a París? No estás solo. 
-        Con más de 76 millones de pasajeros anuales, CDG es uno de los aeropuertos más concurridos de Europa, 
-        y navegar hacia el centro de la ciudad puede ser abrumador para los visitantes primerizos.
+        ¿Llegas al Aeropuerto Charles de Gaulle (CDG) y te preguntas cómo llegar
+        a París? No estás solo. Con más de 76 millones de pasajeros anuales, CDG
+        es uno de los aeropuertos más concurridos de Europa, y navegar hacia el
+        centro de la ciudad puede ser abrumador para los visitantes primerizos.
       </p>
 
       <p>
-        En esta guía completa, compararemos todas las opciones de transporte desde CDG a París, incluyendo 
-        precios, tiempos de viaje, pros y contras, para que puedas tomar la mejor decisión según tus necesidades y presupuesto.
+        En esta guía completa, compararemos todas las opciones de transporte
+        desde CDG a París, incluyendo precios, tiempos de viaje, pros y contras,
+        para que puedas tomar la mejor decisión según tus necesidades y
+        presupuesto.
       </p>
 
       <h2>Resumen: Tus Opciones de Transporte desde CDG a París</h2>
 
       <p>
-        Hay cinco formas principales de llegar desde el Aeropuerto Charles de Gaulle a París:
+        Hay cinco formas principales de llegar desde el Aeropuerto Charles de
+        Gaulle a París:
       </p>
 
       <ul>
-        <li><strong>Tren RER B</strong> - Transporte público económico</li>
-        <li><strong>Roissybus</strong> - Autobús directo a Opéra</li>
-        <li><strong>Taxi</strong> - Taxi tradicional con taxímetro</li>
-        <li><strong>Uber/Bolt</strong> - Aplicaciones de transporte compartido</li>
-        <li><strong>VTC Privado (Chofer)</strong> - Traslado de lujo pre-reservado</li>
+        <li>
+          <strong>Tren RER B</strong> - Transporte público económico
+        </li>
+        <li>
+          <strong>Roissybus</strong> - Autobús directo a Opéra
+        </li>
+        <li>
+          <strong>Taxi</strong> - Taxi tradicional con taxímetro
+        </li>
+        <li>
+          <strong>Uber/Bolt</strong> - Aplicaciones de transporte compartido
+        </li>
+        <li>
+          <strong>VTC Privado (Chofer)</strong> - Traslado de lujo pre-reservado
+        </li>
       </ul>
 
       <h2>Opción 1: Tren RER B (€11.80)</h2>
 
       <p>
-        El RER B es la opción más económica para viajeros solitarios o aquellos con presupuesto ajustado.
+        El RER B es la opción más económica para viajeros solitarios o aquellos
+        con presupuesto ajustado.
       </p>
 
       <h3>Precio y Tiempo de Viaje</h3>
       <ul>
-        <li><strong>Precio:</strong> €11.80 por persona (ida)</li>
-        <li><strong>Tiempo de Viaje:</strong> 30-40 minutos hasta Gare du Nord</li>
-        <li><strong>Frecuencia:</strong> Cada 10-15 minutos (6am-11pm)</li>
+        <li>
+          <strong>Precio:</strong> €11.80 por persona (ida)
+        </li>
+        <li>
+          <strong>Tiempo de Viaje:</strong> 30-40 minutos hasta Gare du Nord
+        </li>
+        <li>
+          <strong>Frecuencia:</strong> Cada 10-15 minutos (6am-11pm)
+        </li>
       </ul>
 
       <h3>Ventajas</h3>
@@ -44,7 +65,10 @@ export default function Article() {
         <li>Opción más económica disponible</li>
         <li>Salidas frecuentes</li>
         <li>Sin retrasos por tráfico</li>
-        <li>Para en estaciones principales (Gare du Nord, Châtelet-Les Halles, Saint-Michel)</li>
+        <li>
+          Para en estaciones principales (Gare du Nord, Châtelet-Les Halles,
+          Saint-Michel)
+        </li>
       </ul>
 
       <h3>Desventajas</h3>
@@ -59,53 +83,84 @@ export default function Article() {
       <h2>Opción 2: Roissybus (€16.60)</h2>
 
       <p>
-        El Roissybus es un servicio de shuttle directo que conecta CDG con Opéra en el centro de París.
+        El Roissybus es un servicio de shuttle directo que conecta CDG con Opéra
+        en el centro de París.
       </p>
 
       <h3>Precio y Tiempo de Viaje</h3>
       <ul>
-        <li><strong>Precio:</strong> €16.60 por persona</li>
-        <li><strong>Tiempo de Viaje:</strong> 60-75 minutos (dependiendo del tráfico)</li>
-        <li><strong>Frecuencia:</strong> Cada 15-20 minutos</li>
+        <li>
+          <strong>Precio:</strong> €16.60 por persona
+        </li>
+        <li>
+          <strong>Tiempo de Viaje:</strong> 60-75 minutos (dependiendo del
+          tráfico)
+        </li>
+        <li>
+          <strong>Frecuencia:</strong> Cada 15-20 minutos
+        </li>
       </ul>
 
       <h2>Opción 3: Taxi Oficial (€50-60)</h2>
 
       <p>
-        Los taxis oficiales de París tienen tarifas fijas desde CDG a diferentes zonas de París.
+        Los taxis oficiales de París tienen tarifas fijas desde CDG a diferentes
+        zonas de París.
       </p>
 
       <h3>Precio y Tiempo de Viaje</h3>
       <ul>
-        <li><strong>Precio:</strong> €50 (Margen Derecha) o €55 (Margen Izquierda) - tarifa fija</li>
-        <li><strong>Tiempo de Viaje:</strong> 30-60 minutos dependiendo del tráfico</li>
-        <li><strong>Capacidad:</strong> Hasta 4 pasajeros + equipaje</li>
+        <li>
+          <strong>Precio:</strong> €50 (Margen Derecha) o €55 (Margen Izquierda)
+          - tarifa fija
+        </li>
+        <li>
+          <strong>Tiempo de Viaje:</strong> 30-60 minutos dependiendo del
+          tráfico
+        </li>
+        <li>
+          <strong>Capacidad:</strong> Hasta 4 pasajeros + equipaje
+        </li>
       </ul>
 
       <h2>Opción 4: Uber/Bolt (€40-70)</h2>
 
       <p>
-        Las aplicaciones de transporte compartido como Uber y Bolt operan en CDG, aunque con algunas restricciones.
+        Las aplicaciones de transporte compartido como Uber y Bolt operan en
+        CDG, aunque con algunas restricciones.
       </p>
 
       <h3>Precio y Tiempo de Viaje</h3>
       <ul>
-        <li><strong>Precio:</strong> €40-70 (varía con demanda/precios dinámicos)</li>
-        <li><strong>Tiempo de Viaje:</strong> 30-60 minutos</li>
-        <li><strong>Recogida:</strong> Solo en zonas designadas (no en llegadas)</li>
+        <li>
+          <strong>Precio:</strong> €40-70 (varía con demanda/precios dinámicos)
+        </li>
+        <li>
+          <strong>Tiempo de Viaje:</strong> 30-60 minutos
+        </li>
+        <li>
+          <strong>Recogida:</strong> Solo en zonas designadas (no en llegadas)
+        </li>
       </ul>
 
       <h2>Opción 5: Traslado VTC Privado (€70+)</h2>
 
       <p>
-        VTC (Voiture de Transport avec Chauffeur) es un servicio de chofer privado con licencia - la opción premium.
+        VTC (Voiture de Transport avec Chauffeur) es un servicio de chofer
+        privado con licencia - la opción premium.
       </p>
 
       <h3>Precio y Tiempo de Viaje</h3>
       <ul>
-        <li><strong>Precio:</strong> Desde €70 (1-3 pasajeros, todo incluido)</li>
-        <li><strong>Tiempo de Viaje:</strong> 30-50 minutos</li>
-        <li><strong>Capacidad:</strong> Varios tamaños de vehículos disponibles</li>
+        <li>
+          <strong>Precio:</strong> Desde €70 (1-3 pasajeros, todo incluido)
+        </li>
+        <li>
+          <strong>Tiempo de Viaje:</strong> 30-50 minutos
+        </li>
+        <li>
+          <strong>Capacidad:</strong> Varios tamaños de vehículos disponibles
+        </li>
       </ul>
 
       <h3>Ventajas</h3>
@@ -114,7 +169,7 @@ export default function Article() {
         <li>Monitoreo de vuelo incluido (sin cargo extra por retrasos)</li>
         <li>Precio fijo garantizado</li>
         <li>Conductores profesionales que hablan inglés</li>
-        <li>Vehículos premium (Mercedes, BMW)</li>
+        <li>Vehículos premium (Mercedes y equivalente)</li>
         <li>Cancelación gratuita hasta 24h antes</li>
         <li>Sillas para niños disponibles bajo solicitud</li>
       </ul>
@@ -134,13 +189,17 @@ export default function Article() {
               <td className="border px-4 py-2">Tren RER B</td>
               <td className="border px-4 py-2">€11.80</td>
               <td className="border px-4 py-2">30-40 min</td>
-              <td className="border px-4 py-2">Viajeros solos, presupuesto ajustado</td>
+              <td className="border px-4 py-2">
+                Viajeros solos, presupuesto ajustado
+              </td>
             </tr>
             <tr>
               <td className="border px-4 py-2">Roissybus</td>
               <td className="border px-4 py-2">€16.60</td>
               <td className="border px-4 py-2">60-75 min</td>
-              <td className="border px-4 py-2">Viajeros económicos con equipaje</td>
+              <td className="border px-4 py-2">
+                Viajeros económicos con equipaje
+              </td>
             </tr>
             <tr>
               <td className="border px-4 py-2">Taxi Oficial</td>
@@ -152,13 +211,17 @@ export default function Article() {
               <td className="border px-4 py-2">Uber/Bolt</td>
               <td className="border px-4 py-2">€40-70</td>
               <td className="border px-4 py-2">30-60 min</td>
-              <td className="border px-4 py-2">Conocedores de tecnología, precios flexibles</td>
+              <td className="border px-4 py-2">
+                Conocedores de tecnología, precios flexibles
+              </td>
             </tr>
             <tr>
               <td className="border px-4 py-2">VTC Privado</td>
               <td className="border px-4 py-2">€70+</td>
               <td className="border px-4 py-2">30-50 min</td>
-              <td className="border px-4 py-2">Familias, grupos, prioridad de comodidad</td>
+              <td className="border px-4 py-2">
+                Familias, grupos, prioridad de comodidad
+              </td>
             </tr>
           </tbody>
         </table>
@@ -193,17 +256,18 @@ export default function Article() {
       <h2>Conclusión</h2>
 
       <p>
-        Llegar desde CDG a París no tiene que ser estresante. Aunque el RER B es la opción más económica, 
-        no siempre es la más práctica, especialmente con equipaje o después de un vuelo largo. Para la mayoría 
-        de los viajeros, un traslado VTC privado ofrece el mejor equilibrio de comodidad, confiabilidad y valor 
-        - especialmente cuando viajas con otros.
+        Llegar desde CDG a París no tiene que ser estresante. Aunque el RER B es
+        la opción más económica, no siempre es la más práctica, especialmente
+        con equipaje o después de un vuelo largo. Para la mayoría de los
+        viajeros, un traslado VTC privado ofrece el mejor equilibrio de
+        comodidad, confiabilidad y valor - especialmente cuando viajas con
+        otros.
       </p>
 
       <p>
-        Elijas lo que elijas, reserva con anticipación cuando sea posible para evitar largas colas y asegurar disponibilidad. 
-        ¡Buen viaje!
+        Elijas lo que elijas, reserva con anticipación cuando sea posible para
+        evitar largas colas y asegurar disponibilidad. ¡Buen viaje!
       </p>
     </article>
-  )
+  );
 }
-

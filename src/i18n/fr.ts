@@ -940,7 +940,7 @@ export const fr: Translation = {
     payment: {
       title: "Moyens de Paiement Acceptés",
     },
-    copyright: " 2025 Paris Elite Services. Tous droits réservés.",
+    copyright: " Paris Elite Services. Tous droits réservés.",
   },
   toast: {
     languageChanged: "Langue changée avec succès",
@@ -1086,7 +1086,9 @@ export const fr: Translation = {
     professionalService: "Service de chauffeur professionnel",
     freeCancellation: "Annulation gratuite jusqu'à 24h",
     flightMonitoring: "Suivi de vol inclus",
-    premiumVehicles: "Véhicules premium (Mercedes, BMW)",
+    premiumVehicles: "Véhicules premium (Mercedes et équivalent)",
+    heroEyebrow: "Découvrir Paris",
+    featuredEyebrow: "Article à la Une",
     pageTitle: "Blog de Voyage | Paris Elite Services",
     pageDescription:
       "Conseils d'experts, guides et informations pour visiter Paris. Transferts aéroport, excursions et service de chauffeur de luxe.",
@@ -1113,12 +1115,25 @@ export const fr: Translation = {
       quickQuoteDesc: "Obtenez un prix instantané pour votre transfert",
       calculatePrice: "Calculer le Prix",
       whatsapp: "Devis WhatsApp",
+      waTextAirport:
+        "Bonjour, je prépare un voyage depuis un aéroport de Paris. Pouvez-vous confirmer disponibilité et tarif pour un transfert privé ?",
       popularRoutes: "Routes Populaires",
       fixedPrices: "Prix fixes • Sans frais cachés",
       available247: "Disponible 24/7",
       flightTracking: "Suivi de vol inclus",
       freeCancellation: "Annulation gratuite 24h",
       premiumVehicles: "Véhicules premium",
+    },
+    excursionUpsell: {
+      heading: "Transfer réservé ? Ajoutez une excursion",
+      subheading: "Même chauffeur privé — le jour de votre choix",
+      cta: "Voir toutes les excursions →",
+      waButton: "Demander via WhatsApp",
+      waText:
+        "Bonjour, je viens de lire sur les transferts aéroport. Pourriez-vous m'aider avec une excursion privée depuis Paris ?",
+      versailles: "Versailles — 45 km",
+      champagne: "Champagne — 145 km",
+      loireValley: "Vallée de la Loire — 200 km",
     },
     newsletter: {
       title: "Recevez des Conseils de Voyage et des Offres Exclusives",
@@ -1220,6 +1235,17 @@ export const fr: Translation = {
     fallbackDisclaimer:
       "Nous proposons un transport avec chauffeur vers les événements — pas de billets d'événement.",
     stalePill: "Transport Événementiel",
+    categories: {
+      all: "Tous",
+      exhibition: "Exposition",
+      fashion: "Mode",
+      festival: "Festival",
+      concert: "Concert",
+      opera: "Opéra",
+      museum: "Musée",
+      family: "Famille",
+    },
+    recentlyEnded: "Événements Récents",
   },
   seo: {
     home: {

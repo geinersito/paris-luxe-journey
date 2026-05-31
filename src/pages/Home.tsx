@@ -10,10 +10,6 @@ import PremiumSection from "@/components/sections/PremiumSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import {
-  generateOrganizationJsonLd,
-  generateLocalBusinessJsonLd,
-} from "@/lib/seo/json-ld";
 import { getSiteOrigin } from "@/lib/seo/site";
 import { trackEvent } from "@/lib/analytics";
 import { Language } from "@/types/i18n";
@@ -51,59 +47,59 @@ const HOME_TRUST_COPY: Record<
     ],
   },
   fr: {
-    eyebrow: "Service de chauffeur prive de confiance a Paris",
+    eyebrow: "Service de chauffeur privé de confiance à Paris",
     headline:
-      "Service de chauffeur prive pour transferts aeroport, evenements, excursions et voyages d'agence a Paris.",
+      "Service de chauffeur privé pour transferts aéroport, événements, excursions et voyages d'agence à Paris.",
     cards: [
       {
-        title: "Transferts prives professionnels",
-        body: "Trajets aeroport, evenement et excursion avec devis confirme avant reservation.",
+        title: "Transferts privés professionnels",
+        body: "Trajets aéroport, événement et excursion avec devis confirmé avant réservation.",
       },
       {
         title: "Assistance multilingue",
-        body: "Accompagnement en francais, anglais, espagnol et portugais pour voyageurs internationaux.",
+        body: "Accompagnement en français, anglais, espagnol et portugais pour voyageurs internationaux.",
       },
       {
-        title: "Concu pour les voyages premium",
+        title: "Conçu pour les voyages premium",
         body: "Berlines, vans, groupes et options prestige disponibles sur demande, selon configuration.",
       },
     ],
   },
   es: {
-    eyebrow: "Servicio de chofer privado de confianza en Paris",
+    eyebrow: "Servicio de chófer privado de confianza en París",
     headline:
-      "Servicio de chofer privado para traslados al aeropuerto, eventos, excursiones y viajes de agencia en Paris.",
+      "Servicio de chófer privado para traslados al aeropuerto, eventos, excursiones y viajes de agencia en París.",
     cards: [
       {
         title: "Traslados privados profesionales",
-        body: "Trayectos de aeropuerto, eventos y excursiones con cotizacion confirmada antes de reservar.",
+        body: "Trayectos de aeropuerto, eventos y excursiones con cotización confirmada antes de reservar.",
       },
       {
-        title: "Asistencia multilingue",
-        body: "Atencion en frances, ingles, espanol y portugues para viajeros internacionales.",
+        title: "Asistencia multilingüe",
+        body: "Atención en francés, inglés, español y portugués para viajeros internacionales.",
       },
       {
         title: "Pensado para viajes premium",
-        body: "Berlina, van, grupos y opciones prestige disponibles bajo solicitud, segun configuracion.",
+        body: "Berlina, van, grupos y opciones prestige disponibles bajo solicitud, según configuración.",
       },
     ],
   },
   pt: {
-    eyebrow: "Servico de motorista privado de confianca em Paris",
+    eyebrow: "Serviço de motorista privado de confiança em Paris",
     headline:
-      "Servico de motorista privado para transfers de aeroporto, eventos, excursoes e viagens de agencia em Paris.",
+      "Serviço de motorista privado para transfers de aeroporto, eventos, excursões e viagens de agência em Paris.",
     cards: [
       {
         title: "Transfers privados profissionais",
-        body: "Trajetos de aeroporto, eventos e excursoes com cotacao confirmada antes da reserva.",
+        body: "Trajetos de aeroporto, eventos e excursões com cotação confirmada antes da reserva.",
       },
       {
-        title: "Atendimento multilingue",
-        body: "Suporte em frances, ingles, espanhol e portugues para viajantes internacionais.",
+        title: "Atendimento multilíngue",
+        body: "Suporte em francês, inglês, espanhol e português para viajantes internacionais.",
       },
       {
         title: "Pensado para viagens premium",
-        body: "Sedans, vans, grupos e opcoes prestige disponiveis sob consulta, conforme configuracao.",
+        body: "Sedans, vans, grupos e opções prestige disponíveis sob consulta, conforme configuração.",
       },
     ],
   },
@@ -117,29 +113,30 @@ export default function Home() {
   const siteOrigin = getSiteOrigin();
 
   // Generate JSON-LD structured data
-  const organizationJsonLd = generateOrganizationJsonLd({
+  const businessJsonLd = {
+    "@context": "https://schema.org",
+    "@type": ["LocalBusiness", "Organization"],
+    "@id": `${siteOrigin}/#organization`,
     name: "Paris Elite Services",
     url: siteOrigin,
-    logoUrl: `${siteOrigin}/logo.png`,
-    description: t.seo.home.description,
-    sameAs: [
-      "https://www.facebook.com/parisluxejourney",
-      "https://www.instagram.com/parisluxejourney",
-    ],
-  });
-
-  const localBusinessJsonLd = generateLocalBusinessJsonLd({
-    name: "Paris Elite Services",
-    url: siteOrigin,
+    logo: `${siteOrigin}/logo.png`,
     telephone: "+33668251102",
+    email: "info@eliteparistransfer.com",
     description: t.seo.home.description,
     priceRange: "€€€",
     address: {
-      addressLocality: "Paris",
+      "@type": "PostalAddress",
+      addressLocality: "Vanves",
+      postalCode: "92170",
       addressRegion: "Île-de-France",
       addressCountry: "FR",
     },
-  });
+    sameAs: [
+      "https://www.facebook.com/pariseliteservices",
+      "https://www.instagram.com/pariseliteservices",
+      "https://twitter.com/pariselite",
+    ],
+  };
 
   const canonicalUrl = siteOrigin;
 
@@ -231,10 +228,7 @@ export default function Home() {
 
         {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
-          {JSON.stringify(organizationJsonLd)}
-        </script>
-        <script type="application/ld+json">
-          {JSON.stringify(localBusinessJsonLd)}
+          {JSON.stringify(businessJsonLd)}
         </script>
       </Helmet>
 

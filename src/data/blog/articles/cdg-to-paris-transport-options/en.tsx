@@ -2,14 +2,16 @@ export default function Article() {
   return (
     <article>
       <p>
-        Arriving at Charles de Gaulle Airport (CDG) and wondering how to get to Paris? You're not alone. 
-        With over 76 million passengers annually, CDG is one of Europe's busiest airports, and navigating 
-        your way to the city center can be overwhelming for first-time visitors.
+        Arriving at Charles de Gaulle Airport (CDG) and wondering how to get to
+        Paris? You're not alone. With over 76 million passengers annually, CDG
+        is one of Europe's busiest airports, and navigating your way to the city
+        center can be overwhelming for first-time visitors.
       </p>
 
       <p>
-        In this comprehensive guide, we'll compare all transportation options from CDG to Paris, including 
-        prices, travel times, pros and cons, so you can make the best choice for your needs and budget.
+        In this comprehensive guide, we'll compare all transportation options
+        from CDG to Paris, including prices, travel times, pros and cons, so you
+        can make the best choice for your needs and budget.
       </p>
 
       <h2>Overview: Your Transport Options from CDG to Paris</h2>
@@ -19,24 +21,41 @@ export default function Article() {
       </p>
 
       <ul>
-        <li><strong>RER B Train</strong> - Budget-friendly public transport</li>
-        <li><strong>Roissybus</strong> - Direct bus to Opéra</li>
-        <li><strong>Taxi</strong> - Traditional metered cab</li>
-        <li><strong>Uber/Bolt</strong> - Ride-sharing apps</li>
-        <li><strong>Private VTC (Chauffeur)</strong> - Pre-booked luxury transfer</li>
+        <li>
+          <strong>RER B Train</strong> - Budget-friendly public transport
+        </li>
+        <li>
+          <strong>Roissybus</strong> - Direct bus to Opéra
+        </li>
+        <li>
+          <strong>Taxi</strong> - Traditional metered cab
+        </li>
+        <li>
+          <strong>Uber/Bolt</strong> - Ride-sharing apps
+        </li>
+        <li>
+          <strong>Private VTC (Chauffeur)</strong> - Pre-booked luxury transfer
+        </li>
       </ul>
 
       <h2>Option 1: RER B Train (€11.80)</h2>
 
       <p>
-        The RER B is the most economical option for solo travelers or those on a tight budget.
+        The RER B is the most economical option for solo travelers or those on a
+        tight budget.
       </p>
 
       <h3>Pricing & Travel Time</h3>
       <ul>
-        <li><strong>Price:</strong> €11.80 per person (one-way)</li>
-        <li><strong>Travel Time:</strong> 30-40 minutes to Gare du Nord</li>
-        <li><strong>Frequency:</strong> Every 10-15 minutes (6am-11pm)</li>
+        <li>
+          <strong>Price:</strong> €11.80 per person (one-way)
+        </li>
+        <li>
+          <strong>Travel Time:</strong> 30-40 minutes to Gare du Nord
+        </li>
+        <li>
+          <strong>Frequency:</strong> Every 10-15 minutes (6am-11pm)
+        </li>
       </ul>
 
       <h3>Pros</h3>
@@ -44,7 +63,10 @@ export default function Article() {
         <li>Cheapest option available</li>
         <li>Frequent departures</li>
         <li>No traffic delays</li>
-        <li>Stops at major stations (Gare du Nord, Châtelet-Les Halles, Saint-Michel)</li>
+        <li>
+          Stops at major stations (Gare du Nord, Châtelet-Les Halles,
+          Saint-Michel)
+        </li>
       </ul>
 
       <h3>Cons</h3>
@@ -59,14 +81,21 @@ export default function Article() {
       <h2>Option 2: Roissybus (€16.60)</h2>
 
       <p>
-        The Roissybus is a direct shuttle service connecting CDG to Opéra in central Paris.
+        The Roissybus is a direct shuttle service connecting CDG to Opéra in
+        central Paris.
       </p>
 
       <h3>Pricing & Travel Time</h3>
       <ul>
-        <li><strong>Price:</strong> €16.60 per person</li>
-        <li><strong>Travel Time:</strong> 60-75 minutes (depending on traffic)</li>
-        <li><strong>Frequency:</strong> Every 15-20 minutes</li>
+        <li>
+          <strong>Price:</strong> €16.60 per person
+        </li>
+        <li>
+          <strong>Travel Time:</strong> 60-75 minutes (depending on traffic)
+        </li>
+        <li>
+          <strong>Frequency:</strong> Every 15-20 minutes
+        </li>
       </ul>
 
       <h3>Pros</h3>
@@ -87,14 +116,22 @@ export default function Article() {
       <h2>Option 3: Official Taxi (€50-60)</h2>
 
       <p>
-        Official Paris taxis have fixed rates from CDG to different zones in Paris.
+        Official Paris taxis have fixed rates from CDG to different zones in
+        Paris.
       </p>
 
       <h3>Pricing & Travel Time</h3>
       <ul>
-        <li><strong>Price:</strong> €50 (Right Bank) or €55 (Left Bank) - fixed rate</li>
-        <li><strong>Travel Time:</strong> 30-60 minutes depending on traffic</li>
-        <li><strong>Capacity:</strong> Up to 4 passengers + luggage</li>
+        <li>
+          <strong>Price:</strong> €50 (Right Bank) or €55 (Left Bank) - fixed
+          rate
+        </li>
+        <li>
+          <strong>Travel Time:</strong> 30-60 minutes depending on traffic
+        </li>
+        <li>
+          <strong>Capacity:</strong> Up to 4 passengers + luggage
+        </li>
       </ul>
 
       <h3>Pros</h3>
@@ -116,14 +153,21 @@ export default function Article() {
       <h2>Option 4: Uber/Bolt (€40-70)</h2>
 
       <p>
-        Ride-sharing apps like Uber and Bolt operate at CDG, though with some restrictions.
+        Ride-sharing apps like Uber and Bolt operate at CDG, though with some
+        restrictions.
       </p>
 
       <h3>Pricing & Travel Time</h3>
       <ul>
-        <li><strong>Price:</strong> €40-70 (varies with demand/surge pricing)</li>
-        <li><strong>Travel Time:</strong> 30-60 minutes</li>
-        <li><strong>Pickup:</strong> Designated zones only (not at arrivals)</li>
+        <li>
+          <strong>Price:</strong> €40-70 (varies with demand/surge pricing)
+        </li>
+        <li>
+          <strong>Travel Time:</strong> 30-60 minutes
+        </li>
+        <li>
+          <strong>Pickup:</strong> Designated zones only (not at arrivals)
+        </li>
       </ul>
 
       <h3>Pros</h3>
@@ -144,14 +188,21 @@ export default function Article() {
       <h2>Option 5: Private VTC Transfer (€70+)</h2>
 
       <p>
-        VTC (Voiture de Transport avec Chauffeur) is a licensed private chauffeur service - the premium option.
+        VTC (Voiture de Transport avec Chauffeur) is a licensed private
+        chauffeur service - the premium option.
       </p>
 
       <h3>Pricing & Travel Time</h3>
       <ul>
-        <li><strong>Price:</strong> From €70 (1-3 passengers, all-inclusive)</li>
-        <li><strong>Travel Time:</strong> 30-50 minutes</li>
-        <li><strong>Capacity:</strong> Various vehicle sizes available</li>
+        <li>
+          <strong>Price:</strong> From €70 (1-3 passengers, all-inclusive)
+        </li>
+        <li>
+          <strong>Travel Time:</strong> 30-50 minutes
+        </li>
+        <li>
+          <strong>Capacity:</strong> Various vehicle sizes available
+        </li>
       </ul>
 
       <h3>Pros</h3>
@@ -160,7 +211,7 @@ export default function Article() {
         <li>Flight monitoring included (no extra charge for delays)</li>
         <li>Fixed price guaranteed</li>
         <li>Professional, English-speaking drivers</li>
-        <li>Premium vehicles (Mercedes, BMW)</li>
+        <li>Premium vehicles (Mercedes and equivalent)</li>
         <li>Free cancellation up to 24h before</li>
         <li>Child seats available on request</li>
       </ul>
@@ -192,7 +243,9 @@ export default function Article() {
               <td className="border px-4 py-2">Roissybus</td>
               <td className="border px-4 py-2">€16.60</td>
               <td className="border px-4 py-2">60-75 min</td>
-              <td className="border px-4 py-2">Budget travelers with luggage</td>
+              <td className="border px-4 py-2">
+                Budget travelers with luggage
+              </td>
             </tr>
             <tr>
               <td className="border px-4 py-2">Official Taxi</td>
@@ -210,7 +263,9 @@ export default function Article() {
               <td className="border px-4 py-2">Private VTC</td>
               <td className="border px-4 py-2">€70+</td>
               <td className="border px-4 py-2">30-50 min</td>
-              <td className="border px-4 py-2">Families, groups, comfort priority</td>
+              <td className="border px-4 py-2">
+                Families, groups, comfort priority
+              </td>
             </tr>
           </tbody>
         </table>
@@ -245,17 +300,17 @@ export default function Article() {
       <h2>Conclusion</h2>
 
       <p>
-        Getting from CDG to Paris doesn't have to be stressful. While the RER B is the cheapest option, 
-        it's not always the most practical, especially with luggage or after a long flight. For most travelers, 
-        a private VTC transfer offers the best balance of comfort, reliability, and value - especially when 
-        traveling with others.
+        Getting from CDG to Paris doesn't have to be stressful. While the RER B
+        is the cheapest option, it's not always the most practical, especially
+        with luggage or after a long flight. For most travelers, a private VTC
+        transfer offers the best balance of comfort, reliability, and value -
+        especially when traveling with others.
       </p>
 
       <p>
-        Whatever you choose, book in advance when possible to avoid long queues and ensure availability. 
-        Safe travels!
+        Whatever you choose, book in advance when possible to avoid long queues
+        and ensure availability. Safe travels!
       </p>
     </article>
-  )
+  );
 }
-

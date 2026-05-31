@@ -1,24 +1,17 @@
 import React from "react";
 import { trackEvent } from "@/lib/analytics";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { buildGenericWhatsAppUrl } from "@/lib/eventsPrefill";
 
 const FloatingWhatsApp: React.FC = () => {
   const { language, t } = useLanguage();
-  const phone = "33668251102";
-  const messages = {
-    en: "Hello! I need a transfer from Paris Elite Services.",
-    fr: "Bonjour ! J'ai besoin d'un transfert avec Paris Elite Services.",
-    es: "Hola, necesito un traslado con Paris Elite Services.",
-    pt: "Olá! Preciso de um transfer com a Paris Elite Services.",
-  } as const;
   const labels = {
     en: "WhatsApp instant quote",
     fr: "WhatsApp devis instantané",
     es: "WhatsApp presupuesto instantáneo",
     pt: "WhatsApp orçamento instantâneo",
   } as const;
-  const message = encodeURIComponent(messages[language]);
-  const destination = `https://wa.me/${phone}?text=${message}`;
+  const destination = buildGenericWhatsAppUrl(language);
 
   const handleClick = () => {
     trackEvent("whatsapp_click", {

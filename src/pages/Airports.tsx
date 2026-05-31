@@ -14,9 +14,9 @@ import {
   type AirportCode,
 } from "@/data/airports/terminals";
 import type { Language } from "@/types/i18n";
+import { buildAirportWhatsAppUrl } from "@/lib/eventsPrefill";
 
 const SUPPORTED_LANGUAGES: Language[] = ["en", "fr", "es", "pt"];
-const AIRPORT_WHATSAPP_URL = "https://wa.me/33668251102";
 
 const isSupportedLanguage = (value?: string): value is Language => {
   return SUPPORTED_LANGUAGES.includes(value as Language);
@@ -201,7 +201,10 @@ const Airports = () => {
                 {t.airports.cta.fixedPrice}
               </a>
               <a
-                href={AIRPORT_WHATSAPP_URL}
+                href={buildAirportWhatsAppUrl(
+                  airportLabels[selectedAirport],
+                  language,
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center rounded-md border border-primary/25 bg-white px-5 py-3 text-sm font-semibold text-secondary hover:border-primary/50"

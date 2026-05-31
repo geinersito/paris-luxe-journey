@@ -2,29 +2,34 @@ export default function Article() {
   return (
     <article>
       <p>
-        Planning your Paris airport transfer and confused about whether to book a VTC, take a taxi, or use Uber?
-        You're not alone. With multiple transportation options available, choosing the right one can significantly
-        impact your travel experience and budget.
+        Planning your Paris airport transfer and confused about whether to book
+        a VTC, take a taxi, or use Uber? You're not alone. With multiple
+        transportation options available, choosing the right one can
+        significantly impact your travel experience and budget.
       </p>
 
       <p>
-        In this comprehensive comparison, we'll break down the differences between VTC (Voiture de Transport avec Chauffeur),
-        traditional taxis, and ride-sharing apps like Uber and Bolt in Paris, helping you make an informed decision.
+        In this comprehensive comparison, we'll break down the differences
+        between VTC (Voiture de Transport avec Chauffeur), traditional taxis,
+        and ride-sharing apps like Uber and Bolt in Paris, helping you make an
+        informed decision.
       </p>
 
       <h2>What is VTC? Understanding the French Private Driver Service</h2>
 
       <p>
-        VTC stands for "Voiture de Transport avec Chauffeur" (Vehicle for Transport with Driver). It's a licensed
-        private driver service in France, similar to executive car services in other countries. VTC drivers must
-        hold a professional license and meet strict quality standards.
+        VTC stands for "Voiture de Transport avec Chauffeur" (Vehicle for
+        Transport with Driver). It's a licensed private driver service in
+        France, similar to executive car services in other countries. VTC
+        drivers must hold a professional license and meet strict quality
+        standards.
       </p>
 
       <h3>Key Characteristics of VTC:</h3>
       <ul>
         <li>Pre-booked service with fixed prices</li>
         <li>Professional licensed drivers</li>
-        <li>Premium vehicles (Mercedes, BMW, etc.)</li>
+        <li>Premium vehicles (Mercedes and equivalent)</li>
         <li>Meet and greet service at airports</li>
         <li>Flight monitoring included</li>
         <li>No surge pricing</li>
@@ -33,7 +38,8 @@ export default function Article() {
       <h2>Traditional Paris Taxis: The Classic Option</h2>
 
       <p>
-        Paris taxis are the traditional metered cab service you'll find at taxi stands throughout the city and airports.
+        Paris taxis are the traditional metered cab service you'll find at taxi
+        stands throughout the city and airports.
       </p>
 
       <h3>Key Characteristics of Taxis:</h3>
@@ -49,7 +55,8 @@ export default function Article() {
       <h2>Uber and Bolt: The App-Based Alternative</h2>
 
       <p>
-        Uber and Bolt are ride-sharing apps that connect passengers with drivers through a mobile application.
+        Uber and Bolt are ride-sharing apps that connect passengers with drivers
+        through a mobile application.
       </p>
 
       <h3>Key Characteristics of Uber/Bolt:</h3>
@@ -188,22 +195,26 @@ export default function Article() {
       <h2>Conclusion: The Best Value for Most Travelers</h2>
 
       <p>
-        While taxis and Uber might seem cheaper at first glance, VTC services offer the best overall value when you
-        consider the complete package: guaranteed pricing, professional service, flight monitoring, meet and greet,
-        and premium vehicles.
+        While taxis and Uber might seem cheaper at first glance, VTC services
+        offer the best overall value when you consider the complete package:
+        guaranteed pricing, professional service, flight monitoring, meet and
+        greet, and premium vehicles.
       </p>
 
       <p>
-        For airport transfers, especially with luggage or traveling in groups, a VTC private driver provides peace
-        of mind and a superior experience that's worth the modest price difference. The convenience of having your
-        driver waiting for you with a name sign, monitoring your flight, and providing a comfortable, direct journey
-        to your destination makes it the preferred choice for discerning travelers.
+        For airport transfers, especially with luggage or traveling in groups, a
+        VTC private driver provides peace of mind and a superior experience
+        that's worth the modest price difference. The convenience of having your
+        driver waiting for you with a name sign, monitoring your flight, and
+        providing a comfortable, direct journey to your destination makes it the
+        preferred choice for discerning travelers.
       </p>
 
       <p>
-        Book your VTC transfer in advance to ensure availability and lock in your fixed price - no surprises,
-        no stress, just a smooth start to your Paris adventure.
+        Book your VTC transfer in advance to ensure availability and lock in
+        your fixed price - no surprises, no stress, just a smooth start to your
+        Paris adventure.
       </p>
     </article>
-  )
+  );
 }

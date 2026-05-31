@@ -1,6 +1,6 @@
 import type { Event, Language } from "@/types/events";
 
-const WHATSAPP_NUMBER = "33668251102";
+export const WHATSAPP_NUMBER = "33668251102";
 const EMAIL_ADDRESS = "info@eliteparistransfer.com";
 
 interface PrefillTemplates {
@@ -129,4 +129,49 @@ export function buildGenericEmailUrl(language: string): string {
   const subject = encodeURIComponent(t.genericSubject);
   const body = encodeURIComponent(t.genericBody);
   return `mailto:${EMAIL_ADDRESS}?subject=${subject}&body=${body}`;
+}
+
+// --- PR-02a-WA-CONTEXTUAL: airport, excursion, guide helpers ---
+
+export function buildAirportWhatsAppUrl(
+  airportName: string,
+  language: string,
+): string {
+  const messages: Record<string, string> = {
+    en: `Hello! I'd like a quote for a transfer from/to ${airportName}. Can you confirm availability and price?`,
+    es: `Hola, me gustaría un presupuesto para un traslado desde/hacia ${airportName}. ¿Pueden confirmar disponibilidad y precio?`,
+    fr: `Bonjour, je souhaite un devis pour un transfert depuis/vers ${airportName}. Pourriez-vous confirmer la disponibilité et le tarif ?`,
+    pt: `Olá, gostaria de um orçamento para transfer desde/para ${airportName}. Podem confirmar disponibilidade e preço?`,
+  };
+  const text = encodeURIComponent(messages[language] ?? messages.en);
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+}
+
+export function buildExcursionWhatsAppUrl(
+  excursionName: string,
+  language: string,
+): string {
+  const messages: Record<string, string> = {
+    en: `Hello! I'm interested in the ${excursionName} excursion. Can you confirm availability and price for my group?`,
+    es: `Hola, me interesa la excursión ${excursionName}. ¿Pueden confirmar disponibilidad y precio para mi grupo?`,
+    fr: `Bonjour, je suis intéressé(e) par l'excursion ${excursionName}. Pourriez-vous confirmer la disponibilité et le tarif pour mon groupe ?`,
+    pt: `Olá, tenho interesse na excursão ${excursionName}. Podem confirmar disponibilidade e preço para o meu grupo?`,
+  };
+  const text = encodeURIComponent(messages[language] ?? messages.en);
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
+}
+
+export function buildGuideWhatsAppUrl(language: string): string {
+  return buildGenericWhatsAppUrl(language);
+}
+
+export function buildBlogWhatsAppUrl(language: string): string {
+  const messages: Record<string, string> = {
+    en: "Hello, I'd like a quote for a private transfer in Paris. Can you confirm availability and price?",
+    es: "Hola, me gustaría un presupuesto para un traslado privado en París. ¿Pueden confirmar disponibilidad y precio?",
+    fr: "Bonjour, je souhaite un devis pour un transfert privé à Paris. Pourriez-vous confirmer la disponibilité et le tarif ?",
+    pt: "Olá, gostaria de um orçamento para um transfer privado em Paris. Podem confirmar disponibilidade e preço?",
+  };
+  const text = encodeURIComponent(messages[language] ?? messages.en);
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
 }

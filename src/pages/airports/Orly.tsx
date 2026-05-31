@@ -3,13 +3,14 @@ import { useNavigate } from "react-router-dom";
 import { Plane, Clock, Shield, MapPin, CheckCircle, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { buildAirportWhatsAppUrl } from "@/lib/eventsPrefill";
 
 const ORLY_IMAGE =
   "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80";
 
 export default function OrlyAirport() {
   const navigate = useNavigate();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   return (
     <div className="min-h-screen">
@@ -54,6 +55,17 @@ export default function OrlyAirport() {
               >
                 {t.airports.cta.fixedPrice}
               </Button>
+              <a
+                href={buildAirportWhatsAppUrl(
+                  t.airports.terminalGuide.airports.ory,
+                  language,
+                )}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-md border border-white/40 bg-white/10 backdrop-blur-sm px-8 py-6 text-lg font-semibold text-white hover:bg-white/20"
+              >
+                {t.airports.cta.whatsapp}
+              </a>
             </div>
 
             {/* Trust Badges */}

@@ -57,8 +57,8 @@ export default function FinalCTA({ variant = "generic" }: FinalCTAProps) {
         {/* Image */}
         <div className="hidden md:block">
           <img
-            src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?w=600&h=400&fit=crop"
-            alt="Luxury vehicle"
+            src="https://images.unsplash.com/photo-1563720223185-11003d516935?w=600&h=400&fit=crop"
+            alt="Mercedes premium chauffeur vehicle"
             className="rounded-lg shadow-lg w-full h-auto object-cover"
           />
         </div>

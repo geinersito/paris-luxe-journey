@@ -44,5 +44,7 @@ export type EventVariant = "compact" | "full";
 export interface EventsFeedProps {
   range: EventRange;
   variant?: EventVariant;
-  showHeader?: boolean; // Control whether to show the section header
+  showHeader?: boolean;
+  excludeIds?: string[];
+  categoryFilter?: string;
 }

@@ -274,8 +274,8 @@ export const champagneGuideContent: Record<Language, ChampagneGuideContent> = {
     },
   },
   es: {
-    title: "Region de Champagne",
-    distance: "Aproximadamente 145 km desde Paris",
+    title: "Región de Champagne",
+    distance: "Aproximadamente 145 km desde París",
     duration: "8-10 horas",
     navigation: {
       description: "Guia",

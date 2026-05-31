@@ -95,8 +95,8 @@ export const es: Translation = {
     insuranceDesc: "Cobertura total",
   },
   trust: {
-    title: "Confianza y garantias",
-    subtitle: "Estandares de servicio claros antes de reservar.",
+    title: "Confianza y garantías",
+    subtitle: "Estándares de servicio claros antes de reservar.",
     items: {
       licensed: {
         title: "Servicio privado de chofer con licencia",
@@ -116,7 +116,7 @@ export const es: Translation = {
       },
       support: {
         title: "Soporte por WhatsApp y email",
-        body: "Asistencia rapida antes de reservar y durante el servicio.",
+        body: "Asistencia rápida antes de reservar y durante el servicio.",
       },
     },
   },
@@ -863,7 +863,7 @@ export const es: Translation = {
     payment: {
       title: "Métodos de pago aceptados",
     },
-    copyright: " 2025 Paris Elite Services. Todos los derechos reservados.",
+    copyright: " Paris Elite Services. Todos los derechos reservados.",
   },
   faq: {
     title: "Preguntas Frecuentes",
@@ -1083,7 +1083,9 @@ export const es: Translation = {
     professionalService: "Servicio de chofer profesional",
     freeCancellation: "Cancelación gratuita hasta 24h",
     flightMonitoring: "Monitoreo de vuelo incluido",
-    premiumVehicles: "Vehículos premium (Mercedes, BMW)",
+    premiumVehicles: "Vehículos premium (Mercedes y equivalente)",
+    heroEyebrow: "Descubrir París",
+    featuredEyebrow: "Artículo Destacado",
     pageTitle: "Blog de Viajes | Paris Elite Services",
     pageDescription:
       "Consejos expertos, guías e información para visitar París. Transfers al aeropuerto, excursiones y servicio de chofer de lujo.",
@@ -1109,12 +1111,25 @@ export const es: Translation = {
       quickQuoteDesc: "Obtén un precio instantáneo para tu transfer",
       calculatePrice: "Calcular Precio",
       whatsapp: "Presupuesto WhatsApp",
+      waTextAirport:
+        "Hola, estoy planificando un viaje desde el aeropuerto de París. ¿Pueden confirmar disponibilidad y precio para un transfer privado?",
       popularRoutes: "Rutas Populares",
       fixedPrices: "Precios fijos • Sin cargos ocultos",
       available247: "Disponible 24/7",
       flightTracking: "Seguimiento de vuelo incluido",
       freeCancellation: "Cancelación gratuita 24h",
       premiumVehicles: "Vehículos premium",
+    },
+    excursionUpsell: {
+      heading: "¿Ya tienes el transfer? Añade una excursión",
+      subheading: "Desde el mismo chófer privado — el día que tú elijas",
+      cta: "Ver todas las excursiones →",
+      waButton: "Consultar por WhatsApp",
+      waText:
+        "Hola, acabo de leer sobre traslados desde aeropuerto. ¿Podrían ayudarme con una excursión privada desde París?",
+      versailles: "Versalles — 45 km",
+      champagne: "Champagne — 145 km",
+      loireValley: "Valle del Loira — 200 km",
     },
     newsletter: {
       title: "Recibe Consejos de Viaje y Ofertas Exclusivas",
@@ -1216,6 +1231,17 @@ export const es: Translation = {
     fallbackDisclaimer:
       "Ofrecemos transporte con chófer hacia eventos — no vendemos entradas.",
     stalePill: "Transporte a Eventos",
+    categories: {
+      all: "Todos",
+      exhibition: "Exposición",
+      fashion: "Moda",
+      festival: "Festival",
+      concert: "Concierto",
+      opera: "Ópera",
+      museum: "Museo",
+      family: "Familia",
+    },
+    recentlyEnded: "Eventos Recientes",
   },
   seo: {
     home: {

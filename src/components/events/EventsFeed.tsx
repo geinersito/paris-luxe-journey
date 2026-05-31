@@ -26,7 +26,8 @@ export function EventsFeed({
   variant = "full",
   showHeader = true,
   excludeIds = [],
-}: EventsFeedProps & { excludeIds?: string[] }) {
+  categoryFilter,
+}: EventsFeedProps) {
   const { t, i18n } = useTranslation();
   const language = i18n.language as Language;
 
@@ -47,12 +48,31 @@ export function EventsFeed({
       (a, b) => new Date(a.startAt).getTime() - new Date(b.startAt).getTime(),
     )
     .filter((event) => !excludeIds.includes(event.id));
+
+  const startOfToday = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate(),
+  );
+  const upcomingEvents = events.filter(
+    (e) => new Date(e.endAt ?? e.startAt) >= startOfToday,
+  );
+  const pastEvents = events.filter(
+    (e) => new Date(e.endAt ?? e.startAt) < startOfToday,
+  );
+  const applyCategory = (arr: Event[]) =>
+    !categoryFilter || categoryFilter === "all"
+      ? arr
+      : arr.filter((e) => e.category === categoryFilter);
+  const displayEvents = applyCategory(upcomingEvents);
+  const displayPastEvents = applyCategory(pastEvents);
+
   const generatedAt = new Date(eventsFeedData.generatedAt);
   const daysSinceUpdate = Math.max(
     0,
     Math.floor((now.getTime() - generatedAt.getTime()) / (1000 * 60 * 60 * 24)),
   );
-  const isSingleFeatured = variant === "full" && events.length === 1;
+  const isSingleFeatured = variant === "full" && displayEvents.length === 1;
 
   // Format date according to language
   const formatDate = (dateString: string) => {
@@ -76,7 +96,7 @@ export function EventsFeed({
     return formatParisDateWithLocale(dateString, localeMap[language], options);
   };
 
-  if (!events || events.length === 0) {
+  if (!displayEvents || displayEvents.length === 0) {
     return (
       <div className="text-center py-12">
         <p className="text-muted-foreground">{t("events.noEvents")}</p>
@@ -119,7 +139,7 @@ export function EventsFeed({
 
       {isSingleFeatured ? (
         <div className="glass-card-premium overflow-hidden border-2 border-primary/20 shadow-luxury hover:shadow-luxury-hover transition-all duration-500">
-          {events.map((event) => (
+          {displayEvents.map((event) => (
             <div
               key={event.id}
               className="grid overflow-hidden lg:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)]"
@@ -171,7 +191,9 @@ export function EventsFeed({
 
                     {event.category && (
                       <Badge className="bg-primary/90 text-white capitalize font-semibold border-0 px-3 py-1.5">
-                        {event.category}
+                        {t(`events.categories.${event.category}`, {
+                          defaultValue: event.category,
+                        })}
                       </Badge>
                     )}
                   </div>
@@ -249,7 +271,7 @@ export function EventsFeed({
               : "md:grid-cols-2"
           }`}
         >
-          {events.map((event) => (
+          {displayEvents.map((event) => (
             <div
               key={event.id}
               className="overflow-hidden bg-white rounded-2xl border border-primary/20 hover:border-primary/30 transition-colors duration-200"
@@ -321,7 +343,9 @@ export function EventsFeed({
                 {/* Category Badge - High Contrast */}
                 {event.category && (
                   <Badge className="bg-primary/90 text-white capitalize font-semibold border-0">
-                    {event.category}
+                    {t(`events.categories.${event.category}`, {
+                      defaultValue: event.category,
+                    })}
                   </Badge>
                 )}
 
@@ -372,6 +396,40 @@ export function EventsFeed({
             </div>
           ))}
         </div>
+      )}
+
+      {/* Past events — collapsed by default */}
+      {displayPastEvents.length > 0 && (
+        <details className="group">
+          <summary className="cursor-pointer list-none flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 select-none py-2">
+            <span className="w-4 h-4 border border-current rounded-full flex items-center justify-center text-xs group-open:rotate-90 transition-transform duration-200">
+              ›
+            </span>
+            {t("events.recentlyEnded", { defaultValue: "Recently Ended" })} (
+            {displayPastEvents.length})
+          </summary>
+          <div className="mt-4 grid gap-6 md:grid-cols-2 lg:grid-cols-3 opacity-60">
+            {displayPastEvents.map((event) => (
+              <div
+                key={event.id}
+                className="overflow-hidden bg-white rounded-2xl border border-gray-200"
+              >
+                <div className="p-5">
+                  <h4 className="text-base font-semibold text-secondary line-clamp-2 mb-2">
+                    {event.title[language]}
+                  </h4>
+                  <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
+                    <Calendar className="w-3.5 h-3.5" />
+                    <span>{formatDate(event.startAt)}</span>
+                  </div>
+                  <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
+                    {event.description[language]}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </details>
       )}
     </div>
   );

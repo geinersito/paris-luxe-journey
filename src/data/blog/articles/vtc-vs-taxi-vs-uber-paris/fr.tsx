@@ -2,28 +2,34 @@ export default function Article() {
   return (
     <article>
       <p>
-        Vous planifiez votre transfert aéroport à Paris et vous hésitez entre réserver un VTC, prendre un taxi ou utiliser Uber ?
-        Dans ce guide complet, nous comparerons les trois principales options de transport à Paris pour vous aider à prendre la meilleure décision.
+        Vous planifiez votre transfert aéroport à Paris et vous hésitez entre
+        réserver un VTC, prendre un taxi ou utiliser Uber ? Dans ce guide
+        complet, nous comparerons les trois principales options de transport à
+        Paris pour vous aider à prendre la meilleure décision.
       </p>
 
       <h2>Qu'est-ce qu'un VTC ?</h2>
       <p>
-        VTC signifie "Voiture de Transport avec Chauffeur". C'est un service de chauffeur privé avec licence en France,
-        similaire aux services de voitures exécutives.
+        VTC signifie "Voiture de Transport avec Chauffeur". C'est un service de
+        chauffeur privé avec licence en France, similaire aux services de
+        voitures exécutives.
       </p>
 
       <h3>Caractéristiques du VTC :</h3>
       <ul>
         <li>Service pré-réservé avec prix fixes garantis</li>
         <li>Chauffeurs professionnels avec licence</li>
-        <li>Véhicules premium (Mercedes, BMW)</li>
+        <li>Véhicules premium (Mercedes et équivalent)</li>
         <li>Service d'accueil à l'aéroport avec pancarte</li>
         <li>Suivi de vol inclus sans frais supplémentaires</li>
         <li>Pas de tarification dynamique ni de surprises</li>
       </ul>
 
       <h2>Taxis Parisiens</h2>
-      <p>Les taxis traditionnels de Paris sont réglementés et ont des tarifs fixes depuis les aéroports.</p>
+      <p>
+        Les taxis traditionnels de Paris sont réglementés et ont des tarifs
+        fixes depuis les aéroports.
+      </p>
 
       <h3>Caractéristiques des Taxis :</h3>
       <ul>
@@ -103,10 +109,12 @@ export default function Article() {
 
       <h2>Conclusion</h2>
       <p>
-        Pour la plupart des voyageurs, en particulier les familles et les groupes, un VTC privé offre le meilleur
-        rapport qualité-prix global. Le prix fixe garanti, le service professionnel, le suivi de vol et les véhicules
-        premium font que la modeste différence de prix en vaut la peine pour une expérience sans stress.
+        Pour la plupart des voyageurs, en particulier les familles et les
+        groupes, un VTC privé offre le meilleur rapport qualité-prix global. Le
+        prix fixe garanti, le service professionnel, le suivi de vol et les
+        véhicules premium font que la modeste différence de prix en vaut la
+        peine pour une expérience sans stress.
       </p>
     </article>
-  )
+  );
 }
