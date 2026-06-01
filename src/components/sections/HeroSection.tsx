@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import BookingForm from "../BookingForm";
 import { CompactBookingForm } from "../booking/CompactBookingForm";
 import MobileStickyCTA from "../MobileStickyCTA";
@@ -6,7 +7,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 // Optimized image URLs with different sizes for responsive loading
 const HERO_IMAGE_BASE =
-  "https://images.unsplash.com/photo-1502602898657-3e91760cbb34";
+  "https://images.unsplash.com/photo-1503376780353-7e6692767b70";
 const HERO_IMAGE_SMALL = `${HERO_IMAGE_BASE}?auto=format&fit=crop&q=80&w=640`;
 const HERO_IMAGE_MEDIUM = `${HERO_IMAGE_BASE}?auto=format&fit=crop&q=80&w=1280`;
 const HERO_IMAGE_LARGE = `${HERO_IMAGE_BASE}?auto=format&fit=crop&q=80&w=1920`;
@@ -28,7 +29,8 @@ function normalizeCompactPrefill(
 }
 
 export default function HeroSection() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const navigate = useNavigate();
   const [isImageLoaded, setIsImageLoaded] = React.useState(false);
   const [showBookingModal, setShowBookingModal] = React.useState(false);
   const [scrollY, setScrollY] = React.useState(0);
@@ -107,7 +109,7 @@ export default function HeroSection() {
             isImageLoaded ? "opacity-100" : "opacity-0"
           }`}
           style={{
-            objectPosition: "center 15%",
+            objectPosition: "center 40%",
             transform: `scaleX(-1) translateY(${scrollY * 0.5}px)`,
             willChange: "transform",
           }}
@@ -115,15 +117,18 @@ export default function HeroSection() {
         />
       </div>
 
-      {/* Premium Cinematic Overlay with Multi-Stop Gradient */}
-      <div className="absolute inset-0 overlay-cinematic z-10" />
-
-      {/* Subtle Gold Accent Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-primary/5 z-10" />
+      {/* Overlay — dark base, no gold */}
+      <div
+        className="absolute inset-0 z-10"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(10,22,40,0.72) 0%, rgba(10,22,40,0.55) 40%, rgba(10,22,40,0.65) 100%)",
+        }}
+      />
 
       <div className="container relative z-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
         <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-          {/* Left column — headline + subtitle */}
+          {/* Left column — editorial headline */}
           <div
             className={`lg:col-span-6 min-w-0 text-center lg:text-left transition-all duration-1000 ${
               isImageLoaded
@@ -131,89 +136,45 @@ export default function HeroSection() {
                 : "opacity-0 translate-y-8"
             }`}
           >
+            {/* Eyebrow */}
+            <p className="font-ui text-xs font-semibold uppercase tracking-[0.3em] text-white/60 mb-5">
+              Paris Elite Services
+            </p>
+
+            {/* Editorial display headline */}
             <h1
-              className="break-words text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-display font-bold mb-4 leading-tight text-white text-shadow-gold animate-fadeInUp"
-              style={{
-                animationDelay: "0.2s",
-                animationFillMode: "both",
-                textShadow:
-                  "0 2px 20px hsl(45 93% 47% / 0.4), 0 4px 40px hsl(45 93% 47% / 0.2)",
-              }}
+              className="font-editorial font-light text-5xl md:text-6xl lg:text-7xl leading-[1.05] text-white mb-6"
+              style={{ textShadow: "0 2px 24px rgba(0,0,0,0.4)" }}
             >
               {t.hero.title}
             </h1>
 
-            <p
-              className="text-base md:text-lg lg:text-xl text-white/95 font-medium max-w-3xl mx-auto lg:mx-0 leading-relaxed mb-0 animate-fadeInUp"
-              style={{
-                animationDelay: "0.4s",
-                animationFillMode: "both",
-                textShadow: "0 2px 10px rgba(0,0,0,0.5)",
-              }}
-            >
+            <p className="font-ui text-base md:text-lg text-white/80 max-w-lg mx-auto lg:mx-0 leading-relaxed mb-8">
               {t.hero.subtitle}
             </p>
 
-            {t.hero.proofline && (
-              <p
-                className="mt-3 text-sm md:text-base text-white/90 max-w-3xl mx-auto lg:mx-0 animate-fadeInUp"
-                style={{
-                  animationDelay: "0.5s",
-                  animationFillMode: "both",
-                  textShadow: "0 2px 8px rgba(0,0,0,0.45)",
-                }}
-              >
-                {t.hero.proofline}
-              </p>
-            )}
-
-            {t.hero.langProof && (
-              <p
-                className="mt-2 text-sm md:text-base font-semibold text-white animate-fadeInUp"
-                style={{
-                  animationDelay: "0.55s",
-                  animationFillMode: "both",
-                  textShadow: "0 2px 8px rgba(0,0,0,0.45)",
-                }}
-              >
-                {t.hero.langProof}
-              </p>
-            )}
-
-            <ul
-              className="mt-4 flex flex-wrap gap-2 justify-center lg:justify-start animate-fadeInUp"
-              style={{ animationDelay: "0.6s", animationFillMode: "both" }}
-            >
-              {[t.hero.bullet1, t.hero.bullet2, t.hero.bullet3].map(
-                (bullet) => (
-                  <li
-                    key={bullet}
-                    className="text-xs md:text-sm text-white/95 bg-white/15 border border-white/25 rounded-full px-3 py-1.5 backdrop-blur-sm"
-                  >
-                    {bullet}
-                  </li>
-                ),
-              )}
-            </ul>
-
-            <div
-              className="mt-5 flex flex-wrap gap-3 justify-center lg:justify-start animate-fadeInUp"
-              style={{ animationDelay: "0.65s", animationFillMode: "both" }}
-            >
+            <div className="flex flex-wrap gap-3 justify-center lg:justify-start">
               <button
                 type="button"
                 onClick={() => setShowBookingModal(true)}
-                className="silk-button px-5 py-2.5 text-sm md:text-base"
+                className="font-ui font-semibold text-sm px-6 py-3 bg-ref-navy text-white hover:bg-white hover:text-ref-navy transition-colors duration-200"
               >
                 {t.hero.ctaPrimary}
               </button>
               <a
                 href="/events"
-                className="inline-flex items-center justify-center rounded-xl border border-white/40 bg-white/10 px-5 py-2.5 text-sm md:text-base text-white hover:bg-white/20 transition-colors"
+                className="font-ui font-medium text-sm px-6 py-3 border border-white/50 text-white hover:bg-white/10 transition-colors duration-200"
               >
                 {t.hero.ctaSecondary}
               </a>
             </div>
+
+            {t.hero.humanSignal && (
+              <p className="font-ui text-xs text-white/50 mt-5 flex items-center gap-2 justify-center lg:justify-start">
+                <span className="inline-block w-1 h-1 rounded-full bg-white/40" />
+                {t.hero.humanSignal}
+              </p>
+            )}
           </div>
 
           {/* Right column — booking widget (hidden on mobile, visible md+) */}
@@ -278,8 +239,11 @@ export default function HeroSection() {
                   basePrice={0}
                   compact={true}
                   initialData={normalizeCompactPrefill(prefilledData)}
-                  onSubmit={async () => {
+                  onSubmit={async (bookingDetails) => {
                     setShowBookingModal(false);
+                    navigate("/booking/pending", {
+                      state: { bookingDetails, language },
+                    });
                   }}
                 />
               </div>

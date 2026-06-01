@@ -62,9 +62,10 @@ export const en: Translation = {
     cta: "Request a corporate proposal",
   },
   hero: {
-    title: "Private chauffeur in Paris",
+    title: "Private chauffeur service, tailored to your Paris journey",
     subtitle:
       "Airport transfers, private tours and hourly service. Send your request — we confirm availability and price within 2 hours.",
+    humanSignal: "A Paris-based team confirms every request",
     proofline: "",
     langProof: "English · Español · Français",
     bullet1: "Licensed VTC chauffeur",

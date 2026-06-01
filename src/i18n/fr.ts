@@ -62,9 +62,10 @@ export const fr: Translation = {
     cta: "Demander une proposition entreprise",
   },
   hero: {
-    title: "Chauffeur privé à Paris",
+    title: "Service de chauffeur privé, pensé pour votre séjour à Paris",
     subtitle:
       "Transferts aéroport, excursions et mise à disposition en région parisienne. Envoyez votre demande — disponibilité et tarif confirmés sous 2h.",
+    humanSignal: "Une équipe basée à Paris confirme chaque demande",
     proofline: "",
     langProof: "Français · Español · English · Português",
     bullet1: "Chauffeur VTC agréé",

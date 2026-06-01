@@ -61,9 +61,10 @@ export const pt: Translation = {
     cta: "Solicitar proposta corporativa",
   },
   hero: {
-    title: "Chauffeur privado em Paris",
+    title: "Serviço de chauffeur privado, pensado para a sua estadia em Paris",
     subtitle:
       "Transfers de aeroporto, excursões e serviço à hora. Envie o seu pedido — confirmamos disponibilidade e preço em 2 horas.",
+    humanSignal: "Uma equipa sediada em Paris confirma cada pedido",
     proofline: "",
     langProof: "Português · Español · English · Français",
     bullet1: "Chauffeur VTC licenciado",

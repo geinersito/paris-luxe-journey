@@ -78,6 +78,7 @@ export interface Translation {
     licensedInsured: string;
     freeCancellation24h: string;
     viewFleet: string;
+    humanSignal?: string;
   };
   exitPopup: {
     title: string;
@@ -515,6 +516,7 @@ export interface Translation {
     };
     submit: string;
     submitButton?: string;
+    submitNote?: string;
     noPaymentRequired?: string;
     extras: {
       title: string;
