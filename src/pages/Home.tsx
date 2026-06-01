@@ -3,6 +3,7 @@ import { Link, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { CarFront, CheckCircle, Languages, Sparkles, X } from "lucide-react";
 import HeroSection from "@/components/sections/HeroSection";
+import HeroTrustBar from "@/components/sections/HeroTrustBar";
 import HomeEventsSection from "@/components/sections/HomeEventsSection";
 import HomeExcursionsSection from "@/components/sections/HomeExcursionsSection";
 import FleetSection from "@/components/sections/FleetSection";
@@ -305,6 +306,7 @@ export default function Home() {
 
       <div onClickCapture={handleCtaClickCapture}>
         <HeroSection />
+        <HeroTrustBar />
         <section className="border-y border-primary/10 bg-gradient-to-b from-secondary/5 via-white to-white py-10 md:py-14">
           <div className="container mx-auto px-4 max-w-7xl">
             <div className="mx-auto max-w-5xl text-center">
