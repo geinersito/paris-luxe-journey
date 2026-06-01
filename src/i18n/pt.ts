@@ -61,13 +61,13 @@ export const pt: Translation = {
     cta: "Solicitar proposta corporativa",
   },
   hero: {
-    title: "Descubra Paris. Chegue com estilo.",
+    title: "Chauffeur privado em Paris",
     subtitle:
-      "Eventos, excursões e passeios privados com o seu próprio chauffeur licenciado. Preço fixo, 24/7, sem surpresas.",
+      "Transfers de aeroporto, excursões e serviço à hora. Envie o seu pedido — confirmamos disponibilidade e preço em 2 horas.",
     proofline: "",
     langProof: "Português · Español · English · Français",
     bullet1: "Chauffeur VTC licenciado",
-    bullet2: "Preço fixo, sem surpresas",
+    bullet2: "Preço confirmado, sem surpresas",
     bullet3: "Disponível 24/7",
     ctaPrimary: "Planear o meu transfer privado",
     ctaSecondary: "Explorar eventos e excursões",
@@ -75,7 +75,7 @@ export const pt: Translation = {
     labelDropoff: "Destino",
     selectPickup: "Origem",
     selectDropoff: "Destino",
-    getInstantQuote: "Solicitar orçamento",
+    getInstantQuote: "Solicitar transferência",
     fixedPrice: "Preço fixo",
     freeCancellation: "Cancelamento gratuito",
     support247: "Suporte 24/7",
@@ -391,9 +391,9 @@ export const pt: Translation = {
     priceSummary: "Resumo do Preço",
     validatingPrice: "Validando preço...",
     submit: "Reservar Agora",
-    submitButton: "Ver Seu Preço Fixo",
-    noPaymentRequired:
-      "Nenhum pagamento necessário - o próximo passo mostra seu preço final",
+    submitButton: "Solicitar transferência",
+    submitNote: "Resposta em menos de 2 h · Sem pagamento antecipado",
+    noPaymentRequired: "Confirmação por uma equipa humana em Paris",
     extras: {
       title: "Serviços Adicionais",
       tourGuide: "Guia Turístico",
@@ -414,7 +414,7 @@ export const pt: Translation = {
     },
     price: {
       total: "Preço Total",
-      estimated: "Preço Estimado",
+      estimated: "Estimativa indicativa",
       distance: "Distância estimada",
       basePrice: "Preço base",
       roundTripIncluded: "*Preço inclui ida e volta",

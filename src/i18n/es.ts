@@ -61,13 +61,13 @@ export const es: Translation = {
     cta: "Solicitar propuesta corporativa",
   },
   hero: {
-    title: "Descubre París. Llega con estilo.",
+    title: "Chauffeur privado en París",
     subtitle:
-      "Eventos, excursiones y escapadas privadas con tu propio chófer homologado. Precio fijo, 24/7, sin sorpresas.",
+      "Traslados al aeropuerto, excursiones y servicio por horas. Envía tu solicitud — confirmamos disponibilidad y precio en 2 horas.",
     proofline: "",
     langProof: "Español · English · Français · Português",
     bullet1: "Chófer VTC homologado",
-    bullet2: "Precio fijo, sin sorpresas",
+    bullet2: "Precio confirmado, sin sorpresas",
     bullet3: "Disponible 24/7",
     ctaPrimary: "Planifica tu traslado privado",
     ctaSecondary: "Explorar eventos y excursiones",
@@ -75,7 +75,7 @@ export const es: Translation = {
     labelDropoff: "Destino",
     selectPickup: "Origen",
     selectDropoff: "Destino",
-    getInstantQuote: "Cotizar ahora",
+    getInstantQuote: "Solicitar traslado",
     fixedPrice: "Precio fijo",
     freeCancellation: "Cancelación gratuita",
     support247: "Soporte 24/7",
@@ -394,9 +394,9 @@ export const es: Translation = {
     priceSummary: "Resumen de Precio",
     validatingPrice: "Validando precio...",
     submit: "Reservar Ahora",
-    submitButton: "Ver Tu Precio Fijo",
-    noPaymentRequired:
-      "No se requiere pago - el siguiente paso muestra tu precio final",
+    submitButton: "Solicitar traslado",
+    submitNote: "Respuesta en menos de 2 h · Sin pago por adelantado",
+    noPaymentRequired: "Confirmación por un equipo humano en París",
     extras: {
       title: "Servicios Adicionales",
       tourGuide: "Guía Turístico",
@@ -417,7 +417,7 @@ export const es: Translation = {
     },
     price: {
       total: "Precio Total",
-      estimated: "Precio Estimado",
+      estimated: "Precio orientativo",
       distance: "Distancia estimada",
       basePrice: "Precio base",
       roundTripIncluded: "*Precio incluye ida y vuelta",

@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation, Navigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
+import { trackEvent } from "@/lib/analytics";
 import { CheckCircle, Clock, Mail, Phone, User } from "lucide-react";
 
 interface BookingDetails {
@@ -31,6 +32,9 @@ const LABELS: Record<string, Record<string, string>> = {
   en: {
     title: "Almost done — confirm your request",
     subtitle: "We'll review your booking and get back to you within 2 hours.",
+    responseTime:
+      "Response within 2 hours — availability and price confirmed before any payment.",
+    noPayment: "No payment required to send this request.",
     name: "Full name",
     email: "Email address",
     phone: "Phone / WhatsApp",
@@ -41,7 +45,7 @@ const LABELS: Record<string, Record<string, string>> = {
     submitting: "Sending...",
     confirmTitle: "Request received!",
     confirmMsg:
-      "We'll review your request and confirm availability within 2 hours. Check your email or WhatsApp for our reply.",
+      "A member of our team in Paris is reviewing your request. You'll receive availability and price by email or WhatsApp within 2 hours (usually within 20 minutes).",
     backHome: "Back to home",
     tripSummary: "Your trip",
     from: "From",
@@ -57,6 +61,9 @@ const LABELS: Record<string, Record<string, string>> = {
     title: "Presque terminé — confirmez votre demande",
     subtitle:
       "Nous examinerons votre demande et vous répondrons dans les 2 heures.",
+    responseTime:
+      "Réponse sous 2h — disponibilité et tarif confirmés avant tout paiement.",
+    noPayment: "Aucun paiement requis pour envoyer cette demande.",
     name: "Nom complet",
     email: "Adresse email",
     phone: "Téléphone / WhatsApp",
@@ -67,7 +74,7 @@ const LABELS: Record<string, Record<string, string>> = {
     submitting: "Envoi en cours...",
     confirmTitle: "Demande reçue !",
     confirmMsg:
-      "Nous vérifierons la disponibilité et vous confirmerons dans les 2 heures. Surveillez votre email ou WhatsApp.",
+      "Un membre de notre équipe à Paris examine votre demande. Vous recevrez une confirmation et un tarif par email ou WhatsApp dans les 2 heures (généralement en 20 minutes).",
     backHome: "Retour à l'accueil",
     tripSummary: "Votre trajet",
     from: "Départ",
@@ -83,6 +90,9 @@ const LABELS: Record<string, Record<string, string>> = {
     title: "Casi listo — confirme su solicitud",
     subtitle:
       "Revisaremos su reserva y le responderemos en un máximo de 2 horas.",
+    responseTime:
+      "Respuesta en 2 horas — disponibilidad y precio confirmados antes de cualquier pago.",
+    noPayment: "No se requiere pago para enviar esta solicitud.",
     name: "Nombre completo",
     email: "Correo electrónico",
     phone: "Teléfono / WhatsApp",
@@ -93,7 +103,7 @@ const LABELS: Record<string, Record<string, string>> = {
     submitting: "Enviando...",
     confirmTitle: "¡Solicitud recibida!",
     confirmMsg:
-      "Revisaremos su solicitud y confirmaremos disponibilidad en 2 horas. Revise su email o WhatsApp.",
+      "Un miembro de nuestro equipo en París está revisando su solicitud. Recibirá confirmación y tarifa por email o WhatsApp en menos de 2 horas (habitualmente en 20 minutos).",
     backHome: "Volver al inicio",
     tripSummary: "Su viaje",
     from: "Origen",
@@ -108,6 +118,9 @@ const LABELS: Record<string, Record<string, string>> = {
   pt: {
     title: "Quase pronto — confirme o seu pedido",
     subtitle: "Analisaremos a sua reserva e responderemos em até 2 horas.",
+    responseTime:
+      "Resposta em 2 horas — disponibilidade e preço confirmados antes de qualquer pagamento.",
+    noPayment: "Nenhum pagamento é necessário para enviar este pedido.",
     name: "Nome completo",
     email: "Endereço de email",
     phone: "Telefone / WhatsApp",
@@ -118,7 +131,7 @@ const LABELS: Record<string, Record<string, string>> = {
     submitting: "A enviar...",
     confirmTitle: "Pedido recebido!",
     confirmMsg:
-      "Analisaremos o seu pedido e confirmaremos disponibilidade em 2 horas. Verifique o seu email ou WhatsApp.",
+      "Um membro da nossa equipa em Paris está a analisar o seu pedido. Receberá confirmação e tarifa por email ou WhatsApp em menos de 2 horas (normalmente em 20 minutos).",
     backHome: "Voltar ao início",
     tripSummary: "A sua viagem",
     from: "Origem",
@@ -149,6 +162,15 @@ const BookingPending = () => {
   const [phone, setPhone] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [confirmed, setConfirmed] = useState(false);
+
+  useEffect(() => {
+    if (!state.bookingDetails) return;
+    trackEvent("pending_page_view", {
+      language: lang,
+      trip_type: (state.bookingDetails.tripType as string) ?? "one_way",
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Guard: no booking state → redirect to /booking (direct URL access, back-nav, etc.)
   if (!state.bookingDetails) {
@@ -193,6 +215,21 @@ const BookingPending = () => {
       return;
     }
 
+    const rawPickup = (bookingDetails.pickup as string) ?? "";
+    const rawDropoff = (bookingDetails.dropoff as string) ?? "";
+    const toLocKind = (s: string) =>
+      s && s.length <= 5 ? s.toUpperCase() : "custom";
+
+    trackEvent("booking_request_submit_start", {
+      language: lang,
+      source_path: "/booking",
+      trip_type: tripType,
+      passengers: passengers ? Number(passengers) : undefined,
+      has_phone: Boolean(phone.trim()),
+      pickup_type: toLocKind(rawPickup),
+      dropoff_type: toLocKind(rawDropoff),
+    });
+
     setIsSubmitting(true);
     try {
       const { error } = await supabase.functions.invoke(
@@ -219,6 +256,10 @@ const BookingPending = () => {
 
       if (error) {
         console.error("[BookingPending] edge function error:", error);
+        trackEvent("pending_form_error", {
+          language: lang,
+          error: "edge_function_error",
+        });
         toast({
           title: l.errorTitle,
           description: l.errorMsg,
@@ -227,9 +268,17 @@ const BookingPending = () => {
         return;
       }
 
+      trackEvent("pending_form_submitted", {
+        language: lang,
+        trip_type: tripType,
+      });
       setConfirmed(true);
     } catch (err) {
       console.error("[BookingPending] unexpected error:", err);
+      trackEvent("pending_form_error", {
+        language: lang,
+        error: "unexpected_error",
+      });
       toast({
         title: l.errorTitle,
         description: l.errorMsg,
@@ -296,7 +345,7 @@ const BookingPending = () => {
 
       <div className="flex items-center gap-2 text-sm text-amber-700 bg-amber-50 border border-amber-200 rounded-lg px-4 py-3 mb-6">
         <Clock className="h-4 w-4 shrink-0" />
-        <span>Response within 2 hours</span>
+        <span>{l.responseTime}</span>
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-5">
@@ -343,10 +392,13 @@ const BookingPending = () => {
           />
         </div>
 
+        <p className="text-center text-xs text-muted-foreground -mb-1">
+          {l.noPayment}
+        </p>
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full"
+          className="w-full silk-button"
           size="lg"
         >
           {isSubmitting ? l.submitting : l.submit}

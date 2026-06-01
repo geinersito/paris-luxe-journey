@@ -62,13 +62,13 @@ export const fr: Translation = {
     cta: "Demander une proposition entreprise",
   },
   hero: {
-    title: "Découvrez Paris. Arrivez avec style.",
+    title: "Chauffeur privé à Paris",
     subtitle:
-      "Événements, excursions et escapades privées avec votre chauffeur VTC agréé. Prix fixe, 24/7, sans surprises.",
+      "Transferts aéroport, excursions et mise à disposition en région parisienne. Envoyez votre demande — disponibilité et tarif confirmés sous 2h.",
     proofline: "",
     langProof: "Français · Español · English · Português",
     bullet1: "Chauffeur VTC agréé",
-    bullet2: "Prix fixe, sans surprises",
+    bullet2: "Prix confirmé, sans surprises",
     bullet3: "Disponible 24/7",
     ctaPrimary: "Planifier mon transfert privé",
     ctaSecondary: "Explorer événements et excursions",
@@ -76,7 +76,7 @@ export const fr: Translation = {
     labelDropoff: "Arrivée",
     selectPickup: "Départ",
     selectDropoff: "Arrivée",
-    getInstantQuote: "Obtenir un devis",
+    getInstantQuote: "Demander un transfert",
     fixedPrice: "Prix fixe",
     freeCancellation: "Annulation gratuite",
     support247: "Support 24/7",
@@ -522,9 +522,9 @@ export const fr: Translation = {
       paymentSuccessRedirect: "Paiement effectué ! Redirection...",
     },
     submit: "Réserver",
-    submitButton: "Voir Votre Prix Fixe",
-    noPaymentRequired:
-      "Aucun paiement requis - l'étape suivante affiche votre prix final",
+    submitButton: "Demander un transfert",
+    submitNote: "Réponse en moins de 2 h · Sans paiement anticipé",
+    noPaymentRequired: "Confirmation par une équipe humaine à Paris",
     extras: {
       title: "Services Additionnels",
       tourGuide: "Guide Touristique",
@@ -546,7 +546,7 @@ export const fr: Translation = {
     },
     price: {
       total: "Prix Total",
-      estimated: "Prix Estimé",
+      estimated: "Estimation indicative",
       distance: "Distance estimée",
       basePrice: "Prix de base",
       roundTripIncluded: "*Prix incluant l'aller-retour",

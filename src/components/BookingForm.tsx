@@ -18,6 +18,7 @@ import { MessageCircle, Shield, CheckCircle, Clock } from "lucide-react";
 import { saveBookingSession } from "@/lib/bookingSession";
 import { getLocationFallbacks } from "@/lib/locations/fallbacks";
 import { Language } from "@/types/i18n";
+import { trackEvent } from "@/lib/analytics";
 
 interface Location {
   id: string;
@@ -81,6 +82,15 @@ const BookingForm = ({
       }));
     }
   }, [initialData, isLoadingLocations, locations.length, setFormData]);
+
+  useEffect(() => {
+    trackEvent("booking_form_open", {
+      language,
+      source_path:
+        typeof window !== "undefined" ? window.location.pathname : undefined,
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Memoizar fetchLocations para evitar recrearla en cada render
   const fetchLocations = useCallback(async () => {
@@ -307,6 +317,18 @@ const BookingForm = ({
           luggageSurcharge,
         });
 
+        trackEvent("booking_trip_submit", {
+          language,
+          source_path:
+            typeof window !== "undefined"
+              ? window.location.pathname
+              : undefined,
+          trip_type: updatedFormData.tripType,
+          passengers: Number(updatedFormData.passengers),
+          pickup_type: pickupLocation.type,
+          dropoff_type: dropoffLocation.type,
+        });
+
         // Actualizar el contexto de reserva ANTES de navegar
         if (updateBookingData) {
           try {
@@ -529,8 +551,19 @@ const BookingForm = ({
       >
         {isSubmitting
           ? t.common.processing
-          : t.booking.submitButton || "Voir Votre Prix Fixe"}
+          : t.booking.submitButton || "Request a transfer"}
       </Button>
+
+      <div className="mt-2 text-center space-y-0.5">
+        {t.booking.submitNote && (
+          <p className="text-xs text-muted-foreground">
+            {t.booking.submitNote}
+          </p>
+        )}
+        <p className="text-xs text-muted-foreground">
+          {t.booking.noPaymentRequired || "Confirmed by a human team in Paris"}
+        </p>
+      </div>
 
       <div className="flex flex-wrap items-center justify-center gap-4 mt-4 text-xs text-muted-foreground">
         <span className="flex items-center gap-1">
@@ -546,10 +579,6 @@ const BookingForm = ({
           {t.trustBar.available}
         </span>
       </div>
-      <p className="mt-2 px-4 text-sm text-center text-muted-foreground">
-        {t.booking.noPaymentRequired ||
-          "Aucun paiement requis - l'étape suivante affiche votre prix final"}
-      </p>
     </form>
   );
 };
