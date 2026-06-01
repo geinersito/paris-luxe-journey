@@ -1,6 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Button } from "@/components/ui/button";
 import { MapPin, Users } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -122,7 +121,6 @@ export function CompactBookingForm({
     passengers.trim() !== "";
 
   const handleQuickBook = () => {
-    // Pasar los datos al formulario completo
     onOpenFullForm({ pickup, dropoff, passengers });
   };
 
@@ -131,12 +129,12 @@ export function CompactBookingForm({
   };
 
   return (
-    <div className="glass-card-premium p-5 md:p-7 w-full shadow-luxury hover:shadow-luxury-hover transition-all duration-500 overflow-hidden">
+    <div className="bg-[#F4F1EC]/95 backdrop-blur-sm border border-ref-ink/8 shadow-[0_2px_16px_rgba(14,14,14,0.08)] p-4 md:p-6 w-full">
       <div className="flex flex-col lg:flex-row gap-4 items-end">
         {/* Pickup Location */}
         <div className="flex-1 w-full">
-          <label className="block text-xs font-bold text-secondary mb-2 flex items-center gap-1.5 uppercase tracking-wide whitespace-nowrap">
-            <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+          <label className="font-ui block text-xs font-semibold text-ref-ink/60 mb-2 flex items-center gap-1.5 uppercase tracking-[0.2em] whitespace-nowrap">
+            <MapPin className="w-3.5 h-3.5 text-ref-navy flex-shrink-0" />
             {t.hero.labelPickup}
           </label>
           <div className="relative">
@@ -146,7 +144,7 @@ export function CompactBookingForm({
               disabled={
                 isLoadingLocations || compactLocationOptions.length === 0
               }
-              className="w-full truncate px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
+              className="font-ui w-full truncate px-4 py-3 border border-ref-ink/15 focus:border-ref-navy focus:ring-1 focus:ring-ref-navy/20 transition-colors duration-200 bg-white/80 text-ref-ink text-sm appearance-none cursor-pointer outline-none"
             >
               <option value="">
                 {isLoadingLocations ? "Loading..." : t.hero.selectPickup}
@@ -159,7 +157,7 @@ export function CompactBookingForm({
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
               <svg
-                className="w-5 h-5 text-primary"
+                className="w-4 h-4 text-ref-ink/30"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -177,8 +175,8 @@ export function CompactBookingForm({
 
         {/* Dropoff Location */}
         <div className="flex-1 w-full">
-          <label className="block text-xs font-bold text-secondary mb-2 flex items-center gap-1.5 uppercase tracking-wide whitespace-nowrap">
-            <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+          <label className="font-ui block text-xs font-semibold text-ref-ink/60 mb-2 flex items-center gap-1.5 uppercase tracking-[0.2em] whitespace-nowrap">
+            <MapPin className="w-3.5 h-3.5 text-ref-navy flex-shrink-0" />
             {t.hero.labelDropoff}
           </label>
           <div className="relative">
@@ -188,7 +186,7 @@ export function CompactBookingForm({
               disabled={
                 isLoadingLocations || compactLocationOptions.length === 0
               }
-              className="w-full truncate px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
+              className="font-ui w-full truncate px-4 py-3 border border-ref-ink/15 focus:border-ref-navy focus:ring-1 focus:ring-ref-navy/20 transition-colors duration-200 bg-white/80 text-ref-ink text-sm appearance-none cursor-pointer outline-none"
             >
               <option value="">
                 {isLoadingLocations ? "Loading..." : t.hero.selectDropoff}
@@ -201,7 +199,7 @@ export function CompactBookingForm({
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
               <svg
-                className="w-5 h-5 text-primary"
+                className="w-4 h-4 text-ref-ink/30"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -219,25 +217,25 @@ export function CompactBookingForm({
 
         {/* Passengers */}
         <div className="w-full lg:w-40">
-          <label className="block text-xs font-bold text-secondary mb-2 flex items-center gap-1.5 uppercase tracking-wide whitespace-nowrap">
-            <Users className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+          <label className="font-ui block text-xs font-semibold text-ref-ink/60 mb-2 flex items-center gap-1.5 uppercase tracking-[0.2em] whitespace-nowrap">
+            <Users className="w-3.5 h-3.5 text-ref-navy flex-shrink-0" />
             {t.booking.passengers}
           </label>
           <div className="relative">
             <select
               value={passengers}
               onChange={(e) => setPassengers(e.target.value)}
-              className="w-full truncate px-4 py-3 rounded-xl border-2 border-primary/20 focus:border-primary focus:ring-2 focus:ring-primary/20 transition-all duration-300 bg-white/95 backdrop-blur-sm font-sans text-sm shadow-sm hover:shadow-md hover:border-primary/40 appearance-none cursor-pointer focus-luxury"
+              className="font-ui w-full truncate px-4 py-3 border border-ref-ink/15 focus:border-ref-navy focus:ring-1 focus:ring-ref-navy/20 transition-colors duration-200 bg-white/80 text-ref-ink text-sm appearance-none cursor-pointer outline-none"
             >
               {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
                 <option key={num} value={num}>
-                  {num} {num === 1 ? "pax" : "pax"}
+                  {num} pax
                 </option>
               ))}
             </select>
             <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
               <svg
-                className="w-5 h-5 text-primary"
+                className="w-4 h-4 text-ref-ink/30"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -253,38 +251,37 @@ export function CompactBookingForm({
           </div>
         </div>
 
-        {/* CTA Button - Premium Gold Gradient */}
+        {/* CTA Button */}
         <div className="w-full lg:w-auto lg:pt-[1.625rem] shrink-0">
-          <Button
+          <button
+            type="button"
             onClick={handleQuickBook}
             disabled={!canQuickBook}
-            className="silk-button w-full lg:w-auto max-w-full px-4 py-3 text-sm font-bold text-center group shadow-gold-glow hover:shadow-gold-glow-strong min-h-[48px]"
+            className="font-ui font-semibold text-sm w-full lg:w-auto px-6 py-3 bg-ref-navy text-white hover:bg-ref-ink disabled:opacity-40 disabled:cursor-not-allowed transition-colors duration-200 min-h-[48px] flex items-center justify-center gap-2"
           >
-            <span className="inline-flex items-center justify-center gap-2 flex-wrap leading-tight">
-              <span>{t.hero.getInstantQuote}</span>
-              <svg
-                className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300 flex-shrink-0"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2.5}
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
-                />
-              </svg>
-            </span>
-          </Button>
+            <span>{t.hero.getInstantQuote}</span>
+            <svg
+              className="w-4 h-4 flex-shrink-0"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2.5}
+                d="M13 7l5 5m0 0l-5 5m5-5H6"
+              />
+            </svg>
+          </button>
         </div>
       </div>
 
-      {/* Quick Info - Trust Badges */}
-      <div className="mt-4 pt-4 border-t border-primary/10 flex flex-wrap gap-3 text-xs leading-tight justify-center lg:justify-start">
-        <span className="group flex items-center gap-2 font-semibold text-secondary/80 hover:text-secondary transition-colors duration-300">
+      {/* Trust badges */}
+      <div className="mt-4 pt-4 border-t border-ref-ink/8 flex flex-wrap gap-4 text-xs justify-center lg:justify-start">
+        <span className="font-ui flex items-center gap-1.5 text-ref-ink/60">
           <svg
-            className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-300"
+            className="w-3.5 h-3.5 text-ref-navy flex-shrink-0"
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -294,11 +291,11 @@ export function CompactBookingForm({
               clipRule="evenodd"
             />
           </svg>
-          <span className="tracking-wide">{t.hero.fixedPrice}</span>
+          {t.hero.fixedPrice}
         </span>
-        <span className="group flex items-center gap-2 font-semibold text-secondary/80 hover:text-secondary transition-colors duration-300">
+        <span className="font-ui flex items-center gap-1.5 text-ref-ink/60">
           <svg
-            className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-300"
+            className="w-3.5 h-3.5 text-ref-navy flex-shrink-0"
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -308,11 +305,11 @@ export function CompactBookingForm({
               clipRule="evenodd"
             />
           </svg>
-          <span className="tracking-wide">{t.hero.freeCancellation}</span>
+          {t.hero.freeCancellation}
         </span>
-        <span className="group flex items-center gap-2 font-semibold text-secondary/80 hover:text-secondary transition-colors duration-300">
+        <span className="font-ui flex items-center gap-1.5 text-ref-ink/60">
           <svg
-            className="w-4 h-4 text-primary group-hover:scale-110 transition-transform duration-300"
+            className="w-3.5 h-3.5 text-ref-navy flex-shrink-0"
             fill="currentColor"
             viewBox="0 0 20 20"
           >
@@ -322,16 +319,16 @@ export function CompactBookingForm({
               clipRule="evenodd"
             />
           </svg>
-          <span className="tracking-wide">{t.hero.support247}</span>
+          {t.hero.support247}
         </span>
       </div>
 
       {/* More Routes Link */}
-      <div className="mt-4 text-center">
+      <div className="mt-3 text-center">
         <button
           type="button"
           onClick={handleOpenMore}
-          className="text-sm font-medium text-primary/80 hover:text-primary underline underline-offset-4 transition-colors duration-300"
+          className="font-ui text-xs text-ref-ink/50 hover:text-ref-navy underline underline-offset-4 transition-colors duration-200"
         >
           {t.booking.moreRoutes}
         </button>
