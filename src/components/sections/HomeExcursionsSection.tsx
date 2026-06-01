@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { Clock, ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Clock } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { excursions } from "@/data/excursions";
 import { versaillesGuideContent } from "@/data/excursions/versailles-guide";
@@ -25,25 +24,31 @@ export default function HomeExcursionsSection() {
   ).filter(Boolean) as (typeof excursions)[number][];
 
   return (
-    <section className="section-padding bg-gradient-to-b from-champagne/30 via-white to-cream">
+    <section className="bg-ref-bg py-16 md:py-24 border-b border-ref-ink/8">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-10">
-          <p className="font-accent italic text-xl text-primary mb-2">
+        {/* Section header */}
+        <div className="mb-12 md:mb-16">
+          <p className="font-ui text-xs font-semibold uppercase tracking-[0.3em] text-ref-ink/40 mb-4">
             Île-de-France
           </p>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+          <h2 className="font-editorial font-light text-3xl md:text-4xl text-ref-ink">
             {t.home.excursions.title}
           </h2>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {featured.map((excursion) => (
+        {/* Alternating editorial blocks */}
+        <div>
+          {featured.map((excursion, index) => (
             <div
               key={excursion.id}
-              className="bg-white rounded-2xl border border-primary/20 overflow-hidden shadow-sm hover:shadow-luxury hover:-translate-y-1 transition-all duration-300 flex flex-col"
+              className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center py-12 md:py-16 border-t border-ref-ink/8 first:border-t-0"
             >
-              {/* Image with gradient fallback */}
-              <div className="relative h-44 overflow-hidden bg-gradient-to-br from-primary/15 to-secondary/10">
+              {/* Image */}
+              <div
+                className={`lg:col-span-7 aspect-[4/3] overflow-hidden bg-white ${
+                  index % 2 !== 0 ? "lg:order-2" : ""
+                }`}
+              >
                 <img
                   src={excursion.image}
                   alt={excursion.title}
@@ -54,50 +59,43 @@ export default function HomeExcursionsSection() {
                   }}
                 />
               </div>
-
-              <div className="p-5 flex flex-col flex-1">
-                <h3 className="font-display font-bold text-secondary text-lg mb-2">
+              {/* Text */}
+              <div
+                className={`lg:col-span-5 ${index % 2 !== 0 ? "lg:order-1" : ""}`}
+              >
+                <div className="flex items-center gap-2 font-ui text-xs text-ref-ink/40 mb-5">
+                  <Clock className="w-3.5 h-3.5 shrink-0" />
+                  <span>{excursion.duration}</span>
+                </div>
+                <h3 className="font-editorial font-light text-2xl md:text-3xl text-ref-ink mb-4">
                   {guideLocale[excursion.id]?.title ?? excursion.title}
                 </h3>
-
-                <p className="text-sm text-gray-600 line-clamp-2 mb-3 flex-1">
+                <p className="font-ui text-sm text-ref-ink/60 leading-relaxed mb-6">
                   {guideLocale[excursion.id]?.intro ?? excursion.description}
                 </p>
-
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-1.5 text-sm text-gray-500">
-                    <Clock className="w-3.5 h-3.5 text-primary flex-shrink-0" />
-                    <span>{excursion.duration}</span>
-                  </div>
-                  <span className="text-sm font-semibold text-primary">
+                <div className="flex items-center gap-6">
+                  <span className="font-ui font-semibold text-ref-ink text-sm">
                     {t.home.excursions.from} €{excursion.price}
                   </span>
-                </div>
-
-                <Button
-                  asChild
-                  variant="outline"
-                  className="w-full button-outline-gold text-sm"
-                >
                   <Link
                     to={excursion.link}
-                    className="flex items-center justify-center gap-2"
+                    className="inline-flex items-center gap-2 font-ui text-sm font-semibold text-ref-navy border-b border-ref-navy/40 pb-0.5 hover:border-ref-navy transition-colors"
                   >
-                    <span>{t.excursions.viewDetails}</span>
-                    <ArrowRight className="w-4 h-4 flex-shrink-0" />
+                    {t.excursions.viewDetails} →
                   </Link>
-                </Button>
+                </div>
               </div>
             </div>
           ))}
         </div>
 
-        <div className="text-center mt-8">
+        {/* See all */}
+        <div className="mt-8 pt-8 border-t border-ref-ink/8">
           <Link
             to="/excursions"
-            className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-200"
+            className="inline-flex items-center gap-2 font-ui text-sm font-semibold text-ref-navy border-b border-ref-navy/40 pb-0.5 hover:border-ref-navy transition-colors"
           >
-            {t.home.excursions.seeAll}
+            {t.home.excursions.seeAll} →
           </Link>
         </div>
       </div>

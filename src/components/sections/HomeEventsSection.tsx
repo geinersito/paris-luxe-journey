@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
-import { Calendar, MapPin } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Calendar } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import eventsFeedData from "@/data/events/events-feed.json";
 import type { Event, EventCategory, Language } from "@/types/events";
@@ -44,87 +43,109 @@ export default function HomeEventsSection() {
     return `${start} – ${formatDate(endAt)}`;
   };
 
+  const [featured, ...rest] = events;
+
   return (
-    <section className="section-padding bg-gradient-to-b from-white to-champagne/30">
+    <section className="bg-white py-16 md:py-24 border-b border-ref-ink/8">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="text-center mb-10">
-          <p className="font-accent italic text-xl text-primary mb-2">
-            Paris 2026
-          </p>
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
-            {t.home.events.title}
-          </h2>
-        </div>
-
-        {events.length > 0 ? (
+        {featured ? (
           <>
-            <div className="grid md:grid-cols-3 gap-6">
-              {events.map((event) => (
-                <div
-                  key={event.id}
-                  className="bg-white rounded-2xl border border-primary/20 overflow-hidden shadow-sm hover:shadow-luxury hover:-translate-y-1 transition-all duration-300"
-                >
-                  <div className="relative h-44 overflow-hidden bg-gradient-to-br from-primary/10 to-primary/5">
-                    {event.imageUrl && (
-                      <img
-                        src={event.imageUrl}
-                        alt={event.title[language]}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                        onError={(e) => {
-                          e.currentTarget.style.display = "none";
-                        }}
-                      />
-                    )}
-                  </div>
-
-                  <div className="p-5">
-                    <h3 className="font-display font-bold text-secondary text-lg line-clamp-2 mb-3">
-                      {event.title[language]}
-                    </h3>
-
-                    <div className="flex items-center gap-1.5 mb-2 text-sm text-gray-600">
-                      <Calendar className="w-3.5 h-3.5 text-primary flex-shrink-0" />
-                      <span>{formatDateRange(event.startAt, event.endAt)}</span>
-                    </div>
-
-                    {(event.venueName || event.district) && (
-                      <div className="flex items-center gap-1.5 mb-4 text-sm text-gray-600">
-                        <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
-                        <span className="line-clamp-1">
-                          {event.venueName?.[language] || event.district}
-                        </span>
-                      </div>
-                    )}
-
-                    <Button asChild className="w-full silk-button text-sm">
-                      <Link
-                        to="/booking"
-                        className="flex items-center justify-center gap-2"
-                      >
-                        <span>{t.hero.ctaPrimary}</span>
-                      </Link>
-                    </Button>
-                  </div>
+            {/* Featured event — editorial 60/40 */}
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-end mb-12 md:mb-16">
+              {/* Image — 7/12 */}
+              <div className="lg:col-span-7 aspect-[4/3] lg:aspect-[16/10] overflow-hidden bg-ref-bg">
+                {featured.imageUrl && (
+                  <img
+                    src={featured.imageUrl}
+                    alt={featured.title[language]}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                  />
+                )}
+              </div>
+              {/* Text — 5/12 */}
+              <div className="lg:col-span-5">
+                <p className="font-ui text-xs font-semibold uppercase tracking-[0.3em] text-ref-ink/40 mb-4">
+                  Paris 2026
+                </p>
+                <h2 className="font-editorial font-light text-3xl md:text-4xl text-ref-ink mb-4">
+                  {t.home.events.title}
+                </h2>
+                <h3 className="font-ui font-semibold text-ref-ink text-lg mb-2">
+                  {featured.title[language]}
+                </h3>
+                <div className="flex items-center gap-2 font-ui text-sm text-ref-ink/50 mb-6">
+                  <Calendar className="w-3.5 h-3.5 text-ref-navy shrink-0" />
+                  <span>
+                    {formatDateRange(featured.startAt, featured.endAt)}
+                  </span>
                 </div>
-              ))}
+                <Link
+                  to="/booking"
+                  className="inline-flex items-center gap-2 font-ui font-semibold text-sm px-5 py-2.5 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
+                >
+                  {t.hero.ctaPrimary}
+                </Link>
+              </div>
             </div>
 
-            <div className="text-center mt-8">
-              <Link
-                to="/events"
-                className="inline-flex items-center gap-2 text-primary font-semibold hover:gap-3 transition-all duration-200"
-              >
-                {t.home.events.seeAll}
-              </Link>
-            </div>
+            {/* Editorial list — remaining events */}
+            {rest.length > 0 && (
+              <div className="divide-y divide-ref-ink/8 mb-10">
+                {rest.map((event, i) => (
+                  <div key={event.id} className="flex items-center gap-6 py-5">
+                    <span className="font-editorial text-3xl font-light text-ref-ink/15 leading-none shrink-0 w-8">
+                      {String(i + 2).padStart(2, "0")}
+                    </span>
+                    <div className="flex-1 min-w-0">
+                      <h3 className="font-ui font-medium text-ref-ink text-sm truncate">
+                        {event.title[language]}
+                      </h3>
+                      <p className="font-ui text-xs text-ref-ink/40 mt-0.5">
+                        {formatDateRange(event.startAt, event.endAt)}
+                      </p>
+                    </div>
+                    <Link
+                      to="/booking"
+                      className="font-ui text-xs font-semibold text-ref-navy border-b border-ref-navy/30 hover:border-ref-navy transition-colors shrink-0"
+                    >
+                      {t.hero.ctaPrimary} →
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            <Link
+              to="/events"
+              className="inline-flex items-center gap-2 font-ui text-sm font-semibold text-ref-navy border-b border-ref-navy/40 pb-0.5 hover:border-ref-navy transition-colors"
+            >
+              {t.home.events.seeAll} →
+            </Link>
           </>
         ) : (
-          <div className="max-w-2xl mx-auto rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/5 to-transparent p-8 text-center">
-            <p className="text-gray-700 mb-5">{t.home.events.fallback}</p>
-            <Button asChild className="silk-button">
-              <Link to="/events">{t.home.events.seeAll}</Link>
-            </Button>
+          /* Fallback — no upcoming events */
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-5">
+              <p className="font-ui text-xs font-semibold uppercase tracking-[0.3em] text-ref-ink/40 mb-4">
+                Paris 2026
+              </p>
+              <h2 className="font-editorial font-light text-3xl md:text-4xl text-ref-ink mb-4">
+                {t.home.events.title}
+              </h2>
+              <p className="font-ui text-sm text-ref-ink/60 leading-relaxed mb-6">
+                {t.home.events.fallback}
+              </p>
+              <Link
+                to="/events"
+                className="inline-flex items-center gap-2 font-ui text-sm font-semibold text-ref-navy border-b border-ref-navy/40 pb-0.5 hover:border-ref-navy transition-colors"
+              >
+                {t.home.events.seeAll} →
+              </Link>
+            </div>
           </div>
         )}
       </div>

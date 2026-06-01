@@ -456,26 +456,24 @@ export default function Home() {
           };
           const how = HOW_IT_WORKS[language] ?? HOW_IT_WORKS.en;
           return (
-            <section className="py-12 md:py-16 bg-white border-b border-primary/10">
+            <section className="bg-ref-bg py-16 md:py-24 border-b border-ref-ink/8">
               <div className="container mx-auto px-4 max-w-5xl">
-                <h2 className="text-2xl md:text-3xl font-display font-bold text-secondary text-center mb-10">
+                <h2 className="font-editorial font-light text-3xl md:text-4xl text-ref-ink mb-12 md:mb-16">
                   {how.title}
                 </h2>
-                <div className="grid md:grid-cols-3 gap-8">
+                <div className="grid md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-ref-ink/8">
                   {how.steps.map((step) => (
                     <div
                       key={step.n}
-                      className="flex flex-col items-center text-center"
+                      className="py-8 md:py-0 md:px-10 first:md:pl-0 last:md:pr-0"
                     >
-                      <div className="w-12 h-12 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center mb-4">
-                        <span className="text-lg font-display font-bold text-primary">
-                          {step.n}
-                        </span>
-                      </div>
-                      <h3 className="text-base font-semibold text-secondary mb-2">
+                      <span className="font-editorial text-6xl font-light text-ref-ink/10 leading-none block mb-6">
+                        {step.n.padStart(2, "0")}
+                      </span>
+                      <h3 className="font-ui font-semibold text-ref-ink text-base mb-3">
                         {step.title}
                       </h3>
-                      <p className="text-sm text-gray-600 leading-relaxed">
+                      <p className="font-ui text-sm text-ref-ink/60 leading-relaxed">
                         {step.desc}
                       </p>
                     </div>
