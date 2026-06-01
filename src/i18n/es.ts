@@ -61,9 +61,10 @@ export const es: Translation = {
     cta: "Solicitar propuesta corporativa",
   },
   hero: {
-    title: "Chauffeur privado en París",
+    title: "Servicio de chófer privado, diseñado para su estancia en París",
     subtitle:
       "Traslados al aeropuerto, excursiones y servicio por horas. Envía tu solicitud — confirmamos disponibilidad y precio en 2 horas.",
+    humanSignal: "Un equipo en París confirma cada solicitud",
     proofline: "",
     langProof: "Español · English · Français · Português",
     bullet1: "Chófer VTC homologado",

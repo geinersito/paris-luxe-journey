@@ -71,6 +71,12 @@ const colors = {
     DEFAULT: "hsl(var(--card))",
     foreground: "hsl(var(--card-foreground))",
   },
+  // VISUAL-DIRECTION-REFERENCE-01 palette tokens
+  ref: {
+    bg: "#F4F1EC",
+    ink: "#0E0E0E",
+    navy: "#0A1628",
+  },
 };
 
 const animations = {
@@ -173,6 +179,9 @@ export default {
         display: ["Playfair Display", "serif"], // Títulos elegantes
         accent: ["Cormorant Garamond", "serif"], // Subtítulos decorativos
         sans: ["Montserrat", "sans-serif"], // Cuerpo de texto premium
+        // VISUAL-DIRECTION-REFERENCE-01
+        editorial: ["Fraunces", "Georgia", "serif"],
+        ui: ["Inter Tight", "Inter", "sans-serif"],
       },
       fontSize: {
         // Fluid typography tokens — map to clamp() CSS vars in index.css
