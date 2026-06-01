@@ -35,24 +35,24 @@ export default function HeroTrustBar() {
   const signals = SIGNALS[language] ?? SIGNALS.en;
 
   return (
-    <div className="bg-white border-b border-primary/10 py-3">
+    <div className="bg-ref-bg border-b border-ref-ink/10 py-3.5">
       <div className="container mx-auto px-4 max-w-7xl">
-        <ul className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+        <ul className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2">
           {signals.map((label) => (
             <li
               key={label}
-              className="flex items-center gap-1.5 text-sm text-secondary/80"
+              className="flex items-center gap-2 font-ui text-xs font-medium text-ref-ink/70"
             >
               <CheckCircle
-                className="h-3.5 w-3.5 text-primary shrink-0"
+                className="h-3.5 w-3.5 text-ref-navy shrink-0"
                 aria-hidden="true"
               />
               {label}
             </li>
           ))}
-          <li className="flex items-center gap-1.5 text-sm text-secondary/80">
+          <li className="flex items-center gap-2 font-ui text-xs font-medium text-ref-ink/70">
             <Languages
-              className="h-3.5 w-3.5 text-primary shrink-0"
+              className="h-3.5 w-3.5 text-ref-navy shrink-0"
               aria-hidden="true"
             />
             {LANG_LABEL}

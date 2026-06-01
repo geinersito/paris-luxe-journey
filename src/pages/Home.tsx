@@ -307,38 +307,60 @@ export default function Home() {
       <div onClickCapture={handleCtaClickCapture}>
         <HeroSection />
         <HeroTrustBar />
-        <section className="border-y border-primary/10 bg-gradient-to-b from-secondary/5 via-white to-white py-10 md:py-14">
+        {/* Editorial 60/40 — VISUAL-DIRECTION-REFERENCE-01 */}
+        <section className="bg-ref-bg py-16 md:py-24 border-b border-ref-ink/8">
           <div className="container mx-auto px-4 max-w-7xl">
-            <div className="mx-auto max-w-5xl text-center">
-              <p className="text-xs md:text-sm font-semibold uppercase tracking-[0.28em] text-primary/80">
-                {homeTrust.eyebrow}
-              </p>
-              <h2 className="mt-4 text-2xl md:text-4xl font-display font-bold leading-tight text-secondary">
-                {homeTrust.headline}
-              </h2>
-            </div>
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+              {/* Left — editorial headline (5/12) */}
+              <div className="lg:col-span-5">
+                <p className="font-ui text-xs font-semibold uppercase tracking-[0.3em] text-ref-ink/40 mb-6">
+                  {homeTrust.eyebrow}
+                </p>
+                <h2 className="font-editorial font-light text-4xl md:text-5xl leading-[1.1] text-ref-ink mb-8">
+                  {homeTrust.headline}
+                </h2>
+                <a
+                  href="/booking"
+                  className="inline-flex items-center gap-2 font-ui text-sm font-semibold text-ref-navy border-b border-ref-navy/40 pb-0.5 hover:border-ref-navy transition-colors"
+                >
+                  {language === "fr"
+                    ? "Demander un transfert"
+                    : language === "pt"
+                      ? "Solicitar transferência"
+                      : language === "es"
+                        ? "Solicitar traslado"
+                        : "Request a transfer"}
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
 
-            <div className="mt-8 grid gap-4 md:mt-10 md:grid-cols-3">
-              {homeTrust.cards.map((card, index) => {
-                const Icon = [CarFront, Languages, Sparkles][index];
-
-                return (
-                  <article
-                    key={card.title}
-                    className="rounded-2xl border border-primary/10 bg-white/95 p-6 shadow-[0_18px_45px_rgba(11,30,45,0.08)]"
-                  >
-                    <div className="mb-4 inline-flex h-11 w-11 items-center justify-center rounded-full bg-primary/10 text-primary">
-                      <Icon className="h-5 w-5" aria-hidden="true" />
+              {/* Right — feature list (7/12) */}
+              <div className="lg:col-span-7 divide-y divide-ref-ink/8">
+                {homeTrust.cards.map((card, index) => {
+                  const Icon = [CarFront, Languages, Sparkles][index];
+                  return (
+                    <div
+                      key={card.title}
+                      className="py-6 first:pt-0 last:pb-0 flex gap-5"
+                    >
+                      <div className="shrink-0 w-8 h-8 flex items-center justify-center">
+                        <Icon
+                          className="h-5 w-5 text-ref-navy"
+                          aria-hidden="true"
+                        />
+                      </div>
+                      <div>
+                        <h3 className="font-ui font-semibold text-ref-ink text-base mb-1.5">
+                          {card.title}
+                        </h3>
+                        <p className="font-ui text-sm leading-relaxed text-ref-ink/60">
+                          {card.body}
+                        </p>
+                      </div>
                     </div>
-                    <h3 className="text-lg font-semibold text-secondary">
-                      {card.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-6 text-gray-700 md:text-base">
-                      {card.body}
-                    </p>
-                  </article>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
           </div>
         </section>

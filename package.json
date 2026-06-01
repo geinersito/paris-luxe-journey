@@ -31,8 +31,10 @@
     ]
   },
   "dependencies": {
+    "@fontsource-variable/fraunces": "^5.2.9",
     "@fontsource/cormorant-garamond": "^5.2.11",
     "@fontsource/inter": "^5.1.1",
+    "@fontsource/inter-tight": "^5.2.7",
     "@fontsource/montserrat": "^5.2.8",
     "@fontsource/playfair-display": "^5.1.1",
     "@hookform/resolvers": "^3.9.0",

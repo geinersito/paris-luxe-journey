@@ -12,6 +12,12 @@
 @import '@fontsource/montserrat/600.css';
 @import '@fontsource/montserrat/700.css';
 
+/* VISUAL-DIRECTION-REFERENCE-01: Fraunces (display editorial) + Inter Tight (UI) */
+@import '@fontsource-variable/fraunces';
+@import '@fontsource/inter-tight/400.css';
+@import '@fontsource/inter-tight/500.css';
+@import '@fontsource/inter-tight/600.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
