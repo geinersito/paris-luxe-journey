@@ -1,12 +1,8 @@
 import { useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Phone, Mail, MapPin, Send, CheckCircle } from "lucide-react";
-import { Button } from "../ui/button";
-import { Input } from "../ui/input";
-import { Textarea } from "../ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
-import { Alert, AlertDescription, AlertTitle } from "../ui/alert";
 import { trackEvent } from "@/lib/analytics";
 
 const getPageName = () => {
@@ -15,6 +11,13 @@ const getPageName = () => {
     ? "home"
     : window.location.pathname.replace(/^\//, "");
 };
+
+const openMapLabelByLanguage = {
+  en: "Open in Google Maps",
+  fr: "Ouvrir dans Google Maps",
+  es: "Abrir en Google Maps",
+  pt: "Abrir no Google Maps",
+} as const;
 
 const ContactSection = () => {
   const { t, language } = useLanguage();
@@ -29,31 +32,16 @@ const ContactSection = () => {
     message: "",
   });
 
-  const contactHighlightsByLanguage = {
-    en: ["Fixed Price Guarantee", "24/7 Service", "Meet & Greet Included"],
-    fr: ["Prix fixe garanti", "Service 24/7", "Meet & Greet inclus"],
-    es: ["Precio fijo garantizado", "Servicio 24/7", "Meet & Greet incluido"],
-    pt: ["Preco fixo garantido", "Servico 24/7", "Meet & Greet incluido"],
-  } as const;
-
-  const openMapLabelByLanguage = {
-    en: "Open in Google Maps",
-    fr: "Ouvrir dans Google Maps",
-    es: "Abrir en Google Maps",
-    pt: "Abrir no Google Maps",
-  } as const;
-
-  const contactHighlights = contactHighlightsByLanguage[language];
-  const openMapLabel = openMapLabelByLanguage[language];
+  const openMapLabel =
+    openMapLabelByLanguage[language as keyof typeof openMapLabelByLanguage] ??
+    openMapLabelByLanguage.en;
 
   const markFormStarted = (event: React.SyntheticEvent<HTMLElement>) => {
     const target = event.target as HTMLElement | null;
     if (!target) return;
-
     const tag = target.tagName;
     if (tag !== "INPUT" && tag !== "TEXTAREA" && tag !== "SELECT") return;
     if (hasStartedForm) return;
-
     setHasStartedForm(true);
     trackEvent("form_start", {
       page: getPageName(),
@@ -72,14 +60,11 @@ const ContactSection = () => {
     });
 
     try {
-      // Guardar el mensaje en la base de datos
       const { error: dbError } = await supabase
         .from("contact_messages")
         .insert([formData]);
-
       if (dbError) throw dbError;
 
-      // Enviar email de confirmación usando la función edge
       const { error: emailError } = await supabase.functions.invoke(
         "send-contact-confirmation",
         {
@@ -87,11 +72,10 @@ const ContactSection = () => {
             name: formData.name,
             email: formData.email,
             message: formData.message,
-            recipientEmail: "info@eliteparistransfer.com", // Email de prueba
+            recipientEmail: "info@eliteparistransfer.com",
           },
         },
       );
-
       if (emailError) {
         console.error("Email error details:", emailError);
         throw emailError;
@@ -101,14 +85,8 @@ const ContactSection = () => {
         title: t.contact.success,
         description: t.contact.successDescription,
       });
-
       setShowSuccess(true);
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        message: "",
-      });
+      setFormData({ name: "", email: "", phone: "", message: "" });
       setHasStartedForm(false);
     } catch (error) {
       console.error("Error sending message:", error);
@@ -122,144 +100,113 @@ const ContactSection = () => {
     }
   };
 
-  return (
-    <section
-      id="contact"
-      className="py-28 bg-pearl dark:bg-gray-900 animate-fadeIn"
-    >
-      {/* Also respond to #about anchor since About was folded into Contact */}
-      <div id="about" className="scroll-mt-24" />
-      <div className="container max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl md:text-4xl font-display font-bold text-primary dark:text-primary-foreground text-center mb-8">
-          {t.contact.title}
-        </h2>
+  const inputClass =
+    "font-ui w-full px-4 py-3 border border-ref-ink/15 focus:border-ref-navy focus:ring-1 focus:ring-ref-navy/20 bg-white text-ref-ink text-sm outline-none transition-colors";
 
-        {/* About snippet - folded from AboutSection */}
-        <div className="max-w-3xl mx-auto text-center mb-12 space-y-4">
-          <p className="text-base text-gray-700 dark:text-gray-300 leading-relaxed">
-            {t.about.description}
-          </p>
-          <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
-            {contactHighlights.map((item) => (
-              <div key={item} className="flex items-center gap-2">
-                <div className="w-1.5 h-1.5 rounded-full bg-primary" />
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
+  return (
+    <section id="contact" className="bg-ref-bg py-16 md:py-24">
+      <div id="about" className="scroll-mt-24" />
+      <div className="container mx-auto px-4 max-w-7xl">
+        <div className="mb-12 md:mb-16">
+          <h2 className="font-editorial font-light text-3xl md:text-4xl text-ref-ink">
+            {t.contact.title}
+          </h2>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="space-y-8">
-            {/* Map container with premium frame */}
-            <div className="relative p-1 bg-gradient-to-br from-primary via-primary-dark to-secondary rounded-2xl shadow-2xl">
-              <a
-                href="https://www.google.com/maps/place/Vanves,+92170,+France"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block aspect-w-16 aspect-h-9 relative rounded-xl overflow-hidden bg-white dark:bg-gray-900 transition-all duration-300 group"
-              >
-                {/* Subtle overlay for brand integration */}
-                <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 z-10 pointer-events-none" />
-
-                {/* Map iframe */}
-                <iframe
-                  src="https://www.google.com/maps?q=Vanves%2C+92170%2C+France&output=embed"
-                  className="w-full h-full grayscale-[25%] contrast-[1.1] brightness-[0.95] group-hover:brightness-100 group-hover:grayscale-0 transition-all duration-500"
-                  style={{ border: 0, pointerEvents: "none" }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-
-                {/* Hover overlay with CTA */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 bg-gradient-to-t from-black/40 via-black/20 to-transparent">
-                  <div className="text-center space-y-2">
-                    <span className="block px-6 py-3 bg-white/95 text-primary rounded-lg shadow-xl font-semibold text-sm backdrop-blur-sm">
-                      {openMapLabel}
-                    </span>
-                    <span className="block text-white text-xs font-medium">
-                      {t.contact.address}
-                    </span>
-                  </div>
-                </div>
-              </a>
-            </div>
-
-            <div className="grid grid-cols-1 gap-6">
-              <div className="flex items-center space-x-4 p-4 bg-white/5 rounded-lg backdrop-blur-sm">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                  <Phone className="h-6 w-6 text-primary" />
-                </div>
+        <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+          {/* Left — contact info + map */}
+          <div className="lg:col-span-5 space-y-8">
+            <div className="space-y-5">
+              <div className="flex items-start gap-3">
+                <Phone className="w-4 h-4 text-ref-navy mt-0.5 shrink-0" />
                 <div>
-                  <h3 className="font-semibold text-sm text-primary">
+                  <p className="font-ui text-xs uppercase tracking-[0.2em] text-ref-ink/40 mb-1">
                     {t.contact.phone}
-                  </h3>
+                  </p>
                   <a
                     href="tel:+33668251102"
-                    className="text-lg text-secondary dark:text-gray-300 hover:text-primary transition-colors font-medium"
+                    className="font-ui text-sm text-ref-ink hover:text-ref-navy transition-colors"
                   >
                     +33 668 251 102
                   </a>
                 </div>
               </div>
-
-              <div className="flex items-center space-x-4 p-4 bg-white/5 rounded-lg backdrop-blur-sm">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                  <Mail className="h-6 w-6 text-primary" />
-                </div>
+              <div className="flex items-start gap-3">
+                <Mail className="w-4 h-4 text-ref-navy mt-0.5 shrink-0" />
                 <div>
-                  <h3 className="font-semibold text-sm text-primary">
+                  <p className="font-ui text-xs uppercase tracking-[0.2em] text-ref-ink/40 mb-1">
                     {t.contact.email}
-                  </h3>
+                  </p>
                   <a
                     href="mailto:info@eliteparistransfer.com"
-                    className="text-lg text-secondary dark:text-gray-300 hover:text-primary transition-colors font-medium"
+                    className="font-ui text-sm text-ref-ink hover:text-ref-navy transition-colors"
                   >
                     info@eliteparistransfer.com
                   </a>
                 </div>
               </div>
-
-              <div className="flex items-center space-x-4 p-4 bg-white/5 rounded-lg backdrop-blur-sm">
-                <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                  <MapPin className="h-6 w-6 text-primary" />
-                </div>
+              <div className="flex items-start gap-3">
+                <MapPin className="w-4 h-4 text-ref-navy mt-0.5 shrink-0" />
                 <div>
-                  <h3 className="font-semibold text-sm text-primary">
+                  <p className="font-ui text-xs uppercase tracking-[0.2em] text-ref-ink/40 mb-1">
                     {t.contact.address}
-                  </h3>
+                  </p>
+                  <p className="font-ui text-sm text-ref-ink/60">
+                    Vanves (92170), Île-de-France
+                  </p>
                 </div>
               </div>
             </div>
+
+            {/* Map */}
+            <a
+              href="https://www.google.com/maps/place/Vanves,+92170,+France"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block aspect-[4/3] overflow-hidden bg-ref-ink/5"
+              aria-label={openMapLabel}
+            >
+              <iframe
+                src="https://www.google.com/maps?q=Vanves%2C+92170%2C+France&output=embed"
+                className="w-full h-full"
+                style={{ border: 0, pointerEvents: "none" }}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Paris Elite Services location"
+              />
+            </a>
           </div>
 
-          <div className="bg-white dark:bg-gray-800 rounded-lg p-8 shadow-lg">
+          {/* Right — form */}
+          <div className="lg:col-span-7">
             {showSuccess && (
-              <Alert className="mb-6 bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-900">
-                <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400" />
-                <AlertTitle className="text-green-800 dark:text-green-300">
-                  {t.contact.success}
-                </AlertTitle>
-                <AlertDescription className="text-green-700 dark:text-green-400">
-                  {t.contact.successDescription}
-                </AlertDescription>
-              </Alert>
+              <div className="mb-6 p-4 border border-ref-navy/20 bg-ref-navy/5 flex items-start gap-3">
+                <CheckCircle className="w-4 h-4 text-ref-navy mt-0.5 shrink-0" />
+                <div>
+                  <p className="font-ui font-semibold text-sm text-ref-ink">
+                    {t.contact.success}
+                  </p>
+                  <p className="font-ui text-sm text-ref-ink/60 mt-0.5">
+                    {t.contact.successDescription}
+                  </p>
+                </div>
+              </div>
             )}
 
             <form
               onSubmit={handleSubmit}
               onFocusCapture={markFormStarted}
               onInputCapture={markFormStarted}
-              className="space-y-6"
+              className="space-y-5"
             >
               <div>
                 <label
                   htmlFor="name"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  className="font-ui block text-xs font-semibold text-ref-ink/60 mb-2 uppercase tracking-[0.2em]"
                 >
                   {t.contact.namePlaceholder}
                 </label>
-                <Input
+                <input
                   id="name"
                   type="text"
                   placeholder={t.contact.namePlaceholder}
@@ -268,17 +215,17 @@ const ContactSection = () => {
                     setFormData({ ...formData, name: e.target.value })
                   }
                   required
-                  className="w-full bg-gray-50 dark:bg-gray-900"
+                  className={inputClass}
                 />
               </div>
               <div>
                 <label
                   htmlFor="email"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  className="font-ui block text-xs font-semibold text-ref-ink/60 mb-2 uppercase tracking-[0.2em]"
                 >
                   {t.contact.emailPlaceholder}
                 </label>
-                <Input
+                <input
                   id="email"
                   type="email"
                   placeholder={t.contact.emailPlaceholder}
@@ -287,17 +234,17 @@ const ContactSection = () => {
                     setFormData({ ...formData, email: e.target.value })
                   }
                   required
-                  className="w-full bg-gray-50 dark:bg-gray-900"
+                  className={inputClass}
                 />
               </div>
               <div>
                 <label
                   htmlFor="phone"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  className="font-ui block text-xs font-semibold text-ref-ink/60 mb-2 uppercase tracking-[0.2em]"
                 >
                   {t.contact.phonePlaceholder}
                 </label>
-                <Input
+                <input
                   id="phone"
                   type="tel"
                   placeholder={t.contact.phonePlaceholder}
@@ -305,17 +252,17 @@ const ContactSection = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, phone: e.target.value })
                   }
-                  className="w-full bg-gray-50 dark:bg-gray-900"
+                  className={inputClass}
                 />
               </div>
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
+                  className="font-ui block text-xs font-semibold text-ref-ink/60 mb-2 uppercase tracking-[0.2em]"
                 >
                   {t.contact.messagePlaceholder}
                 </label>
-                <Textarea
+                <textarea
                   id="message"
                   placeholder={t.contact.messagePlaceholder}
                   value={formData.message}
@@ -323,27 +270,24 @@ const ContactSection = () => {
                     setFormData({ ...formData, message: e.target.value })
                   }
                   required
-                  rows={4}
-                  className="w-full bg-gray-50 dark:bg-gray-900"
+                  rows={5}
+                  className={`${inputClass} resize-none`}
                 />
               </div>
-              <Button
+              <button
                 type="submit"
-                className="w-full flex items-center justify-center space-x-2 text-base relative overflow-hidden shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300 bg-gradient-to-r from-secondary via-secondary-dark to-secondary bg-[length:200%_100%] hover:animate-[shimmer_2s_ease-in-out_infinite]"
                 disabled={isSubmitting}
+                className="font-ui font-semibold text-sm w-full px-6 py-3 bg-ref-navy text-white hover:bg-ref-ink disabled:opacity-40 disabled:cursor-not-allowed transition-colors flex items-center justify-center gap-2 min-h-[48px]"
               >
                 {isSubmitting ? (
-                  <span className="flex items-center space-x-2">
-                    <span className="animate-spin">⏳</span>
-                    <span>{t.common.processing}</span>
-                  </span>
+                  t.common.processing
                 ) : (
-                  <span className="flex items-center space-x-2">
-                    <Send className="h-5 w-5" />
-                    <span>{t.contact.sendMessage}</span>
-                  </span>
+                  <>
+                    <Send className="w-4 h-4 shrink-0" />
+                    {t.contact.sendMessage}
+                  </>
                 )}
-              </Button>
+              </button>
             </form>
           </div>
         </div>
