@@ -7,246 +7,146 @@ import {
   Star,
   Globe,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { airportsTranslations } from "@/i18n/airports";
-import { buildAirportWhatsAppUrl } from "@/lib/eventsPrefill";
+import AirportPageTemplate, {
+  AirportPageTemplateProps,
+} from "@/components/airports/AirportPageTemplate";
 
 const CDG_IMAGE =
   "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80";
 
+const CDG_FAQS = [
+  {
+    q: "How much does a transfer from CDG to Paris cost?",
+    a: "Indicative prices start from €70 for a sedan (1–3 passengers) to Paris city centre. Van transfers for 4–7 passengers start from €110. Final price is confirmed at booking with no hidden fees.",
+  },
+  {
+    q: "Does my driver wait if my flight is delayed?",
+    a: "Yes. We track your flight in real-time and adjust the pickup time automatically. No extra charge for delays or early arrivals.",
+  },
+  {
+    q: "Which CDG terminals do you serve?",
+    a: "All terminals: T1, T2A, T2B, T2C, T2D, T2E, T2F, T2G, and T3. Your driver will meet you at the arrivals hall of your specific terminal.",
+  },
+  {
+    q: "How long does it take to reach Paris from CDG?",
+    a: "Approximately 45–60 minutes to Paris city centre depending on traffic and your destination, without the delays of RER trains or taxi queues.",
+  },
+  {
+    q: "What is included in the transfer price?",
+    a: "Meet & Greet at arrivals, flight tracking, 1 large suitcase per passenger, all taxes and tolls, up to 60 minutes free waiting time. No surprises.",
+  },
+];
+
 export default function CDGAirport() {
-  const { t, language } = useLanguage();
-  const cdg = airportsTranslations[language].cdg;
-  const premiumBadge = {
-    en: "Premium airport transfers",
-    fr: "Transferts aeroport premium",
-    es: "Transfers premium al aeropuerto",
-    pt: "Transfers premium para aeroporto",
-  }[language];
-  const whyChooseItems = [
-    {
-      icon: <Plane className="w-8 h-8" />,
-      title: cdg.whyChoose.benefits.allTerminals.title,
-      description: cdg.whyChoose.benefits.allTerminals.description,
-    },
-    {
-      icon: <Clock className="w-8 h-8" />,
-      title: cdg.whyChoose.benefits.flightTracking.title,
-      description: cdg.whyChoose.benefits.flightTracking.description,
-    },
-    {
-      icon: <Shield className="w-8 h-8" />,
-      title: cdg.whyChoose.benefits.meetGreet.title,
-      description: cdg.whyChoose.benefits.meetGreet.description,
-    },
-    {
-      icon: <MapPin className="w-8 h-8" />,
-      title: cdg.whyChoose.benefits.directRoutes.title,
-      description: cdg.whyChoose.benefits.directRoutes.description,
-    },
-    {
-      icon: <Star className="w-8 h-8" />,
-      title: cdg.whyChoose.benefits.premiumVehicles.title,
-      description: cdg.whyChoose.benefits.premiumVehicles.description,
-    },
-    {
-      icon: <Globe className="w-8 h-8" />,
-      title: cdg.whyChoose.benefits.fixedPricing.title,
-      description: cdg.whyChoose.benefits.fixedPricing.description,
-    },
-  ];
+  const { language } = useLanguage();
+  const cdg =
+    airportsTranslations[language]?.cdg ?? airportsTranslations.en.cdg;
 
-  return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-[600px] flex items-center justify-center py-24 overflow-hidden">
-        <img
-          src={CDG_IMAGE}
-          alt={cdg.title}
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-black/70 to-primary-dark/90" />
+  const props: AirportPageTemplateProps = {
+    seoTitle:
+      "CDG Airport Transfer to Paris — Private Chauffeur | Paris Elite Services",
+    seoDescription:
+      "Book a private chauffeur transfer from Charles de Gaulle Airport (CDG) to Paris. Fixed prices from €70. Meet & Greet, flight tracking, all terminals. Confirm online.",
+    canonicalPath: "/airports/cdg",
 
-        <div className="container relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/20">
-              <Plane className="w-5 h-5 text-primary-200" />
-              <span className="text-sm font-medium">{cdg.badge}</span>
-            </div>
+    heroImage: CDG_IMAGE,
+    heroImageAlt:
+      "Charles de Gaulle Airport terminal — Paris Elite private transfer",
+    badge: cdg.badge,
+    premiumLabel: cdg.about?.skytraxBadge
+      ? `${cdg.about.skytraxBadge.title} — ${cdg.about.skytraxBadge.year}`
+      : "Premium Airport Transfer",
+    h1: cdg.title,
+    h1Sub: cdg.subtitle,
+    heroDescription: cdg.description,
+    ctaLabel: "Request a quote",
+    trustBadges: [
+      {
+        icon: <Clock className="w-6 h-6" />,
+        label: cdg.trustBadges.flightTracking,
+      },
+      {
+        icon: <Shield className="w-6 h-6" />,
+        label: cdg.trustBadges.meetGreet,
+      },
+      { icon: <MapPin className="w-6 h-6" />, label: "All Terminals" },
+      {
+        icon: <CheckCircle className="w-6 h-6" />,
+        label: cdg.trustBadges.available247,
+      },
+    ],
 
-            <p className="font-accent italic text-xl md:text-2xl text-primary-200 mb-4">
-              {premiumBadge}
-            </p>
+    aboutTitle: cdg.about.title,
+    aboutParagraphs: [
+      cdg.about.paragraph1,
+      cdg.about.paragraph2,
+      cdg.about.paragraph3,
+    ],
+    stats: [
+      { value: "#1", label: cdg.about.stats?.bestInEurope ?? "Best in Europe" },
+      {
+        value: "25 km",
+        label: cdg.about.stats?.fromParis ?? "From Paris Center",
+      },
+      {
+        value: "76M+",
+        label: cdg.about.stats?.passengers ?? "Passengers/Year",
+      },
+      { value: "320+", label: cdg.about.stats?.destinations ?? "Destinations" },
+    ],
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight">
-              {cdg.title}
-              <span className="block text-primary-200 mt-2 text-2xl md:text-3xl">
-                {cdg.subtitle}
-              </span>
-            </h1>
+    sedanFrom: 70,
+    vanFrom: 110,
+    pricingTitle: cdg.pricing?.title ?? "CDG Airport Transfer Prices",
 
-            <p className="text-xl text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto">
-              {cdg.description}
-            </p>
+    whyTitle: cdg.whyChoose.title,
+    whySub: cdg.whyChoose.subtitle,
+    benefits: [
+      {
+        icon: <Plane className="w-8 h-8" />,
+        title: cdg.whyChoose.benefits.allTerminals.title,
+        desc: cdg.whyChoose.benefits.allTerminals.description,
+      },
+      {
+        icon: <Clock className="w-8 h-8" />,
+        title: cdg.whyChoose.benefits.flightTracking.title,
+        desc: cdg.whyChoose.benefits.flightTracking.description,
+      },
+      {
+        icon: <Shield className="w-8 h-8" />,
+        title: cdg.whyChoose.benefits.meetGreet.title,
+        desc: cdg.whyChoose.benefits.meetGreet.description,
+      },
+      {
+        icon: <MapPin className="w-8 h-8" />,
+        title: cdg.whyChoose.benefits.directRoutes.title,
+        desc: cdg.whyChoose.benefits.directRoutes.description,
+      },
+      {
+        icon: <Star className="w-8 h-8" />,
+        title: cdg.whyChoose.benefits.premiumVehicles.title,
+        desc: cdg.whyChoose.benefits.premiumVehicles.description,
+      },
+      {
+        icon: <Globe className="w-8 h-8" />,
+        title: cdg.whyChoose.benefits.fixedPricing.title,
+        desc: cdg.whyChoose.benefits.fixedPricing.description,
+      },
+    ],
 
-            {/* CTA */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button
-                size="lg"
-                onClick={() =>
-                  window.open(
-                    buildAirportWhatsAppUrl(
-                      t.airports.terminalGuide.airports.cdg,
-                      language,
-                    ),
-                    "_blank",
-                  )
-                }
-                className="bg-secondary hover:bg-secondary/90 text-white px-8 py-6 text-lg font-semibold shadow-xl"
-              >
-                {t.airports.cta.fixedPrice}
-              </Button>
-              <a
-                href={buildAirportWhatsAppUrl(
-                  t.airports.terminalGuide.airports.cdg,
-                  language,
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-white/40 bg-white/10 backdrop-blur-sm px-8 py-6 text-lg font-semibold text-white hover:bg-white/20"
-              >
-                {t.airports.cta.whatsapp}
-              </a>
-            </div>
+    faqs: CDG_FAQS,
 
-            {/* Trust Badges */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-              <div className="flex flex-col items-center gap-2 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
-                <Clock className="w-6 h-6 text-primary-200" />
-                <span className="text-sm font-medium">
-                  {cdg.trustBadges.flightTracking}
-                </span>
-              </div>
-              <div className="flex flex-col items-center gap-2 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
-                <Shield className="w-6 h-6 text-primary-200" />
-                <span className="text-sm font-medium">
-                  {cdg.trustBadges.meetGreet}
-                </span>
-              </div>
-              <div className="flex flex-col items-center gap-2 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
-                <MapPin className="w-6 h-6 text-primary-200" />
-                <span className="text-sm font-medium">
-                  {cdg.whyChoose.benefits.allTerminals.title}
-                </span>
-              </div>
-              <div className="flex flex-col items-center gap-2 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
-                <CheckCircle className="w-6 h-6 text-primary-200" />
-                <span className="text-sm font-medium">
-                  {cdg.trustBadges.available247}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    relatedAirports: [
+      { name: "Orly Airport (ORY)", path: "/airports/orly", fromPrice: "€60" },
+      {
+        name: "Beauvais Airport (BVA)",
+        path: "/airports/beauvais",
+        fromPrice: "€130",
+      },
+    ],
+  };
 
-      {/* Airport Description */}
-      <section className="py-16 bg-gradient-to-br from-primary/5 to-white">
-        <div className="container px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-lg border border-primary/10">
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-primary mb-6">
-              {cdg.about.title}
-            </h2>
-            <div className="prose prose-lg max-w-none text-muted-foreground">
-              <p className="mb-4 leading-relaxed">{cdg.about.paragraph1}</p>
-              <p className="mb-4 leading-relaxed">{cdg.about.paragraph2}</p>
-              <p className="leading-relaxed">{cdg.about.paragraph3}</p>
-            </div>
-            <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-primary/10">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">25 km</div>
-                <div className="text-sm text-muted-foreground">
-                  {cdg.about.stats.fromParis}
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">76M+</div>
-                <div className="text-sm text-muted-foreground">
-                  {cdg.about.stats.passengers}
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">3</div>
-                <div className="text-sm text-muted-foreground">
-                  {cdg.about.stats.terminals}
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">320+</div>
-                <div className="text-sm text-muted-foreground">
-                  {cdg.about.stats.destinations}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us for CDG */}
-      <section className="py-20 bg-background">
-        <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
-              {cdg.whyChoose.title}
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              {cdg.whyChoose.subtitle}
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {whyChooseItems.map((benefit, idx) => (
-              <div
-                key={idx}
-                className="bg-white rounded-xl p-6 shadow-sm border border-primary/5 hover:shadow-md transition-shadow"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
-                    {benefit.icon}
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-lg text-primary mb-2">
-                      {benefit.title}
-                    </h3>
-                    <p className="text-muted-foreground leading-relaxed">
-                      {benefit.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <Button
-              size="lg"
-              onClick={() =>
-                window.open(
-                  buildAirportWhatsAppUrl(
-                    t.airports.terminalGuide.airports.cdg,
-                    language,
-                  ),
-                  "_blank",
-                )
-              }
-              className="w-full sm:w-auto h-auto min-h-12 whitespace-normal bg-secondary px-6 py-4 text-center text-lg font-semibold text-white shadow-lg hover:bg-secondary/90 sm:px-8"
-            >
-              {cdg.pricing.bookNow}
-            </Button>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+  return <AirportPageTemplate {...props} />;
 }

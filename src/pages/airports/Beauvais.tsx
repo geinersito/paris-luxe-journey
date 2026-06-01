@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Plane,
   Clock,
@@ -8,258 +7,136 @@ import {
   Star,
   Luggage,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { buildAirportWhatsAppUrl } from "@/lib/eventsPrefill";
+import { airportsTranslations } from "@/i18n/airports";
+import AirportPageTemplate, {
+  AirportPageTemplateProps,
+} from "@/components/airports/AirportPageTemplate";
 
 const BEAUVAIS_IMAGE =
   "https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80";
 
+const BVA_FAQS = [
+  {
+    q: "How much does a transfer from Beauvais Airport to Paris cost?",
+    a: "Indicative prices start from €130 for a sedan (1–3 passengers) to Paris city centre. Van transfers for 4–7 passengers start from €170. Final price confirmed at booking.",
+  },
+  {
+    q: "How long does the transfer from Beauvais to Paris take?",
+    a: "60–75 minutes direct, compared to 90+ minutes on the official shuttle bus with multiple stops. We drive you door-to-door with no intermediate stops.",
+  },
+  {
+    q: "Is a private transfer from Beauvais worth it vs the shuttle?",
+    a: "For door-to-door service, yes. The shuttle drops you at Porte Maillot (not your hotel), runs on fixed schedules, and takes 90+ minutes. A private transfer goes directly to your Paris address at your departure time.",
+  },
+  {
+    q: "Does Beauvais Airport have a taxi rank?",
+    a: "Official taxis are limited at Beauvais and can be expensive. Booking a private transfer in advance guarantees your price and ensures a driver is waiting for you on arrival.",
+  },
+  {
+    q: "Can you pick me up early in the morning for a Ryanair flight from Beauvais?",
+    a: "Yes. We operate 24/7 including early morning pickups. Beauvais often has early departures — book your transfer at least 48 hours in advance to guarantee availability.",
+  },
+];
+
 export default function BeauvaisAirport() {
-  const { t, language } = useLanguage();
+  const { language } = useLanguage();
+  const bva =
+    airportsTranslations[language]?.beauvais ??
+    airportsTranslations.en.beauvais;
 
-  return (
-    <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="relative min-h-[600px] flex items-center justify-center py-24 overflow-hidden">
-        <img
-          src={BEAUVAIS_IMAGE}
-          alt="Paris Beauvais Airport Transfer"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-black/70 to-primary-dark/90" />
+  const props: AirportPageTemplateProps = {
+    seoTitle:
+      "Beauvais Airport Transfer to Paris — Direct Private Chauffeur | Paris Elite Services",
+    seoDescription:
+      "Private chauffeur transfer from Beauvais-Tillé Airport (BVA) to Paris. Fixed prices from €130. Direct 60–75 min drive, no shuttle needed. Book online.",
+    canonicalPath: "/airports/beauvais",
 
-        <div className="container relative z-10 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <div className="max-w-4xl mx-auto text-center text-white">
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-white/20">
-              <Plane className="w-5 h-5 text-primary-200" />
-              <span className="text-sm font-medium">
-                Paris Beauvais Airport
-              </span>
-            </div>
+    heroImage: BEAUVAIS_IMAGE,
+    heroImageAlt:
+      "Beauvais Tillé Airport — Paris Elite private transfer to Paris",
+    badge: bva.badge,
+    premiumLabel: bva.premiumBadge ?? "Premium Airport Transfer",
+    h1: bva.title,
+    h1Sub: bva.subtitle,
+    heroDescription: bva.description,
+    ctaLabel: "Request a quote",
+    trustBadges: [
+      { icon: <Clock className="w-6 h-6" />, label: "Direct Transfer" },
+      {
+        icon: <Shield className="w-6 h-6" />,
+        label: bva.trustBadges.meetGreet,
+      },
+      {
+        icon: <Luggage className="w-6 h-6" />,
+        label: bva.trustBadges.luggageIncluded,
+      },
+      {
+        icon: <CheckCircle className="w-6 h-6" />,
+        label: bva.trustBadges.available247,
+      },
+    ],
 
-            <p className="font-accent italic text-xl md:text-2xl text-primary-200 mb-4">
-              Premium Airport Transfer
-            </p>
+    aboutTitle: bva.about.title,
+    aboutParagraphs: [
+      bva.about.paragraph1,
+      bva.about.paragraph2,
+      bva.about.paragraph3,
+    ],
+    stats: [
+      { value: "85 km", label: "From Paris Center" },
+      { value: "4M+", label: "Passengers/Year" },
+      { value: "60–75 min", label: "Direct Transfer" },
+      { value: "24/7", label: "Available" },
+    ],
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight">
-              Beauvais Airport Transfers
-              <span className="block text-primary-200 mt-2 text-2xl md:text-3xl">
-                Fixed Price • Professional Drivers • 24/7
-              </span>
-            </h1>
+    sedanFrom: 130,
+    vanFrom: 170,
+    pricingTitle: "Beauvais Airport Transfer Prices",
 
-            <p className="text-xl text-white/90 mb-8 leading-relaxed max-w-3xl mx-auto">
-              Professional chauffeur service from Paris Beauvais Airport to
-              anywhere in Paris. Direct transfer, flight monitoring included, no
-              hidden fees.
-            </p>
+    whyTitle: "Why Choose Paris Elite for Beauvais Transfers?",
+    whySub:
+      "Skip the shuttle bus — direct transfer to your Paris hotel in 60–75 minutes",
+    benefits: [
+      {
+        icon: <Clock className="w-8 h-8" />,
+        title: "Faster Than the Shuttle",
+        desc: "Direct transfer in 60–75 min vs 90+ min on the shuttle bus with multiple stops.",
+      },
+      {
+        icon: <Shield className="w-8 h-8" />,
+        title: "Door-to-Door",
+        desc: "We drive you directly to your Paris hotel or address. No drop-off at Porte Maillot.",
+      },
+      {
+        icon: <Luggage className="w-8 h-8" />,
+        title: "Luggage Included",
+        desc: "1 large suitcase per passenger included. Help with extra bags always available.",
+      },
+      {
+        icon: <MapPin className="w-8 h-8" />,
+        title: "Any Paris Destination",
+        desc: "Any address in Paris, Île-de-France, CDG or Orly airports, Disneyland.",
+      },
+      {
+        icon: <Star className="w-8 h-8" />,
+        title: "Premium Vehicles",
+        desc: "Mercedes E-Class, S-Class, and luxury vans for groups up to 7 passengers.",
+      },
+      {
+        icon: <CheckCircle className="w-8 h-8" />,
+        title: "Fixed Price",
+        desc: "Price confirmed at booking. No meter, no surprises even with traffic or delays.",
+      },
+    ],
 
-            {/* CTA */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-              <Button
-                size="lg"
-                onClick={() =>
-                  window.open(
-                    buildAirportWhatsAppUrl(
-                      t.airports.terminalGuide.airports.bva,
-                      language,
-                    ),
-                    "_blank",
-                  )
-                }
-                className="bg-secondary hover:bg-secondary/90 text-white px-8 py-6 text-lg font-semibold shadow-xl"
-              >
-                {t.airports.cta.fixedPrice}
-              </Button>
-              <a
-                href={buildAirportWhatsAppUrl(
-                  t.airports.terminalGuide.airports.bva,
-                  language,
-                )}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-white/40 bg-white/10 backdrop-blur-sm px-8 py-6 text-lg font-semibold text-white hover:bg-white/20"
-              >
-                {t.airports.cta.whatsapp}
-              </a>
-            </div>
+    faqs: BVA_FAQS,
 
-            {/* Trust Badges */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto">
-              <div className="flex flex-col items-center gap-2 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
-                <Clock className="w-6 h-6 text-primary-200" />
-                <span className="text-sm font-medium">Flight Tracking</span>
-              </div>
-              <div className="flex flex-col items-center gap-2 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
-                <Shield className="w-6 h-6 text-primary-200" />
-                <span className="text-sm font-medium">Meet & Greet</span>
-              </div>
-              <div className="flex flex-col items-center gap-2 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
-                <MapPin className="w-6 h-6 text-primary-200" />
-                <span className="text-sm font-medium">Door-to-Door</span>
-              </div>
-              <div className="flex flex-col items-center gap-2 bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/10">
-                <CheckCircle className="w-6 h-6 text-primary-200" />
-                <span className="text-sm font-medium">24/7 Available</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+    relatedAirports: [
+      { name: "CDG Airport", path: "/airports/cdg", fromPrice: "€70" },
+      { name: "Orly Airport (ORY)", path: "/airports/orly", fromPrice: "€60" },
+    ],
+  };
 
-      {/* Airport Description */}
-      <section className="py-16 bg-gradient-to-br from-primary/5 to-white">
-        <div className="container px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-lg border border-primary/10">
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-primary mb-6">
-              About Paris Beauvais Airport (BVA)
-            </h2>
-            <div className="prose prose-lg max-w-none text-muted-foreground">
-              <p className="mb-4 leading-relaxed">
-                <strong className="text-secondary">
-                  Paris Beauvais-Tillé Airport (BVA)
-                </strong>{" "}
-                is located 85 kilometers north of Paris, primarily serving
-                low-cost carriers like Ryanair and Wizzair. Despite its distance
-                from the city, Beauvais is a popular choice for budget-conscious
-                travelers flying to and from destinations across Europe and
-                North Africa.
-              </p>
-              <p className="mb-4 leading-relaxed">
-                While officially named "Paris-Beauvais," the airport is actually
-                closer to the town of Beauvais than to Paris itself. The
-                official shuttle bus service takes{" "}
-                <strong className="text-secondary">90+ minutes</strong> with
-                multiple stops. Many travelers find this inconvenient,
-                especially with luggage or after a long flight.
-              </p>
-              <p className="leading-relaxed">
-                Our private transfer service offers a{" "}
-                <strong className="text-secondary">
-                  direct, door-to-door solution
-                </strong>{" "}
-                in just 60-75 minutes, taking you straight to your Paris hotel
-                or any destination in the region. With fixed pricing, flight
-                monitoring, and professional chauffeurs, it's the most
-                comfortable and time-efficient way to reach Paris from Beauvais.
-              </p>
-            </div>
-            <div className="mt-6 grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-primary/10">
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">85 km</div>
-                <div className="text-sm text-muted-foreground">
-                  From Paris Center
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">4M+</div>
-                <div className="text-sm text-muted-foreground">
-                  Passengers/Year
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">1</div>
-                <div className="text-sm text-muted-foreground">
-                  Main Terminal
-                </div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-primary">60-75min</div>
-                <div className="text-sm text-muted-foreground">
-                  Direct Transfer
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose Us for Beauvais */}
-      <section className="py-20 bg-background">
-        <div className="container px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
-              Why Choose Paris Elite for Beauvais Transfers?
-            </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Skip the shuttle bus and travel in comfort with our direct
-              transfer service
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Clock className="w-8 h-8" />,
-                title: "Faster Than Shuttle",
-                description:
-                  "Direct transfer in 60-75 minutes vs 90+ minutes by shuttle bus",
-              },
-              {
-                icon: <Shield className="w-8 h-8" />,
-                title: "Door-to-Door Service",
-                description:
-                  "No waiting for buses or metro connections. We take you directly to your destination",
-              },
-              {
-                icon: <Luggage className="w-8 h-8" />,
-                title: "Luggage Included",
-                description:
-                  "One large suitcase per passenger included. Extra luggage assistance available",
-              },
-              {
-                icon: <MapPin className="w-8 h-8" />,
-                title: "All Paris Destinations",
-                description:
-                  "Any address in Paris, Île-de-France, Disneyland, or other airports",
-              },
-              {
-                icon: <Star className="w-8 h-8" />,
-                title: "Premium Vehicles",
-                description:
-                  "Mercedes E-Class, S-Class, and luxury vans for groups",
-              },
-              {
-                icon: <CheckCircle className="w-8 h-8" />,
-                title: "Fixed Pricing",
-                description:
-                  "Price confirmed at booking. No surprises, no meter running",
-              },
-            ].map((benefit, index) => (
-              <div
-                key={index}
-                className="bg-card p-6 rounded-lg border border-border hover:shadow-lg transition-shadow"
-              >
-                <div className="text-secondary mb-4">{benefit.icon}</div>
-                <h3 className="text-xl font-semibold mb-2 text-foreground">
-                  {benefit.title}
-                </h3>
-                <p className="text-muted-foreground">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA Bottom */}
-          <div className="mt-12 text-center">
-            <Button
-              size="lg"
-              onClick={() =>
-                window.open(
-                  buildAirportWhatsAppUrl(
-                    t.airports.terminalGuide.airports.bva,
-                    language,
-                  ),
-                  "_blank",
-                )
-              }
-              className="bg-primary hover:bg-primary/90 text-white px-8 py-6 text-lg font-semibold shadow-xl"
-            >
-              Book Your Transfer Now
-            </Button>
-          </div>
-        </div>
-      </section>
-    </div>
-  );
+  return <AirportPageTemplate {...props} />;
 }
