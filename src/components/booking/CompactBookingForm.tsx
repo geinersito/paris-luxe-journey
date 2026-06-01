@@ -129,7 +129,7 @@ export function CompactBookingForm({
   };
 
   return (
-    <div className="bg-white border border-ref-ink/10 shadow-[0_4px_32px_rgba(14,14,14,0.12)] p-5 md:p-7 w-full">
+    <div className="bg-[#F4F1EC]/95 backdrop-blur-sm border border-ref-ink/8 shadow-[0_2px_16px_rgba(14,14,14,0.08)] p-4 md:p-6 w-full">
       <div className="flex flex-col lg:flex-row gap-4 items-end">
         {/* Pickup Location */}
         <div className="flex-1 w-full">
@@ -144,7 +144,7 @@ export function CompactBookingForm({
               disabled={
                 isLoadingLocations || compactLocationOptions.length === 0
               }
-              className="font-ui w-full truncate px-4 py-3 border border-ref-ink/20 focus:border-ref-navy focus:ring-1 focus:ring-ref-navy/20 transition-colors duration-200 bg-white text-ref-ink text-sm appearance-none cursor-pointer outline-none"
+              className="font-ui w-full truncate px-4 py-3 border border-ref-ink/15 focus:border-ref-navy focus:ring-1 focus:ring-ref-navy/20 transition-colors duration-200 bg-white/80 text-ref-ink text-sm appearance-none cursor-pointer outline-none"
             >
               <option value="">
                 {isLoadingLocations ? "Loading..." : t.hero.selectPickup}
@@ -186,7 +186,7 @@ export function CompactBookingForm({
               disabled={
                 isLoadingLocations || compactLocationOptions.length === 0
               }
-              className="font-ui w-full truncate px-4 py-3 border border-ref-ink/20 focus:border-ref-navy focus:ring-1 focus:ring-ref-navy/20 transition-colors duration-200 bg-white text-ref-ink text-sm appearance-none cursor-pointer outline-none"
+              className="font-ui w-full truncate px-4 py-3 border border-ref-ink/15 focus:border-ref-navy focus:ring-1 focus:ring-ref-navy/20 transition-colors duration-200 bg-white/80 text-ref-ink text-sm appearance-none cursor-pointer outline-none"
             >
               <option value="">
                 {isLoadingLocations ? "Loading..." : t.hero.selectDropoff}
@@ -225,7 +225,7 @@ export function CompactBookingForm({
             <select
               value={passengers}
               onChange={(e) => setPassengers(e.target.value)}
-              className="font-ui w-full truncate px-4 py-3 border border-ref-ink/20 focus:border-ref-navy focus:ring-1 focus:ring-ref-navy/20 transition-colors duration-200 bg-white text-ref-ink text-sm appearance-none cursor-pointer outline-none"
+              className="font-ui w-full truncate px-4 py-3 border border-ref-ink/15 focus:border-ref-navy focus:ring-1 focus:ring-ref-navy/20 transition-colors duration-200 bg-white/80 text-ref-ink text-sm appearance-none cursor-pointer outline-none"
             >
               {[1, 2, 3, 4, 5, 6, 7, 8].map((num) => (
                 <option key={num} value={num}>
