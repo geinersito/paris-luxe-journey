@@ -2,7 +2,13 @@ type AnalyticsEventName =
   | "cta_click"
   | "whatsapp_click"
   | "form_start"
-  | "form_submit";
+  | "form_submit"
+  | "booking_form_open"
+  | "booking_trip_submit"
+  | "pending_page_view"
+  | "booking_request_submit_start"
+  | "pending_form_error"
+  | "pending_form_submitted";
 
 type AnalyticsParams = Record<
   string,

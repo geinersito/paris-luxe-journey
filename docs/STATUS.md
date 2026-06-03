@@ -161,6 +161,18 @@ Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge orde
 - **GA4-B2B-CTAS-01** ✅ DONE — PR **#127** — `30c2cd3c` — B2B CTA tracking on `/agencias` and `/empresas` (`cta_click` -> `/contact`)
 - **B2B-PAGES-01** ✅ DONE — PR **#123** — `2d337191` — `/agencias` + `/empresas` + dropdown **B2B** en navbar
 
+## SEO Sprint — 2026-06-03
+
+Live Playwright audit confirmed gaps. CTO-approved sequence:
+
+| # | ID | Status |
+|---|---|---|
+| 1 | PR-SEO-HOME-01 | ✅ DONE — og:image `.jpg`→`.png` + canonical trailing slash. 12/12 smoke. |
+| 2 | PR-SEO-COMMERCIAL-PAGES-01 | TODO — Excursions/FAQ/Booking Helmet + global og:image fix |
+| 3 | PR-SEO-FLEET-CANONICAL-01 | TODO — canonical `/fleet` |
+| 4 | PR-SEO-FAQ-SCHEMA-01 | TODO — FAQPage JSON-LD |
+| 5 | PR-SEO-HREFLANG-01 | TODO — hreflang global |
+
 ## Ahora en curso
 
 - **R0-SPRINT** (P0/R0) — **DONE ✅** — 10/10 blockers resolved. Sitio publicable. No hay blocker de publicación activo.
