@@ -56,6 +56,7 @@ const GivernyHonfleurPage = lazy(
   () => import("./pages/excursions/giverny-honfleur"),
 );
 const VersaillesPage = lazy(() => import("./pages/excursions/versailles"));
+const FleetPage = lazy(() => import("./pages/FleetPage"));
 
 // Loading fallback component
 const PageLoader = () => (
@@ -355,7 +356,7 @@ const router = createBrowserRouter([
       // Legacy direct routes → Home anchors (NAV-ABOUT-CONTACT-FLEET-01)
       { path: "about", element: <HashRedirect hash="about" /> },
       { path: "contact", element: <HashRedirect hash="contact" /> },
-      { path: "fleet", element: <HashRedirect hash="fleet" /> },
+      { path: "fleet", element: <FleetPage /> },
 
       // Legacy Spanish routes → canonical English routes (PR-01-ROUTES-ES)
       { path: "b2b", element: <Navigate to="/agencias" replace /> },
