@@ -5,7 +5,6 @@ import { DestinationHeader } from "@/components/destination/DestinationHeader";
 import { DestinationNavigation } from "@/components/destination/DestinationNavigation";
 import { DestinationContent } from "@/components/destination/DestinationContent";
 import { DestinationSidebar } from "@/components/destination/DestinationSidebar";
-import { Button } from "@/components/ui/button";
 import { loireGuideContent } from "@/data/excursions/loire-guide";
 import { Helmet } from "react-helmet-async";
 import { getSiteOrigin } from "@/lib/seo/site";
@@ -105,20 +104,20 @@ export default function LoireValleyPage() {
   };
 
   const renderCta = (title: string, body: string, buttonLabel: string) => (
-    <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-6 md:p-8 my-8">
+    <div className="border border-ref-ink/8 bg-white p-6 md:p-8 my-8">
       <h4 className="text-2xl font-bold text-foreground mb-3">{title}</h4>
       <p className="text-muted-foreground mb-5">{body}</p>
-      <Button
+      <button
         onClick={() =>
           window.open(
             buildExcursionWhatsAppUrl("Loire Valley", language),
             "_blank",
           )
         }
-        size="lg"
+        className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-6 py-3 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
       >
         {buttonLabel}
-      </Button>
+      </button>
     </div>
   );
 
@@ -141,7 +140,7 @@ export default function LoireValleyPage() {
               </h4>
               <p className="text-sm text-muted-foreground">{card.duration}</p>
             </div>
-            <span className="text-base font-semibold text-primary">
+            <span className="text-base font-semibold text-ref-navy">
               {card.priceLabel}
             </span>
           </div>
@@ -154,13 +153,13 @@ export default function LoireValleyPage() {
                 key={item}
                 className="text-sm text-muted-foreground flex gap-2"
               >
-                <span className="text-primary">•</span>
+                <span className="text-ref-navy">•</span>
                 <span>{item}</span>
               </li>
             ))}
           </ul>
-          <Button
-            className="w-full"
+          <button
+            className="w-full inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-4 py-3 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
             onClick={() =>
               window.open(
                 buildExcursionWhatsAppUrl("Loire Valley", language),
@@ -169,7 +168,7 @@ export default function LoireValleyPage() {
             }
           >
             {card.button}
-          </Button>
+          </button>
         </div>
       ))}
     </div>
@@ -251,7 +250,7 @@ export default function LoireValleyPage() {
                 key={step}
                 className="rounded-xl border border-border bg-card px-4 py-4 shadow-sm"
               >
-                <span className="font-semibold text-primary mr-2">
+                <span className="font-semibold text-ref-navy mr-2">
                   {index + 1}.
                 </span>
                 <span className="text-muted-foreground leading-7">{step}</span>

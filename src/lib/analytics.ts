@@ -83,6 +83,18 @@ const getDefaultPlacement = (eventName: AnalyticsEventName): string => {
     return "contact_section";
   }
   if (eventName === "whatsapp_click") return "floating_button";
+  if (
+    eventName === "pending_page_view" ||
+    eventName === "pending_form_submitted" ||
+    eventName === "pending_form_error"
+  )
+    return "pending_page";
+  if (
+    eventName === "booking_form_open" ||
+    eventName === "booking_trip_submit" ||
+    eventName === "booking_request_submit_start"
+  )
+    return "booking_form";
   return "unspecified";
 };
 

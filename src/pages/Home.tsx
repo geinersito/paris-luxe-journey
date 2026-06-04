@@ -10,7 +10,6 @@ import FleetSection from "@/components/sections/FleetSection";
 import ContactSection from "@/components/sections/ContactSection";
 import PremiumSection from "@/components/sections/PremiumSection";
 import TestimonialSection from "@/components/TestimonialSection";
-import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { getSiteOrigin } from "@/lib/seo/site";
 import { trackEvent } from "@/lib/analytics";
@@ -488,33 +487,49 @@ export default function Home() {
         <HomeExcursionsSection />
         <PremiumSection />
 
-        {/* Mid-page CTA — after services, before B2B */}
-        <section className="py-10 bg-primary/5 border-y border-primary/10">
-          <div className="container mx-auto px-4 max-w-3xl text-center">
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-secondary mb-2">
-              {midCta.title}
-            </h2>
-            <p className="text-base text-muted-foreground mb-5">
-              {midCta.desc}
-            </p>
-            <Button asChild className="silk-button">
-              <Link to="/booking">{midCta.cta}</Link>
-            </Button>
+        {/* Mid-page CTA */}
+        <section className="bg-ref-navy py-16 md:py-20">
+          <div className="container mx-auto px-4 max-w-7xl">
+            <div className="max-w-2xl">
+              <h2 className="font-editorial font-light text-3xl md:text-4xl text-white mb-4">
+                {midCta.title}
+              </h2>
+              <p className="font-ui text-sm text-white/60 leading-relaxed mb-8">
+                {midCta.desc}
+              </p>
+              <Link
+                to="/booking"
+                className="inline-flex items-center gap-2 font-ui font-semibold text-sm px-6 py-3 bg-white text-ref-navy hover:bg-ref-bg transition-colors"
+              >
+                {midCta.cta}
+              </Link>
+            </div>
           </div>
         </section>
 
-        <section id="b2b" className="py-12 bg-white">
+        <section
+          id="b2b"
+          className="bg-ref-bg py-16 md:py-24 border-b border-ref-ink/8"
+        >
           <div className="container mx-auto px-4 max-w-7xl">
-            <div className="max-w-4xl mx-auto rounded-2xl border border-primary/20 bg-gradient-to-r from-primary/5 to-transparent p-8 text-center shadow-luxury">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-3">
-                {t.home.b2b.title}
-              </h2>
-              <p className="text-base md:text-lg text-gray-700 mb-6">
-                {t.home.b2b.desc}
-              </p>
-              <Button asChild className="silk-button">
-                <a href="#contact">{t.home.b2b.cta}</a>
-              </Button>
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
+              <div className="lg:col-span-7">
+                <p className="font-ui text-xs font-semibold uppercase tracking-[0.3em] text-ref-ink/40 mb-4">
+                  B2B
+                </p>
+                <h2 className="font-editorial font-light text-3xl md:text-4xl text-ref-ink mb-4">
+                  {t.home.b2b.title}
+                </h2>
+                <p className="font-ui text-sm text-ref-ink/60 leading-relaxed mb-6">
+                  {t.home.b2b.desc}
+                </p>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 font-ui font-semibold text-sm px-5 py-2.5 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
+                >
+                  {t.home.b2b.cta}
+                </a>
+              </div>
             </div>
           </div>
         </section>

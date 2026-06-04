@@ -127,7 +127,7 @@ export default function ExitIntentPopup() {
     <AnimatePresence>
       {isOpen && (
         <Dialog open={isOpen} onOpenChange={setIsOpen}>
-          <DialogContent className="max-w-md p-0 overflow-hidden border-2 border-primary/20">
+          <DialogContent className="max-w-md p-0 overflow-hidden border border-ref-ink/20">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}

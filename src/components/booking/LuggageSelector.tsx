@@ -54,7 +54,7 @@ export const LuggageSelector = ({
       {/* Política de equipaje - Copy explicativo */}
       <div className="bg-muted/80 border border-border rounded-xl p-4 space-y-2">
         <div className="flex items-start gap-2.5">
-          <Info className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+          <Info className="h-4 w-4 text-ref-navy mt-0.5 flex-shrink-0" />
           <div className="space-y-2 text-xs flex-1">
             <p className="font-semibold text-foreground text-sm">
               {t.booking.luggagePolicy?.title || "Politique de Bagages"}
@@ -82,7 +82,7 @@ export const LuggageSelector = ({
       <div className="space-y-3">
         <div className="flex items-center justify-between p-4 bg-muted rounded-xl">
           <div className="flex items-center gap-3">
-            <Luggage className="h-5 w-5 text-primary" />
+            <Luggage className="h-5 w-5 text-ref-navy" />
             <div>
               <p className="text-sm font-medium text-foreground">{t.booking.largeLuggage}</p>
               <p className="text-xs text-muted-foreground">
@@ -96,22 +96,22 @@ export const LuggageSelector = ({
               type="button"
               onClick={() => handleCountChange("large", "decrement")}
               disabled={largeLuggageCount === 0}
-              className="w-9 h-9 rounded-full bg-primary/20 hover:bg-primary/30
-                       text-primary border border-primary/30 shadow-sm hover:shadow-md hover:scale-110
+              className="w-9 h-9 rounded-full bg-ref-navy/10 hover:bg-ref-navy/20
+                       text-ref-navy border border-ref-navy/20 shadow-sm hover:shadow-md hover:scale-110
                        transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100
                        flex items-center justify-center group"
             >
               <Minus className="h-4 w-4 group-hover:scale-90 transition-transform" />
             </button>
-            <span className="text-xl font-display font-semibold text-foreground min-w-[2.5rem] text-center">
+            <span className="text-xl font-editorial font-light text-ref-ink min-w-[2.5rem] text-center">
               {largeLuggageCount}
             </span>
             <button
               type="button"
               onClick={() => handleCountChange("large", "increment")}
               disabled={largeLuggageCount >= maxLarge}
-              className="w-9 h-9 rounded-full bg-primary/20 hover:bg-primary/30
-                       text-primary border border-primary/30 shadow-sm hover:shadow-md hover:scale-110
+              className="w-9 h-9 rounded-full bg-ref-navy/10 hover:bg-ref-navy/20
+                       text-ref-navy border border-ref-navy/20 shadow-sm hover:shadow-md hover:scale-110
                        transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100
                        flex items-center justify-center group"
             >
@@ -122,7 +122,7 @@ export const LuggageSelector = ({
 
         <div className="flex items-center justify-between p-4 bg-muted rounded-xl">
           <div className="flex items-center gap-3">
-            <Luggage className="h-4 w-4 text-primary" />
+            <Luggage className="h-4 w-4 text-ref-navy" />
             <div>
               <p className="text-sm font-medium text-foreground">{t.booking.smallLuggage}</p>
               <p className="text-xs text-muted-foreground">
@@ -136,22 +136,22 @@ export const LuggageSelector = ({
               type="button"
               onClick={() => handleCountChange("small", "decrement")}
               disabled={smallLuggageCount === 0}
-              className="w-9 h-9 rounded-full bg-primary/20 hover:bg-primary/30
-                       text-primary border border-primary/30 shadow-sm hover:shadow-md hover:scale-110
+              className="w-9 h-9 rounded-full bg-ref-navy/10 hover:bg-ref-navy/20
+                       text-ref-navy border border-ref-navy/20 shadow-sm hover:shadow-md hover:scale-110
                        transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100
                        flex items-center justify-center group"
             >
               <Minus className="h-4 w-4 group-hover:scale-90 transition-transform" />
             </button>
-            <span className="text-xl font-display font-semibold text-foreground min-w-[2.5rem] text-center">
+            <span className="text-xl font-editorial font-light text-ref-ink min-w-[2.5rem] text-center">
               {smallLuggageCount}
             </span>
             <button
               type="button"
               onClick={() => handleCountChange("small", "increment")}
               disabled={smallLuggageCount >= maxSmall}
-              className="w-9 h-9 rounded-full bg-primary/20 hover:bg-primary/30
-                       text-primary border border-primary/30 shadow-sm hover:shadow-md hover:scale-110
+              className="w-9 h-9 rounded-full bg-ref-navy/10 hover:bg-ref-navy/20
+                       text-ref-navy border border-ref-navy/20 shadow-sm hover:shadow-md hover:scale-110
                        transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100
                        flex items-center justify-center group"
             >

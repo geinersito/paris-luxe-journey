@@ -1,8 +1,7 @@
+import React from 'react'
 import { BlogCategory } from '@/types/blog'
 import { blogCategories } from '@/data/blog/categories'
-import { Button } from '@/components/ui/button'
 import { useTranslation } from 'react-i18next'
-import { cn } from '@/lib/utils'
 import * as Icons from 'lucide-react'
 
 interface CategoryFilterProps {
@@ -24,44 +23,35 @@ export default function CategoryFilter({
     pt: 'Todos os Artigos',
   }
 
+  const activeClass = 'inline-flex items-center gap-1.5 font-ui font-semibold text-sm px-4 py-2 bg-ref-navy text-white transition-colors'
+  const inactiveClass = 'inline-flex items-center gap-1.5 font-ui font-semibold text-sm px-4 py-2 border border-ref-ink/20 text-ref-ink bg-white hover:border-ref-navy/30 transition-colors'
+
   return (
     <div className="flex flex-wrap gap-3 justify-center">
-      {/* All Categories Button - Premium Style */}
-      <Button
-        variant={selectedCategory === 'all' ? 'default' : 'outline'}
+      <button
+        type="button"
         onClick={() => onCategoryChange('all')}
-        className={cn(
-          'transition-all duration-300 font-semibold',
-          selectedCategory === 'all'
-            ? 'silk-button shadow-lg'
-            : 'button-outline-gold hover:scale-105'
-        )}
+        className={selectedCategory === 'all' ? activeClass : inactiveClass}
       >
         {allCategoriesText[currentLang]}
-      </Button>
+      </button>
 
-      {/* Category Buttons - Premium Style */}
       {blogCategories.map((category) => {
-        const IconComponent = Icons[category.icon as keyof typeof Icons] as any
+        const IconComponent = Icons[category.icon as keyof typeof Icons] as React.ElementType
+        const isActive = selectedCategory === category.id
 
         return (
-          <Button
+          <button
             key={category.id}
-            variant={selectedCategory === category.id ? 'default' : 'outline'}
+            type="button"
             onClick={() => onCategoryChange(category.id)}
-            className={cn(
-              'transition-all duration-300 font-semibold',
-              selectedCategory === category.id
-                ? 'silk-button shadow-lg'
-                : 'button-outline-gold hover:scale-105'
-            )}
+            className={isActive ? activeClass : inactiveClass}
           >
-            {IconComponent && <IconComponent className="w-4 h-4 mr-2" />}
+            {IconComponent && <IconComponent className="w-4 h-4" />}
             {category.name[currentLang]}
-          </Button>
+          </button>
         )
       })}
     </div>
   )
 }
-

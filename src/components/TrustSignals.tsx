@@ -52,12 +52,12 @@ export default function TrustSignals({ className = "" }: TrustSignalsProps) {
   return (
     <section
       aria-labelledby="trust-signals-title"
-      className={`rounded-2xl border border-primary/15 bg-gradient-to-br from-white via-cream/40 to-champagne/40 p-4 md:p-5 shadow-sm ${className}`}
+      className={`border border-ref-ink/8 bg-white p-4 md:p-5 ${className}`}
     >
       <div className="mb-4 text-center">
         <h2
           id="trust-signals-title"
-          className="text-xl md:text-2xl font-display font-bold text-secondary"
+          className="text-xl md:text-2xl font-editorial font-light text-ref-ink"
         >
           {t.trust.title}
         </h2>
@@ -72,14 +72,14 @@ export default function TrustSignals({ className = "" }: TrustSignalsProps) {
           return (
             <article
               key={item.title}
-              className="rounded-xl border border-primary/10 bg-white/85 px-3 py-3 text-left"
+              className="border border-ref-ink/8 bg-white px-3 py-3 text-left"
             >
               <div className="flex items-start gap-2">
-                <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-primary/10">
-                  <Icon className="h-4 w-4 text-primary" />
+                <span className="mt-0.5 inline-flex h-8 w-8 shrink-0 items-center justify-center bg-ref-navy/8">
+                  <Icon className="h-4 w-4 text-ref-navy" />
                 </span>
                 <div>
-                  <h3 className="text-sm font-semibold text-secondary leading-tight">
+                  <h3 className="text-sm font-semibold text-ref-ink leading-tight">
                     {item.title}
                   </h3>
                   <p className="text-xs text-muted-foreground mt-1 leading-snug">

@@ -8,7 +8,6 @@ import {
   MessageCircle,
   Mail,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import type { Language } from "@/types/events";
 import {
   buildGenericWhatsAppUrl,
@@ -50,7 +49,7 @@ export function EventsTransportFallback() {
   return (
     <div className="space-y-8">
       <div className="text-center max-w-2xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-4">
+        <h2 className="text-3xl md:text-4xl font-editorial font-light text-ref-ink mb-4">
           {t("events.fallbackTitle")}
         </h2>
         <p className="text-lg text-muted-foreground leading-relaxed">
@@ -62,13 +61,13 @@ export function EventsTransportFallback() {
         {FALLBACK_CATEGORIES.map(({ titleKey, descKey, Icon }) => (
           <div
             key={titleKey}
-            className="bg-white rounded-2xl border border-primary/20 p-6 hover:border-primary/30 transition-colors duration-200"
+            className="bg-white border border-ref-ink/8 p-6 hover:border-ref-navy/20 transition-colors duration-200"
           >
             <div className="flex items-center gap-3 mb-3">
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                <Icon className="w-5 h-5 text-primary" />
+              <div className="w-10 h-10 bg-ref-navy/8 flex items-center justify-center flex-shrink-0">
+                <Icon className="w-5 h-5 text-ref-navy" />
               </div>
-              <h3 className="text-lg font-display font-bold text-secondary">
+              <h3 className="font-editorial font-light text-ref-ink">
                 {t(titleKey)}
               </h3>
             </div>
@@ -81,27 +80,22 @@ export function EventsTransportFallback() {
 
       <div className="text-center space-y-4">
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" className="silk-button" asChild>
-            <a
-              href={buildGenericWhatsAppUrl(language)}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <MessageCircle className="w-5 h-5 mr-2" />
-              {t("events.fallbackCta")}
-            </a>
-          </Button>
-          <Button
-            size="lg"
-            variant="outline"
-            className="button-outline-gold"
-            asChild
+          <a
+            href={buildGenericWhatsAppUrl(language)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-6 py-3 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
           >
-            <a href={buildGenericEmailUrl(language)}>
-              <Mail className="w-5 h-5 mr-2" />
-              {t("events.fallbackCtaAlt")}
-            </a>
-          </Button>
+            <MessageCircle className="w-5 h-5" />
+            {t("events.fallbackCta")}
+          </a>
+          <a
+            href={buildGenericEmailUrl(language)}
+            className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-6 py-3 border border-ref-ink/20 text-ref-ink hover:bg-ref-ink/5 transition-colors"
+          >
+            <Mail className="w-5 h-5" />
+            {t("events.fallbackCtaAlt")}
+          </a>
         </div>
         <p className="text-sm text-muted-foreground">
           {t("events.fallbackDisclaimer")}

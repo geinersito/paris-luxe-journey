@@ -13,8 +13,6 @@ import {
   Star,
   MessageCircle,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { buildEventWhatsAppUrl } from "@/lib/eventsPrefill";
 import {
   formatParisDateWithLocale,
@@ -106,15 +104,15 @@ export function EventsFeed({
 
   const renderSourceLink = (event: Event, alignClassName = "text-center") => (
     <p
-      className={`text-xs text-muted-foreground/80 pt-2 border-t border-primary/10 ${alignClassName}`}
+      className={`text-xs text-muted-foreground/80 pt-2 border-t border-ref-ink/10 ${alignClassName}`}
     >
       <a
         href={event.sourceUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-1 hover:text-primary transition-colors"
+        className="inline-flex items-center gap-1 hover:text-ref-navy transition-colors"
       >
-        <span className="text-primary font-semibold">✓</span>
+        <span className="text-ref-navy font-semibold">✓</span>
         <span className="font-medium">{event.sourceName}</span>
         <ExternalLink className="w-3 h-3 opacity-60" />
       </a>
@@ -126,7 +124,7 @@ export function EventsFeed({
       {/* Header - Premium Style */}
       {showHeader && (
         <div className="text-center">
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-2">
+          <h2 className="font-editorial font-light text-3xl md:text-4xl text-ref-ink mb-2">
             {range === "week" ? t("events.thisWeek") : t("events.thisMonth")}
           </h2>
           {daysSinceUpdate > 14 && (
@@ -138,7 +136,7 @@ export function EventsFeed({
       )}
 
       {isSingleFeatured ? (
-        <div className="glass-card-premium overflow-hidden border-2 border-primary/20 shadow-luxury hover:shadow-luxury-hover transition-all duration-500">
+        <div className="border border-ref-ink/8 overflow-hidden bg-white">
           {displayEvents.map((event) => (
             <div
               key={event.id}
@@ -160,10 +158,10 @@ export function EventsFeed({
                   />
 
                   {event.isFeatured && (
-                    <Badge className="absolute left-5 top-5 bg-gradient-to-r from-primary to-primary/80 text-white border-0 shadow-lg">
+                    <span className="absolute left-5 top-5 inline-flex items-center gap-1 bg-ref-navy text-white text-xs font-semibold px-2.5 py-1 shadow-lg">
                       <Star className="w-3 h-3 mr-1 fill-current" />
                       {t("events.featured")}
-                    </Badge>
+                    </span>
                   )}
                 </div>
               )}
@@ -171,16 +169,16 @@ export function EventsFeed({
               <div className="flex flex-col justify-between gap-6 p-6 md:p-8 lg:p-10">
                 <div className="space-y-5">
                   <div className="flex flex-wrap gap-2">
-                    <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-gold-subtle rounded-lg">
-                      <Calendar className="w-4 h-4 text-primary" />
+                    <div className="flex items-center gap-2 px-3 py-1.5 bg-ref-ink/5">
+                      <Calendar className="w-4 h-4 text-ref-navy" />
                       <span className="text-sm text-gray-700 font-medium">
                         {formatDate(event.startAt)}
                       </span>
                     </div>
 
                     {(event.venueName || event.district) && (
-                      <div className="flex items-center gap-2 px-3 py-1.5 bg-white rounded-lg border border-primary/10 text-sm text-gray-600">
-                        <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
+                      <div className="flex items-center gap-2 px-3 py-1.5 bg-white border border-ref-ink/8 text-sm text-ref-ink/60">
+                        <MapPin className="w-4 h-4 text-ref-navy flex-shrink-0" />
                         <span className="font-medium">
                           {event.venueName?.[language] || ""}
                           {event.venueName && event.district && " • "}
@@ -190,16 +188,16 @@ export function EventsFeed({
                     )}
 
                     {event.category && (
-                      <Badge className="bg-primary/90 text-white capitalize font-semibold border-0 px-3 py-1.5">
+                      <span className="inline-flex items-center bg-ref-navy text-white capitalize font-semibold text-xs px-3 py-1.5">
                         {t(`events.categories.${event.category}`, {
                           defaultValue: event.category,
                         })}
-                      </Badge>
+                      </span>
                     )}
                   </div>
 
                   <div className="space-y-3">
-                    <h3 className="text-2xl md:text-3xl font-display font-bold text-secondary leading-tight">
+                    <h3 className="font-editorial font-light text-2xl md:text-3xl text-ref-ink leading-tight">
                       {event.title[language]}
                     </h3>
                     <p className="text-base text-gray-600 leading-relaxed">
@@ -208,9 +206,9 @@ export function EventsFeed({
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-5 border-t border-primary/10 pt-5 md:flex-row md:items-end md:justify-between">
+                <div className="flex flex-col gap-5 border-t border-ref-ink/8 pt-5 md:flex-row md:items-end md:justify-between">
                   <div className="space-y-3">
-                    <p className="text-xs text-primary/70">
+                    <p className="text-xs text-ref-ink/50">
                       {t("events.whatsappMicrocopy", {
                         defaultValue: "We reply fast on WhatsApp",
                       })}
@@ -219,44 +217,28 @@ export function EventsFeed({
                   </div>
 
                   <div className="flex w-full flex-col gap-3 md:w-auto md:min-w-[220px]">
-                    <Button asChild className="w-full silk-button">
-                      <a
-                        href={buildEventWhatsAppUrl(
-                          event,
-                          language,
-                          formatDate,
-                        )}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 text-sm"
-                      >
-                        <MessageCircle className="w-4 h-4 flex-shrink-0" />
-                        <span className="truncate">
-                          {t("events.getQuote", {
-                            defaultValue: "Get a Quote",
-                          })}
-                        </span>
-                      </a>
-                    </Button>
-                    <Button
-                      asChild
-                      variant="outline"
-                      className="w-full button-outline-gold"
+                    <a
+                      href={buildEventWhatsAppUrl(event, language, formatDate)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-4 py-3 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
                     >
-                      <a
-                        href={event.eventUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex items-center justify-center gap-2 text-sm"
-                      >
-                        <span className="truncate">
-                          {t("events.officialDetails", {
-                            defaultValue: "Official Details",
-                          })}
-                        </span>
-                        <ExternalLink className="w-4 h-4 flex-shrink-0" />
-                      </a>
-                    </Button>
+                      <MessageCircle className="w-4 h-4 flex-shrink-0" />
+                      <span className="truncate">
+                        {t("events.getQuote", { defaultValue: "Get a Quote" })}
+                      </span>
+                    </a>
+                    <a
+                      href={event.eventUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full inline-flex items-center justify-center gap-2 font-ui text-sm px-4 py-3 border border-ref-ink/20 text-ref-ink/70 hover:text-ref-ink hover:bg-ref-ink/5 transition-colors"
+                    >
+                      <span className="truncate">
+                        {t("events.officialDetails", { defaultValue: "Official Details" })}
+                      </span>
+                      <ExternalLink className="w-4 h-4 flex-shrink-0" />
+                    </a>
                   </div>
                 </div>
               </div>
@@ -274,7 +256,7 @@ export function EventsFeed({
           {displayEvents.map((event) => (
             <div
               key={event.id}
-              className="overflow-hidden bg-white rounded-2xl border border-primary/20 hover:border-primary/30 transition-colors duration-200"
+              className="overflow-hidden bg-white border border-ref-ink/8 hover:border-ref-navy/20 transition-colors duration-200"
               style={{
                 boxShadow:
                   "0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)",
@@ -301,22 +283,22 @@ export function EventsFeed({
                   />
 
                   {event.isFeatured && (
-                    <Badge className="absolute top-4 right-4 bg-gradient-to-r from-primary to-primary/80 text-white border-0 shadow-lg">
+                    <span className="absolute top-4 right-4 inline-flex items-center gap-1 bg-ref-navy text-white text-xs font-semibold px-2.5 py-1 shadow-lg">
                       <Star className="w-3 h-3 mr-1 fill-current" />
                       {t("events.featured")}
-                    </Badge>
+                    </span>
                   )}
                 </div>
               )}
 
               <div className="p-6">
-                <h3 className="text-xl font-display font-bold text-secondary line-clamp-2 mb-4">
+                <h3 className="font-editorial font-light text-xl text-ref-ink line-clamp-2 mb-4">
                   {event.title[language]}
                 </h3>
 
                 {/* Date and Time - Premium Style */}
-                <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-gold-subtle rounded-lg w-fit mb-3">
-                  <Calendar className="w-4 h-4 text-primary" />
+                <div className="flex items-center gap-2 px-3 py-1.5 bg-ref-ink/5 w-fit mb-3">
+                  <Calendar className="w-4 h-4 text-ref-navy" />
                   <span className="text-sm text-gray-700 font-medium">
                     {formatDate(event.startAt)}
                   </span>
@@ -325,7 +307,7 @@ export function EventsFeed({
                 {/* Venue and District */}
                 {(event.venueName || event.district) && (
                   <div className="flex items-center gap-2 mb-4 text-sm text-gray-600">
-                    <MapPin className="w-4 h-4 text-primary flex-shrink-0" />
+                    <MapPin className="w-4 h-4 text-ref-navy flex-shrink-0" />
                     <span className="font-medium">
                       {event.venueName?.[language] || ""}
                       {event.venueName && event.district && " • "}
@@ -342,49 +324,39 @@ export function EventsFeed({
 
                 {/* Category Badge - High Contrast */}
                 {event.category && (
-                  <Badge className="bg-primary/90 text-white capitalize font-semibold border-0">
+                  <span className="inline-flex items-center bg-ref-navy text-white capitalize font-semibold text-xs px-2.5 py-1">
                     {t(`events.categories.${event.category}`, {
                       defaultValue: event.category,
                     })}
-                  </Badge>
+                  </span>
                 )}
 
                 {/* Action Buttons - Contextual CTAs */}
                 <div className="flex flex-col gap-3 pt-2">
-                  <Button asChild className="w-full silk-button">
-                    <a
-                      href={buildEventWhatsAppUrl(event, language, formatDate)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 text-sm"
-                    >
-                      <MessageCircle className="w-4 h-4 flex-shrink-0" />
-                      <span className="truncate">
-                        {t("events.getQuote", { defaultValue: "Get a Quote" })}
-                      </span>
-                    </a>
-                  </Button>
-                  <Button
-                    asChild
-                    variant="outline"
-                    className="w-full button-outline-gold"
+                  <a
+                    href={buildEventWhatsAppUrl(event, language, formatDate)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-4 py-3 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
                   >
-                    <a
-                      href={event.eventUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center justify-center gap-2 text-sm"
-                    >
-                      <span className="truncate">
-                        {t("events.officialDetails", {
-                          defaultValue: "Official Details",
-                        })}
-                      </span>
-                      <ExternalLink className="w-4 h-4 flex-shrink-0" />
-                    </a>
-                  </Button>
+                    <MessageCircle className="w-4 h-4 flex-shrink-0" />
+                    <span className="truncate">
+                      {t("events.getQuote", { defaultValue: "Get a Quote" })}
+                    </span>
+                  </a>
+                  <a
+                    href={event.eventUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-2 font-ui text-sm px-4 py-3 border border-ref-ink/20 text-ref-ink/70 hover:text-ref-ink hover:bg-ref-ink/5 transition-colors"
+                  >
+                    <span className="truncate">
+                      {t("events.officialDetails", { defaultValue: "Official Details" })}
+                    </span>
+                    <ExternalLink className="w-4 h-4 flex-shrink-0" />
+                  </a>
                 </div>
-                <p className="text-xs text-primary/70 text-center">
+                <p className="text-xs text-ref-ink/50 text-center">
                   {t("events.whatsappMicrocopy", {
                     defaultValue: "We reply fast on WhatsApp",
                   })}
@@ -401,7 +373,7 @@ export function EventsFeed({
       {/* Past events — collapsed by default */}
       {displayPastEvents.length > 0 && (
         <details className="group">
-          <summary className="cursor-pointer list-none flex items-center gap-2 text-sm font-medium text-muted-foreground hover:text-primary transition-colors duration-200 select-none py-2">
+          <summary className="cursor-pointer list-none flex items-center gap-2 font-ui text-sm font-medium text-ref-ink/50 hover:text-ref-ink transition-colors duration-200 select-none py-2">
             <span className="w-4 h-4 border border-current rounded-full flex items-center justify-center text-xs group-open:rotate-90 transition-transform duration-200">
               ›
             </span>

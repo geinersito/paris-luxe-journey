@@ -16,13 +16,13 @@ export default function MobileStickyCTA({
 
   return (
     <div
-      className="fixed bottom-0 left-0 right-0 z-40 lg:hidden border-t border-primary/20 bg-white/95 backdrop-blur-sm"
+      className="fixed bottom-0 left-0 right-0 z-40 lg:hidden border-t border-ref-ink/20 bg-white/95 backdrop-blur-sm"
       style={{ paddingBottom: "env(safe-area-inset-bottom, 0px)" }}
     >
       <div className="px-4 py-3">
         <button
           onClick={onClick}
-          className="silk-button w-full flex items-center justify-center gap-2 min-h-[48px] text-sm"
+          className="w-full inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-6 min-h-[48px] bg-ref-navy text-white hover:bg-ref-ink transition-colors"
         >
           {label}
           <ArrowRight className="w-4 h-4" />

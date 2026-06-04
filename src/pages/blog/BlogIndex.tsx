@@ -8,8 +8,6 @@ import BlogCard from "@/components/blog/BlogCard";
 import CategoryFilter from "@/components/blog/CategoryFilter";
 import NewsletterCTA from "@/components/blog/NewsletterCTA";
 import BlogSidebar from "@/components/blog/BlogSidebar";
-import { Badge } from "@/components/ui/badge";
-import { Input } from "@/components/ui/input";
 import { Search, Calendar, Clock, ArrowRight } from "lucide-react";
 import { formatDate, getReadTimeText } from "@/lib/blog-utils";
 import { BlogCategory, Language } from "@/types/blog";
@@ -112,13 +110,13 @@ export default function BlogIndex() {
 
       <div className="min-h-screen bg-background">
         {/* Hero Section - Premium Style */}
-        <section className="relative section-padding bg-gradient-to-b from-champagne via-cream to-white">
+        <section className="relative py-16 bg-ref-bg">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
-              <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+              <p className="text-sm font-ui uppercase tracking-widest text-ref-ink/50 mb-4">
                 {t("blog.heroEyebrow") || "Descubrir París"}
               </p>
-              <h1 className="text-4xl md:text-6xl font-display font-bold text-secondary mb-6">
+              <h1 className="text-4xl md:text-6xl font-editorial font-light text-ref-ink mb-6">
                 {t("blog.heroTitle") || "Travel Blog"}
               </h1>
               <p className="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
@@ -128,15 +126,15 @@ export default function BlogIndex() {
 
               {/* Search Bar - Premium Style */}
               <div className="relative max-w-md mx-auto">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-primary" />
-                <Input
+                <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-ref-ink/40" />
+                <input
                   type="text"
                   placeholder={
                     t("blog.searchPlaceholder") || "Search articles..."
                   }
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="pl-12 h-12 border-2 border-primary/20 focus:border-primary/40 rounded-xl bg-white/80 backdrop-blur-sm"
+                  className="w-full pl-12 h-12 border border-ref-ink/20 focus:outline-none focus:border-ref-ink/40 rounded-xl bg-white/80 backdrop-blur-sm text-base text-ref-ink placeholder:text-ref-ink/40"
                 />
               </div>
             </div>
@@ -144,7 +142,7 @@ export default function BlogIndex() {
         </section>
 
         {/* Category Filter */}
-        <section className="py-8 border-b border-primary/10 bg-white/50 backdrop-blur-sm">
+        <section className="py-8 border-b border-ref-ink/10 bg-white/50 backdrop-blur-sm">
           <div className="container mx-auto px-4">
             <CategoryFilter
               selectedCategory={selectedCategory}
@@ -155,13 +153,13 @@ export default function BlogIndex() {
 
         {/* Featured Post */}
         {selectedCategory === "all" && searchQuery === "" && featuredPost && (
-          <section className="section-padding-sm bg-gradient-to-b from-white to-champagne/30">
+          <section className="py-10 bg-white">
             <div className="container mx-auto px-4">
               <div className="text-center mb-12">
-                <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+                <p className="text-sm font-ui uppercase tracking-widest text-ref-ink/50 mb-4">
                   {t("blog.featuredEyebrow") || "Artículo Destacado"}
                 </p>
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+                <h2 className="text-3xl md:text-4xl font-editorial font-light text-ref-ink">
                   {t("blog.featured") || "Featured Article"}
                 </h2>
               </div>
@@ -170,7 +168,7 @@ export default function BlogIndex() {
                   to={`/blog/${featuredPost.category}/${featuredPost.slug}`}
                   className="group block"
                 >
-                  <article className="overflow-hidden rounded-2xl border-2 border-primary/20 bg-white shadow-sm hover:border-primary/40 hover:shadow-luxury-hover transition-all duration-500">
+                  <article className="overflow-hidden rounded-2xl border border-ref-ink/8 bg-white hover:border-ref-navy/20 transition-colors duration-300">
                     <div className="grid grid-cols-12">
                       <div className="col-span-12 lg:col-span-5">
                         <div className="relative h-full min-h-[250px] md:min-h-[300px] overflow-hidden">
@@ -181,16 +179,16 @@ export default function BlogIndex() {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent" />
                           <div className="absolute top-4 left-4">
-                            <Badge className="bg-gradient-to-r from-primary to-primary/80 text-white border-0 shadow-lg">
+                            <span className="inline-flex items-center bg-ref-navy text-white text-xs font-semibold px-2.5 py-1 shadow-sm">
                               {featuredCategory?.name[lang] ||
                                 featuredPost.category}
-                            </Badge>
+                            </span>
                           </div>
                           {featuredPost.featured && (
                             <div className="absolute top-4 right-4">
-                              <Badge className="bg-secondary/90 backdrop-blur-sm text-white border-0 shadow-lg">
+                              <span className="inline-flex items-center bg-ref-ink/80 backdrop-blur-sm text-white text-xs font-semibold px-2.5 py-1 shadow-sm">
                                 ⭐ Featured
-                              </Badge>
+                              </span>
                             </div>
                           )}
                         </div>
@@ -198,7 +196,7 @@ export default function BlogIndex() {
 
                       <div className="col-span-12 lg:col-span-7 p-6 md:p-8 flex flex-col justify-between gap-6">
                         <div>
-                          <h3 className="text-2xl md:text-3xl font-display font-bold text-secondary group-hover:text-primary transition-colors duration-300">
+                          <h3 className="text-2xl md:text-3xl font-editorial font-light text-ref-ink group-hover:text-ref-navy transition-colors duration-300">
                             {featuredPost.title[lang]}
                           </h3>
                           <p className="mt-4 text-base md:text-lg text-gray-600 leading-relaxed">
@@ -206,14 +204,14 @@ export default function BlogIndex() {
                           </p>
 
                           <div className="mt-5 flex flex-wrap items-center gap-3 text-sm">
-                            <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-gold-subtle rounded-lg">
-                              <Calendar className="w-4 h-4 text-primary" />
+                            <div className="flex items-center gap-2 px-3 py-1.5 bg-ref-ink/5">
+                              <Calendar className="w-4 h-4 text-ref-navy" />
                               <span className="text-gray-700 font-medium">
                                 {formatDate(featuredPost.publishedAt, lang)}
                               </span>
                             </div>
-                            <div className="flex items-center gap-2 px-3 py-1.5 bg-gradient-gold-subtle rounded-lg">
-                              <Clock className="w-4 h-4 text-primary" />
+                            <div className="flex items-center gap-2 px-3 py-1.5 bg-ref-ink/5">
+                              <Clock className="w-4 h-4 text-ref-navy" />
                               <span className="text-gray-700 font-medium">
                                 {getReadTimeText(
                                   featuredPost.readingTime,
@@ -225,14 +223,14 @@ export default function BlogIndex() {
                         </div>
 
                         <div>
-                          <div className="flex items-center gap-3 pt-5 border-t border-primary/10">
+                          <div className="flex items-center gap-3 pt-5 border-t border-ref-ink/10">
                             <div className="relative">
                               <img
                                 src={featuredPost.author.avatar}
                                 alt={featuredPost.author.name}
-                                className="w-12 h-12 rounded-full object-cover ring-2 ring-primary/20"
+                                className="w-12 h-12 rounded-full object-cover ring-2 ring-ref-ink/10"
                               />
-                              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-primary rounded-full border-2 border-white" />
+                              <div className="absolute -bottom-1 -right-1 w-4 h-4 bg-ref-navy rounded-full border-2 border-white" />
                             </div>
                             <div>
                               <p className="text-sm font-semibold text-secondary">
@@ -244,8 +242,8 @@ export default function BlogIndex() {
                             </div>
                           </div>
 
-                          <div className="mt-4 flex items-center gap-2 text-primary font-semibold group-hover:gap-3 transition-all duration-300">
-                            <span className="font-display">
+                          <div className="mt-4 flex items-center gap-2 text-ref-navy font-semibold group-hover:gap-3 transition-all duration-300">
+                            <span className="font-editorial font-light">
                               {t("blog.readMore") || "Read More"}
                             </span>
                             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
@@ -261,13 +259,13 @@ export default function BlogIndex() {
         )}
 
         {/* All Posts with Sidebar */}
-        <section className="section-padding bg-gradient-to-b from-champagne/30 via-white to-cream">
+        <section className="py-16 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <p className="font-accent italic text-xl md:text-2xl text-primary mb-4">
+              <p className="text-sm font-ui uppercase tracking-widest text-ref-ink/50 mb-4">
                 Latest Stories
               </p>
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary">
+              <h2 className="text-3xl md:text-4xl font-editorial font-light text-ref-ink">
                 {selectedCategory === "all"
                   ? t("blog.allArticles") || "All Articles"
                   : t("blog.categoryArticles") || "Articles"}
@@ -305,7 +303,7 @@ export default function BlogIndex() {
         </section>
 
         {/* Newsletter CTA */}
-        <section className="section-padding-sm bg-gradient-to-b from-white to-champagne/30">
+        <section className="py-10 bg-white">
           <div className="container mx-auto px-4">
             <NewsletterCTA />
           </div>

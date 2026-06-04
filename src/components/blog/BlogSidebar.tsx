@@ -2,9 +2,7 @@ import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { buildBlogWhatsAppUrl, WHATSAPP_NUMBER } from "@/lib/eventsPrefill";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import {
   Plane,
   TrendingUp,
@@ -75,10 +73,10 @@ export default function BlogSidebar({
   return (
     <aside className="space-y-6">
       {/* Quick Quote Card */}
-      <Card className="border-2 border-primary/20 shadow-lg">
-        <CardHeader className="bg-gradient-to-br from-primary/10 to-primary/5">
+      <Card className="border border-ref-ink/20">
+        <CardHeader className="bg-ref-bg">
           <CardTitle className="flex items-center gap-2 text-lg">
-            <Plane className="w-5 h-5 text-primary" />
+            <Plane className="w-5 h-5 text-ref-navy" />
             {t("blog.sidebar.quickQuote") || "Quick Quote"}
           </CardTitle>
         </CardHeader>
@@ -87,26 +85,29 @@ export default function BlogSidebar({
             {t("blog.sidebar.quickQuoteDesc") ||
               "Get an instant price for your transfer"}
           </p>
-          <Button
+          <button
             onClick={handleQuickQuote}
-            className="w-full silk-button mb-3"
+            className="w-full inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-4 py-3 bg-ref-navy text-white hover:bg-ref-ink transition-colors mb-3"
           >
-            <Euro className="w-4 h-4 mr-2" />
+            <Euro className="w-4 h-4" />
             {t("blog.sidebar.calculatePrice") || "Calculate Price"}
-          </Button>
-          <Button onClick={handleWhatsApp} variant="outline" className="w-full">
-            <MessageCircle className="w-4 h-4 mr-2" />
+          </button>
+          <button
+            onClick={handleWhatsApp}
+            className="w-full inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-4 py-3 border border-ref-ink/20 text-ref-ink bg-white hover:border-ref-navy/30 transition-colors"
+          >
+            <MessageCircle className="w-4 h-4" />
             {t("blog.sidebar.whatsapp") || "WhatsApp Quote"}
-          </Button>
+          </button>
         </CardContent>
       </Card>
 
       {/* Excursion Module — transport/airport context */}
       {showExcursions && (
-        <Card className="border-2 border-amber-200/70 shadow-lg bg-gradient-to-br from-amber-50/60 to-white">
+        <Card className="border border-amber-200/70 bg-gradient-to-br from-amber-50/60 to-white">
           <CardHeader className="pb-3">
             <CardTitle className="flex items-center gap-2 text-lg">
-              <Map className="w-5 h-5 text-primary" />
+              <Map className="w-5 h-5 text-ref-navy" />
               {t("blog.excursionUpsell.heading") || "Add an excursion"}
             </CardTitle>
             <p className="text-xs text-muted-foreground mt-1">
@@ -138,16 +139,16 @@ export default function BlogSidebar({
                 <Link
                   key={exc.href}
                   to={exc.href}
-                  className="flex items-center gap-2 p-2 rounded-lg border border-amber-200/60 bg-white/70 text-sm text-foreground hover:border-primary/40 hover:bg-primary/5 transition-colors"
+                  className="flex items-center gap-2 p-2 rounded-lg border border-amber-200/60 bg-white/70 text-sm text-foreground hover:border-ref-navy/20 hover:bg-ref-bg transition-colors"
                 >
-                  <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                  <MapPin className="w-3.5 h-3.5 text-ref-navy flex-shrink-0" />
                   {exc.label}
                 </Link>
               ))}
             </div>
             <Link
               to="/excursions"
-              className="w-full text-xs text-primary font-medium hover:underline text-center block"
+              className="w-full text-xs text-ref-navy font-medium hover:underline text-center block"
             >
               {t("blog.excursionUpsell.cta") || "See all excursions →"}
             </Link>
@@ -156,7 +157,7 @@ export default function BlogSidebar({
       )}
 
       {/* Popular Routes Card */}
-      <Card className="border-2 border-primary/20 shadow-lg">
+      <Card className="border border-ref-ink/20">
         <CardHeader className="bg-gradient-to-br from-secondary/10 to-secondary/5">
           <CardTitle className="flex items-center gap-2 text-lg">
             <TrendingUp className="w-5 h-5 text-secondary" />
@@ -175,14 +176,14 @@ export default function BlogSidebar({
                 onMouseLeave={() => setSelectedRoute(null)}
                 className={`w-full text-left p-3 rounded-lg border transition-all duration-200 ${
                   selectedRoute === `${route.from}-${route.to}`
-                    ? "border-primary bg-primary/5 shadow-md"
-                    : "border-border hover:border-primary/50 hover:bg-accent"
+                    ? "border-ref-navy bg-ref-navy/5 shadow-md"
+                    : "border-border hover:border-ref-ink/30 hover:bg-ref-bg"
                 }`}
               >
                 <div className="flex items-start justify-between gap-2">
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <MapPin className="w-3 h-3 text-primary flex-shrink-0" />
+                      <MapPin className="w-3 h-3 text-ref-navy flex-shrink-0" />
                       <span className="text-xs font-medium text-muted-foreground truncate">
                         {route.from}
                       </span>
@@ -194,9 +195,9 @@ export default function BlogSidebar({
                       </span>
                     </div>
                   </div>
-                  <Badge className="bg-gradient-gold text-white border-0 flex-shrink-0">
+                  <span className="inline-flex items-center bg-ref-navy text-white text-xs font-semibold px-2 py-0.5 flex-shrink-0">
                     €{route.price}
-                  </Badge>
+                  </span>
                 </div>
               </button>
             ))}
@@ -208,7 +209,7 @@ export default function BlogSidebar({
       </Card>
 
       {/* Trust Badges */}
-      <Card className="border-2 border-primary/20 shadow-lg bg-gradient-to-br from-champagne/30 to-white">
+      <Card className="border border-ref-ink/20 bg-white">
         <CardContent className="pt-6">
           <div className="space-y-3 text-center">
             <div className="flex items-center justify-center gap-2">

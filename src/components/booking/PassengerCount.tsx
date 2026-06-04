@@ -74,7 +74,7 @@ export const PassengerCount = ({ value, onChange }: PassengerCountProps) => {
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger asChild>
-              <Info className="h-3 w-3 text-muted-foreground cursor-help hover:text-primary transition-colors" />
+              <Info className="h-3 w-3 text-muted-foreground cursor-help hover:text-ref-navy transition-colors" />
             </TooltipTrigger>
             <TooltipContent className="bg-white dark:bg-gray-800 p-2 rounded-lg shadow-lg">
               <p className="text-xs">
@@ -93,8 +93,8 @@ export const PassengerCount = ({ value, onChange }: PassengerCountProps) => {
           type="button"
           onClick={() => handleCountChange("decrement")}
           disabled={currentCount <= 1}
-          className="w-10 h-10 rounded-full bg-primary/20 hover:bg-primary/30
-                   text-primary border border-primary/30 shadow-sm hover:shadow-md hover:scale-105
+          className="w-10 h-10 rounded-full bg-ref-navy/10 hover:bg-ref-navy/20
+                   text-ref-navy border border-ref-navy/20 shadow-sm hover:shadow-md hover:scale-105
                    transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100
                    flex items-center justify-center group"
         >
@@ -103,7 +103,7 @@ export const PassengerCount = ({ value, onChange }: PassengerCountProps) => {
 
         <div className="flex flex-col items-center gap-1">
           <span
-            className={`text-2xl font-display font-semibold text-foreground min-w-[3.5rem] text-center transition-all duration-300 ${isAnimating ? "scale-110" : "scale-100"}`}
+            className={`text-2xl font-editorial font-light text-ref-ink min-w-[3.5rem] text-center transition-all duration-300 ${isAnimating ? "scale-110" : "scale-100"}`}
           >
             {value || "0"}
           </span>
@@ -115,15 +115,15 @@ export const PassengerCount = ({ value, onChange }: PassengerCountProps) => {
             >
               {suggestedVehicle === "berline" ? (
                 <>
-                  <Car className="h-3.5 w-3.5 text-primary" />
-                  <span className="text-primary">
+                  <Car className="h-3.5 w-3.5 text-ref-navy" />
+                  <span className="text-ref-navy">
                     {t.booking.vehicle.berline}
                   </span>
                 </>
               ) : (
                 <>
-                  <Bus className="h-3.5 w-3.5 text-primary" />
-                  <span className="text-primary">{t.booking.vehicle.van}</span>
+                  <Bus className="h-3.5 w-3.5 text-ref-navy" />
+                  <span className="text-ref-navy">{t.booking.vehicle.van}</span>
                 </>
               )}
             </div>
@@ -134,8 +134,8 @@ export const PassengerCount = ({ value, onChange }: PassengerCountProps) => {
           type="button"
           onClick={() => handleCountChange("increment")}
           disabled={currentCount >= MAX_PASSENGERS}
-          className="w-10 h-10 rounded-full bg-primary/20 hover:bg-primary/30
-                   text-primary border border-primary/30 shadow-sm hover:shadow-md hover:scale-105
+          className="w-10 h-10 rounded-full bg-ref-navy/10 hover:bg-ref-navy/20
+                   text-ref-navy border border-ref-navy/20 shadow-sm hover:shadow-md hover:scale-105
                    transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:scale-100
                    flex items-center justify-center group"
         >
@@ -145,7 +145,7 @@ export const PassengerCount = ({ value, onChange }: PassengerCountProps) => {
 
       {/* Mensaje para grupos de 8+ pasajeros */}
       {parseInt(value) >= MAX_PASSENGERS && (
-        <div className="mt-4 rounded-xl border border-primary/20 bg-primary/10 px-4 py-3.5 space-y-2.5">
+        <div className="mt-4 border border-ref-navy/20 bg-ref-navy/5 px-4 py-3.5 space-y-2.5">
           <p className="text-sm font-semibold text-foreground">
             {t.booking.groupTransfer?.title ||
               "Besoin d'un transfert pour 8+ passagers?"}

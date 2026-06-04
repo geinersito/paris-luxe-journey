@@ -14,232 +14,176 @@ const Footer = () => {
   const { t, language } = useLanguage();
   const currentYear = new Date().getFullYear();
 
-  return (
-    <footer className="bg-gradient-dark text-white relative overflow-hidden">
-      {/* Decorative overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 pointer-events-none" />
+  const socialLinks = [
+    {
+      Icon: Facebook,
+      href: "https://facebook.com/pariseliteservices",
+      label: "Facebook",
+    },
+    {
+      Icon: Instagram,
+      href: "https://instagram.com/pariseliteservices",
+      label: "Instagram",
+    },
+    {
+      Icon: Twitter,
+      href: "https://twitter.com/pariselite",
+      label: "Twitter",
+    },
+    {
+      Icon: Phone,
+      href: buildGenericWhatsAppUrl(language),
+      label: "WhatsApp",
+    },
+    {
+      Icon: Mail,
+      href: "mailto:info@eliteparistransfer.com",
+      label: "Email",
+    },
+  ];
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 relative z-10">
-        {/* Main Grid - 4 Columns */}
+  const quickLinks = [
+    { label: t?.footer?.links?.services ?? "Services", href: "#services" },
+    { label: t?.footer?.links?.fleet ?? "Fleet", href: "#fleet" },
+    { label: t?.footer?.links?.about ?? "About Us", href: "#about" },
+    {
+      label: t?.footer?.links?.travelGuides ?? "Travel Guides",
+      href: "/guides/avoid-fake-taxis",
+      isRoute: true,
+    },
+    {
+      label: t?.nav?.excursions ?? "Excursions",
+      href: "/excursions",
+      isRoute: true,
+    },
+    { label: t?.footer?.links?.faq ?? "FAQ", href: "/faq", isRoute: true },
+  ];
+
+  return (
+    <footer className="bg-ref-navy text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Main grid — 4 columns */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          {/* Column 1: Company Info */}
+          {/* Brand */}
           <div className="space-y-6">
             <div>
-              <h3 className="text-2xl font-display font-bold text-primary mb-3">
+              <h3 className="font-editorial font-light text-2xl text-white mb-3">
                 Paris Elite Services
               </h3>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                {t?.footer?.description ||
+              <p className="font-ui text-sm text-white/50 leading-relaxed">
+                {t?.footer?.description ??
                   "Luxury transport service and exclusive tours in Paris and surroundings."}
               </p>
             </div>
-            {/* Social Media Icons - Enhanced */}
-            <div className="flex space-x-3">
-              <a
-                href="https://facebook.com/pariseliteservices"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group w-11 h-11 rounded-full bg-primary/10 hover:bg-gradient-gold flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-gold-glow"
-                aria-label="Facebook"
-              >
-                <Facebook className="h-5 w-5 text-primary group-hover:text-white transition-colors duration-300" />
-              </a>
-              <a
-                href="https://instagram.com/pariseliteservices"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group w-11 h-11 rounded-full bg-primary/10 hover:bg-gradient-gold flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-gold-glow"
-                aria-label="Instagram"
-              >
-                <Instagram className="h-5 w-5 text-primary group-hover:text-white transition-colors duration-300" />
-              </a>
-              <a
-                href="https://twitter.com/pariselite"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group w-11 h-11 rounded-full bg-primary/10 hover:bg-gradient-gold flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-gold-glow"
-                aria-label="Twitter"
-              >
-                <Twitter className="h-5 w-5 text-primary group-hover:text-white transition-colors duration-300" />
-              </a>
-              <a
-                href={buildGenericWhatsAppUrl(language)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group w-11 h-11 rounded-full bg-primary/10 hover:bg-gradient-gold flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-gold-glow"
-                aria-label="WhatsApp"
-              >
-                <Phone className="h-5 w-5 text-primary group-hover:text-white transition-colors duration-300" />
-              </a>
-              <a
-                href="mailto:info@eliteparistransfer.com"
-                className="group w-11 h-11 rounded-full bg-primary/10 hover:bg-gradient-gold flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-gold-glow"
-                aria-label="Email"
-              >
-                <Mail className="h-5 w-5 text-primary group-hover:text-white transition-colors duration-300" />
-              </a>
+            <div className="flex gap-2">
+              {socialLinks.map(({ Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={
+                    href.startsWith("http") ? "noopener noreferrer" : undefined
+                  }
+                  aria-label={label}
+                  className="w-9 h-9 border border-white/20 flex items-center justify-center hover:border-white/50 transition-colors"
+                >
+                  <Icon className="h-4 w-4 text-white/50" />
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Column 2: Quick Links - Enhanced */}
+          {/* Quick links */}
           <div>
-            <h4 className="text-lg font-display font-bold text-primary mb-6 flex items-center gap-2">
-              <div className="w-1 h-6 bg-gradient-gold rounded-full" />
-              {t?.footer?.links?.title || "Quick Links"}
+            <h4 className="font-ui text-xs font-semibold uppercase tracking-[0.2em] text-white/40 mb-6">
+              {t?.footer?.links?.title ?? "Quick Links"}
             </h4>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href="#services"
-                  className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors duration-300" />
-                  {t?.footer?.links?.services || "Services"}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#fleet"
-                  className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors duration-300" />
-                  {t?.footer?.links?.fleet || "Fleet"}
-                </a>
-              </li>
-              <li>
-                <a
-                  href="#about"
-                  className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors duration-300" />
-                  {t?.footer?.links?.about || "About Us"}
-                </a>
-              </li>
-              <li>
-                <Link
-                  to="/guides/avoid-fake-taxis"
-                  className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors duration-300" />
-                  {t?.footer?.links?.travelGuides || "Travel Guides"}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/excursions"
-                  className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors duration-300" />
-                  {t?.nav?.excursions || "Excursions"}
-                </Link>
-              </li>
-              <li>
-                <Link
-                  to="/faq"
-                  className="group flex items-center gap-2 text-gray-300 hover:text-primary transition-all duration-300 text-sm hover:translate-x-1"
-                >
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary/50 group-hover:bg-primary transition-colors duration-300" />
-                  {t?.footer?.links?.faq || "FAQ"}
-                </Link>
-              </li>
+              {quickLinks.map(({ label, href, isRoute }) => (
+                <li key={label}>
+                  {isRoute ? (
+                    <Link
+                      to={href}
+                      className="font-ui text-sm text-white/60 hover:text-white transition-colors"
+                    >
+                      {label}
+                    </Link>
+                  ) : (
+                    <a
+                      href={href}
+                      className="font-ui text-sm text-white/60 hover:text-white transition-colors"
+                    >
+                      {label}
+                    </a>
+                  )}
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Column 3: Contact */}
+          {/* Contact */}
           <div>
-            <h4 className="text-lg font-display font-semibold text-primary mb-6">
-              {t?.contact?.title || "Contact"}
+            <h4 className="font-ui text-xs font-semibold uppercase tracking-[0.2em] text-white/40 mb-6">
+              {t?.contact?.title ?? "Contact"}
             </h4>
             <ul className="space-y-4">
-              <li className="flex items-start space-x-3">
-                <Phone className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-gray-300">
-                  {t?.contact?.phone || "+33 668 251 102"}
+              <li className="flex items-start gap-3">
+                <Phone className="h-4 w-4 text-white/40 shrink-0 mt-0.5" />
+                <span className="font-ui text-sm text-white/60">
+                  +33 668 251 102
                 </span>
               </li>
-              <li className="flex items-start space-x-3">
-                <Mail className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
+              <li className="flex items-start gap-3">
+                <Mail className="h-4 w-4 text-white/40 shrink-0 mt-0.5" />
                 <a
                   href="mailto:info@eliteparistransfer.com"
-                  className="text-sm text-gray-300 hover:text-primary transition-colors"
+                  className="font-ui text-sm text-white/60 hover:text-white transition-colors"
                 >
                   info@eliteparistransfer.com
                 </a>
               </li>
-              <li className="flex items-start space-x-3">
-                <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                <span className="text-sm text-gray-300">
-                  {t?.contact?.address || "75008 Paris, France"}
+              <li className="flex items-start gap-3">
+                <MapPin className="h-4 w-4 text-white/40 shrink-0 mt-0.5" />
+                <span className="font-ui text-sm text-white/60">
+                  Vanves (92170), Île-de-France
                 </span>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Hours */}
+          {/* Hours */}
           <div>
-            <h4 className="text-lg font-display font-semibold text-primary mb-6">
-              {t?.footer?.schedule?.title || "Opening Hours"}
+            <h4 className="font-ui text-xs font-semibold uppercase tracking-[0.2em] text-white/40 mb-6">
+              {t?.footer?.schedule?.title ?? "Hours"}
             </h4>
-            <div className="space-y-3">
-              <div className="text-sm text-gray-300">
-                <p className="font-semibold text-white mb-2">
-                  {t?.footer?.schedule?.title || "Opening Hours"}
-                </p>
-                <p>
-                  {t?.footer?.schedule?.description ||
-                    "Service available 24 hours, 7 days a week"}
-                </p>
-              </div>
-            </div>
+            <p className="font-ui text-sm text-white/60 leading-relaxed">
+              {t?.footer?.schedule?.description ??
+                "Service available 24 hours, 7 days a week"}
+            </p>
           </div>
         </div>
 
-        {/* Bottom Bar - Enhanced */}
-        <div className="pt-8 border-t border-white/10">
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm text-gray-400 flex items-center gap-2">
-              <span className="text-primary">©</span>
-              {currentYear}
-              {t?.footer?.copyright ||
-                " Paris Elite Services. All rights reserved."}
-            </p>
-            <div className="flex items-center gap-6 text-sm text-gray-400">
-              <Link
-                to="/privacy"
-                className="hover:text-primary transition-colors duration-300 hover:underline underline-offset-4"
-              >
-                {t?.footer?.links?.privacy || "Privacy Policy"}
-              </Link>
-              <span className="text-gray-600">•</span>
-              <Link
-                to="/terms"
-                className="hover:text-primary transition-colors duration-300 hover:underline underline-offset-4"
-              >
-                {t?.footer?.links?.terms || "Terms of Service"}
-              </Link>
-            </div>
-          </div>
-
-          {/* Trust Badge */}
-          <div className="mt-6 text-center">
-            <p className="text-xs text-gray-500 flex items-center justify-center gap-2">
-              <svg
-                className="w-4 h-4 text-primary"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fillRule="evenodd"
-                  d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                  clipRule="evenodd"
-                />
-              </svg>
-              <span>
-                {t?.trustBar?.licensed || "Licensed & Insured"} •{" "}
-                {t?.trustBar?.insurance || "Full Insurance"} •{" "}
-                {t?.trustBar?.available || "Available 24/7"}
-              </span>
-            </p>
+        {/* Bottom bar */}
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="font-ui text-xs text-white/40">
+            © {currentYear}
+            {t?.footer?.copyright ??
+              " Paris Elite Services. All rights reserved."}
+          </p>
+          <div className="flex items-center gap-6">
+            <Link
+              to="/privacy"
+              className="font-ui text-xs text-white/40 hover:text-white/70 transition-colors"
+            >
+              {t?.footer?.links?.privacy ?? "Privacy Policy"}
+            </Link>
+            <span className="text-white/20">·</span>
+            <Link
+              to="/terms"
+              className="font-ui text-xs text-white/40 hover:text-white/70 transition-colors"
+            >
+              {t?.footer?.links?.terms ?? "Terms of Service"}
+            </Link>
           </div>
         </div>
       </div>
