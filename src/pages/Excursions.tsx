@@ -1345,7 +1345,7 @@ const Excursions = () => {
           {/* Content */}
           <div className="flex-1 flex flex-col justify-between min-w-0">
             <div>
-              <h3 className="text-xl font-display font-bold text-secondary mb-2 truncate">
+              <h3 className="text-xl font-display font-bold text-secondary mb-2 line-clamp-2">
                 {tripData.title}
               </h3>
               <p className="text-sm text-gray-600 mb-3 line-clamp-2">
@@ -1354,15 +1354,15 @@ const Excursions = () => {
 
               {/* Quick Facts */}
               <div className="flex flex-wrap gap-2 mb-4">
-                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                <div className="bg-primary/10 text-primary px-3 py-1 rounded text-xs font-medium flex items-center gap-1">
                   <Clock className="w-3 h-3" />
                   {tripData.duration}
                 </div>
-                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                <div className="bg-primary/10 text-primary px-3 py-1 rounded text-xs font-medium flex items-center gap-1">
                   <MapPin className="w-3 h-3" />
                   {tripData.distance}
                 </div>
-                <div className="bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-medium flex items-center gap-1">
+                <div className="bg-primary/10 text-primary px-3 py-1 rounded text-xs font-medium flex items-center gap-1">
                   <Users className="w-3 h-3" />
                   {t.card.privateChauffeur}
                 </div>
@@ -1384,16 +1384,14 @@ const Excursions = () => {
                 {detailRoute && (
                   <Button
                     variant="outline"
-                    size="sm"
-                    className="border-primary text-primary hover:bg-primary hover:text-white transition-colors"
+                    className="min-h-[44px] border-primary text-primary hover:bg-primary hover:text-white transition-colors"
                     onClick={() => navigate(detailRoute)}
                   >
                     {t.card.viewDetails}
                   </Button>
                 )}
                 <Button
-                  size="sm"
-                  className="silk-button"
+                  className="min-h-[44px] silk-button"
                   onClick={() => window.open(whatsappUrl, "_blank")}
                 >
                   {t.card.requestQuote}
@@ -1484,7 +1482,7 @@ const Excursions = () => {
                   </Button>
                   <Button
                     variant="outline"
-                    className="button-outline-gold h-11 px-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
+                    className="h-11 px-7 bg-white text-secondary border-transparent hover:bg-white/90"
                     onClick={() => {
                       document
                         .getElementById("excursions-list")
