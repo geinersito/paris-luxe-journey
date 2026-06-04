@@ -120,7 +120,7 @@ const Airports = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-cream via-white to-champagne/20">
+    <div className="min-h-screen bg-ref-bg">
       <Helmet>
         <title>{pageTitle}</title>
         <meta name="title" content={pageTitle} />
@@ -150,13 +150,13 @@ const Airports = () => {
       <section className="section-padding pb-10">
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="text-center mb-8">
-            <h1 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-3">
+            <h1 className="font-editorial font-light text-3xl md:text-4xl text-ref-ink mb-3">
               {t.airports.terminalGuide.title}
             </h1>
-            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            <p className="text-lg text-ref-ink/60 max-w-3xl mx-auto">
               {t.airports.terminalGuide.subtitle}
             </p>
-            <p className="text-sm text-muted-foreground mt-3">
+            <p className="text-sm text-ref-ink/60 mt-3">
               {t.airports.terminalGuide.lastUpdated}{" "}
               {formatParisDate(TERMINAL_GUIDE_LAST_UPDATED_ISO)}
             </p>
@@ -165,19 +165,19 @@ const Airports = () => {
           <nav className="mb-5 flex flex-wrap justify-center gap-2">
             <a
               href="#terminal-guide"
-              className="inline-flex items-center rounded-full border border-ref-ink/20 bg-white px-4 py-2 text-sm font-medium text-secondary hover:border-ref-ink/40"
+              className="inline-flex items-center rounded-full border border-ref-ink/20 bg-white px-4 py-2 text-sm font-medium text-ref-ink/70 hover:border-ref-ink/40"
             >
               {t.airports.nav.terminalGuide}
             </a>
             <a
               href="#why-us"
-              className="inline-flex items-center rounded-full border border-ref-ink/20 bg-white px-4 py-2 text-sm font-medium text-secondary hover:border-ref-ink/40"
+              className="inline-flex items-center rounded-full border border-ref-ink/20 bg-white px-4 py-2 text-sm font-medium text-ref-ink/70 hover:border-ref-ink/40"
             >
               {t.airports.nav.whyChooseUs}
             </a>
             <a
               href="#get-price"
-              className="inline-flex items-center rounded-full border border-ref-ink/20 bg-white px-4 py-2 text-sm font-medium text-secondary hover:border-ref-ink/40"
+              className="inline-flex items-center rounded-full border border-ref-ink/20 bg-white px-4 py-2 text-sm font-medium text-ref-ink/70 hover:border-ref-ink/40"
             >
               {t.airports.nav.getPrice}
             </a>
@@ -187,10 +187,10 @@ const Airports = () => {
             id="get-price"
             className="scroll-mt-24 mb-8 rounded-2xl border border-ref-ink/15 bg-white/90 p-5 shadow-sm"
           >
-            <h2 className="text-2xl font-display font-semibold text-secondary text-center">
+            <h2 className="font-editorial font-light text-2xl text-ref-ink text-center">
               {t.airports.cta.title}
             </h2>
-            <p className="mt-2 text-center text-muted-foreground">
+            <p className="mt-2 text-center text-ref-ink/60">
               {t.airports.cta.subtitle}
             </p>
             <div className="mt-4 flex flex-col sm:flex-row justify-center gap-3">
@@ -207,7 +207,7 @@ const Airports = () => {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-ref-ink/20 bg-white px-5 py-3 text-sm font-semibold text-secondary hover:border-ref-ink/40"
+                className="inline-flex items-center justify-center rounded-md border border-ref-ink/20 bg-white px-5 py-3 text-sm font-semibold text-ref-ink/70 hover:border-ref-ink/40"
               >
                 {t.airports.cta.whatsapp}
               </a>
@@ -229,7 +229,7 @@ const Airports = () => {
                     className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border transition-colors ${
                       isActive
                         ? "bg-ref-navy text-white border-ref-navy"
-                        : "bg-white text-secondary border-ref-ink/20 hover:border-ref-ink/40"
+                        : "bg-white text-ref-ink/70 border-ref-ink/20 hover:border-ref-ink/40"
                     }`}
                   >
                     <PlaneTakeoff className="w-4 h-4" />
@@ -249,11 +249,11 @@ const Airports = () => {
                 className="p-5 border border-ref-ink/15 bg-white/90 shadow-sm"
               >
                 <div className="mb-4">
-                  <h2 className="text-xl font-display font-semibold text-secondary">
+                  <h2 className="font-ui font-semibold text-base text-ref-ink">
                     {terminal.code} · {resolveTerminalToken(terminal.name)}
                   </h2>
                   {terminal.airlinesHint && (
-                    <p className="text-sm text-muted-foreground mt-1">
+                    <p className="text-sm text-ref-ink/60 mt-1">
                       {resolveTerminalToken(terminal.airlinesHint)}
                     </p>
                   )}
@@ -263,10 +263,10 @@ const Airports = () => {
                   <div className="flex items-start gap-2">
                     <MapPin className="w-4 h-4 text-primary mt-0.5" />
                     <div className="text-sm">
-                      <p className="font-semibold text-secondary">
+                      <p className="font-semibold text-ref-ink">
                         {t.airports.terminalGuide.meetPoint}
                       </p>
-                      <p className="text-muted-foreground">
+                      <p className="text-ref-ink/60">
                         {resolveTerminalToken(terminal.meetPoint)}
                       </p>
                     </div>
@@ -276,10 +276,10 @@ const Airports = () => {
                     <div className="flex items-start gap-2">
                       <Clock3 className="w-4 h-4 text-primary mt-0.5" />
                       <div className="text-sm">
-                        <p className="font-semibold text-secondary">
+                        <p className="font-semibold text-ref-ink">
                           {t.airports.terminalGuide.transferTimeHint}
                         </p>
-                        <p className="text-muted-foreground">
+                        <p className="text-ref-ink/60">
                           {resolveTerminalToken(terminal.transferTimeHint)}
                         </p>
                       </div>
@@ -287,10 +287,10 @@ const Airports = () => {
                   )}
 
                   <div>
-                    <p className="font-semibold text-secondary text-sm mb-1">
+                    <p className="font-semibold text-ref-ink text-sm mb-1">
                       {t.airports.terminalGuide.tips}
                     </p>
-                    <ul className="list-disc list-inside text-sm text-muted-foreground space-y-1">
+                    <ul className="list-disc list-inside text-sm text-ref-ink/60 space-y-1">
                       {terminal.pickupNotes.map((noteToken) => (
                         <li key={`${terminal.code}-${noteToken}`}>
                           {resolveTerminalToken(noteToken)}
@@ -307,7 +307,7 @@ const Airports = () => {
             <TrustSignals />
           </section>
 
-          <p className="text-sm text-muted-foreground mt-8">
+          <p className="text-sm text-ref-ink/60 mt-8">
             {t.airports.terminalGuide.disclaimer}
           </p>
         </div>
