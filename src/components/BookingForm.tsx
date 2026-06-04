@@ -389,7 +389,7 @@ const BookingForm = ({
   if (isLoadingLocations) {
     return (
       <div className="flex items-center justify-center p-8">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-ref-navy"></div>
       </div>
     );
   }
@@ -400,11 +400,11 @@ const BookingForm = ({
       className={
         compact
           ? "w-full"
-          : "glass-card px-6 py-8 md:px-10 md:py-10 rounded-3xl max-w-2xl w-full mx-auto animate-fadeIn bg-white/95 dark:bg-primary-dark/95 backdrop-blur-lg shadow-2xl ring-1 ring-primary/10 hover:shadow-[0_25px_50px_-12px_rgba(11,37,69,0.25)] transition-shadow duration-300 border border-metallic/20"
+          : "px-6 py-8 md:px-10 md:py-10 max-w-2xl w-full mx-auto animate-fadeIn bg-white shadow-lg border border-ref-ink/8"
       }
     >
       {!compact && (
-        <h2 className="text-xl md:text-2xl font-sans font-semibold text-primary text-center mb-8">
+        <h2 className="font-editorial font-light text-xl md:text-2xl text-ref-ink text-center mb-8">
           {t.booking.title}
         </h2>
       )}
@@ -517,12 +517,12 @@ const BookingForm = ({
       </div>
 
       {price > 0 && (
-        <div className="bg-primary/10 p-3 rounded-md mt-6">
+        <div className="bg-ref-ink/5 p-3 mt-6">
           <div className="flex items-center justify-between">
-            <span className="font-semibold text-sm">
+            <span className="font-ui font-semibold text-sm">
               {t.booking.price.estimated}:
             </span>
-            <span className="text-lg font-display text-primary">
+            <span className="font-editorial font-light text-lg text-ref-navy">
               €{totalPrice.toFixed(2)}
             </span>
           </div>
@@ -546,7 +546,7 @@ const BookingForm = ({
 
       <Button
         type="submit"
-        className="w-full bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-primary-foreground font-semibold text-base py-6 mt-6 shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02] transition-all duration-300 rounded-xl"
+        className="w-full bg-ref-navy hover:bg-ref-ink text-white font-ui font-semibold text-sm py-4 mt-6 transition-colors duration-200"
         disabled={!validationState.isValid || isSubmitting}
       >
         {isSubmitting

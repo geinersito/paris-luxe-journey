@@ -30,7 +30,7 @@ export function DestinationHeader({
       </div>
       <div className="absolute inset-0 flex items-center justify-center text-white">
         <div className="text-center">
-          <h1 className="text-4xl md:text-5xl font-display mb-4">{title}</h1>
+          <h1 className="text-4xl md:text-5xl font-editorial font-light mb-4">{title}</h1>
           <div className="flex items-center justify-center gap-4 text-sm">
             <span>{distance}</span>
             <span>•</span>

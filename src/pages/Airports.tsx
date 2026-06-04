@@ -165,19 +165,19 @@ const Airports = () => {
           <nav className="mb-5 flex flex-wrap justify-center gap-2">
             <a
               href="#terminal-guide"
-              className="inline-flex items-center rounded-full border border-primary/25 bg-white px-4 py-2 text-sm font-medium text-secondary hover:border-primary/50"
+              className="inline-flex items-center rounded-full border border-ref-ink/20 bg-white px-4 py-2 text-sm font-medium text-secondary hover:border-ref-ink/40"
             >
               {t.airports.nav.terminalGuide}
             </a>
             <a
               href="#why-us"
-              className="inline-flex items-center rounded-full border border-primary/25 bg-white px-4 py-2 text-sm font-medium text-secondary hover:border-primary/50"
+              className="inline-flex items-center rounded-full border border-ref-ink/20 bg-white px-4 py-2 text-sm font-medium text-secondary hover:border-ref-ink/40"
             >
               {t.airports.nav.whyChooseUs}
             </a>
             <a
               href="#get-price"
-              className="inline-flex items-center rounded-full border border-primary/25 bg-white px-4 py-2 text-sm font-medium text-secondary hover:border-primary/50"
+              className="inline-flex items-center rounded-full border border-ref-ink/20 bg-white px-4 py-2 text-sm font-medium text-secondary hover:border-ref-ink/40"
             >
               {t.airports.nav.getPrice}
             </a>
@@ -185,7 +185,7 @@ const Airports = () => {
 
           <section
             id="get-price"
-            className="scroll-mt-24 mb-8 rounded-2xl border border-primary/15 bg-white/90 p-5 shadow-sm"
+            className="scroll-mt-24 mb-8 rounded-2xl border border-ref-ink/15 bg-white/90 p-5 shadow-sm"
           >
             <h2 className="text-2xl font-display font-semibold text-secondary text-center">
               {t.airports.cta.title}
@@ -207,7 +207,7 @@ const Airports = () => {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center rounded-md border border-primary/25 bg-white px-5 py-3 text-sm font-semibold text-secondary hover:border-primary/50"
+                className="inline-flex items-center justify-center rounded-md border border-ref-ink/20 bg-white px-5 py-3 text-sm font-semibold text-secondary hover:border-ref-ink/40"
               >
                 {t.airports.cta.whatsapp}
               </a>
@@ -228,8 +228,8 @@ const Airports = () => {
                     onClick={() => setSelectedAirport(airportCode)}
                     className={`inline-flex items-center gap-2 px-4 py-2 rounded-full border transition-colors ${
                       isActive
-                        ? "bg-primary text-white border-primary"
-                        : "bg-white text-secondary border-primary/20 hover:border-primary/40"
+                        ? "bg-ref-navy text-white border-ref-navy"
+                        : "bg-white text-secondary border-ref-ink/20 hover:border-ref-ink/40"
                     }`}
                   >
                     <PlaneTakeoff className="w-4 h-4" />
@@ -246,7 +246,7 @@ const Airports = () => {
             {selectedGuide.terminals.map((terminal) => (
               <Card
                 key={`${selectedGuide.airport}-${terminal.code}`}
-                className="p-5 border border-primary/15 bg-white/90 shadow-sm"
+                className="p-5 border border-ref-ink/15 bg-white/90 shadow-sm"
               >
                 <div className="mb-4">
                   <h2 className="text-xl font-display font-semibold text-secondary">

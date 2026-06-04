@@ -11,7 +11,6 @@ import {
   Mail,
   ChevronDown,
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { buildHourlyWhatsAppUrl } from "@/lib/eventsPrefill";
@@ -129,7 +128,7 @@ export default function HourlyService() {
                 </span>
               </div>
 
-              <h1 className="text-4xl md:text-5xl lg:text-5xl text-white font-display font-bold mb-4 leading-tight drop-shadow-2xl">
+              <h1 className="text-4xl md:text-5xl lg:text-5xl text-white font-editorial font-light mb-4 leading-tight drop-shadow-2xl">
                 {t("hourly.heroTitle")}
               </h1>
 
@@ -138,29 +137,28 @@ export default function HourlyService() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <Button size="lg" className="silk-button" asChild>
-                  <a href={waUrl} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    {t("hourly.ctaQuote")}
-                  </a>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="button-outline-gold h-11 px-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
-                  asChild
+                <a
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-6 py-3 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
                 >
-                  <Link to="/excursions/versailles">
-                    {t("hourly.heroCtaVersailles")}
-                  </Link>
-                </Button>
+                  <MessageCircle className="w-5 h-5" />
+                  {t("hourly.ctaQuote")}
+                </a>
+                <Link
+                  to="/excursions/versailles"
+                  className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-6 py-3 border border-white/30 text-white bg-white/10 hover:bg-white/20 backdrop-blur-sm transition-colors"
+                >
+                  {t("hourly.heroCtaVersailles")}
+                </Link>
               </div>
             </div>
           </div>
         </section>
 
         {/* Trust row */}
-        <div className="bg-white border-b border-primary/10 py-4">
+        <div className="bg-white border-b border-ref-ink/10 py-4">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
               {(
@@ -175,7 +173,7 @@ export default function HourlyService() {
                   key={k}
                   className="flex items-center gap-1.5 font-medium text-secondary"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-primary inline-block" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-ref-navy inline-block" />
                   {t(`hourly.${k}`)}
                 </span>
               ))}
@@ -184,10 +182,10 @@ export default function HourlyService() {
         </div>
 
         {/* Use Cases */}
-        <section className="py-12 md:py-16 bg-gradient-to-b from-white via-champagne/20 to-white">
+        <section className="py-12 md:py-16 bg-ref-bg">
           <div className="container mx-auto px-4">
             <div className="text-center mb-10">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-3">
+              <h2 className="text-3xl md:text-4xl font-editorial font-light text-ref-ink mb-3">
                 {t("hourly.useCasesTitle")}
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
@@ -199,41 +197,41 @@ export default function HourlyService() {
               {useCaseKeys.map((k, i) => (
                 <div
                   key={k}
-                  className="bg-white rounded-2xl border border-primary/10 p-6 shadow-sm hover:shadow-md transition-shadow"
+                  className="bg-white border border-ref-ink/10 p-6 hover:border-ref-navy/20 transition-colors"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-primary/8 flex items-center justify-center text-primary mb-4">
+                  <div className="w-12 h-12 bg-ref-navy/8 flex items-center justify-center text-ref-navy mb-4">
                     {USE_CASE_ICONS[i]}
                   </div>
-                  <h3 className="font-display font-semibold text-lg text-secondary mb-2">
+                  <h3 className="font-editorial font-light text-lg text-ref-ink mb-2">
                     {t(`hourly.useCases.${k}.title`)}
                   </h3>
                   <p className="text-muted-foreground text-sm leading-relaxed mb-3">
                     {t(`hourly.useCases.${k}.description`)}
                   </p>
-                  <span className="inline-block text-xs font-medium text-primary bg-primary/8 px-3 py-1 rounded-full">
+                  <span className="inline-block text-xs font-medium text-ref-navy bg-ref-navy/8 px-3 py-1">
                     {t(`hourly.useCases.${k}.duration`)}
                   </span>
                 </div>
               ))}
 
               {/* Internal link card — Versailles */}
-              <div className="bg-champagne/40 rounded-2xl border border-primary/15 p-6 flex flex-col justify-between">
+              <div className="bg-ref-bg border border-ref-ink/15 p-6 flex flex-col justify-between">
                 <div>
-                  <p className="text-xs font-medium text-primary uppercase tracking-wide mb-2">
+                  <p className="text-xs font-medium text-ref-navy uppercase tracking-wide mb-2">
                     Also available
                   </p>
                   <p className="text-sm text-muted-foreground leading-relaxed">
                     Looking for a fixed-price{" "}
                     <Link
                       to="/excursions/versailles"
-                      className="text-primary underline underline-offset-2 hover:text-primary/80"
+                      className="text-ref-navy underline underline-offset-2 hover:text-ref-ink"
                     >
                       Versailles excursion
                     </Link>{" "}
                     or planning around a Paris{" "}
                     <Link
                       to="/events"
-                      className="text-primary underline underline-offset-2 hover:text-primary/80"
+                      className="text-ref-navy underline underline-offset-2 hover:text-ref-ink"
                     >
                       event or concert
                     </Link>
@@ -250,7 +248,7 @@ export default function HourlyService() {
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <div className="text-center mb-8">
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-3">
+                <h2 className="text-3xl md:text-4xl font-editorial font-light text-ref-ink mb-3">
                   {t("hourly.pricingTitle")}
                 </h2>
                 <p className="text-muted-foreground">
@@ -258,25 +256,28 @@ export default function HourlyService() {
                 </p>
               </div>
 
-              <div className="bg-gradient-to-br from-primary/8 via-primary/4 to-transparent border border-primary/20 rounded-2xl p-8 md:p-10">
+              <div className="bg-ref-bg border border-ref-ink/20 p-8 md:p-10">
                 <div className="flex flex-col sm:flex-row gap-6 items-start sm:items-center justify-between mb-6">
                   <div>
-                    <p className="text-3xl md:text-4xl font-display font-bold text-primary">
+                    <p className="text-3xl md:text-4xl font-editorial font-light text-ref-navy">
                       {t("hourly.pricingFrom")}
                     </p>
                     <p className="text-sm text-muted-foreground mt-1">
                       {t("hourly.pricingMinimum")}
                     </p>
                   </div>
-                  <Button size="lg" className="silk-button shrink-0" asChild>
-                    <a href={waUrl} target="_blank" rel="noopener noreferrer">
-                      <MessageCircle className="w-5 h-5 mr-2" />
-                      {t("hourly.pricingCta")}
-                    </a>
-                  </Button>
+                  <a
+                    href={waUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-6 py-3 bg-ref-navy text-white hover:bg-ref-ink transition-colors shrink-0"
+                  >
+                    <MessageCircle className="w-5 h-5" />
+                    {t("hourly.pricingCta")}
+                  </a>
                 </div>
 
-                <p className="text-sm text-muted-foreground border-t border-primary/10 pt-4 leading-relaxed">
+                <p className="text-sm text-muted-foreground border-t border-ref-ink/10 pt-4 leading-relaxed">
                   {t("hourly.pricingNote")}
                 </p>
 
@@ -284,7 +285,7 @@ export default function HourlyService() {
                   For{" "}
                   <Link
                     to="/airports/cdg"
-                    className="text-primary underline underline-offset-2 hover:text-primary/80"
+                    className="text-ref-navy underline underline-offset-2 hover:text-ref-ink"
                   >
                     airport transfers
                   </Link>{" "}
@@ -297,11 +298,11 @@ export default function HourlyService() {
         </section>
 
         {/* FAQ */}
-        <section className="py-12 md:py-16 bg-gradient-to-b from-champagne/20 to-white">
+        <section className="py-12 md:py-16 bg-ref-bg">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto">
               <div className="text-center mb-10">
-                <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-3">
+                <h2 className="text-3xl md:text-4xl font-editorial font-light text-ref-ink mb-3">
                   {t("hourly.faqTitle")}
                 </h2>
                 <p className="text-muted-foreground">
@@ -313,7 +314,7 @@ export default function HourlyService() {
                 {faqs.map(({ key, q, a }) => (
                   <div
                     key={key}
-                    className="bg-white rounded-xl border border-primary/10 overflow-hidden"
+                    className="bg-white border border-ref-ink/10 overflow-hidden"
                   >
                     <button
                       className="w-full flex items-center justify-between px-6 py-4 text-left gap-4"
@@ -324,11 +325,11 @@ export default function HourlyService() {
                         {q}
                       </span>
                       <ChevronDown
-                        className={`w-5 h-5 text-primary shrink-0 transition-transform duration-200 ${openFaq === key ? "rotate-180" : ""}`}
+                        className={`w-5 h-5 text-ref-navy shrink-0 transition-transform duration-200 ${openFaq === key ? "rotate-180" : ""}`}
                       />
                     </button>
                     {openFaq === key && (
-                      <div className="px-6 pb-5 text-sm text-muted-foreground leading-relaxed border-t border-primary/8">
+                      <div className="px-6 pb-5 text-sm text-muted-foreground leading-relaxed border-t border-ref-ink/8">
                         <p className="pt-4">{a}</p>
                       </div>
                     )}
@@ -342,31 +343,30 @@ export default function HourlyService() {
         {/* CTA */}
         <section className="py-12 md:py-14 bg-white">
           <div className="container mx-auto px-4">
-            <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 rounded-2xl p-8 md:p-12 text-center max-w-3xl mx-auto">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-4">
+            <div className="bg-ref-bg border border-ref-ink/20 p-8 md:p-12 text-center max-w-3xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-editorial font-light text-ref-ink mb-4">
                 {t("hourly.ctaTitle")}
               </h2>
               <p className="text-muted-foreground mb-8 max-w-xl mx-auto">
                 {t("hourly.ctaDescription")}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="silk-button" asChild>
-                  <a href={waUrl} target="_blank" rel="noopener noreferrer">
-                    <MessageCircle className="w-5 h-5 mr-2" />
-                    {t("hourly.ctaWhatsAppFull")}
-                  </a>
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="button-outline-gold"
-                  asChild
+                <a
+                  href={waUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-6 py-3 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
                 >
-                  <a href={emailUrl}>
-                    <Mail className="w-5 h-5 mr-2" />
-                    {t("hourly.ctaEmail")}
-                  </a>
-                </Button>
+                  <MessageCircle className="w-5 h-5" />
+                  {t("hourly.ctaWhatsAppFull")}
+                </a>
+                <a
+                  href={emailUrl}
+                  className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-6 py-3 border border-ref-ink/20 text-ref-ink bg-white hover:border-ref-navy/30 transition-colors"
+                >
+                  <Mail className="w-5 h-5" />
+                  {t("hourly.ctaEmail")}
+                </a>
               </div>
             </div>
           </div>

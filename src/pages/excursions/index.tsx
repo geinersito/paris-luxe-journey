@@ -41,7 +41,7 @@ export default function ExcursionsPage() {
       <main className="container mx-auto px-4 py-8">
         <div className="space-y-8">
           <div className="text-center">
-            <h1 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-3">
+            <h1 className="text-3xl md:text-4xl font-editorial font-light text-ref-ink mb-3">
               {t.services.dayTrips.title}
             </h1>
             <p className="text-gray-600 max-w-2xl mx-auto">

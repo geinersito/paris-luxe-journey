@@ -1331,10 +1331,10 @@ const Excursions = () => {
     const detailRoute = detailRouteMap[trip.tripKey];
 
     return (
-      <div className="glass-card-premium overflow-hidden hover:shadow-lg transition-all duration-300">
+      <div className="border border-ref-ink/8 bg-white overflow-hidden hover:border-ref-navy/20 transition-colors">
         <div className="flex flex-col sm:flex-row gap-4 p-4">
           {/* Compact Image */}
-          <div className="sm:w-48 h-40 sm:h-auto flex-shrink-0 relative rounded-lg overflow-hidden">
+          <div className="sm:w-48 h-40 sm:h-auto flex-shrink-0 relative overflow-hidden">
             <img
               src={trip.image}
               alt={tripData.title}
@@ -1345,7 +1345,7 @@ const Excursions = () => {
           {/* Content */}
           <div className="flex-1 flex flex-col justify-between min-w-0">
             <div>
-              <h3 className="text-xl font-display font-bold text-secondary mb-2 line-clamp-2">
+              <h3 className="text-xl font-editorial font-light text-ref-ink mb-2 line-clamp-2">
                 {tripData.title}
               </h3>
               <p className="text-sm text-gray-600 mb-3 line-clamp-2">
@@ -1354,15 +1354,15 @@ const Excursions = () => {
 
               {/* Quick Facts */}
               <div className="flex flex-wrap gap-2 mb-4">
-                <div className="bg-primary/10 text-primary px-3 py-1 rounded text-xs font-medium flex items-center gap-1">
+                <div className="bg-ref-ink/5 text-ref-ink/60 px-3 py-1 text-xs font-medium flex items-center gap-1">
                   <Clock className="w-3 h-3" />
                   {tripData.duration}
                 </div>
-                <div className="bg-primary/10 text-primary px-3 py-1 rounded text-xs font-medium flex items-center gap-1">
+                <div className="bg-ref-ink/5 text-ref-ink/60 px-3 py-1 text-xs font-medium flex items-center gap-1">
                   <MapPin className="w-3 h-3" />
                   {tripData.distance}
                 </div>
-                <div className="bg-primary/10 text-primary px-3 py-1 rounded text-xs font-medium flex items-center gap-1">
+                <div className="bg-ref-ink/5 text-ref-ink/60 px-3 py-1 text-xs font-medium flex items-center gap-1">
                   <Users className="w-3 h-3" />
                   {t.card.privateChauffeur}
                 </div>
@@ -1370,9 +1370,9 @@ const Excursions = () => {
             </div>
 
             {/* Price & CTAs */}
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-gray-200">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-3 border-t border-ref-ink/8">
               <div className="flex items-baseline gap-2">
-                <span className="text-2xl font-display font-bold text-primary">
+                <span className="text-2xl font-editorial font-light text-ref-navy">
                   €{trip.price}
                 </span>
                 <span className="text-xs text-gray-500">
@@ -1382,20 +1382,19 @@ const Excursions = () => {
 
               <div className="flex gap-2">
                 {detailRoute && (
-                  <Button
-                    variant="outline"
-                    className="min-h-[44px] border-primary text-primary hover:bg-primary hover:text-white transition-colors"
+                  <button
+                    className="min-h-[44px] inline-flex items-center justify-center font-ui text-sm px-3 py-2 border border-ref-ink/20 text-ref-ink/70 hover:text-ref-ink hover:bg-ref-ink/5 transition-colors"
                     onClick={() => navigate(detailRoute)}
                   >
                     {t.card.viewDetails}
-                  </Button>
+                  </button>
                 )}
-                <Button
-                  className="min-h-[44px] silk-button"
+                <button
+                  className="min-h-[44px] inline-flex items-center justify-center font-ui font-semibold text-sm px-3 py-2 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
                   onClick={() => window.open(whatsappUrl, "_blank")}
                 >
                   {t.card.requestQuote}
-                </Button>
+                </button>
               </div>
             </div>
           </div>
@@ -1424,348 +1423,331 @@ const Excursions = () => {
         <meta name="twitter:title" content={seo.title} />
         <meta name="twitter:description" content={seo.description} />
         <meta name="twitter:image" content={`${siteOrigin}/og-image.png`} />
-      </Helmet>
-      <div className="min-h-screen bg-gradient-to-b from-cream via-white to-champagne">
-        {/* Hero Section - Compact & Clear */}
-        <section className="relative h-[340px] md:h-[360px] flex items-center justify-center overflow-hidden">
-          <div className="absolute inset-0">
-            <img
-              src="/images/library/excursions/hero/excursions-hero-paris-eiffel-1920x1080.jpg"
-              alt="Private Day Trips from Paris"
-              className="w-full h-full object-cover"
-            />
-          </div>
+      </Helmet>    <div className="min-h-screen bg-ref-bg">
+      {/* Hero Section - Compact & Clear */}
+      <section className="relative h-[340px] md:h-[360px] flex items-center justify-center overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/images/library/excursions/hero/excursions-hero-paris-eiffel-1920x1080.jpg"
+            alt="Private Day Trips from Paris"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/25 to-black/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/45" />
 
-          <div className="relative z-10 w-full max-w-6xl mx-auto px-4 text-center">
-            <div className="relative mx-auto max-w-4xl px-4 py-4 md:px-6 md:py-5">
-              <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b from-black/55 via-black/25 to-transparent" />
+        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 text-center">
+          <div className="mx-auto max-w-4xl px-2 md:px-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-editorial font-light mb-3 leading-tight drop-shadow-2xl">
+              {t.hero.title}
+            </h1>
+            <p className="text-base md:text-lg text-white/95 mb-4 max-w-3xl mx-auto leading-relaxed">
+              {t.hero.subtitle}
+            </p>
 
-              <div className="relative">
-                <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-display font-bold mb-3 leading-tight drop-shadow-2xl">
-                  {t.hero.title}
-                </h1>
-                <p className="text-base md:text-lg text-white/95 mb-4 max-w-3xl mx-auto leading-relaxed">
-                  {t.hero.subtitle}
-                </p>
-
-                {/* Trust Badges */}
-                <div className="flex flex-wrap justify-center gap-2 mb-4">
-                  <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
-                    <Users className="w-5 h-5 text-neutral-800" />
-                    <span className="text-neutral-900 text-sm md:text-base font-semibold">
-                      {t.hero.badge1}
-                    </span>
-                  </div>
-                  <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
-                    <Clock className="w-5 h-5 text-neutral-800" />
-                    <span className="text-neutral-900 text-sm md:text-base font-semibold">
-                      {t.hero.badge2}
-                    </span>
-                  </div>
-                  <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
-                    <Star className="w-5 h-5 text-neutral-800 fill-current" />
-                    <span className="text-neutral-900 text-sm md:text-base font-semibold">
-                      {t.hero.badge3}
-                    </span>
-                  </div>
-                </div>
-
-                {/* CTAs */}
-                <div className="flex flex-col sm:flex-row gap-2.5 justify-center">
-                  <Button
-                    className="silk-button h-11 px-7"
-                    onClick={() =>
-                      window.open(buildGenericWhatsAppUrl(language), "_blank")
-                    }
-                  >
-                    {t.hero.ctaPrimary}
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="h-11 px-7 bg-white text-secondary border-transparent hover:bg-white/90"
-                    onClick={() => {
-                      document
-                        .getElementById("excursions-list")
-                        ?.scrollIntoView({
-                          behavior: "smooth",
-                          block: "start",
-                        });
-                    }}
-                  >
-                    {t.hero.ctaSecondary}
-                  </Button>
-                </div>
+            {/* Trust Badges */}
+            <div className="flex flex-wrap justify-center gap-2 mb-4">
+              <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                <Users className="w-5 h-5 text-neutral-800" />
+                <span className="text-neutral-900 text-sm md:text-base font-semibold">
+                  {t.hero.badge1}
+                </span>
               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* How it Works Section */}
-        <section className="py-10 md:py-12 bg-gradient-to-br from-primary/5 to-white">
-          <div className="container px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-            <div className="text-center mb-8 md:mb-10">
-              <h2 className="text-2xl md:text-3xl font-display font-bold text-primary mb-3">
-                {t.howItWorks.title}
-              </h2>
-              <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-                {t.howItWorks.subtitle}
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-5 md:gap-6">
-              {/* Step 1 */}
-              <div className="text-center">
-                <div className="w-14 h-14 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-xl font-bold text-white">1</span>
-                </div>
-                <h3 className="text-lg font-display font-bold text-secondary mb-2">
-                  {t.howItWorks.step1Title}
-                </h3>
-                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                  {t.howItWorks.step1Text}
-                </p>
+              <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                <Clock className="w-5 h-5 text-neutral-800" />
+                <span className="text-neutral-900 text-sm md:text-base font-semibold">
+                  {t.hero.badge2}
+                </span>
               </div>
-
-              {/* Step 2 */}
-              <div className="text-center">
-                <div className="w-14 h-14 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-xl font-bold text-white">2</span>
-                </div>
-                <h3 className="text-lg font-display font-bold text-secondary mb-2">
-                  {t.howItWorks.step2Title}
-                </h3>
-                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                  {t.howItWorks.step2Text}
-                </p>
-              </div>
-
-              {/* Step 3 */}
-              <div className="text-center">
-                <div className="w-14 h-14 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-3">
-                  <span className="text-xl font-bold text-white">3</span>
-                </div>
-                <h3 className="text-lg font-display font-bold text-secondary mb-2">
-                  {t.howItWorks.step3Title}
-                </h3>
-                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                  {t.howItWorks.step3Text}
-                </p>
+              <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                <Star className="w-5 h-5 text-neutral-800 fill-current" />
+                <span className="text-neutral-900 text-sm md:text-base font-semibold">
+                  {t.hero.badge3}
+                </span>
               </div>
             </div>
 
-            {/* CTA */}
-            <div className="text-center mt-8 md:mt-10">
-              <Button
-                className="silk-button h-12 px-8 text-base"
-                onClick={() =>
-                  window.open(buildGenericWhatsAppUrl(language), "_blank")
-                }
+            {/* CTAs */}
+            <div className="flex flex-col sm:flex-row gap-2.5 justify-center">
+              <a
+                href={buildGenericWhatsAppUrl(language)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-7 py-3 bg-white text-ref-navy hover:bg-ref-bg transition-colors"
               >
-                {t.howItWorks.cta}
-              </Button>
-            </div>
-          </div>
-        </section>
-
-        {/* Main Content */}
-        <div
-          id="excursions-list"
-          className="max-w-7xl mx-auto px-4 py-10 md:py-12"
-        >
-          <TrustSignals className="mb-6 md:mb-8" />
-
-          <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
-            {/* Quick Filters Sidebar */}
-            <div className="w-full lg:w-64">
-              <div className="bg-white rounded-lg p-6 shadow-sm sticky top-4">
-                <h2 className="text-lg font-semibold mb-4">
-                  {t.filters.quickFilters}
-                </h2>
-
-                <div className="space-y-2">
-                  <button
-                    onClick={() => setQuickFilter("all")}
-                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                      quickFilter === "all"
-                        ? "bg-primary text-white font-semibold shadow-md"
-                        : "bg-gray-50 text-gray-700 hover:bg-gray-100"
-                    }`}
-                  >
-                    {t.filters.allTrips}
-                  </button>
-
-                  <button
-                    onClick={() => setQuickFilter("paris")}
-                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                      quickFilter === "paris"
-                        ? "bg-primary text-white font-semibold shadow-md"
-                        : "bg-gray-50 text-gray-700 hover:bg-gray-100"
-                    }`}
-                  >
-                    {t.filters.parisOnly}
-                  </button>
-
-                  <button
-                    onClick={() => setQuickFilter("outside")}
-                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                      quickFilter === "outside"
-                        ? "bg-primary text-white font-semibold shadow-md"
-                        : "bg-gray-50 text-gray-700 hover:bg-gray-100"
-                    }`}
-                  >
-                    {t.filters.outsideParis}
-                  </button>
-
-                  <button
-                    onClick={() => setQuickFilter("night")}
-                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                      quickFilter === "night"
-                        ? "bg-primary text-white font-semibold shadow-md"
-                        : "bg-gray-50 text-gray-700 hover:bg-gray-100"
-                    }`}
-                  >
-                    {t.filters.nightTours}
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            {/* Day Trips List */}
-            <div className="flex-1">
-              {/* Results Counter */}
-              <div className="mb-6 flex items-center justify-between">
-                <p className="text-sm text-gray-600">
-                  <span className="font-semibold text-primary">
-                    {filteredTrips.length}
-                  </span>{" "}
-                  {t.filters.excursionsMatch}
-                </p>
-              </div>
-
-              {/* No Results Message */}
-              {filteredTrips.length === 0 ? (
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                    {t.filters.noResults}
-                  </h3>
-                  <p className="text-gray-600 mb-6">
-                    {t.filters.noResultsMessage}
-                  </p>
-                  <Button
-                    className="silk-button"
-                    onClick={() =>
-                      window.open(buildGenericWhatsAppUrl(language), "_blank")
-                    }
-                  >
-                    {t.filters.contactWhatsApp}
-                  </Button>
-                </div>
-              ) : (
-                <div className="space-y-6">
-                  {currentTrips.map((trip) => (
-                    <DayTripCard
-                      key={trip.id}
-                      trip={trip}
-                      t={t}
-                      language={language}
-                    />
-                  ))}
-                </div>
-              )}
+                {t.hero.ctaPrimary}
+              </a>
+              <button
+                className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-7 py-3 border border-white/40 text-white hover:bg-white/10 transition-colors"
+                onClick={() => {
+                  document.getElementById("excursions-list")?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }}
+              >
+                {t.hero.ctaSecondary}
+              </button>
             </div>
           </div>
         </div>
+      </section>
 
-        {/* Custom Quote CTA for Agencies */}
-        <section className="py-10 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10">
-          <div className="container px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-            <div className="glass-card-premium p-6 md:p-8 text-center border-2 border-primary/20">
-              <div className="inline-block px-3 py-1 bg-primary/10 rounded-full text-xs md:text-sm font-semibold text-primary mb-3">
-                For Travel Agencies & Groups
+      {/* How it Works Section */}
+      <section className="py-10 md:py-12 bg-white border-b border-ref-ink/8">
+        <div className="container px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+          <div className="text-center mb-8 md:mb-10">
+            <h2 className="text-2xl md:text-3xl font-editorial font-light text-ref-ink mb-3">
+              {t.howItWorks.title}
+            </h2>
+            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+              {t.howItWorks.subtitle}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5 md:gap-6">
+            {/* Step 1 */}
+            <div className="text-center">
+              <div className="w-14 h-14 bg-ref-navy flex items-center justify-center mx-auto mb-3">
+                <span className="text-xl font-bold text-white">1</span>
               </div>
-              <h2 className="text-xl md:text-2xl font-display font-bold text-secondary mb-3">
-                {t.customQuote.title}
-              </h2>
-              <p className="text-base text-gray-600 mb-5 max-w-2xl mx-auto">
-                {t.customQuote.subtitle}
+              <h3 className="text-lg font-editorial font-light text-ref-ink mb-2">
+                {t.howItWorks.step1Title}
+              </h3>
+              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                {t.howItWorks.step1Text}
               </p>
-              <Button
-                className="silk-button h-12 px-8 text-base"
-                onClick={() =>
-                  window.open(
-                    buildExcursionWhatsAppUrl(
-                      "a custom private tour",
-                      language,
-                    ),
-                    "_blank",
-                  )
-                }
-              >
-                {t.customQuote.cta}
-              </Button>
+            </div>
+
+            {/* Step 2 */}
+            <div className="text-center">
+              <div className="w-14 h-14 bg-ref-navy flex items-center justify-center mx-auto mb-3">
+                <span className="text-xl font-bold text-white">2</span>
+              </div>
+              <h3 className="text-lg font-editorial font-light text-ref-ink mb-2">
+                {t.howItWorks.step2Title}
+              </h3>
+              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                {t.howItWorks.step2Text}
+              </p>
+            </div>
+
+            {/* Step 3 */}
+            <div className="text-center">
+              <div className="w-14 h-14 bg-ref-navy flex items-center justify-center mx-auto mb-3">
+                <span className="text-xl font-bold text-white">3</span>
+              </div>
+              <h3 className="text-lg font-editorial font-light text-ref-ink mb-2">
+                {t.howItWorks.step3Title}
+              </h3>
+              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                {t.howItWorks.step3Text}
+              </p>
             </div>
           </div>
-        </section>
 
-        {/* FAQ Section - Excursions Specific */}
-        <section className="py-16 bg-white">
-          <div className="container px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
-                {t.faq.title}
+          {/* CTA */}
+          <div className="text-center mt-8 md:mt-10">
+            <a
+              href={buildGenericWhatsAppUrl(language)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-8 py-3 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
+            >
+              {t.howItWorks.cta}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <div
+        id="excursions-list"
+        className="max-w-7xl mx-auto px-4 py-10 md:py-12"
+      >
+        <TrustSignals className="mb-6 md:mb-8" />
+
+        <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
+          {/* Quick Filters Sidebar */}
+          <div className="w-full lg:w-64">
+            <div className="bg-white border border-ref-ink/8 p-6 sticky top-4">
+              <h2 className="font-ui font-semibold text-sm text-ref-ink mb-4">
+                {t.filters.quickFilters}
               </h2>
-              <p className="text-lg text-gray-600">{t.faq.subtitle}</p>
-            </div>
 
-            <div className="space-y-6">
-              {/* FAQ 1 */}
-              <div className="glass-card-premium p-6">
-                <h3 className="text-lg font-semibold text-secondary mb-3">
-                  {t.faq.q1}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">{t.faq.a1}</p>
+              <div className="space-y-2">
+                <button
+                  onClick={() => setQuickFilter("all")}
+                  className={`w-full text-left px-4 py-3 font-ui text-sm transition-colors duration-200 ${
+                    quickFilter === "all"
+                      ? "bg-ref-navy text-white font-semibold"
+                      : "bg-ref-bg text-ref-ink/70 hover:bg-ref-ink/5"
+                  }`}
+                >
+                  {t.filters.allTrips}
+                </button>
+
+                <button
+                  onClick={() => setQuickFilter("paris")}
+                  className={`w-full text-left px-4 py-3 font-ui text-sm transition-colors duration-200 ${
+                    quickFilter === "paris"
+                      ? "bg-ref-navy text-white font-semibold"
+                      : "bg-ref-bg text-ref-ink/70 hover:bg-ref-ink/5"
+                  }`}
+                >
+                  {t.filters.parisOnly}
+                </button>
+
+                <button
+                  onClick={() => setQuickFilter("outside")}
+                  className={`w-full text-left px-4 py-3 font-ui text-sm transition-colors duration-200 ${
+                    quickFilter === "outside"
+                      ? "bg-ref-navy text-white font-semibold"
+                      : "bg-ref-bg text-ref-ink/70 hover:bg-ref-ink/5"
+                  }`}
+                >
+                  {t.filters.outsideParis}
+                </button>
+
+                <button
+                  onClick={() => setQuickFilter("night")}
+                  className={`w-full text-left px-4 py-3 font-ui text-sm transition-colors duration-200 ${
+                    quickFilter === "night"
+                      ? "bg-ref-navy text-white font-semibold"
+                      : "bg-ref-bg text-ref-ink/70 hover:bg-ref-ink/5"
+                  }`}
+                >
+                  {t.filters.nightTours}
+                </button>
               </div>
-
-              {/* FAQ 2 */}
-              <div className="glass-card-premium p-6">
-                <h3 className="text-lg font-semibold text-secondary mb-3">
-                  {t.faq.q2}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">{t.faq.a2}</p>
-              </div>
-
-              {/* FAQ 3 */}
-              <div className="glass-card-premium p-6">
-                <h3 className="text-lg font-semibold text-secondary mb-3">
-                  {t.faq.q3}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">{t.faq.a3}</p>
-              </div>
-
-              {/* FAQ 4 */}
-              <div className="glass-card-premium p-6">
-                <h3 className="text-lg font-semibold text-secondary mb-3">
-                  {t.faq.q4}
-                </h3>
-                <p className="text-gray-600 leading-relaxed">{t.faq.a4}</p>
-              </div>
-            </div>
-
-            {/* Final CTA */}
-            <div className="text-center mt-12">
-              <p className="text-gray-600 mb-6">{t.faq.stillQuestions}</p>
-              <Button
-                className="silk-button h-14 px-10 text-lg"
-                onClick={() =>
-                  window.open(buildGenericWhatsAppUrl(language), "_blank")
-                }
-              >
-                {t.faq.ctaFaq}
-              </Button>
             </div>
           </div>
-        </section>
+
+          {/* Day Trips List */}
+          <div className="flex-1">
+            {/* Results Counter */}
+            <div className="mb-6 flex items-center justify-between">
+              <p className="text-sm text-gray-600">
+                <span className="font-semibold text-ref-navy">
+                  {filteredTrips.length}
+                </span>{" "}
+                {t.filters.excursionsMatch}
+              </p>
+            </div>
+
+            {/* No Results Message */}
+            {filteredTrips.length === 0 ? (
+              <div className="bg-white border border-ref-ink/8 p-8 text-center">
+                <h3 className="font-editorial font-light text-xl text-ref-ink mb-3">
+                  {t.filters.noResults}
+                </h3>
+                <p className="text-gray-600 mb-6">
+                  {t.filters.noResultsMessage}
+                </p>
+                <a
+                  href={buildGenericWhatsAppUrl(language)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-6 py-3 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
+                >
+                  {t.filters.contactWhatsApp}
+                </a>
+              </div>
+          ) : (
+            <div className="space-y-4">
+              {currentTrips.map((trip) => (
+                <DayTripCard key={trip.id} trip={trip} t={t} language={language} />
+              ))}
+            </div>
+          )}
+        </div>
       </div>
+    </div>
+
+      {/* Custom Quote CTA for Agencies */}
+      <section className="py-10 bg-ref-bg border-t border-ref-ink/8">
+        <div className="container px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+          <div className="border border-ref-ink/8 bg-white p-6 md:p-8 text-center">
+            <div className="inline-block px-3 py-1 bg-ref-navy/8 text-xs md:text-sm font-semibold text-ref-ink/60 mb-3">
+              For Travel Agencies & Groups
+            </div>
+            <h2 className="text-xl md:text-2xl font-editorial font-light text-ref-ink mb-3">
+              {t.customQuote.title}
+            </h2>
+            <p className="text-base text-gray-600 mb-5 max-w-2xl mx-auto">
+              {t.customQuote.subtitle}
+            </p>
+            <a
+              href={buildExcursionWhatsAppUrl("a custom private tour", language)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-8 py-3 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
+            >
+              {t.customQuote.cta}
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section - Excursions Specific */}
+      <section className="py-16 bg-white border-t border-ref-ink/8">
+        <div className="container px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-editorial font-light text-ref-ink mb-4">
+              {t.faq.title}
+            </h2>
+            <p className="text-lg text-gray-600">{t.faq.subtitle}</p>
+          </div>
+
+          <div className="divide-y divide-ref-ink/8 border border-ref-ink/8">
+            {/* FAQ 1 */}
+            <div className="p-6">
+              <h3 className="font-ui font-semibold text-sm text-ref-ink mb-3">
+                {t.faq.q1}
+              </h3>
+              <p className="font-ui text-sm text-ref-ink/60 leading-relaxed">{t.faq.a1}</p>
+            </div>
+
+            {/* FAQ 2 */}
+            <div className="p-6">
+              <h3 className="font-ui font-semibold text-sm text-ref-ink mb-3">
+                {t.faq.q2}
+              </h3>
+              <p className="font-ui text-sm text-ref-ink/60 leading-relaxed">{t.faq.a2}</p>
+            </div>
+
+            {/* FAQ 3 */}
+            <div className="p-6">
+              <h3 className="font-ui font-semibold text-sm text-ref-ink mb-3">
+                {t.faq.q3}
+              </h3>
+              <p className="font-ui text-sm text-ref-ink/60 leading-relaxed">{t.faq.a3}</p>
+            </div>
+
+            {/* FAQ 4 */}
+            <div className="p-6">
+              <h3 className="font-ui font-semibold text-sm text-ref-ink mb-3">
+                {t.faq.q4}
+              </h3>
+              <p className="font-ui text-sm text-ref-ink/60 leading-relaxed">{t.faq.a4}</p>
+            </div>
+          </div>
+
+          {/* Final CTA */}
+          <div className="text-center mt-12">
+            <p className="font-ui text-sm text-ref-ink/60 mb-6">{t.faq.stillQuestions}</p>
+            <a
+              href={buildGenericWhatsAppUrl(language)}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-10 py-4 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
+            >
+              {t.faq.ctaFaq}
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
     </>
   );
 };

@@ -18,8 +18,8 @@ export function DestinationNavigation({ items, activeSection, onSectionChange }:
               onClick={() => onSectionChange(item.id)}
               className={`px-4 py-3 text-sm whitespace-nowrap border-b-2 transition-colors ${
                 activeSection === item.id
-                  ? 'border-primary text-primary'
-                  : 'border-transparent text-muted-foreground hover:text-primary'
+                  ? 'border-ref-navy text-ref-navy'
+                  : 'border-transparent text-muted-foreground hover:text-ref-ink'
               }`}
             >
               {item.label}

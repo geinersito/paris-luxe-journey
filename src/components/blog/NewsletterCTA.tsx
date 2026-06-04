@@ -1,7 +1,5 @@
 import { useState, FormEvent } from 'react'
 import { useTranslation } from 'react-i18next'
-import { Input } from '@/components/ui/input'
-import { Button } from '@/components/ui/button'
 import { useToast } from '@/hooks/use-toast'
 import { Mail, Sparkles } from 'lucide-react'
 
@@ -91,10 +89,10 @@ export default function NewsletterCTA() {
   }
 
   return (
-    <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent border border-primary/20 rounded-2xl p-8 md:p-12">
+    <div className="bg-ref-bg border border-ref-ink/8 rounded-2xl p-8 md:p-12">
       <div className="max-w-2xl mx-auto text-center">
-        <div className="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-full mb-6">
-          <Sparkles className="w-8 h-8 text-primary" />
+        <div className="inline-flex items-center justify-center w-16 h-16 bg-ref-navy/8 rounded-full mb-6">
+          <Sparkles className="w-8 h-8 text-ref-navy" />
         </div>
 
         <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
@@ -107,15 +105,15 @@ export default function NewsletterCTA() {
         </p>
 
         <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-          <Input
+          <input
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={t('exitPopup.emailPlaceholder') || 'Enter your email'}
             disabled={isLoading}
-            className="flex-1"
+            className="flex-1 h-12 px-4 border border-ref-ink/20 focus:outline-none focus:border-ref-ink/40 bg-white text-ref-ink placeholder:text-ref-ink/40 disabled:opacity-50"
           />
-          <Button type="submit" disabled={isLoading} className="whitespace-nowrap">
+          <button type="submit" disabled={isLoading} className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-6 py-3 bg-ref-navy text-white hover:bg-ref-ink transition-colors whitespace-nowrap disabled:opacity-50">
             {isLoading ? (
               t('common.processing')
             ) : (
@@ -124,7 +122,7 @@ export default function NewsletterCTA() {
                 {t('blog.newsletter.subscribe') || 'Subscribe'}
               </>
             )}
-          </Button>
+          </button>
         </form>
 
         <p className="text-xs text-muted-foreground mt-4">

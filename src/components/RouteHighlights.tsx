@@ -96,7 +96,7 @@ export default function RouteHighlights() {
                 whileHover={{ y: -12, scale: 1.03 }}
                 className="h-full"
               >
-                <div className="glass-card-premium overflow-hidden h-full flex flex-col group shadow-luxury hover:shadow-luxury-hover border-2 border-primary/10 hover:border-primary/20 transition-all duration-500 rounded-2xl">
+                <div className="glass-card-premium overflow-hidden h-full flex flex-col group shadow-luxury hover:shadow-luxury-hover border-2 border-ref-ink/10 hover:border-ref-ink/20 transition-all duration-500 rounded-2xl">
                   {/* Icon Header with gradient - Enhanced */}
                   <div className={`bg-gradient-to-br ${route.bgGradient} p-8 flex items-center justify-center relative overflow-hidden group-hover:from-primary/15 group-hover:to-primary/25 transition-all duration-500`}>
                     <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

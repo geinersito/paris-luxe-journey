@@ -204,8 +204,8 @@ export default function HeroSection() {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header fijo con botón de cerrar */}
-            <div className="px-6 md:px-8 py-5 flex items-center justify-between border-b border-gray-200 flex-shrink-0 bg-gradient-to-r from-primary/5 to-transparent rounded-t-3xl">
-              <h2 className="text-2xl md:text-3xl font-display font-bold text-primary">
+            <div className="px-6 md:px-8 py-5 flex items-center justify-between border-b border-ref-ink/8 flex-shrink-0 rounded-t-3xl">
+              <h2 className="text-2xl md:text-3xl font-editorial font-light text-ref-ink">
                 {t.booking.title || "Réservez Votre Transfert"}
               </h2>
               <button

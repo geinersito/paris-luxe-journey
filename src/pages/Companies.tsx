@@ -1,7 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import { Link } from "react-router-dom";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Button } from "@/components/ui/button";
 import { trackEvent } from "@/lib/analytics";
 
 export default function CompaniesPage() {
@@ -23,8 +22,8 @@ export default function CompaniesPage() {
 
       <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4 max-w-4xl">
-          <div className="rounded-2xl border border-border bg-card p-6 md:p-10 shadow-sm">
-            <h1 className="text-3xl md:text-4xl font-display font-bold text-secondary mb-4">
+          <div className="border border-ref-ink/10 bg-white p-6 md:p-10">
+            <h1 className="text-3xl md:text-4xl font-editorial font-light text-ref-ink mb-4">
               {t.companies.h1}
             </h1>
             <p className="text-base md:text-lg text-muted-foreground mb-6 leading-relaxed">
@@ -34,7 +33,7 @@ export default function CompaniesPage() {
             <ul className="space-y-3 mb-6">
               {bullets.map((bullet) => (
                 <li key={bullet} className="flex items-start gap-3">
-                  <span className="mt-2 h-2 w-2 rounded-full bg-primary shrink-0" />
+                  <span className="mt-2 h-2 w-2 rounded-full bg-ref-navy shrink-0" />
                   <span className="text-foreground">{bullet}</span>
                 </li>
               ))}
@@ -44,23 +43,22 @@ export default function CompaniesPage() {
               {t.companies.contactHint}
             </p>
 
-            <Button asChild className="silk-button">
-              <Link
-                to="/contact"
-                onClick={() =>
-                  trackEvent("cta_click", {
-                    page: "/empresas",
-                    cta_id: "b2b_companies_primary",
-                    cta_label: t.companies.cta,
-                    placement: "b2b_page_primary",
-                    destination: "/contact",
-                    href: "/contact",
-                  })
-                }
-              >
-                {t.companies.cta}
-              </Link>
-            </Button>
+            <Link
+              to="/contact"
+              onClick={() =>
+                trackEvent("cta_click", {
+                  page: "/empresas",
+                  cta_id: "b2b_companies_primary",
+                  cta_label: t.companies.cta,
+                  placement: "b2b_page_primary",
+                  destination: "/contact",
+                  href: "/contact",
+                })
+              }
+              className="inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-6 py-3 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
+            >
+              {t.companies.cta}
+            </Link>
           </div>
         </div>
       </section>

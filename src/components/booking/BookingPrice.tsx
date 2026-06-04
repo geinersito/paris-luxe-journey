@@ -40,7 +40,7 @@ export const BookingPrice = ({
   return (
     <>
       {distance && distance > 0 && (
-        <div className="bg-primary/5 p-3 rounded-md">
+        <div className="bg-ref-ink/5 p-3">
           <p className="text-sm text-gray-600">
             Distancia estimada: {distance.toFixed(1)} km
           </p>
@@ -48,7 +48,7 @@ export const BookingPrice = ({
       )}
 
       {formattedPrice !== null && (
-        <div className="bg-primary/10 p-4 rounded-md animate-fadeIn">
+        <div className="bg-ref-ink/5 p-4 animate-fadeIn">
           {/* Precio base */}
           <div className="flex items-center justify-between mb-2">
             <span className="text-sm">Precio base:</span>
@@ -88,7 +88,7 @@ export const BookingPrice = ({
           {/* Precio total */}
           <div className="flex items-center justify-between mt-2 pt-1">
             <span className="font-semibold">Precio Total:</span>
-            <span className="text-xl font-display text-primary flex items-center">
+            <span className="text-xl font-editorial font-light text-ref-navy flex items-center">
               <Euro className="h-5 w-5 mr-1" />
               {formattedPrice} €
             </span>

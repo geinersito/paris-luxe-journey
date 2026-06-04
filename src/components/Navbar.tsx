@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { Button } from "./ui/button";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { LanguageSelector } from "./LanguageSelector";
 import { useNavigate, useLocation } from "react-router-dom";
@@ -44,10 +43,8 @@ const Navbar = () => {
     setMobileDropdownOpen(null);
   };
 
-  // Scroll to top smoothly
   const scrollTopSmooth = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  // Scroll to element with fixed navbar offset
   const scrollToElementWithOffset = (element: Element) => {
     const navbar = document.querySelector("nav");
     const headerOffset = navbar?.getBoundingClientRect().height ?? 80;
@@ -60,20 +57,16 @@ const Navbar = () => {
     });
   };
 
-  // Handle navigation with hash links
   const handleNavClick = (
     e: React.MouseEvent<HTMLAnchorElement>,
     href: string,
   ) => {
     e.preventDefault();
 
-    // Handle Home navigation with scroll-to-top
     if (href === "/") {
       if (location.pathname === "/") {
-        // Already on home, just scroll to top
         scrollTopSmooth();
       } else {
-        // Navigate to home, then scroll to top after render
         navigate("/");
         requestAnimationFrame(() =>
           requestAnimationFrame(() => scrollTopSmooth()),
@@ -83,28 +76,20 @@ const Navbar = () => {
       return;
     }
 
-    // If it's a hash link
     if (href.startsWith("#")) {
-      // If we're not on the home page, navigate to home with hash
       if (location.pathname !== "/") {
-        // Navigate to home with the hash - the useEffect will handle scrolling
         navigate("/" + href);
       } else {
-        // We're on home, just scroll to the section with offset
         const element = document.querySelector(href);
         if (element) {
           scrollToElementWithOffset(element);
-          // Update URL to reflect the anchor (shareable)
           window.history.replaceState(null, "", "/#" + href.slice(1));
         }
       }
-
-      // Close mobile menu
       closeMobileMenu();
       return;
     }
 
-    // Handle path + hash navigation (e.g. /airports#terminal-guide)
     if (href.includes("#")) {
       const [path, hashFragment] = href.split("#");
       const hash = `#${hashFragment}`;
@@ -126,19 +111,14 @@ const Navbar = () => {
         );
       }
 
-      // Close mobile menu
       closeMobileMenu();
       return;
     }
 
-    // Regular navigation
     navigate(href);
-
-    // Close mobile menu
     closeMobileMenu();
   };
 
-  // Scroll detection for navbar styling and progress bar
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
@@ -210,13 +190,13 @@ const Navbar = () => {
     <nav
       className={`fixed w-full z-nav transition-all duration-500 translate-y-0 ${
         scrolled
-          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-xl shadow-lg border-b border-primary/10"
-          : "bg-white/95 dark:bg-background/90 backdrop-blur-md shadow-sm border-b border-border"
+          ? "bg-white/95 backdrop-blur-xl shadow-sm border-b border-ref-ink/8"
+          : "bg-white/95 backdrop-blur-md border-b border-ref-ink/5"
       }`}
     >
-      {/* Scroll Progress Bar */}
+      {/* Scroll progress bar */}
       <div
-        className="absolute top-0 left-0 h-1 bg-gradient-gold transition-all duration-300 ease-out"
+        className="absolute top-0 left-0 h-0.5 bg-ref-navy transition-all duration-300 ease-out"
         style={{ width: `${scrollProgress}%` }}
       />
 
@@ -226,9 +206,7 @@ const Navbar = () => {
             <a
               href="/"
               onClick={(e) => handleNavClick(e, "/")}
-              className={`text-lg sm:text-xl xl:text-2xl font-display font-bold transition-all duration-300 whitespace-nowrap ${
-                scrolled ? "text-primary" : "text-secondary"
-              }`}
+              className="font-editorial font-light text-lg sm:text-xl xl:text-2xl text-ref-ink transition-colors duration-300 whitespace-nowrap hover:text-ref-navy"
             >
               Paris Elite Services
             </a>
@@ -239,16 +217,16 @@ const Navbar = () => {
               {navItems.map((item) =>
                 item.hasDropdown ? (
                   <div key={item.name} className="relative group flex-shrink-0">
-                    <button className="text-secondary group-hover:text-primary transition-colors duration-200 font-medium flex items-center py-2 text-sm xl:text-base whitespace-nowrap">
+                    <button className="font-ui text-ref-ink/70 group-hover:text-ref-ink transition-colors duration-200 font-medium flex items-center py-2 text-sm xl:text-base whitespace-nowrap">
                       {item.name} <ChevronDown className="ml-1 h-4 w-4" />
                     </button>
                     <div className="absolute left-0 top-full pt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                      <div className="rounded-md shadow-lg bg-background border border-border overflow-hidden">
+                      <div className="shadow-lg bg-white border border-ref-ink/8 overflow-hidden">
                         {item.dropdownItems.map((dropdownItem) =>
                           dropdownItem.disabled ? (
                             <span
                               key={dropdownItem.name}
-                              className="block px-4 py-2.5 text-sm text-muted-foreground/50 cursor-not-allowed"
+                              className="block px-4 py-2.5 text-sm text-ref-ink/30 cursor-not-allowed font-ui"
                             >
                               {dropdownItem.name}{" "}
                               <span className="text-xs">(Coming Soon)</span>
@@ -260,7 +238,7 @@ const Navbar = () => {
                               onClick={(e) =>
                                 handleNavClick(e, dropdownItem.href)
                               }
-                              className="block px-4 py-2.5 text-sm text-foreground hover:bg-accent hover:text-primary transition-colors duration-200"
+                              className="block px-4 py-2.5 text-sm font-ui text-ref-ink/70 hover:text-ref-ink hover:bg-ref-ink/5 transition-colors duration-200"
                             >
                               {dropdownItem.name}
                             </a>
@@ -274,7 +252,7 @@ const Navbar = () => {
                     key={item.name}
                     href={item.href}
                     onClick={(e) => handleNavClick(e, item.href)}
-                    className="text-secondary hover:text-primary transition-colors duration-200 font-medium text-sm xl:text-base whitespace-nowrap flex-shrink-0"
+                    className="font-ui text-ref-ink/70 hover:text-ref-ink transition-colors duration-200 font-medium text-sm xl:text-base whitespace-nowrap flex-shrink-0"
                   >
                     {item.name}
                   </a>
@@ -287,10 +265,9 @@ const Navbar = () => {
           </div>
 
           <div className="md:hidden">
-            <Button
-              variant="ghost"
+            <button
               onClick={toggleMenu}
-              className="text-foreground hover:text-primary transition-colors duration-200"
+              className="p-2 text-ref-ink/70 hover:text-ref-ink transition-colors duration-200"
               aria-label="Toggle menu"
             >
               {isOpen ? (
@@ -298,19 +275,19 @@ const Navbar = () => {
               ) : (
                 <Menu className="h-6 w-6" />
               )}
-            </Button>
+            </button>
           </div>
         </div>
       </div>
 
       {isOpen && (
-        <div className="md:hidden bg-background border-t border-border animate-slideDown">
+        <div className="md:hidden bg-white border-t border-ref-ink/8 animate-slideDown">
           <div className="px-4 pt-2 pb-3 space-y-2">
             {navItems.map((item) =>
               item.hasDropdown ? (
                 <div key={item.name}>
                   <button
-                    className="flex items-center justify-between w-full px-3 py-2 text-secondary hover:text-primary transition-colors duration-200 rounded-md hover:bg-accent"
+                    className="font-ui flex items-center justify-between w-full px-3 py-2 text-ref-ink/70 hover:text-ref-ink transition-colors duration-200 hover:bg-ref-ink/5"
                     onClick={() => toggleMobileDropdown(item.name)}
                   >
                     {item.name}
@@ -324,7 +301,7 @@ const Navbar = () => {
                         dropdownItem.disabled ? (
                           <span
                             key={dropdownItem.name}
-                            className="block px-3 py-2 text-muted-foreground/50 cursor-not-allowed"
+                            className="font-ui block px-3 py-2 text-ref-ink/30 cursor-not-allowed"
                           >
                             {dropdownItem.name}{" "}
                             <span className="text-xs">(Coming Soon)</span>
@@ -333,7 +310,7 @@ const Navbar = () => {
                           <a
                             key={dropdownItem.name}
                             href={dropdownItem.href}
-                            className="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200 rounded-md hover:bg-accent"
+                            className="font-ui block px-3 py-2 text-ref-ink/70 hover:text-ref-ink transition-colors duration-200 hover:bg-ref-ink/5"
                             onClick={(e) =>
                               handleNavClick(e, dropdownItem.href)
                             }
@@ -349,7 +326,7 @@ const Navbar = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="block px-3 py-2 text-secondary hover:text-primary transition-colors duration-200 rounded-md hover:bg-accent"
+                  className="font-ui block px-3 py-2 text-ref-ink/70 hover:text-ref-ink transition-colors duration-200 hover:bg-ref-ink/5"
                   onClick={(e) => handleNavClick(e, item.href)}
                 >
                   {item.name}
