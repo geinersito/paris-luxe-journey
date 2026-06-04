@@ -94,7 +94,7 @@ export default function HourlyService() {
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:title" content={t("hourly.pageTitle")} />
         <meta property="og:description" content={t("hourly.pageDescription")} />
-        <meta property="og:image" content={`${siteOrigin}/og-image.jpg`} />
+        <meta property="og:image" content={`${siteOrigin}/og-image.png`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={t("hourly.pageTitle")} />
         <meta
