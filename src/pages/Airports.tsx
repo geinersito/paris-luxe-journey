@@ -131,13 +131,13 @@ const Airports = () => {
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:title" content={pageTitle} />
         <meta property="og:description" content={pageDescription} />
-        <meta property="og:image" content={`${siteOrigin}/og-image.jpg`} />
+        <meta property="og:image" content={`${siteOrigin}/og-image.png`} />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content={canonicalUrl} />
         <meta name="twitter:title" content={pageTitle} />
         <meta name="twitter:description" content={pageDescription} />
-        <meta name="twitter:image" content={`${siteOrigin}/og-image.jpg`} />
+        <meta name="twitter:image" content={`${siteOrigin}/og-image.png`} />
 
         <script type="application/ld+json">
           {JSON.stringify(serviceJsonLd)}

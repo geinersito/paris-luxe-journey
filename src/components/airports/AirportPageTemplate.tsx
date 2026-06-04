@@ -164,7 +164,7 @@ export default function AirportPageTemplate(props: AirportPageTemplateProps) {
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:title" content={seoTitle} />
         <meta property="og:description" content={seoDescription} />
-        <meta property="og:image" content={`${siteOrigin}/og-image.jpg`} />
+        <meta property="og:image" content={`${siteOrigin}/og-image.png`} />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={seoTitle} />
         <meta name="twitter:description" content={seoDescription} />

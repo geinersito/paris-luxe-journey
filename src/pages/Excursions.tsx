@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -17,6 +18,30 @@ import {
   buildGenericWhatsAppUrl,
 } from "@/lib/eventsPrefill";
 import { Clock, Users, Star, MapPin, Check, X } from "lucide-react";
+import { getSiteOrigin } from "@/lib/seo/site";
+
+const SEO_META = {
+  en: {
+    title: "Private Day Trips from Paris | Paris Elite Services",
+    description:
+      "Private day excursions from Paris to Versailles, Champagne, Giverny and more. Dedicated chauffeur, door-to-door service, fixed price per vehicle.",
+  },
+  fr: {
+    title: "Excursions Privées depuis Paris | Paris Elite Services",
+    description:
+      "Excursions privées en journée depuis Paris vers Versailles, Champagne, Giverny et plus. Chauffeur dédié, service porte-à-porte, tarif fixe par véhicule.",
+  },
+  es: {
+    title: "Excursiones Privadas desde París | Paris Elite Services",
+    description:
+      "Excursiones de día privadas desde París a Versalles, Champaña, Giverny y más. Chófer dedicado, servicio puerta a puerta, precio fijo por vehículo.",
+  },
+  pt: {
+    title: "Excursões Privadas de Paris | Paris Elite Services",
+    description:
+      "Excursões de dia privadas desde Paris até Versailles, Champagne, Giverny e mais. Motorista dedicado, serviço porta a porta, preço fixo por veículo.",
+  },
+};
 
 // Traducciones COMPLETAS
 const translations = {
@@ -1381,343 +1406,369 @@ const Excursions = () => {
     );
   };
 
+  const siteOrigin = getSiteOrigin();
+  const seo = SEO_META[language] ?? SEO_META.en;
+  const canonicalUrl = `${siteOrigin}/excursions`;
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-cream via-white to-champagne">
-      {/* Hero Section - Compact & Clear */}
-      <section className="relative h-[340px] md:h-[360px] flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src="/images/library/excursions/hero/excursions-hero-paris-eiffel-1920x1080.jpg"
-            alt="Private Day Trips from Paris"
-            className="w-full h-full object-cover"
-          />
-        </div>
-
-        <div className="relative z-10 w-full max-w-6xl mx-auto px-4 text-center">
-          <div className="relative mx-auto max-w-4xl px-4 py-4 md:px-6 md:py-5">
-            <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b from-black/55 via-black/25 to-transparent" />
-
-            <div className="relative">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-display font-bold mb-3 leading-tight drop-shadow-2xl">
-                {t.hero.title}
-              </h1>
-              <p className="text-base md:text-lg text-white/95 mb-4 max-w-3xl mx-auto leading-relaxed">
-                {t.hero.subtitle}
-              </p>
-
-              {/* Trust Badges */}
-              <div className="flex flex-wrap justify-center gap-2 mb-4">
-                <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
-                  <Users className="w-5 h-5 text-neutral-800" />
-                  <span className="text-neutral-900 text-sm md:text-base font-semibold">
-                    {t.hero.badge1}
-                  </span>
-                </div>
-                <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
-                  <Clock className="w-5 h-5 text-neutral-800" />
-                  <span className="text-neutral-900 text-sm md:text-base font-semibold">
-                    {t.hero.badge2}
-                  </span>
-                </div>
-                <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
-                  <Star className="w-5 h-5 text-neutral-800 fill-current" />
-                  <span className="text-neutral-900 text-sm md:text-base font-semibold">
-                    {t.hero.badge3}
-                  </span>
-                </div>
-              </div>
-
-              {/* CTAs */}
-              <div className="flex flex-col sm:flex-row gap-2.5 justify-center">
-                <Button
-                  className="silk-button h-11 px-7"
-                  onClick={() =>
-                    window.open(buildGenericWhatsAppUrl(language), "_blank")
-                  }
-                >
-                  {t.hero.ctaPrimary}
-                </Button>
-                <Button
-                  variant="outline"
-                  className="button-outline-gold h-11 px-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
-                  onClick={() => {
-                    document.getElementById("excursions-list")?.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
-                  }}
-                >
-                  {t.hero.ctaSecondary}
-                </Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* How it Works Section */}
-      <section className="py-10 md:py-12 bg-gradient-to-br from-primary/5 to-white">
-        <div className="container px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
-          <div className="text-center mb-8 md:mb-10">
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-primary mb-3">
-              {t.howItWorks.title}
-            </h2>
-            <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
-              {t.howItWorks.subtitle}
-            </p>
+    <>
+      <Helmet>
+        <title>{seo.title}</title>
+        <meta name="description" content={seo.description} />
+        <link rel="canonical" href={canonicalUrl} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalUrl} />
+        <meta property="og:title" content={seo.title} />
+        <meta property="og:description" content={seo.description} />
+        <meta property="og:image" content={`${siteOrigin}/og-image.png`} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={canonicalUrl} />
+        <meta name="twitter:title" content={seo.title} />
+        <meta name="twitter:description" content={seo.description} />
+        <meta name="twitter:image" content={`${siteOrigin}/og-image.png`} />
+      </Helmet>
+      <div className="min-h-screen bg-gradient-to-b from-cream via-white to-champagne">
+        {/* Hero Section - Compact & Clear */}
+        <section className="relative h-[340px] md:h-[360px] flex items-center justify-center overflow-hidden">
+          <div className="absolute inset-0">
+            <img
+              src="/images/library/excursions/hero/excursions-hero-paris-eiffel-1920x1080.jpg"
+              alt="Private Day Trips from Paris"
+              className="w-full h-full object-cover"
+            />
           </div>
 
-          <div className="grid md:grid-cols-3 gap-5 md:gap-6">
-            {/* Step 1 */}
-            <div className="text-center">
-              <div className="w-14 h-14 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-3">
-                <span className="text-xl font-bold text-white">1</span>
-              </div>
-              <h3 className="text-lg font-display font-bold text-secondary mb-2">
-                {t.howItWorks.step1Title}
-              </h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                {t.howItWorks.step1Text}
-              </p>
-            </div>
+          <div className="relative z-10 w-full max-w-6xl mx-auto px-4 text-center">
+            <div className="relative mx-auto max-w-4xl px-4 py-4 md:px-6 md:py-5">
+              <div className="pointer-events-none absolute inset-0 rounded-3xl bg-gradient-to-b from-black/55 via-black/25 to-transparent" />
 
-            {/* Step 2 */}
-            <div className="text-center">
-              <div className="w-14 h-14 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-3">
-                <span className="text-xl font-bold text-white">2</span>
-              </div>
-              <h3 className="text-lg font-display font-bold text-secondary mb-2">
-                {t.howItWorks.step2Title}
-              </h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                {t.howItWorks.step2Text}
-              </p>
-            </div>
-
-            {/* Step 3 */}
-            <div className="text-center">
-              <div className="w-14 h-14 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-3">
-                <span className="text-xl font-bold text-white">3</span>
-              </div>
-              <h3 className="text-lg font-display font-bold text-secondary mb-2">
-                {t.howItWorks.step3Title}
-              </h3>
-              <p className="text-sm md:text-base text-gray-600 leading-relaxed">
-                {t.howItWorks.step3Text}
-              </p>
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="text-center mt-8 md:mt-10">
-            <Button
-              className="silk-button h-12 px-8 text-base"
-              onClick={() =>
-                window.open(buildGenericWhatsAppUrl(language), "_blank")
-              }
-            >
-              {t.howItWorks.cta}
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Content */}
-      <div
-        id="excursions-list"
-        className="max-w-7xl mx-auto px-4 py-10 md:py-12"
-      >
-        <TrustSignals className="mb-6 md:mb-8" />
-
-        <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
-          {/* Quick Filters Sidebar */}
-          <div className="w-full lg:w-64">
-            <div className="bg-white rounded-lg p-6 shadow-sm sticky top-4">
-              <h2 className="text-lg font-semibold mb-4">
-                {t.filters.quickFilters}
-              </h2>
-
-              <div className="space-y-2">
-                <button
-                  onClick={() => setQuickFilter("all")}
-                  className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                    quickFilter === "all"
-                      ? "bg-primary text-white font-semibold shadow-md"
-                      : "bg-gray-50 text-gray-700 hover:bg-gray-100"
-                  }`}
-                >
-                  {t.filters.allTrips}
-                </button>
-
-                <button
-                  onClick={() => setQuickFilter("paris")}
-                  className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                    quickFilter === "paris"
-                      ? "bg-primary text-white font-semibold shadow-md"
-                      : "bg-gray-50 text-gray-700 hover:bg-gray-100"
-                  }`}
-                >
-                  {t.filters.parisOnly}
-                </button>
-
-                <button
-                  onClick={() => setQuickFilter("outside")}
-                  className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                    quickFilter === "outside"
-                      ? "bg-primary text-white font-semibold shadow-md"
-                      : "bg-gray-50 text-gray-700 hover:bg-gray-100"
-                  }`}
-                >
-                  {t.filters.outsideParis}
-                </button>
-
-                <button
-                  onClick={() => setQuickFilter("night")}
-                  className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                    quickFilter === "night"
-                      ? "bg-primary text-white font-semibold shadow-md"
-                      : "bg-gray-50 text-gray-700 hover:bg-gray-100"
-                  }`}
-                >
-                  {t.filters.nightTours}
-                </button>
-              </div>
-            </div>
-          </div>
-
-          {/* Day Trips List */}
-          <div className="flex-1">
-            {/* Results Counter */}
-            <div className="mb-6 flex items-center justify-between">
-              <p className="text-sm text-gray-600">
-                <span className="font-semibold text-primary">
-                  {filteredTrips.length}
-                </span>{" "}
-                {t.filters.excursionsMatch}
-              </p>
-            </div>
-
-            {/* No Results Message */}
-            {filteredTrips.length === 0 ? (
-              <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
-                <h3 className="text-xl font-semibold text-gray-800 mb-3">
-                  {t.filters.noResults}
-                </h3>
-                <p className="text-gray-600 mb-6">
-                  {t.filters.noResultsMessage}
+              <div className="relative">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl text-white font-display font-bold mb-3 leading-tight drop-shadow-2xl">
+                  {t.hero.title}
+                </h1>
+                <p className="text-base md:text-lg text-white/95 mb-4 max-w-3xl mx-auto leading-relaxed">
+                  {t.hero.subtitle}
                 </p>
-                <Button
-                  className="silk-button"
-                  onClick={() =>
-                    window.open(buildGenericWhatsAppUrl(language), "_blank")
-                  }
-                >
-                  {t.filters.contactWhatsApp}
-                </Button>
+
+                {/* Trust Badges */}
+                <div className="flex flex-wrap justify-center gap-2 mb-4">
+                  <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                    <Users className="w-5 h-5 text-neutral-800" />
+                    <span className="text-neutral-900 text-sm md:text-base font-semibold">
+                      {t.hero.badge1}
+                    </span>
+                  </div>
+                  <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                    <Clock className="w-5 h-5 text-neutral-800" />
+                    <span className="text-neutral-900 text-sm md:text-base font-semibold">
+                      {t.hero.badge2}
+                    </span>
+                  </div>
+                  <div className="rounded-full border border-black/10 bg-white/90 px-5 py-2.5 shadow-sm backdrop-blur-sm flex items-center gap-2">
+                    <Star className="w-5 h-5 text-neutral-800 fill-current" />
+                    <span className="text-neutral-900 text-sm md:text-base font-semibold">
+                      {t.hero.badge3}
+                    </span>
+                  </div>
+                </div>
+
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row gap-2.5 justify-center">
+                  <Button
+                    className="silk-button h-11 px-7"
+                    onClick={() =>
+                      window.open(buildGenericWhatsAppUrl(language), "_blank")
+                    }
+                  >
+                    {t.hero.ctaPrimary}
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="button-outline-gold h-11 px-7 bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
+                    onClick={() => {
+                      document
+                        .getElementById("excursions-list")
+                        ?.scrollIntoView({
+                          behavior: "smooth",
+                          block: "start",
+                        });
+                    }}
+                  >
+                    {t.hero.ctaSecondary}
+                  </Button>
+                </div>
               </div>
-            ) : (
-              <div className="space-y-6">
-                {currentTrips.map((trip) => (
-                  <DayTripCard
-                    key={trip.id}
-                    trip={trip}
-                    t={t}
-                    language={language}
-                  />
-                ))}
+            </div>
+          </div>
+        </section>
+
+        {/* How it Works Section */}
+        <section className="py-10 md:py-12 bg-gradient-to-br from-primary/5 to-white">
+          <div className="container px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+            <div className="text-center mb-8 md:mb-10">
+              <h2 className="text-2xl md:text-3xl font-display font-bold text-primary mb-3">
+                {t.howItWorks.title}
+              </h2>
+              <p className="text-base md:text-lg text-gray-600 max-w-2xl mx-auto">
+                {t.howItWorks.subtitle}
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-5 md:gap-6">
+              {/* Step 1 */}
+              <div className="text-center">
+                <div className="w-14 h-14 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-xl font-bold text-white">1</span>
+                </div>
+                <h3 className="text-lg font-display font-bold text-secondary mb-2">
+                  {t.howItWorks.step1Title}
+                </h3>
+                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  {t.howItWorks.step1Text}
+                </p>
               </div>
-            )}
+
+              {/* Step 2 */}
+              <div className="text-center">
+                <div className="w-14 h-14 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-xl font-bold text-white">2</span>
+                </div>
+                <h3 className="text-lg font-display font-bold text-secondary mb-2">
+                  {t.howItWorks.step2Title}
+                </h3>
+                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  {t.howItWorks.step2Text}
+                </p>
+              </div>
+
+              {/* Step 3 */}
+              <div className="text-center">
+                <div className="w-14 h-14 bg-gradient-gold rounded-full flex items-center justify-center mx-auto mb-3">
+                  <span className="text-xl font-bold text-white">3</span>
+                </div>
+                <h3 className="text-lg font-display font-bold text-secondary mb-2">
+                  {t.howItWorks.step3Title}
+                </h3>
+                <p className="text-sm md:text-base text-gray-600 leading-relaxed">
+                  {t.howItWorks.step3Text}
+                </p>
+              </div>
+            </div>
+
+            {/* CTA */}
+            <div className="text-center mt-8 md:mt-10">
+              <Button
+                className="silk-button h-12 px-8 text-base"
+                onClick={() =>
+                  window.open(buildGenericWhatsAppUrl(language), "_blank")
+                }
+              >
+                {t.howItWorks.cta}
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Main Content */}
+        <div
+          id="excursions-list"
+          className="max-w-7xl mx-auto px-4 py-10 md:py-12"
+        >
+          <TrustSignals className="mb-6 md:mb-8" />
+
+          <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
+            {/* Quick Filters Sidebar */}
+            <div className="w-full lg:w-64">
+              <div className="bg-white rounded-lg p-6 shadow-sm sticky top-4">
+                <h2 className="text-lg font-semibold mb-4">
+                  {t.filters.quickFilters}
+                </h2>
+
+                <div className="space-y-2">
+                  <button
+                    onClick={() => setQuickFilter("all")}
+                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                      quickFilter === "all"
+                        ? "bg-primary text-white font-semibold shadow-md"
+                        : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                    }`}
+                  >
+                    {t.filters.allTrips}
+                  </button>
+
+                  <button
+                    onClick={() => setQuickFilter("paris")}
+                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                      quickFilter === "paris"
+                        ? "bg-primary text-white font-semibold shadow-md"
+                        : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                    }`}
+                  >
+                    {t.filters.parisOnly}
+                  </button>
+
+                  <button
+                    onClick={() => setQuickFilter("outside")}
+                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                      quickFilter === "outside"
+                        ? "bg-primary text-white font-semibold shadow-md"
+                        : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                    }`}
+                  >
+                    {t.filters.outsideParis}
+                  </button>
+
+                  <button
+                    onClick={() => setQuickFilter("night")}
+                    className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
+                      quickFilter === "night"
+                        ? "bg-primary text-white font-semibold shadow-md"
+                        : "bg-gray-50 text-gray-700 hover:bg-gray-100"
+                    }`}
+                  >
+                    {t.filters.nightTours}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Day Trips List */}
+            <div className="flex-1">
+              {/* Results Counter */}
+              <div className="mb-6 flex items-center justify-between">
+                <p className="text-sm text-gray-600">
+                  <span className="font-semibold text-primary">
+                    {filteredTrips.length}
+                  </span>{" "}
+                  {t.filters.excursionsMatch}
+                </p>
+              </div>
+
+              {/* No Results Message */}
+              {filteredTrips.length === 0 ? (
+                <div className="bg-gray-50 border border-gray-200 rounded-lg p-8 text-center">
+                  <h3 className="text-xl font-semibold text-gray-800 mb-3">
+                    {t.filters.noResults}
+                  </h3>
+                  <p className="text-gray-600 mb-6">
+                    {t.filters.noResultsMessage}
+                  </p>
+                  <Button
+                    className="silk-button"
+                    onClick={() =>
+                      window.open(buildGenericWhatsAppUrl(language), "_blank")
+                    }
+                  >
+                    {t.filters.contactWhatsApp}
+                  </Button>
+                </div>
+              ) : (
+                <div className="space-y-6">
+                  {currentTrips.map((trip) => (
+                    <DayTripCard
+                      key={trip.id}
+                      trip={trip}
+                      t={t}
+                      language={language}
+                    />
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
+
+        {/* Custom Quote CTA for Agencies */}
+        <section className="py-10 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10">
+          <div className="container px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <div className="glass-card-premium p-6 md:p-8 text-center border-2 border-primary/20">
+              <div className="inline-block px-3 py-1 bg-primary/10 rounded-full text-xs md:text-sm font-semibold text-primary mb-3">
+                For Travel Agencies & Groups
+              </div>
+              <h2 className="text-xl md:text-2xl font-display font-bold text-secondary mb-3">
+                {t.customQuote.title}
+              </h2>
+              <p className="text-base text-gray-600 mb-5 max-w-2xl mx-auto">
+                {t.customQuote.subtitle}
+              </p>
+              <Button
+                className="silk-button h-12 px-8 text-base"
+                onClick={() =>
+                  window.open(
+                    buildExcursionWhatsAppUrl(
+                      "a custom private tour",
+                      language,
+                    ),
+                    "_blank",
+                  )
+                }
+              >
+                {t.customQuote.cta}
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section - Excursions Specific */}
+        <section className="py-16 bg-white">
+          <div className="container px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
+                {t.faq.title}
+              </h2>
+              <p className="text-lg text-gray-600">{t.faq.subtitle}</p>
+            </div>
+
+            <div className="space-y-6">
+              {/* FAQ 1 */}
+              <div className="glass-card-premium p-6">
+                <h3 className="text-lg font-semibold text-secondary mb-3">
+                  {t.faq.q1}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">{t.faq.a1}</p>
+              </div>
+
+              {/* FAQ 2 */}
+              <div className="glass-card-premium p-6">
+                <h3 className="text-lg font-semibold text-secondary mb-3">
+                  {t.faq.q2}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">{t.faq.a2}</p>
+              </div>
+
+              {/* FAQ 3 */}
+              <div className="glass-card-premium p-6">
+                <h3 className="text-lg font-semibold text-secondary mb-3">
+                  {t.faq.q3}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">{t.faq.a3}</p>
+              </div>
+
+              {/* FAQ 4 */}
+              <div className="glass-card-premium p-6">
+                <h3 className="text-lg font-semibold text-secondary mb-3">
+                  {t.faq.q4}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">{t.faq.a4}</p>
+              </div>
+            </div>
+
+            {/* Final CTA */}
+            <div className="text-center mt-12">
+              <p className="text-gray-600 mb-6">{t.faq.stillQuestions}</p>
+              <Button
+                className="silk-button h-14 px-10 text-lg"
+                onClick={() =>
+                  window.open(buildGenericWhatsAppUrl(language), "_blank")
+                }
+              >
+                {t.faq.ctaFaq}
+              </Button>
+            </div>
+          </div>
+        </section>
       </div>
-
-      {/* Custom Quote CTA for Agencies */}
-      <section className="py-10 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10">
-        <div className="container px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-          <div className="glass-card-premium p-6 md:p-8 text-center border-2 border-primary/20">
-            <div className="inline-block px-3 py-1 bg-primary/10 rounded-full text-xs md:text-sm font-semibold text-primary mb-3">
-              For Travel Agencies & Groups
-            </div>
-            <h2 className="text-xl md:text-2xl font-display font-bold text-secondary mb-3">
-              {t.customQuote.title}
-            </h2>
-            <p className="text-base text-gray-600 mb-5 max-w-2xl mx-auto">
-              {t.customQuote.subtitle}
-            </p>
-            <Button
-              className="silk-button h-12 px-8 text-base"
-              onClick={() =>
-                window.open(
-                  buildExcursionWhatsAppUrl("a custom private tour", language),
-                  "_blank",
-                )
-              }
-            >
-              {t.customQuote.cta}
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section - Excursions Specific */}
-      <section className="py-16 bg-white">
-        <div className="container px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-primary mb-4">
-              {t.faq.title}
-            </h2>
-            <p className="text-lg text-gray-600">{t.faq.subtitle}</p>
-          </div>
-
-          <div className="space-y-6">
-            {/* FAQ 1 */}
-            <div className="glass-card-premium p-6">
-              <h3 className="text-lg font-semibold text-secondary mb-3">
-                {t.faq.q1}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">{t.faq.a1}</p>
-            </div>
-
-            {/* FAQ 2 */}
-            <div className="glass-card-premium p-6">
-              <h3 className="text-lg font-semibold text-secondary mb-3">
-                {t.faq.q2}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">{t.faq.a2}</p>
-            </div>
-
-            {/* FAQ 3 */}
-            <div className="glass-card-premium p-6">
-              <h3 className="text-lg font-semibold text-secondary mb-3">
-                {t.faq.q3}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">{t.faq.a3}</p>
-            </div>
-
-            {/* FAQ 4 */}
-            <div className="glass-card-premium p-6">
-              <h3 className="text-lg font-semibold text-secondary mb-3">
-                {t.faq.q4}
-              </h3>
-              <p className="text-gray-600 leading-relaxed">{t.faq.a4}</p>
-            </div>
-          </div>
-
-          {/* Final CTA */}
-          <div className="text-center mt-12">
-            <p className="text-gray-600 mb-6">{t.faq.stillQuestions}</p>
-            <Button
-              className="silk-button h-14 px-10 text-lg"
-              onClick={() =>
-                window.open(buildGenericWhatsAppUrl(language), "_blank")
-              }
-            >
-              {t.faq.ctaFaq}
-            </Button>
-          </div>
-        </div>
-      </section>
-    </div>
+    </>
   );
 };
 
