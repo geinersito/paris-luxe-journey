@@ -45,6 +45,11 @@ Detailed product notes can continue in `docs/PLAN_VIVO_MEJORAS_UI.md`, but execu
 | COPY-FLEET-WORDING-NEUTRAL-01 | P2 | R0 | Content | Remove visible "Premium Fleet" wording in Fleet section (copy-only) | DONE | [#121](https://github.com/geinersito/paris-luxe-journey/pull/121) / `55e0a4f` | Fleet heading/subtitle neutralized via i18n keys (ES/PT/EN/FR), no theme/layout changes |
 | FUNNEL-CTA-REWIRE-01 | P0 | R1 | Funnel/CTA | Replace all user-facing navigate("/booking") CTAs with contextual WhatsApp prefill URLs | DONE | `7f0a007` | ~17 files: airports→buildAirportWA, excursions→buildExcursionWA, blog→buildBlogWA, generic→buildGenericWA. booking/index.tsx onSubmit opens WA. |
 | BOOKING-REQUEST-INTAKE-01 | P0 | R2-lite | Funnel/Booking | Bridge intake table + edge function + /booking/pending contact page + Telegram notification to Boris | DONE | `8e4474f` + `6d3f2a7` | `public_booking_requests` RLS service_role only; `submit-booking-request` edge fn full validation; /booking/pending guarded `<Navigate>`; Telegram smoke verified ref 87EA7605. |
+| PR-SEO-HOME-01 | P0 | R0 | SEO | Fix Home og:image path (.jpg→.png) + canonical trailing slash. Helmet already present with canonical/OG/Twitter/JSON-LD. H1 confirmed in HeroSection. | DONE | pending merge | og-image `.jpg`→`.png` (2 refs). Canonical `siteOrigin`→`${siteOrigin}/`. 12/12 smoke ✅. Note: same `.jpg` bug in Events/BlogIndex/Airports/AirportPageTemplate/Hourly → fix in PR-SEO-COMMERCIAL-PAGES-01. |
+| PR-SEO-COMMERCIAL-PAGES-01 | P1 | R0 | SEO | Add Helmet (title/desc/canonical/OG/Twitter/JSON-LD) to Excursions + FAQ + Booking. Fix og:image `.jpg`→`.png` globally (5 remaining files). | TODO | — | Excursions/FAQ confirmed no Helmet from audit. Booking shows generic title. |
+| PR-SEO-FLEET-CANONICAL-01 | P1 | R0 | SEO | Fix Fleet canonical pointing to `/` instead of `/fleet` | TODO | — | Playwright showed canonical = root on Fleet page. |
+| PR-SEO-FAQ-SCHEMA-01 | P2 | R0 | SEO | Add FAQPage JSON-LD to FAQ page | TODO | — | FAQ has H1/H2 content but zero structured data. Rich snippets opportunity. |
+| PR-SEO-HREFLANG-01 | P2 | R0 | SEO | Add hreflang alternates globally (EN/FR/ES/PT + x-default) | TODO | — | Missing on all 8 audited pages. Requires central helper. |
 
 ## Deferred items
 

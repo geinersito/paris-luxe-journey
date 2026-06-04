@@ -185,7 +185,7 @@ export default function Home() {
     ],
   };
 
-  const canonicalUrl = siteOrigin;
+  const canonicalUrl = `${siteOrigin}/`;
 
   const handleCtaClickCapture = (event: React.MouseEvent<HTMLDivElement>) => {
     const target = event.target as HTMLElement | null;
@@ -289,14 +289,14 @@ export default function Home() {
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:title" content={t.seo.home.title} />
         <meta property="og:description" content={t.seo.home.description} />
-        <meta property="og:image" content={`${siteOrigin}/og-image.jpg`} />
+        <meta property="og:image" content={`${siteOrigin}/og-image.png`} />
 
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content={canonicalUrl} />
         <meta name="twitter:title" content={t.seo.home.title} />
         <meta name="twitter:description" content={t.seo.home.description} />
-        <meta name="twitter:image" content={`${siteOrigin}/og-image.jpg`} />
+        <meta name="twitter:image" content={`${siteOrigin}/og-image.png`} />
 
         {/* JSON-LD Structured Data */}
         <script type="application/ld+json">
