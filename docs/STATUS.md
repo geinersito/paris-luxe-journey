@@ -79,7 +79,7 @@ Runtime hold (unchanged — separate from publication):
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `b26f84c454e3c8a1fecfdb2a7a02b7a6bea8c85e`
+- SHA: `8fcf15b3d076e66b268f680a84600d997606d048`
 - Baseline feature: `BOOKING-REQUEST-INTAKE-01` — bridge table + edge fn + /booking/pending + Telegram ✅
 - Last updated: `2026-08-01`
 
@@ -180,6 +180,7 @@ Live Playwright audit confirmed gaps. CTO-approved sequence:
 
 ## Ahora en curso
 
+- **OPS-HUSKY-HOOKS-01** (P0/R0) — **DOING** — `pre-commit`/`pre-push` restaurados de `100644` a `100755` (nunca ejecutables desde el commit inicial). `post-merge` (`npm install` automático tras cada merge/pull, sin revisión) eliminado — recuperable del historial. Sin cambios en código de producto ni dependencias. Branch: `chore/ops-husky-hooks-01`.
 - **OPS-CI-TEST-GATE-01** (P0/R0) — **DONE ✅** — Node 20 pinned via `engines.node`; new `test:ci` script (`vitest run`) added as mandatory CI gate before build. No product code touched. PR: [#235](https://github.com/geinersito/paris-luxe-journey/pull/235).
 - **R0-SPRINT** (P0/R0) — **DONE ✅** — 10/10 blockers resolved. Sitio publicable. No hay blocker de publicación activo.
 - **SEO-EXCURSIONS-DETAIL-01** (P1/R0) — **DONE ✅** — canonical + meta title/description + OG + 3×JSON-LD (BreadcrumbList + TouristTrip + FAQPage) en versailles/champagne/loire-valley. Helmet data-rh ✅. 3 archivos. TSC ✅ Build ✅ (40s). Smoke: 3/3 páginas con ld+json válido, canonical correcto, BMW 0.
