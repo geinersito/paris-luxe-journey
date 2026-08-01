@@ -890,7 +890,7 @@ export const es: Translation = {
       advanceBooking: {
         question: "¿Con cuánta antelación debo reservar?",
         answer:
-          "Recomendamos hacer las reservas con al menos 48 horas de antelación para garantizar la disponibilidad. Sin embargo, también podemos acomodar reservas de última hora sujetas a disponibilidad.",
+          "Envía tu solicitud con la mayor antelación posible. La disponibilidad se confirma después de revisar el itinerario y los requisitos del vehículo. Las solicitudes con poca antelación se gestionan bajo solicitud y no pueden garantizarse.",
       },
       modifyBooking: {
         question: "¿Puedo modificar mi reserva?",

@@ -839,7 +839,7 @@ export const en: Translation = {
       advanceBooking: {
         question: "How far in advance should I book?",
         answer:
-          "We recommend making reservations at least 48 hours in advance to ensure availability. However, we can also accommodate last-minute bookings subject to availability.",
+          "Send your request as early as possible. Availability is confirmed after we review the itinerary and vehicle requirements. Short-notice requests are handled on request and cannot be guaranteed.",
       },
       modifyBooking: {
         question: "Can I modify my reservation?",

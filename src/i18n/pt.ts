@@ -857,7 +857,7 @@ export const pt: Translation = {
       advanceBooking: {
         question: "Com quanta antecedência devo reservar?",
         answer:
-          "Recomendamos fazer as reservas com pelo menos 48 horas de antecedência para garantir a disponibilidade. No entanto, também podemos atender reservas de última hora sujeitas à disponibilidade.",
+          "Envie a sua solicitação com a maior antecedência possível. A disponibilidade é confirmada após a análise do itinerário e dos requisitos do veículo. Pedidos com pouca antecedência são tratados sob consulta e não podem ser garantidos.",
       },
       modifyBooking: {
         question: "Posso modificar minha reserva?",
