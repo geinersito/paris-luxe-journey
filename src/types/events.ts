@@ -42,6 +42,8 @@ export type EventRange = "week" | "month";
 export type EventVariant = "compact" | "full";
 
 export interface EventsFeedProps {
+  /** De-duplicated event pool to classify — same collection used for JSON-LD. */
+  events: Event[];
   range: EventRange;
   variant?: EventVariant;
   showHeader?: boolean;
