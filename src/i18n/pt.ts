@@ -882,7 +882,7 @@ export const pt: Translation = {
       privateDriver: {
         question: "O que inclui o serviço de motorista particular?",
         answer:
-          "O serviço inclui um motorista profissional multilíngue, veículo de luxo, água engarrafada, wifi a bordo e assistência 24/7. Também podemos adicionar serviços adicionais de acordo com suas necessidades.",
+          "O serviço inclui um motorista profissional multilíngue, veículo de luxo, água engarrafada e wifi a bordo. Serviços adicionais podem ser solicitados e estão sujeitos a confirmação.",
       },
       outsideParis: {
         question: "Vocês realizam excursões fora de Paris?",

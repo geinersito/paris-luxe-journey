@@ -915,7 +915,7 @@ export const es: Translation = {
       privateDriver: {
         question: "¿Qué incluye el servicio de chófer privado?",
         answer:
-          "El servicio incluye un chófer profesional multilingüe, vehículo de lujo, agua embotellada, wifi a bordo y asistencia 24/7. También podemos agregar servicios adicionales según sus necesidades.",
+          "El servicio incluye un chófer profesional multilingüe, vehículo de lujo, agua embotellada y wifi a bordo. Los servicios adicionales pueden solicitarse y están sujetos a confirmación.",
       },
       outsideParis: {
         question: "¿Realizan excursiones fuera de París?",
