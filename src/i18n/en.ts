@@ -884,7 +884,7 @@ export const en: Translation = {
       deposit: {
         question: "Is a deposit required to book?",
         answer:
-          "For most services, a 30% deposit is required to confirm the reservation. The remaining balance can be paid before or after the service, according to your preference.",
+          "Full online payment is required to confirm the reservation. Payment details are shown before confirmation.",
       },
       vehicleTypes: {
         question: "What types of vehicles do you offer?",

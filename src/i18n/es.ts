@@ -935,7 +935,7 @@ export const es: Translation = {
       deposit: {
         question: "¿Se requiere un depósito para reservar?",
         answer:
-          "Para la mayoría de los servicios, se requiere un depósito del 30% para confirmar la reserva. El saldo restante se puede pagar antes o después del servicio, según su preferencia.",
+          "Se requiere el pago completo en línea para confirmar la reserva. Los detalles del pago se muestran antes de la confirmación.",
       },
       vehicleTypes: {
         question: "¿Qué tipos de vehículos ofrecen?",

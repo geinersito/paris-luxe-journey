@@ -902,7 +902,7 @@ export const pt: Translation = {
       deposit: {
         question: "É necessário um depósito para reservar?",
         answer:
-          "Para a maioria dos serviços, é necessário um depósito de 30% para confirmar a reserva. O saldo restante pode ser pago antes ou após o serviço, de acordo com sua preferência.",
+          "O pagamento integral online é necessário para confirmar a reserva. Os detalhes do pagamento são apresentados antes da confirmação.",
       },
       vehicleTypes: {
         question: "Quais tipos de veículos vocês oferecem?",
