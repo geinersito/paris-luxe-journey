@@ -79,7 +79,7 @@ Runtime hold (unchanged — separate from publication):
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `8fcf15b3d076e66b268f680a84600d997606d048`
+- SHA: `2177c0be4cbf87722fd2cc42e60ed3b96e798046`
 - Baseline feature: `BOOKING-REQUEST-INTAKE-01` — bridge table + edge fn + /booking/pending + Telegram ✅
 - Last updated: `2026-08-01`
 
@@ -180,6 +180,7 @@ Live Playwright audit confirmed gaps. CTO-approved sequence:
 
 ## Ahora en curso
 
+- **CONTENT-FAQ-FLEET-CONSISTENCY-01** (P2/R0) — **DONE ✅** — Retira BMW y los claims no validados de "menos de 2 años" / SUV de la respuesta `faq.questions.vehicleTypes` en EN/ES/PT (FR ya estaba libre de estos claims, sin tocar). Cambio de copy/i18n únicamente; requisito previo antes de autorizar `PR-SEO-FAQ-SCHEMA-01` para no amplificar vía datos estructurados una afirmación de flota inconsistente. PR: [#237](https://github.com/geinersito/paris-luxe-journey/pull/237).
 - **OPS-HUSKY-HOOKS-01** (P0/R0) — **DONE ✅** — `pre-commit`/`pre-push` restaurados de `100644` a `100755` (nunca ejecutables desde el commit inicial). `post-merge` (`npm install` automático tras cada merge/pull, sin revisión) eliminado — recuperable del historial. Sin cambios en código de producto ni dependencias. PR: [#236](https://github.com/geinersito/paris-luxe-journey/pull/236).
 - **OPS-CI-TEST-GATE-01** (P0/R0) — **DONE ✅** — Node 20 pinned via `engines.node`; new `test:ci` script (`vitest run`) added as mandatory CI gate before build. No product code touched. PR: [#235](https://github.com/geinersito/paris-luxe-journey/pull/235).
 - **R0-SPRINT** (P0/R0) — **DONE ✅** — 10/10 blockers resolved. Sitio publicable. No hay blocker de publicación activo.
