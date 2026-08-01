@@ -376,7 +376,7 @@ export const fr: Translation = {
       cancellation: {
         question: "Quelle est la politique d'annulation ?",
         answer:
-          "Les annulations effectuées 24 heures avant le service sont entièrement remboursées. Pour les annulations plus tardives, des frais peuvent s'appliquer. Contactez-nous pour plus de détails.",
+          "La possibilité d'annulation et de remboursement dépend du moment où nous recevons votre demande d'annulation. Consultez les Conditions et contactez-nous avant d'annuler. Tout remboursement est traité selon les conditions confirmées de la réservation et n'est pas automatique.",
       },
       advanceBooking: {
         question: "Combien de temps à l'avance dois-je réserver ?",
