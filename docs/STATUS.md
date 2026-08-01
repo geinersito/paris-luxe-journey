@@ -180,7 +180,7 @@ Live Playwright audit confirmed gaps. CTO-approved sequence:
 
 ## Ahora en curso
 
-- **OPS-CI-TEST-GATE-01** (P0/R0) — **DOING** — Node 20 pinned via `engines.node`; new `test:ci` script (`vitest run`) added as mandatory CI gate before build. No product code touched. PR: [#235](https://github.com/geinersito/paris-luxe-journey/pull/235).
+- **OPS-CI-TEST-GATE-01** (P0/R0) — **DONE ✅** — Node 20 pinned via `engines.node`; new `test:ci` script (`vitest run`) added as mandatory CI gate before build. No product code touched. PR: [#235](https://github.com/geinersito/paris-luxe-journey/pull/235).
 - **R0-SPRINT** (P0/R0) — **DONE ✅** — 10/10 blockers resolved. Sitio publicable. No hay blocker de publicación activo.
 - **SEO-EXCURSIONS-DETAIL-01** (P1/R0) — **DONE ✅** — canonical + meta title/description + OG + 3×JSON-LD (BreadcrumbList + TouristTrip + FAQPage) en versailles/champagne/loire-valley. Helmet data-rh ✅. 3 archivos. TSC ✅ Build ✅ (40s). Smoke: 3/3 páginas con ld+json válido, canonical correcto, BMW 0.
 - **PR-02c** (P2/R0) — **DONE ✅** — WA editoriales: BlogSidebar.tsx hardcoded EN → buildBlogWhatsAppUrl(i18n.language). FAQPage.tsx bare wa.me → helper con mensaje. BlogIndex.tsx eyebrows hardcoded → i18n keys. BMW eliminado de premiumVehicles en 7 archivos i18n (es/en/fr/pt .ts + es/en/fr .json). Smoke: 0 BMW, eyebrow FR "Découvrir Paris" ✅, FAQ WA con mensaje prefill ✅. TSC ✅ Build ✅.
