@@ -834,7 +834,7 @@ export const en: Translation = {
       cancellation: {
         question: "What is the cancellation policy?",
         answer:
-          "You can cancel your reservation up to 24 hours before the service without charge. Later cancellations may be subject to a 50% service fee.",
+          "Cancellation and refund eligibility depend on when we receive your cancellation request. Please review the Terms and contact us before cancelling. Any refund is handled according to the confirmed booking conditions and is not automatic.",
       },
       advanceBooking: {
         question: "How far in advance should I book?",

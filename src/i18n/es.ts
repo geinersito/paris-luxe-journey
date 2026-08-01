@@ -885,7 +885,7 @@ export const es: Translation = {
       cancellation: {
         question: "¿Cuál es la política de cancelación?",
         answer:
-          "Puede cancelar su reserva hasta 24 horas antes del servicio sin cargo. Las cancelaciones posteriores pueden estar sujetas a un cargo del 50% del servicio.",
+          "La posibilidad de cancelación y reembolso depende de cuándo recibamos la solicitud de cancelación. Consulta los Términos y contáctanos antes de cancelar. Cualquier reembolso se gestiona según las condiciones confirmadas de la reserva y no es automático.",
       },
       advanceBooking: {
         question: "¿Con cuánta antelación debo reservar?",
