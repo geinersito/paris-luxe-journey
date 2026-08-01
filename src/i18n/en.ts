@@ -864,7 +864,7 @@ export const en: Translation = {
       privateDriver: {
         question: "What does the private chauffeur service include?",
         answer:
-          "The service includes a multilingual professional chauffeur, luxury vehicle, bottled water, onboard wifi, and 24/7 assistance. We can also add additional services according to your needs.",
+          "The service includes a multilingual professional chauffeur, luxury vehicle, bottled water, and onboard wifi. Additional services can be arranged on request and are subject to confirmation.",
       },
       outsideParis: {
         question: "Do you conduct excursions outside Paris?",
