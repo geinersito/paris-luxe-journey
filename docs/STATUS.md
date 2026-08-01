@@ -79,7 +79,7 @@ Runtime hold (unchanged — separate from publication):
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `94b0557ad9e5dc96189f8a254c8190da5dc64518`
+- SHA: `b4e1e689df8b4e64a89f0455a7bdfc752e72324a`
 - Baseline feature: `BOOKING-REQUEST-INTAKE-01` — bridge table + edge fn + /booking/pending + Telegram ✅
 - Last updated: `2026-08-01`
 
@@ -180,6 +180,7 @@ Live Playwright audit confirmed gaps. CTO-approved sequence:
 
 ## Ahora en curso
 
+- **CONTENT-FAQ-ADVANCE-NOTICE-01B** (P0/R0) — **DOING** — Corrige `faq.questions.advanceBooking.answer` en FR: retira el claim de "24 heures pour garantir la disponibilité", remite a revisión manual de itinerario/vehículo y marca las solicitudes con poca antelación como "sur demande", no garantizadas. Completa la alineación de anticipación EN/FR/ES/PT (sigue a `01A`, PR [#242](https://github.com/geinersito/paris-luxe-journey/pull/242)). `PR-SEO-FAQ-SCHEMA-01` sigue BLOCKED únicamente por la auditoría/corrección de claims 24/7. Branch: `fix/content-faq-advance-notice-01b`.
 - **CONTENT-FAQ-ADVANCE-NOTICE-01A** (P0/R0) — **DONE ✅** — Corrige `faq.questions.advanceBooking.answer` en EN/ES/PT: elimina el conflicto de plazos arbitrarios 24h(FR)/48h(EN/ES/PT) y la promesa no respaldada de disponibilidad last-minute; remite a revisión manual de itinerario/vehículo y marca las solicitudes con poca antelación como "bajo solicitud / sob consulta", no garantizadas. No introduce una ventana mínima ficticia — ningún guard de booking la aplica. `01B` (FR) sigue inmediatamente después. `PR-SEO-FAQ-SCHEMA-01` sigue BLOCKED por FR y 24/7. PR: [#242](https://github.com/geinersito/paris-luxe-journey/pull/242).
 - **CONTENT-FAQ-CANCELLATION-SSOT-01B** (P0/R0) — **DONE ✅** — Corrige `faq.questions.cancellation.answer` en FR: retira el claim no respaldado de "24h entièrement remboursé", remite a Conditions + contacto y aclara que el reembolso no es automático. Completa la alineación de cancelación EN/FR/ES/PT (sigue a `01A`, PR [#240](https://github.com/geinersito/paris-luxe-journey/pull/240)). `PR-SEO-FAQ-SCHEMA-01` sigue BLOCKED por anticipación (24h/48h) y 24/7. PR: [#241](https://github.com/geinersito/paris-luxe-journey/pull/241).
 - **CONTENT-FAQ-CANCELLATION-SSOT-01A** (P0/R0) — **DONE ✅** — Corrige `faq.questions.cancellation.answer` en EN/ES/PT: retira el claim binario no respaldado "sin cargo hasta 24h / 50% después" (contradice el esquema de 3 tramos de Terms/Confirmation y el flujo de reembolso "no definido" en `BOOKING_MODEL.md`); remite a Terms + contacto y aclara que el reembolso no es automático. No copia los tramos de Terms al FAQ como si hubiera un proceso automatizado — el runtime no lo implementa. `01B` (FR) sigue inmediatamente después. `PR-SEO-FAQ-SCHEMA-01` sigue BLOCKED por FR, anticipación (24h/48h) y 24/7. PR: [#240](https://github.com/geinersito/paris-luxe-journey/pull/240).

@@ -381,7 +381,7 @@ export const fr: Translation = {
       advanceBooking: {
         question: "Combien de temps à l'avance dois-je réserver ?",
         answer:
-          "Nous recommandons de réserver au moins 24 heures à l'avance pour garantir la disponibilité. Pour les services spéciaux ou pendant les périodes de forte affluence, une réservation plus anticipée est conseillée.",
+          "Envoyez votre demande le plus tôt possible. La disponibilité est confirmée après examen de l'itinéraire et des besoins en véhicule. Les demandes à court préavis sont traitées sur demande et ne peuvent pas être garanties.",
       },
       modifyBooking: {
         question: "Puis-je modifier ma réservation ?",
