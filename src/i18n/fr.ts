@@ -426,7 +426,7 @@ export const fr: Translation = {
       deposit: {
         question: "Un acompte est-il nécessaire pour réserver ?",
         answer:
-          "Pour certains services, un acompte de 30% peut être demandé pour confirmer la réservation. Le solde est payable avant le service.",
+          "Le paiement intégral en ligne est requis pour confirmer la réservation. Les détails du paiement sont affichés avant la confirmation.",
       },
       vehicleTypes: {
         question: "Quels types de véhicules proposez-vous ?",
