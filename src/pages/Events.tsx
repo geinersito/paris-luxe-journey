@@ -21,52 +21,49 @@ import { getSiteOrigin } from "@/lib/seo/site";
 import { formatParisDate } from "@/lib/datetime/paris";
 import eventsFeedData from "@/data/events/events-feed.json";
 import type { Event, EventCategory } from "@/types/events";
+import {
+  dedupeEventsById,
+  getThisWeekEvents,
+  getVisibleEvents,
+  hasEventEnded,
+  isRecentlyEnded,
+} from "@/lib/events/classify";
 
-function isFeedStale(): boolean {
-  const now = new Date();
-  const graceMs = 7 * 24 * 60 * 60 * 1000;
-  const allEvents = [
-    ...eventsFeedData.thisWeek,
-    ...eventsFeedData.thisMonth,
-  ].map((e) => ({ ...e, category: e.category as EventCategory }));
-  return allEvents.every((e) => {
-    const end = new Date(e.endAt ?? e.startAt);
-    return end.getTime() < now.getTime() - graceMs;
-  });
+/** True only when every event in the pool is past the 7-day grace window. */
+function isFeedStale(pool: Event[], now: Date): boolean {
+  return pool.every((e) => hasEventEnded(e, now) && !isRecentlyEnded(e, now));
 }
 
 export default function Events() {
   const { t, i18n } = useTranslation();
   const language = i18n.language;
 
-  const feedIsStale = useMemo(() => isFeedStale(), []);
-  const [activeCategory, setActiveCategory] = useState<string>("all");
+  const now = useMemo(() => new Date(), []);
 
-  const weekThreshold = useMemo(() => {
-    const d = new Date();
-    d.setDate(d.getDate() + 7);
-    return d;
-  }, []);
-
-  const allWeekEventIds = useMemo(
-    () => eventsFeedData.thisWeek.map((e) => e.id),
+  const eventPool: Event[] = useMemo(
+    () =>
+      dedupeEventsById([
+        ...eventsFeedData.thisWeek,
+        ...eventsFeedData.thisMonth,
+      ]).map((e) => ({ ...e, category: e.category as EventCategory })),
     [],
   );
 
-  const weekQualifiedIds = useMemo(
-    () =>
-      eventsFeedData.thisWeek
-        .filter((e) => new Date(e.startAt) <= weekThreshold)
-        .map((e) => e.id),
-    [weekThreshold],
+  const feedIsStale = useMemo(
+    () => isFeedStale(eventPool, now),
+    [eventPool, now],
   );
+  const [activeCategory, setActiveCategory] = useState<string>("all");
 
-  const weekExcludeIds = useMemo(
-    () => allWeekEventIds.filter((id) => !weekQualifiedIds.includes(id)),
-    [allWeekEventIds, weekQualifiedIds],
+  const thisWeekEvents = useMemo(
+    () => getThisWeekEvents(eventPool, now),
+    [eventPool, now],
   );
-
-  const hasWeekEvents = weekQualifiedIds.length > 0;
+  const thisWeekIds = useMemo(
+    () => thisWeekEvents.map((e) => e.id),
+    [thisWeekEvents],
+  );
+  const hasWeekEvents = thisWeekEvents.length > 0;
 
   const siteOrigin = getSiteOrigin();
   const canonicalUrl = `${siteOrigin}/events`;
@@ -91,16 +88,14 @@ export default function Events() {
     },
   };
 
-  const uniqueEvents = useMemo(() => {
-    const seen = new Set<string>();
-    return [...eventsFeedData.thisWeek, ...eventsFeedData.thisMonth]
-      .filter((e) => {
-        if (seen.has(e.id)) return false;
-        seen.add(e.id);
-        return true;
-      })
-      .map((e) => ({ ...e, category: e.category as EventCategory }));
-  }, []);
+  // The JSON-LD ItemList and the category filter pills must reflect exactly
+  // what's rendered on the page — the de-duplicated union of "this week"
+  // and "this month" — not the wider eligible-forever set (which would
+  // include events months away that never appear in either list).
+  const uniqueEvents = useMemo(
+    () => getVisibleEvents(eventPool, now),
+    [eventPool, now],
+  );
 
   const activeCategories = useMemo(() => {
     const cats = new Set(
@@ -338,10 +333,10 @@ export default function Events() {
                     </div>
                     {hasWeekEvents ? (
                       <EventsFeed
+                        events={eventPool}
                         range="week"
                         variant="full"
                         showHeader={false}
-                        excludeIds={weekExcludeIds}
                         categoryFilter={activeCategory}
                       />
                     ) : (
@@ -359,10 +354,11 @@ export default function Events() {
                       </h2>
                     </div>
                     <EventsFeed
+                      events={eventPool}
                       range="month"
                       variant="full"
                       showHeader={false}
-                      excludeIds={weekQualifiedIds}
+                      excludeIds={thisWeekIds}
                       categoryFilter={activeCategory}
                     />
                   </article>

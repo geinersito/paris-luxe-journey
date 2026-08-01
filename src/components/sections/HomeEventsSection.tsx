@@ -3,26 +3,23 @@ import { Calendar } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 import eventsFeedData from "@/data/events/events-feed.json";
 import type { Event, EventCategory, Language } from "@/types/events";
+import { getEligibleEvents } from "@/lib/events/classify";
 
 export default function HomeEventsSection() {
   const { t, language } = useLanguage();
 
   const now = new Date();
-  const graceMs = 7 * 24 * 60 * 60 * 1000;
 
-  const seenIds = new Set<string>();
-  const events = [...eventsFeedData.thisWeek, ...eventsFeedData.thisMonth]
-    .map((e) => ({ ...e, category: e.category as EventCategory }))
-    .filter((e) => {
-      if (seenIds.has(e.id)) return false;
-      seenIds.add(e.id);
-      const end = new Date(e.endAt ?? e.startAt);
-      return end.getTime() >= now.getTime() - graceMs;
-    })
-    .sort(
-      (a, b) => new Date(a.startAt).getTime() - new Date(b.startAt).getTime(),
-    )
-    .slice(0, 3) as (Event & { category: EventCategory })[];
+  const pool: Event[] = [
+    ...eventsFeedData.thisWeek,
+    ...eventsFeedData.thisMonth,
+  ].map((e) => ({ ...e, category: e.category as EventCategory }));
+
+  // Ended events must disappear from Home immediately — no grace period here,
+  // unlike the "Recently Ended" collapsed section on /events.
+  const events = getEligibleEvents(pool, now).slice(0, 3) as (Event & {
+    category: EventCategory;
+  })[];
 
   const localeMap: Record<Language, string> = {
     en: "en-US",
