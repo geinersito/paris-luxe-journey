@@ -79,9 +79,9 @@ Runtime hold (unchanged — separate from publication):
 Docs-only PRs may be newer than this SHA; see "Ultimos PRs" for exact merge order.
 
 - Branch: `main`
-- SHA: `6d3f2a7`
+- SHA: `b26f84c454e3c8a1fecfdb2a7a02b7a6bea8c85e`
 - Baseline feature: `BOOKING-REQUEST-INTAKE-01` — bridge table + edge fn + /booking/pending + Telegram ✅
-- Last updated: `2026-05-31`
+- Last updated: `2026-08-01`
 
 ## Ultimos PRs mergeados en main
 
@@ -180,6 +180,7 @@ Live Playwright audit confirmed gaps. CTO-approved sequence:
 
 ## Ahora en curso
 
+- **OPS-CI-TEST-GATE-01** (P0/R0) — **DONE ✅** — Node 20 pinned via `engines.node`; new `test:ci` script (`vitest run`) added as mandatory CI gate before build. No product code touched. PR: [#235](https://github.com/geinersito/paris-luxe-journey/pull/235).
 - **R0-SPRINT** (P0/R0) — **DONE ✅** — 10/10 blockers resolved. Sitio publicable. No hay blocker de publicación activo.
 - **SEO-EXCURSIONS-DETAIL-01** (P1/R0) — **DONE ✅** — canonical + meta title/description + OG + 3×JSON-LD (BreadcrumbList + TouristTrip + FAQPage) en versailles/champagne/loire-valley. Helmet data-rh ✅. 3 archivos. TSC ✅ Build ✅ (40s). Smoke: 3/3 páginas con ld+json válido, canonical correcto, BMW 0.
 - **PR-02c** (P2/R0) — **DONE ✅** — WA editoriales: BlogSidebar.tsx hardcoded EN → buildBlogWhatsAppUrl(i18n.language). FAQPage.tsx bare wa.me → helper con mensaje. BlogIndex.tsx eyebrows hardcoded → i18n keys. BMW eliminado de premiumVehicles en 7 archivos i18n (es/en/fr/pt .ts + es/en/fr .json). Smoke: 0 BMW, eyebrow FR "Découvrir Paris" ✅, FAQ WA con mensaje prefill ✅. TSC ✅ Build ✅.
@@ -189,9 +190,8 @@ Live Playwright audit confirmed gaps. CTO-approved sequence:
 
 ## Siguientes items (post-publicación, priorizados por revenue)
 
-1. ~~**SEO-EXCURSIONS-DETAIL-01**~~ ✅ DONE — ver "Ahora en curso"
-2. ~~**PR-02c**~~ ✅ DONE — ver "Ahora en curso"
-2. **SEO-EXCURSIONS-DETAIL-01** (P1/R0) — Excursion detail pages: JSON-LD + canonical + meta por destino
+1. **PR-SEO-FAQ-SCHEMA-01** (P2/R0) — Add FAQPage JSON-LD structured data
+2. **PR-SEO-HREFLANG-01** (P2/R0) — hreflang global (EN/FR/ES/PT + x-default)
 3. **CONTENT-BLOG-CTA-UPSELL-01** (P1/R0) — Añadir CTA excursiones en artículos de aeropuerto (ticket medio)
 4. **PLJ-EV-INGEST-01A-DEPLOY-GATE** (P1/R2) — BLOCKED: 6 gates required. No deploy until all pass.
 5. **PLJ-DB-001** (P1/R1) — BLOCKED: dispatch_* cross-repo sign-off → paris-dispatcher
