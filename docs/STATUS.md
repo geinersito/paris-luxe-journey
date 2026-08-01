@@ -180,7 +180,7 @@ Live Playwright audit confirmed gaps. CTO-approved sequence:
 
 ## Ahora en curso
 
-- **OPS-HUSKY-HOOKS-01** (P0/R0) — **DOING** — `pre-commit`/`pre-push` restaurados de `100644` a `100755` (nunca ejecutables desde el commit inicial). `post-merge` (`npm install` automático tras cada merge/pull, sin revisión) eliminado — recuperable del historial. Sin cambios en código de producto ni dependencias. Branch: `chore/ops-husky-hooks-01`.
+- **OPS-HUSKY-HOOKS-01** (P0/R0) — **DOING** — `pre-commit`/`pre-push` restaurados de `100644` a `100755` (nunca ejecutables desde el commit inicial). `post-merge` (`npm install` automático tras cada merge/pull, sin revisión) eliminado — recuperable del historial. Sin cambios en código de producto ni dependencias. PR: [#236](https://github.com/geinersito/paris-luxe-journey/pull/236).
 - **OPS-CI-TEST-GATE-01** (P0/R0) — **DONE ✅** — Node 20 pinned via `engines.node`; new `test:ci` script (`vitest run`) added as mandatory CI gate before build. No product code touched. PR: [#235](https://github.com/geinersito/paris-luxe-journey/pull/235).
 - **R0-SPRINT** (P0/R0) — **DONE ✅** — 10/10 blockers resolved. Sitio publicable. No hay blocker de publicación activo.
 - **SEO-EXCURSIONS-DETAIL-01** (P1/R0) — **DONE ✅** — canonical + meta title/description + OG + 3×JSON-LD (BreadcrumbList + TouristTrip + FAQPage) en versailles/champagne/loire-valley. Helmet data-rh ✅. 3 archivos. TSC ✅ Build ✅ (40s). Smoke: 3/3 páginas con ld+json válido, canonical correcto, BMW 0.
