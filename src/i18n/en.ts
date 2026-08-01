@@ -889,7 +889,7 @@ export const en: Translation = {
       vehicleTypes: {
         question: "What types of vehicles do you offer?",
         answer:
-          "Our premium fleet includes luxury sedans (Mercedes E-Class, BMW 7 Series), executive vans (Mercedes V-Class), and high-end SUVs. All our vehicles are less than 2 years old.",
+          "Our fleet includes premium sedans such as the Mercedes E-Class or equivalent, and premium vans such as the Mercedes V-Class or equivalent. The vehicle category is confirmed with your request.",
       },
     },
   },

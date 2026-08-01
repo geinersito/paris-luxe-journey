@@ -907,7 +907,7 @@ export const pt: Translation = {
       vehicleTypes: {
         question: "Quais tipos de veículos vocês oferecem?",
         answer:
-          "Nossa frota premium inclui sedãs de luxo (Mercedes Classe E, BMW Série 7), vans executivas (Mercedes Classe V) e SUVs de alto padrão. Todos os nossos veículos têm menos de 2 anos de idade.",
+          "Nossa frota inclui sedãs premium, como o Mercedes Classe E ou equivalente, e vans premium, como o Mercedes Classe V ou equivalente. A categoria do veículo é confirmada com a sua solicitação.",
       },
     },
   },

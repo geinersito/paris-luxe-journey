@@ -940,7 +940,7 @@ export const es: Translation = {
       vehicleTypes: {
         question: "¿Qué tipos de vehículos ofrecen?",
         answer:
-          "Nuestra flota premium incluye sedanes de lujo (Mercedes Clase E, BMW Serie 7), vans ejecutivas (Mercedes Clase V) y SUVs de alta gama. Todos nuestros vehículos tienen menos de 2 años de antigüedad.",
+          "Nuestra flota incluye sedanes premium como el Mercedes Clase E o equivalente y vans premium como el Mercedes Clase V o equivalente. La categoría del vehículo se confirma con tu solicitud.",
       },
     },
   },
