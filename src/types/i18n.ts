@@ -850,6 +850,7 @@ export interface Translation {
     planAhead: string;
     thisWeek: string;
     thisMonth: string;
+    until: string;
     bookTransfer: string;
     readGuides: string;
     ctaTitle: string;
