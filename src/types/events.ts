@@ -18,6 +18,8 @@ export interface Event {
   id: string;
   startAt: string; // ISO timestamp
   endAt?: string; // ISO timestamp (optional)
+  /** True when no official single start time is verifiable (multi-day festival, etc.) — the UI shows the date only, no clock time. */
+  startTimeUnknown?: boolean;
   title: LocalizedString;
   description: LocalizedString;
   venueName?: LocalizedString;

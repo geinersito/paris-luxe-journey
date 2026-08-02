@@ -66,15 +66,17 @@ export function EventsFeed({
   const isSingleFeatured = variant === "full" && displayEvents.length === 1;
 
   // Format date according to language
-  const formatDate = (dateString: string) => {
+  const formatDate = (dateString: string, includeTime = true) => {
     const options: Intl.DateTimeFormatOptions = {
       weekday: "long",
       day: "numeric",
       month: "long",
       year: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
-      hour12: false,
+      ...(includeTime && {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      }),
     };
 
     const localeMap = {
@@ -172,7 +174,7 @@ export function EventsFeed({
                       <div className="flex items-center gap-2 px-3 py-1.5 bg-ref-ink/5">
                         <Calendar className="w-4 h-4 text-ref-navy" />
                         <span className="text-sm text-gray-700 font-medium">
-                          {formatDate(event.startAt)}
+                          {formatDate(event.startAt, !event.startTimeUnknown)}
                         </span>
                       </div>
 
@@ -218,10 +220,8 @@ export function EventsFeed({
 
                     <div className="flex w-full flex-col gap-3 md:w-auto md:min-w-[220px]">
                       <a
-                        href={buildEventWhatsAppUrl(
-                          event,
-                          language,
-                          formatDate,
+                        href={buildEventWhatsAppUrl(event, language, (d) =>
+                          formatDate(d, !event.startTimeUnknown),
                         )}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -308,7 +308,7 @@ export function EventsFeed({
                   <div className="flex items-center gap-2 px-3 py-1.5 bg-ref-ink/5 w-fit mb-3">
                     <Calendar className="w-4 h-4 text-ref-navy" />
                     <span className="text-sm text-gray-700 font-medium">
-                      {formatDate(event.startAt)}
+                      {formatDate(event.startAt, !event.startTimeUnknown)}
                     </span>
                   </div>
 
@@ -342,7 +342,9 @@ export function EventsFeed({
                   {/* Action Buttons - Contextual CTAs */}
                   <div className="flex flex-col gap-3 pt-2">
                     <a
-                      href={buildEventWhatsAppUrl(event, language, formatDate)}
+                      href={buildEventWhatsAppUrl(event, language, (d) =>
+                        formatDate(d, !event.startTimeUnknown),
+                      )}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full inline-flex items-center justify-center gap-2 font-ui font-semibold text-sm px-4 py-3 bg-ref-navy text-white hover:bg-ref-ink transition-colors"
@@ -402,7 +404,9 @@ export function EventsFeed({
                   </h4>
                   <div className="flex items-center gap-2 text-xs text-muted-foreground mb-3">
                     <Calendar className="w-3.5 h-3.5" />
-                    <span>{formatDate(event.startAt)}</span>
+                    <span>
+                      {formatDate(event.startAt, !event.startTimeUnknown)}
+                    </span>
                   </div>
                   <p className="text-xs text-gray-500 line-clamp-2 leading-relaxed">
                     {event.description[language]}

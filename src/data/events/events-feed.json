@@ -311,6 +311,70 @@
       "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
       "category": "exhibition",
       "isFeatured": false
+    },
+    {
+      "id": "rock-en-seine-2026",
+      "startAt": "2026-08-25T22:00:00Z",
+      "endAt": "2026-08-30T23:59:00Z",
+      "title": {
+        "en": "Rock en Seine 2026",
+        "es": "Rock en Seine 2026",
+        "fr": "Rock en Seine 2026",
+        "pt": "Rock en Seine 2026"
+      },
+      "description": {
+        "en": "Five days of headline-level rock and alternative music at the Domaine national de Saint-Cloud, just west of Paris — The Cure, Tyler, The Creator, Nick Cave & The Bad Seeds, Deftones and more across 80+ concerts. With sets running into the night and large crowds leaving at once, a private transfer from your hotel or the airport offers a calmer, door-to-door alternative. Transport only — we do not sell event tickets.",
+        "es": "Cinco días de rock y música alternativa de primer nivel en el Domaine national de Saint-Cloud, al oeste de París — The Cure, Tyler, The Creator, Nick Cave & The Bad Seeds, Deftones y más en más de 80 conciertos. Con actuaciones que se prolongan hasta la noche y grandes multitudes saliendo a la vez, un transfer privado desde su hotel o el aeropuerto ofrece una alternativa más tranquila, puerta a puerta. Solo transporte — no vendemos entradas al evento.",
+        "fr": "Cinq jours de rock et de musique alternative de haut niveau au Domaine national de Saint-Cloud, à l'ouest de Paris — The Cure, Tyler, The Creator, Nick Cave & The Bad Seeds, Deftones et bien d'autres pour plus de 80 concerts. Avec des sets qui se prolongent tard le soir et de grandes foules qui repartent en même temps, un transfert privé depuis votre hôtel ou l'aéroport offre une alternative plus sereine, porte-à-porte. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "Cinco dias de rock e música alternativa de primeiro nível no Domaine national de Saint-Cloud, a oeste de Paris — The Cure, Tyler, The Creator, Nick Cave & The Bad Seeds, Deftones e muito mais em mais de 80 concertos. Com atuações que se prolongam pela noite e grandes multidões a sair ao mesmo tempo, um transfer privado do seu hotel ou aeroporto oferece uma alternativa mais tranquila, porta-a-porta. Apenas transporte — não vendemos ingressos para o evento."
+      },
+      "venueName": {
+        "en": "Domaine national de Saint-Cloud",
+        "es": "Domaine national de Saint-Cloud",
+        "fr": "Domaine national de Saint-Cloud",
+        "pt": "Domaine national de Saint-Cloud"
+      },
+      "district": "Saint-Cloud",
+      "address": "Domaine national de Saint-Cloud, 92210 Saint-Cloud",
+      "eventUrl": "https://www.rockenseine.com/",
+      "sourceName": "Rock en Seine",
+      "sourceUrl": "https://www.rockenseine.com/",
+      "imageUrl": "https://images.unsplash.com/photo-1475527588268-e6a157656e35?auto=format&fit=crop&w=1200&q=80",
+      "category": "festival",
+      "isFeatured": false,
+      "startTimeUnknown": true
+    },
+    {
+      "id": "jazz-a-la-villette-2026",
+      "startAt": "2026-08-27T22:00:00Z",
+      "endAt": "2026-09-06T23:59:00Z",
+      "title": {
+        "en": "Jazz à la Villette 2026",
+        "es": "Jazz à la Villette 2026",
+        "fr": "Jazz à la Villette 2026",
+        "pt": "Jazz à la Villette 2026"
+      },
+      "description": {
+        "en": "Ten days of jazz, soul and genre-crossing programming at the Grande Halle de la Villette, Cité de la musique and Philharmonie de Paris. Concerts often run late into the evening — a private transfer is a comfortable way to arrive from your hotel or the airport and get home safely afterwards. Transport only — we do not sell event tickets.",
+        "es": "Diez días de jazz, soul y programación que cruza géneros en la Grande Halle de la Villette, la Cité de la musique y la Philharmonie de Paris. Los conciertos suelen prolongarse hasta bien entrada la noche — un transfer privado es una forma cómoda de llegar desde su hotel o el aeropuerto y regresar a casa con seguridad después. Solo transporte — no vendemos entradas al evento.",
+        "fr": "Dix jours de jazz, de soul et de programmation transgenres à la Grande Halle de la Villette, à la Cité de la musique et à la Philharmonie de Paris. Les concerts se prolongent souvent tard le soir — un transfert privé est un moyen confortable d'arriver depuis votre hôtel ou l'aéroport et de rentrer en toute sécurité ensuite. Transport uniquement — nous ne vendons pas de billets.",
+        "pt": "Dez dias de jazz, soul e programação que atravessa géneros na Grande Halle de la Villette, na Cité de la musique e na Philharmonie de Paris. Os concertos costumam prolongar-se até tarde da noite — um transfer privado é uma forma confortável de chegar do seu hotel ou aeroporto e regressar em segurança depois. Apenas transporte — não vendemos ingressos para o evento."
+      },
+      "venueName": {
+        "en": "Parc de la Villette",
+        "es": "Parc de la Villette",
+        "fr": "Parc de la Villette",
+        "pt": "Parc de la Villette"
+      },
+      "district": "19eme",
+      "address": "211 Avenue Jean Jaurès, 75019 Paris",
+      "eventUrl": "https://jazzalavillette.com/fr/",
+      "sourceName": "Jazz à la Villette",
+      "sourceUrl": "https://jazzalavillette.com/fr/",
+      "imageUrl": "https://images.unsplash.com/photo-1415201364774-f6f0bb35f28f?auto=format&fit=crop&w=1200&q=80",
+      "category": "festival",
+      "isFeatured": false,
+      "startTimeUnknown": true
     }
   ]
 }
