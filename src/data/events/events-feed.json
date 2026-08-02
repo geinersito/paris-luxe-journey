@@ -29,7 +29,7 @@
       "eventUrl": "https://www.grandpalais.fr/fr/programme/hilma-af-klint",
       "sourceName": "Grand Palais",
       "sourceUrl": "https://www.grandpalais.fr/fr/programme/hilma-af-klint",
-      "imageUrl": "https://images.unsplash.com/photo-1541367777708-7905fe3296c0?auto=format&fit=crop&w=1200&q=80",
+      "imageUrl": "/images/library/events/event-hilma-af-klint-1200x900.webp",
       "category": "exhibition",
       "isFeatured": true
     },
@@ -60,7 +60,7 @@
       "eventUrl": "https://www.chateauversailles-spectacles.fr/evenement/les-grandes-eaux-nocturnes-2026/",
       "sourceName": "Château de Versailles Spectacles",
       "sourceUrl": "https://www.chateauversailles-spectacles.fr/evenement/les-grandes-eaux-nocturnes-2026/",
-      "imageUrl": "https://images.unsplash.com/photo-1569949380661-6c3f4a4faf89?auto=format&fit=crop&w=1200&q=80",
+      "imageUrl": "/images/library/events/event-grandes-eaux-nocturnes-1200x900.webp",
       "category": "festival",
       "isFeatured": true
     },
@@ -91,7 +91,7 @@
       "eventUrl": "https://www.grandpalais.fr/en/program/leandro-erlich",
       "sourceName": "Grand Palais",
       "sourceUrl": "https://www.grandpalais.fr/en/program/leandro-erlich",
-      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "imageUrl": "/images/library/events/event-leandro-erlich-1200x900.webp",
       "category": "exhibition",
       "isFeatured": false
     }
@@ -123,7 +123,7 @@
       "eventUrl": "https://www.paris.fr/pages/paris-plages-2026-appel-a-propositions-pour-l-exploitation-de-stands-de-petite-restauration-35038",
       "sourceName": "Ville de Paris",
       "sourceUrl": "https://www.paris.fr/pages/paris-plages-2026-appel-a-propositions-pour-l-exploitation-de-stands-de-petite-restauration-35038",
-      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "imageUrl": "/images/library/events/event-paris-plages-1200x900.webp",
       "category": "festival",
       "isFeatured": false
     },
@@ -154,7 +154,7 @@
       "eventUrl": "https://www.grandpalais.fr/fr/programme/hilma-af-klint",
       "sourceName": "Grand Palais",
       "sourceUrl": "https://www.grandpalais.fr/fr/programme/hilma-af-klint",
-      "imageUrl": "https://images.unsplash.com/photo-1541367777708-7905fe3296c0?auto=format&fit=crop&w=1200&q=80",
+      "imageUrl": "/images/library/events/event-hilma-af-klint-1200x900.webp",
       "category": "exhibition",
       "isFeatured": true
     },
@@ -185,7 +185,7 @@
       "eventUrl": "https://www.chateauversailles-spectacles.fr/evenement/les-grandes-eaux-nocturnes-2026/",
       "sourceName": "Château de Versailles Spectacles",
       "sourceUrl": "https://www.chateauversailles-spectacles.fr/evenement/les-grandes-eaux-nocturnes-2026/",
-      "imageUrl": "https://images.unsplash.com/photo-1569949380661-6c3f4a4faf89?auto=format&fit=crop&w=1200&q=80",
+      "imageUrl": "/images/library/events/event-grandes-eaux-nocturnes-1200x900.webp",
       "category": "festival",
       "isFeatured": true
     },
@@ -308,7 +308,7 @@
       "eventUrl": "https://www.grandpalais.fr/en/program/leandro-erlich",
       "sourceName": "Grand Palais",
       "sourceUrl": "https://www.grandpalais.fr/en/program/leandro-erlich",
-      "imageUrl": "/images/library/events/event-placeholder-800x600.jpg",
+      "imageUrl": "/images/library/events/event-leandro-erlich-1200x900.webp",
       "category": "exhibition",
       "isFeatured": false
     },
