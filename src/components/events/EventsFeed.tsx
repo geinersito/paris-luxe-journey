@@ -174,7 +174,12 @@ export function EventsFeed({
                       <div className="flex items-center gap-2 px-3 py-1.5 bg-ref-ink/5">
                         <Calendar className="w-4 h-4 text-ref-navy" />
                         <span className="text-sm text-gray-700 font-medium">
-                          {formatDate(event.startAt, !event.startTimeUnknown)}
+                          {event.endAt && new Date(event.startAt) <= now
+                            ? `${t("events.until", { defaultValue: "Until" })} ${formatDate(event.endAt, false)}`
+                            : formatDate(
+                                event.startAt,
+                                !event.startTimeUnknown,
+                              )}
                         </span>
                       </div>
 
@@ -220,8 +225,12 @@ export function EventsFeed({
 
                     <div className="flex w-full flex-col gap-3 md:w-auto md:min-w-[220px]">
                       <a
-                        href={buildEventWhatsAppUrl(event, language, (d) =>
-                          formatDate(d, !event.startTimeUnknown),
+                        href={buildEventWhatsAppUrl(
+                          event,
+                          language,
+                          (d, includeTime = !event.startTimeUnknown) =>
+                            formatDate(d, includeTime),
+                          !!event.endAt && new Date(event.startAt) <= now,
                         )}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -308,7 +317,9 @@ export function EventsFeed({
                   <div className="flex items-center gap-2 px-3 py-1.5 bg-ref-ink/5 w-fit mb-3">
                     <Calendar className="w-4 h-4 text-ref-navy" />
                     <span className="text-sm text-gray-700 font-medium">
-                      {formatDate(event.startAt, !event.startTimeUnknown)}
+                      {event.endAt && new Date(event.startAt) <= now
+                        ? `${t("events.until", { defaultValue: "Until" })} ${formatDate(event.endAt, false)}`
+                        : formatDate(event.startAt, !event.startTimeUnknown)}
                     </span>
                   </div>
 
@@ -342,8 +353,12 @@ export function EventsFeed({
                   {/* Action Buttons - Contextual CTAs */}
                   <div className="flex flex-col gap-3 pt-2">
                     <a
-                      href={buildEventWhatsAppUrl(event, language, (d) =>
-                        formatDate(d, !event.startTimeUnknown),
+                      href={buildEventWhatsAppUrl(
+                        event,
+                        language,
+                        (d, includeTime = !event.startTimeUnknown) =>
+                          formatDate(d, includeTime),
+                        !!event.endAt && new Date(event.startAt) <= now,
                       )}
                       target="_blank"
                       rel="noopener noreferrer"

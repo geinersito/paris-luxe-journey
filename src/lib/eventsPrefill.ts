@@ -6,9 +6,11 @@ const EMAIL_ADDRESS = "info@eliteparistransfer.com";
 interface PrefillTemplates {
   greeting: string;
   dateLabel: string;
+  ongoingUntil: string;
   venueLabel: string;
   linkLabel: string;
   closing: string;
+  closingOngoing: string;
   genericSubject: string;
   genericBody: string;
 }
@@ -17,9 +19,12 @@ const templates: Record<string, PrefillTemplates> = {
   en: {
     greeting: "Hi, I'd like a quote for a ride to",
     dateLabel: "Date",
+    ongoingUntil: "Ongoing until",
     venueLabel: "Venue",
     linkLabel: "Event link",
     closing: "Could you confirm availability and price?",
+    closingOngoing:
+      "Could you confirm availability and price? Please let us know your preferred transfer date.",
     genericSubject: "Private Transfer Quote — Paris",
     genericBody:
       "Hello, I'd like to request a private transfer in Paris. Could you confirm availability and send me a quote?",
@@ -27,9 +32,12 @@ const templates: Record<string, PrefillTemplates> = {
   es: {
     greeting: "Hola, me gustaría un presupuesto para ir a",
     dateLabel: "Fecha",
+    ongoingUntil: "Vigente hasta",
     venueLabel: "Lugar",
     linkLabel: "Enlace del evento",
     closing: "¿Podrían confirmar disponibilidad y precio?",
+    closingOngoing:
+      "¿Podrían confirmar disponibilidad y precio? Indíquenos también la fecha concreta que prefiere para el traslado.",
     genericSubject: "Presupuesto Traslado Privado — París",
     genericBody:
       "Hola, me gustaría solicitar un traslado privado en París. ¿Podrían confirmar disponibilidad y enviarme un presupuesto?",
@@ -37,9 +45,12 @@ const templates: Record<string, PrefillTemplates> = {
   fr: {
     greeting: "Bonjour, je souhaite un devis pour me rendre à",
     dateLabel: "Date",
+    ongoingUntil: "En cours jusqu'au",
     venueLabel: "Lieu",
     linkLabel: "Lien de l'événement",
     closing: "Pourriez-vous confirmer la disponibilité et le tarif ?",
+    closingOngoing:
+      "Pourriez-vous confirmer la disponibilité et le tarif ? Merci de nous indiquer la date précise souhaitée pour le transfert.",
     genericSubject: "Devis Transfert Privé — Paris",
     genericBody:
       "Bonjour, je souhaite réserver un transfert privé à Paris. Pourriez-vous confirmer la disponibilité et m'envoyer un devis ?",
@@ -47,9 +58,12 @@ const templates: Record<string, PrefillTemplates> = {
   pt: {
     greeting: "Olá, gostaria de um orçamento para ir a",
     dateLabel: "Data",
+    ongoingUntil: "Em curso até",
     venueLabel: "Local",
     linkLabel: "Link do evento",
     closing: "Poderiam confirmar disponibilidade e preço?",
+    closingOngoing:
+      "Poderiam confirmar disponibilidade e preço? Indiquem também a data concreta pretendida para o transfer.",
     genericSubject: "Orçamento Transfer Privado — Paris",
     genericBody:
       "Olá, gostaria de solicitar um transfer privado em Paris. Podem confirmar disponibilidade e enviar-me um orçamento?",
@@ -63,14 +77,17 @@ function getTemplates(lang: string): PrefillTemplates {
 export function buildEventWhatsAppUrl(
   event: Event,
   language: Language,
-  formatDate: (dateString: string) => string,
+  formatDate: (dateString: string, includeTime?: boolean) => string,
+  isOngoing = false,
 ): string {
   const t = getTemplates(language);
   const lines: string[] = [];
 
   lines.push(`${t.greeting}: ${event.title[language]}`);
 
-  if (event.startAt) {
+  if (isOngoing && event.endAt) {
+    lines.push(`${t.ongoingUntil} ${formatDate(event.endAt, false)}`);
+  } else if (event.startAt) {
     lines.push(`${t.dateLabel}: ${formatDate(event.startAt)}`);
   }
   if (event.venueName?.[language]) {
@@ -83,7 +100,7 @@ export function buildEventWhatsAppUrl(
   }
 
   lines.push("");
-  lines.push(t.closing);
+  lines.push(isOngoing ? t.closingOngoing : t.closing);
 
   const text = encodeURIComponent(lines.join("\n"));
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${text}`;
