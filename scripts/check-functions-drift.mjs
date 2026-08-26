@@ -15,6 +15,19 @@
 // Supabase access token from running `supabase functions deploy <slug>`
 // directly. See docs/ops/DEPLOY_GOVERNANCE.md for what actually prevents
 // that (process/credential controls, not this script).
+//
+// IMPORTANT SCOPE LIMIT: this detects function INVENTORY/CLASSIFICATION
+// drift (does this slug exist where expected), NOT deployed SOURCE-CODE
+// drift (does the code running under an expected slug match git HEAD). A
+// green run means every live slug is accounted for — it says nothing about
+// whether the bytes deployed under a governed, correctly-classified slug
+// actually match git. We found a real instance of exactly this gap during
+// the reconciliation that produced this script: stripe-webhooks is in git,
+// live, and correctly manifest-listed (zero inventory drift) — yet its
+// deployed code was missing an idempotency block that's been in git since
+// commit 3e51bad. See "What check:functions-drift does NOT detect" in
+// docs/ops/DEPLOY_GOVERNANCE.md before treating a green run as "production
+// matches git."
 
 import { execFileSync } from "node:child_process";
 import { readFileSync, readdirSync } from "node:fs";

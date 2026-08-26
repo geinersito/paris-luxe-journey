@@ -30,6 +30,35 @@ manifest file exists in some git branch. **This is exactly how we got here** —
 recovered in `recovery/production-source-01` were deployed this way, bypassing git entirely, and
 nothing technical stopped it at the time.
 
+## What `check:functions-drift` does NOT detect
+
+**This check detects function inventory/classification drift, not deployed source-code drift.**
+It answers "does this slug exist where we expect it to (or not)" — never "does the code running
+under this slug match git HEAD." A green run means every live *slug* is accounted for. It says
+nothing about whether the *bytes* deployed under an accounted-for slug are the same bytes in git.
+
+We have a real, already-documented example of exactly this gap: `stripe-webhooks` exists in git
+*and* is live *and* is correctly listed as `active` in the manifest — so this check reports zero
+drift for it — yet the actual deployed code was confirmed (by downloading it and diffing, during
+the reconciliation that produced this PR) to be missing the idempotency block that's been in git
+since commit `3e51bad`. Someone could deploy an old or modified version under a governed,
+manifest-listed slug tomorrow and this script would stay green throughout.
+
+**Primary control for this gap is the same one that closes the "who can deploy" gap** (see next
+section): if deploys only ever happen through CI from a specific git ref, deployed code and git
+HEAD are the same thing by construction — there's no separate "source drift" problem to detect,
+because there's no path for the two to diverge. Detecting it after the fact is a weaker,
+secondary control.
+
+**Optional future secondary detector, not built here**: extend `check:functions-drift` (or a
+sibling script) to `supabase functions download` each manifest-governed function and diff it
+against the corresponding file in git, failing on any mismatch. Deliberately not built now —
+adding it wouldn't have prevented anything CI-only-deploy doesn't already prevent by construction,
+and building it today would be scope creep against diminishing returns: this reconciliation
+already found and fixed the two real classes of drift it set out to find. A green
+`check:functions-drift` today means **"every live function is accounted for,"** not **"production
+matches git."** Don't let that distinction erode over time.
+
 ## What actually enforces "Git/PR is mandatory" (the real controls)
 
 The manifest is necessary but not sufficient. Closing the gap for real means restricting
