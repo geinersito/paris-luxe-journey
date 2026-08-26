@@ -21,25 +21,27 @@ Repo assignment: both fall under **CTO Booking (paris-luxe-journey)** per
 
 ## `<200 net lines` exception (SUPERVISOR.md)
 
-This PR's diff is ~290 lines, over the normal cap. **The exception is deliberate and narrow**:
-every line here is verbatim recovery of code already executing in production — it is not new
-logic being proposed for review. There is nothing to review for correctness (it's already
-running); the review scope is "does this match what's live," not "is this good code." Full
-provenance, including the original recovery investigation and the `stripe-webhooks-v312` copy
-(kept out of this PR, see below), lives in commit
+This PR's diff is **+902 / -0 lines**, well over the normal cap. **The exception is deliberate
+and narrow**: every line here is verbatim recovery of code already executing in production — it
+is not new logic being proposed for review. There is nothing to review for correctness (it's
+already running); the review scope is "does this match what's live," not "is this good code."
+The original recovery investigation notes (the audit that found these functions, cross-checked
+them against secrets/migrations/traffic) are not duplicated here — they live in commit
 [`ecc5f17`](https://github.com/geinersito/paris-luxe-journey/commit/ecc5f17f7eb2cddae1caebf3b1b085ed67cf538e)
 on branch `snapshot/booking-prod-reconciliation-01` (pushed, unmerged, kept permanently as the
 historical record of the raw recovery).
 
-## What is deliberately NOT in this PR
-- **`stripe-webhooks-v312`** — intentionally not placed under `supabase/functions/` (the normal
-  deployable path) in a branch headed for `main`. It is legacy, its intended fate is retirement,
-  and putting it back in the deployable path risks exactly the kind of "it's just sitting there,
-  someone might redeploy it" confusion this whole reconciliation exists to prevent. Its exact
-  source is archived at `supabase/legacy-functions/stripe-webhooks-v312/index.ts` in this same
-  PR (see `supabase/legacy-functions/stripe-webhooks-v312/ARCHIVED.md` for details) —
-  historically preserved, physically out of the deployable tree.
+## `stripe-webhooks-v312` — included in this PR, but archived outside the deployable path
+It **is** part of this diff (see the file list above) — it is not excluded. What's deliberate is
+*where*: `supabase/legacy-functions/stripe-webhooks-v312/`, not `supabase/functions/`. It is
+legacy, its intended fate is retirement, and putting its source back under the normal deployable
+path risks exactly the kind of "it's just sitting there, someone might redeploy it" confusion
+this whole reconciliation exists to prevent. See
+`supabase/legacy-functions/stripe-webhooks-v312/ARCHIVED.md` for the full rationale, known
+issues, and retirement checklist.
+
+## What is NOT in this PR at all
 - Any observability change (action-queue badge, Telegram deep-link, test/live field).
 - Any change to the `fee_paid → converted` flow.
 - The `DEPLOY_MANIFEST.json` / drift-check governance work — separate PR, see
-  `chore/deployment-governance-01`.
+  `chore/deployment-governance-01` (#252).
