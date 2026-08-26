@@ -21,7 +21,8 @@ Repo assignment: both fall under **CTO Booking (paris-luxe-journey)** per
 
 ## `<200 net lines` exception (SUPERVISOR.md)
 
-This PR's diff is **+902 / -0 lines**, well over the normal cap. **The exception is deliberate
+This PR substantially exceeds the normal cap (an exact line count isn't worth chasing here — it
+shifts with every documentation fix, most recently this one). **The exception is deliberate
 and narrow**: every line here is verbatim recovery of code already executing in production — it
 is not new logic being proposed for review. There is nothing to review for correctness (it's
 already running); the review scope is "does this match what's live," not "is this good code."
@@ -32,8 +33,11 @@ on branch `snapshot/booking-prod-reconciliation-01` (pushed, unmerged, kept perm
 historical record of the raw recovery).
 
 ## `stripe-webhooks-v312` — included in this PR, but archived outside the deployable path
-It **is** part of this diff (see the file list above) — it is not excluded. What's deliberate is
-*where*: `supabase/legacy-functions/stripe-webhooks-v312/`, not `supabase/functions/`. It is
+It **is** part of this diff — at `supabase/legacy-functions/stripe-webhooks-v312/index.ts` and
+`ARCHIVED.md` — it is not excluded (the "What this PR adds" list above only names the two
+*active* functions, since that's the section about what's newly deployable; v312 gets its own
+section precisely because it isn't). What's deliberate is *where* v312 lives: under
+`supabase/legacy-functions/`, not `supabase/functions/`. It is
 legacy, its intended fate is retirement, and putting its source back under the normal deployable
 path risks exactly the kind of "it's just sitting there, someone might redeploy it" confusion
 this whole reconciliation exists to prevent. See
