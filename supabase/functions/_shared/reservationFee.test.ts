@@ -1,6 +1,7 @@
 import { assertEquals } from "https://deno.land/std@0.190.0/testing/asserts.ts";
 import {
   buildIdempotencyKey,
+  classifyStripeRetrieveError,
   decideSessionReuse,
   evaluateFeeConfirmation,
   type BookingSnapshot,
@@ -99,7 +100,8 @@ function session(overrides: Partial<WebhookSessionInfo>): WebhookSessionInfo {
     eventType: "checkout.session.completed",
     paymentStatus: "paid",
     sessionId: "cs_current",
-    metadata: { booking_request_id: "b1", fee_type: "reservation_fee", quote_amount_cents: "10000" },
+    amountTotal: 1000, // matches BOOKING.quoteAmountCents=10000 -> ceil(10000*0.1)=1000
+    metadata: { booking_request_id: "b1", fee_type: "reservation_fee", quote_amount_cents: "10000", fee_amount_cents: "1000" },
     ...overrides,
   };
 }
@@ -172,4 +174,55 @@ Deno.test("webhook: replay of the same confirm-worthy event is safe (pure functi
   // .eq("status","approved_pending_fee") guard on the UPDATE, unchanged by
   // this refactor — this test documents the decision layer's contribution:
   // it never varies its answer for the same inputs.
+});
+
+Deno.test("webhook: real Stripe amount_total disagrees with expected fee -> skip, not confirm (don't trust metadata alone)", () => {
+  const decision = evaluateFeeConfirmation(session({ amountTotal: 1 }), BOOKING);
+  assertEquals(decision, { action: "skip", reason: "amount_total_mismatch" });
+});
+
+Deno.test("webhook: metadata.fee_amount_cents disagrees with expected fee -> skip", () => {
+  const decision = evaluateFeeConfirmation(
+    session({ metadata: { booking_request_id: "b1", fee_type: "reservation_fee", quote_amount_cents: "10000", fee_amount_cents: "1" } }),
+    BOOKING,
+  );
+  assertEquals(decision, { action: "skip", reason: "fee_amount_metadata_mismatch" });
+});
+
+Deno.test("webhook: booking with no quote on file -> skip, never confirm against an unknown price", () => {
+  const decision = evaluateFeeConfirmation(session({}), { ...BOOKING, quoteAmountCents: null });
+  assertEquals(decision, { action: "skip", reason: "booking_missing_quote" });
+});
+
+// --- classifyStripeRetrieveError (fail-closed on Stripe uncertainty) ---
+
+Deno.test("stripe error classification: confirmed resource_missing -> not_found (safe to treat as no previous session)", () => {
+  assertEquals(
+    classifyStripeRetrieveError({ type: "StripeInvalidRequestError", code: "resource_missing" }),
+    "not_found",
+  );
+});
+
+Deno.test("stripe error classification: StripeConnectionError -> uncertain (fail closed, do not proceed)", () => {
+  assertEquals(classifyStripeRetrieveError({ type: "StripeConnectionError" }), "uncertain");
+});
+
+Deno.test("stripe error classification: StripeAPIError (Stripe-side 5xx) -> uncertain", () => {
+  assertEquals(classifyStripeRetrieveError({ type: "StripeAPIError" }), "uncertain");
+});
+
+Deno.test("stripe error classification: StripeRateLimitError -> uncertain", () => {
+  assertEquals(classifyStripeRetrieveError({ type: "StripeRateLimitError" }), "uncertain");
+});
+
+Deno.test("stripe error classification: invalid_request but NOT resource_missing (some other bad-parameter error) -> uncertain, not blindly treated as not-found", () => {
+  assertEquals(
+    classifyStripeRetrieveError({ type: "StripeInvalidRequestError", code: "parameter_invalid_empty" }),
+    "uncertain",
+  );
+});
+
+Deno.test("stripe error classification: null/undefined error -> uncertain", () => {
+  assertEquals(classifyStripeRetrieveError(null), "uncertain");
+  assertEquals(classifyStripeRetrieveError(undefined), "uncertain");
 });

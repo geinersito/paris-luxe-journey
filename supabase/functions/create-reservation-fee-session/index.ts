@@ -12,12 +12,26 @@
 // SECURITY-BOOKING-REQUEST-AUTHZ-01 (PR A). A caller who is authenticated but
 // not an operator-backoffice member of their active org (e.g. an RC Transport
 // admin) gets 403 before touching Stripe or booking data at all.
+//
+// (R3) fails CLOSED on any Stripe uncertainty when replacing a stale/
+// mismatched session: a confirmed "resource_missing" is the only case
+// treated as "no previous session"; a connection/API/rate-limit error aborts
+// with 5xx instead of silently creating a second payable session alongside
+// a possibly-still-open old one. Replacing an open session requires expire()
+// to actually succeed before creating the replacement.
+//
+// (R2) the persist step is a compare-and-swap: the UPDATE's WHERE clause
+// requires status='approved_pending_fee' AND stripe_checkout_session_id to
+// still equal exactly what was read at the start of this request. If the
+// booking was rejected mid-flight, or another concurrent call already wrote
+// a different session, the CAS affects 0 rows — the just-created Stripe
+// session is treated as orphaned (expired, not left live), no email sent.
 
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import Stripe from "https://esm.sh/stripe@13.10.0";
 import { Resend } from "npm:resend@2.0.0";
-import { buildIdempotencyKey, decideSessionReuse, type ExistingSessionSnapshot } from "../_shared/reservationFee.ts";
+import { buildIdempotencyKey, classifyStripeRetrieveError, decideSessionReuse, type ExistingSessionSnapshot } from "../_shared/reservationFee.ts";
 
 const SUPABASE_URL              = Deno.env.get("SUPABASE_URL") ?? "";
 const SUPABASE_ANON_KEY         = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
@@ -152,10 +166,29 @@ serve(async (req) => {
 
   const previousSessionId: string | null = booking.stripe_checkout_session_id ?? null;
 
-  // --- Reuse / replace decision (R3) ---
+  // --- Reuse / replace decision (R3), fail-closed on any Stripe uncertainty ---
   if (previousSessionId) {
+    let existing: Stripe.Checkout.Session | null = null;
     try {
-      const existing = await stripe.checkout.sessions.retrieve(previousSessionId);
+      existing = await stripe.checkout.sessions.retrieve(previousSessionId);
+    } catch (retrieveErr) {
+      const classification = classifyStripeRetrieveError(retrieveErr as { type?: string; code?: string });
+      if (classification !== "not_found") {
+        // Connection failure, Stripe-side 5xx, rate limit, etc. — the
+        // previous session's true state is UNKNOWN. Proceeding could create
+        // a second live payable session next to one that might still be
+        // open. Abort instead; the caller can retry.
+        console.error("[create-reservation-fee-session] uncertain error retrieving previous session — aborting rather than risking a duplicate live session", retrieveErr);
+        return json({
+          error: "STRIPE_RETRIEVE_UNCERTAIN",
+          message: "Could not confirm the state of the existing reservation-fee session. Not creating a new one. Please retry.",
+        }, 502);
+      }
+      // Confirmed resource_missing: safe to treat as no previous session.
+      console.warn("[create-reservation-fee-session] previous session confirmed not found on Stripe, creating new one");
+    }
+
+    if (existing) {
       const snapshot: ExistingSessionSnapshot = {
         status: existing.status ?? "expired",
         amountTotal: existing.amount_total ?? null,
@@ -185,22 +218,23 @@ serve(async (req) => {
         return json({ error: "Reservation fee already paid for this booking" }, 409);
       }
 
-      // decision.action === "replace": explicitly expire a still-open but
-      // mismatched session so it can never be paid after we move on — never
-      // leave two live sessions for the same booking.
+      // decision.action === "replace". Fail closed: only proceed to create a
+      // replacement if we can PROVE the old session can no longer be paid —
+      // either it's already 'expired' (nothing to do), or expire() actually
+      // succeeds. If expire() fails, abort: creating a second session now
+      // would risk two live payable links for the same booking.
       console.log("[create-reservation-fee-session] replacing existing session:", decision.reason);
       if (existing.status === "open") {
         try {
           await stripe.checkout.sessions.expire(existing.id);
         } catch (expireErr) {
-          console.error("[create-reservation-fee-session] failed to expire stale session (non-fatal, proceeding)", expireErr);
+          console.error("[create-reservation-fee-session] failed to expire stale session — aborting, NOT creating a second live session", expireErr);
+          return json({
+            error: "STRIPE_EXPIRE_FAILED",
+            message: "Could not close the previous reservation-fee session. Not creating a new one to avoid two live payable links. Please retry.",
+          }, 502);
         }
       }
-    } catch (retrieveErr) {
-      // Session id on file doesn't resolve on Stripe's side — treat as no
-      // previous session, but keep its id for idempotency-key rotation below
-      // (harmless even if Stripe never heard of it).
-      console.warn("[create-reservation-fee-session] could not retrieve previous session, creating new one", retrieveErr);
     }
   }
 
@@ -238,11 +272,11 @@ serve(async (req) => {
 
   if (!session.url) return json({ error: "Stripe did not return a checkout URL" }, 500);
 
-  // --- Persist BEFORE communicating anything to the client (R2) ---
-  // Financial columns are not authenticated-writable since PR A — this write
-  // must use service_role. Check the error AND that a row actually changed;
-  // "no error" alone is not proof of a successful write.
-  const { data: updated, error: updateErr } = await adminSupabase
+  // --- Persist BEFORE communicating anything to the client (R2), as a
+  //     compare-and-swap against the exact state observed at the start of
+  //     this request. Financial columns are not authenticated-writable
+  //     since PR A — this write must use service_role. ---
+  let casQuery = adminSupabase
     .from("public_booking_requests")
     .update({
       stripe_checkout_session_id: session.id,
@@ -250,10 +284,15 @@ serve(async (req) => {
       quote_amount_cents,
     })
     .eq("id", booking_request_id)
-    .select("id")
-    .maybeSingle();
+    .eq("status", "approved_pending_fee");
 
-  if (updateErr || !updated) {
+  casQuery = previousSessionId
+    ? casQuery.eq("stripe_checkout_session_id", previousSessionId)
+    : casQuery.is("stripe_checkout_session_id", null);
+
+  const { data: updated, error: updateErr } = await casQuery.select("id").maybeSingle();
+
+  if (updateErr) {
     console.error("[create-reservation-fee-session] local persistence failed after Stripe session created", {
       session_id: session.id,
       updateErr,
@@ -266,6 +305,30 @@ serve(async (req) => {
       error: "LOCAL_PERSIST_FAILED",
       message: "Stripe session created but could not be saved locally. Retry with the same parameters — the same Stripe session will be recovered via idempotency.",
     }, 500);
+  }
+
+  if (!updated) {
+    // CAS mismatch: booking state changed since we authorized/loaded it at
+    // the top of this request (rejected mid-flight, or a concurrent call
+    // already won the race and wrote a different session/status). The
+    // Stripe session we just created is now ORPHANED — close it rather than
+    // leaving a second live payable link, and never send its email.
+    console.error("[create-reservation-fee-session] CAS mismatch — booking state changed during Stripe call, expiring orphaned session", {
+      session_id: session.id,
+      booking_request_id,
+    });
+    try {
+      await stripe.checkout.sessions.expire(session.id);
+    } catch (expireErr) {
+      console.error("[create-reservation-fee-session] failed to expire orphaned session — needs manual reconciliation", {
+        session_id: session.id,
+        expireErr,
+      });
+    }
+    return json({
+      error: "CONCURRENT_MODIFICATION",
+      message: "Booking state changed while creating the Stripe session (e.g. rejected, or a concurrent request already succeeded). No email sent; the new Stripe session was closed.",
+    }, 409);
   }
 
   // Send email via Resend (non-fatal on failure) — only after confirmed persistence

@@ -1,5 +1,12 @@
 
 project_id = "urjsnguzzzwcnaxwghbo"
   
-[functions.stripe-webhooks-v312]  
-verify_jwt = false 
+[functions.stripe-webhooks-v312]
+verify_jwt = false
+
+# Verified against the live-deployed function (supabase functions list -o json,
+# 2026-08-26): verify_jwt = false. Stripe never sends a Supabase JWT — without
+# this, every webhook call would 401 at the gateway before the signature
+# check even runs. Was previously live-only, unversioned anywhere in git.
+[functions.stripe-reservation-webhook]
+verify_jwt = false

@@ -16,13 +16,13 @@
       "status": "active",
       "deploy_allowed": true,
       "repo": "paris-luxe-journey",
-      "notes": "Recovered from production in recovery/production-source-01 (#251)."
+      "notes": "Recovered from production in recovery/production-source-01 (#251). Hardened in security/reservation-fee-hardening-01 (#253): real caller-scoped authorization (R4), fail-closed Stripe retrieve/expire handling, compare-and-swap persist (R2/R3). Requires SUPABASE_ANON_KEY (new)."
     },
     "stripe-reservation-webhook": {
       "status": "active",
       "deploy_allowed": true,
       "repo": "paris-luxe-journey",
-      "notes": "Recovered from production in recovery/production-source-01 (#251). Known review findings not yet fixed (tracked separately, not blocking deploy_allowed since this is what's already live): checkout.session.completed handled without checking session.payment_status === 'paid'."
+      "notes": "Recovered from production in recovery/production-source-01 (#251). The payment_status/async-events/staleness findings noted here were fixed in security/reservation-fee-hardening-01 (#253) — not yet deployed, tracked as part of that PR's rollout, same as SECURITY-BOOKING-REQUEST-AUTHZ-01 was for #1370."
     },
     "stripe-webhooks-v312": {
       "status": "legacy-preserved-no-deploy",

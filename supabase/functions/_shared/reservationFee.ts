@@ -87,10 +87,12 @@ export interface WebhookSessionInfo {
   eventType: "checkout.session.completed" | "checkout.session.async_payment_succeeded" | "checkout.session.async_payment_failed";
   paymentStatus: string; // Stripe Checkout Session.payment_status
   sessionId: string;
+  amountTotal: number | null; // real Stripe amount actually charged, cents
   metadata: {
     booking_request_id?: string;
     fee_type?: string;
     quote_amount_cents?: string;
+    fee_amount_cents?: string;
   };
 }
 
@@ -144,9 +146,50 @@ export function evaluateFeeConfirmation(
     return { action: "skip", reason: "stale_session_mismatch" };
   }
 
+  // Must check for a missing quote BEFORE any string comparison against it —
+  // String(null) === "null" would otherwise fall through as a coincidental
+  // "price_mismatch" instead of the more accurate "booking_missing_quote"
+  // (caught by a real test run, not spotted by inspection).
+  if (booking.quoteAmountCents === null) {
+    return { action: "skip", reason: "booking_missing_quote" };
+  }
+
   if (session.metadata.quote_amount_cents !== String(booking.quoteAmountCents)) {
     return { action: "skip", reason: "price_mismatch" };
   }
 
+  // Don't trust metadata alone for how much was actually charged — cross-check
+  // against the real Stripe amount, same defense-in-depth principle already
+  // applied on the create side (decideSessionReuse). quote_amount_cents is
+  // the trip price; the fee actually charged is 10% of it, rounded up.
+  const expectedFeeAmountCents = Math.ceil(booking.quoteAmountCents * 0.1);
+  if (session.amountTotal !== expectedFeeAmountCents) {
+    return { action: "skip", reason: "amount_total_mismatch" };
+  }
+  if (session.metadata.fee_amount_cents !== undefined && session.metadata.fee_amount_cents !== String(expectedFeeAmountCents)) {
+    return { action: "skip", reason: "fee_amount_metadata_mismatch" };
+  }
+
   return { action: "confirm" };
+}
+
+/**
+ * Classify a Stripe SDK error for fail-closed handling when retrieving a
+ * previous Checkout Session. Only a confirmed "genuinely does not exist"
+ * error is safe to treat as "no previous session" — anything else
+ * (connection failure, Stripe-side 5xx, rate limiting, auth problems) must
+ * be treated as UNCERTAIN and abort rather than silently proceed to create
+ * a second, possibly-duplicate, payable session.
+ *
+ * Verified against the Stripe Node SDK's own type definitions
+ * (esm.sh/stripe@13.10.0/types/Errors.d.ts): `type` is one of a fixed set of
+ * strings including 'StripeInvalidRequestError', 'StripeConnectionError',
+ * 'StripeAPIError', etc. 'resource_missing' is Stripe's documented `code`
+ * value for a not-found invalid-request error across object types.
+ */
+export function classifyStripeRetrieveError(err: { type?: string; code?: string } | null | undefined): "not_found" | "uncertain" {
+  if (err?.type === "StripeInvalidRequestError" && err?.code === "resource_missing") {
+    return "not_found";
+  }
+  return "uncertain";
 }

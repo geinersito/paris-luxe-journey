@@ -81,10 +81,12 @@ serve(async (req) => {
     eventType: event.type as WebhookSessionInfo["eventType"],
     paymentStatus: session.payment_status,
     sessionId: session.id,
+    amountTotal: session.amount_total ?? null,
     metadata: {
       booking_request_id: session.metadata?.booking_request_id,
       fee_type: session.metadata?.fee_type,
       quote_amount_cents: session.metadata?.quote_amount_cents,
+      fee_amount_cents: session.metadata?.fee_amount_cents,
     },
   };
 
@@ -119,6 +121,11 @@ serve(async (req) => {
 
   const decision = evaluateFeeConfirmation(sessionInfo, booking);
 
+  // evaluateFeeConfirmation only ever returns "confirm" when `booking` is
+  // non-null and `booking.quoteAmountCents` is non-null (see its own guards)
+  // — capture that narrowing once, here, instead of asserting it again below.
+  let expectedQuoteAmountCents: number;
+
   switch (decision.action) {
     case "noted_failed":
       console.warn("[stripe-reservation-webhook] async payment failed (observability only, no status change):", {
@@ -144,22 +151,42 @@ serve(async (req) => {
       return json({ received: true, skipped: decision.reason });
 
     case "confirm":
-      break; // fall through to the actual write below
+      expectedQuoteAmountCents = booking!.quoteAmountCents!;
+      break;
   }
 
-  // Idempotent transition: approved_pending_fee → fee_paid
-  // If status is already fee_paid or converted, .eq guard matches 0 rows —
-  // UPDATE is a no-op. Safe to replay.
-  const { error: dbErr } = await adminSupabase
+  // Idempotent, atomic transition: approved_pending_fee → fee_paid.
+  // The WHERE clause is a compare-and-swap against exactly the snapshot
+  // `decision` was computed from (status + current session + quote) — not
+  // just status. Without the session/quote in the WHERE itself, a session
+  // replacement landing between our earlier SELECT and this UPDATE could
+  // let an already-superseded session confirm the booking anyway
+  // (check-then-act, not atomic). If status is already fee_paid/converted,
+  // or the session/quote changed since we checked, this UPDATE matches 0
+  // rows — safe no-op, left for reconciliation rather than reported as
+  // success.
+  const { data: updatedRow, error: dbErr } = await adminSupabase
     .from("public_booking_requests")
     .update({ status: "fee_paid" })
     .eq("id", bookingRequestId)
-    .eq("status", "approved_pending_fee");
+    .eq("status", "approved_pending_fee")
+    .eq("stripe_checkout_session_id", session.id)
+    .eq("quote_amount_cents", expectedQuoteAmountCents)
+    .select("id")
+    .maybeSingle();
 
   if (dbErr) {
     // Return 500 so Stripe retries — this is a transient infrastructure error
     console.error("[stripe-reservation-webhook] DB update failed:", dbErr);
     return json({ error: dbErr.message }, 500);
+  }
+
+  if (!updatedRow) {
+    console.warn("[stripe-reservation-webhook] CAS mismatch at write time — booking changed between check and write, leaving for reconciliation", {
+      bookingRequestId,
+      session: session.id,
+    });
+    return json({ received: true, skipped: "cas_mismatch_at_write_time" });
   }
 
   console.log("[stripe-reservation-webhook] fee_paid set — booking:", bookingRequestId, "session:", session.id);
