@@ -18,7 +18,8 @@
     "type-check": "tsc --noEmit --project tsconfig.app.json",
     "test": "vitest run",
     "test:ci": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "check:functions-drift": "node scripts/check-functions-drift.mjs"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [

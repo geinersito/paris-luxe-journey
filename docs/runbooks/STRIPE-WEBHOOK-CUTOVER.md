@@ -1,9 +1,25 @@
 # Stripe Webhook Cutover & Deprecation Plan
 
 **Item**: OPS-STRIPE-LEGACY-DEPRECATE-01  
-**Status**: In Progress  
+**Status**: Executed 2026-05-31 (PR3, commit `86793ea`) — **but see the 2026-08 findings below, cutover left the canonical handler non-functional**  
 **Risk**: R1 (Functions-only changes, monitored rollout)  
 **Owner**: DevOps/Backend
+
+> **2026-08 reconciliation findings — read before touching this again:**
+> 1. PR3 deleted `stripe-webhooks-v312`'s *file* from git, but the function stayed deployed and
+>    ACTIVE on Supabase — file deletion does not undeploy a function. It is now archived at
+>    `supabase/legacy-functions/stripe-webhooks-v312/` (not deployable from that path) pending a
+>    separate retirement decision — see `ARCHIVED.md` there for the checklist.
+> 2. The `STRIPE_WEBHOOK_SECRET` this table lists for the canonical handler **does not exist** as
+>    a project secret. Without it, `stripe-webhooks` cannot verify any Stripe signature — every
+>    invocation fails with 400 before touching any table. The cutover to "canonical" left the
+>    canonical handler unable to process anything.
+> 3. The canonical handler is also missing the `processed_stripe_events` idempotency code that
+>    is present in git since PR #74 (`3e51bad`) — moot given #2, but real drift between deployed
+>    code and git HEAD, confirmed by downloading the live source and diffing.
+> 4. Before resurrecting or fixing any of this, confirm in the Stripe Dashboard which endpoint(s)
+>    are actually configured to receive events — not verifiable from this repo or the Supabase
+>    CLI used during this reconciliation.
 
 ## Objective
 

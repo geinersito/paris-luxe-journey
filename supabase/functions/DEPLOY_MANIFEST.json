@@ -1,0 +1,35 @@
+{
+  "$schema_note": "Source of truth for which Edge Functions are allowed to be deployed to the shared Supabase project (urjsnguzzzwcnaxwghbo). Deploy tooling (CI, scripts) must read ONLY this file to decide what to deploy — never enumerate supabase/functions/ directly. A directory existing is not permission to deploy it. See docs/ops/DEPLOY_GOVERNANCE.md for what this does and does not protect against.",
+  "functions": {
+    "stripe-webhooks": {
+      "status": "active",
+      "repo": "paris-luxe-journey",
+      "notes": "Canonical booking payment webhook. Known issue: required secret STRIPE_WEBHOOK_SECRET is currently absent from project secrets — see docs/ops/DEPLOY_GOVERNANCE.md."
+    },
+    "submit-booking-request": {
+      "status": "active",
+      "repo": "paris-luxe-journey"
+    },
+    "create-reservation-fee-session": {
+      "status": "active",
+      "repo": "paris-luxe-journey",
+      "notes": "Recovered from production in recovery/production-source-01."
+    },
+    "stripe-reservation-webhook": {
+      "status": "active",
+      "repo": "paris-luxe-journey",
+      "notes": "Recovered from production in recovery/production-source-01."
+    },
+    "stripe-webhooks-v312": {
+      "status": "legacy-preserved-no-deploy",
+      "repo": "paris-luxe-journey",
+      "notes": "Archived at supabase/legacy-functions/stripe-webhooks-v312/, not under supabase/functions/. Pending retirement decision — see ARCHIVED.md there. Must never be deployed by CI/scripts regardless of any local checkout state."
+    }
+  },
+  "known_unreconciled": {
+    "notify-status-change": "Live on Supabase, not committed to either repo. Not audited yet — out of scope for this booking-flow reconciliation pass. Do not assume active/safe.",
+    "save-push-subscription": "Same as above.",
+    "send-push-notification": "Same as above.",
+    "link-driver-telegram": "Same as above."
+  }
+}
