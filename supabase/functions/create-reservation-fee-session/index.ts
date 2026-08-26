@@ -2,15 +2,25 @@
 // Called from paris-dispatcher ERP (authenticated session).
 // Creates a Stripe Custom Checkout Session for 10% reservation fee.
 // Sends payment link by email via Resend.
-// Idempotency: if active session exists, returns it without creating a new one.
 // No status mutation here — that belongs to BOOKING-RESERVATION-FEE-WEBHOOK-06.
+//
+// SECURITY-RESERVATION-FEE-HARDENING-01 (R4): authorization is checked using a
+// Supabase client scoped to the CALLER's own JWT (not service_role), calling
+// is_active_org_operator_backoffice() and loading the booking through RLS.
+// service_role is used only afterward, for the financial columns that
+// `authenticated` deliberately cannot write directly since
+// SECURITY-BOOKING-REQUEST-AUTHZ-01 (PR A). A caller who is authenticated but
+// not an operator-backoffice member of their active org (e.g. an RC Transport
+// admin) gets 403 before touching Stripe or booking data at all.
 
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import Stripe from "https://esm.sh/stripe@13.10.0";
 import { Resend } from "npm:resend@2.0.0";
+import { buildIdempotencyKey, decideSessionReuse, type ExistingSessionSnapshot } from "../_shared/reservationFee.ts";
 
 const SUPABASE_URL              = Deno.env.get("SUPABASE_URL") ?? "";
+const SUPABASE_ANON_KEY         = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
 const STRIPE_SECRET_KEY         = Deno.env.get("STRIPE_SECRET_KEY") ?? "";
 const RESEND_API_KEY            = Deno.env.get("RESEND_API_KEY") ?? "";
@@ -80,7 +90,7 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
   if (req.method !== "POST") return json({ error: "Method not allowed" }, 405);
 
-  // --- Auth: verify caller is an authenticated ERP user ---
+  // --- Auth: verify caller has a valid JWT ---
   const authHeader = req.headers.get("Authorization") ?? "";
   const jwt = authHeader.replace(/^Bearer\s+/i, "").trim();
   if (!jwt) return json({ error: "Unauthorized" }, 401);
@@ -88,6 +98,21 @@ serve(async (req) => {
   const adminSupabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
   const { data: { user }, error: authErr } = await adminSupabase.auth.getUser(jwt);
   if (authErr || !user) return json({ error: "Unauthorized" }, 401);
+
+  // --- Authorization: caller-scoped client, respects RLS as this specific
+  //     user. Never use adminSupabase for this check — service_role bypasses
+  //     RLS entirely and would silently defeat the whole point. ---
+  if (!SUPABASE_ANON_KEY) return json({ error: "SUPABASE_ANON_KEY not configured" }, 500);
+  const callerSupabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+    global: { headers: { Authorization: `Bearer ${jwt}` } },
+  });
+
+  const { data: authorized, error: authzErr } = await callerSupabase.rpc(
+    "is_active_org_operator_backoffice",
+  );
+  if (authzErr || authorized !== true) {
+    return json({ error: "Forbidden" }, 403);
+  }
 
   // --- Parse body ---
   let body: { booking_request_id: string; quote_amount_cents: number };
@@ -103,8 +128,12 @@ serve(async (req) => {
     return json({ error: "quote_amount_cents must be at least 100 (€1.00)" }, 400);
   }
 
-  // --- Load booking request ---
-  const { data: booking, error: dbErr } = await adminSupabase
+  // --- Load booking request THROUGH THE CALLER'S OWN RLS ---
+  // A booking outside the caller's active org is invisible here (0 rows),
+  // independent of the authorization check above — defense in depth, not a
+  // redundant check: it also means loading always reflects exactly what this
+  // caller is allowed to see, not what service_role can see.
+  const { data: booking, error: dbErr } = await callerSupabase
     .from("public_booking_requests")
     .select("*")
     .eq("id", booking_request_id)
@@ -121,67 +150,125 @@ serve(async (req) => {
   if (!STRIPE_SECRET_KEY) return json({ error: "STRIPE_SECRET_KEY not configured" }, 500);
   const stripe = new Stripe(STRIPE_SECRET_KEY, { apiVersion: "2023-10-16" });
 
-  // Idempotency: reuse active session if it exists
-  if (booking.stripe_checkout_session_id) {
+  const previousSessionId: string | null = booking.stripe_checkout_session_id ?? null;
+
+  // --- Reuse / replace decision (R3) ---
+  if (previousSessionId) {
     try {
-      const existing = await stripe.checkout.sessions.retrieve(booking.stripe_checkout_session_id);
-      if (existing.status === "open") {
+      const existing = await stripe.checkout.sessions.retrieve(previousSessionId);
+      const snapshot: ExistingSessionSnapshot = {
+        status: existing.status ?? "expired",
+        amountTotal: existing.amount_total ?? null,
+        metadata: {
+          booking_request_id: existing.metadata?.booking_request_id,
+          fee_type: existing.metadata?.fee_type,
+          quote_amount_cents: existing.metadata?.quote_amount_cents,
+        },
+      };
+      const decision = decideSessionReuse(snapshot, {
+        bookingRequestId: booking_request_id,
+        quoteAmountCents: quote_amount_cents,
+        feeAmountCents,
+      });
+
+      if (decision.action === "reuse") {
         return json({
           checkout_url: existing.url,
           stripe_session_id: existing.id,
+          session_id: existing.id, // alias — BookingRequests.tsx reads data?.session_id
           fee_amount_cents: feeAmountCents,
           reused: true,
         });
       }
-      if (existing.status === "complete") {
+
+      if (decision.action === "already_paid") {
         return json({ error: "Reservation fee already paid for this booking" }, 409);
       }
-      // expired → fall through to create a new session
-    } catch {
-      // Stripe session not found → create new one
+
+      // decision.action === "replace": explicitly expire a still-open but
+      // mismatched session so it can never be paid after we move on — never
+      // leave two live sessions for the same booking.
+      console.log("[create-reservation-fee-session] replacing existing session:", decision.reason);
+      if (existing.status === "open") {
+        try {
+          await stripe.checkout.sessions.expire(existing.id);
+        } catch (expireErr) {
+          console.error("[create-reservation-fee-session] failed to expire stale session (non-fatal, proceeding)", expireErr);
+        }
+      }
+    } catch (retrieveErr) {
+      // Session id on file doesn't resolve on Stripe's side — treat as no
+      // previous session, but keep its id for idempotency-key rotation below
+      // (harmless even if Stripe never heard of it).
+      console.warn("[create-reservation-fee-session] could not retrieve previous session, creating new one", retrieveErr);
     }
   }
 
+  const idempotencyKey = buildIdempotencyKey(booking_request_id, quote_amount_cents, previousSessionId);
+
   // Create Checkout Session
-  const session = await stripe.checkout.sessions.create({
-    mode: "payment",
-    currency: "eur",
-    customer_email: booking.customer_email,
-    line_items: [{
-      price_data: {
-        currency: "eur",
-        product_data: {
-          name: "Frais de réservation — Paris Elite Services",
-          description: `${booking.pickup_date} · ${booking.pickup} → ${booking.dropoff}`,
-        },
-        unit_amount: feeAmountCents,
-      },
-      quantity: 1,
-    }],
-    metadata: {
-      booking_request_id,
-      fee_type: "reservation_fee",
-      quote_amount_cents: String(quote_amount_cents),
-      fee_amount_cents: String(feeAmountCents),
+  const session = await stripe.checkout.sessions.create(
+    {
+      mode: "payment",
+      currency: "eur",
       customer_email: booking.customer_email,
+      line_items: [{
+        price_data: {
+          currency: "eur",
+          product_data: {
+            name: "Frais de réservation — Paris Elite Services",
+            description: `${booking.pickup_date} · ${booking.pickup} → ${booking.dropoff}`,
+          },
+          unit_amount: feeAmountCents,
+        },
+        quantity: 1,
+      }],
+      metadata: {
+        booking_request_id,
+        fee_type: "reservation_fee",
+        quote_amount_cents: String(quote_amount_cents),
+        fee_amount_cents: String(feeAmountCents),
+        customer_email: booking.customer_email,
+      },
+      success_url: `${SITE_URL}/?reservation=confirmed`,
+      cancel_url:  `${SITE_URL}/?reservation=cancelled`,
     },
-    success_url: `${SITE_URL}/?reservation=confirmed`,
-    cancel_url:  `${SITE_URL}/?reservation=cancelled`,
-  });
+    { idempotencyKey },
+  );
 
   if (!session.url) return json({ error: "Stripe did not return a checkout URL" }, 500);
 
-  // Persist session ID + URL + quote amount
-  await adminSupabase
+  // --- Persist BEFORE communicating anything to the client (R2) ---
+  // Financial columns are not authenticated-writable since PR A — this write
+  // must use service_role. Check the error AND that a row actually changed;
+  // "no error" alone is not proof of a successful write.
+  const { data: updated, error: updateErr } = await adminSupabase
     .from("public_booking_requests")
     .update({
       stripe_checkout_session_id: session.id,
       stripe_checkout_url: session.url,
       quote_amount_cents,
     })
-    .eq("id", booking_request_id);
+    .eq("id", booking_request_id)
+    .select("id")
+    .maybeSingle();
 
-  // Send email via Resend (non-fatal on failure)
+  if (updateErr || !updated) {
+    console.error("[create-reservation-fee-session] local persistence failed after Stripe session created", {
+      session_id: session.id,
+      updateErr,
+    });
+    // Do NOT send the email — the client never learns a URL it can't recover
+    // via retry. A retry with the same booking_request_id/quote_amount_cents
+    // hits the same idempotency key and gets back this exact Stripe session,
+    // then (if the earlier DB failure was transient) persists successfully.
+    return json({
+      error: "LOCAL_PERSIST_FAILED",
+      message: "Stripe session created but could not be saved locally. Retry with the same parameters — the same Stripe session will be recovered via idempotency.",
+    }, 500);
+  }
+
+  // Send email via Resend (non-fatal on failure) — only after confirmed persistence
   if (RESEND_API_KEY) {
     try {
       const resend = new Resend(RESEND_API_KEY);
@@ -200,6 +287,7 @@ serve(async (req) => {
   return json({
     checkout_url: session.url,
     stripe_session_id: session.id,
+    session_id: session.id, // alias — BookingRequests.tsx reads data?.session_id
     fee_amount_cents: feeAmountCents,
     reused: false,
   });
