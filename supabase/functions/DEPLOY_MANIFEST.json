@@ -1,35 +1,73 @@
 {
-  "$schema_note": "Source of truth for which Edge Functions are allowed to be deployed to the shared Supabase project (urjsnguzzzwcnaxwghbo). Deploy tooling (CI, scripts) must read ONLY this file to decide what to deploy — never enumerate supabase/functions/ directly. A directory existing is not permission to deploy it. See docs/ops/DEPLOY_GOVERNANCE.md for what this does and does not protect against.",
+  "$schema_note": "Source of truth for which Edge Functions are allowed to be deployed to the shared Supabase project (urjsnguzzzwcnaxwghbo). Deploy tooling (CI, scripts) must read ONLY this file to decide what to deploy — never enumerate supabase/functions/ directly. A directory existing is not permission to deploy it. `status` describes what the function IS (active/legacy); `deploy_allowed` describes whether it's currently SAFE/AUTHORIZED to deploy — the two are independent, see docs/ops/DEPLOY_GOVERNANCE.md. Principle for check-functions-drift.mjs: any live function not explicitly accounted for in one of the buckets below is treated as DRIFT (fails), not silently excused — 'unknown until proven otherwise', not the reverse.",
   "functions": {
     "stripe-webhooks": {
       "status": "active",
-      "repo": "paris-luxe-journey",
-      "notes": "Canonical booking payment webhook. Known issue: required secret STRIPE_WEBHOOK_SECRET is currently absent from project secrets — see docs/ops/DEPLOY_GOVERNANCE.md."
+      "deploy_allowed": false,
+      "blocking_reason": "Required secret STRIPE_WEBHOOK_SECRET is absent from project secrets — cannot verify any Stripe signature, every invocation 400s. 'active' here means 'this is the intended canonical handler', NOT 'this is operationally ready' — do not let CI treat active as a green light. Unblock: confirm Stripe Dashboard endpoint config, set the secret, redeploy from git HEAD (also picks up the missing processed_stripe_events idempotency code — see STRIPE-WEBHOOK-CUTOVER.md).",
+      "repo": "paris-luxe-journey"
     },
     "submit-booking-request": {
       "status": "active",
+      "deploy_allowed": true,
       "repo": "paris-luxe-journey"
     },
     "create-reservation-fee-session": {
       "status": "active",
+      "deploy_allowed": true,
       "repo": "paris-luxe-journey",
-      "notes": "Recovered from production in recovery/production-source-01."
+      "notes": "Recovered from production in recovery/production-source-01 (#251)."
     },
     "stripe-reservation-webhook": {
       "status": "active",
+      "deploy_allowed": true,
       "repo": "paris-luxe-journey",
-      "notes": "Recovered from production in recovery/production-source-01."
+      "notes": "Recovered from production in recovery/production-source-01 (#251). Known review findings not yet fixed (tracked separately, not blocking deploy_allowed since this is what's already live): checkout.session.completed handled without checking session.payment_status === 'paid'."
     },
     "stripe-webhooks-v312": {
       "status": "legacy-preserved-no-deploy",
+      "deploy_allowed": false,
       "repo": "paris-luxe-journey",
       "notes": "Archived at supabase/legacy-functions/stripe-webhooks-v312/, not under supabase/functions/. Pending retirement decision — see ARCHIVED.md there. Must never be deployed by CI/scripts regardless of any local checkout state."
     }
   },
+  "owned_by_sibling_repo": {
+    "_note": "Verified by inspecting paris-dispatcher's own supabase/functions/ directory during the 2026-08 reconciliation — not a guess. If a live slug matches one of these, it's the other repo's concern, not undocumented drift here. Re-verify this list if paris-dispatcher's function set changes.",
+    "briefing-llm": "committed in paris-dispatcher",
+    "create-invoice-checkout-session": "committed in paris-dispatcher",
+    "dispatch-briefing-email-sender": "committed in paris-dispatcher",
+    "dispatch-unassigned-alert": "committed in paris-dispatcher",
+    "dispatch-upcoming-reminder": "committed in paris-dispatcher",
+    "ingest-booking-confirmed-v1": "committed in paris-dispatcher",
+    "invoice-reminders-scheduler": "committed in paris-dispatcher (not currently live)",
+    "invoice-reminders-sender": "committed in paris-dispatcher (not currently live)",
+    "partner-assignment-notify": "committed in paris-dispatcher",
+    "provision-driver-account": "committed in paris-dispatcher",
+    "resend-invoice-to-client": "committed in paris-dispatcher",
+    "send-booking-confirmation": "committed in paris-dispatcher (not currently live)",
+    "send-booking-reminder-j1": "committed in paris-dispatcher (not currently live)",
+    "send-daily-briefing": "committed in paris-dispatcher",
+    "send-invoice-to-client": "committed in paris-dispatcher",
+    "send-tenant-welcome": "committed in paris-dispatcher",
+    "stripe-invoice-webhook": "committed in paris-dispatcher",
+    "telegram-log-receiver": "committed in paris-dispatcher"
+  },
+  "known_out_of_scope_local": {
+    "_note": "Already committed in THIS repo's git, already reviewed/shipped before this reconciliation existed. Deliberately not re-verified against production in this pass — out of scope, not unknown. Does not fail the drift check. Extending supabase/functions/DEPLOY_MANIFEST.json's `functions` block to cover these for real requires actually auditing each one first, same rigor as the booking-flow pass — do not just move names between buckets to silence the checker.",
+    "create-booking-payment": "in git, not audited this pass",
+    "create-payment-intent": "in git, not audited this pass",
+    "get-map-key": "in git, not audited this pass",
+    "get-stripe-key": "in git, not audited this pass",
+    "send-booking-emails": "in git, not audited this pass",
+    "send-contact-confirmation": "in git, not audited this pass",
+    "send-email": "in git, not audited this pass",
+    "test-payment": "in git, not audited this pass"
+  },
   "known_unreconciled": {
-    "notify-status-change": "Live on Supabase, not committed to either repo. Not audited yet — out of scope for this booking-flow reconciliation pass. Do not assume active/safe.",
-    "save-push-subscription": "Same as above.",
-    "send-push-notification": "Same as above.",
-    "link-driver-telegram": "Same as above."
+    "_note": "Live on Supabase, NOT present in either repo's git, NOT yet audited. Unlike known_out_of_scope_local, this is genuinely unaccounted-for — same shape of problem this whole reconciliation was started to fix. check-functions-drift.mjs treats these as FAILING (not just a warning) until each is either recovered into a repo (like create-reservation-fee-session was) or the project owner confirms it's safe to formally deprioritize.",
+    "notify-status-change": "live, no git presence in either repo",
+    "save-push-subscription": "live, no git presence in either repo",
+    "send-push-notification": "live, no git presence in either repo",
+    "link-driver-telegram": "live, no git presence in either repo"
   }
 }

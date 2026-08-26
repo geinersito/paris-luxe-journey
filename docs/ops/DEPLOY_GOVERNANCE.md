@@ -58,17 +58,49 @@ The manifest is necessary but not sufficient. Closing the gap for real means res
 Until steps 1-3 happen, assume Git/PR is a strong convention, not a hard guarantee — the same
 caveat that was true before this reconciliation, just now written down instead of implicit.
 
-## Known current limitation — manifest scope
+## Classification model — why "unknown" always fails
 
-`DEPLOY_MANIFEST.json` today only covers the 5 functions touched by the 2026-08 booking-flow
-reconciliation. Running `npm run check:functions-drift` right now will correctly report the
-*other* 8 functions already committed in this repo (`create-booking-payment`,
-`create-payment-intent`, `get-map-key`, `get-stripe-key`, `send-booking-emails`,
-`send-contact-confirmation`, `send-email`, `test-payment`) as "DRIFT: no manifest entry" — this
-is expected, not a bug: they were simply outside this pass's scope, not separately re-verified
-against production. Extending the manifest to the full function set (and doing the same for
-paris-dispatcher's functions) is real, deliberate follow-up work, not done here. Don't read a
-clean run of this script today as "the whole project is governed" — only the booking flow is.
+Every live function must land in exactly one bucket, and only specific buckets are allowed to
+avoid failing the check:
+
+| Bucket | Fails the check? | Meaning |
+|---|---|---|
+| `functions` | No (unless `status: active` but not live, or vice versa) | Governed by this manifest — this repo's own audited, deployable functions |
+| `owned_by_sibling_repo` | No | Verified (not guessed) to belong to paris-dispatcher — re-verify the list if that repo's functions change |
+| `known_out_of_scope_local` | No | Already in this repo's git, already shipped before this reconciliation, deliberately not re-audited in this pass |
+| `known_unreconciled` | **Yes** | Live, no git presence in *either* repo, not yet investigated — this is exactly the failure mode this whole reconciliation exists to catch, so it stays red until resolved |
+| *(none — totally unclassified)* | **Yes** | The default. A brand-new live function appearing tomorrow with no manifest entry and no local folder fails loudly instead of being guessed into "probably fine" |
+
+**As of this PR, `npm run check:functions-drift` exits non-zero** — the 4 `known_unreconciled`
+functions (`notify-status-change`, `save-push-subscription`, `send-push-notification`,
+`link-driver-telegram`) are still live and still unaudited. That's the honest current state, not
+a bug to silence: resolving it means either recovering each into a repo (the same process used
+for `create-reservation-fee-session`) or making a deliberate, documented decision to
+deprioritize them into `known_out_of_scope_local` instead — never by silently deleting the
+`known_unreconciled` entries.
+
+`known_out_of_scope_local` covers the 8 functions already committed in this repo's git before
+this reconciliation (`create-booking-payment`, `create-payment-intent`, `get-map-key`,
+`get-stripe-key`, `send-booking-emails`, `send-contact-confirmation`, `send-email`,
+`test-payment`) — deliberately not re-verified against production in this pass, but not
+"unknown" either. Extending `DEPLOY_MANIFEST.json`'s governed `functions` block to actually
+cover them requires auditing each one with the same rigor as the booking flow, not just moving
+names between buckets.
+
+Don't read a clean run of this script as "the whole project is governed" — only what's in
+`functions` is actually audited; the other buckets are explicitly-tracked debt, not clean bills
+of health.
+
+## `status` vs `deploy_allowed` — deployed is not the same as authorized
+
+A function can be `status: "active"` (it's the intended, currently-running handler for its job)
+while `deploy_allowed: false` (it is *not* safe to rely on or redeploy right now). `stripe-webhooks`
+is the concrete example: it's the canonical booking-payment handler by design, but its required
+secret (`STRIPE_WEBHOOK_SECRET`) doesn't exist on the project, so it cannot verify a single Stripe
+signature today. Marking it merely "active" without this distinction would let a future CI step
+treat that as a green light. `check:functions-drift` surfaces any `active`-but-blocked function in
+its own loud, non-failing "BLOCKED" section — visible, but not conflated with new drift, since
+it's a known, already-documented condition rather than something that just changed.
 
 ## Legacy function policy
 A function marked `"status": "legacy-preserved-no-deploy"` in the manifest:
