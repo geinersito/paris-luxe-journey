@@ -2,6 +2,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 import Stripe from 'https://esm.sh/stripe@13.10.0'
+import { getAdminApiKey } from '../_shared/adminClient.ts'
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -24,7 +25,7 @@ serve(async (req) => {
     console.log('[create-payment-intent] Iniciando proceso')
 
     const supabaseUrl = Deno.env.get('SUPABASE_URL')
-    const supabaseServiceKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
+    const supabaseServiceKey = getAdminApiKey()
 
     if (!supabaseUrl || !supabaseServiceKey) {
       console.error('[create-payment-intent] Credenciales de Supabase no encontradas')

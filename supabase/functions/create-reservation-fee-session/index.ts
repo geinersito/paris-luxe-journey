@@ -32,10 +32,11 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import Stripe from "https://esm.sh/stripe@13.10.0";
 import { Resend } from "npm:resend@2.0.0";
 import { buildIdempotencyKey, classifyStripeRetrieveError, decideSessionReuse, type ExistingSessionSnapshot } from "../_shared/reservationFee.ts";
+import { getAdminApiKey } from "../_shared/adminClient.ts";
 
 const SUPABASE_URL              = Deno.env.get("SUPABASE_URL") ?? "";
 const SUPABASE_ANON_KEY         = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
-const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
+const SUPABASE_ADMIN_KEY        = getAdminApiKey() ?? "";
 const STRIPE_SECRET_KEY         = Deno.env.get("STRIPE_SECRET_KEY") ?? "";
 const RESEND_API_KEY            = Deno.env.get("RESEND_API_KEY") ?? "";
 
@@ -109,7 +110,7 @@ serve(async (req) => {
   const jwt = authHeader.replace(/^Bearer\s+/i, "").trim();
   if (!jwt) return json({ error: "Unauthorized" }, 401);
 
-  const adminSupabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+  const adminSupabase = createClient(SUPABASE_URL, SUPABASE_ADMIN_KEY);
   const { data: { user }, error: authErr } = await adminSupabase.auth.getUser(jwt);
   if (authErr || !user) return json({ error: "Unauthorized" }, 401);
 

@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { getAdminApiKey } from "../_shared/adminClient.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -28,8 +29,7 @@ interface BookingRequestPayload {
 const TELEGRAM_BOT_TOKEN = Deno.env.get("TELEGRAM_BOT_TOKEN") ?? "";
 const TELEGRAM_CHAT_ID = Deno.env.get("TELEGRAM_CHAT_ID") ?? "";
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL") ?? "";
-const SUPABASE_SERVICE_ROLE_KEY =
-  Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
+const SUPABASE_ADMIN_KEY = getAdminApiKey() ?? "";
 
 // --- Validation helpers ---
 
@@ -169,7 +169,7 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   // Insert via service_role (bypasses RLS — no anon INSERT policy exists)
-  const supabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+  const supabase = createClient(SUPABASE_URL, SUPABASE_ADMIN_KEY);
 
   const { data, error: dbError } = await supabase
     .from("public_booking_requests")
