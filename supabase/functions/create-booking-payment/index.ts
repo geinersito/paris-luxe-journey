@@ -2,6 +2,7 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 import Stripe from 'https://esm.sh/stripe@13.10.0'
+import { getAdminApiKey } from '../_shared/adminClient.ts'
 
 const ALLOWED_ORIGINS = [
   'https://eliteparistransfer.com',
@@ -27,8 +28,30 @@ type RetryDecision = {
   code?: string;
 };
 
+// Postgrest/Supabase and Stripe SDK errors are both loosely, and
+// differently, shaped — this describes only the fields this file actually
+// reads/writes off an unknown caught error, replacing `as any` with a
+// named type assertion (still erased at compile time, same runtime value).
+interface LooseErrorShape {
+  code?: string;
+  status?: number;
+  message?: string;
+  type?: string;
+  details?: string;
+  error?: {
+    code?: string;
+    status?: number;
+    message?: string;
+    type?: string;
+    details?: string;
+  };
+  __retryDecision?: RetryDecision;
+  __retryLabel?: string;
+  __retryAttempt?: number;
+}
+
 function classifyError(err: unknown): RetryDecision {
-  const anyErr = err as any;
+  const anyErr = err as LooseErrorShape;
   const code = anyErr?.code ?? anyErr?.error?.code;
   const status = anyErr?.status ?? anyErr?.error?.status;
   const message = String(anyErr?.message ?? anyErr?.error?.message ?? "");
@@ -84,9 +107,9 @@ async function retryWithBackoff<T>(
       const decision = classifyError(err);
 
       if (!decision.retry || attempt >= maxAttempts) {
-        (err as any).__retryDecision = decision;
-        (err as any).__retryLabel = opts?.label ?? "retryWithBackoff";
-        (err as any).__retryAttempt = attempt;
+        (err as LooseErrorShape).__retryDecision = decision;
+        (err as LooseErrorShape).__retryLabel = opts?.label ?? "retryWithBackoff";
+        (err as LooseErrorShape).__retryAttempt = attempt;
         throw err;
       }
 
@@ -97,7 +120,7 @@ async function retryWithBackoff<T>(
 }
 
 function errorResponse(err: unknown, fallbackStatus = 500, corsHeaders: Record<string, string> = {}) {
-  const anyErr = err as any;
+  const anyErr = err as LooseErrorShape;
   const decision = anyErr?.__retryDecision as RetryDecision | undefined;
 
   const status = decision?.status ?? fallbackStatus;
@@ -145,7 +168,7 @@ serve(async (req) => {
 
     // 1. Configurar clientes
     const supabaseUrl = Deno.env.get('SUPABASE_URL')!;
-    const supabaseKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')!;
+    const supabaseKey = getAdminApiKey()!;
     const stripeKey = Deno.env.get('STRIPE_SECRET_KEY')!;
 
     const supabase = createClient(supabaseUrl, supabaseKey);
@@ -317,7 +340,7 @@ serve(async (req) => {
     console.error('[create-booking-payment] Error:', error);
     
     // Classify error to return proper HTTP status
-    const anyErr = error as any;
+    const anyErr = error as LooseErrorShape;
     const code = anyErr?.code ?? anyErr?.error?.code;
     
     // DB conflicts should be 409, not 500
