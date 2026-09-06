@@ -19,17 +19,12 @@ const DORMANT_NOT_MIGRATED = new Set([
   "sync-events-openagenda",
 ]);
 
-// ACTIVE_MIGRATION_BLOCKED: active, still legacy, and deliberately NOT
-// migrated in P0-B-01B despite being in original scope. Touching
-// create-booking-payment/index.ts for the 1-line credential-source change
-// drags npm run lint:changed's pre-existing @typescript-eslint/no-explicit-any
-// debt (6 occurrences, confirmed identical on origin/main, unrelated to
-// this migration) into required CI, since that script only lints files
-// present in the diff. Reverted rather than fixing/suppressing unrelated
-// debt without separate authorization — tracked as its own follow-up.
-const ACTIVE_MIGRATION_BLOCKED = new Set([
-  "create-booking-payment",
-]);
+// ACTIVE_MIGRATION_BLOCKED previously held create-booking-payment (its
+// pre-existing @typescript-eslint/no-explicit-any debt blocked
+// lint:changed — fixed in P0-B-01B2, credential migrated in the same
+// slice) — now empty. All active canonical entrypoints in this repo are
+// covered by this guard.
+const ACTIVE_MIGRATION_BLOCKED = new Set<string>([]);
 
 import { assertEquals } from "https://deno.land/std@0.190.0/testing/asserts.ts";
 
