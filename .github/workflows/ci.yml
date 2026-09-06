@@ -26,6 +26,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Set up Deno
+        uses: denoland/setup-deno@v2
+        with:
+          deno-version: 2.9.5
+
+      - name: Test no legacy service_role in Edge Function entrypoints (P0B)
+        run: deno test --no-lock --allow-env --allow-read supabase/functions/_shared/adminClient.test.ts supabase/functions/_shared/noLegacyServiceRoleKey.test.ts
+
       - name: TypeScript check
         run: npx tsc --noEmit
 

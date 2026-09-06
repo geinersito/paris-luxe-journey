@@ -25,9 +25,10 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import Stripe from "https://esm.sh/stripe@13.10.0";
 import { evaluateFeeConfirmation, type BookingSnapshot, type WebhookSessionInfo } from "../_shared/reservationFee.ts";
+import { getAdminApiKey } from "../_shared/adminClient.ts";
 
 const SUPABASE_URL              = Deno.env.get("SUPABASE_URL") ?? "";
-const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY") ?? "";
+const SUPABASE_ADMIN_KEY        = getAdminApiKey() ?? "";
 const STRIPE_SECRET_KEY         = Deno.env.get("STRIPE_SECRET_KEY") ?? "";
 const STRIPE_WEBHOOK_SECRET     = Deno.env.get("STRIPE_RESERVATION_WEBHOOK_SECRET") ?? "";
 
@@ -97,7 +98,7 @@ serve(async (req) => {
   }
 
   const bookingRequestId = sessionInfo.metadata.booking_request_id;
-  const adminSupabase = createClient(SUPABASE_URL, SUPABASE_SERVICE_ROLE_KEY);
+  const adminSupabase = createClient(SUPABASE_URL, SUPABASE_ADMIN_KEY);
 
   const { data: bookingRow, error: fetchErr } = await adminSupabase
     .from("public_booking_requests")
