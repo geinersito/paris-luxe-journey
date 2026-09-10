@@ -7,6 +7,7 @@ import { TermsAndPayment } from "@/components/booking/TermsAndPayment";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useLocationDetails } from "@/hooks/booking/useLocationDetails";
 import { StripePaymentForm } from "@/components/booking/StripePaymentForm";
+import { FunctionsHttpError } from "@supabase/supabase-js";
 import {
   Loader2,
   AlertCircle,
@@ -311,23 +312,28 @@ const BookingPayment = () => {
 
     if (error) {
       // Extract HTTP status and structured error body
-      const httpStatus = (error as any)?.context?.response?.status;
-      const errorBody = data as any;
-      
+      const httpStatus =
+        error instanceof FunctionsHttpError ? error.context.status : undefined;
+      const errorBody =
+        data && typeof data === "object"
+          ? (data as Record<string, unknown>)
+          : null;
+
       // Check for DB conflicts: HTTP 409 OR dbCode/code indicates conflict
-      const isConflict = 
+      const isConflict =
         httpStatus === 409 ||
         errorBody?.dbCode === "23P01" ||
         errorBody?.dbCode === "23505" ||
         errorBody?.code === "DB_CONFLICT";
-      
+
       if (isConflict) {
         throw new ConflictError(
-          errorBody?.message || 
-          "This time slot is no longer available. Please choose a different time.",
+          typeof errorBody?.message === "string"
+            ? errorBody.message
+            : "This time slot is no longer available. Please choose a different time.",
         );
       }
-      
+
       throw error;
     }
 
@@ -423,23 +429,6 @@ const BookingPayment = () => {
 
   const handlePaymentSuccess = async () => {
     try {
-      const { data: updatedBookingData, error } = await supabase
-        .from("bookings")
-        .select(
-          `
-          id,
-          status,
-          payment_id,
-          total_price
-        `,
-        )
-        .eq("id", bookingId)
-        .maybeSingle();
-
-      if (error) {
-        throw error;
-      }
-
       const { error: emailError } = await supabase.functions.invoke(
         "send-booking-emails",
         {
