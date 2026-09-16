@@ -1,47 +1,56 @@
-# ARCHIVED — stripe-webhooks-v312
+# ARCHIVED — stripe-webhooks-v312 (historical snapshot)
 
-**Do not move this into `supabase/functions/`. Do not deploy.**
+This file remains the historical recovery record. The earlier retirement
+hypothesis was corrected by the P0-B-07 Stripe LIVE endpoint review: Stripe
+does still target `/functions/v1/stripe-webhooks-v312`, so immediate retirement
+would be incorrect.
+
+The runtime is therefore being re-canonicalized temporarily under
+`supabase/functions/stripe-webhooks-v312/` with its v51 event contract and
+compatibility helpers preserved. This archive remains immutable historical
+evidence; it is not the deployable source and must not be deleted.
 
 ## Status
-Deployed and ACTIVE on the live Supabase project as of 2026-08-26 (confirmed via
-`supabase functions list`), despite having been deleted from this repo's git history in commit
-`86793ea` ("OPS-STRIPE-LEGACY-DEPRECATE-01 PR3 — delete legacy handlers", 2026-05-31). Deleting
-the file from git did not undeploy it — this archive exists so that fact can never repeat: the
-source is versioned, in a location no deploy tooling should ever read from.
 
-## Why it's not going back into `supabase/functions/`
-That directory is (or should become, see `DEPLOY_MANIFEST.json` in the governance PR) the set of
-things that are allowed to be deployed. This handler's intended fate is retirement, pending one
-confirmation only Boris can make: whether Stripe's own Dashboard webhook configuration still
-targets this endpoint. Until that's confirmed, keeping the code available but structurally
-inert (outside the deployable path, absent from any manifest) is safer than either deleting it
-again (repeats the exact mistake that caused this whole reconciliation) or leaving it in the
-normal functions directory (invites exactly the "it's just sitting there" confusion this
-reconciliation exists to resolve).
+Deployed and ACTIVE on the live Supabase project as of the recovery snapshot
+and confirmed again during P0-B-07. It had been deleted from this repo's git
+history in commit `86793ea` ("OPS-STRIPE-LEGACY-DEPRECATE-01 PR3 — delete
+legacy handlers") without undeploying the runtime. The archive exists so that
+this history remains explicit.
 
-## Known issues in this exact deployed version (documented during recovery, not fixed here)
-- Its own idempotency table, `stripe_webhook_events`, does not exist in the database and is
-  absent from every migration in either repo — the dedup check silently fails open.
-- Its bundled `_shared/erpIngest.ts` predates `INGEST-AUTH-HARDENING-01` — sends a plain
-  `x-ingest-secret` header instead of the HMAC signature the current
-  `ingest-booking-confirmed-v1` (paris-dispatcher) requires. Even if Stripe still routes events
-  here, the ERP-ingest call would be rejected with 401 on arrival.
-- Requires secret `STRIPE_WEBHOOK_SECRET_V312`, which is still configured on the project as of
-  2026-08-26 — unlike the canonical `stripe-webhooks`, whose required `STRIPE_WEBHOOK_SECRET` is
-  entirely absent from the project's secrets.
+## Why this is temporary compatibility
+
+Stripe LIVE currently targets this endpoint and sends the v3.1.2 payment,
+setup, and hold event set. The deployable copy is intentionally a compatibility
+handler pending a later payment-architecture cleanup. It must preserve the
+recovered v51 behavior except for the single administrative credential source
+change authorized in P0-B-08.
+
+## Known issues in this exact deployed version (documented, not fixed here)
+
+- Its own idempotency table, `stripe_webhook_events`, does not exist in the
+  database and is absent from every migration in either repo — the dedup check
+  silently fails open.
+- Its recovered `_compat/erpIngest.ts` uses the historical plain
+  `x-ingest-secret` header rather than the modern HMAC helper. This is preserved
+  intentionally for contract compatibility and is not fixed in this slice.
+- It requires `STRIPE_WEBHOOK_SECRET_V312`, which remains the dedicated secret
+  for the live endpoint.
 
 ## Provenance
-Recovered verbatim via `supabase functions download stripe-webhooks-v312
---project-ref urjsnguzzzwcnaxwghbo` on 2026-08-26. Original raw recovery, alongside the other two
-functions and the full investigation notes, is preserved at commit
-[`ecc5f17`](https://github.com/geinersito/paris-luxe-journey/commit/ecc5f17f7eb2cddae1caebf3b1b085ed67cf538e)
-on branch `snapshot/booking-prod-reconciliation-01`.
 
-## Retirement checklist (not started — separate future PR, after this one)
-1. Confirm in the Stripe Dashboard whether any webhook endpoint still targets
-   `.../stripe-webhooks-v312`.
-2. If none: safe to formally decommission (remove the deployed function via
-   `supabase functions delete`, mark `retired` in `DEPLOY_MANIFEST.json`, optionally delete
-   `STRIPE_WEBHOOK_SECRET_V312`).
-3. If one still exists: repoint it or coordinate a real cutover before touching anything live —
-   do not delete the deployed function first.
+The entrypoint was recovered verbatim via
+`supabase functions download stripe-webhooks-v312 --project-ref
+urjsnguzzzwcnaxwghbo` and compares byte-for-byte with the archived index after
+line-ending normalization. The compatibility helpers are preserved under
+`supabase/functions/stripe-webhooks-v312/_compat/` so deploy tooling cannot
+silently substitute the modern shared ERP helper.
+
+## Later retirement checklist
+
+1. Coordinate a real Stripe LIVE cutover preserving all eight enabled event
+   types and verify delivery success.
+2. Only then delete the deployed function and mark this compatibility handler
+   retired in `DEPLOY_MANIFEST.json`.
+3. Do not remove `STRIPE_WEBHOOK_SECRET_V312` until the endpoint is deleted and
+   the final smoke proves no remaining consumer needs it.
