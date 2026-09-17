@@ -37,13 +37,13 @@ export default function ExitIntentPopup() {
 
     try {
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-      const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+      const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY
 
       // Check if Supabase is properly configured
       const isConfigured = supabaseUrl &&
-                          supabaseAnonKey &&
-                          !supabaseAnonKey.includes('temporary') &&
-                          !supabaseAnonKey.includes('your_')
+                          supabasePublishableKey &&
+                          !supabasePublishableKey.includes('temporary') &&
+                          !supabasePublishableKey.includes('your_')
 
       if (!isConfigured) {
         console.warn('⚠️ Supabase not configured. Using demo mode.')
@@ -72,8 +72,8 @@ export default function ExitIntentPopup() {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'apikey': supabaseAnonKey,
-            'Authorization': `Bearer ${supabaseAnonKey}`
+            'apikey': supabasePublishableKey,
+            'Authorization': `Bearer ${supabasePublishableKey}`
           },
           body: JSON.stringify({
             email,
@@ -219,4 +219,3 @@ export default function ExitIntentPopup() {
     </AnimatePresence>
   )
 }
-

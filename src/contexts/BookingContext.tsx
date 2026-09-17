@@ -25,7 +25,7 @@ interface BookingData {
     specialInstructions?: string;
     flightNumber?: string;
   };
-  [key: string]: any; // Allow for additional properties
+  [key: string]: unknown; // Allow for additional properties
 }
 
 interface PriceCache {
@@ -86,7 +86,7 @@ export const BookingProvider = ({ children }: { children: React.ReactNode }) => 
     : estimatedPrice;
   
   // Añadir una función de ayuda para gestionar errores de forma consistente
-  const logError = useCallback((message: string, error: any) => {
+  const logError = useCallback((message: string, error: unknown) => {
     // Aquí podrías agregar analíticas de errores o logging remoto si lo necesitas
   }, []);
 
@@ -108,14 +108,14 @@ export const BookingProvider = ({ children }: { children: React.ReactNode }) => 
       }
       
       if (savedCache) {
-        const parsedCache = JSON.parse(savedCache);
+        const parsedCache = JSON.parse(savedCache) as Record<string, PriceCache[string]>;
         
         // Filter out expired cache entries
         const now = Date.now();
         const validCache: PriceCache = {};
         
-        Object.entries(parsedCache).forEach(([key, value]: [string, any]) => {
-          if (now - value.timestamp < CACHE_EXPIRY) {
+        Object.entries(parsedCache).forEach(([key, value]) => {
+          if (typeof value.timestamp === 'number' && now - value.timestamp < CACHE_EXPIRY) {
             validCache[key] = value;
           }
         });
@@ -294,9 +294,9 @@ export const BookingProvider = ({ children }: { children: React.ReactNode }) => 
 
     try {
       const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-      const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+      const supabasePublishableKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 
-      if (!supabaseUrl || !supabaseAnonKey) {
+      if (!supabaseUrl || !supabasePublishableKey) {
         throw new Error('Supabase configuration missing');
       }
 
@@ -307,8 +307,8 @@ export const BookingProvider = ({ children }: { children: React.ReactNode }) => 
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
-            'apikey': supabaseAnonKey,
-            'Authorization': `Bearer ${supabaseAnonKey}`
+            'apikey': supabasePublishableKey,
+            'Authorization': `Bearer ${supabasePublishableKey}`
           },
           body: JSON.stringify({
             p_coupon_code: code.toUpperCase().trim()
