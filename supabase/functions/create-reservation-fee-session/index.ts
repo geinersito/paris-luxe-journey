@@ -33,9 +33,10 @@ import Stripe from "https://esm.sh/stripe@13.10.0";
 import { Resend } from "npm:resend@2.0.0";
 import { buildIdempotencyKey, classifyStripeRetrieveError, decideSessionReuse, type ExistingSessionSnapshot } from "../_shared/reservationFee.ts";
 import { getAdminApiKey } from "../_shared/adminClient.ts";
+import { getPublishableApiKey } from "../_shared/publishableClient.ts";
 
 const SUPABASE_URL              = Deno.env.get("SUPABASE_URL") ?? "";
-const SUPABASE_ANON_KEY         = Deno.env.get("SUPABASE_ANON_KEY") ?? "";
+const SUPABASE_PUBLISHABLE_KEY  = getPublishableApiKey() ?? "";
 const SUPABASE_ADMIN_KEY        = getAdminApiKey() ?? "";
 const STRIPE_SECRET_KEY         = Deno.env.get("STRIPE_SECRET_KEY") ?? "";
 const RESEND_API_KEY            = Deno.env.get("RESEND_API_KEY") ?? "";
@@ -117,8 +118,8 @@ serve(async (req) => {
   // --- Authorization: caller-scoped client, respects RLS as this specific
   //     user. Never use adminSupabase for this check — service_role bypasses
   //     RLS entirely and would silently defeat the whole point. ---
-  if (!SUPABASE_ANON_KEY) return json({ error: "SUPABASE_ANON_KEY not configured" }, 500);
-  const callerSupabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY, {
+  if (!SUPABASE_PUBLISHABLE_KEY) return json({ error: "SUPABASE_PUBLISHABLE_KEYS not configured" }, 500);
+  const callerSupabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY, {
     global: { headers: { Authorization: `Bearer ${jwt}` } },
   });
 

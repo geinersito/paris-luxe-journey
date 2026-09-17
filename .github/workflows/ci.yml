@@ -32,7 +32,7 @@ jobs:
           deno-version: 2.9.5
 
       - name: Test no legacy service_role in Edge Function entrypoints (P0B)
-        run: deno test --no-lock --allow-env --allow-read supabase/functions/_shared/adminClient.test.ts supabase/functions/_shared/noLegacyServiceRoleKey.test.ts supabase/functions/stripe-webhooks-v312/index.test.ts
+        run: deno test --no-lock --allow-env --allow-read supabase/functions/_shared/adminClient.test.ts supabase/functions/_shared/noLegacyServiceRoleKey.test.ts supabase/functions/_shared/publishableClient.test.ts supabase/functions/_shared/publishableCutover.test.ts supabase/functions/stripe-webhooks-v312/index.test.ts
 
       - name: TypeScript check
         run: npx tsc --noEmit
