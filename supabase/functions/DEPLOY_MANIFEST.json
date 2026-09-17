@@ -2,10 +2,11 @@
   "$schema_note": "Source of truth for which Edge Functions are allowed to be deployed to the shared Supabase project (urjsnguzzzwcnaxwghbo). Deploy tooling (CI, scripts) must read ONLY this file to decide what to deploy — never enumerate supabase/functions/ directly. A directory existing is not permission to deploy it. `status` describes what the function IS (active/legacy); `deploy_allowed` describes whether it's currently SAFE/AUTHORIZED to deploy — the two are independent, see docs/ops/DEPLOY_GOVERNANCE.md. Principle for check-functions-drift.mjs: any live function not explicitly accounted for in one of the buckets below is treated as DRIFT (fails), not silently excused — 'unknown until proven otherwise', not the reverse.",
   "functions": {
     "stripe-webhooks": {
-      "status": "active",
+      "status": "retired-pending-runtime-delete",
       "deploy_allowed": false,
-      "blocking_reason": "Required secret STRIPE_WEBHOOK_SECRET is absent from project secrets — cannot verify any Stripe signature, every invocation 400s. 'active' here means 'this is the intended canonical handler', NOT 'this is operationally ready' — do not let CI treat active as a green light. Unblock: confirm Stripe Dashboard endpoint config, set the secret, redeploy from git HEAD (also picks up the missing processed_stripe_events idempotency code — see STRIPE-WEBHOOK-CUTOVER.md).",
-      "repo": "paris-luxe-journey"
+      "blocking_reason": "Retired from deployable source; runtime deletion requires a separate authorized gate after the Stripe LIVE endpoint and repository-caller evidence is rechecked.",
+      "repo": "paris-luxe-journey",
+      "retirement_note": "No Stripe LIVE endpoint or repository caller targets this handler; runtime deletion requires a separate authorized gate."
     },
     "submit-booking-request": {
       "status": "active",
@@ -25,10 +26,10 @@
       "notes": "Recovered from production in recovery/production-source-01 (#251). The payment_status/async-events/staleness findings noted here were fixed in security/reservation-fee-hardening-01 (#253) — not yet deployed, tracked as part of that PR's rollout, same as SECURITY-BOOKING-REQUEST-AUTHZ-01 was for #1370."
     },
     "stripe-webhooks-v312": {
-      "status": "legacy-preserved-no-deploy",
-      "deploy_allowed": false,
+      "status": "temporary-live-compat",
+      "deploy_allowed": true,
       "repo": "paris-luxe-journey",
-      "notes": "Archived at supabase/legacy-functions/stripe-webhooks-v312/, not under supabase/functions/. Pending retirement decision — see ARCHIVED.md there. Must never be deployed by CI/scripts regardless of any local checkout state."
+      "notes": "Stripe LIVE endpoint is configured for this handler. Temporary v51 compatibility source preserves all eight live event types while replacing only the legacy admin credential source; pending later payment-architecture cleanup."
     }
   },
   "owned_by_sibling_repo": {
