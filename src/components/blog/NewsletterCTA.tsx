@@ -52,7 +52,6 @@ export default function NewsletterCTA() {
           headers: {
             'Content-Type': 'application/json',
             apikey: supabasePublishableKey,
-            Authorization: `Bearer ${supabasePublishableKey}`,
           },
           body: JSON.stringify({
             email,

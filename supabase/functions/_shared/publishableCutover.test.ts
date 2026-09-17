@@ -18,6 +18,7 @@ Deno.test("active Luxe browser surfaces use the publishable key", async () => {
     const source = await Deno.readTextFile(new URL(path, import.meta.url));
     assert(!source.includes("VITE_SUPABASE_ANON_KEY"), `${path} still reads the legacy browser key`);
     assert(source.includes("VITE_SUPABASE_PUBLISHABLE_KEY"), `${path} does not read the publishable browser key`);
+    assert(!source.includes("Bearer ${supabasePublishableKey}"), `${path} builds Authorization from the publishable key`);
   }
 });
 

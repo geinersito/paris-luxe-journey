@@ -308,7 +308,6 @@ export const BookingProvider = ({ children }: { children: React.ReactNode }) => 
           headers: {
             'Content-Type': 'application/json',
             'apikey': supabasePublishableKey,
-            'Authorization': `Bearer ${supabasePublishableKey}`
           },
           body: JSON.stringify({
             p_coupon_code: code.toUpperCase().trim()
