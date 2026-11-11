@@ -13,6 +13,12 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 
 ## OPS Locks
 
+### Events editorial review · 2026-11-11
+
+- Base `main` at preparation: `94baae0c228d8ad9cab40b5ab2bb9a273520a100`.
+- In progress: `EVENTS-JOEL-DENECE-01` · draft PR for the existing `/events` page.
+- Next: verify the listing and permalink, obtain CTO review, then obtain owner GO for production.
+
 ## DEPLOY STATUS — 2026-04-29
 
 **Status: HOLD — R0 sprint required**
