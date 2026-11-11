@@ -11,7 +11,7 @@ import {
   BadgeCheck,
   ShieldCheck,
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useMemo, useState } from "react";
 import {
   buildGenericWhatsAppUrl,
@@ -26,8 +26,15 @@ import {
   getThisWeekEvents,
   getVisibleEvents,
   hasEventEnded,
+  isInThisMonth,
   isRecentlyEnded,
 } from "@/lib/events/classify";
+
+const joelDeneceExhibition = {
+  id: "joel-denece",
+  startAt: "2026-11-16T13:00:00Z",
+  endAt: "2026-11-22T19:00:00Z",
+};
 
 /** True only when every event in the pool is past the 7-day grace window. */
 function isFeedStale(pool: Event[], now: Date): boolean {
@@ -36,9 +43,13 @@ function isFeedStale(pool: Event[], now: Date): boolean {
 
 export default function Events() {
   const { t, i18n } = useTranslation();
+  const { hash } = useLocation();
   const language = i18n.language;
 
   const now = useMemo(() => new Date(), []);
+  const showExhibition =
+    isInThisMonth(joelDeneceExhibition, now) ||
+    hash === `#${joelDeneceExhibition.id}`;
 
   const eventPool: Event[] = useMemo(
     () =>
@@ -299,6 +310,68 @@ export default function Events() {
         {/* Events Listing — full-width, no sidebar */}
         <section className="pt-6 pb-8 md:pt-8 md:pb-10 bg-ref-bg">
           <div className="container mx-auto px-4">
+            {showExhibition && (
+              <article
+                id={joelDeneceExhibition.id}
+                lang="fr"
+                aria-labelledby="joel-denece-title"
+                className="mb-8 grid scroll-mt-24 overflow-hidden border border-ref-ink/8 bg-white md:grid-cols-[minmax(0,1fr)_minmax(0,24rem)]"
+              >
+                <div className="self-center space-y-5 p-6 md:p-10">
+                  {hasEventEnded(joelDeneceExhibition, now) && (
+                    <p className="text-sm font-semibold text-muted-foreground">
+                      Exposition terminée
+                    </p>
+                  )}
+                  <h2
+                    id="joel-denece-title"
+                    className="font-editorial text-3xl font-light leading-tight text-ref-ink md:text-4xl"
+                  >
+                    Joël Denece — Exposition de peinture
+                  </h2>
+                  <p className="max-w-prose leading-relaxed text-muted-foreground">
+                    Du 16 au 22 novembre 2026, l’Espace 7 accueille les
+                    peintures de Joël Denece, à quelques pas de la place de la
+                    Bastille. Dans le tableau choisi pour l’affiche, des formes
+                    organiques se détachent dans des nuances de gris, de blanc
+                    et de noir, ponctuées de jaune. Les passages de la lumière à
+                    l’ombre dessinent des volumes qui peuvent évoquer des
+                    paysages imaginaires.
+                  </p>
+                  <dl className="space-y-3 border-t border-ref-ink/10 pt-4 text-sm text-ref-ink">
+                    <div>
+                      <dt className="font-semibold">Visites</dt>
+                      <dd>
+                        Du 16 au 22 novembre 2026, tous les jours de 14 h à 20
+                        h. Entrée libre, sans réservation.
+                      </dd>
+                    </div>
+                    <div>
+                      <dt className="font-semibold">Vernissage</dt>
+                      <dd>Vendredi 20 novembre à partir de 18 h.</dd>
+                    </div>
+                    <div>
+                      <dt className="font-semibold">Lieu</dt>
+                      <dd>Espace 7, 7, rue Saint-Sabin, 75011 Paris.</dd>
+                      <dd>Métro Bastille ou Bréguet–Sabin.</dd>
+                    </div>
+                  </dl>
+                </div>
+                <figure className="flex flex-col items-center justify-center gap-2 bg-ref-bg p-5 md:p-6">
+                  <img
+                    src="/images/library/events/joel-denece-exposition-2026.jpeg"
+                    alt="Affiche de l’exposition avec un tableau aux formes organiques dans les tons gris, noirs et jaunes"
+                    width={572}
+                    height={1024}
+                    loading="lazy"
+                    className="h-auto w-full max-w-72"
+                  />
+                  <figcaption className="text-xs text-muted-foreground">
+                    Photographie de l’œuvre © Joël Denece
+                  </figcaption>
+                </figure>
+              </article>
+            )}
             {feedIsStale ? (
               <EventsTransportFallback />
             ) : (
