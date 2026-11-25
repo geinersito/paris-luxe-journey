@@ -11,6 +11,16 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 - Environments (Supabase A/B map, mirror): `docs/ops/ENVIRONMENTS.md` (SSOT in `paris-dispatcher`)
 - Deploy runbooks canonical (Hostinger + beta tester): `docs/runbooks/HOSTINGER_ROOT_ERP_DEPLOY.md`, `docs/runbooks/BETA_TESTER_QUICKSTART.md`
 
+## Discovery dominio / Disneyland — 2026-11-25
+
+- main HEAD auditado: `94baae0c228d8ad9cab40b5ab2bb9a273520a100`.
+- En curso: `SEO-DISNEY-DOMAIN-DISCOVERY-01` — [borrador](https://github.com/geinersito/paris-luxe-journey/blob/docs/disney-domain-discovery-2026-11-25/docs/audits/DOMAIN_DISNEY_DISCOVERY_2026_11_25.md); revisión CTO pendiente.
+- Decisión: conservar eliteparistransfer.com y Paris Elite Services; especialización dentro del dominio.
+- Evidencia pública: robots/sitemap muestran vista 404; Home/booking sin hreflang en DOM. No implica desindexación total.
+- Próximos 3 items dentro de esta iniciativa: preflight de artefactos SEO; alcance URLs/idioma en `PR-SEO-HREFLANG-01`; PLAN de landing Disney con solicitud existente.
+- Prioridad global sin reordenar: respetar bloqueos de seguridad, runtime y claims ya registrados.
+- Alcance de este borrador: solo documentación; sin precios, rutas, DNS, DB, pagos o despliegue.
+
 ## OPS Locks
 
 ## DEPLOY STATUS — 2026-04-29
