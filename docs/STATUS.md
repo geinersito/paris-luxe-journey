@@ -14,12 +14,12 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## Discovery dominio / Disneyland — 2026-11-25
 
 - main HEAD auditado: `94baae0c228d8ad9cab40b5ab2bb9a273520a100`.
-- En curso: `SEO-DISNEY-DOMAIN-DISCOVERY-01` — [borrador](https://github.com/geinersito/paris-luxe-journey/blob/docs/disney-domain-discovery-2026-11-25/docs/audits/DOMAIN_DISNEY_DISCOVERY_2026_11_25.md); revisión CTO pendiente.
-- Decisión: conservar eliteparistransfer.com y Paris Elite Services; especialización dentro del dominio.
-- Evidencia pública: robots/sitemap muestran vista 404; Home/booking sin hreflang en DOM. No implica desindexación total.
-- Próximos 3 items dentro de esta iniciativa: preflight de artefactos SEO; alcance URLs/idioma en `PR-SEO-HREFLANG-01`; PLAN de landing Disney con solicitud existente.
-- Prioridad global sin reordenar: respetar bloqueos de seguridad, runtime y claims ya registrados.
-- Alcance de este borrador: solo documentación; sin precios, rutas, DNS, DB, pagos o despliegue.
+- En curso: `SEO-DISNEY-DOMAIN-DISCOVERY-01` — [#260](https://github.com/geinersito/paris-luxe-journey/pull/260), PLAN refinado Disney Transfer Growth; revisión pendiente.
+- Conservar dominio/marca/idiomas/servicios. Landing española para familias, copy práctico, sin distracciones generalistas.
+- Propuesta estática escritorio/móvil en docs/design; sin fotos, reseñas o tarifas inventadas. Costes internos fuera de este repo público.
+- Próximos 3 items de la iniciativa: DISNEY-PRICE-SCOPE-01; preflight artefactos SEO; PLAN exacto de landing/formulario R1.
+- Advertencia de alcance: docs/integrations/erp.md marca Booking→ERP NOT LIVE; no asumir ingest automático de solicitudes.
+- Solo documentación/diseño; sin código de app, DNS, DB, pricing, campañas, pagos o despliegue.
 
 ## OPS Locks
 

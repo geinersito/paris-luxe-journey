@@ -1,113 +1,76 @@
-# Dominio y especialización Disneyland Paris — discovery
-25/11/2026 · Europe/Paris · Plan item: SEO-DISNEY-DOMAIN-DISCOVERY-01.
-**Estado: PENDIENTE de revisión CTO. R0 documental. Sin implementación ni despliegue.**
+# Disney Transfer Growth - PLAN para aprobación
+25/11/2026 · Europe/Paris · Plan item: SEO-DISNEY-DOMAIN-DISCOVERY-01 (refinado). **PENDIENTE, R0 documental; sin implementación ni publicidad.**
+Este PLAN sustituye el enfoque de captación generalista por una landing específica para familias residentes en España. Conservar eliteparistransfer.com, Paris Elite Services, los cuatro idiomas y todas las páginas/servicios existentes. No cambiar DNS, migrar URLs, contratar anuncios ni presentar afiliación oficial con Disney.
 
-## Decisión estratégica del propietario
+![Propuesta estática de escritorio y móvil](../design/disney-transfer-growth-2026-11-25.svg)
+Propuesta visual sin formularios funcionales, fotos artificiales, tarifas publicables o reseñas ficticias. Los huecos de precio y foto deben completarse con datos y material reales.
 
-Conservar eliteparistransfer.com como dominio principal y Paris Elite Services como marca.
-Especializar la captación Disneyland Paris mediante páginas comerciales dentro del dominio, reutilizando contenido, pricing y solicitud de traslado existentes.
-No registrar dominios, cambiar DNS, migrar URLs, modificar identidad o presentar afiliación oficial con Disneyland Paris.
-El nombre permite ampliar destinos; que “Elite” genere percepción de precio alto es una hipótesis comercial, no una medición.
-“Económico” requiere tarifas competitivas comparables y margen sostenible: no se valida esa promesa en este discovery.
+## 1. Oferta y comunicación
+Producto: traslados privados CDG, Orly y París ↔ Disneyland Paris, con ida/vuelta y hotel/dirección concreta. Público inicial: familias de España con niños; edad 25–50 y estancias 3–5 días son hipótesis, no requisitos excluyentes.
+Copy propuesto: “Traslados privados a Disneyland Paris”; “Precio total por vehículo”; CTA “Consultar disponibilidad y precio”. Atención en español solo con cobertura operativa validada; no equivale a garantizar conductor hispanohablante.
+Diseño: móvil primero, fondo claro, tipografía legible, tres trayectos, total/inclusiones y una acción principal. WhatsApp como ayuda secundaria. Sin VIP, eventos, excursiones o B2B en esta landing; conservarlos en la web general.
+Usar fotos reales propias/autorizadas y opiniones trazables; si faltan, omitir la sección. No publicar “más barato”, sillas gratis, flota/plazas concretas, tiempo de respuesta o cancelación sin validación.
 
-## Alcance y evidencia
+## 2. Qué reutilizar y qué no asumir
+Base auditada: [main 94baae0](https://github.com/geinersito/paris-luxe-journey/commit/94baae0c228d8ad9cab40b5ab2bb9a273520a100). [Auditoría técnica anterior conservada](https://github.com/geinersito/paris-luxe-journey/blob/a0a0f36abfb66607a3cf338ec389cc305979300b/docs/audits/DOMAIN_DISNEY_DISCOVERY_2026_11_25.md): seis SSOT presentes/no vacíos; robots/sitemap mostraron vista 404; Home/booking sin hreflang en DOM. No equivale a desindexación. No se repite una comprobación HTTP que no se hizo.
+Reutilizar destinos, formulario /booking → /booking/pending, validación, viaje ida/vuelta, cálculo existente y guía familiar Disney del blog. La ruta /es/traslados-disneyland-paris sería nueva: no existe un prefijo /es/ global. Evaluar una ruta española exacta, sin migrar el resto del router.
+[BookingForm](../../src/components/BookingForm.tsx) usa useBookingForm/useBookingPrice; el hook puede caer en precios de respaldo. No convertir cualquier estimación o fallback en una tarifa fija publicada ni crear otra fórmula de precios en la landing.
+[submit-booking-request](../../supabase/functions/submit-booking-request/index.ts) guarda public_booking_requests con pending_review y prepara notificación Telegram; no demuestra creación automática de servicio ERP. [Contrato Booking→ERP](../integrations/erp.md) lo marca NOT LIVE: el webhook canónico no llama al ingest; la integración antigua está archivada. No reactivarla ni prometer sincronización automática en esta campaña.
 
-Base del repositorio Booking: [94baae0](https://github.com/geinersito/paris-luxe-journey/commit/94baae0c228d8ad9cab40b5ab2bb9a273520a100).
-SSOT verificado en el árbol GitHub de ese commit: IMPROVEMENTS 48286 B, STATUS 26880 B, SUPERVISOR 9880 B, BOOKING_MODEL 10960 B, BOOKING_STATUS 9102 B, BOOKING_RUNBOOK 18477 B.
-Todos presentes y no vacíos; comprobación remota, sin inventar salida de un checkout local o de un script.
-Se inspeccionaron rutas, idiomas, metadata, generador SEO, configuración de rutas Disney, metadatos del blog y formulario público.
-También se abrieron la portada, /booking, /robots.txt y /sitemap.xml en el navegador el 25/11/2026.
-El código de main y la web publicada se tratan como fuentes distintas: no se ha probado equivalencia de sus bundles.
-No se enviaron formularios, presupuestos, mensajes o pagos ni se accedió a datos privados de viajeros.
-
-## Inventario reutilizable
-
-| Pieza | Hallazgo | Decisión |
-|---|---|---|
-| Marca/dominio | Paris Elite Services y eliteparistransfer.com ya usados | Conservar |
-| Aeropuertos | /airports, /airports/cdg, /airports/orly, /airports/beauvais | Reutilizar |
-| Excursiones | /excursions y detalles Versailles/Champagne/Loire/Giverny | Conservar expansión |
-| Disneyland comercial | Sin landing dedicada en src/App.tsx revisado | Nueva página futura, no otro sitio |
-| Disneyland editorial | Post transport/paris-airport-to-disneyland-transfer-guide-families | Reutilizar y enlazar, sin duplicar artículo |
-| Destino/formulario | Disneyland Paris ya figura en los destinos públicos de /booking | Mantener solicitud existente |
-| Pricing | Config contiene CDG_DISNEY, ORLY_DISNEY y DISNEY_PARIS | Existencia no valida tarifa pública ni coste operativo |
-| Idiomas | Diccionarios EN/ES/FR/PT y selector existentes | Traducción de UI no equivale a URLs indexables por idioma |
-
-[Router](https://github.com/geinersito/paris-luxe-journey/blob/94baae0c228d8ad9cab40b5ab2bb9a273520a100/src/App.tsx), [post](https://github.com/geinersito/paris-luxe-journey/blob/94baae0c228d8ad9cab40b5ab2bb9a273520a100/src/data/blog/posts.meta.ts#L168-L228), [pricing](https://github.com/geinersito/paris-luxe-journey/blob/94baae0c228d8ad9cab40b5ab2bb9a273520a100/src/config/pricing-v312.ts#L219-L272), [solicitud](https://github.com/geinersito/paris-luxe-journey/blob/94baae0c228d8ad9cab40b5ab2bb9a273520a100/src/pages/booking/index.tsx#L31-L79).
-
-## Hallazgos SEO priorizados
-
-| Prioridad | Evidencia | Implicación |
-|---|---|---|
-| P1 — artefactos publicados | /robots.txt y /sitemap.xml muestran la vista de aplicación “404 / Page not found”, no sus documentos esperados | Comprobar empaquetado, publicación y respuesta HTTP antes de ampliar páginas |
-| P1 — idioma/URL | Selector mayormente cambia preferencia local; solo se encontró :lang/airports como variante de ruta general | Definir URLs estables para las nuevas páginas, sin asumir /es/ global existente |
-| P1 — alternates | Sin link[hreflang] en DOM renderizado de Home y /booking; PR-SEO-HREFLANG-01 ya figura TODO | Reutilizar ese backlog, evitando otro helper paralelo o alternates ficticios a la misma URL |
-| P2 — metadata | Home: canonical correcto al dominio raíz; dos meta description simultáneas | Revisar la base index.html y Helmet sin perder metadata de otras páginas |
-| P2 — sitemap/inventario | Generador usa una lista estática que no incluye varias rutas comerciales actuales | Contrastar inventario antes de añadir rutas nuevas |
-| Pendiente — cobertura real | Resultados públicos muestran Home/booking/FAQ; sin acceso a Search Console | No afirmar cobertura, posiciones, tráfico o conversiones |
-
-La vista 404 es evidencia de navegador, no una medición del status HTTP ni diagnóstico definitivo del servidor.
-La ausencia de un robots o sitemap válido no demuestra que Google tenga bloqueado o desindexado todo el sitio.
-El generador existe y package.json lo ejecuta tras vite build; la causa exacta de la discrepancia publicada sigue pendiente.
-El script genera base localhost:8082 si falta/está mal VITE_PUBLIC_SITE_URL: comprobar el artefacto de producción sin cambiar variables ahora.
-La UI observada mostró selector FR mientras gran parte del contenido y document.lang estaban en EN; requiere reproducción por idioma. No se corrigió.
-[index.html](https://github.com/geinersito/paris-luxe-journey/blob/94baae0c228d8ad9cab40b5ab2bb9a273520a100/index.html), [generador](https://github.com/geinersito/paris-luxe-journey/blob/94baae0c228d8ad9cab40b5ab2bb9a273520a100/scripts/generate-seo.mjs), [idioma](https://github.com/geinersito/paris-luxe-journey/blob/94baae0c228d8ad9cab40b5ab2bb9a273520a100/src/contexts/LanguageContext.tsx), [selector](https://github.com/geinersito/paris-luxe-journey/blob/94baae0c228d8ad9cab40b5ab2bb9a273520a100/src/components/LanguageSelector.tsx).
-
-## Arquitectura comercial propuesta
-
-1. Una página principal de traslados Disneyland Paris: familias, maletas, vehículos por capacidad y solicitud de presupuesto.
-2. Desarrollar después CDG ↔ Disneyland, Orly ↔ Disneyland y París ↔ Disneyland si demanda y contenido propio lo justifican.
-3. Integrar ida/vuelta y necesidades familiares en la oferta inicial; no multiplicar páginas casi idénticas solo por palabras clave.
-4. Enlazar desde aeropuertos y guía familiar a la página comercial y de esta al formulario existente.
-5. Mantener excursiones, aeropuertos y servicios premium bajo la misma marca.
-
-La ruta sugerida antes /es/traslados-disneyland-paris era conceptual: hoy no hay router global /es/ que la soporte.
-Decidir slugs y variantes de idioma antes de crear la landing; no sustituir ni redirigir URLs actuales en este alcance.
-Hreflang deberá referir versiones reales, auto-referencia y enlaces recíprocos. Canonical y contenido coherentes por versión.
-Las tarifas mostrarán total por vehículo, pasajeros/equipaje y condiciones comprobadas. No inventar descuentos, disponibilidad, idiomas, sillas o tiempos de respuesta.
-Presentar Disneyland Paris como destino; no utilizar “oficial”, “partner” o elementos que sugieran afiliación no acreditada.
-El formulario actual es quote-first: /booking deriva a /booking/pending. No reactivar checkout ni modificar pricing/Stripe para una campaña.
-
-## PLAN por pasos y gates
-
-| Paso | Entregable previsto | Archivos probables | Estimación |
+## 3. Competidores contrastados el 25/11/2026
+| Web | CDG→Disney, grupo pequeño | Grupo de 6 | Diferencias que impiden igualar sin revisar |
 |---|---|---|---|
-| 1 — SEO-ASSET-DELIVERY-PREFLIGHT-01 | Preflight reproducible en preview/paquete, identificando causa de robots/sitemap antes de corregir | docs/runbooks/HOSTINGER_ROOT_ERP_DEPLOY.md; este audit; IMPROVEMENTS; STATUS | 40–90 líneas netas, R0 documental |
-| 2 — PR-SEO-HREFLANG-01 (reutilizar) | Decisión de URLs/idiomas y alcance real de alternates | App.tsx, LanguageContext, helper SEO y diccionarios según decisión | PLAN detallado pendiente; routing R1, no tratar todo como R0 |
-| 3 — Landing Disney | Una página comercial con CTA al formulario y metadata propias | Nueva página, App.tsx, i18n/types y SEO según diseño aprobado | Separar foundation/traducciones/UI en micro-PRs; sin estimación cerrada antes del paso 2 |
+| [Paris Disney Ride](https://parisdisneyride.com/) | 75 EUR, berlina 1–4 | 100 EUR, Clase V 5–8 | Publicita sillas y 1 h de espera incluidas |
+| [Paris Shuttle](https://www.parisshuttle.es/preciosdisneyshuttle.php) | 95 EUR, 1–4 | 110 EUR, 5–7 | Publicita 1.ª silla incluida; otras +10 EUR; nocturno +30 EUR |
+| [StarClass Paris](https://starclassparis.com/es) | 120 EUR, Clase V hasta 7 | 120 EUR | Vehículo/servicios distintos; anuncia conductor en inglés; reserva online figuraba en pausa |
+| [Traslado Disneyland Paris](https://trasladodisneylandparis.com/) | 70 EUR, 1–4 | 100 EUR, 5–6 | Anuncia suplementos/condiciones propios: revisar total final |
+Son tarifas anunciadas, no presupuestos obtenidos ni disponibilidad probada. No adoptar sus garantías, fiscalidad, capacidades, fotos o reseñas. Comparar también sentido, fecha, hotel, equipaje, espera, silla y total con suplementos; 100 EUR no demuestra ser el precio más bajo para todos los grupos.
 
-Cada implementación futura requiere aprobación, <200 líneas netas y ≤4 archivos salvo excepción explícita prevista por gobernanza.
-No crear una PR grande que mezcle rutas, pricing, checkout y contenido. Esta PR solo publica auditoría, decisión y trazabilidad.
-Para paso 1: comprobar existencia de dist/robots.txt y dist/sitemap.xml, base HTTPS correcta, sintaxis XML/texto y su conservación en el paquete de publicación.
-Una futura validación pública requerirá comprobar respuesta HTTP y contenido servido; el deploy y los cambios de servidor necesitan autorización independiente.
-Para una landing futura: enlace directo sin 404, idioma correcto tras refresh, H1/meta/canonical consistentes, CTA con contexto y ninguna nueva promesa no validada.
-Gates runtime, smoke A/B/C/D si routing cambia y métricas de Search Console/conversión corresponden a fases posteriores.
-No hay gasto adicional en este discovery; no se propone cambio de dominio como solución al SEO.
+## 4. Demanda mensual y costes publicitarios
+[Paris Region, balance 2025](https://pro.visitparisregion.com/presse/presse/communiques-de-presse/communique-de-presse-bilan-annuel-2025-frequentation-touristique-a-paris-ile-de-france) informa de 1,4 millones de visitantes españoles a la región. Es contexto anual, no familias Disney, solicitudes de transfer ni demanda mensual de nuestro servicio.
+No se obtuvo una serie mensual verificable del nicho ni CPC/CPM de cuentas publicitarias. No afirmar demanda continua fuera de vacaciones ni un coste de captación esperado. [Trends](https://support.google.com/trends/answer/4365533?hl=es) mide interés relativo 0–100, no volumen ni reservas.
+Validación pendiente: exportar meses completos nov-2024/oct-2026 de Keyword Planner, ubicación España, red Google, términos españoles y cercanos: “traslado disneyland paris”, “transfer cdg disneyland”, “orly disneyland”, “traslado paris disneyland”. Conservar mes, keyword/grupo de variantes, ubicación, red, búsquedas y rangos de puja; no sumar variantes duplicadas.
+[Keyword Planner](https://support.google.com/google-ads/answer/3022575?hl=es) ofrece históricos y previsiones condicionadas a ubicación/puja/presupuesto; una puja superior de página no es el CPC real. Falta acceso/export autorizado; no crear cuenta, introducir facturación ni activar campaña para obtenerlo. Meta requiere estimación propia, no extrapolar CPC de Google.
+Antes de invertir: contrastar estacionalidad y plazos de antelación con consultas propias, Search Console y capacidad real. El dato regional y la existencia de competidores justifican investigar, no una previsión de ventas.
 
-## Opportunity Radar
+## 5. Precio, coste y rentabilidad
+Los importes de venta y coste aportados por el propietario se analizan en su informe privado. Este repositorio es público: no publicar costes internos ni márgenes reales. Falta confirmar ruta/sentido, plazas, tratamiento fiscal e inclusiones; **no hay una tarifa autorizada para publicar**.
+La diferencia nominal venta−chófer no es beneficio neto ni margen de contribución disponible. Normalizar bases fiscales y descontar comisiones/cobro, gestión, incidencias y costes que no estén ya incluidos en el chófer; con vehículo propio incluir tiempo, desgaste y kilómetros en vacío sin doble contabilizar.
+Definir M = ingreso comparable − costes variables reales; B = M − contribución mínima que se desea conservar. CAC máximo = B; CPC máximo = B × conversión de clic a reserva confirmada. Si B≤0 no hay presupuesto económico de adquisición pagada.
+| Conversión hipotética clic→reserva | CPC máximo con B=10 EUR ficticios | CPC máximo con B=5 EUR ficticios |
+|---|---:|---:|
+| 2% | 0,20 EUR | 0,10 EUR |
+| 4% | 0,40 EUR | 0,20 EUR |
+| 6% | 0,60 EUR | 0,30 EUR |
+Sensibilidad matemática con presupuestos ficticios B, no costes del propietario, CPC de mercado ni conversión esperada. Ida/vuelta solo se evalúa con ingreso y coste de ambos trayectos confirmados, sin asumir descuento o coste lineal.
 
-- **Conversion upside:** intención Disney más clara y transición a solicitud existente; sin uplift medido.
-- **Average ticket upside:** ida/vuelta y vehículo adecuado a grupo, sujeto a coste y capacidad.
-- **Trust/friction upside:** precio/condiciones coherentes, idioma fiable y destino claro.
-- **Segment opened:** familias que buscan traslado privado con presupuesto controlado.
-- **SEO/editorial upside:** conectar artículo ya existente con una landing útil y versiones reales.
-- **Operational promise risk:** “económico”, 24/7, sillas, idiomas, disponibilidad y respuesta deben validarse.
-- **Suggested micro-PR:** SEO-ASSET-DELIVERY-PREFLIGHT-01.
-- **Risk class:** R0 documental ahora; R1 para futura ruta/idioma; R2 si alguien propone dinero/checkout.
-- **Why now / why later:** resolver discrepancia publicada e idiomas antes de invertir en más páginas o anuncios.
+## 6. Recorrido simplificado propuesto
+1. Trayecto/sentido, hotel o dirección, fechas/horas de París, viajeros incluyendo niños y vuelta condicional; recoger equipaje/carrito y necesidades infantiles sin ocultar capacidad.
+2. Resumen con total o estimación correctamente identificada, inclusiones/suplementos, contacto y aceptación de condiciones; enviar mediante el contrato existente. Dos pasos visuales no autorizan cambiar payload ni suprimir validaciones.
+3. “Solicitud recibida, pendiente de confirmación”; revisión humana de precio, disponibilidad y necesidades; confirmación con condiciones y proceso vigente. No confundir solicitud, clic WhatsApp o estimación con reserva confirmada, ni llevar a checkout/pago inactivo.
+Mantener los datos al volver/refrescar, errores claros y alternativa de contacto. Prefill/hotel exacto/sillas no se suponen soportados: auditar y planificar adaptación separada antes de implementarlos.
 
-## Cierre
+## 7. Métricas y aceptación
+| Medición | Definición / criterio propuesto |
+|---|---|
+| Comprensión móvil | Prueba exploratoria con 5 personas: objetivo 4/5 identifican oferta, precio/consulta y siguiente paso sin ayuda; no prueba de mercado |
+| Conversión | Solicitudes cualificadas únicas / visitas elegibles; reservas confirmadas / solicitudes y / clics; deduplicar, separar canal y mes de visita/servicio |
+| Rentabilidad | M real por trayecto y por ida/vuelta; CAC por reserva atribuida ≤ B aprobado; no optimizar solo WhatsApp o leads baratos |
+| Operación | Cero discrepancias de precio/condiciones en los casos ensayados; medir mediana/p90 de respuesta sin prometer SLA nuevo |
+| Rendimiento/SEO | Prueba móvil real; objetivos [Core Web Vitals](https://web.dev/articles/vitals) p75 LCP≤2,5 s, INP≤200 ms, CLS≤0,1 cuando haya campo suficiente; canonical, idioma y ruta accesibles |
+Reutilizar [analytics](../../src/lib/analytics.ts), booking_trip_submit y eventos de pending existentes antes de añadir otros. Respetar consentimiento, evitar PII y enlazar solicitud/reserva deduplicada; no inventar precisión de atribución ni “purchase” al recibir una solicitud.
 
-- **Summary:** dominio y marca conservados; discovery identifica reutilización y prerrequisitos para la especialización.
-- **Files touched:** audit + trazabilidad en IMPROVEMENTS/STATUS; ningún archivo runtime.
-- **Non-goals:** DNS, dominios nuevos, migración, afiliación, precios, DB, checkout, cuentas o despliegue.
-- **Risks / follow-ups:** status HTTP, causa de publicación, consistencia por idioma y métricas no verificadas.
-- **Evidence Pack:** árbol SSOT remoto; revisión estática; navegación pública y metadata DOM. Gates de implementación pendientes.
-- **Technical verdict:** HOLD para implementación; borrador documental para revisión.
-- **Product verdict:** improves conversion (hipótesis, no resultado medido).
-- **Commercial upside:** aprovechar marca, contenido y formulario existentes sin gasto en otro dominio.
-- **Missed opportunity:** guía Disney existente sin landing comercial específica en el router.
-- **Suggested next micro-PR:** preflight de entrega de artefactos SEO; luego aprobación del alcance comercial.
-- **Do-not-promise guardrail:** sin afiliación oficial, “más barato”, disponibilidad o ROI no demostrados.
+## 8. PLAN de ejecución futura
+| Orden | Alcance y archivos previstos | Clase / tamaño |
+|---|---|---|
+| 1 - DISNEY-PRICE-SCOPE-01 | Matriz de tarifas/costes/inclusiones y criterio de precio publicable: este documento, IMPROVEMENTS y STATUS | R0 documental, 40–70 netas |
+| 2 - SEO-ASSET-DELIVERY-PREFLIGHT-01 | Revisar paquete/preview de robots/sitemap y URLs; runbook Hostinger, audit y SSOT | R0 documental, 40–90 netas; deploy aparte |
+| 3 - Landing española | src/pages/DisneyTransfers.tsx, ruta exacta en src/App.tsx y dos SSOT; pantalla centrada en Disney, fuera de navegación generalista | R1, 140–190 netas por micro-PR; solo tras diseño/tarifas aprobados |
+| 4 - Adaptador de solicitud | Componentes/formulario, guard de intención y tests según audit; reutilizar pricing/contrato, sin tocar pagos o ERP | R1, 120–190 netas por micro-PR; PLAN exacto pendiente |
+La landing completa excederá una sola micro-PR: separar presentación, validaciones/prefill, métricas y SEO con <200 líneas netas y ≤4 archivos por PR. Hreflang reutiliza PR-SEO-HREFLANG-01 solo para variantes reales. Cualquier cambio en precio calculado/checkout o integración ERP es R2 separado, no implícito en este PLAN.
+Gates futuros: CI, lint de cambios, TypeScript y build; smoke A/B/C/D para routing/estado; escritorio/móvil, ida/vuelta, equipaje/sillas y fallo de envío con datos sintéticos. No se ejecutó el funnel real ni se envió solicitud en este discovery.
 
-Referencias primarias: [idiomas](https://developers.google.com/search/docs/specialty/international/localized-versions), [robots](https://developers.google.com/search/docs/crawling-indexing/robots/intro), [sitemaps](https://developers.google.com/search/docs/crawling-indexing/sitemaps/overview).
+## 9. Next Best Slice y dictamen
+**Next Best Slice: DISNEY-PRICE-SCOPE-01.** Validar rentabilidad real y alcance de tarifa tiene prioridad sobre captar tráfico. Aceptación: precio/coste por ruta/plazas/sentido, bases comparables, inclusiones, M y B conocidos; checkout y ERP intactos. No comenzar implementación hasta aprobación.
+**Opportunity Radar:** conversión: oferta única; ticket: ida/vuelta si rentable; confianza: total e inclusiones; segmento: familias España; SEO: guía existente→landing; riesgo: precio/idioma/sillas no acreditados; micro-PR: matriz económica; R0 ahora/R1 flujo/R2 dinero; validar antes de invertir.
+**Cierre:** documento + propuesta visual + trazabilidad, sin runtime, DNS, anuncios, precios publicados, DB o despliegue. Technical verdict HOLD; product verdict improves conversion (hipótesis). Mayor oportunidad pendiente: margen y atribución fiables. Gates de implementación pendientes; borrador para revisión del CTO.
