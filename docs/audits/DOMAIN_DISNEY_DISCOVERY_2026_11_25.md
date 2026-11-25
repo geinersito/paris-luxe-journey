@@ -1,4 +1,4 @@
-# Disney Transfer Growth v3.0 — Preparación del lanzamiento
+# Disney Transfer Growth v3.0 — ORLY FIRST
 25/11/2026 · Europe/Paris · **PLAN PENDIENTE de aprobación; R0 documental.**
 Plan item(s): DISNEY-PRICE-SCOPE-01; DISNEY-FAMILY-BOOKING-01; CUSTOMER-ACQUISITION-DISCOVERY-01 (consolidado).
 Landing y formulario familiar son un mismo proyecto comercial. Captación propia primero; [Dispatch Live #1465](https://github.com/geinersito/paris-dispatcher/pull/1465) conservado en P3. Historial v1/v2 preservado en Git.
@@ -7,16 +7,20 @@ Autorización exclusiva: actualizar PLAN/diseño. Sin implementación, precios r
 ![Propuesta estática: tres categorías y cuatro etapas](../design/disney-transfer-growth-2026-11-25.svg)
 Datos sintéticos; precios objetivo, sin reserva funcional. Fotos reales autorizadas pendientes; sin reseñas inventadas, estética VIP ni afiliación oficial con Disney.
 
-## 1. Matriz candidata para aprobación — DISNEY-PRICE-SCOPE-01, P0
+## 1. Matriz candidata para aprobación — DISNEY-PRICE-SCOPE-01, P0 · Orly primero
 | Categoría | Precio objetivo por vehículo/trayecto | Pasajeros incluidos niños | Condición de equipaje |
 |---|---:|---|---|
 | ECO | 70 EUR | 1–4 | Sin maletas grandes; compatibilidad restante por comprobar |
 | VAN | 80 EUR | 4–5 | Equipaje familiar según capacidad comprobada |
 | VAN XL | 100 EUR | 6–8 | Según configuración y vehículo homologado; 8 pasajeros requieren 9 plazas con conductor |
-| Alcance aún sin aprobar | CDG→Disney; Disney→CDG; Orly→Disney; Disney→Orly; París→Disney; Disney→París | Las tres tarifas son objetivos para validar en cada sentido | Hotel/zona, horarios, espera, retrasos, sillas, carritos, equipaje especial, impuestos y suplementos pendientes |
+| Alcance aún sin aprobar | Orly→Disney; Disney→Orly (P0); CDG↔Disney (P1); París↔Disney (P2) | Las tres tarifas son objetivos para validar en cada sentido | Hotel/zona, horarios, espera, retrasos, sillas, carritos, equipaje especial, impuestos y suplementos pendientes |
 Cuatro viajeros no implican ECO: maleta grande lo excluye; sillas/carritos pueden exigir VAN o presupuesto. No garantizar capacidad solo por plazas ni extrapolar VAN para menos de 4 sin validar su alcance. Exceso/incompatibilidad/datos críticos: revisión manual, sin precio final automático.
 P0: confirmar aceptación y capacidad real de colaboradores; atención en español según cobertura, sin prometer idioma del conductor. No inferir suplementos a partir de servicios recibidos ni tratarlos como nuevas reservas.
 La matriz queda preparada para decisión, no se declara definitiva mientras falten esas validaciones. Modelo económico, aceptación de colaboradores y propuestas comerciales personalizadas se entregan privadamente.
+
+**Prioridad comercial: Orly↔Disney P0 principal; CDG↔Disney P1 secundaria; París↔Disney P2 complementaria.** Validar primero ECO 70 / VAN 80 / VAN XL 100 EUR para los dos sentidos de Orly, con capacidad, condiciones, costes y aceptación de colaboradores; aprobación de Orly no extiende tarifas automáticamente a CDG/París.
+Base de decisión: observación operativa del propietario, señal Keyword Planner de la consulta «traslado orly disney» (100–1.000/mes frente a 10–100 de las dos consultas CDG/París citadas) y conectividad publicada por [Transavia](https://www.transavia.com/aeroports/fr-fr/aeroport-de-paris-orly) / [Vueling](https://www.vueling.com/fr/vols-au-depart-de-paris). Son términos distintos e intervalos, no comparación normalizada ni número de familias/clientes. Las cifras de pasajeros 2025 aportadas no se acreditaron por ruta contra Aena: no usarlas como estadística verificada.
+Aplicación futura: Orly primero en contenido SEO, orden de trayectos y propuestas de colaboración; publicidad solo como prioridad futura, presupuesto actual 0 EUR. Misma landing/formulario, sin páginas nuevas por aeropuerto; origen editable, sin cambiar la elección del pasajero en silencio. CDG/París siguen disponibles para solicitud humana con precio por confirmar si falta tarifa aprobada.
 
 ## 2. Auditoría reutilizada y ampliada, sin repetir discovery
 Bases sin cambios: Booking [94baae0](https://github.com/geinersito/paris-luxe-journey/commit/94baae0c228d8ad9cab40b5ab2bb9a273520a100); ERP [4c6e624](https://github.com/geinersito/paris-dispatcher/commit/4c6e6248700d40cae6a765e3e5e261bcfd52f819). Seis SSOT Booking presentes/no vacíos; SSOT PowerShell ERP exit 0. Gobernanza cross-repo revisada; auditoría por API/ZIP, no checkout ni prueba de despliegue.
@@ -50,7 +54,7 @@ Fuentes revisadas: [Ministerio, centrales](https://www.ecologie.gouv.fr/politiqu
 Cada fila incluye docs/STATUS.md + docs/plan/IMPROVEMENTS.md; quedan como máximo dos archivos de implementación, <200 líneas netas totales y una responsabilidad. R0 documental no implica lanzar ruta; dinero/precio confirmado es R2. Archivos nuevos son propuestos, no existentes.
 | Orden / ID | Archivos de implementación/documentación previstos, además de dos SSOT | Riesgo / líneas totales estimadas |
 |---|---|---|
-| P0 DISNEY-PRICE-SCOPE-01 | Este audit: matriz por seis sentidos, inclusiones, capacidades/aceptación privadas | R0, 60–100 |
+| P0 DISNEY-PRICE-SCOPE-01 | Este audit: Orly→Disney y Disney→Orly primero; inclusiones/capacidades/aceptación; CDG/París después | R0, 60–100 |
 | P0 LEGAL-INTERMEDIATION-SCOPE-01 | docs/audits/LEGAL_INTERMEDIATION_SCOPE.md; dictamen sensible privado | R0, 50–90 |
 | P1 FAMILY-01a modelo | src/types/familyBooking.ts; contrato canónico en docs/BOOKING_MODEL.md | R1, 110–170 |
 | P1 FAMILY-01b reglas | src/lib/booking/familyCompatibility.ts; familyCompatibility.test.ts junto a módulo | R1, 140–190 |
@@ -79,4 +83,4 @@ Casos sintéticos: 4 viajeros/equipaje pequeño; 4 con 2 sillas/2 carritos; 5; 8
 Gates futuros: SSOT, CI, npm run lint:changed, npm run type-check, npm run test -- <módulo>, npm run build; Deno/SQL locales para funciones/DB; A/B/C/D aplicable R1/R2 con fixtures. No ejecutar pagos/ingest ni requerir datos reales. Cuatro etapas navegables con teclado, labels, errores y foco; prueba móvil/escritorio.
 Evidencia de este discovery: fuentes v2 y CSV leídos; main/PR heads verificados; escaneo de formulario/hooks/pending/endpoint/migración/snapshot; SSOT; SVG/PDF revisados; diff y lectura remota al publicar. Sin test runtime, formulario enviado ni consulta financiera productiva. Documentación/observación no acredita capacidad real ni versión desplegada.
 **Operations & Revenue Radar:** menos transcripción y error de vehículo; conversión: tres precios y necesidades claras; ticket: ida/vuelta compatible, sin descuento inventado; confianza: total/transportista confirmados; SEO: landing española y guías; cashflow: gestión cobrable P2; dato faltante: aceptación/capacidad/precio por ruta; riesgo: prometer silla, suplemento o disponibilidad; micro-PR: DISNEY-PRICE-SCOPE-01, R0 ahora, automatización después.
-**Next Best Slice: DISNEY-PRICE-SCOPE-01 — R0 documental.** Technical verdict HOLD para implementar; product verdict mejora de conversión por validar. Cerrar matriz y condiciones con propietario/colaboradores y validación jurídica antes de iniciar la landing. Sin ampliar productos, canales técnicos o alcance de producción.
+**Next Best Slice: DISNEY-PRICE-SCOPE-01 — R0 documental.** Technical verdict HOLD para implementar; product verdict mejora de conversión por validar. Cerrar primero la matriz de Orly en ambos sentidos y condiciones con propietario/colaboradores, junto a validación jurídica, antes de iniciar la landing. Sin ampliar productos, canales técnicos o alcance de producción.

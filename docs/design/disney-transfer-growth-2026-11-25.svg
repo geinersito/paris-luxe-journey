@@ -3,9 +3,9 @@
 <desc>Propuesta estática de tres precios objetivo y cuatro etapas. Datos sintéticos. Sin reserva real.</desc>
 <style>text{font-family:Arial,Helvetica,sans-serif}</style>
 <rect x="0" y="0" width="1440" height="2140" rx="0" fill="#eef2f4" stroke="#eef2f4"/>
-<text font-size="20" font-weight="bold" fill="#172b3a"><tspan x="24" y="36.0">DISNEY TRANSFER GROWTH v3.0</tspan></text>
-<text font-size="17" font-weight="normal" fill="#172b3a"><tspan x="24" y="68.0">Customer Acquisition First · Landing + formulario universal · Propuesta para revisión · 25/11/2026</tspan></text>
-<text font-size="16" font-weight="normal" fill="#172b3a"><tspan x="24" y="98.0">Precios objetivo. Rutas, horarios, sillas, equipaje y colaboradores pendientes de validación. No realiza reservas.</tspan></text>
+<text font-size="20" font-weight="bold" fill="#172b3a"><tspan x="24" y="36.0">DISNEY TRANSFER GROWTH v3.0 · ORLY FIRST</tspan></text>
+<text font-size="17" font-weight="normal" fill="#172b3a"><tspan x="24" y="68.0">Orly primero · CDG secundario · París complementario · Propuesta para revisión · 25/11/2026</tspan></text>
+<text font-size="16" font-weight="normal" fill="#172b3a"><tspan x="24" y="98.0">Objetivos 70 / 80 / 100 €: validar primero Orly en ambos sentidos. Condiciones pendientes. No realiza reservas.</tspan></text>
 <text font-size="13" font-weight="bold" fill="#172b3a"><tspan x="24" y="131.0">ESCRITORIO</tspan></text>
 <text font-size="13" font-weight="bold" fill="#172b3a"><tspan x="960" y="131.0">MÓVIL</tspan></text>
 <rect x="24" y="145" width="912" height="830" rx="8" fill="#ffffff" stroke="#d5dee2"/>
@@ -13,7 +13,7 @@
 <text font-size="17" font-weight="bold" fill="#172b3a"><tspan x="48" y="184.0">PARIS ELITE SERVICES</tspan></text>
 <text font-size="15" font-weight="normal" fill="#172b3a"><tspan x="722" y="184.0">Tarifas · Contacto</tspan></text>
 <text font-size="36" font-weight="bold" fill="#172b3a"><tspan x="48" y="242">Traslados privados</tspan><tspan x="48" y="286">a Disneyland Paris</tspan></text>
-<text font-size="17" font-weight="normal" fill="#172b3a"><tspan x="48" y="320.0">CDG, Orly y París ↔ Disneyland Paris · Precio por vehículo y trayecto</tspan></text>
+<text font-size="17" font-weight="normal" fill="#172b3a"><tspan x="48" y="320.0">Orly ↔ Disneyland Paris · También CDG y París · Precio por vehículo y trayecto</tspan></text>
 <rect x="48" y="350" width="264" height="170" rx="8" fill="#f8fafb" stroke="#d5dee2"/>
 <text font-size="19" font-weight="bold" fill="#172b3a"><tspan x="66" y="381.0">ECO</tspan></text>
 <text font-size="35" font-weight="bold" fill="#172b3a"><tspan x="66" y="428.0">70 €</tspan></text>
@@ -37,7 +37,7 @@
 <text font-size="14" font-weight="normal" fill="#5f6e79"><tspan x="48" y="935.0">Empresa · Condiciones · Privacidad</tspan></text>
 <text font-size="16" font-weight="bold" fill="#172b3a"><tspan x="982" y="184.0">PARIS ELITE SERVICES</tspan></text>
 <text font-size="29" font-weight="bold" fill="#172b3a"><tspan x="982" y="235">Traslados privados</tspan><tspan x="982" y="271">a Disneyland Paris</tspan></text>
-<text font-size="16" font-weight="normal" fill="#172b3a"><tspan x="982" y="300.0">Precio por vehículo y trayecto</tspan></text>
+<text font-size="16" font-weight="normal" fill="#172b3a"><tspan x="982" y="300.0">Orly ↔ Disney · Precio por vehículo y trayecto</tspan></text>
 <rect x="982" y="326" width="412" height="108" rx="8" fill="#f8fafb" stroke="#d5dee2"/>
 <text font-size="17" font-weight="bold" fill="#172b3a"><tspan x="998" y="357.0">ECO</tspan></text>
 <text font-size="27" font-weight="bold" fill="#172b3a"><tspan x="1270" y="360.0">70 €</tspan></text>
@@ -76,5 +76,5 @@
 <text font-size="17" font-weight="bold" fill="#ffffff"><tspan x="774" y="1871.0">Solicitar traslado · DEMOSTRACIÓN</tspan></text>
 <text font-size="17" font-weight="normal" fill="#172b3a"><tspan x="756" y="1924">Solicitud recibida ≠ reserva confirmada.</tspan><tspan x="756" y="1953">Te comunicaremos el precio final y las condiciones.</tspan></text>
 <text font-size="18" font-weight="bold" fill="#172b3a"><tspan x="24" y="2054.0">PARA APROBACIÓN: 70 / 80 / 100 € por vehículo y trayecto. Sin cambios de tarifas en producción.</tspan></text>
-<text font-size="17" font-weight="normal" fill="#172b3a"><tspan x="24" y="2094.0">Pendientes: alcance por ruta, condiciones, vehículo, sillas, colaboradores y validación jurídica.</tspan></text>
+<text font-size="17" font-weight="normal" fill="#172b3a"><tspan x="24" y="2094.0">Prioridad: Orly en ambos sentidos. CDG y París sin tarifa aprobada: precio por confirmar.</tspan></text>
 </svg>
