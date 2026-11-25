@@ -11,15 +11,15 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 - Environments (Supabase A/B map, mirror): `docs/ops/ENVIRONMENTS.md` (SSOT in `paris-dispatcher`)
 - Deploy runbooks canonical (Hostinger + beta tester): `docs/runbooks/HOSTINGER_ROOT_ERP_DEPLOY.md`, `docs/runbooks/BETA_TESTER_QUICKSTART.md`
 
-## Discovery dominio / Disneyland — 2026-11-25
+## Customer Acquisition First — 2026-11-25
 
 - main HEAD auditado: `94baae0c228d8ad9cab40b5ab2bb9a273520a100`.
-- En curso: `SEO-DISNEY-DOMAIN-DISCOVERY-01` — [#260](https://github.com/geinersito/paris-luxe-journey/pull/260), PLAN refinado Disney Transfer Growth; revisión pendiente.
-- Conservar dominio/marca/idiomas/servicios. Landing española para familias, copy práctico, sin distracciones generalistas.
-- Propuesta estática escritorio/móvil en docs/design; sin fotos, reseñas o tarifas inventadas. Costes internos fuera de este repo público.
-- Próximos 3 items de la iniciativa: DISNEY-PRICE-SCOPE-01; preflight artefactos SEO; PLAN exacto de landing/formulario R1.
-- Advertencia de alcance: docs/integrations/erp.md marca Booking→ERP NOT LIVE; no asumir ingest automático de solicitudes.
-- Solo documentación/diseño; sin código de app, DNS, DB, pricing, campañas, pagos o despliegue.
+- En curso: CUSTOMER-ACQUISITION-DISCOVERY-01 y SEO-DISNEY-DOMAIN-DISCOVERY-01 — [#260](https://github.com/geinersito/paris-luxe-journey/pull/260), PLAN v2 para revisión.
+- Prioridad P0: captación propia y validación jurídica/económica. Mantener dominio/marca/idiomas/servicios; landing española ECO/VAN conceptual.
+- SVG revisado; mapa comercial, economía interna y export Planner fuera del repo público. Sin tarifas activadas ni fotos/reseñas ficticias.
+- Próximos 3 items: CUSTOMER-ACQUISITION-DISCOVERY-01; LEGAL-INTERMEDIATION-SCOPE-01; DISNEY-PRICE-SCOPE-01. Dispatch Live #1465 diferido P3.
+- Booking→ERP NOT LIVE; comisión ERP pagadera no acredita cuenta a cobrar al conductor. No activar ingest ni adaptar dinero en R1.
+- Solo documentación/diseño; sin runtime, DNS, DB, pricing real, anuncios, contactos, pagos, cuentas Telegram o despliegue.
 
 ## OPS Locks
 
