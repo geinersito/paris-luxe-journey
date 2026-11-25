@@ -11,15 +11,15 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 - Environments (Supabase A/B map, mirror): `docs/ops/ENVIRONMENTS.md` (SSOT in `paris-dispatcher`)
 - Deploy runbooks canonical (Hostinger + beta tester): `docs/runbooks/HOSTINGER_ROOT_ERP_DEPLOY.md`, `docs/runbooks/BETA_TESTER_QUICKSTART.md`
 
-## Customer Acquisition First — 2026-11-25
+## Disney Transfer Growth v3 — 2026-11-25
 
 - main HEAD auditado: `94baae0c228d8ad9cab40b5ab2bb9a273520a100`.
-- En curso: CUSTOMER-ACQUISITION-DISCOVERY-01 y SEO-DISNEY-DOMAIN-DISCOVERY-01 — [#260](https://github.com/geinersito/paris-luxe-journey/pull/260), PLAN v2 para revisión.
-- Prioridad P0: captación propia y validación jurídica/económica. Mantener dominio/marca/idiomas/servicios; landing española ECO/VAN conceptual.
-- SVG revisado; mapa comercial, economía interna y export Planner fuera del repo público. Sin tarifas activadas ni fotos/reseñas ficticias.
-- Próximos 3 items: CUSTOMER-ACQUISITION-DISCOVERY-01; LEGAL-INTERMEDIATION-SCOPE-01; DISNEY-PRICE-SCOPE-01. Dispatch Live #1465 diferido P3.
-- Booking→ERP NOT LIVE; comisión ERP pagadera no acredita cuenta a cobrar al conductor. No activar ingest ni adaptar dinero en R1.
-- Solo documentación/diseño; sin runtime, DNS, DB, pricing real, anuncios, contactos, pagos, cuentas Telegram o despliegue.
+- En curso: DISNEY-PRICE-SCOPE-01; DISNEY-FAMILY-BOOKING-01 en PLAN — [#260](https://github.com/geinersito/paris-luxe-journey/pull/260), borrador para revisión.
+- Tres precios objetivo por validar: ECO 70 / VAN 80 / VAN XL 100 EUR. Landing española + un formulario de cuatro etapas, compartido con /es/reserva-disney, sin cuenta pasajero.
+- Diseño estático revisado; kit privado con matriz interna, diez oportunidades/borradores, condiciones, atribución y checklist. Presupuesto publicitario 0 EUR; nada enviado.
+- Próximos 3 items: DISNEY-PRICE-SCOPE-01; LEGAL-INTERMEDIATION-SCOPE-01; DISNEY-FAMILY-BOOKING-01 junto a DISNEY-LANDING-01. Dispatch Live #1465 P3.
+- Intake actual pierde campos familiares; tope online 7, pricing/fallback y asignación no acreditan compatibilidad. Contrato/DB/API requieren slices propios antes de publicar ambas rutas.
+- Booking→ERP NOT LIVE; cuentas a cobrar de gestión requieren PLAN R2 separado. Sin código app, precios reales, DB, contactos, WhatsApp API, Telegram, pagos, merge ni despliegue.
 
 ## OPS Locks
 

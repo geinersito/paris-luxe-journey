@@ -1,76 +1,82 @@
-# Disney Transfer Growth v2.0 — Customer Acquisition First
-25/11/2026 · Europe/Paris · **PENDIENTE de aprobación; R0 documental.**
-Plan IDs: CUSTOMER-ACQUISITION-DISCOVERY-01; SEO-DISNEY-DOMAIN-DISCOVERY-01 (conservado).
-Prioridad: conseguir reservas propias antes de automatizar su distribución. Este documento reemplaza las conclusiones comerciales anteriores; su historial sigue disponible en Git.
-Autorización: discovery, auditoría y PLAN. Sin implementación, anuncios, contactos, cambios de precios, pagos, DB, conexión de cuentas, merges ni despliegue.
+# Disney Transfer Growth v3.0 — Preparación del lanzamiento
+25/11/2026 · Europe/Paris · **PLAN PENDIENTE de aprobación; R0 documental.**
+Plan item(s): DISNEY-PRICE-SCOPE-01; DISNEY-FAMILY-BOOKING-01; CUSTOMER-ACQUISITION-DISCOVERY-01 (consolidado).
+Landing y formulario familiar son un mismo proyecto comercial. Captación propia primero; [Dispatch Live #1465](https://github.com/geinersito/paris-dispatcher/pull/1465) conservado en P3. Historial v1/v2 preservado en Git.
+Autorización exclusiva: actualizar PLAN/diseño. Sin implementación, precios reales, DB, mensajes, publicidad, contactos, cuentas Telegram, compras, merge ni despliegue.
 
-![Propuesta estática de escritorio y móvil](../design/disney-transfer-growth-2026-11-25.svg)
-Diseño conceptual; no modifica tarifas reales. Fotografías propias/autorizadas pendientes; sin reseñas ficticias ni afiliación oficial con Disney.
+![Propuesta estática: tres categorías y cuatro etapas](../design/disney-transfer-growth-2026-11-25.svg)
+Datos sintéticos; precios objetivo, sin reserva funcional. Fotos reales autorizadas pendientes; sin reseñas inventadas, estética VIP ni afiliación oficial con Disney.
 
-## 1. Oferta y alcance
-Familias residentes en España que visitan Disneyland Paris, sin enfoque VIP. Estacionalidad, antelación y sensibilidad al precio son hipótesis por validar.
-Conservar eliteparistransfer.com, Paris Elite Services, páginas, servicios e idiomas existentes. Landing española independiente, móvil, información práctica y una acción: consultar disponibilidad.
-Oferta propuesta por vehículo/trayecto: **ECO 70 EUR**, hasta 4 pasajeros incluyendo niños, sin maletas grandes; **VAN 100 EUR**, capacidad/equipaje según vehículo confirmado.
-DISNEY-PRICE-SCOPE-01 debe validar CDG/Orly/París, ambos sentidos, hoteles, horarios, espera, retrasos, sillas, carrito, suplementos, impuestos y cancelación antes de publicar.
-Atención en español no equivale a garantizar conductor hispanohablante. Sin promesas de flota, capacidad infantil, gratuidad o respuesta no comprobadas.
-Separar ejecución propia e intermediación: identificar operador, cobro y facturación en cada circuito. Modelo económico, contactos prioritarios y estrategia competitiva se entregan privadamente, fuera del repositorio público.
+## 1. Matriz candidata para aprobación — DISNEY-PRICE-SCOPE-01, P0
+| Categoría | Precio objetivo por vehículo/trayecto | Pasajeros incluidos niños | Condición de equipaje |
+|---|---:|---|---|
+| ECO | 70 EUR | 1–4 | Sin maletas grandes; compatibilidad restante por comprobar |
+| VAN | 80 EUR | 4–5 | Equipaje familiar según capacidad comprobada |
+| VAN XL | 100 EUR | 6–8 | Según configuración y vehículo homologado; 8 pasajeros requieren 9 plazas con conductor |
+| Alcance aún sin aprobar | CDG→Disney; Disney→CDG; Orly→Disney; Disney→Orly; París→Disney; Disney→París | Las tres tarifas son objetivos para validar en cada sentido | Hotel/zona, horarios, espera, retrasos, sillas, carritos, equipaje especial, impuestos y suplementos pendientes |
+Cuatro viajeros no implican ECO: maleta grande lo excluye; sillas/carritos pueden exigir VAN o presupuesto. No garantizar capacidad solo por plazas ni extrapolar VAN para menos de 4 sin validar su alcance. Exceso/incompatibilidad/datos críticos: revisión manual, sin precio final automático.
+P0: confirmar aceptación y capacidad real de colaboradores; atención en español según cobertura, sin prometer idioma del conductor. No inferir suplementos a partir de servicios recibidos ni tratarlos como nuevas reservas.
+La matriz queda preparada para decisión, no se declara definitiva mientras falten esas validaciones. Modelo económico, aceptación de colaboradores y propuestas comerciales personalizadas se entregan privadamente.
 
-## 2. Auditoría y reutilización
-Booking main auditado: [94baae0](https://github.com/geinersito/paris-luxe-journey/commit/94baae0c228d8ad9cab40b5ab2bb9a273520a100); seis SSOT presentes/no vacíos. [Discovery inicial conservado](https://github.com/geinersito/paris-luxe-journey/blob/a0a0f36abfb66607a3cf338ec389cc305979300b/docs/audits/DOMAIN_DISNEY_DISCOVERY_2026_11_25.md).
-Reutilizar BookingForm/useBookingForm/useBookingPrice, destinos Disney, ida/vuelta, validación, blog familiar y analytics existentes. Nueva ruta exacta /es/traslados-disneyland-paris: no asumir prefijo español global.
-Los fallbacks del pricing no acreditan tarifas ECO/VAN. El formulario genérico anuncia equipaje distinto de ECO: resolver esta contradicción antes de reutilizarlo.
-submit-booking-request guarda public_booking_requests/pending_review y prepara notificación; no prueba creación de servicio ERP. [Contrato ERP](../integrations/erp.md): **NOT LIVE**, webhook canónico sin ingest. No reactivar integración archivada.
-Producción observada 25/11: /booking ofrece solicitud/revisión humana; /sitemap.xml muestra vista 404. No se envió formulario. Esto no prueba HTTP 404, desindexación ni versión desplegada de funciones; Search Console no auditado.
-ERP main [4c6e624](https://github.com/geinersito/paris-dispatcher/commit/4c6e6248700d40cae6a765e3e5e261bcfd52f819): propuestas/portal/outbox/ledger son referencias reutilizables; SSOT check PowerShell OK.
-La comisión existente registra una obligación pagadera al intermediario y payout_sent. No acredita facturar/cobrar una comisión al conductor: auditar cuentas a cobrar en R2 separado, sin invertir signos del ledger existente.
-[Dispatch Live #1465](https://github.com/geinersito/paris-dispatcher/pull/1465) se conserva, diferido a P3. Sin VPS ni Telegram ahora; ninguna asignación automática.
+## 2. Auditoría reutilizada y ampliada, sin repetir discovery
+Bases sin cambios: Booking [94baae0](https://github.com/geinersito/paris-luxe-journey/commit/94baae0c228d8ad9cab40b5ab2bb9a273520a100); ERP [4c6e624](https://github.com/geinersito/paris-dispatcher/commit/4c6e6248700d40cae6a765e3e5e261bcfd52f819). Seis SSOT Booking presentes/no vacíos; SSOT PowerShell ERP exit 0. Gobernanza cross-repo revisada; auditoría por API/ZIP, no checkout ni prueba de despliegue.
+Reutilizar destinos, LocationInputs/DateTimeInputs cuando su contrato encaje, controles UI, validación base y endpoint de solicitud. No reconstruir reserva general ni reactivar checkout. Landing /es/traslados-disneyland-paris y formulario universal /es/reserva-disney son rutas propuestas nuevas, conservando otras páginas/idiomas y dominio.
+BookingForm usa useBookingForm→src/hooks/booking/useBookingPrice.tsx: selección sedan/van por pasajeros y fallbacks; no representa ECO/VAN/VAN XL. PassengerCount limita online a 7; useVehicleAssignment presupone VAN de 7 y carga ponderada, sin sillas/carritos. No reutilizar sus heurísticas como prueba de capacidad ni elevar el límite global a ciegas.
+src/pages/booking/Pending.tsx transmite luggage genérico; no los contadores de maletas, vuelo, dirección detallada ni ficha infantil. submit-booking-request admite pasajeros/luggage/notes, sin contrato familiar; notes tiene límite 500. No empaquetar toda la ficha en texto ni añadir campos que el servidor ignore.
+supabase/migrations/20260531000000_public_booking_requests.sql acredita intake pending_review, sin acceso cliente directo. No acredita family_details ni idempotencia de reintentos. Proponer extensión aditiva y pruebas antes de conectar el nuevo formulario.
+[Booking→ERP](../integrations/erp.md) sigue documentado **NOT LIVE**; sin ingest ni cambios dispatch_*. Observación pública v2 se conserva con fecha: /booking solicitud humana; sitemap vista 404. No se repite prueba de producción ni se afirma estado HTTP/indexación.
 
-## 3. Captación y demanda
-P0: recomendaciones de clientes propios, contenido útil, comunidades con reglas verificadas, SEO y colaboraciones permitidas. No contactar a terceros en este discovery; respetar carteras confiadas y procedencia comercial.
-El mapa privado cubre operadores de referencia, blogs, foros, Facebook, Instagram/TikTok/YouTube y agencias. Distingue audiencia verificable, actividad fechada, contacto profesional, recomendación editorial y afiliación; coste no publicado queda desconocido.
-No confundir seguidores globales con residentes en España, lecturas acumuladas con audiencia mensual, código descuento con contrato exclusivo ni coincidencias de nombres con relaciones empresariales.
-[Keyword Planner](https://support.google.com/google-ads/answer/7337243?hl=es-ES), consulta 25/11: España, Spanish, Google, nov-2025/oct-2026; seis semillas, 36 ideas. Exportación conservada privadamente, sin activar publicidad/facturación.
-| Consulta | Promedio mensual mostrado | Puja superior de página, baja–alta |
+## 3. DISNEY-FAMILY-BOOKING-01 — recorrido y contrato propuestos
+1. **Viaje:** origen/destino exactos; fecha y hora Europe/Paris; vuelo/aterrizaje separados de recogida; vuelta con trayecto, vuelo, horario y necesidades independientes. Aterrizaje no equivale a recogida.
+2. **Viajeros:** adultos y menores; edad individual, meses para bebés cuando proceda; sillas/alzadores, propios o solicitados; talla/peso solo si necesarios para dispositivo homologado compatible. Sin nombres, fecha de nacimiento ni documentos de menores.
+3. **Equipaje:** grandes, cabina, mochilas, carritos plegables/no plegables y especial; dimensiones cuando sean necesarias. No asignar litros o cupos genéricos sin vehículo/configuración comprobados.
+4. **Contacto y resumen:** reutilizar controles de contacto y transporte de solicitud; categoría candidata y motivos, precio objetivo o “por confirmar”. Antes de reserva: total final, inclusiones, condiciones y transportista validados por operador. “Solicitud recibida” ≠ reserva confirmada.
+Modelo v1 propuesto: legs[] con horarios diferenciados; party.adults/children[] sin identidad; bags/strollers por trayecto; equipment requests; recommendation/category/reasons/review_required; tarifa versionada y ámbito, separados de confirmación. El servidor valida tamaños/tipos/coherencia y no confía en precio/categoría enviados por cliente.
+Compatibilidad = pasajeros + asientos útiles con dispositivos + montaje homologado + equipaje/carritos + disponibilidad comprobada. Resultado candidato/revisión/incompatible; nunca asigna conductor. No inventar algoritmo volumétrico ni declarar asiento adecuado solo por edad.
+Propuesta de persistencia: family_details JSONB opcional/versionado en public_booking_requests, manteniendo columnas legacy; request_key y digest de solicitud para idempotencia atómica. Contrato canónico y minimización aprobados antes de migración/functions; no almacenar economía interna en la solicitud pública.
+Un único FamilyBookingForm reutilizado en landing y página propia /es/reserva-disney, sin cuenta de pasajero. Compartible manualmente por WhatsApp Business, redes, correo y QR; misma validación/endpoint, sin duplicar formularios por canal ni montar pricing/vehículos heredados. Extraer contacto/envío reutilizables; legacy /booking→pending permanece. Activar ambas rutas solo con contrato/almacenamiento/envío completos.
+URL pública sin PII: allowlist de códigos de canal/prescriptor y campaña, no query libre ni parámetros de pasajero. Respuesta rápida WhatsApp preparada como borrador, sin configurar cuenta ni enviar. Sin WhatsApp API/Flows/SaaS nuevo ahora; coste incremental de infraestructura no contratado, capacidad de alojamiento por validar.
+Datos familiares/contacto solo en memoria del formulario; no en URLs, analytics, fixtures reales, logs, sessionStorage o propuestas abiertas. Snapshot existente solo admite escalares: no ampliar su allowlist con menores. Refresh vuelve a revisión/reentrada explícita, sin fingir que conserva datos. Estado de envío seguro sin PII puede conservar referencia/nonce para evitar reenvío ciego.
+Ficha futura: referencia, trayecto, aterrizaje/recogida, composición/edades necesarias, dispositivos, bultos/carritos y categoría/precio confirmados. Operador ve la solicitud; conductor autorizado recibe lo mínimo tras asignación. Primera versión: función pura/preview sintético, sin PDF/Telegram/envío a red.
+
+## 4. Captación orgánica y validación jurídica
+Presupuesto publicitario inicial **0 EUR**. Estudio v2 y export Planner reutilizados: España/Spanish/Google, nov-2025/oct-2026, 36 ideas; seis semillas muestran intervalos, sin serie mensual detallada. No convertir 50/500 del CSV en conteos exactos, sumar variantes o prever ventas/año estable.
+Kit privado: diez oportunidades priorizadas con fuentes/contactos/límites, diez borradores personalizados, publicaciones, recomendación y solicitud de reseña auténtica, enlaces de atribución propuestos. Son propuestas no enviadas; no prometen descuentos, patrocinio o capacidad. Respetar reglas de comunidades y relaciones existentes; no captar cartera confiada para ejecución.
+Separar servicios confiados para ejecución personal (nunca redistribuir), propios ejecutados y propios intermediados. No mezclar operador contractual, cobro, factura o procedencia. ERP comisión pagadera actual no acredita cuenta a cobrar al conductor: PLAN COMMISSION-RECEIVABLES-01 R2 separado, sin invertir signos ni duplicar ledger/facturas.
+Checklist P0: clasificación/declaración centrale de réservation y renovación, RC profesional, contratos, identidad transportista, habilitaciones/seguros, cancelación, mediación, datos, facturación de gestión y régimen fiscal/social. No se ha verificado situación administrativa ni se concluye conformidad.
+Fuentes revisadas: [Ministerio, centrales](https://www.ecologie.gouv.fr/politiques-publiques/taxi-vtc-vmdtr-cpa-reglementation-transports-publics-particuliers-personnes), [Service Public VTC](https://entreprendre.service-public.gouv.fr/vosdroits/F31027), [retención infantil](https://www.service-public.gouv.fr/particuliers/vosdroits/F628?lang=en), R3122-6/R412-2. La excepción taxi no se aplica por analogía al VTC; dispositivo y vehículo requieren comprobación profesional, sin inferir seguridad por edad o plazas. Fiscalidad/contratos continúan pendientes de asesor.
+
+## 5. PLAN técnico por micro-PR, sin implementación autorizada
+Cada fila incluye docs/STATUS.md + docs/plan/IMPROVEMENTS.md; quedan como máximo dos archivos de implementación, <200 líneas netas totales y una responsabilidad. R0 documental no implica lanzar ruta; dinero/precio confirmado es R2. Archivos nuevos son propuestos, no existentes.
+| Orden / ID | Archivos de implementación/documentación previstos, además de dos SSOT | Riesgo / líneas totales estimadas |
 |---|---|---|
-| traslado disneyland paris | 10–100 | 0,54–1,73 EUR |
-| transfer cdg disneyland | 10–100 | 1,02–4,73 EUR |
-| orly disneyland | 10–100 | 0,55–2,07 EUR |
-| traslado paris disneyland | 10–100 | 0,47–1,98 EUR |
-| transfer disneyland paris | 10–100 | 0,73–2,37 EUR |
-| traslado orly disney | 100–1.000 | 0,42–1,63 EUR |
-Son intervalos estimados, no personas, reservas ni CPC real. CSV devuelve valores representativos 50/500 y meses vacíos: no tratarlos como conteos exactos ni sumar variantes. **Estacionalidad mensual no demostrada**; no publicar campaña para desbloquear datos.
-Precios anunciados reconsultados 25/11: [Paris Disney Ride](https://parisdisneyride.com/) CDG 75/100 EUR, Orly y París 80/120; [Paris Shuttle](https://www.parisshuttle.es/preciosdisneyshuttle.php) CDG/Orly 95/110; [StarClass](https://starclassparis.com/es) CDG/Orly 120, París 130. Grupos/equipajes/sillas/espera difieren: ECO no es una comparación equivalente con maletas incluidas; VAN 100 coincide con una oferta CDG, no es precio mínimo demostrado.
-Google Business Profile: [empresas de generación de leads no elegibles](https://support.google.com/business/answer/13763036); revisar actividad presencial real y perfil existente antes de recomendar alta. Sin dirección ficticia ni perfil nuevo ahora.
+| P0 DISNEY-PRICE-SCOPE-01 | Este audit: matriz por seis sentidos, inclusiones, capacidades/aceptación privadas | R0, 60–100 |
+| P0 LEGAL-INTERMEDIATION-SCOPE-01 | docs/audits/LEGAL_INTERMEDIATION_SCOPE.md; dictamen sensible privado | R0, 50–90 |
+| P1 FAMILY-01a modelo | src/types/familyBooking.ts; contrato canónico en docs/BOOKING_MODEL.md | R1, 110–170 |
+| P1 FAMILY-01b reglas | src/lib/booking/familyCompatibility.ts; familyCompatibility.test.ts junto a módulo | R1, 140–190 |
+| P1 FAMILY-01c intake DB | supabase/migrations/<timestamp>_family_request_v1.sql; supabase/tests/database/family_request_v1.sql | R2 DB-only, 120–185; aditivo/RLS/idempotencia/rollback lógico |
+| P1 FAMILY-01d validación API | supabase/functions/_shared/familyRequest.ts; familyRequest.test.ts | R2 functions-only, 130–190 |
+| P1 FAMILY-01e recepción API | supabase/functions/submit-booking-request/index.ts; index.test.ts junto a función | R2 functions-only, 120–190; legacy, reintento y fallos |
+| P1 FAMILY-01f transporte | src/lib/booking/submitRequest.ts; src/pages/booking/Pending.tsx | R1, 100–160; extracción compatible, sin activar familia |
+| P1 FAMILY-01g contacto | src/components/booking/RequestContactFields.tsx; src/pages/booking/Pending.tsx | R1, 80–140; mantener required/errores legacy |
+| P1 FAMILY-01h/01i viaje/viajeros | src/components/booking/family/JourneyStep.tsx o PartyStep.tsx; test específico por slice | R1, 120–185 cada una |
+| P1 FAMILY-01j/01k equipaje/resumen | src/components/booking/family/BaggageStep.tsx o ReviewStep.tsx; test por slice | R1, 120–185 cada una |
+| P1 FAMILY-01l estado | src/hooks/booking/useFamilyRequest.ts; useFamilyRequest.test.ts | R1, 130–185; back, reentrada, bloqueo/reintento |
+| P1 FAMILY-01m composición | src/components/booking/family/FamilyBookingForm.tsx; test del flujo | R1, 140–190; cuatro etapas sin confirmación automática |
+| P1 FAMILY-01p URL universal | src/pages/FamilyRequestPage.tsx; src/App.tsx | R1, 60–120; /es/reserva-disney sin login, mismo formulario |
+| P1 DISNEY-LANDING-01a | src/pages/DisneyTransfers.tsx; src/App.tsx | R1, 130–185; ruta española solo tras gates y formulario listo |
+| P1 DISNEY-LANDING-01b precios | src/config/disneyOffer.ts; src/pages/DisneyTransfers.tsx | R2, 80–150; SSOT versionada, sin copiar precio en tres capas |
+| P1 FAMILY-01o precio/resumen | src/components/booking/family/ReviewStep.tsx; prueba de tarifa/alcance junto al componente | R2, 90–160; misma SSOT, nunca sustituir total confirmado por objetivo |
+| P1 FAMILY-01n ficha | src/lib/booking/familyOperationalSummary.ts; test específico | R1, 90–150; preview sintético, sin transporte |
+| P1 ORGANIC-ACQUISITION-01 / CUSTOMER-REVIEWS-01 | Kit privado y aprobación individual de material/canal; publicación separada | R0, 40–80 por resumen documental |
+| P2 ACQUISITION-ATTRIBUTION-01 | src/lib/analytics.ts y adaptador de atribución; plan exacto previo | R1, 80–150; solo códigos públicos permitidos, sin PII |
+| P2 DRIVER-NETWORK-01 / COMMISSION-RECEIVABLES-01 | Reutilizar colaboradores/finanzas; contrato, devengo, cobro y liquidación en PLAN R2 propio | 100–190 por slice; no ejecución actual |
+| P3 DISPATCH-LIVE / TELEGRAM | #1465 conservada; diseño de transporte solo tras volumen y nueva aprobación | R1 demo / R2 operativo |
+Secuencia de lanzamiento: precio/legal → contrato/DB/API → reglas y cuatro etapas → tarifa aprobada → composición/ruta → QA → aprobación final de publicación. No activar una landing con envío incompleto. Una fila que exceda el límite se divide antes de codificar, sin minificar ni omitir tests pertinentes.
 
-## 4. Validación jurídica y económica P0
-El cobro/factura del conductor no descarta obligaciones de centrale de réservation. Validar clasificación, declaración/renovación anual, RC profesional y responsabilidad con profesional competente: [Ministerio francés](https://www.ecologie.gouv.fr/politiques-publiques/taxi-vtc-vmdtr-cpa-reglementation-transports-publics-particuliers-personnes), Code des transports L3141-2, L3142-3/4.
-Validar mandato, contrato pasajero/conductor, control de habilitaciones/seguros, identidad del prestador, condiciones de cancelación, mediación y privacidad. No se ha verificado la situación administrativa del propietario.
-[BOFiP](https://bofip.impots.gouv.fr/bofip/323-PGP.html/identifiant=BOI-TVA-CHAMP-10-10-40-40-20210813): actuar en nombre ajeno o propio tiene tratamientos distintos; la etiqueta frais de gestion no decide por sí sola. Determinar bases fiscales, facturación y régimen con asesor.
-Matriz privada separa ingreso/cobro de intermediación, ejecución propia, gastos, incidencias y adquisición. Comisión no equivale a beneficio neto; no financiar publicidad con facturación del conductor ni presumir valor de vida futuro.
-
-## 5. Recorrido y métricas
-Solicitud: trayecto/sentido; fecha/hora París; vuelo si corresponde; hotel/dirección; adultos/niños; equipaje/carrito/sillas; vuelta condicional; contacto. Recoger solo datos necesarios, con condiciones e identidad claras.
-Resumen de categoría/total/inclusiones; revisión humana; “solicitud recibida” separada de “reserva confirmada”. Reutilizar contrato actual solo tras auditar payload, prefill, persistencia y errores; no checkout inactivo.
-Medir consultas únicas/cualificadas, confirmadas, realizadas, fuente propia, ida/vuelta, CAC, ingresos de gestión devengados/cobrados, costes reales, reseñas auténticas y recomendaciones. Clic WhatsApp ≠ reserva; deduplicar y respetar consentimiento/PII.
-Objetivos iniciales exploratorios: 4/5 usuarios entienden oferta/precio/acción; cero discrepancias en casos sintéticos; tasa de confirmación y CAC sin meta inventada. Core Web Vitals y SEO tras ruta aprobada; sin prometer SLA nuevo.
-
-## 6. Roadmap propuesto; cada micro-PR <200 líneas netas y ≤4 archivos
-| Prioridad / ID | Archivos previstos y alcance | Riesgo / estimación |
-|---|---|---|
-| P0 CUSTOMER-ACQUISITION-DISCOVERY-01 | Este audit, SVG, IMPROVEMENTS, STATUS; mapa/economía/evidencia privados | R0, 180–199 netas |
-| P0 LEGAL-INTERMEDIATION-SCOPE-01 | Checklist/resumen sin datos sensibles + dos SSOT; validación externa separada | R0, 50–90 |
-| P1 DISNEY-PRICE-SCOPE-01 | Matriz publicable por ruta/categoría + dos SSOT; ningún runtime | R0, 50–90 |
-| P1 Landing española | src/pages/DisneyTransfers.tsx, src/App.tsx + dos SSOT; presentación/ruta | R1, 140–190 |
-| P1 Solicitud/SEO | Formulario o adaptador; activos SEO/runbook + SSOT; dividir por responsabilidad | R1, 100–190 cada una |
-| P1 Comunidades/colaboraciones | Contenido práctico y registro privado; permisos/contactos solo tras autorización | R0 documental, 40–80 |
-| P2 Atribución/conversiones | src/lib/analytics.ts o adaptador existente + SSOT; eventos sin PII | R1, 80–150 |
-| P2 Red/comisiones | PLAN exacto previo: colaboradores, cuentas a cobrar, comisión e idempotencia | R2, 100–190 por slice |
-| P3 Dispatch Live | #1465 conservada; demanda/capacidad justifican nueva revisión de canal | R1 prototipo / R2 operativo |
-No encajar un cambio financiero en R1: pricing efectivo, pagos, ledger e ingest ERP requieren PLAN R2 propio. Alcance exacto y conteo se validan antes de cada implementación.
-
-## 7. Aceptación, Evidence Pack y decisión
-Discovery aceptable: dos PR draft alineadas; fuentes/fechas y límites documentados; export Planner con filtros; matriz privada coherente; diferencias pagadero/cobrable y NOT LIVE explícitas; SVG sin promesas; SSOT y diff revisados.
-Implementación futura: aprobación propietario/CTO, precio/operador/condiciones validados, diseño aceptado y plan exacto; después CI/lint/TypeScript/build y smoke móvil/escritorio, ida/vuelta, equipaje/sillas, duplicados y fallo sintético de envío.
-Evidence Pack: SHAs anteriores, SSOT, observación pública, exportación y fuentes privadas; verificar diff final y lectura remota. No se prueba producción financiera ni funnel con un envío real. R0 documental no requiere tests de runtime.
-**Operations & Revenue Radar:** mayor oportunidad: adquisición propia medible; conversión: tarifa/condiciones comprensibles; margen/cashflow: cobro de gestión verificable; riesgo: clasificación jurídica y economía de captación; desperdicio: Telegram antes de demanda; revisión: evidencia de reservas realizadas, no métricas de vanidad.
-**Next Best Slice: CUSTOMER-ACQUISITION-DISCOVERY-01 — R0 documental.** PLAN consolidado para revisión. HOLD para implementar; completar validación jurídica, alcance de precios y evidencia comercial antes de tráfico pagado o automatización.
+## 6. Aceptación y Evidence Pack
+Casos sintéticos: 4 viajeros/equipaje pequeño; 4 con 2 sillas/2 carritos; 5; 8 con nueve plazas verificadas; exceso de equipaje; silla incompatible/no disponible; ida/vuelta independiente; retraso sin cambiar recogida a ciegas. Además: datos desconocidos≠cero, edad/contador incoherente, doble clic/retry, respuesta incierta, refresh/back, fallo, legado intacto y mismo flujo por URL directa/landing, sin login ni PII en atribución.
+Gates futuros: SSOT, CI, npm run lint:changed, npm run type-check, npm run test -- <módulo>, npm run build; Deno/SQL locales para funciones/DB; A/B/C/D aplicable R1/R2 con fixtures. No ejecutar pagos/ingest ni requerir datos reales. Cuatro etapas navegables con teclado, labels, errores y foco; prueba móvil/escritorio.
+Evidencia de este discovery: fuentes v2 y CSV leídos; main/PR heads verificados; escaneo de formulario/hooks/pending/endpoint/migración/snapshot; SSOT; SVG/PDF revisados; diff y lectura remota al publicar. Sin test runtime, formulario enviado ni consulta financiera productiva. Documentación/observación no acredita capacidad real ni versión desplegada.
+**Operations & Revenue Radar:** menos transcripción y error de vehículo; conversión: tres precios y necesidades claras; ticket: ida/vuelta compatible, sin descuento inventado; confianza: total/transportista confirmados; SEO: landing española y guías; cashflow: gestión cobrable P2; dato faltante: aceptación/capacidad/precio por ruta; riesgo: prometer silla, suplemento o disponibilidad; micro-PR: DISNEY-PRICE-SCOPE-01, R0 ahora, automatización después.
+**Next Best Slice: DISNEY-PRICE-SCOPE-01 — R0 documental.** Technical verdict HOLD para implementar; product verdict mejora de conversión por validar. Cerrar matriz y condiciones con propietario/colaboradores y validación jurídica antes de iniciar la landing. Sin ampliar productos, canales técnicos o alcance de producción.
