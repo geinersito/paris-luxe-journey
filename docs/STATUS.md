@@ -11,15 +11,17 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 - Environments (Supabase A/B map, mirror): `docs/ops/ENVIRONMENTS.md` (SSOT in `paris-dispatcher`)
 - Deploy runbooks canonical (Hostinger + beta tester): `docs/runbooks/HOSTINGER_ROOT_ERP_DEPLOY.md`, `docs/runbooks/BETA_TESTER_QUICKSTART.md`
 
+## Disney Transfer Growth — Fase B F1 (2026-11-27)
+
+- main HEAD verificado: `a8c171662b7c84e8dfc5b3e184cb6ac8f3b2f9ed`, merge autorizado de [#260](https://github.com/geinersito/paris-luxe-journey/pull/260), HEAD `5ea2a30a`; CI #640 verde. El runbook de Fase A se conserva como registro previo; este bloque refleja la puerta actual.
+- En curso: DISNEY-FAMILY-BOOKING-01-F1, R1, [#261](https://github.com/geinersito/paris-luxe-journey/pull/261), aceptado técnicamente y actualizado desde el nuevo main mediante merge, sin reescribir historial. Contrato F1 íntegro; sin consumidores runtime.
+- Proyecto global DISNEY-FAMILY-BOOKING-01 conserva R2/TODO; F1 R1/DOING queda en revisión, sin merge autorizado para #261. Máximo cuatro archivos y <200 netas frente al nuevo main.
+- Smoke manual aislado: B/C/D PASS; A llega a confirmación simulada, pero FAIL en limpieza: persisten snapshot, claves temporales de pago y contexto incluso al salir a Home. Comportamiento legacy sin cambios respecto a main; no corregido dentro de F1. Evidence Pack #261 contiene pasos/límites; merge HOLD, sin dispensa aplicada.
+- Próximos 3: (1) cerrar/documentar gates R1; (2) revisión CTO del Evidence Pack consolidado; (3) autorización específica de merge #261. F2–F11 requieren GO separados.
+- Legacy sigue exigiendo email; CGV/privacidad, tarifas, capacidad, colaboradores y requisitos jurídicos/técnicos bloquean publicación. F4 deberá rechazar/revisar horas DST inexistentes o ambiguas, sin conversión silenciosa; Europe/Paris presentación, UTC persistencia. Sin implementar F4.
+- ORLY FIRST · CONVERSION FIRST · LESS IS MORE. Booking→ERP NOT LIVE; ERP #1465 P3; intermediación separada/bloqueada; Latins nunca redistribuido. Sin Supabase/Stripe, endpoints, rutas activas, tarifas, comunicaciones ni despliegue.
+
 ## OPS Locks
-
-## F1 — Family Booking Contract (2026-11-27)
-
-- Verified main HEAD: `94baae0c228d8ad9cab40b5ab2bb9a273520a100`; ERP baseline `4c6e6248700d40cae6a765e3e5e261bcfd52f819` (read-only check).
-- `DISNEY-FAMILY-BOOKING-01` / F1: DOING, R1 isolated; types and model documentation only, draft [#261](https://github.com/geinersito/paris-luxe-journey/pull/261). Reference: [runbook v3.1 #260](https://github.com/geinersito/paris-luxe-journey/pull/260).
-- Primary phone, optional email, independent legs/flight movements, child restraints and baggage; legacy behavior unchanged. Email-required compatibility and CGV/privacy remain pending.
-- Next 3: (1) CTO review of F1 Evidence Pack; (2) F2 review, HOLD without separate authorization; (3) F3 persistence/optional-email review, HOLD without separate authorization.
-- Publication, prices, communications, F2–F11, merge and deployment remain blocked. Booking→ERP NOT LIVE; ERP #1465 P3. No Supabase/Stripe, endpoint or active-route changes.
 
 ## DEPLOY STATUS — 2026-04-29
 

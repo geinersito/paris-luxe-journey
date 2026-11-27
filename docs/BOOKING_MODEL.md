@@ -248,12 +248,13 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
 
 ## 6. Family request contract — F1 (isolated, 2026-11-27)
 
-`DISNEY-FAMILY-BOOKING-01` / F1 implements the declarative specification from [runbook v3.1, PR #260](https://github.com/geinersito/paris-luxe-journey/blob/dfb21145e439aa42cc7ecc56541fb09dc50c0058/docs/audits/DOMAIN_DISNEY_DISCOVERY_2026_11_25.md). `src/types/familyBooking.ts` exports `FamilyBookingContractV1` and `FamilyLeg`; no runtime consumer, validation, persistence or transport is introduced. Existing `BookingFormData` and all legacy payloads remain unchanged.
+`DISNEY-FAMILY-BOOKING-01-F1` (R1; parent `DISNEY-FAMILY-BOOKING-01` remains R2) implements the declarative specification from [runbook v3.1, PR #260](https://github.com/geinersito/paris-luxe-journey/blob/dfb21145e439aa42cc7ecc56541fb09dc50c0058/docs/audits/DOMAIN_DISNEY_DISCOVERY_2026_11_25.md). `src/types/familyBooking.ts` exports `FamilyBookingContractV1` and `FamilyLeg`; no runtime consumer, validation, persistence or transport is introduced. Existing `BookingFormData` and all legacy payloads remain unchanged.
 
 - `schemaVersion: 1`; `requestKey` is an intent nonce, not authorization or implemented idempotency. Exactly one or two independent legs, each with its own passengers, children, baggage, requested pickup and optional arrival/departure flight schedule.
 - Required contact name and primary phone; email optional. No fictitious email. This is an unconfirmed request; future server response is a server reference plus `pending_review`, never client-controlled confirmation.
 - Dates are local `YYYY-MM-DD`, times `HH:mm` or null, zone always `Europe/Paris`. Flight schedule is distinct from requested pickup; actual flight times require a verified operational source. Future persistence must respect the UTC invariant in §3.1.
 - F4 must validate formats, nonempty contact/nonce, integer counts ≥0, coherent minor ages (<18, years/months) and 1–8 total passengers per leg including children. Types alone do not validate runtime input. Null means unknown; zero means none. Unknown critical data blocks confirmation pending human review.
+- Mandatory F4 gate: reject or route nonexistent/ambiguous Europe/Paris civil times to human review; never silently choose an offset. Convert to UTC only for future persistence; unknown critical data stays pending review. No F4 validator is introduced here.
 - Collect each child's age; height/weight only if needed for restraint selection. Device type and provider are separate. `not_requested` or a passenger-provided seat does not establish safety or availability. No child names, birth dates or documents.
 - Keep large/cabin bags, backpacks, folding/non-folding strollers and special baggage independent per leg. Special dimensions are centimetres and must be positive if supplied. Passenger count alone never proves vehicle compatibility.
 - Exclude confirmed prices, commissions, charges, waiting fees, driver IDs, assignments and verified actual flight times from passenger input. No new pricing, capacity or service promises.
@@ -262,6 +263,8 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
 **Compatibility HOLD:** `src/pages/booking/Pending.tsx` requires email; `supabase/functions/submit-booking-request/index.ts` validates it; migration `20260531000000_public_booking_requests.sql` declares `customer_email NOT NULL`. Do not submit this contract to the legacy endpoint. F3–F5 must reconcile storage, validation, notifications and consumers without breaking legacy requests; no migration or adapter in F1. Future mapping must project legacy columns and versioned family detail from a canonical server contract, not hide it in truncated notes.
 
 **Publication HOLD:** CGV/privacy compatibility, commercial scope and operational/legal gates remain pending. Booking→ERP stays NOT LIVE; ERP #1465 remains P3. ORLY FIRST / CONVERSION FIRST / LESS IS MORE remain the strategy. F2–F11 require separate authorization.
+
+**R1 integration HOLD (phase B):** safe manual smoke reached simulated legacy confirmation; B/C/D passed, but A failed cleanup: the intent snapshot, payment session keys and local context survived confirmation and return Home. The exercised runtime files match main unchanged. No waiver is applied and no runtime fix is included; see the consolidated Evidence Pack in #261. F1 remains unmerged pending the owner's explicit decision on this gate and a separate merge authorization.
 
 ## 7. Related Docs
 
