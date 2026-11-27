@@ -11,13 +11,14 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 - Environments (Supabase A/B map, mirror): `docs/ops/ENVIRONMENTS.md` (SSOT in `paris-dispatcher`)
 - Deploy runbooks canonical (Hostinger + beta tester): `docs/runbooks/HOSTINGER_ROOT_ERP_DEPLOY.md`, `docs/runbooks/BETA_TESTER_QUICKSTART.md`
 
-## Disney Transfer Growth — Fase B F1 (2026-11-27)
+## Disney Transfer Growth — F1 integrado / siguiente alcance (2026-11-27)
 
-- main HEAD verificado: `a8c171662b7c84e8dfc5b3e184cb6ac8f3b2f9ed`, merge autorizado de [#260](https://github.com/geinersito/paris-luxe-journey/pull/260), HEAD `5ea2a30a`; CI #640 verde. El runbook de Fase A se conserva como registro previo; este bloque refleja la puerta actual.
-- En curso: DISNEY-FAMILY-BOOKING-01-F1, R1, [#261](https://github.com/geinersito/paris-luxe-journey/pull/261), aceptado técnicamente y actualizado desde el nuevo main mediante merge, sin reescribir historial. Contrato F1 íntegro; sin consumidores runtime.
-- Proyecto global DISNEY-FAMILY-BOOKING-01 conserva R2/TODO; F1 R1/DOING queda en revisión, sin merge autorizado para #261. Máximo cuatro archivos y <200 netas frente al nuevo main.
+- main HEAD verificado: `d9619ddec927a336f2fdefd96e06985d71b30d39`, merge persistido de [#261](https://github.com/geinersito/paris-luxe-journey/pull/261), HEAD expresamente autorizado `10f998c3`; CI #643 PASS. [#260](https://github.com/geinersito/paris-luxe-journey/pull/260) ya integrado en `a8c17166`. Preflight confirmó ausencia de despliegue automático; no se desplegó.
+- DISNEY-FAMILY-BOOKING-01-F1 DONE, R1; contrato íntegro y sin consumidores runtime. Proyecto global DISNEY-FAMILY-BOOKING-01 conserva R2/TODO; el merge de F1 no autoriza otros slices ni activación.
+- En curso documental: [alcance mínimo F2](plan/F2_FAMILY_COMPATIBILITY_SCOPE.md), para aprobación independiente; función pura candidata/revisión, sin capacidad física o tarifas inventadas. F2 NO implementado. Micro-PRs ≤4 archivos/<200 netas.
 - Smoke manual aislado: B/C/D PASS; A llega a confirmación simulada, pero FAIL observado en limpieza legacy (snapshot, claves temporales de pago y contexto persisten). El propietario autorizó el 27/11/2026 (Europe/Paris) una dispensa puntual SOLO de ese subcontrol para F1 declarativo sin consumidores. El fallo no se corrige ni pasa a PASS; dispensa sin extensión a runtime, F2–F11, publicación o merge.
-- Próximos 3: (1) verificar CI/evidencia del registro documental de dispensa; (2) revisión CTO consolidada; (3) autorización específica de merge #261. #261 sigue en borrador y merge HOLD; F2–F11 requieren GO separados.
+- Deuda P0 abierta: [BOOKING-POST-CONFIRMATION-CLEANUP-01 #262](https://github.com/geinersito/paris-luxe-journey/issues/262), limpieza/persistencia/logs personales y exposición efectiva legacy; corrección independiente no iniciada, resolver antes de reactivación.
+- Próximos 3: (1) revisar alcance de corrección P0; (2) aprobar alcance/controles F2; (3) autorizar el siguiente slice específico. La dispensa F1 no se extiende a F2–F11 ni al runtime.
 - Legacy sigue exigiendo email; CGV/privacidad, tarifas, capacidad, colaboradores y requisitos jurídicos/técnicos bloquean publicación. F4 deberá rechazar/revisar horas DST inexistentes o ambiguas, sin conversión silenciosa; Europe/Paris presentación, UTC persistencia. Sin implementar F4.
 - ORLY FIRST · CONVERSION FIRST · LESS IS MORE. Booking→ERP NOT LIVE; ERP #1465 P3; intermediación separada/bloqueada; Latins nunca redistribuido. Sin Supabase/Stripe, endpoints, rutas activas, tarifas, comunicaciones ni despliegue.
 
