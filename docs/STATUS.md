@@ -16,7 +16,7 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 ## F1 — Family Booking Contract (2026-11-27)
 
 - Verified main HEAD: `94baae0c228d8ad9cab40b5ab2bb9a273520a100`; ERP baseline `4c6e6248700d40cae6a765e3e5e261bcfd52f819` (read-only check).
-- `DISNEY-FAMILY-BOOKING-01` / F1: DOING, R1 isolated; types and model documentation only. Reference: [runbook v3.1 #260](https://github.com/geinersito/paris-luxe-journey/pull/260); independent branch `feat/family-booking-contract-f1-20261127`.
+- `DISNEY-FAMILY-BOOKING-01` / F1: DOING, R1 isolated; types and model documentation only, draft [#261](https://github.com/geinersito/paris-luxe-journey/pull/261). Reference: [runbook v3.1 #260](https://github.com/geinersito/paris-luxe-journey/pull/260).
 - Primary phone, optional email, independent legs/flight movements, child restraints and baggage; legacy behavior unchanged. Email-required compatibility and CGV/privacy remain pending.
 - Next 3: (1) CTO review of F1 Evidence Pack; (2) F2 review, HOLD without separate authorization; (3) F3 persistence/optional-email review, HOLD without separate authorization.
 - Publication, prices, communications, F2–F11, merge and deployment remain blocked. Booking→ERP NOT LIVE; ERP #1465 P3. No Supabase/Stripe, endpoint or active-route changes.
