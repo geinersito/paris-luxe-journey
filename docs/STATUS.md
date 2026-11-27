@@ -11,16 +11,15 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 - Environments (Supabase A/B map, mirror): `docs/ops/ENVIRONMENTS.md` (SSOT in `paris-dispatcher`)
 - Deploy runbooks canonical (Hostinger + beta tester): `docs/runbooks/HOSTINGER_ROOT_ERP_DEPLOY.md`, `docs/runbooks/BETA_TESTER_QUICKSTART.md`
 
-## Disney Transfer Growth — Fase A SSOT (2026-11-27)
+## Disney Transfer Growth — Fase B F1 (2026-11-27)
 
-- main HEAD auditado: `94baae0c228d8ad9cab40b5ab2bb9a273520a100`; ERP `4c6e6248700d40cae6a765e3e5e261bcfd52f819` (solo lectura).
-- En curso: reconciliación documental R0 en [#260](https://github.com/geinersito/paris-luxe-journey/pull/260), tras GO posterior para F1 y dictamen técnico favorable; sin merge autorizado.
-- Proyecto global DISNEY-FAMILY-BOOKING-01 conserva R2 y alcance completo pendiente. Subítem DISNEY-FAMILY-BOOKING-01-F1, R1, implementado/aceptado técnicamente en draft [#261, c7109273](https://github.com/geinersito/paris-luxe-journey/pull/261); no integrado en main.
-- Próximos 3: (1) revisión final Fase A #260; (2) autorización específica de merge #260; (3) solo después, Fase B: merge del nuevo main en #261, reconciliar SSOT y repetir gates R1/smoke A/B/C/D seguro, sin dispensa unilateral.
-- ECO 70 / VAN 80 / VAN XL 100 EUR son objetivos pendientes de validación; capacidad, colaboradores y condiciones no aprobados. Landing española y formulario universal /es/reserva-disney siguen inactivos.
-- Email legacy obligatorio, CGV/privacidad y requisitos jurídicos/comerciales/técnicos siguen bloqueando publicación. Criterio F4: hora civil DST inválida/ambigua => rechazo/revisión, sin conversión silenciosa; Europe/Paris presentación, UTC persistencia.
-- Cuatro archivos/<200 netas por PR; contrato F1 intacto. Fase A no cambia src, Supabase, Stripe, endpoints, rutas, tarifas ni comunicaciones. F2–F11 y merge #261 requieren GO separados.
-- ORLY FIRST · CONVERSION FIRST · LESS IS MORE. Booking→ERP NOT LIVE; ERP #1465 P3; intermediación separada/bloqueada; Latins nunca redistribuido. Publicidad 0 EUR; economía interna privada.
+- main HEAD verificado: `a8c171662b7c84e8dfc5b3e184cb6ac8f3b2f9ed`, merge autorizado de [#260](https://github.com/geinersito/paris-luxe-journey/pull/260), HEAD `5ea2a30a`; CI #640 verde. El runbook de Fase A se conserva como registro previo; este bloque refleja la puerta actual.
+- En curso: DISNEY-FAMILY-BOOKING-01-F1, R1, [#261](https://github.com/geinersito/paris-luxe-journey/pull/261), aceptado técnicamente y actualizado desde el nuevo main mediante merge, sin reescribir historial. Contrato F1 íntegro; sin consumidores runtime.
+- Proyecto global DISNEY-FAMILY-BOOKING-01 conserva R2/TODO; F1 R1/DOING queda en revisión, sin merge autorizado para #261. Máximo cuatro archivos y <200 netas frente al nuevo main.
+- Smoke manual aislado: B/C/D PASS; A llega a confirmación simulada, pero FAIL observado en limpieza legacy (snapshot, claves temporales de pago y contexto persisten). El propietario autorizó el 27/11/2026 (Europe/Paris) una dispensa puntual SOLO de ese subcontrol para F1 declarativo sin consumidores. El fallo no se corrige ni pasa a PASS; dispensa sin extensión a runtime, F2–F11, publicación o merge.
+- Próximos 3: (1) verificar CI/evidencia del registro documental de dispensa; (2) revisión CTO consolidada; (3) autorización específica de merge #261. #261 sigue en borrador y merge HOLD; F2–F11 requieren GO separados.
+- Legacy sigue exigiendo email; CGV/privacidad, tarifas, capacidad, colaboradores y requisitos jurídicos/técnicos bloquean publicación. F4 deberá rechazar/revisar horas DST inexistentes o ambiguas, sin conversión silenciosa; Europe/Paris presentación, UTC persistencia. Sin implementar F4.
+- ORLY FIRST · CONVERSION FIRST · LESS IS MORE. Booking→ERP NOT LIVE; ERP #1465 P3; intermediación separada/bloqueada; Latins nunca redistribuido. Sin Supabase/Stripe, endpoints, rutas activas, tarifas, comunicaciones ni despliegue.
 
 ## OPS Locks
 
