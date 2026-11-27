@@ -1,5 +1,6 @@
 import { z } from "zod";
 import type { FamilyLeg } from "@/types/familyBooking";
+import { WHATSAPP_NUMBER } from "@/lib/eventsPrefill";
 
 type Child = Pick<FamilyLeg["children"][number], "age" | "restraint"> & {
   ageNeededForRestraint?: boolean;
@@ -93,4 +94,92 @@ export function projectFamilyWhatsApp(input: {
   if (!parsed.success) throw new Error("WA1_INVALID_REQUEST");
   // Runtime schema establishes required fields despite this repo's non-strict TS inference.
   return parsed.data.legs as WhatsAppLeg[];
+}
+const pending = "por confirmar";
+const places = {
+  ORY: "Orly (ORY)",
+  CDG: "Charles de Gaulle (CDG)",
+  PARIS: "París",
+  DISNEY: "Disneyland Paris",
+  other: "Punto por concretar en el chat",
+};
+const devices = {
+  child_seat: "silla infantil",
+  booster: "alzador",
+  not_requested: "no solicitado; revisar",
+  undetermined: pending,
+};
+const providers = {
+  operator: "operador",
+  passenger: "viajero",
+  undetermined: pending,
+};
+const bags = {
+  large: "grandes",
+  cabin: "cabina",
+  backpacks: "mochilas",
+  foldableStrollers: "carritos plegables",
+  nonFoldableStrollers: "carritos no plegables",
+};
+const clock = new Intl.DateTimeFormat("sv-SE", {
+  timeZone: "Europe/Paris",
+  dateStyle: "short",
+  timeStyle: "short",
+  hourCycle: "h23",
+});
+function time(v: FamilyLeg["requestedPickup"]): string {
+  if (v.time === null) return `${v.date} · hora ${pending}`;
+  const target = `${v.date} ${v.time}`;
+  const utc = Date.parse(`${v.date}T${v.time}:00Z`);
+  const matches = [1, 2].filter(
+    (offset) => clock.format(utc - offset * 3600000) === target,
+  );
+  const review = " (hora inexistente/ambigua; revisar por chat)";
+  return target + (matches.length === 1 ? "" : review);
+}
+/** Pure preparation only; call on the future explicit gesture. Never proves sending. */
+export function buildFamilyWhatsApp(input: { legs: readonly WhatsAppLeg[] }) {
+  const legs = projectFamilyWhatsApp(input);
+  const sections = legs.map((v, i) => {
+    const title = legs.length === 1 ? "TRASLADO" : i === 0 ? "IDA" : "VUELTA";
+    const lines = [
+      `${title}: ${places[v.pickup.code]} → ${places[v.dropoff.code]}`,
+      `Recogida solicitada: ${time(v.requestedPickup)} (Europe/Paris)`,
+      `Viajeros: ${v.adults} adulto${v.adults === 1 ? "" : "s"} y ${v.children.length} menor${v.children.length === 1 ? "" : "es"}`,
+    ];
+    if (v.flight) {
+      const f = v.flight;
+      const when = f.scheduled === null ? pending : time(f.scheduled);
+      lines.push(
+        `Vuelo ${f.number ?? pending} · ${f.movement === "arrival" ? "llegada" : "salida"}: ${when} (Europe/Paris)`,
+      );
+    }
+    v.children.forEach((c) => {
+      const needed =
+        c.ageNeededForRestraint &&
+        ["child_seat", "booster"].includes(c.restraint.type);
+      const age = needed
+        ? ` · edad para dispositivo: ${c.age ? `${c.age.value} ${c.age.unit === "years" ? "años" : "meses"}` : pending}`
+        : "";
+      lines.push(
+        `Menor: ${devices[c.restraint.type]} (${providers[c.restraint.provider]})${age}`,
+      );
+    });
+    const pieces = (Object.keys(bags) as (keyof typeof bags)[]).map(
+      (k) => `${bags[k]}: ${v.baggage[k] ?? pending}`,
+    );
+    lines.push(`Equipaje: ${pieces.join("; ")}`);
+    if (v.baggage.special) lines.push("Equipaje especial: consultar por chat");
+    lines.push("Hotel/punto público: por concretar en el chat");
+    return lines.join("\n");
+  });
+  const message = [
+    "CONSULTA — DISPONIBILIDAD Y PRECIO POR CONFIRMAR",
+    ...sections,
+    "¿Podéis confirmar disponibilidad y precio?",
+  ].join("\n\n");
+  return {
+    message,
+    url: `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`,
+  };
 }
