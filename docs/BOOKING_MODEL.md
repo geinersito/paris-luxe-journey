@@ -264,7 +264,7 @@ Booking status is **synchronized** with Stripe PaymentIntent status via webhooks
 
 **Publication HOLD:** CGV/privacy compatibility, commercial scope and operational/legal gates remain pending. Booking→ERP stays NOT LIVE; ERP #1465 remains P3. ORLY FIRST / CONVERSION FIRST / LESS IS MORE remain the strategy. F2–F11 require separate authorization.
 
-**R1 integration HOLD (phase B):** safe manual smoke reached simulated legacy confirmation; B/C/D passed, but A failed cleanup: the intent snapshot, payment session keys and local context survived confirmation and return Home. The exercised runtime files match main unchanged. No waiver is applied and no runtime fix is included; see the consolidated Evidence Pack in #261. F1 remains unmerged pending the owner's explicit decision on this gate and a separate merge authorization.
+**Scoped R1 waiver (owner-approved, 2026-11-27 Europe/Paris):** safe manual smoke reached simulated legacy confirmation; B/C/D passed, but A failed cleanup: the intent snapshot, payment session keys and local context survived confirmation and return Home. The observed failure remains FAIL and is not fixed here. The owner expressly waived ONLY this cleanup subcontrol for the isolated, declarative F1 contract with no runtime consumers; SUPERVISOR.md and risk class R1 are unchanged. This exception does not cover runtime activation, other checks, F2–F11, publication or merge. F1 stays draft/unmerged pending a separate explicit merge authorization; see the consolidated Evidence Pack in #261.
 
 ## 7. Related Docs
 
