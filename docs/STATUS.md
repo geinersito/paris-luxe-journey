@@ -11,6 +11,17 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 - Environments (Supabase A/B map, mirror): `docs/ops/ENVIRONMENTS.md` (SSOT in `paris-dispatcher`)
 - Deploy runbooks canonical (Hostinger + beta tester): `docs/runbooks/HOSTINGER_ROOT_ERP_DEPLOY.md`, `docs/runbooks/BETA_TESTER_QUICKSTART.md`
 
+## Disney Transfer Growth — Fase A SSOT (2026-11-27)
+
+- main HEAD auditado: `94baae0c228d8ad9cab40b5ab2bb9a273520a100`; ERP `4c6e6248700d40cae6a765e3e5e261bcfd52f819` (solo lectura).
+- En curso: reconciliación documental R0 en [#260](https://github.com/geinersito/paris-luxe-journey/pull/260), tras GO posterior para F1 y dictamen técnico favorable; sin merge autorizado.
+- Proyecto global DISNEY-FAMILY-BOOKING-01 conserva R2 y alcance completo pendiente. Subítem DISNEY-FAMILY-BOOKING-01-F1, R1, implementado/aceptado técnicamente en draft [#261, c7109273](https://github.com/geinersito/paris-luxe-journey/pull/261); no integrado en main.
+- Próximos 3: (1) revisión final Fase A #260; (2) autorización específica de merge #260; (3) solo después, Fase B: merge del nuevo main en #261, reconciliar SSOT y repetir gates R1/smoke A/B/C/D seguro, sin dispensa unilateral.
+- ECO 70 / VAN 80 / VAN XL 100 EUR son objetivos pendientes de validación; capacidad, colaboradores y condiciones no aprobados. Landing española y formulario universal /es/reserva-disney siguen inactivos.
+- Email legacy obligatorio, CGV/privacidad y requisitos jurídicos/comerciales/técnicos siguen bloqueando publicación. Criterio F4: hora civil DST inválida/ambigua => rechazo/revisión, sin conversión silenciosa; Europe/Paris presentación, UTC persistencia.
+- Cuatro archivos/<200 netas por PR; contrato F1 intacto. Fase A no cambia src, Supabase, Stripe, endpoints, rutas, tarifas ni comunicaciones. F2–F11 y merge #261 requieren GO separados.
+- ORLY FIRST · CONVERSION FIRST · LESS IS MORE. Booking→ERP NOT LIVE; ERP #1465 P3; intermediación separada/bloqueada; Latins nunca redistribuido. Publicidad 0 EUR; economía interna privada.
+
 ## OPS Locks
 
 ## DEPLOY STATUS — 2026-04-29
