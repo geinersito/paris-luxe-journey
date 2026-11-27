@@ -11,16 +11,18 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 - Environments (Supabase A/B map, mirror): `docs/ops/ENVIRONMENTS.md` (SSOT in `paris-dispatcher`)
 - Deploy runbooks canonical (Hostinger + beta tester): `docs/runbooks/HOSTINGER_ROOT_ERP_DEPLOY.md`, `docs/runbooks/BETA_TESTER_QUICKSTART.md`
 
-## Disney Transfer Growth — F1 integrado / siguiente alcance (2026-11-27)
+## Disney Transfer Growth — propuesta v4 WhatsApp First (2026-11-27)
 
 - main HEAD verificado: `d9619ddec927a336f2fdefd96e06985d71b30d39`, merge persistido de [#261](https://github.com/geinersito/paris-luxe-journey/pull/261), HEAD expresamente autorizado `10f998c3`; CI #643 PASS. [#260](https://github.com/geinersito/paris-luxe-journey/pull/260) ya integrado en `a8c17166`. Preflight confirmó ausencia de despliegue automático; no se desplegó.
 - DISNEY-FAMILY-BOOKING-01-F1 DONE, R1; contrato íntegro y sin consumidores runtime. Proyecto global DISNEY-FAMILY-BOOKING-01 conserva R2/TODO; el merge de F1 no autoriza otros slices ni activación.
-- En curso documental: [borrador #263](https://github.com/geinersito/paris-luxe-journey/pull/263), [alcance mínimo F2](plan/F2_FAMILY_COMPATIBILITY_SCOPE.md) para aprobación independiente; función pura candidata/revisión, sin capacidad física o tarifas inventadas. F2 NO implementado. Micro-PRs ≤4 archivos/<200 netas.
+- En curso documental: [borrador #263](https://github.com/geinersito/paris-luxe-journey/pull/263), [PLAN v4 WhatsApp First](plan/DISNEY_WHATSAPP_FIRST_V4.md) propuesto para aprobación. Landing ES → formulario universal → copiar ficha/enlace WhatsApp limpio → envío del cliente → confirmación humana. Ninguna implementación autorizada; micro-PRs ≤4 archivos/<200 netas.
 - Smoke manual aislado: B/C/D PASS; A llega a confirmación simulada, pero FAIL observado en limpieza legacy (snapshot, claves temporales de pago y contexto persisten). El propietario autorizó el 27/11/2026 (Europe/Paris) una dispensa puntual SOLO de ese subcontrol para F1 declarativo sin consumidores. El fallo no se corrige ni pasa a PASS; dispensa sin extensión a runtime, F2–F11, publicación o merge.
 - Deuda P0 abierta: [BOOKING-POST-CONFIRMATION-CLEANUP-01 #262](https://github.com/geinersito/paris-luxe-journey/issues/262), limpieza/persistencia/logs personales y exposición efectiva legacy; corrección independiente no iniciada, resolver antes de reactivación.
-- Próximos 3: (1) revisar alcance de corrección P0; (2) aprobar alcance/controles F2; (3) autorizar el siguiente slice específico. La dispensa F1 no se extiende a F2–F11 ni al runtime.
+- Próximos 3: (1) revisar v4 y alcance/exposición P0 #262; (2) cerrar tarifas/CGV/privacidad/capacidad y QA móvil; (3) autorizar WA1 por separado. F2 conservado íntegro en anexo y aplazado; F3/DB, F4 completo y F5/backend/avisos aplazados. Dispensa F1 sin extensión a runtime/publicación.
 - Legacy sigue exigiendo email; CGV/privacidad, tarifas, capacidad, colaboradores y requisitos jurídicos/técnicos bloquean publicación. F4 deberá rechazar/revisar horas DST inexistentes o ambiguas, sin conversión silenciosa; Europe/Paris presentación, UTC persistencia. Sin implementar F4.
-- ORLY FIRST · CONVERSION FIRST · LESS IS MORE. Booking→ERP NOT LIVE; ERP #1465 P3; intermediación separada/bloqueada; Latins nunca redistribuido. Sin Supabase/Stripe, endpoints, rutas activas, tarifas, comunicaciones ni despliegue.
+- ORLY FIRST · WHATSAPP FIRST · CONVERSION FIRST · LESS IS MORE. Objetivo 10 reservas propias; publicidad 0 EUR. Booking→ERP NOT LIVE; ERP #1465 P3; intermediación separada/bloqueada; Latins nunca redistribuido. Sin Supabase/Stripe, endpoints, rutas activas, tarifas, comunicaciones ni despliegue.
+
+- Contacto público web/código verificado: +33 6 68 25 11 02; copiar/abrir no acredita envío. Estado futuro solo en memoria, sin PII en URLs/logs/analytics; auditar GA global y aislar legacy antes de montar. Exposición desplegada de #262 no auditada; no se enviaron solicitudes ni mensajes.
 
 ## OPS Locks
 
