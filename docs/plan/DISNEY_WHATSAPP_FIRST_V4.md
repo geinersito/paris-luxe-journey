@@ -19,12 +19,28 @@ Booking→ERP sigue NOT LIVE; ERP #1465 P3. No Supabase/Stripe, endpoints, integ
 - Microcopy: «Se abrirá WhatsApp con los datos de tu traslado. Revisa el mensaje y pulsa Enviar. Te confirmaremos disponibilidad y precio». Abrir/cancelar/volver/perder foco no acredita solicitud enviada, recibida ni reserva confirmada. Sin prometer entrega instantánea: depende de conexión, cuenta y WhatsApp.
 - Si WhatsApp no abre o pide instalación/inicio de sesión: instrucciones y reintento del mismo botón, conservando borrador mientras siga en memoria; no éxito ficticio, truncado silencioso ni fallback obligatorio de copiar/pegar. Probar Web/app por plataforma; sin garantía de recuperación tras recarga, cierre o descarte móvil.
 
-## Privacidad del prellenado — cambio explícito frente a v4
+## Revisión de privacidad del prellenado — 27/11/2026
 
-`?text` transporta el contenido en la URL de WhatsApp: codificar NO es cifrar ni anonimizar. Quitar contacto reduce datos, pero fecha, vuelo, hotel y composición familiar pueden seguir siendo personales. El texto llega al servicio de enlace al abrirlo, antes de que el cliente confirme el envío al operador; pueden existir historial/logs externos que el sitio no controla. No prometer ausencia de datos personales en toda URL.
-Allowlist propuesta: ruta y hotel/punto necesario, fecha, recogida/vuelo separados, adultos/menores y edades necesarias para dispositivos, sillas, cantidades de equipaje/carritos y campos pendientes por tramo. Excluir nombre/teléfono/email, nombres o nacimiento de menores, peso/altura, documentos, pagos, claves, comisiones, IDs internos y texto libre no necesario; aclarar necesidades adicionales por chat.
-Construir la URL solo en el gesto explícito, sin guardarla/renderizarla previamente, precargarla, acortarla ni enviarla a nuestro backend. No PII en URL de nuestra web, hash, logs, analytics, replay, fixtures, history.state o storage. Excluir también la URL saliente completa y el texto de captura/click tracking; `noreferrer` cuando aplique reduce referencia, no oculta `?text` al destinatario.
-La excepción propuesta solo alcanza los datos operativos mínimos en `text` hacia WhatsApp; no el contrato F1 completo. Revisar aviso de privacidad, minimización/canal y aceptación expresa de este alcance antes del GO de implementación/publicación; este PLAN no declara cumplimiento validado. Si no se acepta el transporte en URL, no prometer simultáneamente ficha completa prellenada, cero backend/API y cero copia manual.
+**Dictamen de diseño: favorable para WA1 aislado, solo función pura y tests sintéticos, tras aceptación del riesgo residual y GO del propietario.** No valida una captura/envío real ni certifica cumplimiento RGPD del sitio; implementación, merge y publicación siguen sin autorizar. La estrategia v4.1 se mantiene.
+Finalidad exclusiva: preparar disponibilidad, vehículo y recogida para esta consulta; no marketing, perfiles ni reutilización de la cartera de Latins. Minimización documentada según CNIL; cada tramo mantiene datos propios y desconocidos explícitos, sin completar por inferencia.
+
+| Campo autorizado en `text` | Necesidad y límite |
+|---|---|
+| Fecha, hora y sentido | Planificar cada traslado; distinguir aterrizaje/salida de recogida solicitada. Sin ubicación en tiempo real ni calendario personal. |
+| Aeropuerto y hotel público | Identificar trayecto: aeropuerto enumerado y nombre público de hotel de lista controlada; sin dirección postal privada, habitación, coordenadas ni texto libre. Si no está verificado/en lista: «punto por concretar en el chat». |
+| Número de vuelo | Solo para tramo de aeropuerto y si se conoce: identificar vuelo/horario; sin PNR, billete ni datos del pasajero. |
+| Adultos, menores y dispositivos | Conteos y sillas/alzadores para preparar configuración; edad solo cuando sea necesaria para el dispositivo y con precisión mínima útil. Sin nombre/nacimiento/peso/altura ni datos de salud de menores; dudas por chat. |
+| Equipaje y carritos | Cantidades/tipos para revisar capacidad; sin contenido de maletas, etiquetas ni descripción libre. Especiales: indicador «consultar por chat». |
+| Contacto e identificadores | Excluidos: nombre/teléfono/email, documentos, pagos, claves, IDs internos y comisiones. Responder al chat emisor no verifica identidad ni contacto durante el viaje. |
+
+WA1 deberá aceptar solo una proyección acotada de datos; nunca serializar F1/FamilyLeg completo, `address`, `special.description` ni extras arbitrarios. Una etiqueta «hotel» no valida privacidad: solo valores públicos controlados; no confiar en regex para detectar todas las direcciones. Sin catálogo aprobado, omitir el hotel específico y dejarlo por concretar; no inventar uno ni consultar APIs.
+Aviso visible junto al formulario desde el inicio y reiterado antes del único botón, sin modal/copia/casilla añadida: «Paris Elite Services utilizará estos datos para atender tu solicitud. Al continuar se abrirá WhatsApp con los datos del traslado en el enlace, que puede quedar en el historial. Revisa el mensaje y pulsa Enviar». Enlace a información completa de privacidad, accesible antes de introducir datos.
+La información completa debe concretar responsable/contacto operativo, finalidad/base legal, datos obligatorios/opcionales, destinatarios/canal WhatsApp, conservación, derechos y transferencias/garantías aplicables. No confundir aviso con consentimiento ni elegir base legal automáticamente. La política actual requiere adaptación; chats recibidos/copias de seguridad sí pueden conservar datos aunque la web no tenga DB; definir acceso, conservación y borrado antes de publicar, sin inventar plazos.
+Control de salida: construir `https://wa.me/33668251102?text=...` solo en gesto explícito, sin href previo, preload, acortador, backend o almacenamiento. Mensaje/URL fuera de analytics, logs, errores, replay, history.state, URL propia y snapshots; eventos, si se autorizan, solo códigos constantes sin campos del viaje/destino.
+WA6 debe aislar captura global y seguimiento de enlaces antes de montar: comprobar entrada directa y navegación desde SPA con tags ya cargados, recargando hacia bootstrap aislado si hace falta. Consent mode denegado/omitir trackEvent no prueba ausencia de captura; no aplicar el patrón de analytics de otros botones al mensaje familiar.
+Prueba exigida: canarios sintéticos en todos los campos y propiedades extra, dirección privada en address/hotel/no catálogo, teléfono en texto libre y edad no necesaria; verificar exclusión antes de encoding. En UI futura, observar red/dataLayer/gtag/consola/storage en consentimiento otorgado y denegado, entrada directa/SPA, error/reintento y cada plataforma; solo WhatsApp recibe el texto mínimo tras el gesto. No afirmar PASS sin evidencias.
+Riesgo residual explícito: `text` llega al servicio de enlace de WhatsApp antes de pulsar Enviar; fecha/vuelo/hotel/composición familiar aún pueden ser personales. HTTPS/encoding/noreferrer no eliminan historial, logs/caché del destino, sincronización o copias fuera del control del sitio. No prometer anonimización, cero almacenamiento global ni borrado de terceros; abrir/cancelar no acredita envío/recepción.
+Puertas: (1) propietario acepta este riesgo/campos y autoriza por separado merge #263 + solo WA1; (2) WA1 sin consumidores/UI/red, sin logs/storage, con Evidence Pack antes de su merge; (3) UI/WA6, aviso completo, conservación/canal y QA real aprobados antes de datos reales/publicación. Resto de gates comerciales y #262 siguen intactos. Sin aceptación, no ejecutar WA1 ni restaurar automáticamente copia/pegado.
 
 ## Diseño móvil y formulario reutilizable (sin maqueta publicada)
 
@@ -32,9 +48,9 @@ La excepción propuesta solo alcanza los datos operativos mínimos en `text` hac
 |---|---|
 | Landing ES | H1 «Traslados privados Orly–Disneyland Paris»; ECO 70 / VAN 80 / VAN XL 100 EUR como objetivos pendientes de aprobación, por vehículo/trayecto. CDG/París consultar. CTA «Consultar disponibilidad» hacia el mismo formulario; fotos reales autorizadas, sin estética VIP ni reseñas inventadas. |
 | Móvil 360/390 px | Una columna, tarjetas apiladas, progreso 1/4, etiquetas visibles, errores junto al campo, controles táctiles y CTA fuera del teclado; escritorio con resumen legible. Conservar identidad actual; sin introducir eventos/excursiones en esta landing. |
-| 1. Tu viaje | Origen/destino, fecha, recogida solicitada; vuelo y horario de llegada/salida separados. Ida/vuelta con datos independientes, sin copiar automáticamente pasajeros/equipaje ni confundir aterrizaje con recogida. |
+| 1. Tu viaje | Aeropuerto/hotel público controlado, fecha, recogida solicitada; vuelo y horario de llegada/salida separados. Direcciones privadas por chat. Ida/vuelta con datos independientes, sin copiar automáticamente pasajeros/equipaje ni confundir aterrizaje con recogida. |
 | 2. Quiénes viajan | Adultos, menores, edad necesaria y dispositivo/proveedor infantil; no pedir nombre, nacimiento, peso/altura o documentos de menores para este prellenado. Necesidades adicionales se aclaran por chat. |
-| 3. Equipaje | Cantidades independientes: grande, cabina, mochilas, carritos plegables/no plegables y especiales por tramo. Desconocido distinto de cero; sin prometer capacidad por número de pasajeros. |
+| 3. Equipaje | Cantidades independientes: grande, cabina, mochilas, carritos plegables/no plegables; especiales solo indicador para aclarar por chat, sin texto libre. Desconocido distinto de cero; sin prometer capacidad por número de pasajeros. |
 | 4. Revisión y envío | Resumen editable, campos pendientes, condiciones y aviso de privacidad. Sin nombre/teléfono/email. Un botón «Enviar solicitud por WhatsApp» prepara el mensaje; el cliente revisa y pulsa Enviar en WhatsApp. |
 
 URL candidata corta `/es/reserva-disney`, compartible desde WhatsApp, redes, correo o QR y reutilizada desde la landing. Landing candidata `/es/traslados-disneyland-paris`; revisar resolución de rutas existente antes de montar. Sin login ni nuevo formulario por canal.
@@ -56,7 +72,7 @@ Estimaciones netas; cada PR ≤4 archivos y <200 líneas, incluyendo STATUS + IM
 
 | Slice / riesgo | Archivos de producto previstos (más los 2 SSOT) | Neto estimado / criterio principal |
 |---|---|---|
-| WA1 — ficha/controles esenciales, R1 | `src/lib/booking/familyWhatsApp.ts` + `.test.ts` | 130–185; proyección sin contacto, allowlist por tramo, encoding único y límites, null ≠ 0; sin precio/compatibilidad/confirmación. |
+| WA1 — ficha/controles esenciales, R1 | `src/lib/booking/familyWhatsApp.ts` + `.test.ts` | 130–185; proyección/allowlist por tramo, sin address/texto libre/contacto, edad condicional, encoding único y límites; sin UI/red/logs/storage ni consumidores. |
 | WA2 — viaje/familia, R1 | `src/components/booking/FamilyTripFields.tsx`, `FamilyPartyFields.tsx` | 130–190; campos controlados sin storage, vuelos separados y vuelta independiente, sin montar. |
 | WA3 — equipaje, R1 | `src/components/booking/FamilyBaggageFields.tsx` | 90–150; piezas/carritos/especiales mínimos sin campos de contacto, sin montar. |
 | WA4 — cuatro etapas/revisión/envío, R1 | `src/components/booking/FamilyWhatsAppForm.tsx` + `.test.tsx` | 140–190; navegación accesible, un CTA con prellenado sin clipboard, reintento y ningún «enviado/recibido», sin montar. |
@@ -64,7 +80,7 @@ Estimaciones netas; cada PR ≤4 archivos y <200 líneas, incluyendo STATUS + IM
 | WA6 — aislamiento analytics, R1 | `index.html`, `src/lib/analytics.ts` | 100–180; excluir formulario y URL/texto salientes de captura automática; comprobar bootstrap/eventos globales, conservar resto del sitio. |
 | WA7 — montaje revisable, R1 | `src/App.tsx`, `src/pages/DisneyTransfer.tsx` | 70–170; URL propia y enlace de landing tras flujo completo, sin backend; separar autorización de merge de autorización de despliegue/publicación. |
 
-Next Best Slice propuesto: WA1, tras aprobación del PLAN y controles aplicables; NO ejecutarlo ahora. Alcance P0 #262 en paralelo para decisión independiente. No restaurar F2 como prerequisito comercial.
+Next Best Slice: aceptar el riesgo residual/campos y autorizar merge #263 + WA1 puro por el propietario; NO ejecutarlo sin ese GO. Alcance P0 #262 en paralelo para decisión independiente. No restaurar F2 como prerequisito comercial.
 Cada R1: type-check, lint:changed, tests significativos, build, CI y smoke A/B/C/D seguro conforme a SUPERVISOR; la dispensa F1 no se hereda. Pruebas limitadas a datos sintéticos, sin cobros/efectos operativos; impedimentos o nuevo FAIL requieren resolución/decisión específica, nunca PASS inventado.
 
 ## Aceptación y Evidence Pack de la fase futura (NO ejecutados en esta revisión)
@@ -92,7 +108,7 @@ Medir manualmente consultas recibidas en WhatsApp, reservas confirmadas y trasla
 | Operational promise risk | Capacidad, precio e inclusiones solo tras aprobación; ninguna reserva automática ni SLA de recepción. P0 y privacidad siguen gates. |
 | Suggested micro-PR / Risk / Why now-later | WA1 R1 para aprobación tras este PLAN R0; F2/DB/ERP/Telegram después de demanda real. |
 
-Fuentes primarias verificadas: [WhatsApp Click to Chat](https://faq.whatsapp.com/5913398998672934), [OWASP query strings](https://community.owasp.org/vulnerabilities/Information_exposure_through_query_strings_in_url). HTTPS no evita exposición de datos en URLs; `?text` opcional no equivale a envío.
+Fuentes primarias verificadas: [CNIL minimización](https://www.cnil.fr/fr/minimiser-les-donnees-collectees), [CNIL información/transparencia](https://cnil.fr/fr/conformite-rgpd-information-des-personnes-et-transparence), [WhatsApp Click to Chat](https://faq.whatsapp.com/5913398998672934), [OWASP query strings](https://community.owasp.org/vulnerabilities/Information_exposure_through_query_strings_in_url). HTTPS no evita exposición de datos en URLs; `?text` opcional no equivale a envío.
 
 ## Anexo histórico — F2 conservado íntegro y aplazado
 
