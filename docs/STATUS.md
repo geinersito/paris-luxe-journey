@@ -11,15 +11,18 @@ Estado operativo rapido para saber "donde estamos" en menos de 30 segundos.
 - Environments (Supabase A/B map, mirror): `docs/ops/ENVIRONMENTS.md` (SSOT in `paris-dispatcher`)
 - Deploy runbooks canonical (Hostinger + beta tester): `docs/runbooks/HOSTINGER_ROOT_ERP_DEPLOY.md`, `docs/runbooks/BETA_TESTER_QUICKSTART.md`
 
-## Disney Transfer Growth — Fase B F1 (2026-11-27)
+## Disney Transfer Growth — propuesta v4.1 Zero Friction (2026-11-27)
 
-- main HEAD verificado: `a8c171662b7c84e8dfc5b3e184cb6ac8f3b2f9ed`, merge autorizado de [#260](https://github.com/geinersito/paris-luxe-journey/pull/260), HEAD `5ea2a30a`; CI #640 verde. El runbook de Fase A se conserva como registro previo; este bloque refleja la puerta actual.
-- En curso: DISNEY-FAMILY-BOOKING-01-F1, R1, [#261](https://github.com/geinersito/paris-luxe-journey/pull/261), aceptado técnicamente y actualizado desde el nuevo main mediante merge, sin reescribir historial. Contrato F1 íntegro; sin consumidores runtime.
-- Proyecto global DISNEY-FAMILY-BOOKING-01 conserva R2/TODO; F1 R1/DOING queda en revisión, sin merge autorizado para #261. Máximo cuatro archivos y <200 netas frente al nuevo main.
+- main HEAD verificado: `d9619ddec927a336f2fdefd96e06985d71b30d39`, merge persistido de [#261](https://github.com/geinersito/paris-luxe-journey/pull/261), HEAD expresamente autorizado `10f998c3`; CI #643 PASS. [#260](https://github.com/geinersito/paris-luxe-journey/pull/260) ya integrado en `a8c17166`. Preflight confirmó ausencia de despliegue automático; no se desplegó.
+- DISNEY-FAMILY-BOOKING-01-F1 DONE, R1; contrato íntegro y sin consumidores runtime. Proyecto global DISNEY-FAMILY-BOOKING-01 conserva R2/TODO; el merge de F1 no autoriza otros slices ni activación.
+- En curso documental: [borrador #263](https://github.com/geinersito/paris-luxe-journey/pull/263), [PLAN v4.1 Zero Friction](plan/DISNEY_WHATSAPP_FIRST_V4.md) propuesto para aprobación. Landing ES → formulario sin contacto → un botón abre WhatsApp prellenado → cliente pulsa Enviar → confirmación humana. Ninguna implementación autorizada; micro-PRs ≤4 archivos/<200 netas.
 - Smoke manual aislado: B/C/D PASS; A llega a confirmación simulada, pero FAIL observado en limpieza legacy (snapshot, claves temporales de pago y contexto persisten). El propietario autorizó el 27/11/2026 (Europe/Paris) una dispensa puntual SOLO de ese subcontrol para F1 declarativo sin consumidores. El fallo no se corrige ni pasa a PASS; dispensa sin extensión a runtime, F2–F11, publicación o merge.
-- Próximos 3: (1) verificar CI/evidencia del registro documental de dispensa; (2) revisión CTO consolidada; (3) autorización específica de merge #261. #261 sigue en borrador y merge HOLD; F2–F11 requieren GO separados.
+- Deuda P0 abierta: [BOOKING-POST-CONFIRMATION-CLEANUP-01 #262](https://github.com/geinersito/paris-luxe-journey/issues/262), limpieza/persistencia/logs personales y exposición efectiva legacy; corrección independiente no iniciada, resolver antes de reactivación.
+- Próximos 3: (1) propietario decide aceptación del riesgo URL y GO merge #263 + solo WA1; (2) preparar WA1 aislado/Evidence Pack antes de su merge, solo tras GO; (3) cerrar aviso completo/canal/conservación, aislamiento analytics, tarifas/capacidad y QA antes de publicación. F2 conservado íntegro en anexo y aplazado; F3/DB, F4 completo y F5/backend/avisos aplazados. Dispensa F1 sin extensión a runtime/publicación.
 - Legacy sigue exigiendo email; CGV/privacidad, tarifas, capacidad, colaboradores y requisitos jurídicos/técnicos bloquean publicación. F4 deberá rechazar/revisar horas DST inexistentes o ambiguas, sin conversión silenciosa; Europe/Paris presentación, UTC persistencia. Sin implementar F4.
-- ORLY FIRST · CONVERSION FIRST · LESS IS MORE. Booking→ERP NOT LIVE; ERP #1465 P3; intermediación separada/bloqueada; Latins nunca redistribuido. Sin Supabase/Stripe, endpoints, rutas activas, tarifas, comunicaciones ni despliegue.
+- ORLY FIRST · WHATSAPP FIRST · CONVERSION FIRST · LESS IS MORE. Objetivo 10 reservas propias; publicidad 0 EUR. Booking→ERP NOT LIVE; ERP #1465 P3; intermediación separada/bloqueada; Latins nunca redistribuido. Sin Supabase/Stripe, endpoints, rutas activas, tarifas, comunicaciones ni despliegue.
+
+- Contacto profesional público ya verificado: +33 6 68 25 11 02; abrir WhatsApp no acredita envío. Sin pedir nombre/teléfono/email: draft solo de tramos, F1 intacto. Revisión de diseño de privacidad completada, favorable SOLO para WA1 puro/sintético tras GO; datos justificados, sin direcciones privadas/texto libre, edades solo necesarias. `?text` mantiene riesgo residual a aceptar por el propietario, sin anonimización ni validación de captura real. Sin datos en URL propia/logs/analytics/storage; aislar captura saliente/global y legacy antes de montar. Exposición desplegada de #262 no auditada; sin solicitudes/mensajes reales.
 
 ## OPS Locks
 
